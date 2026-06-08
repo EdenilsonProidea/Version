@@ -1,0 +1,15 @@
+#LET agav=21
+//354  // Base sapateira
+355,p=15  // traseira sapateira
+#IF $(suportesap:0)>0
+   #IF $P>=440
+      356,SP=$p-150-15,c1=$(_TUBOS:8),c2=$(_TUBOS:8)  // Caninho Sapateira
+      356,SP=$p-150-150-15,c1=$(_TUBOS:8),c2=$(_TUBOS:8)  // Caninho Sapateira
+   #ELSE
+      #LETS idlogerros=$(idlogerros)30;
+   #ENDIF
+#ENDIF
+#LET issapateira=1
+264,SL=0,SA=$(agav:0),SP=0,L=$l,A=18,P=$p+$(_FRG:4)-$(AVANCOCLOSETL:0)  // Caixa Gaveta oculta para furaçao
+//logerros
+//400,LATO=0,P=$P-$(AVANCOCLOSETL:0)

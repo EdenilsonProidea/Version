@@ -1,0 +1,34 @@
+#IF $(XX3:1)==SAP_INC
+   #IF $(XX8:0)>0
+      // RASGO PARA SAPATEIRA
+      1	MA	 X=0 Y=0 SAPINCL$(XX8:0)FRISO KO_ZERO=1
+   #ENDIF
+   1	FT6	X=80 Y=0 DF=8 PF=24
+   1	FT6	X={$(XL)-80} Y=0 DF=8 PF=24
+   1	FT6	X={$(XL)/2} Y=0 DF=8 PF=24
+   #IF $(XL)>900
+      1	FT6	X={$(XL)/3} Y=0 DF=8 PF=24
+      1	FT6	X={$(XL)/3*2} Y=0 DF=8 PF=24
+   #ENDIF
+   #LET f=2
+   #LET dfp=40
+   $(F)	FF	X=6.5 Y=64 df=15 pf=13
+   $(F)	FF	X=6.5 Y={$(xp)-64} df=15 pf=13
+   $(F)	FF	X={$(xl)-6.5} Y=64 df=15 pf=13
+   $(F)	FF	X={$(xl)-6.5} Y={$(xp)-64} df=15 pf=13
+#ENDIF
+
+
+
+//#ELSEIF
+//1	MA	X=0 Y=0 NM=SAPINCL2FRISO KO_ZERO=1
+//#LET calc=($(XL)-160)/4
+//2	FT6	X=80 Y=0 DF=8 PF=24
+//2	FT6	X={$(XL)-80} Y=0 DF=8 PF=24
+//2	FT6	X={80+$(CALC)*1} Y=0 DF=8 PF=24
+//2	FT6	X={80+$(CALC)*2} Y=0 DF=8 PF=24
+//2	FT6	X={80+$(CALC)*3} Y=0 DF=8 PF=24
+//2	FF	 X=8.5 Y={49} DF=18 PF=20
+//2	FF	 X=8.5 Y={49+352} DF=18 PF=20
+//2	FF	 X={$(XL)-8.5} Y={49} DF=18 PF=20
+//2	FF	 X={$(XL)-8.5} Y={49+352} DF=18 PF=20

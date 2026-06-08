@@ -1,0 +1,16 @@
+{ 242   // MASCARA
+   *AZZERA*            =0
+   DESCRIZIONE         =MASCARA
+   CODICE              =000MASC /_FR=$(FR:1)_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR ;_MONTADO=$(_MONTADO:0) /$(_tpmascara:2) Furo $(LFOROM:0)x$(AFOROM:0) mm
+   POSIZIONE           =$(FOLGAFRENTEL:0),$(FOLGAFRENTEAI:0),$P
+   DIMENSIONE          =$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1+$(INCRFRED:0)++$(INCRFREE:0),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))}+$(INCRFREI:0)++$(INCRFREA:0),$(ESFRE)
+   ANGOLI(ZYX)         =,$(ayfrente)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)|90,$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)|90
+   DISEGNO             =$(sagmascara)
+   ORIENTAMENTO        =ALP
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_FR:1)/$(_CORFR:1)/$(_tpmascara:1)/$(LFOROM:0)/$(AFOROM:0)
+   ALIAS               =#242
+}

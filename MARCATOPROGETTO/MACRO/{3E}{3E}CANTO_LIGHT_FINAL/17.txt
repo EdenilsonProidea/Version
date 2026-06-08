@@ -1,0 +1,120 @@
+#IF $(slmoduloe:0)=$(eslat:0)
+   #IF $(ADCDIR:0)>0
+      #LET slmoduloe=$(slmodulo:0)-$(ADCDIR:0)*($(LMODULO:0)+$(ESLAT:0))
+   #ELSE
+      #LET slmoduloe=$(slmodulo:0)
+   #ENDIF
+#ENDIF
+#IF $(TPCLOSETLIGHT:3)=3
+   // LATERAIS DIREITA
+   #IF $(_PES:3)>0
+      521,SA=$(_PES:5),sl=$(PROFESQLIGHT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTD:0)=1
+         522,SA=$(_PES:5),SL=$(PROFESQLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,SA=$(_PES:5),SL=$(PROFESQLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ELSE
+      521,SP=0,SL=$(PROFESQLIGHT:0),P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTD:0)=1
+         522,SL=$(PROFESQLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,SL=$(PROFESQLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ENDIF
+   // LATERAIS ESQUERDA
+   #IF $(_PES:3)>0
+      521,AY=90,SA=$(_PES:5),SP=$(AFASTLIGHT:0)+$(ESLAT:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTE:0)=1
+         522,AY=90,SA=$(_PES:5),SL=0,SP=$(AFASTLIGHT:0)+$(slmodulo:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,AY=90,SA=$(_PES:5),SL=0,SP=$(AFASTLIGHT:0)+$(slmodulo:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ELSE
+      521,AY=90,SP=$(AFASTLIGHT:0)+$(ESLAT:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTE:0)=1
+         522,AY=90,SL=0,SP=$(AFASTLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,AY=90,SL=0,SP=$(AFASTLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ENDIF
+   #LETV L={$(SLMODULO:0)+$(PROFESQLIGHT:0)}
+   #LETV P={$(SLMODULOE:0)+$(AFASTLIGHT:0)}
+#ELSEIF $(TPCLOSETLIGHT:3)=1
+   // LATERAIS DIREITA
+   #IF $(_PES:3)>0
+      521,SA=$(_PES:5),sl=$(AFASTLIGHT:0),SP=0,P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTD:0)=1
+         522,SA=$(_PES:5),SL=$(AFASTLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,SA=$(_PES:5),SL=$(AFASTLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ELSE
+      521,SP=0,SL=$(AFASTLIGHT:0),P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTD:0)=1
+         522,SL=$(AFASTLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,SL=$(AFASTLIGHT:0)+$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ENDIF
+   // LATERAIS ESQUERDA
+   #IF $(_PES:3)>0
+      521,AY=90,SA=$(_PES:5),SP=$(PROFDIRLIGHT:0)+$(ESLAT:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTE:0)=1
+         522,AY=90,SA=$(_PES:5),SL=0,SP=$(PROFDIRLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,AY=90,SA=$(_PES:5),SL=0,SP=$(PROFDIRLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ELSE
+      521,AY=90,SP=$(PROFDIRLIGHT:0)+$(ESLAT:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #IF $(LATACABTOTE:0)=1
+         522,AY=90,SL=0,SP=$(PROFDIRLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ELSE
+         522,AY=90,SL=0,SP=$(PROFDIRLIGHT:0)+$(slmoduloe:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+      #ENDIF
+   #ENDIF
+   #LETV L={$(SLMODULO:0)+$(AFASTLIGHT:0)}
+   #LETV P={$(SLMODULOE:0)+$(PROFDIRLIGHT:0)}
+#ELSEIF $(TPCLOSETLIGHT:3)=2
+   #IF $(_PES:3)>0
+      #IF $(ADCESQ:0)>0
+         521,AY=90,SA=$(_PES:5),SP=$(sLMODULOE:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #ELSE
+         521,AY=90,SA=$(_PES:5),SP=$(LMODULO:0)+$(ESLAT:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #ENDIF
+      522,SA=$(_PES:5),SL=$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+   #ELSE
+      #IF $(ADCESQ:0)>0
+         521,AY=90,SP=$(SLMODULOE:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #ELSE
+         521,AY=90,SP=$P+$(eslat:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+      #ENDIF
+//$(LMODULO:0)
+      522,SL=$(slmodulo:0)-$(ESLAT:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+   #ENDIF
+   #LETV L={$(SLMODULO:0)}
+   #LETV P={$(SLMODULOE:0)}
+#ENDIF
+// #MSG $(AVANCOCLOSETL:3)
+#IF $(AVANCOCLOSETL:3)=50
+   ILU_CLOSET_L_DIR,L={$A-$(ARODP:3)},P=$(PROFDIRLIGHT:0),SA={$A+$(ABASE:0)},SL={$L-$(ESLAT)},AZ=90,MACRO=ILU_LATDIR
+   ILU_CLOSET_L_ESQ,L={$A-(2*$(ABASE:0)+$(ARODP:3))},P=$p,SA={$(ABASE:0)+$(ARODP:3)},SL=$(ESLAT)+1,AZ=-90,MACRO=ILU_LATESQ
+#ELSEIF $(AVANCOCLOSETL:3)=100
+   ILU_CLOSET_L_DIR,L={$A-$(ARODP:3)},P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)/2,SA={$A+$(ABASE:0)},SL={$L-$(ESLAT)},AZ=90,MACRO=ILU_LATDIR
+   ILU_CLOSET_L_ESQ,L={$A-(2*$(ABASE:0)+$(ARODP:3))},SP=$P-$(ESLAT:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)/2,SA={$(ABASE:0)+$(ARODP:3)},SL=0,AZ=-90,AX=-90,MACRO=ILU_LATESQ
+#ELSEIF $(AVANCOCLOSETL:3)=150
+   ILU_CLOSET_L_DIR,L={$A-$(ARODP:3)},P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)/2-24,SA={$A+$(ABASE:0)},SL={$L-$(ESLAT)},AZ=90,MACRO=ILU_LATDIR
+   ILU_CLOSET_L_ESQ,L={$A-(2*$(ABASE:0)+$(ARODP:3))},P=$p-$(AVANCOCLOSETL:3)/2-24,SA={$(ABASE:0)+$(ARODP:3)},SL=$(ESLAT)+1,AZ=-90,MACRO=ILU_LATESQ
+#ENDIF
+#IF $(INFOPECA)!!
+   !COMMENTO4 LED=$(INFOPECA)
+#ENDIF
+// area de inserção tomadas
+517,SL=0,SP=$(escos:0)+$(afcos:0),L=$l,a=$a,P=15,X1=10,X2=Tomadas,X3=15,X4=1
+// PAINEL DE VESTITIZIONE PARA POSICIONAMENTO DA TOMADA
+517,SA=0,SL=0,SP=0,L=$P,a=$a,P=15,X1=10,X2=Tomadas,X3=15,X4=1,AY=-90
+517,SA=0,SL=$L,SP=$P,L=$p,a=$a,P=15,X1=10,X2=Tomadas,X3=15,X4=1,AY=90
+//LOGERROS
+// ILU_LATDIR
+// ILU_LATESQ
+// 301

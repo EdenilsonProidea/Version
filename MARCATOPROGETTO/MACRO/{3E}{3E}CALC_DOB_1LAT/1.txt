@@ -1,0 +1,32 @@
+#LOADVAR dobradicaesq _dobra $(_dobra:1)
+#LOADVAR dobradicadir _dobra $(_dobra:1)
+#MSG $(CODDOBRARETA:0)
+#IF  $(idmodulotemp)=1 & $(nportas:3)=1
+   #IF $(ATIVADRETACURVA:0)=1
+      #LOADVAR dobradicaesq _dobra $(CODDOBRARETA:0)
+      #LOADVAR dobradicadir _dobra $(CODDOBRARETA:0)
+   #ENDIF
+   #LET primeiromodulo=1
+   #LET ultimomodulo=1
+#ELSEIF $(idmodulotemp)=1 // PRIMEIRA
+   #IF $(ATIVADRETACURVA:0)=1
+      #LOADVAR dobradicaesq _dobra $(CODDOBRARETA:0)
+      #LOADVAR dobradicadir _dobra $(CODDOBRACURVA:0)
+   #ENDIF
+   #LET primeiromodulo=1
+   #LET ultimomodulo=0
+#ELSEIF $(idmodulotemp)=$(nportas:3) //ULTIMA
+   #IF $(ATIVADRETACURVA:0)=1
+      #LOADVAR dobradicaESQ _dobra $(CODDOBRACURVA:0)
+      #LOADVAR dobradicadir _dobra $(CODDOBRARETA:0)
+   #ENDIF
+   #LET primeiromodulo=0
+   #LET ultimomodulo=1
+#ELSE
+   #IF $(ATIVADRETACURVA:0)=1
+      #LOADVAR dobradicaesq _dobra $(CODDOBRACURVA:0)
+      #LOADVAR dobradicadir _dobra $(CODDOBRACURVA:0)
+   #ENDIF
+   #LET primeiromodulo=0
+   #LET ultimomodulo=0
+#ENDIF

@@ -1,0 +1,34 @@
+   #MSG $(IDLOGERROS)
+
+#IF $(dividirfundo:0)=1
+   #LET inivao=$(eslat:0)
+   #LET CONTAVAO=0
+   #FOR $(vettfundos)
+      #LET CONTAVAO=$(CONTAVAO)+1
+      #LET lvao=$(i)-$(inivao)-$(eslat:0)/2
+      fundo_caixa_vao,sl=$(inivao),l=$(lvao),sa=$(abase:0),a=$a-$(abase:0)*2
+      #LET inivao=$(inivao)+$(lvao)+$(eslat:0)
+   #ENDFOR
+   #LET lvao=$l-$(inivao)-$(eslat:0)
+   #LET CONTAVAO=999
+   fundo_caixa_vao,sl=$(inivao),l=$(lvao),sa=$(abase:0),a=$a-$(abase:0)*2
+   #IF $(CaixaPers:4)>0  #LET TPS=$(CaixaPers:4) #LET TPS=1   //TIPO SUPERIOR (1=BASE 2=TRAVESSA HOR 3=TRAVESSA VERTICAL)
+   #IF $(_tpfundo:3)[1;3;19;20]!0 &  $(tps)=2
+      CALCOLA_SAGBASSES,LBS=$(LBSN)
+      #IF $(cortabase:0)>0
+         #LETS sag=_
+         220,SL=$(slbS),SA=$a-$(ABASE:0),L={$(cortabase:0)-$(slbS)},C1=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1  //Traversa orizontal  (cozinha)
+         220,SL=$(cortabase:0),SA=$a-$(ABASE:0),SP=0,L=$(lbS)-1*($(cortabase:0))+$(slbs),C1=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1  //Traversa orizontal  (cozinha)
+      #ELSE
+         220,SL=$(slbS),SA=$a-$(ABASE:0),SP=0,L=$(lbS),C1=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1  //Traversa orizontal  (cozinha)
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(_tpcaixa:0)[CING;CINGSF]!0
+   #IF $(contaga)!0
+      #LETS infogav=TPGAV=$(_TPGAV:2)  $(memoinfocorrtodos)
+   #ENDIF
+   !COMMENTO4 $(infogav) _$(despistao)
+#ENDIF
+
+logerros

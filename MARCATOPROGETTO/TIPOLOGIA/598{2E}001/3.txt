@@ -1,0 +1,5 @@
+{ 598.001
+   *AZZERA*            =0
+   X8                  =$(_fechmag:6)/$(_FECHMAG:8)/$(_FECHMAG:9)/$(_FECHMAG:10)/1
+   X9                  =$(_fechmag:3)/$(_fechmag:7)/$(qtdtrava:0)/$(_fechmag:14)/1
+}

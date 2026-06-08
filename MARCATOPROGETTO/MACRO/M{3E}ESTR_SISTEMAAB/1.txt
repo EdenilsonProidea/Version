@@ -1,0 +1,8 @@
+#LETS codsis=$(X9:0)
+#LETS codadd=$(X9:1)
+#IF $(_listino)=1
+   $(codsis),0.5
+   $(codadd),0.5
+#ELSE
+   kit-sistemaab,1,codsis=$(codsis);codadd=$(codadd);qtd=
+#ENDIF

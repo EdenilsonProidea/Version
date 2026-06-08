@@ -1,0 +1,35 @@
+//<c27388>
+#LOADVAR _TPMOLD _TPMOLD $(X9:0)
+#LOADVAR _MOLD _MOLD $(X9:1)
+#FOR $(CCOUNT)
+   #LETV COR=$(_MOLD:8)
+   #LETS MASCARA=
+   #LET suptot=($(_TPMOLD:5)*$(CLINT:$(I))*2/1000000+(($(_TPMOLD:5)+$(CLINT:$(I))*$(_TPMOLD:4)*2)/1000000
+   #LET SUPTINTA=$(suptot)
+   #LET SUPPRIME=$(suptot)
+   #IF $(COR:7)!!
+      #LETS MASCARA=$(mascara);TINTA=$(cor:7);PRIME=$(cor:20);SUPPRIME=$(SUPPRIME);SUPTINTA=$(SUPTINTA);
+      #LETS tinta=$(cor:7)
+      #LETS prime=$(cor:20)
+   #ENDIF
+   #IF $(_LISTINO)=1
+      $(_TPMOLD:8),$(DIML)/1000
+      #IF $(TINTA)!!
+         #IF $(_LISTINO)=1
+            $(TINTA),$(SUPTINTA)
+            $(prime),$(SUPPRIME)
+         #ENDIF
+         #IF $(vlinha:0)==CR0
+            10289,$(SUPTINTA)
+         #ELSE
+            #IF $(LAMINADO)!!
+               13383,$(SUPTINTA)
+            #ELSE
+               8384,$(SUPTINTA)
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ELSE
+      KIT-MOLDURA,1,_MOLD=$(X9:1);CODMOLDURA=$(_TPMOLD:8);COR=$(_MOLD:8);$(MASCARA),$(CLEXT:$(I)),,,$(_TPMOLD:9) EXTERNA $(CLINT:$(I)) MM - INI $(CAINI:$(I)) - FIM $(CAFIN:$(I)),,,,,,$(MAT)
+   #ENDFOR
+#ENDIF

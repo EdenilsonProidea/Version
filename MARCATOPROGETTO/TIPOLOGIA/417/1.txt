@@ -1,0 +1,13 @@
+{ 417   // Sistemas Aventos
+   *AZZERA*            =0
+   DESCRIZIONE         =Sistemas Aventos
+   CODICE              =$(_SISBASC:15) /;_MONTADO=$(_MONTADO:0) /$(OBSSISBASC)
+   LATO                =6
+   POSIZIONE           =$(slagr),$(folgafrenteai:0),$(afcos:0)+$(escos:0)
+   DIMENSIONE          =$(lagr),{$(afre:0)-1*($(folgafrenteai:0)+$(folgafrenteas:0))},$p-1*($(afcos:0)+$(escos:0))
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X8                  =$(pesoEstimaDo:0)/$(distdob:0)/$(SERVODRIVE:0)/$(_sisbasc:1)/$(distdob:0)/{$(ABASE:0)-$(folgafrenteas:0)}/$(folgafrenteas:0)/$(FOLGAFRENTEAI:0)/$(escos:0)
+   X9                  =$(vettcodigos)/$(CODKITAVENTOS)
+}

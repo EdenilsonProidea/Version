@@ -1,0 +1,66 @@
+!parametri PERCCAVA=
+#MSG $(_tpcava)
+// 201
+#IF $(_PUXCAVA:3)=1
+   #LOADVAR _tpcava _tpcava $(_puxcava:11)
+   #IF $(CORTACAVAESQ:0)=1 & $(CORTACAVAdir:0)=1
+      #LET cavaesq=-1
+      #LET cavadir=-1
+   #ELSEIF $(CORTACAVAESQ:0)=1
+      #LET cavaesq=-1
+      // #LET cavadir=0
+   #ELSEIF $(CORTACAVAESQ:0)=1
+      //  #LET cavaesq=0
+      #LET cavadir=-1
+   #ELSE
+      //   #LET cavaesq=0
+      //   #LET cavadir=0
+   #ENDIF
+   #IF $(_tpcava:3)=11
+      !SAGOMAL perfcava 0,0,0,$(ACAVA:0),$(pCAVA:0),$(aCAVA:0),$(pCAVA:0),$(acava:0)-9,9,$(aCAVA:0)-9,9,0,0,0
+      !SAGOMA perccava -$(CAVAESQ:0),{$P-$(PCAVA:0)},{$l+$(CAVADIR:0)},{$P-$(PCAVA:0)}
+      239.002,COD=$(_TPCAVA:4) ,p=9,sa=0,sp=0  //Cava
+      289,sa=0,sp=$p-$(pcava)  //Cava para furaçao
+   #ELSE
+      !SAGOMAL perfcava  30-15,0,0,21,0,$(_puxcava:8),9,$(_puxcava:8),A5,9,45-24,30-15,45-36,30,6,30,0//0,0,0,$(ACAVA:0),$(ESCA),$(ACAVA:0),$(ESCA),$(ESCA),$(PCAVA:0),$(ESCA),$(PCAVA:0),0,0,0
+      #LET sacava=0
+      !SAGMIRROR perfcava $(perfcava) Y
+      #LET acavas={$(acavas)}
+      #VB
+         vv=split(v("perfcava"),"*")
+         for i=1 to ubound(vv) step 2
+            vv(i)=calcola(calcola(replace(vv(I),".",","))+calcola(v("acavas")))
+         next
+         v("tmp")=join(vv,";")
+      #ENDVB
+      !SAGOMAL perfcava $(TMP)
+      // cava
+      #IF $(PERCCAVA)!!
+         239,sa=$(acava)  //Cava
+         289,sa=$(acava)
+      #ELSE
+         !SAGOMA perccava -$(CAVAESQ:0),{$P-$(PCAVA:0)},{$l+$(CAVADIR:0)},{$P-$(PCAVA:0)}
+         239,sa=$(acava),sp=0,SL=0  //Cava
+         289,sa=$(acava),sp=0
+      #ENDIF
+   #ENDIF
+   402,SA=40,SP=$P,SL=-$(CAVAESQ:0),L=$(CAVAESQ:0),A=5,X1=7,X3=CAVA;CAVAESQ;1,X4=1,X5=3  //DRAGGER
+   402,SL=$l+$(CAVADIr:0),SA=40,SP=$P,L=$(CAVAdIr:0),A=5,X1=6,X3=CAVA;CAVADIR;1,X4=1,X5=3  //DRAGGER
+#ELSEIF $(_PUXCAVA:3)=6
+   #LETV _TPCAVA:4=000PROFHO
+   #LET AFPCAVA=$P-$(PCAVA:0)
+   !SAGOMAL perfcava 0,0,0,$(ACAVA:0),$(PCAVA:0),$(ACAVA:0),$(PCAVA:0),0
+   #IF $(CORTACAVAESQ:0)=1 & $(CORTACAVAdir:0)=1
+      239.002,SL=$(slcava),SA=0,sl=1,l=$l-2,C1=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,C2=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,X7=$(CCAVAPROFILO:1),X8=003  //Cava reta
+   #ELSEIF $(CORTACAVAESQ:0)=1
+      239.002,SL=$(slcava),SA=0,sl=1,C1=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,C2=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,X7=$(CCAVAPROFILO:1),X8=003  //Cava reta
+   #ELSEIF $(CORTACAVAESQ:0)=1
+      239.002,SL=$(slcava),SA=0,l=$l-1,C1=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,C2=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,X7=$(CCAVAPROFILO:1),X8=003  //Cava reta
+   #ELSE
+      239.002,SL=0,SA=0,C1=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,C2=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,X7=$(CCAVAPROFILO:1),X8=003  // Cava
+   #ENDIF
+   289.002,SA=0,X7=$(PCAVA:0),X9=_/PROFILO/_/$(ACAVA:0)   // Cava para furaçÃO
+#ENDIF
+402,SA=40,SP=$P,SL=-$(CAVAESQ:0),L=$(CAVAESQ:0),A=5,X1=7,X3=CAVA;CAVAESQ;1,X4=1,X5=3  //DRAGGER
+402,SL=$l+$(CAVADIr:0),SA=40,SP=$P,L=$(CAVAdIr:0),A=5,X1=6,X3=CAVA;CAVADIR;1,X4=1,X5=3  //DRAGGER
+//CAVA

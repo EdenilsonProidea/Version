@@ -1,0 +1,46 @@
+{ _ACEINTFRE   // Ace.Frente Extraivel
+   *AZZERA*            =0
+   DESCRIZIONE         =Ace.Frente Extraivel
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^2;5;120;120;12;#FOTO\ACESSORIOS\;2;4;
+   MEMO                =1Código 915Descrição 4875TIPO APERTURA 2055cod OR?AMENTO 51153D 3330diml 2100dima 1140dimp 1140cor 2400posl 3150posa 2655Imagem 1755Lmin 1200Lmax 1200COD ESTRUTURA 1995000
+   { 
+      //      ,Descrição                                        ,TI,cod OR?AME,3D                ,diml ,dima,dimp,cor ,posl           ,pos,Imagem               ,Lmin ,Lmax  ,C
+      000     ,Nenhum                                           ,0 ,          ,                  ,     ,    ,    ,    ,               ,   ,                     ,0    ,99999 ,
+      001     ,Gaveta                                           ,  ,          ,                  ,     ,    ,    ,    ,               ,   ,                     ,     ,      ,
+      001.001 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 570   ,4 ,ACEIF-009 ,4625.3ds          ,570  ,220 ,450 ,180 ,0              ,0  ,                     ,570  ,570   ,
+      001.002 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 670   ,4 ,ACEIF-010 ,4626.3ds          ,670  ,220 ,450 ,180 ,0              ,0  ,                     ,670  ,670   ,
+      001.003 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 770   ,4 ,ACEIF-011 ,4627.3ds          ,770  ,220 ,450 ,180 ,0              ,0  ,                     ,770  ,770   ,
+      001.004 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 870   ,4 ,ACEIF-012 ,4629.3ds          ,870  ,220 ,450 ,180 ,0              ,0  ,                     ,870  ,870   ,
+      001.005 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 970   ,4 ,ACEIF-013 ,4629.3ds          ,970  ,220 ,450 ,180 ,0              ,0  ,                     ,970  ,970   ,
+      001.006 ,Gaveta Paneleiro Inox Corr Telesc 450 Larg 1170  ,4 ,ACEIF-014 ,4630.3ds          ,1170 ,220 ,450 ,180 ,0              ,0  ,                     ,1170 ,1170  ,
+      001.007 ,Gaveta Pia Inox com Sif?o 500mm Larg 870         ,4 ,ACEIF-015 ,4632.3ds          ,870  ,220 ,450 ,180 ,0              ,0  ,                     ,870  ,870   ,
+      001.008 ,Gaveta Pia Inox com Sif?o 500mm Larg 970         ,4 ,ACEIF-016 ,4632.3ds          ,970  ,220 ,450 ,180 ,0              ,0  ,                     ,970  ,970   ,
+      001.009 ,Gaveta Pia Inox com Sif?o 500mm Larg 1170        ,4 ,ACEIF-017 ,4634.3ds          ,1170 ,220 ,450 ,180 ,0              ,0  ,                     ,1170 ,1170  ,
+      002     ,Porta Garrafas                                   ,  ,          ,                  ,     ,    ,    ,    ,               ,   ,                     ,     ,      ,
+      002.001 ,Porta Garrafas Lateral Inox                      ,4 ,ACEIF-005 ,4438.3ds          ,170  ,495 ,450 ,180 ,0              ,15 ,                     ,170  ,200   ,
+      002.002 ,Porta garrafas lat corr Inox telesc L.120mm      ,4 ,ACEIF-023 ,pta_garrafa.x     ,120  ,420 ,490 ,182 ,(<LAGR>-120)/2 ,18 ,Porta_oleo.jpg       ,164  ,263   ,
+      002.003 ,Porta garrafas lat corr Inox telesc L.235mm      ,4 ,ACEIF-025 ,porta_garrafas.x  ,230  ,420 ,490 ,182 ,(<LAGR>-235)/2 ,18 ,Porta_oleo.jpg       ,264  ,314   ,
+      002.004 ,Porta Garrafas Lat Cor. Telesc. L.120mm DSA 200L ,4 ,ACEIF-026 ,pta_garrafa.x     ,120  ,420 ,490 ,182 ,0              ,18 ,Porta Oleo.jpg       ,164  ,263   ,
+      002.005 ,Porta Garrafas Lat Cor. Telesc. L.120mm DSA 250L ,4 ,ACEIF-027 ,pta_garrafa.x     ,120  ,420 ,490 ,182 ,0              ,18 ,Porta Oleo.jpg       ,164  ,263   ,
+      002.006 ,Porta Garrafas Lat Cor. Telesc. L.235mm DSA 300L ,4 ,ACEIF-028 ,porta_garrafas.x  ,235  ,420 ,490 ,182 ,0              ,18 ,Porta Oleo.jpg       ,264  ,314   ,
+      003     ,Tulha Deslizante                                 ,  ,          ,                  ,     ,    ,    ,    ,               ,   ,                     ,     ,      ,
+      003.001 ,Tulha Deslizante com Torre Larg 270 MM           ,4 ,ACEIF-006 ,2007.3DS          ,270  ,440 ,450 ,180 ,0              ,0  ,tulha.jpg            ,270  ,300   ,
+      003.002 ,Tulha Deslizante com Torre Larg 370 MM           ,4 ,ACEIF-007 ,2008.3DS          ,370  ,440 ,450 ,180 ,0              ,0  ,tulha.jpg            ,370  ,400   ,
+      003.003 ,Tulha Deslizante com Torre Larg 420 MM           ,4 ,ACEIF-008 ,2012.3DS          ,420  ,440 ,450 ,180 ,0              ,0  ,tulha.jpg            ,420  ,450   ,
+      003.004 ,Tulha deslizante cromada L400                    ,4 ,ACEIF-029 ,tulha.x           ,330  ,435 ,450 ,182 ,(<LAGR>-330)/2 ,18 ,tulha.jpg            ,364  ,414   ,
+      003.005 ,Tulha deslizante cromada L500                    ,4 ,ACEIF-030 ,tulha.x           ,380  ,435 ,450 ,182 ,(<LAGR>-380)/2 ,18 ,tulha.jpg            ,464  ,514   ,
+      003.006 ,Tulha deslizante cromada L600                    ,4 ,ACEIF-031 ,tulha.x           ,540  ,435 ,445 ,182 ,(<LAGR>-540)/2 ,18 ,tulha.jpg            ,564  ,614   ,
+      004     ,Lixeiras                                         ,  ,          ,                  ,     ,    ,    ,    ,               ,   ,                     ,     ,      ,
+      004.001 ,Lixeira Dupla com Tampo Articulada               ,4 ,ACEIF-001 ,4594.3ds          ,370  ,470 ,480 ,182 ,0              ,18 ,                     ,370  ,400   ,
+      004.002 ,Lixeira Dupla com Tampo Articulada e Amortecedor ,4 ,ACEIF-002 ,4426.3ds          ,370  ,470 ,480 ,182 ,0              ,18 ,                     ,370  ,400   ,
+      004.003 ,Lixeira Dupla com Cestos                         ,4 ,ACEIF-003 ,2010.3ds          ,370  ,570 ,500 ,182 ,0              ,18 ,                     ,370  ,400   ,
+      004.004 ,Lixeira Simples                                  ,4 ,ACEIF-004 ,1309.3ds          ,270  ,510 ,360 ,180 ,0              ,18 ,                     ,370  ,400   ,
+      004.005 ,Lixeira Eco Center com 2 Recipientes             ,4 ,ACEIF-018 ,lixeira_2.x       ,450  ,500 ,450 ,182 ,0              ,18 ,lixeira_eco.jpg      ,464  ,564   ,
+      004.006 ,Lixeira Eco Center com 3 Recipientes             ,4 ,ACEIF-019 ,lixeira_3.x       ,450  ,500 ,450 ,182 ,0              ,18 ,lixeira_eco.jpg      ,464  ,564   ,
+      004.007 ,Lixeira Eco Center com 4 Recipientes             ,4 ,ACEIF-020 ,lixeira_4.x       ,450  ,500 ,450 ,182 ,0              ,18 ,lixeira_eco.jpg      ,464  ,564   ,
+      004.008 ,Lixeira Ecol?gica Pl?stica 30 Litros             ,4 ,ACEIF-021 ,Lixeira Dupla.3ds ,240  ,380 ,490 ,182 ,(<LAGR>-240)/2 ,18 ,lixeira_plastica.jpg ,264  ,314   ,
+      004.009 ,Lixeira Ecol?gica Pl?stica 40 Litros             ,4 ,ACEIF-022 ,Lixeira Dupla.3ds ,340  ,380 ,490 ,182 ,(<LAGR>-340)/2 ,18 ,lixeira_plastica.jpg ,364  ,414   ,
+   }
+}

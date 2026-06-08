@@ -1,0 +1,56 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=maoamiga.ERG
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,esp_ma,,,Espessura da Mão Amiga,,,,,,,1
+T,alt_ma,,,Altura da Mão Amiga,,,,,,,1
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+
+#LOADVAR cor cor REAPR
+
+#LET P=$(esp_ma:3)
+#LET A=$(alt_ma:3)
+
+455,P=$P//, A=$A
+455,P=$P//, A=$A
+
+#IF $L<100
+  // #LETS idlogerros=$(idlogerros)137;
+#ENDIF
+#ENDIF
+#IF $L<150 | $A<150
+   #IF $L<400 & $A<400
+      #LETS idlogerros=$(idlogerros)133;
+   #ENDIF
+#ENDIF
+//LOGERROS

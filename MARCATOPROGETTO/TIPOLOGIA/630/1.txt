@@ -1,0 +1,17 @@
+{ 630   // PAINEL HORIZONTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =PAINEL HORIZONTAL
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$a,$p
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90,$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90
+   DISEGNO             =$(sagfinale)
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =PAINEL.XP
+   DATI                =_COREX$(_ctx)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =_/$(_COREX:1)
+   X10                 =$(LISTAOPERACOES)
+   ALIAS               =#630
+}

@@ -1,0 +1,18 @@
+{ 306   // LATERAL INTERNA
+   *AZZERA*            =0
+   DESCRIZIONE         =LATERAL INTERNA
+   CODICE              =/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0,$(afCaixaD)
+   DIMENSIONE          =$(ESLAT:0),$A,{$(PLAT)-$(afCaixaD)}
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90,$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)|90
+   DISEGNO             =$(SAGLAT)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X6                  =$(fixatampog:0)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(CANAL)/0/1/1/1/1/0/1/0/$(FITARSOVISTA:2)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#301
+}

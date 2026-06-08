@@ -1,0 +1,12 @@
+#LET lagr=$L
+INICIA_CALC_GAV,gavetadormitorio=1
+#IF $(_tpgav:10)!! // Adicionado em visita
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ENDIF
+#LET lgav=$l-$(_corr:8)*2-$(ESLATGAV:0)*2
+#LET slgav=$(_corr:8)+$(ESLATGAV:0)
+#LET AGAV=$(AFRE:0)-30
+#LET SAGAV=15
+GAVETA_DOR,SA=$(SAGAV),SL=$(slgav),SP=$p-$(pgav),L=$(lgav),A=$(agav),P=$(pgav),COD=/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:1)
+ACEGAV
+

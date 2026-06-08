@@ -1,0 +1,4 @@
+#MSG $(ALT)
+#IF $(ALT)<=700
+   #LET rr=3
+#ENDIF

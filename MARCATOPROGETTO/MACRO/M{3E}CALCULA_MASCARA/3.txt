@@ -1,0 +1,14 @@
+#M calcula_masc_ini
+#M calcula_masc_bf
+#M calcula_masc_tip
+#IF $(tip)[624]!0
+   #MSG $(corp)
+#ENDIF
+#M inicia_mascara
+#IF $(tip)[624]!0
+   #MSG $(corp)
+#ENDIF
+#M inicia_tinta_lam
+#M calcula_chapa
+#M calcula_borda
+#M calcula_reapro

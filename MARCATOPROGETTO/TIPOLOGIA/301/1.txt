@@ -1,0 +1,18 @@
+{ 301   // Lateral Esquerda  (dormitorios)
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Esquerda  (dormitorios)
+   CODICE              =$(REFLATE) /_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0,$(afCaixaD)
+   DIMENSIONE          =$(ESLAT:0),$A,{$(PLAT)-$(afCaixaD)}
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90,$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)|90
+   DISEGNO             =$(SAGLAT)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(CANAL)/0/1/1/1/1/0/1//$(FITARSOVISTA:2)
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#301
+}

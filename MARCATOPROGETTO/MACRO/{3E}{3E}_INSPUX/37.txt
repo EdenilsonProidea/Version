@@ -1,0 +1,47 @@
+CALCULA_PPLA_PUX
+#IF $(APE:3)[GAI;SAP]!0
+   #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+   #IF $(doispuxgaveta:0)=1 // adição gestão p/ alterar a distância em x, feito em acesso 05.10
+      #IF $(sentido)=2
+         266,az=90,sl=$(distdoispux:0)+$(apx)/2  // puxador
+         266,az=90,sl=$l-1*($(distdoispux:0)+$(apx)/2)  // puxador
+      #ELSE
+         266,sl=$(distdoispux:0)+$(lpx)/2  // puxador
+         266,sl=$l-1*($(distdoispux:0)+$(lpx)/2)   // puxador
+      #ENDIF
+   #ELSE
+      #IF $(sentido)=2
+         266,az=90  // puxador
+      #ELSE
+         266  //puxador
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(apenasfurpux:0)=1 // importado gestão antiga <c23351>
+      #LET somenteusinapux=6
+      #LETS codpuxador=$(vazio)
+      #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+      #IF $(sentido)=2
+         251,COD=$(codpuxador),AZ=90  //puxador
+      #ELSE
+         251,COD=$(codpuxador)  // puxador
+      #ENDIF
+   #ELSE
+      #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+      #IF $(sentido)=2
+         #IF $(APE:3)==AGE // Adicionado correção de rotação nos puxadores para quando for coluna vertical - feito em visita vertical
+            251,az=90  // puxador
+         #ELSEIF $(APE:3)==AGD // Adicionado correção de rotação nos puxadores para quando for coluna vertical - feito em visita
+            251,AZ=270  //puxador
+         #ELSE
+            251,az=90  // puxador
+         #ENDIF
+      #ELSE
+         #IF $(sup)=1 & $(_fr:6)[103]!0 // // Adicionado correção de rotação nos puxadores para quando for frente varenna em ´modulo superior - feito em visita 26/01/2024
+            251,SA=$(ppxa)-2,AZ=180  //puxador
+         #ELSE
+            251  // puxador
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

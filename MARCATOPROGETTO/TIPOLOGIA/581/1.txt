@@ -1,0 +1,10 @@
+{ 581   // Cremalheira Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Cremalheira Ubik
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(p)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   X8                  =$(cremacanto:0)
+}

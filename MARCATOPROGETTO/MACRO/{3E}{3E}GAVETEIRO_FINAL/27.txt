@@ -1,0 +1,29 @@
+#LET afinal=$(afinal)+$(REDSUPGAVETEIRO:0)
+#IF $(afinal)>100
+   // #LET a=$(afinal)
+#ENDIF
+// Alterado a cor dos tampos para _cortampogav em visita a pedido do cliente
+#IF $(fixatampog:0)=1
+   tamposemusi,_corcx=$(_CORTAMPOGAV),_corbf=$(_CORTAMPOGAV)
+#ELSE
+   #IF $(_placer)=1
+      #IF $(BASESUPERIORGAV:0)=1
+         #IF $(LOCP_BX1)=1  // CLOSET AVANCADO
+            303.006,COD= /_MONTADO=$(_MONTADO:0,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(_XDP0),C1=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90,C2=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90  //TAMPO DORMITORIO
+         #ELSE
+            303.006,COD= /_MONTADO=$(_MONTADO:0),SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(p1)+$(INCRTAMPOGAV:0),C1=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90,C2=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90  //TAMPO DORMITORIO
+         #ENDIF
+      #ENDIF
+      403,x1=201,sp=0,p=$p,SA=$(AFINAL)+$(esptampogav),A=$a-1*($(AFINAL)+$(esptampogav))  //Placer
+   #ELSE
+      #IF $(BASESUPERIORGAV:0)=1
+         303.006,COD= /_MONTADO=$(_MONTADO:0),SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$p+$(INCRTAMPOGAV:0),C1=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90,C2=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90  //TAMPO DORMITORIO
+      #ENDIF
+   #ENDIF
+#ENDIF
+DOR_GAVETEIRO,A=$(AFINAL),COD=$(MEMOITEM)/=VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);_TPGAVALT=$(_TPGAVALT:1);_CORR=$(_CORR_$(_ctx):1);_corfamilia=$(_corcx:10);_corcx=$(_corcx:1),l=$l,p=$(p1)
+// acesso dia 27/03 <c30286>
+!COMMENTO4 $(memoinfocorr) P=$(Pcorredica)
+297,COD= / /AGAV $(afinal) mm,SA=$(afinal)+$(esptampogav),SP=$P,A=75,P=10  // TEXTO
+!QUOTA9 (150,$(afinal)+$(esptampogav),$P),(150,$A,$P),,0
+LOGERROS

@@ -1,0 +1,16 @@
+{ 415   // Dobradiça
+   *AZZERA*            =0
+   DESCRIZIONE         =Dobradiça
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,{$p-1*(70+$(esfre))}
+   DIMENSIONE          =20,20,70
+   COLORI              =18,18
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =DOBRADICA.XP
+   X3                  =$(curbox)
+   X5                  =$(compartilhado)
+   X6                  =$(posd)/$(curbox)/
+   X8                  =DOBRADICA\calco.3ds/20;30;52/$(_dobra:1)
+   X9                  =0
+   X10                 =$(_dobra:3)/$(_dobra:4)/$(_dobra:12)/$(_dobra:13)/$(_dobra:14)/$(_dobra:15)/$(_DOBRA:16)
+}

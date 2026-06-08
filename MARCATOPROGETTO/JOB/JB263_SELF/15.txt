@@ -1,0 +1,9 @@
+
+#MSG $(xx10:0)
+#IF $(XX3:1)==C
+   1	MA 	X=0 Y=0 NM=VAO_CUBA PARM=A@$(xx10:0)^C@$(xx10:1)^D@$(xx10:2)
+#ENDIF
+
+//#IF $(_TPGAVALT:3)=20 // VÃO CUBA WOOD
+//   2	MA	X=0 Y=0  NM=VAO_DE_CUBA PARM=
+//#ENDIF

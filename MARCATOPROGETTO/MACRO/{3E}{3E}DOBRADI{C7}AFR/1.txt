@@ -1,0 +1,14 @@
+#LET POSD=$(APE:8)
+#IF $(DORMITORIO)=1
+#MSG A
+   #IF ($(LATESQ:0)=2 & $(POSD)=1) | ($(LATDIR:0)=0 & $(POSD)=3)
+      kitdobradiçap,compartilhado=1
+   #ELSE
+      kitdobradiçap
+   #ENDIF
+#ELSE
+   kitdobradiçap
+#ENDIF
+//ACESSÓRIOS
+//DOBRADIÇA
+// 428

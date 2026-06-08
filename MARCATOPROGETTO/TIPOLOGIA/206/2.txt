@@ -1,0 +1,15 @@
+{ 206   // Frente fixa canto aproveitavel
+   *AZZERA*            =0
+   DESCRIZIONE         =Frente fixa canto aproveitavel
+   CODICE              =/_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,$(abase:0)+$(_tpcaixa:4),0
+   DIMENSIONE          =$l,{$A-$(abase:0)*2-$(_tpcaixa:4)},$(ESLAT:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =ALP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#206
+}

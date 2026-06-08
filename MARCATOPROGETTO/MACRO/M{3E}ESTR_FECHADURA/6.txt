@@ -1,0 +1,16 @@
+#LETS codfechadura=$(X9:0)
+#LETS codtesta=$(X9:1)
+#LETS codadd2=$(X9:3)
+#IF $(_listino)=1
+   #IF $(X9:4)=1
+      $(codfechadura),0.5
+      $(codtesta),0.5
+      $(codadd2),0.5
+   #ELSE
+      $(codfechadura),1
+      $(codtesta),1
+      $(codadd2),1
+   #ENDIF
+#ELSE
+   kit-fechadura,1,codfechadura=$(codfechadura);codtesta=$(codtesta);codadd2=$(codadd2)
+#ENDIF

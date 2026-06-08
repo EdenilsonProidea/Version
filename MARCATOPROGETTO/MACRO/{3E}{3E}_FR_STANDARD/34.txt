@@ -1,0 +1,86 @@
+!PARAMETRI FF=$(_FR:11),FT=$(_FR:11),FE=$(_FR:11),FD=$(_FR:11),frentecomvidro=0
+#IF $(_pux:17)<$(esfre:0) & $(_pux:4)>0
+   // faço um buraco na frente para PUXADOR
+   #IF $(_fr:6)!!98
+      _PUX,SL=$(FOLGAFRENTEL:0),SA={1*$(FOLGAFRENTEAI:0)+1*$(affre)-1*$(abaixafrente:0)},L=$(lfre),A=$(afre)
+   #ENDIF
+   #LETV Lpuxquad:3={$(_pux:4)-10}
+   #LETV Lpuxquad:4={$(_pux:5)-10}
+   #LETV Lpuxquad:5={$(_pux:15)+5}
+   #LETV Lpuxquad:6={$(_pux:16)+5}
+   #LETS pospuxadores=$(popx)
+   #IF $(APE:3)[GAI;SAP]!0
+      218  // FRENTE LAP INTERNA DORMITORIO
+   #ELSE
+      #IF $(frentecomvidro)=1
+         #IF $(APE:9)=1
+            216.001  // FRENTE LAP
+         #ELSE
+            215.001  // FRENTE
+         #ENDIF
+      #ELSE
+         #IF $(APE:9)=1
+            216  // FRENTE LAP
+         #ELSE
+            215  // FRENTE
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   
+#ELSE
+   #IF $(_FR:6)=503 // FRAME PAGLIA
+      #LET FE=0
+      #LET FD=0
+      #LET FF=0
+      #LET FT=0
+   #ELSE
+      #LET FE=$(FE)
+      #LET FD=$(FD)
+      #LET FF=$(FF)
+      #LET FT=$(FT)
+   #ENDIF
+   #IF $(_FR:6)=501
+      #LET FE=0
+      #LET FD=0
+      #LET FF=0
+      #LET FT=0
+      #IF $(APE:3)[GAI;SAP]!0
+         218,C1=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5),C2=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5)X9=$(_FR:1)/$(_CORFRfu:1)/$(APE:1)/$(AMBIENTE)/$(_bordaf:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/ / / / /$(_corlamdif:8)/$(_corbpdif:8)  // FRENTE LAP INTERNA DORMITORIO
+      #ELSE
+         #IF $(frentecomvidro)=1
+            #IF $(APE:9)=1
+               216.001  // FRENTE LAP
+            #ELSE
+               215.001  // FRENTE
+            #ENDIF
+         #ELSE
+            #IF $(APE:9)=1
+               216,C1=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5),C2=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5)X9=$(_FR:1)/$(_CORFRfu:1)/$(APE:1)/$(AMBIENTE)/$(_corfrfu:6)/ /$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/ / / /$(_corlamdif:8)/$(_corbpdif:8)  // FRENTE LAP
+            #ELSE
+               215,C1=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5),C2=$(_corFRFU:3)|$(.percorso)\foto\madeira\$(_corFRFU:4)|$(_corFRfu:5),X9=$(_FR:1)/$(_CORFRfu:1)/$(APE:1)/$(AMBIENTE)/$(_corfrfu:6)/ /$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/ / / /$(_corlamdif:8)/$(_corbpdif:8)  //FRENTE
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(APE:3)[GAI;SAP]!0
+         218  // FRENTE LAP INTERNA DORMITORIO
+      #ELSE
+         #IF $(frentecomvidro)=1
+            #IF $(APE:9)=1
+               216.001  // FRENTE LAP
+            #ELSE
+               215.001  // FRENTE
+            #ENDIF
+         #ELSE
+            #IF $(APE:9)=1
+               216  // FRENTE LAP
+            #ELSE
+               215  // FRENTE
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF
+// .FRENTE_LISA.XP
+
+// .Quadratta.xp

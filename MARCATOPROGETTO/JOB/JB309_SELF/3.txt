@@ -1,0 +1,10 @@
+//#IF $(XX3:1)[PTL] // <C29180>
+// 1	MACL	X=0 Y=0  NM=PRATL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+//#ENDIF
+
+
+#IF $(xx4:2)>0 // prateleira avulsa acesso 25/04
+   #LET naofurar=0
+   #M JOB_PRAT_LAT // direito
+   #M JOB_PRAT_LAT	PL=-1 // esquerdo
+#ENDIF

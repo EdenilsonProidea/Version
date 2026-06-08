@@ -1,0 +1,145 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+Z,biancopreto,,,Color
+
+[SCRIPTTAB]
+v("aa")=v("aa") & v("matricola") & "*"
+a=replace(v("xnote"),chr(16),vbcrlf)
+if len(a)>1 then
+   v1=Split(a,vbcrlf)
+   for i=0 to uBound(v1)
+      v1(i)="\tab \red255 "  & v1(i)
+   next
+   a=join(v1,"\par ")
+   v("xNote")=a
+end if
+A=VariantiDiverseTestata(v("var"),"",1)
+IF LEN(A)>1 THEN
+   v1=Split(a,vbcrlf)
+   for i=0 to uBound(v1)
+      v1(i)="\tab \red0\green0\blue255 "  & v1(i)
+   next
+   a=join(v1,vbcrlf)
+   v("varianti")=a
+else
+   v("varianti")=""
+end if
+
+[TESTA]
+VERTICALE
+DIM 200 285
+FONT TAHOMA
+BX (0,0) (200,280) HFFFFFF N
+
+
+#LETS dh=$[replace;$(.dataora);/;_]
+#LETS dh=$[replace;$(dh); - ;_]
+#LETS dh=$[replace;$(dh);:;_]
+
+
+#LETS _file=_pdf\idea_FICHA_$(testa_numero)_$(.computername)_$(dh).pdf
+
+
+WMF  (2,2) (53,12) _ECADPRO\STAMPE\LOGO.jpg
+TX BL 7C (10,23) Powered by 3cad Evolution/Proidea
+// Titolo
+FONT TAHOMA
+BX (146,0) (200,24)
+LI (57,0) (57,24)
+LI (57,8) (146,8)
+LI (0,0) (200,0)
+LI (0,24) (200,24)
+LI (0,0) (0,24)
+LI (200,0) (200,24)
+
+TX TC 14BC (100,3) PORTAS PERFIL
+
+// -----------------
+
+TX TL 6B (165,20)  Data <testa_data>
+TX TL 8B (152,5) Usuario $(.computername)
+TX TL 10B (152,10) PEDIDO: <testa_numero>
+
+TX BL 12  (60,16) <testa_rif>
+TX TL 7C (0,281) $(_nomestampa)
+TX TR 7C (200,281) Pag. <pag>
+
+#LET TESTA_NUMERO=$(TESTA_NUMERO)
+#LETS testonumero=$(testa_numero)
+
+#LET ii=0
+
+
+//         ARG (1,1) (60,65) /V1 /SL3 /Z.75 /BOX*$(i)*  $(FLAGCOR)
+// #SQL QPORTA=SELECT count(codart) FROM ECADMASTER.DBO.RORDINE WHERE NUMERO=$(testa_numero) and nbox=$(i) and codart like '%PV%'
+
+#FORDBS ALFA=SELECT DISTINCT NBOX FROM ECADMASTER.DBO.RORDINE WHERE PERCORSO='$(.PERCORSO)' AND NUMERO=$(TESTA_NUMERO)
+   #LET I=$(ALFA:0)
+   #IF $(i)>0
+      #SQL QPORTA=SELECT count(codart) FROM ECADMASTER.DBO.RORDINE WHERE NUMERO=$(testa_numero) and nbox=$(i) and codart like '%FPV%' // '%F10101%'
+      #LETS INFOESTR=SELECT * FROM ECADMASTER.DBO.RORDINE WHERE PERCORSO='$(.PERCORSO)' AND NUMERO=$(testa_numero) and nbox=$(i)
+      //#MSG $(QPORTA)
+      #IF $(QPORTA)!!
+         !P
+         
+         origine (0,24)
+         
+         FONT TAHOMA
+         FONTSIZE 10 // 24
+         
+         #IF $(biancopreto:0)=1  #LETS flagcor=/CO #LETS flagcor=/BI
+         
+         NTAB (0,15,200,265,30,DD_1_1) \
+              (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+              ($(INFOESTR)) \ // COMANDO SQL
+              (Item , 15L  ,, ^<CODART>^) \
+              (descr.  , 60L  ,, ^<des>^,<VAR>,<NOTA1>) \
+              (Dim. ,20C ,,[dim;<dima>;<diml>;<dimp>]^    ) \
+              (Qtq      , 5C ,, <QTA>)
+         
+         ARG (0,40) (210,230) /V1 /SL3 /Z.75 /BOX*$(i)*  $(FLAGCOR)
+         
+         TX TL 12 (85,38) ITEM :
+         TX TL 12 (100,38) $(I)
+         FONTSIZE 10
+      #ENDIF
+   #ENDIF
+#ENDDBS
+
+[DETTFASE]
+(select D.comp,A.DES,SUM(D.qta*R.PZ) AS QTA,A.COSTO AS COSTO,SUM(D.qta*R.PZ)*A.COSTO AS TOTAL
+FROM ECADMASTER.DBO.RORDINE R INNER JOIN ECADMASTER.DBO.DISTINTAELAB D ON D.PERCORSO=R.PERCORSO AND D.NUMERO=R.NUMERO AND D.RRG=R.RIGA LEFT JOIN articoli a ON D.COMP=a.COD
+WHERE D.PERCORSO='$(.PERCORSO)' AND D.NUMERO=$(TESTA_NUMERO) AND D.TIPORIGA=0 AND R.NBOX=<NBOX> and D.fase='<FASE>' and d.comp<>'' AND flmag=1
+GROUP BY D.comp,A.DES,A.COSTO
+ORDER BY DES)
+(Matricula  ,15R  ,, ^<COMP>^) \
+           (descriçao  ,40L  ,,  ^<DES>^) \
+           (Qta        ,5.2R   ,,  <QTA>) \
+           (cosTO        ,5.2R   ,,  <costo>) \
+           (Total        ,5.2RT   ,,  <total>)
+
+[VARIABILI]
+FONT1=\red0\green0\blue0 \fs12
+FONT3=\red0\green0\blue255 \fs12

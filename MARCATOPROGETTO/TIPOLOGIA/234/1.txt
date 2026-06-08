@@ -1,0 +1,13 @@
+{ 234   // Acessórios interno frente
+   *AZZERA*            =0
+   DESCRIZIONE         =Acessórios interno frente
+   CODICE              =$(_ACEINTFRE:4) /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(SLACEINT),$(POSACCA),-$(PACEINT)
+   DIMENSIONE          =$(LACEINT),$(AACEINT),$(PACEINT)
+   COLORI              =$(_ACEINTFRE:9),$(_ACEINTFRE:9)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X3                  =$(curbox)
+   X8                  =ACEFRE\$(_ACEINTFRE:5)
+   X9                  =$(_ACEINTFRE:1)
+}

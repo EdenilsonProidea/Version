@@ -1,0 +1,488 @@
+!PARAMETRI _corfr=$(_corex)
+#IF $(sup)=1
+   // molduras
+   #LET plat=$(plat1)
+   #LET RED_PAINEL_ACAB_F=-1*$(INC_PAIN_ACAB:0)
+   inicia_acr_ta_esq
+   inicia_acr_ta_dir
+   #IF $(PM)=1
+      #IF $(_TAMPINF:3)=1
+         !RETTA 100,0,0
+         !RETTA 101,1,$L+$(acr_tamp_dir_i)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 102,0,{$(plat1:0)-20}
+         #ELSE
+            !RETTA 102,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         #ENDIF
+         !RETTA 103,0,0,1
+         !INTERSECA px0,py0,100,103
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,102,103
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL TMP,$(TMP),-$(PX0),-$(PY0)
+         636,SA=-$(ESPAINA:0),dis=$(tmp),SL=$(px0),SP=$(PY0)  // Painel INFERIOR Acabamento
+         !RETTA 104,1,0,1
+         !RETTA 105,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,104,103
+         !INTERSECA px1,py1,103,102
+         !INTERSECA px2,py2,102,105
+         !INTERSECA px3,py3,105,104
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),-$(ang)
+         636,SL=$(px0),SA=-$(ESPAINA:0),SP=$(py0),dis=$(tmp),ay=-$(ang)  // Painel INFERIOR Acabamento
+      #ENDIF
+      #IF $(_TAMPsup:3)=1
+         !RETTA 100,0,$(plat1:0)-$(espaina:0)
+         !RETTA 101,1,{$l+$(acr_tamp_dir_s)}
+         !RETTA 102,0,{$(plat2:0)-$(espaina:0)},1
+         !RETTA 103,1,0,1
+         !INTERSECA px0,py0,100,102
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,102,103
+         !INTERSECA px3,py3,102,100
+         !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+         635,sl=$(px0),sp=$(py0),l=$(dd1)
+         !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+         635,sl=$(px2),sp=$(py2),l=$(dd2),ay=-$(ang)
+      #ELSEIF $(_TAMPsup:3)=2
+         !RETTA 100,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+         !RETTA 101,1,{$L+$(acr_tamp_dir_s)}
+         !RETTA 102,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 103,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+         !INTERSECA px0,py0,100,103
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,102,103
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL TMP,$(TMP),$(PX0),$(PY0)
+         636,SA=$a,dis=$(tmp),SL=$(px0),SP=$(PY0)  // Painel INFERIOR Acabamento
+         !RETTA 104,1,0,1
+         !RETTA 105,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,104,103
+         !INTERSECA px1,py1,103,102
+         !INTERSECA px2,py2,102,105
+         !INTERSECA px3,py3,105,104
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),-$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=-$(ang)  // Painel INFERIOR Acabamento
+      #ELSEIF $(_TAMPsup:3)=3
+         !RETTA 100,0,$(plat1:0)-$(espaina:0)
+         !RETTA 101,1,{$L+$(acr_tamp_dir_s)}
+         !RETTA 102,0,{$(plat2:0)-$(espaina:0)},1
+         !RETTA 103,1,0,1
+         !INTERSECA px0,py0,100,102
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,102,103
+         !INTERSECA px3,py3,102,100
+         !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+         635,sl=$(px0),sp=$(py0),l=$(dd1),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+         !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+         635,sl=$(px2),sp=$(py2),l=$(dd2),ay=-$(ang),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+         !RETTA 100,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+         !RETTA 101,1,{$L+$(acr_tamp_dir_s)}
+         !RETTA 102,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 103,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+         !INTERSECA px0,py0,100,103
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,102,103
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL TMP,$(TMP),$(PX0),$(PY0)
+         636,SA=$a,dis=$(tmp),SL=$(px0),SP=$(PY0)  // Painel INFERIOR Acabamento
+         !RETTA 104,1,0,1
+         !RETTA 105,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,104,103
+         !INTERSECA px1,py1,103,102
+         !INTERSECA px2,py2,102,105
+         !INTERSECA px3,py3,105,104
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),-$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=-$(ang)  // Painel INFERIOR Acabamento
+      #ELSEIF $(_tampsup:3)=4
+         !RETTA 100,0,0
+         !RETTA 101,1,$L+$(acr_tamp_dir_s)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 102,0,{$(plat1:0)-20}
+         #ELSE
+            !RETTA 102,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         #ENDIF
+         !RETTA 103,0,0,1
+         !INTERSECA px0,py0,100,103
+         !INTERSECA px1,py1,100,101
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,102,103
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL TMP,$(TMP),-$(PX0),-$(PY0)
+         636,SA=$a,dis=$(tmp),SL=$(px0),SP=$(PY0)  // Painel INFERIOR Acabamento
+         !RETTA 104,1,0,1
+         !RETTA 105,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,104,103
+         !INTERSECA px1,py1,103,102
+         !INTERSECA px2,py2,102,105
+         !INTERSECA px3,py3,105,104
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),-$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=-$(ang)  // Painel INFERIOR Acabamento
+      #ENDIF
+   #ELSE
+      #LET RED_PAINEL_ACAB_F=-1*$(INC_PAIN_ACAB:0)
+      inicia_acr_ta_esq
+      inicia_acr_ta_dir
+      #IF $(_tampinf:3)=1
+         !RETTA 99,0,0
+         !RETTA 100,1,-$(acr_tamp_esq_i:0)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 101,0,{$(plat1:0)-20}
+            !RETTA 104,0,{$(plat2:0)-20},1
+         #ELSE
+            !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+            !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         #ENDIF
+         !RETTA 102,0,0,1
+         !RETTA 103,1,$(acr_tamp_dir_i:0),1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=-$(ESPAINA:0),dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=-$(ESPAINA:0),SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ENDIF
+      #IF $(_TAMPsup:3)=1
+         !RETTA 100,1,-$(acr_tamp_esq_s)
+         !RETTA 101,0,$(plat1:0)-$(espaina:0)
+         !RETTA 103,0,$(plat2:0)-$(espaina:0),1
+         !RETTA 104,1,$(acr_tamp_dir_s),1
+         !INTERSECA px0,py0,100,101
+         !INTERSECA px1,py1,101,103
+         !INTERSECA px2,py2,101,103
+         !INTERSECA px3,py3,103,104
+         !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+         635,sl=$(px0),sp=$(py0),l=$(dd1)
+         !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+         635,sl=$(px2),sp=$(py2),l=$(dd2),ay=$(ang)
+      #ELSEIF $(_TAMPsup:3)=2
+         !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+         !RETTA 100,1,-$(acr_tamp_esq_s)
+         !RETTA 101,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+         !RETTA 103,1,$(acr_tamp_dir_s),1
+         !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ELSEIF $(_TAMPsup:3)=3
+         !RETTA 100,1,-$(acr_tamp_esq_s)
+         !RETTA 101,0,$(plat1:0)-$(espaina:0)
+         !RETTA 103,0,$(plat2:0)-$(espaina:0),1
+         !RETTA 104,1,$(acr_tamp_dir_s),1
+         !INTERSECA px0,py0,100,101
+         !INTERSECA px1,py1,101,103
+         !INTERSECA px2,py2,101,103
+         !INTERSECA px3,py3,103,104
+         !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+         635,sl=$(px0),sp=$(py0),l=$(dd1),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+         !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+         635,sl=$(px2),sp=$(py2),l=$(dd2),ay=$(ang),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+         !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+         !RETTA 100,1,-$(acr_tamp_esq_s)
+         !RETTA 101,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+         !RETTA 103,1,$(acr_tamp_dir_s),1
+         !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ELSEIF $(_TAMPSUP:3)=4
+         !RETTA 99,0,0
+         !RETTA 100,1,-$(acr_tamp_esq_s:0)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 101,0,{$(plat1:0)-20}
+            !RETTA 104,0,{$(plat2:0)-20},1
+         #ELSE
+            !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+            !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         #ENDIF
+         !RETTA 102,0,0,1
+         !RETTA 103,1,$(acr_tamp_dir_s:0),1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ENDIF
+   #ENDIF
+#ELSE // Inicio gestão para tamponamentos inferiores e superiores para módulos inferiores - adicionado em visita a pedido do cliente ------------------------------------------
+   #LET RED_PAINEL_ACAB_F=-1*$(INC_PAIN_ACAB:0)
+   inicia_acr_ta_esq
+   inicia_acr_ta_dir
+   #IF $(_tampinf:3)=1
+      !RETTA 99,0,0
+      !RETTA 100,1,-$(acr_tamp_esq_i:0)
+      #IF $(AVANCAFRENTE:0)=1
+         !RETTA 101,0,{$(plat1:0)-20}
+         !RETTA 104,0,{$(plat2:0)-20},1
+      #ELSE
+         !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+      #ENDIF
+      !RETTA 102,0,0,1
+      !RETTA 103,1,$(acr_tamp_dir_i:0),1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0)-$(incpaininftra:0),$(px1)+$(incpaininftra:0),$(py1)-$(incpaininftra:0),$(px2)+$(incpaininftra:0),$(py2)+$(incpaininffre:0),$(px3),$(py3)+$(incpaininffre:0)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=-$(ESPAINA:0),dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0)+$(incpaininftra:0),$(py0)+$(incpaininffre:0),$(px1)+$(incpaininftra:0),$(py1),$(px2)-$(incpaininffre:0),$(py2),$(px3)-$(incpaininffre:0),$(py3)+$(incpaininffre:0)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=-$(ESPAINA:0),SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ELSEIF $(_tampinf:3)=2
+      #IF $(avancafrente:0)=0
+         !RETTA 99,0,0
+         !RETTA 100,1,-$(acr_tamp_esq_i:0)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 101,0,{$(plat1:0)-20}
+            !RETTA 104,0,{$(plat2:0)-20},1
+         #ELSE
+            !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+            !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         #ENDIF
+         !RETTA 102,0,0,1
+         !RETTA 103,1,$(acr_tamp_dir_i:0),1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0)-$(incpaininftra:0),$(px1)+$(incpaininftra:0),$(py1)-$(incpaininftra:0),$(px2)+$(incpaininftra:0),$(py2)-$(INC_PAIN_ACAB:0)+$(incpaininffre:0),$(px3),$(py3)-$(INC_PAIN_ACAB:0)+$(incpaininffre:0)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=-$(ESPAINA:0),dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0)+$(incpaininftra:0),$(py0)-$(INC_PAIN_ACAB:0)+$(incpaininffre:0),$(px1)+$(incpaininftra:0),$(py1),$(px2)+$(INC_PAIN_ACAB:0)-$(incpaininffre:0),$(py2),$(px3)+$(INC_PAIN_ACAB:0)-$(incpaininffre:0),$(py3)-$(INC_PAIN_ACAB:0)+$(incpaininffre:0)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=-$(ESPAINA:0),SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ELSE
+         !RETTA 99,0,0
+         !RETTA 100,1,-$(acr_tamp_esq_i:0)
+         #IF $(AVANCAFRENTE:0)=1
+            !RETTA 101,0,{$(plat1:0)}
+            !RETTA 104,0,{$(plat2:0)},1
+         #ELSE
+            !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+            !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+         #ENDIF
+         !RETTA 102,0,0,1
+         !RETTA 103,1,$(acr_tamp_dir_i:0),1
+         !INTERSECA px0,py0,100,99
+         !INTERSECA px1,py1,99,102
+         !INTERSECA px2,py2,101,102
+         !INTERSECA px3,py3,100,101
+         !SAGOMA tmp $(px0),$(py0)-$(incpaininftra:0),$(px1)+$(incpaininftra:0),$(py1)-$(incpaininftra:0),$(px2)+$(incpaininftra:0),$(py2)+$(incpaininffre:0),$(px3),$(py3)+$(incpaininffre:0)
+         !SAGREL tmp,$(tmp),$(px0),$(py0)
+         636,SA=-$(ESPAINA:0),dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+         !INTERSECA px0,py0,102,101
+         !INTERSECA px1,py1,102,103
+         !INTERSECA px2,py2,103,104
+         !INTERSECA px3,py3,104,101
+         !SAGOMA tmp $(px0)+$(incpaininftra:0),$(py0)+$(incpaininffre:0),$(px1)+$(incpaininftra:0),$(py1),$(px2)-$(incpaininffre:0),$(py2),$(px3)-$(incpaininffre:0),$(py3)+$(incpaininffre:0)
+         !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+         636,SL=$(px0),SA=-$(ESPAINA:0),SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+      #ENDIF
+   #ENDIF
+   #IF $(_TAMPsup:3)=1
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,$(plat1:0)-$(espaina:0)
+      !RETTA 103,0,$(plat2:0)-$(espaina:0),1
+      !RETTA 104,1,$(acr_tamp_dir_s),1
+      !INTERSECA px0,py0,100,101
+      !INTERSECA px1,py1,101,103
+      !INTERSECA px2,py2,101,103
+      !INTERSECA px3,py3,103,104
+      !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+      635,sl=$(px0),sp=$(py0),l=$(dd1)
+      !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+      635,sl=$(px2),sp=$(py2),l=$(dd2),ay=$(ang)
+   #ELSEIF $(_TAMPsup:3)=2
+      !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+      !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+      !RETTA 103,1,$(acr_tamp_dir_s),1
+      !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ELSEIF $(_TAMPsup:3)=3
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,$(plat1:0)-$(espaina:0)
+      !RETTA 103,0,$(plat2:0)-$(espaina:0),1
+      !RETTA 104,1,$(acr_tamp_dir_s),1
+      !INTERSECA px0,py0,100,101
+      !INTERSECA px1,py1,101,103
+      !INTERSECA px2,py2,101,103
+      !INTERSECA px3,py3,103,104
+      !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+      635,sl=$(px0),sp=$(py0),l=$(dd1),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+      !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+      635,SL=$(px2),SA=$a+$(ESPAINA:0),SP=$(py2)+$(ESPAINA:0),L=$(dd2)-$(ESPAINA:0),A=$(avistatamp:0)-$(ESPAINa:0),AY=$(ang)  //Vista Cozinha
+      !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))}
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)}
+      !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0)-$(INC_PAIN_ACAB:0))},1
+      !RETTA 103,1,$(acr_tamp_dir_s),1
+      !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ELSEIF $(_TAMPSUP:3)=4
+      !RETTA 99,0,0
+      !RETTA 100,1,-$(acr_tamp_esq_s:0)
+      #IF $(AVANCAFRENTE:0)=1
+         !RETTA 101,0,{$(plat1:0)-20}
+         !RETTA 104,0,{$(plat2:0)-20},1
+      #ELSE
+         !RETTA 101,0,{$(plat1:0)-$(RED_PAINEL_ACAB_F)}
+         !RETTA 104,0,{$(plat2:0)-$(RED_PAINEL_ACAB_F)},1
+      #ENDIF
+      !RETTA 102,0,0,1
+      !RETTA 103,1,$(acr_tamp_dir_s:0),1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ELSEIF $(_TAMPsup:3)=5 // <C23716>
+      !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0))}
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,{$(plat1:0)}
+      !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0))},1
+      !RETTA 103,1,$(acr_tamp_dir_s),1
+      !RETTA 104,0,{$(plat2:0)},1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ELSEIF $(_TAMPsup:3)=6
+      !RETTA 100,1,-1*{$(acr_tamp_esq_s)}
+      !RETTA 101,0,$(plat1:0)-1*($(espaina:0))
+      !RETTA 103,0,$(plat2:0)-1*($(espaina:0)),1
+      !RETTA 104,1,$(acr_tamp_dir_s),1
+      !INTERSECA px0,py0,100,101
+      !INTERSECA px1,py1,101,103
+      !INTERSECA px2,py2,101,103
+      !INTERSECA px3,py3,103,104
+      !DISTANZA dd1,$(px0),$(py0),$(px1),$(py1)
+      635,sl=$(px0),sp=$(py0)-$(INC_PAIN_ACAB:0),l=$(dd1)+$(INC_PAIN_ACAB:0),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+      !DISTANZA dd2,$(px2),$(py2),$(px3),$(py3)
+      635,sl=$(px2)+$(INC_PAIN_ACAB:0),sp=$(py2)-$(INC_PAIN_ACAB:0),l=$(dd2)+$(INC_PAIN_ACAB:0),ay=$(ang),sa=$a+$(ESPAINa:0),a=$(avistatamp:0)-$(ESPAINa:0)
+      !RETTA 99,0,{$(plat1:0)-1*($(P_PAINEL_PAREDE:0))}
+      !RETTA 100,1,-$(acr_tamp_esq_s)
+      !RETTA 101,0,{$(plat2:0)}
+      !RETTA 102,0,{$(plat2:0)-1*($(P_PAINEL_PAREDE:0))},1
+      !RETTA 103,1,$(acr_tamp_dir_s),1
+      !RETTA 104,0,{$(plat2:0)},1
+      !INTERSECA px0,py0,100,99
+      !INTERSECA px1,py1,99,102
+      !INTERSECA px2,py2,101,102
+      !INTERSECA px3,py3,100,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0)
+      636,SA=$a,dis=$(tmp),sp=$(py0),sl=$(px0)  // Painel INFERIOR Acabamento
+      !INTERSECA px0,py0,102,101
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,101
+      !SAGOMA tmp $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3)
+      !SAGREL tmp,$(tmp),$(px0),$(py0),$(ang)
+      636,SL=$(px0),SA=$a,SP=$(py0),dis=$(tmp),ay=$(ang)  // Painel INFERIOR Acabamento
+   #ENDIF
+   // Fim gestão para tamponamentos inferiores e superiores para módulos inferiores - adicionado em visita a pedido do cliente -------------------------------
+#ENDIF

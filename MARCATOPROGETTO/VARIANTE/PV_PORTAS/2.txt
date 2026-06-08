@@ -1,0 +1,33 @@
+{ PV_PORTAS   // PORTAS PERFIS
+   *AZZERA*            =0
+   DESCRIZIONE         =PORTAS PERFIS
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250TIPO 1200PERFIL ESQ 1605PERFIL SUP 2055PERFIL DIR 1830PERFIL INF 2220POSICAO VIDRO PROFONDIDADE 3075desconto perfil inf sup 2385DESCONTO TRAVESSA 2760filtro travessa 1680filtro pv pux 1545Coluna 3 - 1 para corte 45 graus e 2 para corte 90 graus
+         {
+   { 
+      //     ,Descrição                             ,TI,PERFIL ,PERFIL ,PERFIL ,PERFIL ,POSIC,des,DES,filtro ,filtro
+      FPV001 ,Porta perfil 3025                     ,1 ,PER004 ,PER004 ,PER004 ,PER004 ,14   ,0  ,23 ,0;     ,0;1;
+      FPV002 ,Porta perfil 6446P                    ,1 ,PER001 ,PER001 ,PER001 ,PER001 ,14.5 ,0  ,45 ,0;     ,0;2;
+      FPV003 ,Porta perfil 6446P Total Horizontal   ,1 ,PER001 ,PER017 ,PER001 ,PER001 ,14.5 ,0  ,45 ,0;     ,
+      FPV004 ,Porta perfil 6446P Total Vertical     ,1 ,PER017 ,PER001 ,PER001 ,PER001 ,14.5 ,0  ,45 ,0;     ,
+      FPV005 ,Porta perfil 3345                     ,1 ,PER002 ,PER002 ,PER002 ,PER002 ,14   ,0  ,45 ,0;     ,0;1;
+      FPV006 ,Porta perfil 3168 Total Vertical      ,1 ,PER018 ,PER003 ,PER003 ,PER003 ,13.5 ,0  ,70 ,0;     ,
+      FPV007 ,Porta perfil 1964                     ,1 ,PER005 ,PER005 ,PER005 ,PER005 ,13.2 ,0  ,45 ,0;1;2; ,0;3;4;
+      FPV008 ,Porta perfil 1963                     ,1 ,PER006 ,PER006 ,PER006 ,PER006 ,14.3 ,0  ,45 ,0;1;2; ,0;3;4;
+      FPV009 ,Porta perfil 1939                     ,1 ,PER007 ,PER007 ,PER007 ,PER007 ,14   ,0  ,70 ,0;3;4; ,0;5;
+      FPV010 ,Porta perfil 1939 Total Vertical      ,1 ,PER019 ,PER007 ,PER007 ,PER007 ,14   ,0  ,70 ,0;3;4; ,
+      FPV011 ,Porta perfil 1905                     ,1 ,PER008 ,PER008 ,PER008 ,PER008 ,16   ,0  ,23 ,0;     ,0;6;
+      FPV012 ,Porta perfil 2024                     ,1 ,PER009 ,PER009 ,PER009 ,PER009 ,14.2 ,0  ,45 ,0;1;2; ,
+      FPV013 ,Porta perfil Maggiore 2 pux           ,2 ,PER011 ,PER010 ,PER011 ,PER010 ,18   ,20 ,20 ,0;1;2; ,
+      FPV014 ,Porta perfil Maggiore pux esq         ,2 ,PER011 ,PER010 ,PER010 ,PER010 ,14.5 ,20 ,20 ,0;3;4; ,
+      FPV015 ,Porta perfil Maggiore pux dir         ,2 ,PER010 ,PER010 ,PER011 ,PER010 ,17.2 ,20 ,20 ,0;3;4; ,
+      FPV016 ,Porta perfil 7111                     ,1 ,PER012 ,PER012 ,PER012 ,PER012 ,14.6 ,0  ,45 ,0;5;   ,0;7;9;
+      FPV017 ,Porta perfil 7104                     ,1 ,PER013 ,PER013 ,PER013 ,PER013 ,17.4 ,0  ,45 ,0;5;   ,0;7;9;
+      FPV018 ,Porta perfil 7222                     ,1 ,PER020 ,PER014 ,PER014 ,PER014 ,19.5 ,0  ,45 ,0;6;   ,
+      FPV019 ,Porta perfil Seregno                  ,1 ,PER015 ,PER015 ,PER015 ,PER015 ,13.8 ,45 ,45 ,0;5;   ,0;8;
+      FPV020 ,Porta perfil Seregno Total Horizontal ,1 ,PER015 ,PER016 ,PER015 ,PER015 ,13.8 ,45 ,45 ,0;5;   ,
+      FPV021 ,Porta perfil Seregno Total Vertical   ,1 ,PER016 ,PER015 ,PER015 ,PER015 ,13.8 ,45 ,45 ,0;5;   ,
+   }
+}

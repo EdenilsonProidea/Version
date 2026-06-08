@@ -1,0 +1,15 @@
+DOR_CALC_SAG_LAT,plat=$(platDIR:0),p=$(platDIR:0)
+// 206,SL=$(DESC_CANTOR_LAT:0),SA=0,A=$A,SP=$(platDIR:0),L=$(PLATESQ:0)+$(desc_p_dirMemo:0)-1*($(DESC_CANTOR_LAT:0))-2
+// 206,SL=$(DESC_CANTOR_LAT:0),SA=0,SP=$(platDIR:0),L=$(PLATESQ:0)+$(desc_p_dir:0)-$(DESC_CANTOR_LAT:0),A=$A  // Frente fixa canto aproveitavel // <c30278>
+206,SL=$(DESC_CANTOR_LAT:0),SA=0,SP=$(platDIR:0),L=$(PLATESQ:0)+$(desc_p_dir:0)-$(DESC_CANTOR_LAT:0),A=$A  // Frente fixa canto aproveitavel // <c30278>
+301,p=$(platDIR:0),SL=$(DESC_CANTOR_LAT:0)
+#IF $(TPLATARM:0)=2
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATDIR:0),L=$L-($(DESC_CANTOR_LAT:0)+$(ESLAT:0)*2),SL=$(DESC_CANTOR_LAT:0)+$(ESLAT:0)
+   301,p=$(platDIR:0),SL=$L-$(ESLAT:0)
+#ELSE
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATDIR:0),L=$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(DESC_CANTOR_LAT:0)+$(ESLAT:0)
+#ENDIF
+#IF $(TRAV_DIV_ESQ:0)=1
+   312,L=$(desc_p_ESQOR:0),SL=$(platESQ:0)-$(ESLAT:0),SP=$(platDIR:0)+$(desc_p_ESQOR:0)+$(ESLAT:0),AY=90
+#ENDIF
+// 201

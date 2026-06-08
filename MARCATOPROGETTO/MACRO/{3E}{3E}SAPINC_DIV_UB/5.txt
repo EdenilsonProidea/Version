@@ -1,0 +1,8 @@
+#LETS C_DIV=$(cor_sup_sap:4)
+#IF $(Div:0)=1
+   401,L=$L,A=80,P=6,sp=206,SA=$(ESPRAT:0),C1=$(C_DIV),C2=$(C_DIV),GL=0
+   401,L=$L,A=80,P=6,sp=2*206,SA=$(ESPRAT:0),C1=$(C_DIV),C2=$(C_DIV),GL=0
+   298,x9=$(cor_sup_sap:3)/$(cor_sup_sap:3)  // Item
+   298,x9=$(cor_sup_sap:3)/$(cor_sup_sap:3)
+   #LET ndivisorias=2
+#ENDIF

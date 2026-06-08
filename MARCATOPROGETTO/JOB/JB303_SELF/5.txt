@@ -1,0 +1,27 @@
+#IF 1=0  // <C29180>
+   #IF $(XX3:1)[ICL;SCL;MALL;INTL]!0
+      #IF 1=0
+         #M JOB_BASE_CANTOLI
+         #SELECT $(TPFIX:3)
+         #CASE 1 // MINIFIX
+            #M JOB_BASE_CL_MF
+         #CASE 2 // VB
+            #M JOB_BASE_CL_VB
+         #CASE 3 // PARAFUSO
+            #M JOB_BASE_CL_PA
+         #CASE 4 // SO CAVILHAS
+              #M JOB_BASE_CL_CA
+         #ENDSELECT
+      #ENDIF
+      #IF $(XX3:1)[ICL;INTL]
+         1	MACL	X=0 Y=0  NM=BASEINFL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+      #IF $(XX3:1)==SCL
+         2	MACL	X=0 Y=0  NM=BASESUPL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+      #IF $(XX3:1)==MALL
+         1	MACL	X=0 Y=0  NM=MALINFL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+         2	MACL	X=0 Y=0  NM=MALSUPL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+   #ENDIF
+#ENDIF

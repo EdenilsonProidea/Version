@@ -1,0 +1,8 @@
+{ 295   // concepta
+   *AZZERA*            =0
+   DESCRIZIONE         =concepta
+   CODICE              =000CONCEPTA /;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =54,$(A),$(p)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+}

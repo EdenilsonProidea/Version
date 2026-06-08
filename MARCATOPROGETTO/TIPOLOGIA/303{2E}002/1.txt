@@ -1,0 +1,10 @@
+{ 303.002   // Base  (dormitorio) sagoma
+   *AZZERA*            =0
+   DESCRIZIONE         =Base  (dormitorio) sagoma
+   COLORI              =$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   DISEGNO             =$(sagbase)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)/E
+   X8                  =$(ESCOS:0)////$(AFCOS:0)
+   ALIAS               =#203
+}

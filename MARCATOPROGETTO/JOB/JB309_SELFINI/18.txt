@@ -1,0 +1,15 @@
+// #M INICIA_JOB
+#MSG $(XX10:1)
+#IF $(XX8:0)=1
+   2	MA	X=0 Y=0 NM=RECORTELSUP PARM=P1@$(XX8:1)^P2@$(XX8:2)
+   2	FF	X=6.5 Y=64 DF=15 PF=15.2
+   2	FF	X=6.5 Y={$(XX8:1)-64-$(XX10:1)} DF=15 PF=15.2
+   2	FF	X={$(XL)-64} Y={$(XP)-6.5} DF=15 PF=15.2
+   2	FF	X={$(XL)-$(XX8:2)+64+$(XX10:1)} Y={$(XP)-6.5} DF=15 PF=15.2
+   2	FF	X={$(XL)-100} Y=6.5 DF=15 PF=15.2
+   2	FF	X={$(xl)-6.5} Y=100 DF=15 PF=15.2
+#ELSE
+   #IF $(XX3:1)==PTL  // <C29180>
+      2	MA	X=0 Y=0 NM=RECORTE_LSUP PARM=P1@$(xx6:0)^P2@$(xx6:1)
+   #ENDIF
+#ENDIF

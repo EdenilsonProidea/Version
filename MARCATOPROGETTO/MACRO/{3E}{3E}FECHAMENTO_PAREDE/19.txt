@@ -1,0 +1,25 @@
+#IF $(lat_fech_especial)=1 // Adicionado gestão especial Marcato <c23346>
+   386,sl=$(distanciadoresq:0)  // Frente lateral especial esq
+   //#IF $(somguarn:3)=0
+   385  // Distanciador lateral Fechamento
+   //#ENDIF
+#ELSEIF $(lat_fech_especial)=2 // Adicionado gestão especial Marcato <c23346>
+   // fechamento tradizione
+   #LET acabLateral=$A-$(avistadesconto:0)-$(arodape:0)
+   385,SA=$(arodape:0),C1=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),C2=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),CX=_corfr  //Distanciador lateral Fechamento
+#ELSE
+   #IF $(_tpfech:3)=4
+      #IF $(pm)=1
+         384,sl=$(distanciadoresq:0),p={$(sobrepbasefech:0)+$(_tpfr:12)}
+      #ELSE
+         384,sl=$(distanciadoresq:0)//,p={$(sobrepbasefech:0)+$(_tpfr:13)}
+      #ENDIF
+   #ELSE
+      384,sl=$(distanciadoresq:0)  // acabamento lateral fechamento
+   #ENDIF
+   #IF $(distanciadoresq:0)>0
+      385 // ,sp=$p Comentado em visita  // Distanciador lateral Fechamento
+   #ENDIF
+#ENDIF
+// 201
+// 204

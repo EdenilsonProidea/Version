@@ -1,0 +1,48 @@
+#LET TP_PECA=1
+#LET TP_LINHA=2
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1
+      419.011,A=20,L=20,SA={$(ESLAT)/2}-20,SP=$P+20,SL={$L/2}-18
+   #ELSE
+      419.010,A=20,L=20,SA={$(ESLAT)/2}-20,SP=$P+20,SL={$L/2}-18
+   #ENDIF
+#ENDIF
+#IF $(LUZ)=1
+   #IF $(TP_LED:12)=1
+      #IF $(TP_LOCAL:3)=1
+         467,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P-42},SA=-1
+         #LET tam_led=$L
+      #ELSEIF $(TP_LOCAL:3)=2
+         467,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={($P-$(escos:0)-$(afcos:0)-50)/2+45.5},SA=-1
+         #LET tam_led=$L
+      #ELSE
+         467,cod=000$(tp_led:10),A=2,P=8.5,SP=63,L={$L},SA=-1
+         #LET tam_led=$L
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=2
+      // FAZER ERRO
+      #LETS PECA=LATERAL DIREITA
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=3
+      // FAZER ERRO
+      #LETS PECA=LATERAL DIREITA
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=4
+      #LET pcalaleta=16.5
+      #IF $(TP_LOCAL:3)=1
+         467,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={$P-(37+8.5)},SA=-1,GL=0,C1=16,C2=16
+         #LET tam_led=$L
+      #ELSEIF $(TP_LOCAL:3)=2
+         467,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={($P-$(escos:0)-$(afcos:0)-50)/2+41.75},SA=-1,GL=0,C1=16,C2=16
+         #LET tam_led=$L
+      #ELSE
+         467,cod=000$(tp_led:10),A=2,P=$(pcalaleta),SP=59,L={$L},SA=-1,GL=0,C1=16,C2=16
+         #LET tam_led=$L
+      #ENDIF
+   #ENDIF
+   #IF $(TAM_LED:0)<200 & $(TP_LED:12)[1;4]
+      #LET IDLOGERROS=$(IDLOGERROS)77
+   #ENDIF
+   #LETS INFOPECA=$(INFOPECA)|LAT_DIR
+#LET comled=1
+#ENDIF

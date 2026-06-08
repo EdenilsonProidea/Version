@@ -1,0 +1,17 @@
+{ 639   // Painel frontal friso usinado
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel frontal friso usinado
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$p-$(esp_prat:0)
+   DIMENSIONE          =$l,$a,$(esp_prat:0)
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90,$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =$(xpfrente)
+   X3                  =$(curbox)
+   X5                  =$(NFRISOSH:0)/$(NFRISOSV:0)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X8                  =_/_/_/$(parfrente)/$(LFRISOV)/$(LFRISOH)
+   X9                  =/$(_COREX:1)
+   X10                 =$(ladojobfrente)/$(nomejobfrente)/$(PARjobfrente)/$(parfrisosscriptH)/$(parfrisosscriptV)
+   ALIAS               =#638
+}

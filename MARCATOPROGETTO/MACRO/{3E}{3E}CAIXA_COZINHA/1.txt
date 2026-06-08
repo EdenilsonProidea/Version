@@ -1,0 +1,10 @@
+#LETS COLUNAPAREDE=$[tosep;|;$(COLUNAPAREDE)]
+#LETS COLUNAPAREDEH=$[tosep;|;$(COLUNAPAREDEH)]
+#IF $(COLUNAPAREDE:1)>0 & $(desacolu:0)=0
+   CAIXA_CPAREDE
+#ELSEIF $(COLUNAPAREDEH:1)>0 & $(desacolu:0)=0
+   CAIXA_CPAREDEH
+#ELSE
+   //CAIXA
+#ENDIF
+pontos,sp=$(escos:0)+$(afcos:0)+5

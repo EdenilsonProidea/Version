@@ -1,0 +1,6 @@
+{ 215.021   // FRENTE RUSTICA
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE RUSTICA
+   COLORI              =,$(_corpux:3)|$(.percorso)\foto\madeira\$(_corpux:4)|$(_corpux:5)
+   ALIAS               =#215
+}

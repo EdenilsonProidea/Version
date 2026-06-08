@@ -1,0 +1,52 @@
+!PARAMETRI PLACERINTERNO=0
+// CALCOLO PROFONDIDADE DIVISORIAS MODULO
+#IF $(_FRINTERNA:0)==1
+   #LET PDIVH= $p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVH:0)+$(ESFRE:0)) //profondidade div interno modulo horizontal
+   #LET PDIVV= $p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVV:0)+$(ESFRE:0)) //profondidade div interno modulo vertical
+#ELSE
+   #LET PDIVH= $p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVH:0)) //profondidade div interno modulo horizontal
+   #LET PDIVV= $p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVV:0)) //profondidade div interno modulo vertical
+#ENDIF
+// VERIFICA SE TEM UM SISTEMA DE CORRER INTERNO
+#LET sistema_cor_int_tot=0
+#IF $(_SISCORRER:13)>0 & $(_frt:1)=1 & $(_SISCORRER:10)=-1
+   // VERIFICA FRENTE GERAL
+   #LET sistema_cor_int_tot=$(_SISCORRER:13)
+#ELSE
+   // VEIRFICA ATE FRENTE 10
+   #FOR $0:9
+      #IF $(i)=0
+         #IF $(_SISCORRER_0000:10)==-1
+            #IF $(_SISCORRER_0000:13)>0 & $(_frt_0000:1)=1
+               #LET sistema_cor_int_tot=$(_SISCORRER_0000:13)
+               #EXITFOR
+            #ENDIF
+         #ENDIF
+      #ELSE
+         #IF $(_SISCORRER_000$(i):10)==-1
+            #IF $(_SISCORRER_000$(i):13)>0 & $(_frt_000$(i):1)=1
+               #LET sistema_cor_int_tot=$(_SISCORRER_000$(i):13)
+               #EXITFOR
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+#ENDIF
+// SE SISTEMA DE CORRER INTERNO
+#IF $(sistema_cor_int_tot)=1
+   #LET pdivh=$p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVH_COR1:0))
+   #LET pdivv=$p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVV_COR1:0))
+#ELSEIF $(sistema_cor_int_tot)=2
+   #LET pdivh=$p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVH_COR2:0))
+   #LET pdivv=$p-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVV_COR2:0))
+#ENDIF
+#LET pdiv=$(PDIVH:0)
+#IF $(PLACERINTERNO)=1
+   #LETS PPRAT=$P-1*($(RED_F_PRAT:0)) //Profundidade da prateleira de madeira
+   #LETS AFPRATP=0 //Afastamento da prateleiras de madeira em relação a lateral
+#ELSE
+   #LETS PPRAT=$(PDIV)-1*($(RED_F_PRAT:0)) //Profundidade da prateleira de madeira
+   #LETS AFPRATP=$(AFCOS:0)+$(ESCOS:0) //Afastamento da prateleiras de madeira em relação a lateral
+#ENDIF
+#LETS PPRATV=$(pprat) //Profundidade da prateleira de vidro
+#LETS AFPRATV=$(afpprat) //Afastamento da prateleiras de vidro em relação a lateral

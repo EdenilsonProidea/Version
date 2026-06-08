@@ -1,0 +1,13 @@
+!PARAMETRI posd=0 
+#IF $(_TPCAIXA:11)=1
+   #IF ($(LATESQ:0)=2 & $(POSD)=1) | ($(LATDIR:0)=0 & $(POSD)=3)
+      kitdobradiça,compartilhado=1
+#MSG aqui
+   #ELSE
+      kitdobradiça
+   #ENDIF
+#ELSE
+   kitdobradiça
+#ENDIF
+//kitdobradiçap
+// teste

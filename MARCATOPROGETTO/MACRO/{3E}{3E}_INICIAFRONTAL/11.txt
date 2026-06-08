@@ -1,0 +1,80 @@
+#LET affre=0
+#LET AFFREL=0
+#LET AFFREA=0
+//_cavafrontal,MACRO=CAVA_COZ
+
+#IF $(_FRT:1)>0  //FRENTE TOTALE
+   #IF $(sistemac)=1
+      #LET LFRE=$(LTOT)+$(ESLAT:0)*2
+   #ELSE
+      #LET LFRE=$(LTOT)
+   #ENDIF
+   #LET AFRE={$(ATOT)-1*($(_tpcaixa:4)+$(_tpcaixa:5))}
+   #LET AFFREL=-$(SPOSTAL)
+   //#LET AFFRE=-$(SPOSTAA)
+#ENDIF
+#IF $(_FR:6)=601 & $(item:0)!010802  & $(tpf)!=65 // INICIO GESTÃO CAVA 45 ------------------------------------------------------------------
+   #IF $(SPOSTAL)<50 // *** PRIMERIO VÃO ************** <c20453>
+      #IF ($L+50)>$(LTOT) // SÓ UM VÃO <c20181>
+         #IF $(SPOSTAA)+$A>$(ATOT)-50
+            // TRAVESSA SUPERIOR
+            #IF $(sup)=1
+               204.003,SP=$P-$(ESTRA:0),A=70,SA=$(abase:0),L=L=$L-(2*$(ESLAT:0))-$(RED_INTM:0)*2
+            #ELSE
+               204.003,SP=$P-$(ESTRA:0),A=70,SA=$A-70+$(_TPCAIXA:5),L=$L-(2*$(ESLAT:0))-$(RED_INTM:0)*2
+            #ENDIF
+         #ELSE
+            204.003,SP=$P-$(ESTRA:0),A=55,SA=$A-55,L=$L-(2*$(ESLAT:0))-$(RED_INTM:0)*2
+         #ENDIF
+      #ELSE // MAIS DE UM VÃO <c20181>
+         #IF $(SPOSTAA)+$A>$(ATOT)-50
+            // TRAVESSA SUPERIOR
+            #IF $(sup)=1
+               204.003,SP=$P-$(ESTRA:0),A=70,SA=$(abase:0),L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2
+            #ELSE
+               #IF $(CANTOR:0)=1 // <C20687>
+                  #IF $(PM)=1
+                     204.003,SP=$p-($(mm)+$(lmas)+$(ESTRA:0)),A=70,SA=$A-70+$(_TPCAIXA:5),L=$(LTOT:0)-1*($(ESPACOATRAS:0)+$(lfechfro)+$(lmas)+($(RED_INTM:0)+$(ESLAT:0))*2),SL=$(lmas)+$(RED_INTM:0)
+                  #ELSE
+                     204.003,SP=$p-($(mm)+$(lmas)+$(ESTRA:0)),A=70,SA=$A-70+$(_TPCAIXA:5),L=$(LTOT:0)-1*($(ESPACOATRAS:0)+$(lfechfro)+$(lmas)+($(RED_INTM:0)+$(ESLAT:0))*2),SL=$(ESLAT:0)-2+$(RED_INTM:0)
+                  #ENDIF
+               #ELSE
+                  204.003,SP=$P-$(ESTRA:0),A=70,SA=$A-70+$(_TPCAIXA:5),L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2
+               #ENDIF
+            #ENDIF
+         #ELSE
+            204.003,SP=$P-$(ESTRA:0),A=55,SA=$A-55,L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2
+         #ENDIF
+      #ENDIF
+   #ELSEIF ($(SPOSTAL)+$L+50)>$(LTOT) // *** ULTIMO VÃO ************** <c20181>
+      #IF $(SPOSTAA)+$A>$(ATOT)-50
+         // TRAVESSA SUPERIOR
+         #IF $(sup)=1
+            204.003,SP=$P-$(ESTRA:0),A=70,SA=$(abase:0),L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+         #ELSE
+            204.003,SP=$P-$(ESTRA:0),A=70,SA=$A-70+$(_TPCAIXA:5),L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+         #ENDIF
+      #ELSE
+         204.003,SP=$P-$(ESTRA:0),A=55,SA=$A-55,L=$L-$(ESLAT:0)-($(ESLAT:0)/2)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+      #ENDIF
+   #ELSE // *** VÃO MEIO ************** <c20181>
+      #IF $(SPOSTAA)+$A>$(ATOT)-50
+         // TRAVESSA SUPERIOR
+         #IF $(sup)=1
+            204.003,SP=$P-$(ESTRA:0),A=70,SA=$(abase:0),L=$L-$(ESLAT:0)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+         #ELSE
+            204.003,SP=$P-$(ESTRA:0),A=70,SA=$A-70+$(_TPCAIXA:5),L=$L-$(ESLAT:0)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+         #ENDIF
+      #ELSE
+         204.003,SP=$P-$(ESTRA:0),A=55,SA=$A-55,L=$L-$(ESLAT:0)-$(RED_INTM:0)*2,SL=($(ESLAT:0)/2)+$(RED_INTM:0)
+      #ENDIF
+   #ENDIF
+#ENDIF // FIM GESTÃO CAVA 45 ------------------------------------------------------------------------------------------------
+#IF $(AVANCAFRENTE:0)=1 & $(_TPCAIXA:9)=2 & $(SPOSTAA)<100
+   #IF $(ESPPAINEL:0)=0 #LET esppainel=13
+   #LET AFRE=$(AFRE)+$(ESPPAINEL:0)
+   #LET affre=-$(ESPPAINEL:0)
+#ENDIF
+#LET pdir=0 // <c23466>
+#LET pesq=0 // <c23466>
+#LET PTEMPERO=0 // <C24510> AJUSTE ACESSO 04/12

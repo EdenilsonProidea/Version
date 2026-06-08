@@ -1,0 +1,88 @@
+#LET incrfreA=0
+#LET incrfreD=0
+#LET incrfreI=0
+#LET incrfreE=0
+
+#VB  // ALEX VISITA - ISSO É FEITO POIS QUANDO VALOR VEM DAS SUBREGRAS TROCA SEPARADOR POR PONTO E VIRGULA E NÃO FUNCIONA NADA
+   v("INCFRENTE")=Replace(v("INCFRENTE"), ";", ",")
+#ENDVB
+#IF $(INCFRENTE:0)!!0 #LET incrfreA=$(INCFRENTE:0) //substituido (>0) por (!!0) para receber valores negativos, podendo incrementar negativamente. <C13497>
+#IF $(INCFRENTE:1)!!0 #LET incrfred=$(INCFRENTE:1) //substituido (>0) por (!!0) para receber valores negativos, podendo incrementar negativamente. <C13497>
+#IF $(INCFRENTE:2)!!0 #LET incrfreI=$(INCFRENTE:2) //substituido (>0) por (!!0) para receber valores negativos, podendo incrementar negativamente. <C13497>
+#IF $(INCFRENTE:3)!!0 #LET incrfreE=$(INCFRENTE:3) //substituido (>0) por (!!0) para receber valores negativos, podendo incrementar negativamente. <C13497>
+
+//adição dos erros <C2500>
+// erros relacionados ao tamanho máximo, somente para frente de madeira
+#IF $(frenteCinex:0)=1 | $(_fr:6)=9800
+   #IF $(APE:3)[AGE;AGEC]!0
+      #IF $(incrfree:0)!0
+         #LET idlogerros=100
+      #ELSEIF $(incrfred:0)>100
+         #LET idlogerros=106
+      #ENDIF
+   #ELSEIF $(APE:3)[AGD;AGDC]!0
+      #IF $(incrfred:0)!0
+         #LET idlogerros=101
+      #ELSEIF $(incrfree:0)>100
+         #LET idlogerros=107
+      #ENDIF
+   #ELSE
+      #IF $(incrfreA:0)>35 | $(incrfred:0)>35 | $(incrfreI:0)>35 | $(incrfree:0)>35
+         #LET idlogerros=102
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(incrfreA:0)>100 | $(incrfred:0)>100 | $(incrfreI:0)>100 | $(incrfree:0)>100
+      #LET idlogerros=95
+   #ENDIF
+#ENDIF
+
+// erros relacionados ao tipo de frente
+#IF $(_TPFR:3)[9;11;12;13]!0 // gaveta somente dá erro quando for frente cinex
+   #IF ($(frenteCinex:0)=1 & $(incrfred:0)!0) | ($(frenteCinex:0)=1 & $(incrfree:0)!0) | ($(frenteCinex:0)=1 & $(incrfrei:0)!0)
+      #LET idlogerros=96
+   #ENDIF
+#ELSEIF $(_TPFR:3)[7;23;24;25;26;27]!0 // basculante
+   #IF $(frenteCinex:0)=1
+      #IF $(incrfred:0)!0 | $(incrfree:0)!0 | $(incrfrea:0)!0
+         #LET idlogerros=97
+      #ENDIF
+   #ELSE
+      #IF $(incrfrea:0)!0
+         #LET idlogerros=104
+      #ENDIF
+   #ENDIF
+#ELSEIF $(_TPFR:3)[28;68]!0 // basculante invertido
+   #IF $(frenteCinex:0)=1
+      #IF $(incrfred:0)!0 | $(incrfree:0)!0 | $(incrfrei:0)!0
+         #LET idlogerros=98
+      #ENDIF
+   #ELSE
+      #IF $(incrfrei:0)!0
+         #LET idlogerros=105
+      #ENDIF
+   #ENDIF
+#ELSEIF ($(_TPFR:3)[2;19;30]!0 // 2 portas de giro
+   #IF $(incrfred:0)!0 | $(incrfree:0)!0
+      #LET idlogerros=99
+   #ENDIF
+#ENDIF
+
+// erros relacionados ao lado de abertura na porta de giro
+#IF $(APE:3)[AGE;AGEC]!0 & $(incrfree:0)!0
+   #LET idlogerros=100
+#ELSEIF $(APE:3)[AGD;AGDC]!0 & $(incrfred:0)!0
+   #LET idlogerros=101
+#ENDIF
+
+#IF _SISCORRER[$(_TPFR:6)]!0 & $(_TPFR:3)[1;2]!0
+   #LET FOLGAFRENTEAI=0
+   #LET FOLGAFRENTEAS=0
+   #LETS incrfreA=$(_SISCORRER:12)
+   #LETS incrfreI=$(_SISCORRER:11)
+#ENDIF
+#LET lff=$(lfre)+$(incrfreE)+$(incrfred)
+#LET aff=$(afre)+$(incrfreA)+$(incrfrei)
+#LET affinalporta=$(aff)-1*($(folgafrenteai:0)+$(folgafrenteas:0))
+
+// logerros

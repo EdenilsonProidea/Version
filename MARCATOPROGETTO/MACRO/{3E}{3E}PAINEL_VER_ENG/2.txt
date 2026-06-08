@@ -1,0 +1,29 @@
+#IF $(L_TAMPO:0)=6 // Engrosso para compor com os paineis de 6mm
+   
+   #SELECT $(esp_tamburato:0)
+   #CASE 30
+      280,SL=$(L_TAMPO:0),L=18,X7=N/N/N/N/0/0/0/0 // Engrosso de 18 mm
+   #CASE 40
+      280,SL=$(L_TAMPO:0),L=18,X7=N/N/N/N/0/0/0/0 // Engrosso de 18 mm
+      280,SL=$(L_TAMPO:0)+18,L=9,X7=N/N/N/N/0/0/0/0 // Engrosso de 9 mm
+   #CASE 50
+      280,SL=$(L_TAMPO:0),L=25,X7=N/N/N/N/0/0/0/0 // Engrosso de 25 mm
+      280,SL=$(L_TAMPO:0)+25,L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+      280,SL=$(L_TAMPO:0)+31,L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+   #ENDSELECT
+   
+#ELSEIF $(L_TAMPO:0)=9 // Engrosso para compor com os paineis de 9mm
+   
+   #SELECT $(esp_tamburato:0)
+   #CASE 30
+      280,SL=$(L_TAMPO:0),L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+      280,SL=$(L_TAMPO:0)+6,L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+   #CASE 40
+      280,SL=$(L_TAMPO:0),L=15,X7=N/N/N/N/0/0/0/0 // Engrosso de 15 mm
+      280,SL=$(L_TAMPO:0)+15,L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+   #CASE 50
+      280,SL=$(L_TAMPO:0),L=25,X7=N/N/N/N/0/0/0/0 // Engrosso de 25 mm
+      280,SL=$(L_TAMPO:0)+25,L=6,X7=N/N/N/N/0/0/0/0 // Engrosso de 6 mm
+   #ENDSELECT
+   
+#ENDIF

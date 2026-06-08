@@ -1,0 +1,15 @@
+#LET canal=0
+#LETS trabalhost=N
+803,a=$a // -$(esprat:0),x6=0/0 // 201 -> 803 // ESQUERDA
+804 // 202 -> 804 // DIREITA
+#LET ATRA=80
+805,sa=$a-$(estra:0),sp=$(ESTRA:0) // 220 -> 805
+806,sa=$a-$(Atra:0),sp=0 // 204 -> 806 // TRAVESSA TRASEIRA SUPERIOR
+805,SP=$p-$(atra:0),sa=$a-$(estra:0) // 220 -> 805
+// #LET ATRA=70//
+#IF 1=0 // Comentado gestão a pedido do cliente em visita
+   805,sa=0  // Traversa horizontal  (cozinha)  // 220 -> 805
+   805,SP=$p-$(atra:0),sa=0  // Traversa horizontal  (cozinha) // 220 -> 805
+#ELSE
+   807
+#ENDIF

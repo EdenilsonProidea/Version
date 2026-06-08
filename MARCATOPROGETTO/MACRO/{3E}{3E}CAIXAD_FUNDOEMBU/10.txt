@@ -1,0 +1,12 @@
+//LATERAIS
+LATERAIS_1LAT
+#FOR $1:$(nportas:3),,idmodulotemp
+   #LET iold=$(idmodulotemp)-1
+   // DIVISORIA
+   DIV_1LAT
+   // CALCULO E CONFIGURAÇÃO DOBRADIÇAS
+   CALC_DOB_1LAT
+   // CAIXA
+   // #MSG $(lmodulo:0)+$(eslat:0)
+   CAIXA_1LAT,POSLARG_CAI={$(eslat:0)+($(lmodulo:0)+$(eslat:0))*($(idmodulotemp)-1)}+$(red_esq:0)
+#ENDFOR

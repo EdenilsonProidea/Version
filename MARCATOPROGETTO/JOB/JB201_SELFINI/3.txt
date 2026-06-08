@@ -1,0 +1,6 @@
+#LOADVAR _tpcaixa _tpcaixa $(X9:0)
+
+#IF $(X8:5)=0 & $(_TPCAIXA:9)[3;2]!0
+   $(F)	FF	X={$(xa)-$(xl)-25} Y={51} df=10 pf=11
+   $(F)	FF	X={$(xa)-$(xl)-25} Y={51+32} df=10 pf=11
+#ENDIF

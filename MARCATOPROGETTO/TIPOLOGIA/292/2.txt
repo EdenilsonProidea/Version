@@ -1,0 +1,17 @@
+{ 292   // Painel base
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel base
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$(esp_prat:3),$p
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   DISEGNO             =$(DSAGOMA_0000)
+   ORIENTAMENTO        =LPA
+   DATI                =_corex$(_ctx)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =$(codjob)
+   X9                  =$(PAR9COREX)
+   ALIAS               =#292
+}

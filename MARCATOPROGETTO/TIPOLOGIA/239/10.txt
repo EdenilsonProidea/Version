@@ -1,0 +1,18 @@
+{ 239   // Cava
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava
+   CODICE              =$(_TPCAVA:4) /CCAVAPROFILO=$(CCAVAPROFILO:0);_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0); teste=
+   LATO                =19
+   POSIZIONE           =$(slcava),$a-$(ACAVA:0)+$(_TPCAIXA:5),$(AFPCAVA)
+   DIMENSIONE          ={$l+1*($(CAVAESQ:0)+$(CAVADIR:0))},$(ACAVA:0),$(PCAVA:0)
+   COLORI              =$(_tpcava:6),$(_tpcava:6)
+   DISEGNO             =$(perfcava)
+   ORIENTAMENTO        =LAP
+   X1                  =$(perccava)
+   X5                  =$(CORTACAVAESQ:0)/$(CORTACAVAdir:0)
+   X7                  =/$(CCAVAPROFILO:1)
+   X8                  =$(_TPCAVA:1)
+   X9                  =$(_TPCAVA:7)/$(_PINTURAPERFIS:1)
+   X10                 =$(_tpcaixa:0)
+   ALIAS               =#239
+}

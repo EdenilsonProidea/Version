@@ -1,0 +1,5 @@
+#IF $(idmodulotemp)<$(nportas:3) & $(DIVIDICAIXA$(idmodulotemp):0)=1
+   dor_lat_div,macro=dor_lat,l=$(eslat:0),a=$a,p=$(plat:0)
+#LET contador=$(contador)+1
+#MSG $(contador)
+#ENDIF

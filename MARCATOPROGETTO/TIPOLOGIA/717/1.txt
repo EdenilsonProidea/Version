@@ -1,0 +1,13 @@
+{ 717   // ripas apl
+   *AZZERA*            =0
+   DESCRIZIONE         =ripas apl
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0-$(prof_ri),0
+   DIMENSIONE          =$(largripas:0),$(prof_ri),$p
+   COLORI              =$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5),$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5)
+   ORIENTAMENTO        =PLA
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =/$(_CORRIPAS:1)
+   ALIAS               =#717
+}

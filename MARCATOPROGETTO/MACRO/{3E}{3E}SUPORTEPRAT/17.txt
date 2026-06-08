@@ -1,0 +1,31 @@
+#IF $(SUPORTEPRAT:3)!! | $(SUPORTEPRAT:13)!!
+   #IF $(NSupCost:0)=0
+      #IF $l>2000
+         #LET nsup=5
+      #ELSEIF $l>1500
+         #LET nsup=4
+      #ELSEIF $l>1000
+         #LET nsup=3
+      #ELSE
+         #LET nsup=2
+      #ENDIF
+   #ELSE
+      #LET nsup=$(NSupCost:0)
+   #ENDIF
+   #LET espacio=$l/$(nsup)
+   //CALCULO REFERENCIA
+   #LET NREF=$(NSUP)/$(SUPORTEPRAT:4)
+   #IF INT($(NSUP)/$(SUPORTEPRAT:4))<$(NREF) #LET NREF=$(NREF)+1
+   #IF $(SUPORTEPRAT:3) !!
+       257  // CODIGOS SUPORTE PRATELEIRAS
+   #ENDIF
+   #IF $(sistemanicho)=0
+      #IF $(SUPORTEPRAT:8)!!
+         #FOR $1:$(nsup)
+            236,SL=-$(SUPORTEPRAT:5)/2+$(espacio)/2+$(espacio)*($i-1)  //SUPORTE PRATELEIRAS
+         #ENDFOR
+      #ELSE
+         297,COD= / /+$(NSUP) X $(SUPORTEPRAT:2),SA=$(spostaa),SP=$P,L=500,A=30,P=10,sl=-250  //TEXTO
+      #ENDIF
+   #ENDIF
+#ENDIF

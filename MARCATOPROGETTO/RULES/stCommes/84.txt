@@ -1,0 +1,160 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=Elaborazioni per stampe carico
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+
+
+[ST5]
+STAMPA MARCATO_lista_caixas.stn,NCOMMESSA=$(carico:0)
+//STAMPA LOTE_PAIS_COM_IMAGEM.stn,LOTE=$(carico:0),SETOR=C011
+
+[ST18]
+#SQL alfa=SELECT TOP 1 TIPOESPECIAL FROM Lista_corte  WHERE TIPOESPECIAL<>'' and LOTE='$(carico:0)'
+
+#IF $(alfa)!!
+   STAMPA idea_especiais.stn,LOTE=$(carico:0)
+#ENDIF
+
+[ST16]
+// COMENTEI O CONTROLE POIS NA IMPRESSÃO TEM MAIS VALIDAÇÕES E NÃO TIVE TEMPO EM VISITA DE ORGANIZAR ISSO. POR HORA VOU DEIXAR ASSIM. -ALEX
+#LETS SETOR=OP_COW
+//#SQL alfa=SELECT TOP 1 OPCORTE FROM Lista_corte  WHERE OPCORTE='$(SETOR:0)' and LOTE='$(carico:0)'
+//#IF $(alfa:0)!!
+STAMPA LOTE_PECAS_WOOD.stn,FASI=$(SETOR:0),LOTE=$(carico:0)
+//#ELSE
+//  #MSG NÃO HÁ GAVETEIROS NESSE LOTE
+//#ENDIF
+
+[ST6]
+// STAMPA marcato_lista_ESTOQUE.stn,NCOMMESSA=$(carico:0);LP=$(LP:1);gruppopedido=1
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S007,SEPARAPEDIDO=1,AGRUPAR=1
+
+[ST4]
+// STAMPA MARCATO_lista_corte_perfis_REP.stn,NCOMMESSA=$(carico:0)
+// STAMPA IDEA_PERFIS.stn,LOTE=$(carico:0),fasi=S010
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S010,SEPARAPEDIDO=1,AGRUPAR=1 // <c27749>
+
+[ST11]
+STAMPA LOTE_PAIS_COM_IMAGEM.stn,LOTE=$(carico:0),SETOR=C013
+
+[ST9]
+// NÃO UTILIZAVAM ENTÃO DIEXAMOS OBSOLETA
+
+//STAMPA marcato_lista_corte_manual.stn,NCOMMESSA=$(carico:0)
+
+[ST10]
+// NÃO UTILIZAVAM ENTÃO DIEXAMOS OBSOLETA
+
+//STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S002,SEPARAPEDIDO=0,AGRUPAR=1
+
+[ST12]
+STAMPA LOTE_PAIS_COM_IMAGEM.stn,LOTE=$(carico:0),SETOR=C014,UMA_POR_PAGINA=1
+
+[ST8]
+// STAMPA MARCATO_FORMAPACOTE_LISTA_FERRAGEM_REP.stn,NCOMMESSA=$(carico:0)
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S005,SEPARAPEDIDO=1,AGRUPAR=1
+
+[ST15]
+#LETS SETOR=C014
+#SQL alfa=SELECT top 1 LOTE FROM LOTES_PAIS WHERE SETOR='$(SETOR:0)' and LOTE='$(carico:0)'
+#IF $(alfa:0)!!
+   STAMPA MARCATO_GAVETEIRO.stn,SETOR=$(SETOR:0),LOTE=$(carico:0)
+#ELSE
+   //  #MSG NÃO HÁ GAVETEIROS NESSE LOTE
+#ENDIF
+
+[FILTRI]
+$(carico)       $(carichi) (è l'elenco dei carichi separato con ;)
+$(da_carico)    $(a_carico)
+$(da_reparto)   $(a_reparto)
+$(da_percorso)  $(a_percorso)
+$(da_numero)    $(a_numero)
+$(da_etichetta) $(a_etichetta)
+$(da_vettore)   $(a_vettore)
+$(da_scarico)   $(a_scarico)
+
+$(car_colore)   (Colore del carico)
+$(car_cod)      (carico)
+$(des_car)      (descrizione)
+$(elabora)      (Nr. dell'elaborazione)
+
+-----------------------------------------
+
+[FUNZIONI]
+STAMPA    nomemodulo.stg,$(...)parametri    // Stampa
+STAMPACRW nomemodulo.stg,$(...)parametri    // Cristal Report
+COLLI              // rigenera i colli
+ELABORA            // sviluppa DB a livelli
+RICALCOLA ETI JOB  // carica l'ordine e ricalcola etichette e job
+
+-----------------------------------------
+
+[ST14]
+STAMPA MARCATO_INSUMOS.stn,LOTE=$(carico:0),FILTROSETOR= (SETOR='S005' OR SETOR='S007' OR SETOR='S010'),SAPARA_PAI=1
+
+[LISTE]
+0001   - OBSERVAÇÕES
+0002   - LAMINA E LAMINADO
+0003   - PINTURA
+0004   - PERFIS
+0005   - CAIXAS
+0006   - ACESSÓRIOS
+0007   - TESTEFITA
+0008   - EXPEDIÇÃO
+0009   - OBSOLETA
+0010   - OBSOLETA
+0011   - PORTAS ALUMINIO
+0012   - GAVETEIROS
+0013   - OBSOLETA
+0014   - INSUMOS GERAL PAI
+0015   - GAVETEIROS - MARCATO
+0016   - PEÇAS WOOD
+0017   - LOTES SETORES TOTAL
+0018   - ESPECIAIS
+
+[ST7]
+#LETV LP=S002
+#SQL alfa=select top 1 * from lista_stampe_prod where commessa='$(carico:0)' and n2c like '$(LP:3)_$(LP:4)'/#IF $(alfa)!!
+STAMPA marcato_lista_ESTOQUE.stn,NCOMMESSA=$(carico:0);LP=$(LP:1);gruppopedido=1
+#ENDIF
+
+//NÃO UTILIZAVAM ENTÃO DIEXAMOS OBSOLETA
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S002,SEPARAPEDIDO=1,AGRUPAR=1
+
+[ST1]
+STAMPA Marcato_Obs.stn,NCOMMESSA=$(carico:0)
+
+[ST2]
+#LETV LP=0010
+STAMPA marcato_lista_LAMINA_REP.stn,NCOMMESSA=$(carico:0)
+
+[ST17]
+STAMPA LOTE_relatorio_setores.stn,LOTE=$(carico:0)
+
+[ST13]
+// NÃO UTILIZAVAM ENTÃO DIEXAMOS OBSOLETA
+
+//STAMPA MARCATO_INSUMOS.stn,LOTE=$(carico:0),FILTROSETOR= (SETOR='S005' OR SETOR='S007' OR SETOR='S010')
+
+[ST3]
+STAMPA marcato_lista_PINTURA_REP.stn,NCOMMESSA=$(carico:0)

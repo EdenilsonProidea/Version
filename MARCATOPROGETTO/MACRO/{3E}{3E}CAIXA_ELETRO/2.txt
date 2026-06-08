@@ -1,0 +1,16 @@
+#LET DESC_BASE=60
+#LET SABASEINT=100
+#IF $(ISGELADEIRA:0)=1 #LET ABAS_INT=25 #LET ABAS_INT=$(ABASE:0)
+201,A=$(AFINAL:0),X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Lateral Esquerda
+202,A=$(AFINAL:0),X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Lateral Direita
+203,P={$P-$(DESC_BASE:0)},X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Base inferior
+203.005,SA={$(SABASEINT:0)-$(ABASE:0)},SP=$(DESC_BASE:0),P={$P-$(DESC_BASE:0)},A=$(ABAS_INT:0),DIS=0,X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Base intermediaria
+203.001,SP=$(DESC_BASE:0),P={$P-$(DESC_BASE:0)},SA=$(AFINAL:0)-$(ABASE:0),X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Base Superior
+#IF $(ISGELADEIRA:0)=1
+   #LETS FE=N
+   #LETS FD=N
+   #LETS FF=N
+   #LETS FT=N
+   688,SL=$(ESLAT:0),A=64,X7=N/N/N/$(TRABALHOAT)/N/N/$(FF)/$(FT)/0/$(cava)/1/1  // reforço torre geladeira
+   688,A=64,SL=$L-2*$(ESLAT:0),X7=N/N/N/$(TRABALHOAT)/N/N/$(FF)/$(FT)/0/$(cava)/1/1
+#ENDIF

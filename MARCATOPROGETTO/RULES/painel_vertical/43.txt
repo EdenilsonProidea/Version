@@ -1,0 +1,109 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PAINEL PAREDE VERTICAL
+COMMENTI=
+CODICE=
+POSMODE=2
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,ESP_PRAT,,,,,,,,,,1
+T,_COREX,,,,$(esp_prat:3)[$(_corex:12)]!!0,,,,,,4
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,4
+T,COR,,,,$(COR:1)==$(_Corex:8),,,,,,,,1=0
+T,SUPORTEPRAT,,,,,,,,,,4
+M,NSupCost,,$(SUPORTEPRAT:4)>0,N°Suporte,,,,1
+T,SENTIDOVEIO,,,,,,,,,,4
+T,TIPOPINTURA,,$(COR:7)!! | $(COR:19)!!,,,,,,,,4
+A,sag,,,Perfil?,,,,,,,7,,1=0
+Z,BFRE,,,Borda Frente?,,,,,,,8
+Z,BTRA,,,Borda Atras?,,,,,,,8
+Z,BESQ,,,Borda Cima?,,,,,,,8
+Z,BDIR,,,Borda Baixo?,,,,,,,8
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0 & 1=0,Obs Nota,,,,,,,4
+G,VAROCULTE
+T,_montado
+
+[GRAFICA]
+INICIA
+
+GESTAOMEDIDA
+SUPORTEPRAT
+
+#IF $(COR:0)==REAPR
+   #LETV BFRE=0
+   #LETV BTRA=0
+   #LETV BESQ=0
+   #LETV BDIR=0
+#ENDIF
+
+#LET P=$(ESP_PRAT:3)
+#LETV _corfamilia=$(_cprat:10)
+
+#IF $P>=18
+   ilu_tampover,usagrapa=1,MACRO=ILU_TAMPO_VER,SA=3,A=$A-6  //,SA=$(ALED:0)+80,L=$(ALED:0),P=$(PLED:0),az=90,ax=90
+#ENDIF
+
+#IF $(SENTIDOVEIO:0)=2
+   // VEIO HORIZONTAL
+   282,SA=$A,L=$A,A=$L,AZ=90,X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(BDIR:0)/$(BESQ:0)/$(BFRE:0)/$(BTRA:0),X8=$(SUPORTEPRAT:2)/$(TIPOPINTURA:1)  //PAINEL HORIZONTAL PAREDE
+   #LET comprimento=$L
+   #LET largura=$a
+#ELSE
+   // VEIO VERTICAL
+   282,X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(BDIR:0)/$(BESQ:0)/$(BFRE:0)/$(BTRA:0),X8=$(SUPORTEPRAT:2)/$(TIPOPINTURA:1)  //PAINEL HORIZONTAL PAREDE
+   #LET comprimento=$a
+   #LET largura=$l
+   // ilu_tampover,MACRO=ILU_TAMPO_VER
+#ENDIF
+
+#IF $(COR:5)>0
+   #IF $(comprimento)>$(COR:5)
+      #LETS idlogerros=$(idlogerros)71^$(cor:1);
+   #ENDIF
+#ENDIF
+#IF $(COR:6)>0
+   #IF $(largura)>$(COR:6)
+      #LETS idlogerros=$(idlogerros)72^$(cor:1);
+   #ENDIF
+#ENDIF
+
+!COMMENTO1 $(BORDAPRAT:2) $(SUPORTEPRAT:2)- $(TIPOPINTURA:2)
+#IF $(INFOPECA)!!
+   !COMMENTO4 LED=$(INFOPECA)
+#ENDIF
+
+#IF $L<150 | $A<150
+   #IF $L<200 & $A<200
+      #LETS idlogerros=$(idlogerros)133;
+   #ENDIF
+#ENDIF
+
+LOGERROS
+
+
+//ilu_caixa
+
+// 281
+
+//201

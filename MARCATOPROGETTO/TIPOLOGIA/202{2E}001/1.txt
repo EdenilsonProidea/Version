@@ -1,0 +1,5 @@
+{ 202.001
+   *AZZERA*            =0
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/1/$(canal)/$(cava)/1/1/0/0/0/0/0/$(FITARSOVISTA:2)
+   ALIAS               =#201
+}

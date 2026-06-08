@@ -1,0 +1,14 @@
+#LOADVAR _tpcaixa _tpcaixa $(XX9:0)
+#IF $(tipo)=201 #LET f=2
+#IF $(tipo)=202 #LET f=1
+
+#IF $(XX8:5)=0 & $(_TPCAIXA:9)[3;2]!0 // SUPERIOR PENSIL
+   $(F)	FF	X={$(xa)-$(xl)-25} Y={51} df=10 pf=11
+   $(F)	FF	X={$(xa)-$(xl)-25} Y={51+32} df=10 pf=11
+#ENDIF
+
+#IF $(_TPCAIXA:9)=1 & $(_TPCAIXA:17)>0 // inferior CANTONEIRA
+   $(f)	FF	X={$(XA)-18} Y=44 DF=3 PF=3
+   $(f)	FF	X={$(XA)-18-20} Y=44 DF=3 PF=3
+   $(f)	FF	X={$(XA)-28} Y=86 DF=3 PF=3
+#ENDIF

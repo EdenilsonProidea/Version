@@ -1,0 +1,56 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=UBIK_SAP_INCLI.erg
+COMMENTI=
+CODICE=
+POSMODE=20
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=5
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,_corcx
+T,_tpSuppUE
+T,_tpSuppUD
+T,_corsuppe,,,,$(_corsuppe:0)=$(_tpSuppUE:10),,,,,,,,1=0
+T,_corsuppd,,,,$(_corsuppd:0)=$(_tpSuppUd:10),,,,,,,,1=0
+Z,Div,,,Divisória?
+T,cor_sup_sap,,$(Div:0)=1
+
+[GRAFICA]
+#LET lprat=$[ex;$(_PLX5);/;1]
+#LET AFPRATL=0
+#LET AFPRATP=0
+#LET PPRATINC=505
+#LET ESPRAT=25
+#MSG $(lprat:0)
+#LET L=$(lprat:0) // <c21068>
+
+#LET angsap=18
+#LET sppsap=sin($(angsap))*$(esprat:0)
+
+SAPINC_1_U,SA=$(AFPRATA),SP=0,L=$l,A=$A,P=$P,AX=-$(angsap),/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_CORFR=$(_CORFR:1);_CORDIVSP=$(_CORDIVSP:1)/$(TEXTODIVISIORAS)
+
+#IF $(_tpSuppUE:3)>0 & $(_tpSuppUE:3)<4
+   ubik_suporte_prat,_corsupp=$(_corsuppe),SL=-$(_tpSuppUE:6),SA=0,SP=0,L=$(_tpSuppUE:6),A=$(_tpSuppUE:7),P=$(_tpSuppUE:8),_TPSUPPU=$(_TPSUPPUE),COD=$(_tpSuppUE:5)/linha=$(modello:0),AX=-$(angsap)
+#ENDIF
+
+#IF $(_tpSuppUD:3)>0 & $(_tpSuppUD:3)<4
+   ubik_suporte_prat,_corsupp=$(_corsuppd),SL=$(lprat),SA=0,SP=0,L=$(_tpSuppUD:6),A=$(_tpSuppUD:7),P=$(_tpSuppUD:8),_TPSUPPU=$(_TPSUPPUD),COD=$(_tpSuppUD:5)/linha=$(modello:0),AX=-$(angsap)
+#ENDIF
+
+// 201

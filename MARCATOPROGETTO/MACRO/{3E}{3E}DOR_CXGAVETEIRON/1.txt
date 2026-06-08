@@ -1,0 +1,88 @@
+// <C17101>
+#IF $(_placer)=1 // ESTA DENTRO DE UM ARMARIO
+   #LET pdivhg=$p
+   // #MSG $(ENCHE)-- $(enchd)
+   // 318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+   // #MSG $l-$(ENCHD)$(eslat:0)
+   // #MSG $(ENCHE) & $(enchd)
+   #IF $(ENCHE)>0 & $(enchd)>0
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+      !QUOTA9 ($(ENCHE),0,$P),($L-$(ENCHD),0,$P),,80
+      !QUOTA9 (0,0,$P),($(ENCHE),0,$P),,80
+      !QUOTA9 ($L-$(ENCHD),0,$P),($L,0,$P),,80
+   #ELSEIF $(ENCHE)= & $(enchd)=
+      // #MSG $(ESLATGAV:0)
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-2*$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #ELSEIF $(ENCHE)>0 & $(enchd)=
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-2*$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+      !QUOTA9 ($(ENCHE),0,$P),($L,0,$P),,80
+      !QUOTA9 (0,0,$P),($(ENCHE),0,$P),,80
+   #ELSEIF $(ENCHE)= & $(enchd)>0
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+      !QUOTA9 (0,0,$P),($L-$(ENCHD),0,$P),,80
+      !QUOTA9 ($L-$(ENCHD),0,$P),($L,0,$P),,80
+   #ENDIF
+   // 318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #IF $(ENCHE)>0
+      #LET lench=$(ENCHE)
+      319,SP=$p-{$(AFENCHP:0)+$(ESENCHGAV:0)},L={$(LENCH)},X5=1  // enchimento gaveteiro
+   #ENDIF
+   #IF $(enchd)>0
+      #LET lench=$(enchd)
+      319,SL=$l-1*($(lench)),SP=$p-{$(AFENCHP:0)+$(ESENCHGAV:0)},X5=1,L={$(LENCH)}  // enchimento gaveteiro
+   #ENDIF
+   #IF 1==0 // Comentado gestão do gaveteiro padrão ideamoveis  <c23341>
+      325  // Travessa Horizontal Gaveteiro
+      325,SP=$P-$(PTRAGAV:0) // Travessa Horizontal Gaveteiro
+      325,SA=$A-$(ESTRAGAV:0)  // Travessa Horizontal Gaveteiro
+      325,SP=$P-$(PTRAGAV:0),SA=$A-$(ESTRAGAV:0) // Travessa Horizontal Gaveteiro
+   #ELSE // Adicionado gestão padrão Marcato <c23341>
+      323,SA=$A-$(PTRAGAV:0)  // Travessa Vertical Gaveteiro Dormitório
+      323,SA=50  // Travessa Vertical Gaveteiro Dormitório
+   #ENDIF
+   403,x1=201,sp=0,p=$p,SA=$(afinalgaveteiro:0)+$(ABASE:0),A=$a-1*($(AFINAL:0)+$(ABASE:0))  //Placer
+#ELSE
+   #LET pdivhg=$p
+   // #MSG $(ENCHE)-- $(enchd)
+   // 318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+   // #MSG $l-$(ENCHD)$(eslat:0)
+   // #MSG $(ENCHE) & $(enchd)
+   #IF $(ENCHE)>0 & $(enchd)>0
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #ELSEIF $(ENCHE)= & $(enchd)=
+      // #MSG $(ESLATGAV:0)
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-2*$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #ELSEIF $(ENCHE)>0 & $(enchd)=
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-2*$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #ELSEIF $(ENCHE)= & $(enchd)>0
+      318,SL=$(ENCHE),P=$p //Lateral Gaveteiro
+      318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #ENDIF
+   // 318,SL=$l-$(ENCHD)-$(ESLATGAV:0),P=$p // Lateral Gaveteiro
+   #IF $(ENCHE)>0
+      #LET lench=$(ENCHE)
+      319,SP=$p-{$(RECUO_ENGROSSO_P:0)+$(ESENCHGAV:0)},L={$(LENCH)},X5=1  // enchimento gaveteiro
+   #ENDIF
+   #IF $(enchd)>0
+      #LET lench=$(enchd)
+      319,SL=$l-1*($(lench)),SP=$p-{$(RECUO_ENGROSSO_P:0)+$(ESENCHGAV:0)},X5=1,L={$(LENCH)}  // enchimento gaveteiro
+   #ENDIF
+   #IF 1==0 // Comentado gestão do gaveteiro padrão ideamoveis  <c23341>
+      325  // Travessa Horizontal Gaveteiro
+      325,SP=$P-$(PTRAGAV:0) // Travessa Horizontal Gaveteiro
+      325,SA=$A-$(ESTRAGAV:0)  // Travessa Horizontal Gaveteiro
+      325,SP=$P-$(PTRAGAV:0),SA=$A-$(ESTRAGAV:0) // Travessa Horizontal Gaveteiro
+   #ELSE // Adicionado gestão padrão Marcato <c23341>
+      323,SA=$A-$(PTRAGAV:0)  // Travessa Vertical Gaveteiro Dormitório
+      323,SA=50  // Travessa Vertical Gaveteiro Dormitório
+   #ENDIF
+#ENDIF
+
+!QUOTA9 (0,0,$P),($L,0,$P),,0

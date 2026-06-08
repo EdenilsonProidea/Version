@@ -1,0 +1,10 @@
+#IF $(_TPCAIXA:3)=11  // SUPERIOR DIVIDIDO
+   209.003,L=($(LAGR)/2-$(ESLAT:0))-2*$(RED_INTM:0) //PRATELEIRAS WOOD
+   209.003,SL=$(LAGR)/2+$(ESLAT:0),L=($(LAGR)/2-$(ESLAT:0))-2*$(RED_INTM:0) //PRATELEIRAS WOOD
+#ELSEIF  $(_TPCAIXA:9)=2 & $(ltot)>1200
+   #LET tmp=$(LAGR)/2-$(eslat:0)/2-2*$(RED_INTM:0)
+   209.003,L=$(tmp),C1=3,C2=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),X3=$(curbox)/W,X6=ACESSORIOS\$(_INT:5)/50;50;50;50;,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/0/0,X8=$(jobfixprat:0)/$(codfixprat:0)/$(distfixprat:0)/$(ISCLOSETLIGHT:0)/wood,X9=$(_tpcaixa:1)/$(_corwood:1)/$(TPFIX:1)  // PRATELEIRAS WOOD
+   209.003,SL=$(tmp)+$(eslat:0)+$(RED_INTM:0)*2,L=$(tmp),C1=3,C2=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),X3=$(curbox)/W,X6=ACESSORIOS\$(_INT:5)/50;50;50;50;,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/0/0,X8=$(jobfixprat:0)/$(codfixprat:0)/$(distfixprat:0)/$(ISCLOSETLIGHT:0)/wood,X9=$(_tpcaixa:1)/$(_corwood:1)/$(TPFIX:1)  // PRATELEIRAS WOOD
+#ELSE
+   209.003,C1=3,C2=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),X3=$(curbox)/W,X6=ACESSORIOS\$(_INT:5)/50;50;50;50;,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/0/0,X8=$(jobfixprat:0)/$(codfixprat:0)/$(distfixprat:0)/$(ISCLOSETLIGHT:0)/wood,X9=$(_tpcaixa:1)/$(_corwood:1)/$(TPFIX:1)  // PRATELEIRAS WOOD
+#ENDIF

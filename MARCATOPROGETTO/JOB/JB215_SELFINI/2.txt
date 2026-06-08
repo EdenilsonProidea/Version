@@ -1,0 +1,14 @@
+// ini <C23498>
+#IF $(xx3:3)[501;502;503]!0
+   #LET PF=12
+   #IF $(XX10:8)==S | $(XX10:8)==I
+      2	MA	 X=0 Y=0 NM=CANAL_TOPO_$(XX10:8) PARM=PF@$(PF) KO_ZERO=1
+   #ELSE
+      #LET XI=30
+      #LET XF={$(XA)-30}
+      #LET YI=$(XL)
+      #LET YF=$(XL)
+      2	MA	 X=0 Y=0 NM=CANAL_TOPO_$(XX10:8) PARM=PF@$(PF)^XI@$(XI)^YI@$(YI)^XF@$(XF)^YF@$(YF) KO_ZERO=0
+   #ENDIF
+#ENDIF
+// fim

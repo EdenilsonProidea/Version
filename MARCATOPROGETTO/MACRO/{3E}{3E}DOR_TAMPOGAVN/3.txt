@@ -1,0 +1,13 @@
+#IF $(_placer)=1 // ESTA DENTRO DE UM ARMARIO
+   #IF $(BASESUPERIORGAV:0)=1
+      303.006,SL=$(red_intm:0),SA=$(afinalgaveteiro:0),L=$l-$(red_intm:0)*2,A=$(ESPTAMPOGAV:3),P=$(p1)+$(INCRTAMPOGAV:0)+30,C1=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90,C2=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90  //TAMPO DORMITORIO  // Adicionado +30 na profundidade para o incremento do tampo ficar igual o do gav comum <c23341>
+   #ENDIF
+   403,x1=201,sp=0,p=$p,SA=$(afinalgaveteiro:0)+$(ABASE:0),A=$a-1*($(AFINALGAVETEIRO:0)+$(ABASE:0)) //Placer
+#ELSE
+   //#MSG $(red_intm:0)-$(afinalgaveteiro:0)-$l-$p
+   // GAVETEIRO AVULSO
+   #IF $(BASESUPERIORGAV:0)=1
+      303.006,SL=$(red_intm:0),SA=$(afinalgaveteiro:0),L=$l-$(red_intm:0)*2,A=$(ESPTAMPOGAV:3),P={$(p1)+$(INCRTAMPOGAV:0)},C1=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90,C2=$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)|90  //TAMPO DORMITORIO  // Adicionado +30 na profundidade para o incremento do tampo ficar igual o do gav comum <c23341>
+   #ENDIF
+#ENDIF
+// Alterado a cor dos tampos para _cortampogav em visita a pedido do cliente

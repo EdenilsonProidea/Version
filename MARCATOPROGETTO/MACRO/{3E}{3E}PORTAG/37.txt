@@ -1,0 +1,34 @@
+!PARAMETRI DOBRADICADIF=0 // nova gestão dobradiça com seleção por subregra unida a _dobradif - ver continuação dentro macro dobradiça
+#IF $(lfre)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1>$(LMAXPORTAABRIR:0)
+   #IF $(CANTOR:0)=1 // logerro adicionado pois não pode ter 2 portas de giro em canto L cozinha // Alterado a validação $(_tpfr:3)=65 em visita, não é utilizado esse frontal
+      // 1. Largura máxima módulo duas portas 1300 mm.
+      // 2. Largura mínima para entrar duas portas 1151 mm.
+      #IF $(LTOT)>1300
+         #LETS idlogerros=$(idlogerros)86;
+      #ENDIF
+      #LET DUASFRENTES=1
+   #ENDIF
+   #IF $(ATIVADRETACURVA:0)=1
+      portasg_1
+   #ELSE
+      PORTASG
+   #ENDIF
+#ELSE
+   #IF $(_FR:1)!!999
+      dis_2d,TIPO=1
+   #ENDIF
+   #LET LFRE=$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1
+   #IF $(_TPCAIXA:0)==CINCR
+      #IF $(PM)=1
+         //PORTAGE,APE=AGE,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO,_DOBRA=$(_DOBRACANTO)
+      #ELSE
+         PORTAGD,APE=AGD,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO,_DOBRA=$(_DOBRACANTO)
+      #ENDIF
+   #ELSE
+      #IF $(PM)=1
+         PORTAGE,APE=AGE,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO
+      #ELSE
+         PORTAGD,APE=AGD,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO
+      #ENDIF
+   #ENDIF
+#ENDIF

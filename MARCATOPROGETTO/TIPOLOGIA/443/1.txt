@@ -1,0 +1,10 @@
+{ 443   // Ferragens Avulsa
+   *AZZERA*            =0
+   DESCRIZIONE         =Ferragens Avulsa
+   CODICE              =/;_MONTADO=$(_MONTADO:0) /$(ferragens:2) x $(qtd:0)
+   LATO                =9
+   POSIZIONE           =0,50*$(CONTA),0
+   DIMENSIONE          =$L,50,2
+   ORIENTAMENTO        =LAP
+   X9                  =$(ferragens:1)/$(QTD:0)
+}

@@ -1,0 +1,4 @@
+fech_inf
+fech_sup
+fech_esq,macro=acablatdor
+fech_dir,macro=acablatdor

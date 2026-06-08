@@ -1,0 +1,15 @@
+{ 374   // Enchimento Sapateira/Calceiro
+   *AZZERA*            =0
+   DESCRIZIONE         =Enchimento Sapateira/Calceiro
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(lench),$(aench),$(pench)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =PAL
+   DATI                =_corcx
+   X3                  =$(curbox)/E
+   X7                  =N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/0
+   ALIAS               =#374
+}

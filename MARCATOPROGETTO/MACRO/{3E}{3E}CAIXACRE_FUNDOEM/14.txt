@@ -1,0 +1,39 @@
+DOR_CALC_SAG_LAT,plat=$(platesq:0),p=$(platesq:0)
+302,p=$(platesq:0),SL=$l-$(eslat:0)-$(DESC_CANTOR_LAT:0)
+#LET lltfecha=$(PLATdir:0)+$(desc_p_esqMemo:0)-1*($(DESC_CANTOR_LAT:0))-2
+#LET ESPVISTA=18 // <30430P2>
+// 206,SL=$l-$(lltfecha)-$(DESC_CANTOR_LAT:0),SA=0,A=$A,SP=$(platesq:0),L=$(PLATdir:0)+$(desc_p_esqMemo:0)-1*($(DESC_CANTOR_LAT:0))-2 original
+#IF $(_TPFECHESQ:3)>1 // <C30430>
+   #LETS cfr_fixa=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   206,SL=$l-($(lltfecha)+$(DESC_CANTOR_LAT:0)),SA=$(abase),SP=$(platesq:0)-18,L=$(PLATdir:0)+$(desc_p_esqMemo:0)-$(eslat:0)-1*($(DESC_CANTOR_LAT:0))-2,A=$A-2*$(abase),P=18,C1=$(cfr_fixa),C2=$(cfr_fixa)  //Frente fixa canto aproveitavel // <c30278>
+   #IF $(_TPFECHESQ:3)[2;4]!0
+      #IF $(retiravesq:0)=0
+         210,SL=$(lcantoesq:0)-1*($(platdir:0)+$(LARGVESQ:0)+$(espvista:0)),p=$(espvista:0),SA=0,A=$A,SP=$(platesq:0),L=$(LARGVESQ:0)+$(espvista:0),x7=N/N/N/N/0/0/0/1,C1=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),C2=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),X9=$(_tpcaixa:1)/$(_corFR:1)/$(TPFIX:1)
+      #ENDIF
+      #IF $(tpcanto:3)=3 & $(_TPFECHDIR:3)=4
+         #LET LARGVDIR=$(afastmods:0)
+      #ENDIF
+      #IF $(TRAV_DIV_DIR:0)=1  & $(retiravdir:0)=0
+         312,L=$(LARGVDIR:0)+$(espvista:0),SL=$P-1*($(platDIR:0)+$(ESPVISTA:0)),SP=$(platesq:0)+$(LARGVDIR:0)+$(espvista:0),AY=90
+         //   312,L=$(desc_p_DIROR:0)+7,SL=$P-$(platDIR:0),SP=$(platDIR:0)+$(desc_p_DIROR:0)+$(ESLAT:0),AY=90
+      #ENDIF
+   #ELSE
+      210,SL=$l-$(lltfecha)-$(DESC_CANTOR_LAT:0),p=$(espvista:0),SA=0,A=$A,SP=$(platesq:0),L=100,x7=N/N/N/N/0/0/0/1,C1=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),C2=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),X9=$(_tpcaixa:1)/$(_corFR:1)/$(TPFIX:1)
+      #IF $(TRAV_DIV_DIR:0)=1  & $(retiravdir:0)=0
+         312,L=$(desc_p_DIROR:0)+7,SL=$P-$(platDIR:0),SP=$(platesq:0)+$(desc_p_DIROR:0)+$(ESLAT:0),AY=90
+         //   312,L=$(desc_p_DIROR:0)+7,SL=$P-$(platDIR:0),SP=$(platDIR:0)+$(desc_p_DIROR:0)+$(ESLAT:0),AY=90
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(TPLATARM:0)=2
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATesq:0),L=$L-($(ESLAT:0)+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(eslat:0)
+   301,p=$(platesq:0),SL=0
+#ELSE
+   #IF $(TPCANTO:3)=3 & $(_TPFECHESQ:3)=4// lado largura <C30436>
+      #IF {$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0))}>1275
+         #LET IDLOGERROS=$(IDLOGERROS)119;
+      #ENDIF
+   #ENDIF
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATesq:0),L=$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(eslat:0)/2,ultimomodulo=1
+#ENDIF
+logerros

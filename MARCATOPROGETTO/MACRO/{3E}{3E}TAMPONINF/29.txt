@@ -1,0 +1,40 @@
+#LET istampoinf=1  //<C19598>
+#IF $(_TPCAIXA:9)=2
+   // Adicionado incrementos frontal, atras, esq e dir customizados - feito em visita <c23846>
+   #IF $(_tampinf:3)=2
+      636,sa=-$(espaina:0),P=$P+$(incpainTI:0),SP=-$(incpainTI:0),sl=-($(acr_tamp_esq)+$(incpainEI:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0))  // Vista Cozinha
+   #ELSEIF $(_tampinf:3)=1
+      #IF $(AVANCAFRENTE:0)=1
+         // tamponamento horizontal
+         636,SL=-($(acr_tamp_esq)+$(incpainEI:0)),SA=-$(espaina:0),SP=-$(incpainTI:0),L=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0)),P=$P+$(incpainTI:0)+$(incpainFI:0)  //Vista Cozinha
+      #ELSE
+         // tamponamento horizontal
+         636,sa=-$(espaina:0),P=$P+$(INC_PAIN_ACAB:0)+$(incpainFI:0)+$(incpainTI:0),SP=-$(incpainTI:0),sl=-($(acr_tamp_esq)+$(incpainEI:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0))  // Vista Cozinha
+      #ENDIF
+   #ENDIF
+#ELSE // inferior e coluna feito em acesso 05.10
+   #IF $(_tampinf:3)=2
+      636,sa=-$(espaina:0),P=$P+$(incpainTI:0),SP=-$(incpainTI:0),sl=-($(acr_tamp_esq)+$(incpainEI:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0))  // Vista Cozinha
+   #ELSEIF $(_tampinf:3)=1
+      #IF $(_fr:6)[104;105;106;117;201;202] // ALEX VISITA - FEITO COMPATIBILIDADE CATÁLOGO ANTIGO
+         #LOADVAR _MOLD _CORFR $(_CORFR:1)
+         #LETV _TPMOLD=002
+         !SAGOMA PERFIL $(_tpmold:6)
+         !SAGOMA percor 0,{$P+$(ESFRE)},$l+$(rodaespai),{$P+$(ESFRE:0)}
+         269,SL=$(Srodaespai),SP=$(SProdaespai)  //Moldura
+      #ELSE
+         #IF $(AVANCAFRENTE:0)=1
+            // tamponamento horizontal
+            636,SL=-($(acr_tamp_esq)+$(incpainEI:0)),SA=-$(espaina:0),SP=-$(incpainTI:0),L=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0)),P=$P+$(incpainTI:0)+$(incpainFI:0)  //Vista Cozinha
+         #ELSE
+            // tamponamento horizontal
+#IF {$P+$(INC_PAIN_ACAB:0)+$(incpainFI:0)+$(incpainTI:0)}>$(COR:6)
+#LETS IDLOGERROS=$(IDLOGERROS)72^$(COR);
+// LOGERROS
+#ENDIF
+            636,sa=-$(espaina:0),P=$P+$(INC_PAIN_ACAB:0)+$(incpainFI:0)+$(incpainTI:0),SP=-$(incpainTI:0),sl=-($(acr_tamp_esq)+$(incpainEI:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainEI:0)+$(incpainDI:0))  // Vista Cozinha
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF
+// 203

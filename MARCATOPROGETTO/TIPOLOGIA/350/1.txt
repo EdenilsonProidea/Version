@@ -1,0 +1,9 @@
+{ 350   // MANTA GAVETA
+   *AZZERA*            =0
+   DESCRIZIONE         =MANTA GAVETA
+   CODICE              =000MANTAGAV /;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   DIMENSIONE          =$l-$(espgaveta)*2+$(canalGaveta)*2,$(esPfundogaveta),$p-$(espgaveta)*2+$(canalGaveta)*2
+   ORIENTAMENTO        =LPA
+   X8                  =$(canalgaveta:0)/_/$(_mantagav:3)/$(_mantagav:1)/$(_tpgav:1)
+}

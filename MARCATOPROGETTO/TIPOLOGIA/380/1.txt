@@ -1,0 +1,13 @@
+{ 380   // Base Fechamento Inferior
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Fechamento Inferior
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slfechinf),$(arodape:0)-$(es),{$p-$(sobrepbasefech:0)}
+   DIMENSIONE          =$(lfechinf),$(es),{$(sobrepbasefech:0)+$(_tpfech:5)}
+   COLORI              =$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5),$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)/I
+   X7                  =N/N/N/N/0/0/1/1/0/0/1/1
+   X9                  =$(_tpcaixa:1)/$(_corex:1)/$(TPFIX:1)
+   ALIAS               =#380
+}

@@ -1,0 +1,12 @@
+{ 285   // puxador parte da porta
+   *AZZERA*            =0
+   DESCRIZIONE         =puxador parte da porta
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =$(ppxl),$(ppxa),$(ppxp)
+   DIMENSIONE          =0.001,0.001,0.001
+   COLORI              =$(_corpux:3)|$(.percorso)\foto\madeira\$(_corpux:4)|$(_corpux:5),$(_corpux:3)|$(.percorso)\foto\madeira\$(_corpux:4)|$(_corpux:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =$(_corpux:1)
+}

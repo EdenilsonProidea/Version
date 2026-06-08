@@ -1,0 +1,20 @@
+!PARAMETRI ALT=$A
+//prats
+calc_n_prat
+#LETS TRABALHOAT=N
+
+#IF $(rr)>0
+   #FOR $1:$(rr),,idcalceiro
+      #IF $(disativadraggerprat)=1
+         CALCEIRO_TELE,SA={INT($(ALT)/($(RR)+1)*$(idcalceiro))},L=$l,A=$(_INT:7),P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1)
+      #ELSE
+         #IF $(posprata$(_ctx):$(idcalceiro))>0
+            calceiro_TELE,SA=INT($(posprata$(_ctx):$(idcalceiro))),L=$l,A=$(_INT:7),P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1)
+            402,SL=$l/2,SA=INT($(posprata$(_ctx):$(idcalceiro))),SP=$p+10,L=$(posprata$(_ctx):$(idcalceiro)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(idcalceiro)+1},X4=1,X5=3  //DRAGGER
+         #ELSE
+            calceiro_TELE,SA=INT($(ALT)/($(RR)+1)*$(idcalceiro)),L=$l,A=$(_INT:7),P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1)
+            402,SL=$l/2,SA={INT($(ALT)/($(RR)+1)*$(idcalceiro))},SP=$(pprat:0)+10,L=INT($(ALT)/($(RR)+1)*$(idcalceiro)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(idcalceiro)+1},X4=1,X5=3  //DRAGGER
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+#ENDIF

@@ -1,0 +1,15 @@
+#LET istampoinf=1  //<C19598>
+#IF $(_TPCAIXA:9)=2
+   #IF $(_tampinf:3)=2
+      636,sa=-$(espaina:0),P=$P+$(incpainTI:0),SP=-$(incpainTI:0),sl=-$(acr_tamp_esq)-$(incpainEI:0),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir))  // Vista Cozinha
+   #ELSEIF $(_tampinf:3)=1
+      #IF $(AVANCAFRENTE:0)=1
+         // tamponamento horizontal
+         636,SL=-$(acr_tamp_esq),SA=-$(espaina:0),SP=-$(incpainTI:0),L=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)),P=$P+$(incpainTI:0)  //Vista Cozinha
+      #ELSE
+         // tamponamento horizontal
+         636,sa=-$(espaina:0),P=$P+$(INC_PAIN_ACAB:0)+$(incpainFI:0)+$(incpainTI:0),SP=-$(incpainTI:0),sl=-$(acr_tamp_esq),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir))  // Vista Cozinha
+      #ENDIF
+   #ENDIF
+#ENDIF
+// 203

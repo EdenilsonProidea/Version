@@ -1,0 +1,15 @@
+#M JOB_INICIA_TPFIX
+#IF $(pl)>0 #LET f=2 #LET f=1
+#IF $(sx1)>0  & $(ay)!0
+   #LET pp=$(sx1)
+#ENDIF
+
+#IF $(sx2)>0 & $(dp)>{$(xp)+150}
+ENTREI AQUI
+   #LET dp=$(sx2)
+#ENDIF
+
+#IF $(PP)+$(DP)>$(XP)
+ENTREI AQUI 22222
+   #LET DP={$(XP)-$(PP)}
+#ENDIF

@@ -1,0 +1,57 @@
+//#LET afriso=3
+#LET AFRISO=$(LFRISO:0) // <c22010>
+#IF 1=0
+   #IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+      // reset dos frisos quando muda o numero de frisos
+      #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+      #LETS parfrisos=
+   #ENDIF
+   // #LETS parfrisos=100;300;400
+   #LETS parfrisosscript=
+   #FOR $1:$(nfrisos:0)
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I))|
+   #ENDFOR
+   #LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+   #LETS xpfrente=frente_friso_h.xp
+   #LET ladojobfrente=1
+   #LETS nomejobfrente=FRISOH
+   #LETS parjobfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+   // .frente_friso_h.xp
+#ENDIF
+
+#LET calcvaopai=$a/($(nfrisos:0)+1)
+#IF $(iniciofrisol:0)>0
+   #LET calcinifri=$(calcvaopai:0)+$(iniciofrisol:0)
+#ENDIF
+#IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+// #LETS parfrisos=100;300;400
+#LETS parfrisosscript=
+#FOR $1:$(nfrisos:0)
+   #IF $(iniciofrisol:0)>0 & $(parfrisos:$(I))=0
+      #IF $(I)=1
+         #LET parfrisos:$(I)=$(iniciofrisol:0)
+      #ELSE
+         #IF $(ESPACOFRISOH:0)>0
+            #LET parfrisos:$(I)=$(iniciofrisol:0)+$(ESPACOFRISOH:0)*($(I)-1)
+         #ELSE
+            #LET parfrisos:$(I)=$(iniciofrisol:0)+$(calcvaopai:0)*($(I)-1)
+         #ENDIF
+      #ENDIF
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I))|
+   #ELSE
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I))|
+   #ENDIF
+#ENDFOR
+#LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+#LETS xpfrente=frente_friso_h.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOH
+#LETS parjobfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+625.001,x7=N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0 //<c14604> // Painel Frontal Home veio horizontal FRISADO
+_fr_friso_h_drag,sa=0,a=$A
+#LETV old_nfrisos$(_ctx)=$(nfrisos$(_ctx):0)
+// 625

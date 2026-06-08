@@ -1,0 +1,29 @@
+#IF $(_SISCORRER:15)=0 // NAO E CINEX
+   #SELECT $(_SISCORRER:9)
+   #CASE 1
+      // sistema interno trilho sobreposto so em baixo
+      // **** so desenho *****
+      413  // kit carrinho interno
+      413,sl=$(lfre)-170  // kit carrinho interno
+      413,sa=$(afre),x8=sistemas\carrinho_interno_encaixe_sup.3ds,a=20,sp=0,p=$(esfre),l=80
+      413,sa=$(afre),x8=sistemas\carrinho_interno_encaixe_sup.3ds,a=20,sp=0,p=$(esfre),l=80,sl=$(lfre)-130  // kit carrinho interno
+      // **** fim desenho *********
+      // **** insere codigo carrinho *****************
+      414  // kit carrinho // <c26363>
+      // **** fim insere codigo carrinho *************
+   #CASE 2
+      // sistema interno trilho sobreposto  em baixo e em cima
+      // **** so desenho *****
+      413  // kit carrinho interno
+      413,sl=$(lfre)-170  // kit carrinho interno
+      413,x8=sistemas\carrinho_interno_encaixe_inf.3ds,az=180,sa=$(afre)+7,sl=50+120
+      413,sl=$(lfre)-170+120,x8=sistemas\carrinho_interno_encaixe_inf.3ds,az=180,sa=$(afre)+7  // kit carrinho interno
+      // **** fim desenho *********
+      // **** insere codigo carrinho *****************
+      414  // kit carrinho // <c26363>
+      // **** fim insere codigo carrinho *************
+   #CASE 3
+      // sistema externo
+     
+   #ENDSELECT
+#ENDIF

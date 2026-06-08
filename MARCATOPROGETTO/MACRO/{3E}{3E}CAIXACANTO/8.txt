@@ -1,0 +1,55 @@
+#LET TIPOCL=$(MODELOCL:3)
+#LET RED_INTM=0
+CAIXA_MONTAGEM // Adicionado em visita
+//#MSG $(TIPOCL:0)
+#IF $(TIPOCL:0)==1
+   CAIXACL1
+#ELSEIF $(TIPOCL:0)==2
+   CAIXACL2
+#ELSEIF $(TIPOCL:0)==3//
+   CAIXACL3
+#ELSEIF $(TIPOCL:0)==4
+   CAIXACL4
+#ELSEIF $(TIPOCL:0)==5
+   CAIXACL5
+#ELSEIF $(TIPOCL:0)==6
+   CAIXACL6
+#ELSEIF $(TIPOCL:0)==7
+   CAIXACL7
+#ELSEIF $(TIPOCL:0)==8
+   CAIXACL8
+#ELSEIF $(TIPOCL:0)==9
+   CAIXACL9
+#ELSEIF $(TIPOCL:0)==10
+   CAIXACL10
+#ELSEIF $(TIPOCL:0)==11
+   CAIXACL11
+#ELSEIF $(TIPOCL:0)==12
+   CAIXACL12
+#ELSEIF $(TIPOCL:0)==13
+   CAIXACL13
+#ELSEIF $(TIPOCL:0)==14
+   CAIXACL14
+#ELSEIF $(TIPOCL:0)==15 // <c22718>
+//   CAIXACL15
+#ENDIF
+FRONTAL
+INICIAINT
+#IF $(_INT:3)[1;8]!0
+   #IF $(TIPOCL:0)==5 | $(TIPOCL:0)==7 | $(TIPOCL:0)==14
+      PRATCANTOLDIV
+   #ELSE
+      PRATCANTOLNEW
+   #ENDIF
+#ELSE
+   _INT
+#ENDIF
+paineis_laterais,p=$(plat1:0),paineldir=0,plat=$(plat1:0),iscanto=1
+#LET inipainlat=$p
+paineis_laterais,sl=$l,p=$(plat2:0),painelesq=0,ay=-90,plat=$(plat2),cantol=1,iscanto=1,l=$(inipainlat:0)
+TAMPSUPINFCL
+#IF $(cantoinfnew:0)=1 // tampo e basamento
+   TAMPOSCL
+#ENDIF
+CAVACLNEW
+LOGERROS

@@ -1,0 +1,24 @@
+#IF $(_fechEsq:3)>0
+   // insere fechamento lateral
+   fech_ini_sagle // <23346>
+   #SELECT $(_fechEsq:3)
+   #CASE 1
+      // distanciador
+      fech_paredee2
+   #CASE 2
+      // LATERAL
+      fechamento_avista
+   #CASE 3
+      // ACABAMENTO com distanciador
+      fechamento_parede
+   #CASE 4
+      // LATERAL fechamento duplo
+      fechamento_duplo
+   #CASE 5
+      // LATERAL fechamento triplo
+      fechamento_triplo
+   #CASE 6
+      // LATERAL fechamento quadruplo
+      fechamento_quad
+   #ENDSELECT
+#ENDIF

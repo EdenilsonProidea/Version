@@ -1,0 +1,16 @@
+{ 324   // Base intermediaria (dormitorio) Divisor Horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Base intermediaria (dormitorio) Divisor Horizontal
+   CODICE              =/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$(ESCOS:0)+$(AFCOS:0)
+   DIMENSIONE          =$L,$(ESDIVH:0),$P-1*($(ESCOS:0)+$(AFCOS:0)+$(RED_F_DIVH:0))
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_corcx
+   X3                  =$(curbox)/INT
+   X4                  =/$(PDIVH:0)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(CANAL)/0/1/1/0/0/0/1//$(FITARSOVISTA:2)
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIXPRAT:1)/$(_corcx:1)
+   ALIAS               =#203
+}

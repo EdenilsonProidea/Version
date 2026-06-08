@@ -1,0 +1,5 @@
+#LOADVAR _RE _INT $(X9:0)
+#MSG $(X9:2)
+#IF $(X9:2)==60
+   8581,0
+#ENDIF

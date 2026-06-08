@@ -1,0 +1,28 @@
+#LET DOBRACOSTUMIZADA=0
+#IF $(AFRE)<=$(ALTMAX2DOBGIRO)
+   #LET ndob=2
+#ELSEIF $(AFRE)<=$(ALTMAX3DOBGIRO)
+   #LET ndob=3
+#ELSEIF $(AFRE)<=$(ALTMAX4DOBGIRO)
+   #LET ndob=4
+#ELSEIF $(AFRE)<=$(ALTMAX5DOBGIRO)
+   #LET ndob=5
+#ELSE
+   #LET ndob=6
+#ENDIF
+#IF $(fr_avulsa)=1
+   distdob_fr_avulsa
+#ENDIF
+
+// GESTÃO DO CATÁLOGO ANTIGO PARA INTERNO COM GAVETA NAS TORRES
+#IF $(_INT_0000:3)[41;42;43;44] & $(frentevenda)=0
+   #LET DOBRACOSTUMIZADA=1
+   // para gaveteiros
+   #IF $(afre:0)<1750
+      #LETS VETTDOBRA=313;{313+623};{$(afre:0)-96}
+      #LET ndob=3
+   #ELSE
+      #LETS VETTDOBRA=313;{313+623};{313+623+474};{$(afre:0)-96}
+      #LET ndob=4
+   #ENDIF
+#ENDIF

@@ -1,0 +1,69 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=_DIVISORD.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=201
+SPEC=
+DIVIDER=MOD_STR,VAO_DIVISORd,0,0,0,0,$(ESDIVH:0),$(ESDIVV:0)
+TRADFLAGS=
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIADOR
+T,espessura,espdiv,,,,!divider,,,,,1
+T,_CORCX,,,,,,,,,,4
++,VAO_DIVISORD
+G,VAROCULTE
+
+[GRAFICA]
+#LET escos=0
+#LET afcos=0
+#IF $(LOCP_BX1)=1
+   // CLOSET AVANCADO
+   #LET RED_F_DIVH=0
+   #LET RED_F_DIVV=0
+#ENDIF
+
+#IF $(_placer)=1
+   #IF $(_primocaricamento)=1
+      // variantesque vem de default do fechamento mas que é possivel trocar
+      #FOR $(_plx7:0)
+         #LETS tm1=$[ex;$(i);=;1]
+         #LETS tm2=$[ex;$(i);=;2]
+         #LETV $(tm1)=$(tm2)
+      #ENDFOR
+   #ENDIF
+   // gestao para fechamento // var fixas da fechamento - nao é possivel trocar no modulo
+   #FOR $(_plx8:0)
+      #LETS tm1=$[ex;$(i);=;1]
+      #LETS tm2=$[ex;$(i);=;2]
+      #LETV $(tm1)=$(tm2)
+   #ENDFOR
+#ENDIF
+#LETS _siscorrer*=
+
+DOR_INICIA
+
+// MOD_STR
+// VAO_DIVISORD
+
+// _INT
+
+// calc_af_kit
+
+// kitdobradiça

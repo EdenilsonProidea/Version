@@ -1,0 +1,38 @@
+{ TP_LED
+   *AZZERA*            =0
+   DESCRIZIONE         =
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 6030TIPO 1200PREVIEW 1200COD 25203d 3255diml 1200dima 1200dimp 1200COD PARA ORÇAMENTO 2640NOME 1200MODELO 1275habilita  posição 1920cod valor add unitario 1200cod preco usi 1875somente usinagem 2130TIPO 1 =LED
+TIPO 2 =SPOT
+
+tipo 1 = metro linear 
+tipo 2 = unidade
+coluna 15 = cod estrutura de peça cobrança usinagem
+coluna 16 = somente usinagem se igual a 1
+   { 
+      // ,Descrição                                          ,TI,P,C,3d                                  ,dim,di,dim,COD PA,N,MO,habilit,c,cod p,so
+      01 ,Led Mini Kendo (Linear) - Branco Quente            ,1 , , ,LED_MINI KENDO_BRANCO QUENTE.3ds    ,   ,  ,   ,40720 , ,1 ,1;2;3; , ,8581 ,
+      02 ,Led Mini Kendo (Linear) - Branco Neutro            ,1 , , ,LED_MINI KENDO_BRANCO NEUTRO.3ds    ,   ,  ,   ,44659 , ,1 ,1;2;3; , ,8581 ,
+      03 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Branco ,2 , , ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,58 ,2 ,58 ,50625 , ,2 ,2;     , ,     ,
+      04 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Alumin ,2 , , ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,58 ,2 ,58 ,50626 , ,2 ,2;     , ,     ,
+      05 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Marrom ,2 , , ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,58 ,2 ,58 ,50627 , ,2 ,2;     , ,     ,
+      06 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Preto  ,2 , , ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,58 ,2 ,58 ,50628 , ,2 ,2;     , ,     ,
+      07 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Branco ,2 , , ,LED_SUNRISE_NEUTRO_BRANCO.3ds       ,58 ,2 ,58 ,50629 , ,2 ,2;     , ,     ,
+      08 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Alumin ,2 , , ,LED_SUNRISE_NEUTRO_CINZA.3ds        ,58 ,2 ,58 ,50630 , ,2 ,2;     , ,     ,
+      09 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Marrom ,2 , , ,LED_SUNRISE_NEUTRO_MARROM.3ds       ,58 ,2 ,58 ,50631 , ,2 ,2;     , ,     ,
+      10 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Preto  ,2 , , ,LED_SUNRISE_NEUTRO_PRETO.3ds        ,58 ,2 ,58 ,50632 , ,2 ,2;     , ,     ,
+      11 ,Led Mini Noor (420mm) - Branco N Perfil Branco     ,2 , , ,                                    ,   ,  ,   ,50633 , ,3 ,1;     , ,8581 ,
+      12 ,Led Mini Noor (420mm) - Branco N Perfil Alumin     ,2 , , ,                                    ,   ,  ,   ,50634 , ,3 ,1;     , ,8581 ,
+      13 ,Led Mini Noor (420mm) - Branco N Perfil Marrom     ,2 , , ,                                    ,   ,  ,   ,50635 , ,3 ,1;     , ,8581 ,
+      14 ,Led Mini Noor (420mm) - Branco N Perfil Preto      ,2 , , ,                                    ,   ,  ,   ,50636 , ,3 ,1;     , ,8581 ,
+      15 ,Led Mini Noor (420mm) - Branco Q Perfil Branco     ,2 , , ,                                    ,   ,  ,   ,50637 , ,3 ,1;     , ,8581 ,
+      16 ,Led Mini Noor (420mm) - Branco Q Perfil Alumin     ,2 , , ,                                    ,   ,  ,   ,50638 , ,3 ,1;     , ,8581 ,
+      17 ,Led Mini Noor (420mm) - Branco Q Perfil Marrom     ,2 , , ,                                    ,   ,  ,   ,50639 , ,3 ,1;     , ,8581 ,
+      18 ,Led Mini Noor (420mm) - Branco Q Perfil Preto      ,2 , , ,                                    ,   ,  ,   ,50640 , ,3 ,1;     , ,8581 ,
+      19 ,Canaleta Linea (S/led)                             ,1 , , ,CANALETA+DIFUSOR_LINEA(SEM_LED).3ds ,   ,  ,   ,52830 , ,4 ,1;2;3; , ,8581 ,
+      20 ,Usinagem Mini Kendo (S/Led)                        ,1 , , ,CANALETA+DIFUSOR_LINEA(SEM_LED).3ds ,   ,  ,   ,40720 , ,1 ,1;2;3; , ,8581 ,1
+      21 ,Led Mini Noor (420mm) (S/Led)                      ,1 , , ,                                    ,   ,  ,   ,50633 , ,3 ,1;     , ,8581 ,1
+   }
+}

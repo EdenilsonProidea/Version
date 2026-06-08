@@ -1,0 +1,215 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=DOR_FECHL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 9999999, 999999, 999999
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,_TPCAIXA
+V,iniciafech
+T,TPCANTO,,,,,,,,,,4
+T,TPFIX,,,,,,,,,,3
+C,BASEDIVIDIDA,,$(TPCANTO:3)=2,Base Dividida?,,,,,,,4
+C,maleiro,,,Maleiro?,,,,,,,4
+M,posa_maleiro,,$(maleiro:0)=1,Pos.Alt.Maleiro,,,,,,,4
+C,divcentral,,,Divisor Central?,,,,,,,4
+M,posa_divcentral,,$(divcentral:0)=1,Pos.Alt.Divisor Central,,,,,,,4
+C,mostserra,,,Mostra serra?,,,,,,,4
+T,TpLatArm,,,,,,,,,,4
+C,fundodividido,,$(maleiro:0)=1,Fundo Dividido?,,,,,,,4,,1=0
+T,_TPFUNDOR,,,Tipo Fundo,,,,,,,4
+T,_intL,,,,,,,,,,7
+T,_prat,,$(_intL:3)>0,,,,,,,,7
+T,tpfixprat,,$(_intL:3)>0,,,,,,,,7
+D,posprata,,,,,,,,,,7,,1=0
+-,TEC,,,Te,,,,,,,1
+T,esparm,,,,,,,,,,1
+T,espdivarm,,,,,,,,,,1
+T,espacab,,,,,,,,,,1
+T,espacab2,,,,,,,,,,1
+T,espfundo,,,,,,,,,,1
+-,mat,,,Ma,,,,,,,8
+T,_CORCX,,,Cor Caixa,$(esparm:3)[$(_corcx:12)]!!0 & $(esparm:3)[$(_corcx:12)]!!0,,,,,,8
+T,_corbf,,,,,,,,,,8
+T,_pinturacx,,$(_corcx:9)=1,,,,,,,,8
+T,_corex,,,Cor Tamponamento,$(espacab:3)[$(_corex:12)]!!0 & $(espacab2:3)[$(_corex:12)]!!0,,,,,,8
+T,_pinturaex,,$(_corex:9)=1,,,,,,,,8
+T,_corfu,,,,,,,,,,8
+-,FEsq,,,Fe
+T,_tpfechesq,,,Tipo.Fech.Esq?,,SETDEFAULTFECH,,,,,4
+T,NPORTAESQ,,,Nr. Portas esq,$(nportasesq:1)<=$(_tpfechesq:9),SETDEFAULTCORRERESQ,,,,,4
+M,platEsq,,,Prof.Esquerda?,,,600,,,,4
+T,_tpfresq,,,Frontal Esq,($(_tpFECHESQ:3)=4 & $(_TPFRESQ:1)[$(NPORTAESQ:5)]!0) | ($(_tpFECHESQ:3)!4),,,,,,4
+T,_siscorrer,_siscorreresq,_siscorrer[$(_tpfresq:6)]!,,$(_TPFResq:7)==$(_SISCORREResq:3),,,,,,3
+T,_fechEsq,,,,,,,,,,2
+M,distanciadoresq,,$(_fechEsq:3)=3 | $(_fechEsq:3)=1,Distanciador Lateral esq,,,30,0,,,2
+Z,TRAV_DIV_ESQ,,$(tpcanto:3)=1,Travessa Divisória?,,,,,,,2
+M,desc_p_esq,,,Desc. Parte Esq,,,25,,,,5
+M,INCR_ATRAS,,,Desconto Atras
+-,FEdir,,,Fd
+T,_tpfechdir,,,Tipo.Fech.Dir?,,SETDEFAULTFECH,,,,,4
+T,NPORTADIR,,,Nr. Portas dir,$(nportasdir:1)<=$(_tpfechdir:9),,,,,,4
+M,platDir,,,Prof.Direita?,,,600,,,,4
+T,_tpfrdir,,,Frontal Dir,($(_tpFECHDIR:3)=4 & $(_TPFRDIR:1)[$(NPORTADIR:5)]!0) | ($(_tpFECHDIR:3)!4),,,,,,4
+T,_siscorrer,_siscorrerdir,_siscorrer[$(_tpfrdir:6)]!,,$(_TPFRdir:7)==$(_SISCORRERdir:3),,,,,,3
+T,_fechDir,,,,,,,,,,2
+M,distanciadordir,,$(_fechDir:3)=3 | $(_fechDir:3)=1,Distanciador Lateral dir,,,30|,0,,,2
+Z,TRAV_DIV_DIR,,$(tpcanto:3)=3,Travessa Divisória?,,,,,,,2
+M,desc_p_dir,,,Desc. Parte Dir,,,25,,,,5
+M,INCR_ATRAS,INCR_ATRASD,,Desconto Atras
+-,Acabamentos,,,Ac
+T,Rodateto,,,Rodateto?,,,,,,,9
+M,ARodateto,,$(Rodateto:0)>0,Alt.Rodateto?,,,60,40,,,9
+T,_tpbasArm,,,,,,,,,,2
+M,arodape,,$(_tpbasArm:4)=1,Altura Rodapé,,,100|,,,,2
+T,_pes,,$(_tpbasarm:3)[3;5]!0,,,,,,,,2
+Z,adcrodape,,$(_PES:3)=1,Adiciona rodapé?,,,,,,,2
+M,SLSAPA,,$(_tpbasArm:3)=6,Entre Sapatas
+T,_corpes,,$(_PES:3)=5
+M,arod_pers,,$(_tpbasArm:3)=5,Alt. Basamento,,,,10
+C,basmesq,,$(_tpbasArm:3)=5,Red.Bas.esq.?
+C,basmder,,$(_tpbasArm:3)=5,Red.Bas.Der.?
+Z,BasAuto,,$(_tpbasArm:3)=5,Basamento Auto?
+M,afbasl,,$(_tpbasArm:3)=5,Red.Base Lat?
+M,afbasf,,$(_tpbasArm:3)=5,Red.Base Fre?
+M,BASAESQ,,$(_tpbasArm:3)=5,Bas.esq
+M,BASADIR,,$(_tpbasArm:3)=5,Bas.dir
+T,espessura,_esppearm,,Esp. Rodape?,,,,,,,2
+M,INREPEARMEE,,,Incr Esq Caixa Esq.,,,,,,,8
+M,INREPEARMED,,,Incr Dir Caixa Esq.,,,,,,,8
+M,INREPEARMDE,,,Incr Esq Caixa Dir.,,,,,,,6
+M,INREPEARMDD,,,Incr Dir Caixa Dir.,,,,,,,6
+G,FR_GERAL
+-,db,,$(_tpfechesq:3)=2 | $(_tpfechdir:3)=2
+T,_dobrafech
+D,parfrisos,,,,,,,,,,,,1=0
+D,parfrisosh,,,,,,,,,,,,1=0
+D,parfrisosv,,,,,,,,,,,,1=0
+G,ARML_DIVMOVEL
+D,INCFRENTE,,,,,,,,,,,,1=0
+G,VAROCULTE
+Z,DIVIDICAIXAe1
+Z,DIVIDICAIXAe2
+Z,DIVIDICAIXAe3
+Z,DIVIDICAIXAe4
+Z,DIVIDICAIXAe5
+Z,DIVIDICAIXAe6
+Z,DIVIDICAIXAe7
+Z,DIVIDICAIXAe8
+Z,DIVIDICAIXAe9
+Z,DIVIDICAIXAe10
+Z,DIVIDICAIXAe11
+Z,DIVIDICAIXAe12
+Z,DIVIDICAIXAe13
+Z,DIVIDICAIXAe14
+Z,DIVIDICAIXAe15
+Z,DIVIDICAIXAe16
+Z,DIVIDICAIXAD1
+Z,DIVIDICAIXAD2
+Z,DIVIDICAIXAD3
+Z,DIVIDICAIXAD4
+Z,DIVIDICAIXAD5
+Z,DIVIDICAIXAD6
+Z,DIVIDICAIXAD7
+Z,DIVIDICAIXAD8
+Z,DIVIDICAIXAD9
+Z,DIVIDICAIXAD10
+Z,DIVIDICAIXAD11
+Z,DIVIDICAIXAD12
+Z,DIVIDICAIXAD13
+Z,DIVIDICAIXAD14
+Z,DIVIDICAIXAD15
+Z,DIVIDICAIXAD16
+D,posadob,,,,,,,,,,,,1=0
+D,posadob2,,,,,,,,,,,,1=0
+
+[COMANDI_SETDEFAULTFECH]
+#LETV _TPBASARM=$(_TPFECHesq:10)
+#LETV ARODAPE=$(_TPFECHesq:6)
+#LETV ARODATETO=$(_TPFECHesq:7)
+
+[GRAFICA]
+DOR_FECHL
+
+// prats_L
+
+// FRONTAL
+
+// dor_fechl_cxLs
+
+// 301
+
+//  MALEIRODIV_T
+
+// _fr_1
+
+// Frontal
+
+// MALEIROLINT_FT
+
+// 303
+
+// dor_fechL_canto
+
+// logerros
+
+// MALEIRODIVISOR
+
+// FRONTAL
+
+// LOGERROS
+
+// INICIA
+
+//ilu_caixa
+
+// KITDOBRADIÇA
+
+// 201
+
+// CAIXAESQ_FUNDOEM
+
+// fechamento_pareded
+
+[COMANDI_SETDEFAULTCORRERESQ]
+// 051,1 PORTA CORRER EXTERNA
+// 052,2 PORTAS CORRER EXTERNA
+// 053,3 PORTAS CORRER EXTERNA
+// 054,4 PORTAS CORRER EXTERNA
+// 055,5 PORTAS CORRER EXTERNA
+// 056,6 PORTAS CORRER EXTERNA
+
+#IF $(_TPFECHESQ:3)=4  // PORTA DE CORRER - SETO DEFAULT
+   #LETV _TPFRESQ=$(NPORTAESQ:6)
+#ENDIF
+
+[COMANDI_SETDEFAULTCORRERDIR]
+// 051,1 PORTA CORRER EXTERNA
+// 052,2 PORTAS CORRER EXTERNA
+// 053,3 PORTAS CORRER EXTERNA
+// 054,4 PORTAS CORRER EXTERNA
+// 055,5 PORTAS CORRER EXTERNA
+// 056,6 PORTAS CORRER EXTERNA
+
+#IF $(_TPFECHDIR:3)=4  // PORTA DE CORRER - SETO DEFAULT
+   #LETV _TPFRDIR=$(NPORTADIR:6)
+#ENDIF

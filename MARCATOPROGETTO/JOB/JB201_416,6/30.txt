@@ -1,0 +1,38 @@
+#IF $(PL)>0 #LET F=2 #LET F=1
+#LOADVAR _sisbascdet _sisbascdet $(xp9:0)
+#LOADVAR _sisbasc _sisbasc $(_sisbascdet:19)
+#LET lados_furos=$(_sisbascdet:12)
+// furos na frente
+#LET referencia_superior=1
+#IF $(_sisbasc:3)=2 // baaculante invertido
+   #LET referencia_superior=0
+#ENDIF
+#IF $(_SISBASCDET:13)!! // furos do sistema na lateral
+   #FOR $(_SISBASCDET:13)
+      #LET x=$[ex;$(i);|;1]
+      #LET y=$[ex;$(i);|;2]
+      #LET df=$[ex;$(i);|;3]
+      #LET pf=$[ex;$(i);|;4]
+      #IF $(referencia_superior)=1
+         #IF $(xx7:10)=1 & $(xx7:11)=1
+            // X=$(pa)+{$(X)+$(xx8:0)}
+            #LET X=$(xa)-{$(X)+$(xx8:0)}
+         #ELSE
+            #LET X=$(xa)-$(X)
+         #ENDIF
+      #ELSE
+         // #MSG $(pa)
+         // #LET X=$(xa)+{$(x)-$(xx8:0)}
+         #LET X=$(PA)+$(X)}
+      #ENDIF
+      #LET y=$(y)
+      #IF ($(lados_furos)=1 | $(lados_furos)=2) & $(f)=2 // esquerda ou 2 lados
+         // #MSG   $(f)	FF	X={$(xp)-$(x)} Y={$(y)-$(xp)} DF=$(DF) PF=$(PF)
+         $(f)	FF	X={$(xp)-$(x)} Y=$(x)-$(y) DF=$(DF) PF=$(PF)
+         //$(f)	FF	X=$(x) Y={$(xp)-$(y)} DF=$(DF) PF=$(PF)
+      #ENDIF
+      #IF ($(lados_furos)=3 | $(lados_furos)=2) & $(f)=1 // direita ou 2 lados
+         $(f)	FF	X={$(xp)-$(y)} Y=$(x) DF=$(DF) PF=$(PF)
+      #ENDIF
+   #ENDFOR
+#ENDIF

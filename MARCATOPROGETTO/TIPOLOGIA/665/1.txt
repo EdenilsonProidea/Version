@@ -1,0 +1,18 @@
+{ 665   // Lateral Direita PORTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Direita PORTAL
+   CODICE              =/_CORCX=$(_CORLD:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_corld:3)|$(.percorso)\foto\madeira\$(_corld:4)|$(_corld:5),$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X6                  =$(sagLatDir)/$(cavelatdir:0)/$(acava:0)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/1/1/0/1
+   X8                  =$(ESCOS:0)/$(SUP)
+   X9                  =$(_tpcaixa:1)/$(_corld:1)/$(TPFIX:1)/$(_corbf:1)
+   X10                 =$(latcantpara:0)/$(espessura:3)
+   ALIAS               =#201
+}

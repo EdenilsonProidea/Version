@@ -1,0 +1,13 @@
+{ 588   // Vista Cantoneira Ubik Frontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Vista Cantoneira Ubik Frontal
+   CODICE              =/_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =0,0,$p-$(esvis)
+   DIMENSIONE          =$l,$a,$(esvis)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =ALP
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/1/$(canal)/$(cava)/0/0/0/0/0/0
+   X8                  =$(LATOCANT:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#588
+}

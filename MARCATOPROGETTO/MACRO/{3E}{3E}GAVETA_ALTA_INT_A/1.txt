@@ -1,0 +1,20 @@
+FRGAVETA,APE=GAV,IDP=1,SP=$(AFFREP),P=$(ESFRE)
+#IF $(PORTAVENDA)=0
+   Inica_calc_gav
+   Gaveta_alta_1,L=$(lgav),A=$(agav),P=$(pgav),_CORCX=$(_CORFU),COD=000$(_TPGAV:4)_A/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:1);LINHA=$(MODELLO:0);_mantagav=$(_mantagav:0),MOVE=$(MVM)
+   CORR_DESENHO,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav),L=$(lgav),A=$(agav),P=$(pgav)
+   coz_acegav,SA=$(AFGAVA),MOVE=$(MVM)
+   COMENTO4
+   // #IF $(liberaespacoatrasInt:0)>0
+   #IF $(_TPFUNDO:4)=0
+      Inica_calc_gav,LIBERAESPACOATRAS=$(LIBERAESPACOATRASINT:0),GAVETAINTERNA=1,ESCOS=15 //<C14560>
+   #ELSE
+      Inica_calc_gav,liberaespacoatras=$(liberaespacoatrasInt:0),gavetainterna=1 // <C14560>
+   #ENDIF
+   // #ENDIF
+   CALCULA_AGAV_ALTA
+   Gaveta_alta_1_int,L=$(l),A=$(a),P=$(pgav),_CORCX=$(_CORFU),COD=000$(_TPGAV:4)IA/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:0);LINHA=$(MODELLO:0);_mantagav=$(_mantagav:0),MOVE=$(.PERCORSO)\HTML\ANTE.MVE;FL=5;AP=200
+   CORR_DESENHO,SL=$(slgav),SA=$(sagavint),SP=$(spgav)-15,L=$(lgav),A=$(agav),P=$(pgav)
+   COMENTO4
+#ENDIF
+//400,lato=0

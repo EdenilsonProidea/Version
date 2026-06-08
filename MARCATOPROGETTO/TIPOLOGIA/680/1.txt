@@ -1,0 +1,12 @@
+{ 680   // BARRA HORIZONTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =BARRA HORIZONTAL
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =$(SLBS),0,0
+   DIMENSIONE          =$(lbs),$(TIPOPERFVER:4),$(TIPOPERFVER:3)
+   COLORI              =$(CORESTR:4),$(CORESTR:4)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =TUBOHORIZ.XP
+   X9                  =$(TIPOPERFVER:5)
+}

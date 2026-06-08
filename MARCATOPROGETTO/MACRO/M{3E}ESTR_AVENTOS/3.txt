@@ -1,0 +1,20 @@
+#IF $(_listino)=1
+   #LETS mascara=
+   #LET conta=1
+   #FOR $(x9:0)
+   
+   #ENDFOR
+   $(X9:1),1,$(MASCARA)
+#ELSE
+   #LETS mascara=
+   #LET conta=1
+   #FOR $(x9:0)
+      #LETS cod=$[ex;$(i);|;1]
+      #LETS qtd=$[ex;$(i);|;2]
+      #LETV BA_CODCONVERSAO=$(COD)
+      #IF $(BA_CODCONVERSAO:3)!! #LETS COD=$(BA_CODCONVERSAO:3)
+      #LETS mascara=$(mascara)cod$(conta)=$(cod);qtd$(conta)=$(qtd);
+      #LET conta=$(conta)+1
+   #ENDFOR
+   $(X9:1),1,$(MASCARA)
+#ENDIF

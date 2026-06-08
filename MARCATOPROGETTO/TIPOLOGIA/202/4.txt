@@ -1,0 +1,19 @@
+{ 202   // Lateral Direita
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Direita
+   CODICE              =/_CORCX=$(_CORLD:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           ={$L-$(ESLAT:0)},0,0
+   DIMENSIONE          =$(ESLAT:0),$A,$(PLAT:0)-$(redlatdir:0)
+   COLORI              =$(_corld:3)|$(.percorso)\foto\madeira\$(_corld:4)|$(_corld:5)|90,$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)|90
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X6                  =$(sagLatDir)/$(cavelatdir:0)/$(acava:0)/$(acavaC:0)/$(SUP:0)/$(cavainternadir:0)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/1/1/0/1//$(FITARSOVISTA:2)
+   X8                  =$(ESCOS:0)/$(SUP:0)////$(RMPENSIL:0)/$(InfoRecorteLateral)
+   X9                  =$(_tpcaixa:1)/$(_corld:1)/$(TPFIX:1)/$(_corbf:1)
+   X10                 =$(latcantpara:0)/$(espessura:3)
+   ALIAS               =#201
+}

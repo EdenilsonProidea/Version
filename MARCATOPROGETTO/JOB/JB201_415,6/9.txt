@@ -1,0 +1,16 @@
+
+#IF $(xx3:0)=$(xp3:0)
+   #LOADVAR _dobra _dobra $(xp8:2)
+   #IF $(PL)>0 #LET F=2 #LET F=1
+   #IF $(tipologiap)==224 #LET pp=$(xl)-$(dp)
+   #IF $(tipologiap)==206 #LET pp=$(xl)-$(dp) // INCLUSO EM VISITA ALEX 21/05/2025 - FRENTE FIXA DE CANTO RETO DE DORMITORIO
+   #MSG $(tipologiap) - $(pp)
+   #IF $(_dobra:16)=2
+      // calço longitudinal
+      $(F)	MARC	X={$(PA)+$(DA)/2} Y={$(pp)+$(dp)-$(_dobra:17)}
+      $(F)	MARC	X={$(PA)+$(DA)/2} Y={$(pp)+$(dp)-$(_dobra:17)-$(_dobra:18)}
+   #ELSE
+      $(F)	MARC	X={$(PA)+$(DA)/2-$(_dobra:7)/2} Y={$(pp)+$(dp)-$(_dobra:6)}
+      $(F)	MARC	X={$(PA)+$(DA)/2+$(_dobra:7)/2} Y={$(pp)+$(dp)-$(_dobra:6)}
+   #ENDIF
+#ENDIF

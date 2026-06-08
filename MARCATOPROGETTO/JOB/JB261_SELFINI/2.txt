@@ -1,0 +1,7 @@
+#M JOB_TRG
+#LOADVAR _corr _corr $(XX8:1)
+#IF $(_corr:12)==003
+   #LET f=2
+   $(f)	FF	X=7 Y=11 DF=6 PF=11
+   $(f)	FF	X={$(XL)-7} Y=11 DF=6 PF=11
+#ENDIF

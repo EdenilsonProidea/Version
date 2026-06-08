@@ -1,0 +1,38 @@
+#IF $(XX3:1)!!L
+   // prateleira 400 - entre furo = 256
+   // prateleira 350 - entre furo = 192
+   // prateleira 300 - entre furo = 192
+   #LET FIX_INI=64
+   #LET ENTRE_FURO=416
+   #IF $(XP)[303;353]!0
+      #LET ENTRE_FURO=192+$(FIX_INI:0)
+   #ELSEIF $(XP)=403
+      #LET ENTRE_FURO=256+$(FIX_INI:0)
+   #ENDIF
+   //2	FF	 X=8.5           Y={$(XP)-64}    DF=18 PF=20
+   //2	FF	 X=8.5           Y={$(XP)-416}   DF=18 PF=20
+   //2	FF	 X={$(XL)-8.5}   Y={$(XP)-64}    DF=18 PF=20
+   //2	FF	 X={$(XL)-8.5}   Y={$(XP)-416}   DF=18 PF=20
+   
+   2	FF	 X=8.5         Y={$(XP)-$(FIX_INI:0)}    DF=18 PF=20
+   2	FF	 X=8.5         Y={$(XP)-$(ENTRE_FURO:0)}   DF=18 PF=20
+   2	FF	 X={$(XL)-8.5} Y={$(XP)-$(FIX_INI:0)}    DF=18 PF=20
+   2	FF	 X={$(XL)-8.5} Y={$(XP)-$(ENTRE_FURO:0)}   DF=18 PF=20
+#ELSE
+   2	MA	X=0 Y=0 NM=RECORTELSUP PARM=P1@$(XX8:0)^P2@$(XX8:1)^
+   #IF $(XX8:2)=1
+      // 2	FF	 X={$(xl)-87}               Y={8.5}             DF=18 PF=20
+      //  2	FF	 X={$(xl)-87-352}           Y={8.5}             DF=18 PF=20
+      //  2	FF	 X={8.5}                    Y={$(XX8:0)-64}     DF=18 PF=20
+      //  2	FF	 X={8.5}                    Y={$(XX8:0)-64-352} DF=18 PF=20
+      //  2	FF	 X={$(XL)-$(XX8:1)+64}      Y={$(XP)-8.5}       DF=18 PF=20
+      //  2	FF	 X={$(XL)-$(XX8:1)+64+352}  Y={$(XP)-8.5}       DF=18 PF=20
+   #ELSE
+    //  2	FF	 X={$(xl)-8.5}              Y={87}              DF=18 PF=20
+   //   2	FF	 X={$(xl)-8.5}              Y={87+352}          DF=18 PF=20
+     // 2	FF	 X={8.5}                    Y={$(XX8:0)-64}     DF=18 PF=20
+    //  2	FF	 X={8.5}                    Y={$(XX8:0)-64-352} DF=18 PF=20
+    //  2	FF	 X={$(XL)-$(XX8:1)+64}      Y={$(XP)-8.5}       DF=18 PF=20
+   //   2	FF	 X={$(XL)-$(XX8:1)+64+352}  Y={$(XP)-8.5}       DF=18 PF=20
+   #ENDIF
+#ENDIF

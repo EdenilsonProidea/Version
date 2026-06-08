@@ -1,0 +1,16 @@
+{ 332   // DiviSão Armario correr
+   *AZZERA*            =0
+   DESCRIZIONE         =DiviSão Armario correr
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,$(abase:0),$(escos:0)
+   DIMENSIONE          =$(ESLAT:0),$A-$(abase:0)*2,$p-1*($(red_f_div_arms:0)+$(escos:0))
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/0/0/0/2/2/0/0/0/1/0
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corcx:1)
+   ALIAS               =#301
+}

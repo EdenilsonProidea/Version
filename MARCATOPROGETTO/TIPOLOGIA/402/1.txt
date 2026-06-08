@@ -1,0 +1,10 @@
+{ 402   // DRAGGER
+   *AZZERA*            =0
+   DESCRIZIONE         =DRAGGER
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =14
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

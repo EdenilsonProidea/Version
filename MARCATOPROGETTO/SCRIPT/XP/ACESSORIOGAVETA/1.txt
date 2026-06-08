@@ -1,0 +1,30 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   
+   'FINITURA OGGETTI 3D PER INTERNO CASSETTO
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   V=SPLIT(ex(p.PARAMETRO(7),"/",1),";")
+   finitura=ex(ex(p.Parametro(8),"/",1),";",1)
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\" & finitura)
+   
+   msgbox "tp " & tipoogg & " file " & percfile & " PARAMETRI " & ex(p.Parametro(7),"/",1)
+   If ucase(right(PERCFILE,2))=".X" Or ucase(right(PERCFILE,5))=".DR3D" Or ucase(right(PERCFILE,5))=".TREE" Or (ucase(right(PERCFILE,4))=".3DS")   Then
+      percfile=UCASE(percorso & "\3ds\" & finitura)
+      wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+      
+   Elseif  ucase(right(PERCFILE,5))=".DRG1" Or ucase(right(PERCFILE,4))=".JPG" Or  ucase(right(PERCFILE,4))=".TGA" Then
+      
+      tipofoto=1
+      nomefoto=UCASE(percorso & "\FOTO\" & finitura)
+      
+      c1=wColore(1,rgb(255,255,255),NOMEFOTO,0,0,-1,nomefoto)
+      c2=0 'wColore(1,rgb(255,255,255),percorso & "\foto\colori\base.tga")
+      wrFacciaAlfa dl,dp,1,c1,tipofoto,c2
+   Else
+      
+      'MSGBOX "FILE NON COMPATIBILE CON 3CAD"
+   End If
+   
+End sub

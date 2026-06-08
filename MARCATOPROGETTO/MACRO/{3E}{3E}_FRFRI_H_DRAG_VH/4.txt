@@ -1,0 +1,14 @@
+!PARAMETRI flagtipofriso=
+#LET vaofriso=$a/($(nfrisos:0)+1)
+#LET old_posfriso=0
+#FOR $1:$(nfrisos:0)
+   #IF $(parfrisos$(flagtipofriso)$(_ctx):$(i))>0
+      #LET posfriso=$(parfrisos$(flagtipofriso)$(_ctx):$(i))
+   #ELSE
+      #LET posfriso={$(vaofriso)*$(I)}
+      #IF $(posfriso:0)>0
+         #LETS parfrisosscriptH=$(parfrisosscriptH)$(posfriso:0);
+      #ENDIF
+   #ENDIF
+   402,SL=$l/2,SA=$(posfriso),SP=$p+10,L=$(posfriso),A=1,X1=9,X3=PA Friso;parfrisos$(flagtipofriso)$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+#ENDFOR

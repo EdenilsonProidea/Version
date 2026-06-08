@@ -1,0 +1,13 @@
+{ 272   // TRASEIRA BASE MADEIRA
+   *AZZERA*            =0
+   DESCRIZIONE         =TRASEIRA BASE MADEIRA
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(ESPESSURA:0),0,0
+   DIMENSIONE          =$L-$(ESPESSURA:0)*2,$A,$(ESPESSURA:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+}

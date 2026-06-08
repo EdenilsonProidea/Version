@@ -1,0 +1,11 @@
+{ 423   // Kit Dobradiças (oculto)
+   *AZZERA*            =0
+   DESCRIZIONE         =Kit Dobradiças (oculto)
+   CODICE              =000DOBRA /_MONTADO=$(_MONTADO:0);_DOBRA=$(_DOBRATEMP:1);LINHA=$(MODELLO:0)
+   LATO                =6
+   POSIZIONE           =0,0,{$p-1*(70+$(esfre))}
+   DIMENSIONE          =20,20,70
+   COLORI              =18,18
+   ORIENTAMENTO        =LAP
+   X10                 =$(_dobra:3)/$(_dobra:4)/$(_dobra:12)/$(_dobra:13)/$(_dobra:14)/$(_dobra:15)/$(_dobra:19)/$(ndob)
+}

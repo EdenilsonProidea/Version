@@ -1,0 +1,12 @@
+{ 652   // Caxeta ou MDF
+   *AZZERA*            =0
+   DESCRIZIONE         =Caxeta ou MDF
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$a-$(esp_caxetamdf),$(esp_bandeira)
+   DIMENSIONE          =$(ltrilho:0),$(esp_caxetamdf),$p-$(esp_bandeira)*2
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/0/0/0/$(cava)/1/1/////1
+   X9                  =/$(_CORFR:1)
+}

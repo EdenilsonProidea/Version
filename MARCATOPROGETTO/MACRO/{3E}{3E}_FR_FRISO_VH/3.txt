@@ -1,0 +1,41 @@
+//#LET afriso=3
+#LET lfrisov=$(lfrisov:0)
+#LET lfrisoh=$(lfrisoh:0)
+#IF $(old_nfrisosH$(_ctx):0)!!$(nfrisosH:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisosH$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisosH=
+#ENDIF
+#IF $(old_nfrisosV$(_ctx):0)!!$(nfrisosV:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisosV$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisosV=
+#ENDIF
+// #LETS parfrisos=100;300;400
+#LETS parfrisosscriptH=
+#FOR $1:$(nfrisosH:0)
+   #LETS parfrisosscriptH=$(parfrisosscriptH)$(parfrisosH:$(i));
+#ENDFOR
+#LETS parfrisosscriptV=
+#FOR $1:$(nfrisosV:0)
+   #LETS parfrisosscriptV=$(parfrisosscriptV)$(parfrisosV:$(i));
+#ENDFOR
+//#LETS parfrente=$(afriso)|$(nfrisosh:0)|$(nfrisosv:0)|$(parfrisosscripth)|$(parfrisosscriptv)
+#LETS parfrente=$(lfrisoh:0)|$(lfrisov:0)|$(nfrisosh:0)|$(nfrisosv:0)|$(parfrisosscripth)|$(parfrisosscriptv)
+#LETS xpfrente=frente_friso_vh.XP
+// .frente_friso_vh.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOVH
+#LETS parjobfrente=$(afriso)|$(nfrisosH:0)|$(nfrisosV:0)|$(parfrisosscripth)|$(parfrisosscriptv)
+// .frente_friso_h.xp
+#IF $(VEIOHORIZONTAL:0)=1
+   639
+#ELSE
+   638
+#ENDIF
+_FRFRI_H_DRAG_VH,sa=0,A=$a,nfrisos=$(nfrisosh:0),flagtipofriso=H
+_frfri_v_drag_VH,SL=0,L=$l,nfrisos=$(nfrisosv:0),flagtipofriso=V
+//_fr_friso_v_drag,nfrisos=$(nfrisosv:0),SL=0,L=$L
+#LETV old_nfrisosH$(_ctx)=$(nfrisosH$(_CTX):0)
+#LETV old_nfrisosV$(_ctx)=$(nfrisosV$(_CTX):0)
+// _FR_FRISO_VH_TETO,A=$P,AX=-90,SA=$P

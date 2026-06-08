@@ -1,0 +1,39 @@
+// ***FITA DE BORDA***
+#IF $(ESP_TAMBURATO:3)=30 //30mm
+   #LOADVAR _ALTFITA _ALTFITA 10_63
+   #LET mlfita={($l+30)/1000} // $l/1000  - Adicionado mais 30mm de sobra para as fitas <c26636>
+   #IF $(BTRA:0)=1
+      451,SP=-1,P=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //atras
+   #ENDIF
+   #IF $(BFRE:0)=1
+      451,SP=$p-1,P=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //frente
+   #ENDIF
+   #IF $(sarrafoex:0)=1
+      #LET mlfita={($p+30)/1000} // $p/1000  - Adicionado mais 30mm de sobra para as fitas <c26636>
+      #IF $(BESQ:0)=1
+         451,SL=-1,L=1,A=$a,P=$p,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //esquerda
+      #ENDIF
+      #IF $(BDIR:0)=1
+         451,SL=$l-1,L=1,A=$a,P=$p,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //direita
+      #ENDIF
+   #ENDIF
+#ELSE //maior que 6mm
+   #LOADVAR _ALTFITA _ALTFITA 10_63
+   #LET mlfita={($l+30)/1000} // $l/1000  - Adicionado mais 30mm de sobra para as fitas <c26636>
+   #IF $(BTRA:0)=1
+      451,SP=-1,P=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //atras
+   #ENDIF
+   #IF $(BFRE:0)=1
+      451,SP=$p-1,P=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //frente
+   #ENDIF
+   #IF $(sarrafoex:0)=1
+      #LET mlfita={($p+30)/1000} // $p/1000  - Adicionado mais 30mm de sobra para as fitas <c26636>
+      #IF $(BESQ:0)=1
+         451,SL=-1,L=1,A=$a,P=$p,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //esquerda
+      #ENDIF
+      #IF $(BDIR:0)=1
+         451,SL=$l,L=1,A=$a,P=$p,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X8=1,X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //direita
+      #ENDIF
+   #ENDIF
+#ENDIF
+// FITA

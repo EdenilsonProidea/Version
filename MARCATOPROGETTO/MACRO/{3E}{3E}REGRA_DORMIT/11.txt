@@ -1,0 +1,6 @@
+#IF $(TPLATARM:3)=1
+   dor_fechr_1Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa) 
+#ELSE
+   #LET ATIVADRETACURVA=0 // <c18184>
+   dor_fechr_2Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+#ENDIF

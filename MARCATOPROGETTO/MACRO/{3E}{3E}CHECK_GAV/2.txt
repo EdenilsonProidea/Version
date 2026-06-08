@@ -1,0 +1,12 @@
+#IF $(lgav)<$(_tpgavdet:22)
+   #LETS idlogerros=$(idlogerros)2^$(_tpgavdet:2)^$(_tpgavdet:22);
+#ENDIF
+#IF $(lgav)>$(_tpgavdet:23)
+   #LETS idlogerros=$(idlogerros)3^$(_tpgavdet:2)^$(_tpgavdet:23);
+#ENDIF
+#IF $(aagr)<$(_tpgavdet:24)
+   #LETS idlogerros=$(idlogerros)4^$(_tpgavdet:2)^$(_tpgavdet:24);
+#ENDIF
+#IF $(aagr)>$(_tpgavdet:25)
+   #LETS idlogerros=$(idlogerros)5^$(_tpgavdet:2)^$(_tpgavdet:25);
+#ENDIF

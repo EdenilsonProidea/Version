@@ -1,0 +1,9 @@
+{ 430   // Corredica Lateral
+   *AZZERA*            =0
+   DESCRIZIONE         =Corredica Lateral
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+}

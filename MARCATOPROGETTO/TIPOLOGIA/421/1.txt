@@ -1,0 +1,10 @@
+{ 421   // Interferenza per calcolo Prof fechamento
+   *AZZERA*            =0
+   DESCRIZIONE         =Interferenza per calcolo Prof fechamento
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

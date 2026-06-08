@@ -1,0 +1,8 @@
+#LET disth=($p-$(_acegav:7)*$(ndivcolmh:0))/($(ndivcolmh:0)+1)
+#LET distv=($L-$(_acegav:7)*$(ndivcolmV:0))/($(ndivcolmv:0)+1)
+#FOR $1:$(ndivcolmh:0),,dh
+   213,SP=($(disth))*$(DH)+$(_acegav:7)*($(dh)-1)  //colmeia acrilico
+#ENDFOR
+#FOR $1:$(ndivcolmV:0),,dV
+   213.001,SL=($(distv)+$(_acegav:7))*$(DV),L=$p,AY=-90  // Divisoria horizontal MDF colmeia
+#ENDFOR

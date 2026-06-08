@@ -1,0 +1,68 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Ubik_prateleira.erg
+COMMENTI=
+CODICE=
+POSMODE=20
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=5
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+G,UBIK_PRATELEIRA
+T,_tpSuppUE
+T,_tpSuppUD
+T,_corsuppe,,,,$(_corsuppe:0)=$(_tpSuppUE:10),,,,,,,,1=0
+T,_corsuppd,,,,$(_corsuppd:0)=$(_tpSuppUd:10),,,,,,,,1=0
+T,Cabideiro
+T,CaninhoSapa,,1=0,,$l>=$(CaninhoSapa:9) & $l<=$(CaninhoSapa:10)
+-,ilu,,,,,,,,,,,,1=0
+D,iluprat,,,Ilu. prat,,!ilu.htm
+T,_ilu,_iluprat,,Tipo ilu.
+C,LigarLuz,,,Ligar Luz?
+K,corled,,$(LigarLuz:0)=1 ,Cor Led?
+
+[GRAFICA]
+#LET L=$[ex;$(_PLX5);/;1]
+ubik_inicia
+#LETS codpratu=
+#LET INFOPECA=0
+
+ubik_prateleira
+#MSG $(_tpSuppUE:8)
+#IF $(_tpSuppUE:3)>0 & $(_tpSuppUE:3)<4
+   ubik_suporte_prat,_corsupp=$(_corsuppe),SL=-$(_tpSuppUE:6),SA=0,SP=0,L=$(_tpSuppUE:6),A=$(_tpSuppUE:7),P=$(_tpSuppUE:8),_TPSUPPU=$(_TPSUPPUE),COD=$(_tpSuppUE:5)/linha=$(modello:0)
+#ENDIF
+
+#IF $(_tpSuppUD:3)>0 & $(_tpSuppUD:3)<4
+   ubik_suporte_prat,_corsupp=$(_corsuppd),SL=$L,SA=0,SP=0,L=$(_tpSuppUD:6),A=$(_tpSuppUD:7),P=$(_tpSuppUD:8),_TPSUPPU=$(_TPSUPPUD),COD=$(_tpSuppUD:5)/linha=$(modello:0)
+#ENDIF
+
+
+#IF $(cabideiro:0)>0
+   ubik_cabideiro,sa=-70,a=70,p=25,sp=$p/2-12.5,cod=$(CODMOD)A$(cabideiro:4)/linha=$(modello:0),l=$l
+#ENDIF
+
+#IF $(CaninhoSapa:1)!!999 & $(CaninhoSapa:1)!!
+   ubik_sapateira,a=74,p=400,sp=50,cod=$(CODMOD)U677/linha=$(modello:0),L=$L-40,SL=20
+#ENDIF
+
+
+
+//_ilu,sl=0,l={$l},sa={0},_ilu=$(_iluprat),infoilu=$(iluprat)
+//_ILUFONTE
+// _INT

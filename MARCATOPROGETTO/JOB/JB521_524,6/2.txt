@@ -1,0 +1,3 @@
+#LET PCANAL=$(XP8:0)
+#IF $(pl)>0 #LET f=2 #LET f=1
+$(F)	CANALMOVEL	X=$(PA) Y={$(PL)} XI={$(PA)} XF={$(PA)+$(DA)} DP=$(DL) PF=$(PCANAL)

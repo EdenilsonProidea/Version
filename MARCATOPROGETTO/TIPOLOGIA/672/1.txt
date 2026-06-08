@@ -1,0 +1,12 @@
+{ 672   // Barra Painel
+   *AZZERA*            =0
+   DESCRIZIONE         =Barra Painel
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =,-13
+   DIMENSIONE          =$L,13,15
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X8                  =INTERNO\perfil_u1.3ds
+   X9                  =50658
+}

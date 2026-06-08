@@ -1,0 +1,17 @@
+COZ_inicia
+#LET L_ORI=$L
+#LET contaga=1
+#LET  cava=$(_TPCAVA:3)
+#IF $(CAVA)>0
+   #LET CAVA=1
+#ENDIF
+#LET INF=1
+!TIPOBOX 1
+CAIXA_COZINHA
+tampofilete
+coz_pes
+cotas
+coz_decori_inf
+// Coz_fim
+// 204
+// 101

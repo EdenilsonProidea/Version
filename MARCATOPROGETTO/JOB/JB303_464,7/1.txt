@@ -1,0 +1,1 @@
+#IF $(XP6:8)=0#IF $(PA)<1 #LET F=2 #LET F=1#M MARCATO_LEDS,F=$(F)#ENDIF

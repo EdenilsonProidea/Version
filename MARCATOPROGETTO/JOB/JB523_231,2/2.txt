@@ -1,0 +1,4 @@
+1	MA	X={$(PL)+$(DL)/2} Y={$(PP)+$(DP)/2-32} NM=NIVELADOR PF={$(XA)+4} DF=10
+// COMENTDO NO CHAMADO <C22077>
+//1	FF	X={$(PL)+$(DL)/2} Y={$(PP)+$(DP)/2} PF=2 DF=15
+//1	FF	X={$(PL)+$(DL)/2} Y={$(PP)+$(DP)/2} PF={$(XA)+1} DF=10

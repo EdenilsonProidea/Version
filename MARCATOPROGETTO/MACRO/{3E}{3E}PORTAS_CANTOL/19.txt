@@ -1,0 +1,29 @@
+// Alterado os parametros para passar as folgas do cliente <c22718>
+#LET L1={$L-$(PLAT2:0)+$(eslat:0)}
+#LET L2={$P-$(PLAT1:0)}
+#IF $(PM)=1
+   #LET LFRE1=$(L1)-$(FOLGAFRENTEL:0)-1*($(esfre:0)+$(eslat:0)+2.5)
+   #LET LFRE2=$(L2)-30+2*$(FOLGAFRENTEL:0)+$(eslat:0)
+   //#LET LFRE1=$(L1)-$(FOLGAFRENTEL:0)-1*($(esfre:0)+$(eslat:0))
+   //#LET LFRE2=$(L2)-23+2*$(FOLGAFRENTEL:0)+$(eslat:0)
+   PORTAG,L=$(lfre1),LFRE=$(lfre1),IDP=1,AFFREP=$(plat1:0) // retirado "_pux=999" pois estava colocando o puxador na porta errada <c22718>
+   
+   #IF $(_FRLISCIO:0)!! // ISSO É PARA TROCAR A PORTA DO LADO ESQUERDO POR OUTRA SETADA NA COLUNA 25 DE _FR
+      PORTAG,L=$(Lfre2),LFRE=$(LFRE2),IDP=2,SL=$L-$(PLAT2:0),sp=$(plat1:0)+9,ay=-90,AFFREP=0,pm=3,_pux=999,pv_pux=999,_perfpux=999,_FR=$(_FRLISCIO) // Adicionado "_pux=999" <c22718> // Adicionado "pv_pux=999" em visita técnica // Adicionado "_perfpux=999" em segunda visita técnica
+   #ELSE
+      PORTAG,L=$(Lfre2),LFRE=$(LFRE2),IDP=2,SL=$L-$(PLAT2:0),sp=$(plat1:0)+9,ay=-90,AFFREP=0,pm=3,_pux=999,pv_pux=999,_perfpux=999 // Adicionado "_pux=999" <c22718> // Adicionado "pv_pux=999" em visita técnica // Adicionado "_perfpux=999" em segunda visita técnica
+   #ENDIF
+#ELSE
+   #LET LFRE1=$(L1)-30+2*$(FOLGAFRENTEL:0)
+   #LET LFRE2=$(L2)-1*($(esfre:0))-$(FOLGAFRENTEL:0)-2.5
+   //#LET LFRE1=$(L1)+2*$(FOLGAFRENTEL:0)-23
+   //#LET LFRE2=$(L2)-1*($(esfre:0))-$(FOLGAFRENTEL:0)
+   #IF $(_FRLISCIO:0)!! // ISSO É PARA TROCAR A PORTA DO LADO ESQUERDO POR OUTRA SETADA NA COLUNA 25 DE _FR
+      PORTAG,L=$(lfre1),LFRE=$(LFRE1),IDP=1,AFFREP=$(plat1:0),pm=1,_pux=999,pv_pux=999,_perfpux=999,_FR=$(_FRLISCIO) // Adicionado "_pux=999" <c22718> // Adicionado "pv_pux=999" em visita técnica // Adicionado "_perfpux=999" em segunda visita técnica
+   #ELSE
+      PORTAG,L=$(lfre1),LFRE=$(LFRE1),IDP=1,AFFREP=$(plat1:0),pm=1,_pux=999,pv_pux=999,_perfpux=999 // Adicionado "_pux=999" <c22718> // Adicionado "pv_pux=999" em visita técnica // Adicionado "_perfpux=999" em segunda visita técnica
+   #ENDIF
+   //PORTAG,L=$(lfre2),LFRE=$(lfre2),IDP=2,SL=$L-$(PLAT2:0),sp=$(plat1:0)+$(esfre:0)+$(FOLGAFRENTEL:0)+2.5,ay=-90,AFFREP=0,pm=3 // retirado "_pux=999" pois estava colocando o puxador na porta errada <c22718>
+   
+   
+#ENDIF

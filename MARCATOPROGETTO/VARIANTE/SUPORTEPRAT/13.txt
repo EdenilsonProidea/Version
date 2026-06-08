@@ -1,0 +1,61 @@
+{ SUPORTEPRAT   // Suporte Prateleira
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte Prateleira
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^2;6;100;100;11;#FOTO\ACESSORIOS\;2;4
+   MEMO                =1Código 1800Descrição 5250REF VENDA 1830UNITADE PARA REFERENCIA 2790DIML 1140DIMA 1140DIMP 11403D 1815C1 1140C2 1140PREVIEW 3975SA 1890NUMERO KIT 2355COD KIT 1980trabalho esq 1605trabalho dir 1530trabalho frente 1800trabalho atras 1725prof grapa 2310Conector? 120000019 criado para validação na gestão de led, há cituações que nçao debe usar grapa de 150 ou de 300
+   { 
+      //         ,Descrição                                 ,REF VENDA      ,UN,DIM,DIMA,DIMP,3D                 ,C1  ,C2  ,PREVIEW                                  ,S,NUMER,COD KIT        ,tra,tra,tr,trabal,prof,Co
+      000        ,S Suporte                                 ,               ,0 ,   ,    ,    ,                   ,    ,    ,SemSuporte.jpg                           , ,     ,               ,   ,   ,  ,      ,    ,
+      120        ,Conector                                  ,               ,  ,   ,    ,    ,                   ,    ,    ,                                         , ,     ,               ,   ,   ,  ,      ,    ,1
+      120.001    ,Usinagem prancha 18mm                     ,               ,  ,   ,    ,    ,                   ,    ,    ,                                         , ,     ,               ,   ,   ,  ,      ,    ,1
+      120.001.01 ,Usin Dir p Conector                       ,000SUPPRA01    ,1 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIP18     ,N  ,CO ,N ,N     ,    ,1
+      120.001.02 ,Usin Esq p Conector                       ,000SUPPRA02    ,1 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIP18     ,CO ,N  ,N ,N     ,    ,1
+      120.001.03 ,Usin Esq e Dir p Conector                 ,000SUPPRA04    ,2 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg                    , ,2    ,KIT-USIP18     ,CO ,CO ,N ,N     ,    ,1
+      120.001.04 ,Usin Esq e Dir p Conector + Conector Tras ,000SUPPRA041_1 ,3 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;det_canal_tras.jpg , ,3    ,KIT-USIPCCT18  ,CO ,CO ,N ,CO    ,    ,1
+      121        ,Usin. Conector                            ,               ,  ,   ,    ,    ,                   ,    ,    ,                                         , ,     ,               ,   ,   ,  ,      ,    ,1
+      121.001    ,S Suporte                                 ,               ,0 ,   ,    ,    ,                   ,    ,    ,SemSuporte.jpg                           , ,     ,               ,   ,   ,  ,      ,    ,0
+      121.002    ,Usin Dir p Conector                       ,000SUPPRA01    ,1 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIP       ,N  ,CO ,N ,N     ,    ,1
+      121.003    ,Usin Esq p Conector                       ,000SUPPRA02    ,1 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIP       ,CO ,N  ,N ,N     ,    ,1
+      121.004    ,Usin Esq e Dir p Conector                 ,000SUPPRA04    ,2 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg                    , ,2    ,KIT-USIP       ,CO ,CO ,N ,N     ,    ,1
+      121.005    ,Usin Esq e Dir p Conector + Conector Tras ,000SUPPRA041_1 ,3 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;det_canal_tras.jpg , ,3    ,KIT-USIPCCT25  ,CO ,CO ,N ,CO    ,    ,1
+      121.006    ,Usin Esq e Tras p Conector                ,000SUPPRA041_2 ,2 ,   ,    ,    ,                   ,    ,    ,                                         , ,2    ,KIT-USIP       ,CO ,CO ,N ,CO    ,    ,1
+      121.007    ,Usin Dir e Tras p Conector                ,000SUPPRA041_3 ,2 ,   ,    ,    ,                   ,    ,    ,                                         , ,2    ,KIT-USIP       ,CO ,CO ,N ,CO    ,    ,1
+      122        ,Usin. Conector + Grapa 150mm              ,               ,  ,   ,    ,    ,                   ,    ,    ,                                         , ,     ,               ,   ,   ,  ,      ,    ,1
+      122.001    ,S Suporte                                 ,               ,0 ,   ,    ,    ,                   ,    ,    ,SemSuporte.jpg                           , ,     ,               ,   ,   ,  ,      ,    ,0
+      122.002    ,Usin Esq p Conector + Grapa 150mm         ,000SUPPRA021   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIPEGR    ,CO ,N  ,N ,GRAPA ,150 ,1
+      122.003    ,Usin Dir p Conector + Grapa 150mm         ,000SUPPRA011   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIPEGR    ,N  ,CO ,N ,GRAPA ,150 ,1
+      122.004    ,Usin Traseira p grapa 150mm               ,000SUPPRA03    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_tras.jpg                       , ,1    ,KIT-SUPPRA     ,N  ,N  ,N ,GRAPA ,150 ,1
+      122.005    ,Usin Esq e Dir p Conector + Grapa 150mm   ,000SUPPRA041   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;GRAPA.jpg          , ,2    ,KIT-USIPCGR    ,CO ,CO ,N ,GRAPA ,150 ,1
+      122.006    ,Grapa 150MM                               ,000SUPPRA06    ,1 ,25 ,193 ,193 ,                   ,180 ,180 ,GRAPA.jpg                                , ,1    ,KIT-SUPPRA     ,N  ,N  ,N ,GRAPA ,150 ,0
+      123        ,Usin. Conector + Grapa 300mm              ,               ,  ,   ,    ,    ,                   ,    ,    ,                                         , ,     ,               ,   ,   ,  ,      ,300 ,1
+      123.001    ,S Suporte                                 ,               ,0 ,   ,    ,    ,                   ,    ,    ,SemSuporte.jpg                           , ,     ,               ,   ,   ,  ,      ,    ,0
+      123.002    ,Usin Dir p Conector + Grapa 300mm         ,000SUPPRA0113  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIPEGR33  ,N  ,CO ,N ,GRAPA ,300 ,1
+      123.003    ,Usin Esq p Conector + Grapa 300mm         ,000SUPPRA0213  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIPEGR3   ,CO ,N  ,N ,GRAPA ,300 ,1
+      123.004    ,Usin Esq e Dir p Conector + Grapa 300mm   ,000SUPPRA0413  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;GRAPA.jpg          , ,2;3; ,KIT-USIPCGR3   ,CO ,CO ,N ,GRAPA ,300 ,1
+      123.005    ,Usin Traseira p grapa 300mm               ,000SUPPRA033   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_tras.jpg                       , ,1    ,KIT-SUPPRA3    ,N  ,N  ,N ,GRAPA ,300 ,1
+      123.006    ,Grapa 300MM                               ,000SUPPRA33    ,1 ,25 ,193 ,193 ,                   ,180 ,180 ,GRAPA.jpg                                , ,1    ,KIT-SUPGRA3    ,N  ,N  ,N ,GRAPA ,    ,0
+      124.001.01 ,Usin Esq e Dir p Conector                 ,000SUPPRA04    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg                    , ,2    ,KIT-USIP18     ,CO ,CO ,N ,N     ,    ,1
+      124.001.02 ,Usin Dir p Conector                       ,000SUPPRA01    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIP18     ,N  ,CO ,N ,N     ,    ,1
+      124.001.03 ,Usin Esq p Conector                       ,000SUPPRA02    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIP18     ,CO ,N  ,N ,N     ,    ,1
+      125.001.01 ,Usin Esq e Dir p Conector                 ,000SUPPRA04    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg                    , ,2    ,KIT-USIP       ,CO ,CO ,N ,N     ,    ,1
+      125.001.02 ,Usin Dir p Conector                       ,000SUPPRA01    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIP       ,N  ,CO ,N ,N     ,    ,1
+      125.001.03 ,Usin Esq p Conector                       ,000SUPPRA02    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIP       ,CO ,N  ,N ,N     ,    ,1
+      C01        ,Usin Dir p Conector                       ,000SUPPRA01    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIP       ,N  ,CO ,N ,N     ,    ,1
+      C02        ,Usin Esq p Conector                       ,000SUPPRA02    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIP       ,CO ,N  ,N ,N     ,    ,1
+      C03        ,Usin Traseira p grapa 150mm               ,000SUPPRA03    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_tras.jpg                       , ,1    ,KIT-SUPPRA     ,N  ,N  ,N ,GRAPA ,150 ,0
+      C033       ,Usin Traseira p grapa 300mm               ,000SUPPRA033   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_tras.jpg                       , ,1    ,KIT-SUPPRA3    ,N  ,N  ,N ,GRAPA ,300 ,0
+      C04        ,Usin Esq e Dir p Conector                 ,000SUPPRA04    ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg                    , ,2    ,KIT-USIP       ,CO ,CO ,N ,N     ,    ,1
+      C05        ,Kit Suporte Oculto para Painel            ,000SUPPRA05    ,0 ,   ,    ,    ,                   ,    ,    ,ComSuporte.jpg                           , ,1    ,KIT-SUPPRAPAIN ,N  ,N  ,N ,SUO   ,    ,1
+      C06        ,Usin Esq e Dir p Conector + Grapa 150mm   ,000SUPPRA041   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;GRAPA.jpg          , ,2    ,KIT-USIPCGR    ,CO ,CO ,N ,GRAPA ,150 ,1
+      C066       ,Usin Esq e Dir p Conector + Grapa 300mm   ,000SUPPRA0413  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir_esq.jpg;GRAPA.jpg          , ,2;3; ,KIT-USIPCGR3   ,CO ,CO ,N ,GRAPA ,300 ,1
+      C07        ,Usin Esq p Conector + Grapa 150mm         ,000SUPPRA021   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIPEGR    ,CO ,N  ,N ,GRAPA ,150 ,1
+      C077       ,Usin Esq p Conector + Grapa 300mm         ,000SUPPRA0213  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_esq.jpg                        , ,1    ,KIT-USIPEGR3   ,CO ,N  ,N ,GRAPA ,300 ,1
+      C08        ,Usin Dir p Conector + Grapa 150mm         ,000SUPPRA011   ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIPEGR    ,N  ,CO ,N ,GRAPA ,150 ,1
+      C088       ,Usin Dir p Conector + Grapa 300mm         ,000SUPPRA0113  ,0 ,   ,    ,    ,                   ,    ,    ,det_canal_dir.jpg                        , ,1    ,KIT-USIPEGR33  ,N  ,CO ,N ,GRAPA ,    ,1
+      GRA        ,Grapa 150MM                               ,000SUPPRA06    ,1 ,25 ,193 ,193 ,                   ,180 ,180 ,GRAPA.jpg                                , ,1    ,KIT-SUPPRA     ,N  ,N  ,N ,GRAPA ,150 ,0
+      GRA3       ,Grapa 300MM                               ,000SUPPRA33    ,1 ,25 ,193 ,193 ,                   ,180 ,180 ,GRAPA.jpg                                , ,1    ,KIT-SUPGRA3    ,N  ,N  ,N ,GRAPA ,300 ,0
+      SUP        ,Suporte Oculto para Prateleira (Parabout) ,000SUPPRA07    ,1 ,   ,    ,    ,suporte_embutido.x ,    ,    ,                                         , ,1    ,KIT-SUPPRAOC   ,N  ,N  ,N ,PAR   ,    ,1
+   }
+}

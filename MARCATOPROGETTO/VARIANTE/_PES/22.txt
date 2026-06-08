@@ -1,0 +1,23 @@
+{ _PES   // Pes
+   *AZZERA*            =0
+   DESCRIZIONE         =Pes
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^2;6;100;100;14;#FOTO\PES\;2;2
+   MEMO                =1Código 930Descrição 7530tipo 1200diml 945dima 2475dimp 12003ds 1980cor 1200cod 1350distancia L 1545distancia F 1515DISTANCIA P 1920cod rodape 1440preview 3090COD.ENGATE 3510011
+   { 
+      //  ,Descrição             ,ti,dim,dima           ,dimp,3ds                         ,cor ,cod          ,dis,dist,DIS,cod rodape,preview                        ,COD.ENGATE
+      000 ,Sem Pes               ,0 ,   ,               ,    ,                            ,    ,             ,   ,    ,   ,          ,sem_pes.jpg                    ,
+      002 ,Nivel H40             ,1 ,40 ,40             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV040   ,4  ,80  ,35 ,000ROD40  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV040E
+      003 ,Nivel H60             ,1 ,40 ,60             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV060   ,4  ,80  ,35 ,000ROD60  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV060E
+      004 ,Nivel H80             ,1 ,40 ,80             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV080   ,4  ,80  ,35 ,000ROD80  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV080E
+      005 ,Nivel H100            ,1 ,40 ,100            ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV100   ,4  ,80  ,35 ,000ROD100 ,Nivelador 100mm - Zoom - 3.jpg ,KIT-NIV100E
+      006 ,Base Alvenaria        ,5 ,   ,$(arod_pers:0) ,    ,                            ,    ,             ,   ,    ,   ,          ,                               ,
+      007 ,Hafele Axilo_80       ,1 ,78 ,80             ,100 ,PE_NIVELADOR_HAFELE_R00.3ds ,183 ,KIT-AXILO80  ,14 ,127 ,37 ,          ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-AXILO80
+      008 ,Hafele Axilo_100      ,1 ,78 ,100            ,100 ,PE_NIVELADOR_HAFELE_R00.3ds ,183 ,KIT-AXILO100 ,14 ,127 ,37 ,          ,Nivelador 100mm - Zoom - 3.jpg ,KIT-AXILO100
+      009 ,Nivel H40 com Rodape  ,3 ,40 ,40             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV040   ,4  ,80  ,35 ,000ROD40  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV040E
+      010 ,Nivel H60 com Rodape  ,3 ,40 ,60             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV060   ,4  ,80  ,35 ,000ROD60  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV060E
+      011 ,Nivel H80 com Rodape  ,3 ,40 ,80             ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV080   ,4  ,80  ,35 ,000ROD80  ,Nivelador 80mm - Zoom - 3.jpg  ,KIT-NIV080E
+      012 ,Nivel H100 com Rodape ,3 ,40 ,100            ,40  ,PE_NIVELADOR.3ds            ,180 ,KIT-NIV100   ,4  ,80  ,35 ,000ROD100 ,Nivelador 100mm - Zoom - 3.jpg ,KIT-NIV100E
+   }
+}

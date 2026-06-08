@@ -1,0 +1,20 @@
+#IF $(_tampo:1)!999
+   #IF $(_TAMPO:6)==999
+      #LET CALCOLATAMPO=0
+      402,SA=$a+$(atampo),SP=-$(inctatr:0),SL=$l/2,L=$(inctatr:0),A=5,X1=3,X3=Tampo;inctatr;1,X4=1,X5=3  //DRAGGER
+   #ELSE
+      #LET inctatr=0
+   #ENDIF
+   #IF  $(inctFRO:0)>0
+      #LET PTAMPO=$(ptampo)+$(inctFRO:0)
+   #ENDIF
+   #IF $(_TAMPO:13)!!
+      250,COD=$(VAZIO) /$(VAZIO) /$(VAZIO)  // TAMPO MDF
+   #ELSE
+      225,COD=$(VAZIO) /$(VAZIO) /$(VAZIO)  //TAMPO
+   #ENDIF
+   402,SA=$a,SP=$(ptampo)/2,SL=-$(inctESQ:0),L=$(inctESQ:0),A=5,X1=7,X3=Tampo;INCTESQ;1,X4=1,X5=3  //DRAGGER
+   402,SL=$l+$(inctder:0),SA=$a,SP=$(ptampo)/2,L=$(inctder:0),A=5,X1=6,X3=Tampo;INCTDER;1,X4=1,X5=3  //DRAGGER
+   402,SL=$l/2,SA=$a,SP=$(ptampo),L=$(inctFRO:0),A=5,X1=4,X3=Tampo;INCTFRO;1,X4=1,X5=3  //DRAGGER
+   // #LET ua=$(ATAMPO)
+#ENDIF

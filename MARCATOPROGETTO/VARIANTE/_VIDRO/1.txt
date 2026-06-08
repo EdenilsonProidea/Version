@@ -1,0 +1,39 @@
+{ _VIDRO   // VIDRO
+   *AZZERA*            =0
+   DESCRIZIONE         =VIDRO
+   ALIAS               =
+   OBBLIGATO           =True
+   CLASSE              =^3;8;120;120;4,5;#FOTO\vidro\;2;3
+   MEMO                =1Código 1590Descrição 5745Rif Colore 1245foto 3510rgb 1290COD VIDRO 2145espessura 1200 1860;MARCATO
+   { 
+      //      ,Descrição          ,Rif ,foto              ,r,COD VI,es,
+      001     ,Vidros             ,    ,                  , ,      ,  ,
+      001.001 ,Translucido        ,3   ,NEVE.jpg          , ,4196  ,4 ,SUP_VIDRO_4
+      001.002 ,Refletente Griggio ,3   ,Grafite.jpg       , ,8580  ,4 ,SUP_VIDRO_4
+      001.003 ,Espelho Prata      ,017 ,Grafite.jpg       , ,10523 ,4 ,SUP_VIDRO_4
+      001.004 ,Branco neve        ,3   ,NEVE.jpg          , ,17964 ,4 ,SUP_VIDRO_4
+      001.005 ,Ebano              ,3   ,EBANOC.JPG        , ,17964 ,4 ,SUP_VIDRO_4
+      001.006 ,Panna              ,3   ,PANNA.jpg         , ,17964 ,4 ,SUP_VIDRO_4
+      001.007 ,Dark               ,3   ,DARK.jpg          , ,17964 ,4 ,SUP_VIDRO_4
+      001.008 ,Canapa             ,3   ,canapa_gof.jpg    , ,17964 ,4 ,SUP_VIDRO_4
+      001.009 ,Argila             ,3   ,argila_gof.jpg    , ,17964 ,4 ,SUP_VIDRO_4
+      001.010 ,Marrone            ,3   ,marrone_gof.jpg   , ,4196  ,4 ,SUP_VIDRO_4
+      001.011 ,Grigio             ,3   ,griggio.jpg       , ,17964 ,4 ,SUP_VIDRO_4
+      001.012 ,Blu                ,3   ,blu_gof.jpg       , ,17964 ,4 ,SUP_VIDRO_4
+      001.013 ,Galhardo           ,3   ,gallardo_gof.jpg  , ,17964 ,4 ,SUP_VIDRO_4
+      001.014 ,Mandarino          ,3   ,mandarino_gof.jpg , ,17964 ,4 ,SUP_VIDRO_4
+      001.015 ,Rosso              ,3   ,rosso_gof.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.016 ,Oliva              ,3   ,oliva_gof.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.017 ,Caffe              ,3   ,caffe_gof.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.018 ,Quartzo            ,3   ,quarzo_gof.jpg    , ,17964 ,4 ,SUP_VIDRO_4
+      001.019 ,Creta              ,3   ,creta_gof.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.020 ,Grafite            ,3   ,Grafite.jpg       , ,17964 ,4 ,SUP_VIDRO_4
+      001.021 ,Personalizado      ,3   ,NEVE.jpg          , ,17964 ,4 ,SUP_VIDRO_4
+      001.022 ,Blu Marino         ,3   ,Blu marino_.jpg   , ,17964 ,4 ,SUP_VIDRO_4
+      001.023 ,Carota             ,3   ,Carota_.jpg       , ,17964 ,4 ,SUP_VIDRO_4
+      001.024 ,Esmeralda          ,3   ,ESMERALDA_.jpg    , ,17964 ,4 ,SUP_VIDRO_4
+      001.025 ,Mostarda           ,3   ,Mostarda_.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.026 ,Pomodoro           ,3   ,Pomadoro_.jpg     , ,17964 ,4 ,SUP_VIDRO_4
+      001.027 ,Luna               ,3   ,argila_gof.jpg    , ,17964 ,4 ,SUP_VIDRO_4
+   }
+}

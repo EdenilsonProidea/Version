@@ -1,0 +1,16 @@
+{ 261   // Traseira Gaveta
+   *AZZERA*            =0
+   DESCRIZIONE         =Traseira Gaveta
+   CODICE              =/_CORCX=$(_CORGV:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(espgaveta:0),0,0
+   DIMENSIONE          =$l-$(espgaveta:0)*2,$A,$(espgaveta:0)
+   COLORI              =$(_corgv:3)|$(.percorso)\foto\madeira\$(_corgv:4)|$(_corgv:5),$(_corgv:3)|$(.percorso)\foto\madeira\$(_corgv:4)|$(_corgv:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/1/0/0/0/0
+   X8                  =$(_TPGAV:1)/$(_corr:1)
+   X9                  =$(_tpcaixa:1)/$(_corgv:1)/$(TPFIXGAV:1)
+   X10                 =$(_tpgavalt:1)
+   ALIAS               =#261
+}

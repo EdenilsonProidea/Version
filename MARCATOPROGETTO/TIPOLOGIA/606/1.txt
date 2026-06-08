@@ -1,0 +1,11 @@
+{ 606   // TRAVESSA PERFIL
+   *AZZERA*            =0
+   DESCRIZIONE         =TRAVESSA PERFIL
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(PV_PORTAS:10),500,$(PV_TRAVESSAS:11)
+   DIMENSIONE          =$L-$(PV_PORTAS:10)*2,$(PV_TRAVESSAS:4),$(PV_TRAVESSAS:5)
+   COLORI              =$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5),$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5)
+   DISEGNO             =$(SAG_PER_TRAVESSA)
+   ORIENTAMENTO        =LAP
+   X9                  =$(PV_TRAVESSAS:1)/$(pv_corper:1)
+}

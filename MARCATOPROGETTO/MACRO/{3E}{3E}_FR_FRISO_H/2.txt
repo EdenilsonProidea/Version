@@ -1,0 +1,25 @@
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+#LET afriso=$(LFRISO:0)//3 <C22010>
+#LET LFRISO=$(LFRISO:0)
+#IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+// #LETS parfrisos=100;300;400
+#LETS parfrisosscript=
+#FOR $1:$(nfrisos:0)
+   #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(i));
+#ENDFOR
+#LETS xpfrente=frente_friso_h.xp
+#LETS parjobfrente=$(afriso);$(nfrisos:0);$(parfrisosscript)
+// .frente_friso_h.xp
+#LET aa=$(afre)-1*($(forlgafrenteai:0)+$(forlgafrenteas:0))
+_fr_friso_h_drag,sa=$(forlgafrenteai:0),a=$(aa)
+#LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOH
+_FR_STANDARD
+#LET old_nfrisos$(_ctx)=$(nfrisos$(_ctx):0)

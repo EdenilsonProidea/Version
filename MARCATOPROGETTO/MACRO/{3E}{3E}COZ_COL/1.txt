@@ -1,0 +1,9 @@
+coz_inicia
+#MSG $(_montado)
+#LET COL=1
+#LET cava=0
+!TIPOBOX 1
+CAIXA_COZINHA
+tampofilete
+coz_pes
+cotas

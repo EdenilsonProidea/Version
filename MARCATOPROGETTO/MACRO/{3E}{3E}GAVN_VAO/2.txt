@@ -1,0 +1,33 @@
+!PARAMETRI P=$(p1)//P=$(PCXGAVETEIRO:0)
+#IF $(_placer)=1 // ESTA DENTRO DE UM ARMARIO
+   //  403,x1=201,sp=0,p=$p,SA=$(afinalgaveteiro:0)+$(ABASE:0),A=$a-1*($(AFINAL:0)+$(ABASE:0))  //Placer
+   #LET deslocafrente=0
+   #LET AFRE=$A-$(ComEspacamentoFro:3)
+   #LET LFRE=$L-1*($(ENCHD)+$(ENCHE))
+   #LET AFFREP=$P
+   //#LET FOLGAFRENTEL=0
+   #LET FOLGAFRENTEAI=0
+   #LET FOLGAFRENTEAS=0
+   ABRIR_FRENTE_DOR,sa=0
+   #LET deslocafrente=$(fl_abrir_SP:0)
+   FRGAVETAd,SL=$(ENCHE),SA=0,SP=$(AFFREP)+$(deslocafrente),P=$(ESFRE),APE=GAI,IDP=G,LFRE=$(LFRE),SAINI=$(SPOSTAA)
+   GAVETA_DORMITORIOn,SP=$(deslocafrente),L=$(LFRE),SL=$(ENCHE),_CORCX=$(_CORGV)
+#ELSE
+   #LET deslocafrente=0
+   #LET AFRE=$A-$(ComEspacamentoFro:3)
+   #LET LFRE=$L-1*($(ENCHD)+$(ENCHE))
+   #LET AFFREP=$P
+   #LET FOLGAFRENTEL=0
+   //#LET FOLGAFRENTEAI=0
+   //#LET FOLGAFRENTEAS=0
+   ABRIR_FRENTE_DOR,sa=0
+   #LET deslocafrente=$(fl_abrir_SP:0)
+   FRGAVETAd,SL={$(ENCHE)+$(FOLGAFRENTEGAVL)},SA=0,SP=$(AFFREP)+$(deslocafrente),P=$(ESFRE),APE=GAI,IDP=G,LFRE={$(LFRE)-(2*$(FOLGAFRENTEGAVL))},SAINI=$(SPOSTAA)
+   GAVETA_DORMITORIOn,SL=$(ENCHE),SP=$(deslocafrente),L=$(LFRE),_CORCX=$(_CORGV)
+#ENDIF
+#LET REPETICOES=$(REPETICOES:0)+1
+#IF $(memoinfocorr)!!
+   #LETS memoinfocorr=TPGAV=$(_TPGAV:2)_ENCH=$(ENCH:0) $(repeticoes:0)x
+#ELSE
+   #LETS memoinfocorr=TPGAV=$(_TPGAV:2)_ENCH=$(ENCH:0) $(memoinfocorr) $(repeticoes:0)x
+#ENDIF

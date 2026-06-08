@@ -1,0 +1,12 @@
+{ 707   // ripas vertical
+   *AZZERA*            =0
+   DESCRIZIONE         =ripas vertical
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =0,0-(1*$(prof_ri)),0
+   DIMENSIONE          =$(largripas:0),$(prof_ri),$p
+   COLORI              =$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5),$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5)
+   ORIENTAMENTO        =PLA
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =/$(_CORRIPAS:1)
+   ALIAS               =#707
+}

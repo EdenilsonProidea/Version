@@ -1,0 +1,21 @@
+#IF $(DOBRACOSTUMIZADA)=1
+   #FOR $(VETTDOBRA)
+      415,SA={$(I)-20},SL=$(afldob)// RETIRADO "{$(I)-20/2} EM SA" // Dobradiça
+   #ENDFOR
+#ELSE
+   415,SL=$(afldob),SA={$(AFINIDOBL:0)-20/2+$(FOLGAFRENTEAI:0)}  // Dobradiça
+   #IF $(_fr:6)=601
+      415,SL=$(afldob),SA={$(AFRE)-$(AFINIDOBL:0)-20/2-$(FOLGAFRENTEAS:0)}-$(RIDFRECAVA45:0)  // Dobradiça
+   #ELSE
+    //  415,SL=$(afldob),SA={$(AFRE)-$(AFINIDOBL:0)-20/2-$(FOLGAFRENTEAS:0)}  // Dobradiça
+   #ENDIF
+   #IF $(ndob)>2
+      #LET nn=$(ndob)-2
+      #LET distdob=($(AFRE)-$(FOLGAFRENTEAI:0)-$(FOLGAFRENTEAS:0)-$(AFINIDOBL:0)-$(AFINIDOBL:0))/($(ndob)-1)
+      #FOR $1:$(nn)
+         415,SA={$(FOLGAFRENTEAI:0)+$(AFINIDOBL:0)+$(i)*$(distdob)-20/2},SL=$(afldob) // Dobradiça
+      #ENDFOR
+   #ENDIF
+#ENDIF
+423  //Kit Dobradiças
+// frontal

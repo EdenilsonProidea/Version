@@ -1,0 +1,12 @@
+{ 583   // Suporte Prat Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte Prat Ubik
+   CODICE              =$(codsuporteU) /LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(_corsupp:3),$(_corsupp:3)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X7                  =$(_tpSuppU:9)/$(_corsupp:0)
+   X8                  =acessorios\$(_tpSuppU:4)
+}

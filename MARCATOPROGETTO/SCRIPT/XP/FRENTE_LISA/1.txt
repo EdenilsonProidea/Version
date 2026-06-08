@@ -1,0 +1,16 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   wrPannelloExtended "LAP",dl,da,dp, 0,c1,c1,c2,c2,c2,c2,"2"
+   wrPannello2 dl,da,dp, 0,0,0,0,0,0,-1
+   
+   par=ex(zParametro(8),"/",11)
+   If PAR<>"" Then
+      c3=wColoreE(par)
+      wrtrasforma 0,0,-1
+      wrPannelloExtended "LAP",dl,DA,1,-1,c3,c3,c3,c3,c3,c3,"2"
+      wrchiudi
+   End If
+   
+End sub

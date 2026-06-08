@@ -1,0 +1,18 @@
+#IF $(FRONTALAVULSO)=0
+   #IF $(_tpgavalt:10)=1
+      #IF $(FRGAVINT:0)=0
+         #LET posgavint=0//$(espgaveta)
+      #ELSE
+#MSG 1*($(fgavint)+$(ESFRE))
+         #LET posgavint=-1*($(fgavint)+$(ESFRE))
+      #ENDIF
+   #ELSE
+      #LET posgavint=0
+   #ENDIF
+   internogaveta_1,SP=$(posgavint)
+#ENDIF
+//#IF $(FRONTALAVULSO)=0
+//internogaveta_1
+//#ENDIF
+
+// 215

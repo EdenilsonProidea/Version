@@ -1,0 +1,38 @@
+#LOADVAR dobradicaesq _dobra $(_dobra:1)
+#LOADVAR dobradicadir _dobra $(_dobra:1)
+#LET primeiromodulo=0
+#LET ultimomodulo=0
+#IF $(tpcanto:3)=2 // L
+   CANTO_L_DOR
+#ELSEIF $(tpcanto:3)=3 // reto na profondidade
+   dor_fech_cantore,sp=$p,ay=90,l=$p,ISCANTOPROF=1
+#ELSE // reto na largura
+   DOR_FECH_CANTOLA,ISCANTOLAR=1
+#ENDIF
+#IF $(TPCANTO:3)[2;3;21]!0  //ESQUERDA
+   #IF $(_TPFRESQ:3)[1;2]!0
+      #LOADVAR _tpfr _tpfr $(_TPFRESQ:1)
+      #LOADVAR _dobra _dobra $(_dobraESQ:1)
+      #LOADVAR _SISCORRER _SISCORRER $(_SISCORRERESQ:1)
+      #IF $(TPLATARM:3)=1  // LATERAL ÚNICA
+         UMALATESQ
+      #ELSE
+         DUASLATESQ
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(TPCANTO:3)[2;1;21]!0  //DIREITA
+   #IF $(_TPFRDIR:3)[1;2]!0
+      #LOADVAR _tpfr _tpfr $(_TPFRDIR:1)
+      #LOADVAR _dobra _dobra $(_dobraDIR:1)
+      #LOADVAR _SISCORRER _SISCORRER $(_SISCORRERDIR:1)
+      #IF $(TPLATARM:3)=1  // LATERAL ÚNICA
+        // UMALATDIR
+      #ELSE
+         DUASLATDIR
+      #ENDIF
+   #ENDIF
+#ENDIF
+// _FR_1
+
+// _pux=999

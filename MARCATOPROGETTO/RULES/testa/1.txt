@@ -1,0 +1,437 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+-,dati,,,Dados
+S,NOME_AMBIENTE,,,Nome Ambiente Pontta
+T,AMBIENTE,,,Ambiente
+M,integrationCode,,,Numero Orçamento Pontta,,IMPORTACLIENTEPONTTA
+M,aggregateCode,,,Numero Ambiente Pontta,,IMPORTACLIENTEPONTTA
+L,libera_projeto,,,Projeto liberado Pontta (0=não/1=Sim)
+T,_tipoordine
+L,IDENTLOJA,,,Identificativo loja
+L,CODPROJETO,,,Cod.Projeto
+S,numeroalba,,,Numero Alba
+L,revisionealba,,,Revisione Alba,,,,,,,,,1=0
+S,consultor,,,Consultor
+S,arquiteto,,,Arquiteto
+S,projetista,,,Projetista
+E,obsfab,,,observação fab
+-,daticlifin,,,Cliente Finale
+L,_RIFHOST,,,N° Server
+L,_RIFCLIENT,,,N° Client
+S,CF_COD,,,Cod.Cli,,,,,,,,,1=0
+S,TT_CLI_1,,,Rag 1,,,,,,,,,1=0
+S,TT_CLI_2,,,Rag 2,,,,,,,,,1=0
+S,TT_CLI_3,,,Endereço,,,,,,,,,1=0
+S,TT_CLI_4,,,UF,,,,,,,,,1=0
+S,TT_CLI_5,,,Cidade,,,,,,,,,1=0
+S,TT_CLI_6,,,Prv,,,,,,,,,1=0
+S,TT_CLI_7,,,Tel,,,,,,,,,1=0
+S,TT_CLI_18,,,Fax,,,,,,,,,1=0
+S,TT_CLI_8,,,Mail,,,,,,,,,1=0
+S,TT_CLI_15,,,Id Dest,,,,,,,,,1=0
+S,TT_CLI_9,,,Dest.Rag.1 ,,,,,,,,,1=0
+S,TT_CLI_10,,,Dest.Rag.2,,,,,,,,,1=0
+S,TT_CLI_11,,,Dest.Endereco,,,,,,,,,1=0
+S,TT_CLI_12,,,Dest.Uf,,,,,,,,,1=0
+S,TT_CLI_13,,,Dest.Loc,,,,,,,,,1=0
+S,TT_CLI_14,,,Dest.Prv,,,,,,,,,1=0
+S,TT_CLI_16,,,Dest.Tel,,,,,,,,,1=0
+S,TT_CLI_17,,,Dest.Mail,,,,,,,,,1=0
+-,IG,,,IG,,,,,,,,,1=0
+M,IGORCAMENTO,,,NUMERO ORCAMENTO
+M,IGIDAMBIENTE,,,ID AMBIENTE
+M,IGVERSAOAMBIENTE,,,VERSAO AMBIENTE,,,,1
+-,Cliente
+S,CF_CLI_1,,,Nome Cliente
+S,CF_CLI_2,,,Nome Nota Fiscal
+S,CF_CLI_3,,,Endereço
+S,CF_CLI_4,,,UF
+S,CF_CLI_5,,,Cidade
+S,CF_CLI_7,,,Telefone
+S,CF_CLI_8,,,E-mail
+-,OldIntegracoes,,,Efi/focco
+S,CLI_EFIN,,,Cod.Cliente E-finance,,IMPORTAEFINANCE,,,,,,,1=0
+S,COD_AMB_EFIN,,,Cod.Ambiente  E-finance,,IMPORTAEFINANCE,,,,,,,1=0
+S,CNPJ_CPF,,,CNPJ-CPF
+S,descricao_ambiente,,,Descriçao Ambiente
+S,IDPROJETO,,,ID PROJETO FOCCOLOJAS,,IMPORTAFOCCOLOJAS
+S,IDAMBIENTE,,,ID AMBIENTE FOCCOLOJAS,,IMPORTAFOCCOLOJAS
+S,CNPJLOJA,,,CNPJ LOJA FOCCOLOJAS
+S,IDENTIFICADOR,,,IDENTIFICADOR FOCCOLOJAS
+S,SENHA,,,SENHA FOCCOLOJAS,,,,,,,,,1=0
+
+[COMANDI_IMPORTAEFINANCE]
+#LETS clief=$(CLI_EFIN:0)
+#LETS ambef=$(COD_AMB_EFIN:0)
+#LETV lojas=$(cliente)
+#LETS codemp=$(lojas:4)
+#LETS codloj=$(lojas:3)
+#LET store=$(lojas:5)
+
+
+
+#VB
+   if calcola(v("store"))=1 then
+      ' xml store
+      key="UEsDBBQACQAIAHRdZz8fMAbEnQAAAAgBAAAHAAAAa2V5LnhtbBVE7Wv9/MIYST8H4zkOQ5l3NnVJ5/1eOYK4c+fIFk20T8Ro/"
+      key=key & "txtuwCBO+zar+R00y3KfezvoCofkqNFHRI3X06K04FdISq/7w7VIK1JIbZCLPngGSyBiikkZVjZbsdKbgJy7MXraeLy"
+      key=key & "AZRhVeZdIo6EnAvUYBJ0NaC9CGWLiVBPkmjXjFsdI1Nc6VAIrEmBz0BJy8oOsZZMxFE77wJQSwcIHzAGxJ0AAAAIAQA"
+      key=key & "AUEsBAhQAFAAJAAgAdF1nPx8wBsSdAAAACAEAAAcAAAAAAAAAAQAgAAAAAAAAAGtleS54bWxQSwUGAAAAAAEAAQA1AAAA0gAAAAAA"
+      rotina="200"  'Dados do cliente
+      param1=v("ambef") 'ambiente
+      param2=""
+      param3=""
+      param4=""
+      
+      Set xhttp = CreateObject("MSXML2.XMLHTTP")
+      Set xmldoc=CreateObject("MSXML2.DOMDocument")
+      
+      strUrl = "http:/" & "/integracao.simplemind.com.br/Service.asmx"
+      
+      strRequest = "<?xml version=""1.0"" encoding=""utf-8""?>" & _
+      "<soap:Envelope xmlns:xsi=""http:/" & "/www.w3.org/2001/XMLSchema-instance"" " & _
+      " xmlns:xsd=""http:/" & "/www.w3.org/2001/XMLSchema"" " & _
+      " xmlns:soap=""http:/" & "/schemas.xmlsoap.org/soap/envelope/"">" & _
+      "<soap:Body>" & _
+      "<SMget xmlns=""http:/" & "/tempuri.org/"">" & _
+      "<chave>" & key & "</chave>" & _
+      "<rotina>"& rotina & "</rotina>" & _
+      "<param1>"& param1 & "</param1>" & _
+      "<param2>"& param2 & "</param2>" & _
+      "<param3>"& param3 & "</param3>" & _
+      "<param4>"& param4 & "</param4>" & _
+      "</SMget>" & _
+      "</soap:Body>" & _
+      "</soap:Envelope>"
+      
+      
+      xhttp.Open "POST", strUrl, False
+      xhttp.setRequestHeader "content-type", "text/xml; charset=utf-8"
+      xhttp.setRequestHeader "SOAPAction", "http:/" & "/tempuri.org/SMget"
+      xhttp.send strRequest
+      
+      
+      Set xmlDoc = xHttp.responseXML
+      xxml=REPLACE(ucase(xmldoc.xml),"&LT;","<")
+      xxml=REPLACE(XXML,"&GT;",">")
+      
+   else
+      HKEY_LOCAL_MACHINE = -2147483646
+      percorsoef=filepath(GetRegistro(HKEY_LOCAL_MACHINE, "SOFTWARE\Microsoft\Windows\CurrentVersion\Run", "TransicaoeFinance")) & "\"
+      if percorsoef="\" then percorsoef="c:\efinance\"
+      empresa=v("codemp")
+      loja=v("codloj")
+      cliente=v("clief")
+      opcao=v("ambef")
+      
+      'intesto la richiesta
+      
+      Set xmlDoc = CreateObject("MSXML2.DOMDocument")
+      xxml="<?xml version=" & CHR(39) & "1.0" & CHR(39) & " encoding=" & CHR(39) & "utf-8" & CHR(39) & "?> " & VBCRLF
+      xxml=xxml & "<soap:Envelope xmlns:xsi=" & chr(39) & "http:/^/www.w3.org/2001/XMLSchema-instance" & chr(39) & " xmlns:xsd=" & chr(39) & "http:/^/www.w3.org/2001/XMLSchema" & chr(39) & " xmlns:soap=" & chr(39) & "http:/^/schemas.xmlsoap.org/soap/envelope/" & chr(39) & ">" & VBCRLF
+      xxml=xxml & "  <soap:Body> " & VBCRLF
+      xxml=xxml & "    <RetornaDadosCliente xmlns=" & chr(39) & "http:/^/tempuri.org/" & chr(39) & "> " & VBCRLF
+      xxml=xxml & "      <Empresa>int</Empresa> " & VBCRLF
+      xxml=xxml & "      <Loja>int</Loja> " & VBCRLF
+      xxml=xxml & "      <Cliente>int</Cliente>" & VBCRLF
+      xxml=xxml & "      <Opcao>string</Opcao>" & VBCRLF
+      xxml=xxml & "    </RetornaDadosCliente>" & VBCRLF
+      xxml=xxml & "  </soap:Body>" & VBCRLF
+      xxml=xxml & "</soap:Envelope>"
+      xxml=replace(xxml,"^","")
+      
+      xmlDoc.loadXML xxml
+      'setto i parametri
+      With xmlDoc.childNodes(1).childNodes(0).childNodes(0).childNodes
+         .Item(0).Text = Empresa
+         .Item(1).Text = Loja
+         .Item(2).Text = Cliente
+         .Item(3).Text = Opcao
+      End With
+      
+      'richiesta
+      Set xHttp = CreateObject("MSXML2.XMLHTTP")
+      
+      xHttp.open "POST", REPLACE("http:/^/wsmarcato.efinance.com.br/Marcato.asmx","^",""), False
+      xHttp.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
+      xHttp.setRequestHeader "Content-length", Len(xmlDoc.xml)
+      xHttp.setRequestHeader "SOAPAction", "http:/" & "/tempuri.org/RetornaDadosCliente"
+      
+      xHttp.send xmlDoc
+      Set xmlDoc = xHttp.responseXML
+      xxml=xmldoc.xml
+   end if
+   ' msgbox err.description
+   ' risultato
+   scrivifiletesto "c:\test\test.txt",xxml
+   
+   
+   
+   if len(getnodo(xxml,"nome_cliente",0))>0 then
+      v("CCC")=getnodo(xxml,"CPF_CNPJ",0)
+      ambiente.tcli(9) = getnodo(xxml,"nome_cliente",0)
+      ambiente.tcli(11) = getnodo(xxml,"Endereco_Entrega",0) & " " & getnodo(xxml,"numero_Entrega",0) & " / " & getnodo(xxml,"Bairro_Entrega",0)
+      ambiente.tcli(12) = getnodo(xxml,"cep_entrega",0)
+      ambiente.tcli(13) = getnodo(xxml,"Cidade_Entrega",0)
+      ambiente.tcli(14) = getnodo(xxml,"Estado_Entrega",0)
+      ambiente.tcli(16) = getnodo(xxml,"Telefone1_Entrega",0)
+      ambiente.tcli(17) = getnodo(xxml,"Telefone2_Entrega",0)
+      v("des_amb")=getnodo(xxml,"Descricao_Ambiente",0)
+      
+      ambiente.tcli(15) = ""
+      ambiente.tcli(10) = ""
+      
+   end if
+   Set xmlDoc = Nothing
+   Set xHttp = Nothing
+#ENDVB
+#LETV descricao_ambiente=$(des_amb)
+#LETV cnpj_cpf=$(ccc)
+
+[COMANDI_IMPORTAFOCCOLOJAS]
+#LETS IDPROJETO=$(IDPROJETO:0)
+#LETS IDAMBIENTE=$(IDAMBIENTE:0)
+#LETS CNPJLOJA=$(CNPJLOJA:0)
+#LETS IDENTIFICADOR=$(IDENTIFICADOR:0)
+#LETS SENHA=$(SENHA:0)
+
+
+#VB
+   
+   dim identificador,senha,idprojeto,cnpj,idambiente
+   identificador=V("identificador")
+   senha=V("senha")
+   idprojeto=V("idprojeto")
+   cnpj=V("cnpjloja")
+   idambiente=V("idambiente")
+   
+   ' *************dados de teste ********************
+   'identificador="paula.carvalho@FOCCOLOJAS_TESTE"
+   'senha="focco123"
+   'idprojeto="74"
+   'cnpj="09.185.839/0002-05"
+   'idambiente="3"
+   ' ************* fim dados de teste ********************
+   
+   
+   if idprojeto<>"" and idambiente<>"" then
+      if LEN(identificador)<2 or LEN(senha)<2 or LEN(cnpj)<5 then
+         
+         dim dd,xx
+         Set dd = CreateObject("drgenerico.crealoginfoccolojas")
+         xx=dd.RitornaLogin()
+         set dd=nothing
+         
+         ll=Split(xx,vbtab)
+         identificador=ll(0)
+         senha=ll(1)
+         cnpj=ll(2)
+         v("identificador")=identificador
+         v("senha")=senha
+         v("cnpjloja")=cnpj
+      end if
+   end if
+   
+   
+   'intesto la richiesta
+   
+   Set xmlDoc = CreateObject("MSXML2.DOMDocument")
+   
+   dim xml
+   
+   xml="<soapenv:Envelope xmlns:soapenv=""http:/" & "/schemas.xmlsoap.org/soap/envelope/"" xmlns=""FoccoLojas_V3"">" & vbcrlf
+   xml=xml & "<soapenv:Header/>" & vbcrlf
+   xml=xml & "<soapenv:Body>" & vbcrlf
+   xml=xml & "<PrcVenWs3cadCliente.Execute>" & vbcrlf
+   xml=xml & "<Psdtven3cad>" & vbcrlf
+   xml=xml & "<USUARIO>" & vbcrlf
+   xml=xml & "<IDENTIFICADOR>$(identificador)</IDENTIFICADOR>" & vbcrlf
+   xml=xml & "<SENHA>$(senha)</SENHA>" & vbcrlf
+   xml=xml & "</USUARIO>" & vbcrlf
+   xml=xml & "<PROJETO>" & vbcrlf
+   xml=xml & "<GUID>$(idprojeto)</GUID>" & vbcrlf
+   xml=xml & "<CNPJ>$(cnpj)</CNPJ>" & vbcrlf
+   xml=xml & "<ORCAMENTO>" & vbcrlf
+   xml=xml & "<GUID>$(idambiente)</GUID>" & vbcrlf
+   xml=xml & "</ORCAMENTO>" & vbcrlf
+   xml=xml & "</PROJETO>" & vbcrlf
+   xml=xml & "</Psdtven3cad>" & vbcrlf
+   xml=xml & "</PrcVenWs3cadCliente.Execute>" & vbcrlf
+   xml=xml & "</soapenv:Body>" & vbcrlf
+   xml=xml & "</soapenv:Envelope>" & vbcrlf
+   
+   xml=replace(xml,"$(identificador)",identificador)
+   xml=replace(xml,"$(senha)",senha)
+   xml=replace(xml,"$(cnpj)",cnpj)
+   xml=replace(xml,"$(idprojeto)",idprojeto)
+   xml=replace(xml,"$(idambiente)",idambiente)
+   
+   Dim xmlDoc
+   Dim xHttp
+   
+   Set xmlDoc = CreateObject("MSXML2.DOMDocument")
+   xmlDoc.loadXML "<?xml version=""1.0"" encoding=""utf-8""?> " & vbcrlf & xml
+   
+   Set xHttp = CreateObject("MSXML2.XMLHTTP")
+   
+   xHttp.open "POST", "https:/" & "/web.foccolojas.com.br/foccolojas/servlet/aprcvenws3cadcliente", False
+   xHttp.setRequestHeader "Content-Type", "text/xml; charset=utf-8"
+   xHttp.setRequestHeader "Content-length", Len(xmlDoc.xml)
+   xHttp.send xmlDoc
+   
+   
+   
+   
+   'risultato
+   Set xmlDoc = xHttp.responseXML
+   'msgbox    xmlDoc.xml
+   dim i,x,tm
+   dim nomedescription,nomeid
+   nomedescription="Description"
+   nomeid="Id"
+   dim testeerro
+   dim messageerro
+   messageerro=""
+   testeerro=xmlDoc.getelementsbytagname(nomeid).item(0).text
+   
+   if testeerro="ERROR" THEN
+      messageerro=xmlDoc.getelementsbytagname(nomedescription).item(0).text
+      MSGBOX messageerro
+   END IF
+   dim endereco,numero,bairro,complemento
+   v("messageerro")=messageerro
+   for i=0 to xmldoc.childnodes.item(1).childnodes.item(0).childnodes.item(0).childnodes.item(0).childnodes.length-1
+      set x=xmldoc.childnodes.item(1).childnodes.item(0).childnodes.item(0).childnodes.item(0).childnodes.item(i)
+      tm=x.getelementsbytagname(nomedescription).item(0).text
+      select case x.getelementsbytagname(nomeid).item(0).text
+      case "CPF_CNPJ"
+      v("cpf_cnpj")=tm
+      case "NOME_CLIENTE"
+      ambiente.tcli(1)=tm
+      case "TELEFONE1_ENTREGA"
+      ambiente.tcli(7) =tm
+      case "ENDERECO_ENTREGA"
+      endereco=tm
+      case "NUMERO_ENTREGA"
+      numero=tm
+      case "COMPLEMENTO_ENTREGA"
+      complemento=tm
+      case "BAIRRO_ENTREGA"
+      bairro=tm
+      case "CEP_ENTREGA"
+      ambiente.tcli(4) = tm
+      case "CIDADE_ENTREGA"
+      ambiente.tcli(5) =tm
+      case "ESTADO_ENTREGA"
+      ambiente.tcli(6) =tm
+   end select
+   
+next
+ambiente.tcli(3)= endereco & "," & numero & "," & complemento & "," & bairro
+
+
+
+Set xmlDoc = Nothing
+Set xHttp = Nothing
+#ENDVB
+#IF $(messageerro)!!
+   #LETV cpf_cnpj=_
+   #LETV CNPJLOJA=_
+   #LETV IDENTIFICADOR=_
+   #LETV SENHA=_
+#ELSE
+   #LETV cpf_cnpj=$(cpf_cnpj)
+   #LETV CNPJLOJA=$(CNPJLOJA:0)
+   #LETV IDENTIFICADOR=$(IDENTIFICADOR:0)
+   #LETV SENHA=$(SENHA:0)
+#ENDIF
+
+[COMANDI_IMPORTACLIENTEPONTTA]
+//********************************inicio ****************************************************
+#LETS INTEGRATIONCODE=$(INTEGRATIONCODE:0)
+#LETS aggregateCode =$(aggregateCode:0)
+#LETS infocliente=
+#LETS valida_projeto_existe=
+#VB
+   
+   dim pp
+   Set pp = CreateObject("proideaponttadll.crea")  ' inicializa o integrador proideaponttadll
+   v("infocliente")= pp.attiva("GETCLIENTE",V("INTEGRATIONCODE"))' faz a chamada que retorna os dados do cliente dentro $(infocliente)
+   if EX(v("infocliente"),"=",1)="ERRO" THEN ' se o cliente não existe ou tem algum problema informa erro
+      msgbox v("infocliente") ' mensagem de erro
+      v("infocliente")="" ' esvazia info cliente para que não avança na integração
+   end if
+   v("valida_projeto_existe")=pp.attiva("GETEXISTE",V("INTEGRATIONCODE") & "|" & V("aggregateCode"))
+   Set pp =nothing ' esvazia o objeto pp
+#ENDVB
+
+#IFDEF $(valida_projeto_existe) // SE ESSA VARIAVEL TEM VALOR TEM ALGUM PROBLEMA
+   #MSG $(valida_projeto_existe)
+   #LETV libera_projeto=0 //bloca o projeto, ele não é valido
+#ELSE
+   #LETV libera_projeto=1 // libera o projeto, para que possa ser feito, isso vai ter que ser controlado dentro das regras do 3cad
+#ENDIF
+
+#IFDEF $(infocliente) // se não deu erro insere os dados do clinte, seja na testa que nos dados de entrega
+   #FOR $(infocliente) // vai passando todas as variaveis que vem do cliente
+      #LETS nv=$[ex;$(i);=;1] // separa o nome da variavel
+      #LETS vv=$[ex;$(i);=;2] // separa o valor da variavel
+      #LETV $(nv)=$(vv) //seta as variaveis dentro testa CF_CLI_1,CF_CLI_2.....
+   #ENDFOR
+   #VB // esse parte pega as variaveis CF_CLI_1,CF_CLI_2... e transfere dentro dos dados de entrega (para ver que cada variavel é ver dentro testa.erg
+      ambiente.tcli(1)=V("CF_CLI_1")
+      ambiente.tcli(2)=V("CF_CLI_2")
+      ambiente.tcli(3)=V("CF_CLI_3")
+      ambiente.tcli(4)=V("CF_CLI_4")
+      ambiente.tcli(5)=V("CF_CLI_5")
+      ambiente.tcli(6)=V("CF_CLI_6")
+      ambiente.tcli(7)=V("CF_CLI_7")
+      ambiente.tcli(8)=V("CF_CLI_8")
+   #ENDVB
+#ELSE
+   
+   // inicia - zerar todas as variaveis cliente dentro testa.erg
+   #LETV CF_CLI_1=
+   #LETV CF_CLI_2=
+   #LETV CF_CLI_3=
+   #LETV CF_CLI_4=
+   #LETV CF_CLI_5=
+   #LETV CF_CLI_6=
+   #LETV CF_CLI_7=
+   #LETV CF_CLI_8=
+   // fim - zerar todas as variaveis cliente dentro testa.erg
+   // inicia - zerar todas as variaveis cliente dentro do endereço de entrega
+   #VB
+      ambiente.tcli(1)= ""
+      ambiente.tcli(2)=""
+      ambiente.tcli(3)=""
+      ambiente.tcli(4)=""
+      ambiente.tcli(5)=""
+      ambiente.tcli(6)=""
+      ambiente.tcli(7)=""
+      ambiente.tcli(8)=""
+   #ENDVB
+   // fim - zerar todas as variaveis cliente dentro do endereço de entrega
+#ENDIF

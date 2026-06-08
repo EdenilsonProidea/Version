@@ -1,0 +1,7 @@
+#VB
+   tmp=REPLACE(UCASE(v("_ACEGAV")),"<LGAV>",v("LGAV"))
+   tmp=REPLACE(UCASE(v("_ACEGAV")),"<LINTGAV>",v("LINTGAV"))
+   tmp=REPLACE(TMP,"<AGAV>",v("AGAV"))
+   tmp=REPLACE(TMP,"<PGAV>",v("PGAV"))
+   V("_ACEGAV")=TMP
+#ENDVB

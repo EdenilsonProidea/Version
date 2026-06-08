@@ -1,0 +1,15 @@
+{ 251   // puxador
+   *AZZERA*            =0
+   DESCRIZIONE         =puxador
+   CODICE              =000$(_pux:11) /_PUX=$(_PUX:1);_MONTADO=$(_MONTADO:0)
+   LATO                =$(somenteusinapux)
+   POSIZIONE           =$(ppxl),$(ppxa),$(ppxp)
+   DIMENSIONE          =0.001,0.001,0.001
+   COLORI              =$(_pux:13),$(_pux:14)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =PUXADOR.XP
+   X3                  =$(curbox)
+   X7                  =$(sentido)/$(_PUX:9)/$(_PUX:10)/$(somenteusinapux)
+   X8                  =$(_pux:7)/$(LPX)/$(APX)/$(PPX)
+   X9                  =$(_PUX:1)/$(iSportaperfil:0)
+}

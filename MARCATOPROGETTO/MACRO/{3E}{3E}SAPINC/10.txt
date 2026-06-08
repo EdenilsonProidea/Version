@@ -1,0 +1,30 @@
+#LET PPRATINC=$P-59
+#LETS TextoDivisioras=SEM DIVISORIAS
+#IF $(PPRATINC)-14>484
+   #LETS TextoDivisioras=DUAS DIVISORIAS
+#ELSEIF $(PPRATINC)-18>=431 & $(PPRATINC)-18<484
+   #LETS TextoDivisioras=UMA DIVISORIA
+#ENDIF
+
+#LET angsap=18
+#LET sppsap=sin($(angsap))*$(esprat:0)
+
+#LET TANG=TAN($(angsap))
+#LET CATETOOPOSTO=$(TANG:0)*$P
+
+#LET HIPOT=INT(($(CATETOOPOSTO:0)*$(CATETOOPOSTO:0))+($P*$P))
+#LET HIPOT={$(HIPOT:0)/1000}
+
+#VB
+   dim raiz
+   raiz=sqr(V("HIPOT"))
+   v("raiz")=raiz
+#ENDVB
+#LET HIPOT=int($(raiz))-$(sppsap:0)
+
+#LET HIPOT=$(HIPOT:0)-50 // ESSA REDUÇÃO DE 10MM FOI SOLICITADA EM VISITA TÉCNICA
+#MSG $(HIPOT:0)
+// SAPINC_1,sp=-$(sppsap),SA=$(AFPRATA),COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_CORFR=$(_CORFR:1),L=$L,A=$A,p=$P,ax=-$(angsap:0)
+SAPINC_1,sp=0,SA=$(AFPRATA),COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_CORFR=$(_CORFR:1),L=$L,A=$A,p=$(HIPOT:0),ax=-$(angsap:0),PPRAT=$(HIPOT:0)
+
+297,COD= / /$(TextoDivisioras),SP=$P,A=100,P=10,SA=-50  // TEXTO

@@ -25,6 +25,7 @@ TRADFLAGS=*,*,*,*,1,1
 -,dados,,,Da
 T,MODELLO
 G,COZ_CAIXA
+-,PO,,1=0
 G,PONTOS
 G,FR_GERAL
 D,parfrisos,,,,,,,,,,,,1=0
@@ -34,37 +35,49 @@ D,parfrisosv,,,,,,,,,,,,1=0
 G,COZ_ACAB
 G,COZ_DECINF
 G,VAROCULTE
--,PO,,1=0
 
 [GRAFICA]
 COZ_INF
-#IF $(_corr:0)=13 & $L<423
-   #LETS idlogerros=$(idlogerros)133;
-#ENDIF
-//gaveta
-//GAVETA_FUNCUB_mad
-//acegav
-//dobradica
-//cava
-// 303
-//203
-// _FR_1
-//pes
-// 215
-//423
-// _int
-//mascara
-//logerros
-//673
-//prats
-//209
-//cx_eletro
-//ilu_prat
-//tamponsup
-//209
-//204
-//264
-//cava
 
+// #LETS _macrofinale=gav_coz_final // ISSO ESTÁ NA MACRO FINALE PADRÃO QUE É - COZ_FIM
+
+// COZ_FIm
+
+// coz_frediv
+
+// COZ_STRDIV
+
+// tipogaveta
+
+// gaveta_mad_1w
+
+// GAVETA
+
+// gaveta_mad_1N
+
+// CAIXA
+
+// _acegav
+
+// _fr_1
+
+// 201
+
+// #M estr_madeira_1
+
+// .LATERALGAVETA.XP
+
+// 263
+
+// 296
+
+// 264
 // frontal
-//coz_especial
+
+// 215  // FRENTE
+
+// #M CALCULA_MASCARA
+
+// ACEGAV
+
+// KITDOBRADIÇA

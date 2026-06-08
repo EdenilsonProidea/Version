@@ -1,0 +1,23 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   ' If 1=0 Then
+   'FINITURA OGGETTI 3D
+   C1=wColoreE(P.COLORE1)
+   C2=wColoreE(P.COLORE2)
+   
+   V=SPLIT(ex(P.PARAMETRO(7),"/",1),";")
+   finitura=ex(ex(P.Parametro(8),"/",1),";",1)
+   tipoogg=calcola(ex(ex(P.Parametro(8),"/",1),";",2))
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\" & finitura)
+   
+   'msgBox da & "---" & dp
+   If ucase(right(finitura,3))=".XP" Or ucase(right(finitura,2))=".X" Or ucase(right(finitura,4))=".3DS"  Or ucase(right(finitura,5))=".DR3D" Or ucase(right(finitura,5))=".TREE" Then
+      wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+      'wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+   Else
+      wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+      ' MSGBOX "FILE NON COMPATIBILE CON 3CAD"
+   End If
+   
+End sub

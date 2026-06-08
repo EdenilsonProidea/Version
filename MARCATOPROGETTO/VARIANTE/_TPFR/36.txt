@@ -1,0 +1,58 @@
+{ _TPFR   // TIPO FRONTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =TIPO FRONTAL
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250TIPO 1140NFRENTES 1305LIVRE 1695VARIANTI 4650FILTRO FERRAGEM 4905L min 1200L max 1200A min 1200A max 1200incr fech esq 1590incr fech dir 1515APLICACAO CINEX PM1 2085APLICACAO CINEX PM3 1200001
+   { 
+      //   ,Descrição                          ,TIP,NF,L,VARIANTI                                      ,FIL,L mi,L max,A mi,A max,inc,inc,APLICACAO,APLICACAO
+      000  ,SEM FRENTE                         ,0  ,0 , ,                                              ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      001  ,PORTA GIRO                         ,1  ,1 , ,_DOBRA;PM2;PUSH;                              ,   ,1   ,650  ,270 ,2730 ,   ,   ,         ,
+      002  ,DUAS PORTAS GIRO                   ,2  ,2 , ,_DOBRA;PUSH;                                  ,   ,1   ,650  ,270 ,2730 ,   ,   ,         ,
+      003  ,GAVETA                             ,9  ,1 , ,_TPGAV;_CORR;_TPGAVALT;                       ,   ,0   ,1200 ,0   ,750  ,   ,   ,         ,
+      003B ,2 GAVETAS EXTERNAS                 ,13 ,1 , ,_TPGAV;_CORR;_TPGAVALT;                       ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      004  ,BASCULANTE                         ,7  ,1 , ,_DOBRA;_sisbasc;                              ,1  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      005  ,BASCULANTE INVERTIDO               ,28 ,1 , ,_DOBRA;_sisbasc;                              ,2  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      006  ,FRENTE FIXA/FALSA                  ,10 ,1 , ,                                              ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      007  ,GAVETA INTERNA                     ,11 ,1 , ,_TPGAV;_CORR;_TPGAVALT;_TPGAVALT2;            ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      007B ,2 GAVETAS INTERNAS                 ,12 ,1 , ,_TPGAV;_CORR;_TPGAVALT;_TPGAVALT2;_TPGAVALT3; ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      007C ,PORTA TEMPERO SLIM                 ,14 ,1 , ,_TPGAV;_CORR;_TPGAVALT;_TPGAVALT2;            ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      011  ,PORTA GIRO concepta                ,18 ,1 , ,                                              ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      012  ,DUAS PORTAS GIRO concepta          ,19 ,2 , ,                                              ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      020  ,PORTA FREE FOLD HAFELE             ,25 ,1 , ,_sisbasc;_dobra                               ,20 ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      023  ,PORTA AVENTOS HL (PARALELA)        ,23 ,1 , ,_sisbasc;                                     ,6  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      024  ,PORTA AVENTOS HS (GIRO)            ,24 ,1 , ,_sisbasc;                                     ,7  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      025  ,PORTA AVENTOS HF (CONJUGADA)       ,25 ,1 , ,_sisbasc;_dobra                               ,8  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      026  ,PORTA AVENTOS HK (BASCULANTE)      ,27 ,1 , ,_sisbasc;                                     ,9  ,396 ,1800 ,360 ,660  ,   ,   ,         ,
+      027  ,PORTA AVENTOS HK-XS (BASCULANTE)   ,26 ,1 , ,_sisbasc;                                     ,9  ,396 ,396  ,900 ,360  ,   ,   ,         ,
+      028  ,PORTA AVENTOS HK-S (BASCULANTE)    ,27 ,1 , ,_sisbasc;                                     ,9  ,396 ,1270 ,180 ,600  ,   ,   ,         ,
+      030  ,TRES PORTAS GIRO                   ,30 ,3 , ,_DOBRA;PUSH;                                  ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      032  ,EXTRAIVEL                          ,32 ,1 , ,_ACEINTFRE;                                   ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      041  ,1 PORTA CORRER INTERNA             ,41 ,1 , ,_SISCORRER;_LPORTA                            ,1  ,0   ,9999 ,0   ,9999 ,   ,   ,C1_01_00 ,C1_01_01
+      042  ,2 PORTAS CORRER INTERNA            ,42 ,2 , ,_SISCORRER;                                   ,2  ,0   ,9999 ,0   ,9999 ,   ,   ,C2_02_00 ,C2_02_00
+      043  ,3 PORTAS CORRER INTERNA            ,43 ,3 , ,_SISCORRER;                                   ,3  ,0   ,9999 ,0   ,9999 ,   ,   ,C2_03_01 ,C2_03_01
+      044  ,4 PORTAS CORRER INTERNA            ,44 ,4 , ,_SISCORRER;                                   ,4  ,0   ,9999 ,0   ,9999 ,   ,   ,C2_04_01 ,C2_04_01
+      045  ,5 PORTAS CORRER INTERNA            ,45 ,5 , ,_SISCORRER;                                   ,5  ,0   ,9999 ,0   ,9999 ,   ,   ,C2_05_01 ,C2_05_01
+      046  ,6 PORTAS CORRER INTERNA            ,46 ,6 , ,_SISCORRER;                                   ,6  ,0   ,9999 ,0   ,9999 ,   ,   ,C2_06_01 ,C2_06_01
+      051  ,1 PORTA CORRER EXTERNA             ,51 ,1 , ,_SISCORRER;_LPORTA                            ,1  ,0   ,9999 ,0   ,9999 ,33 ,33 ,C1_01_00 ,C1_01_01
+      052  ,2 PORTAS CORRER EXTERNA            ,52 ,2 , ,_SISCORRER;                                   ,2  ,0   ,9999 ,0   ,9999 ,33 ,69 ,C2_02_00 ,C2_02_00
+      053  ,3 PORTAS CORRER EXTERNA            ,53 ,3 , ,_SISCORRER;                                   ,3  ,0   ,9999 ,0   ,9999 ,33 ,33 ,C2_03_01 ,C2_03_01
+      054  ,4 PORTAS CORRER EXTERNA            ,54 ,4 , ,_SISCORRER;                                   ,4  ,0   ,9999 ,0   ,9999 ,33 ,33 ,C2_04_01 ,C2_04_01
+      055  ,5 PORTAS CORRER EXTERNA            ,55 ,5 , ,_SISCORRER;                                   ,5  ,0   ,9999 ,0   ,9999 ,33 ,69 ,C2_05_01 ,C2_05_01
+      056  ,6 PORTAS CORRER EXTERNA            ,56 ,6 , ,_SISCORRER;                                   ,6  ,0   ,9999 ,0   ,9999 ,33 ,69 ,C2_06_01 ,C2_06_01
+      061  ,FRENTE CANTO L                     ,61 ,2 , ,_DOBRA;push;                                  ,   ,0   ,9999 ,270 ,9999 ,   ,   ,         ,
+      062  ,FRENTE REDUTOR                     ,62 ,1 , ,_DOBRA                                        ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      063  ,FRENTE BAÚ                         ,63 ,1 , ,_DOBRA;_sisbasc;                              ,3  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      065  ,PORTA GIRO ALTURA CORRER           ,1  ,1 , ,_DOBRA;PM2;PUSH;_SISCORRER;                   ,4  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      066  ,DUAS PORTAS GIRO ALTURA CORRER     ,2  ,2 , ,_DOBRA;PUSH;_SISCORRER;                       ,4  ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      067  ,BASCULANTE PISTÃO INVERTIDO HAFELE ,68 ,1 , ,_DOBRA;_sisbasc;                              ,14 ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      068  ,BASCULANTE PISTÃO HAFELE           ,69 ,1 , ,_DOBRA;_sisbasc;                              ,13 ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      070  ,FRENTE CANTO L NEW                 ,65 ,2 , ,_DOBRA;push;                                  ,   ,0   ,9999 ,270 ,9999 ,   ,   ,         ,
+      071  ,GAVETA                             ,9  ,1 , ,_TPGAV;_CORR;                                 ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      095  ,MASCARA PORTA PANO                 ,95 ,1 , ,                                              ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      096  ,MASCARA                            ,96 ,1 , ,_TPMASCARA                                    ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      098  ,MASCARA DUPLA                      ,98 ,1 , ,_TPMASCARA                                    ,   ,0   ,9999 ,0   ,9999 ,   ,   ,         ,
+      099  ,FRENTE CANTO L MOVIMENTO FIXO      ,99 ,2 , ,_DOBRA;push;                                  ,   ,0   ,9999 ,270 ,9999 ,   ,   ,         ,
+   }
+}

@@ -1,0 +1,48 @@
+
+#IF $(xx3:0)=$(xp3:0)
+     
+   #IF $(pl)>=0 & $(pl)<=$(Xl) & $(pa)>0 & $(pa)<$(xa)
+      
+      #LOADVAR _dobra _dobra $(xp8:2)
+      #LOADVAR _dobra_extra _dobra_extra $(xp8:2)
+      #IF $(_dobra_extra:2)!!
+         #LET profc=$(_dobra_extra:2)
+      #ELSE
+         #LET profc=12
+      #ENDIF
+      #LET DFDOBRACENTRAL=$(_dobra:8)  // DISTANCIA FURO DOBRADICA DE 35 NA PORTA
+      #LET diamdobracentral=$(_dobra:9)
+      #LET DFDOBRAMARCACAO=$(_dobra:10)  // DISTANCIA FURO DOBRADICA DE MARCACAO DA PERFIL PORTA
+      #LET DFDOBRAmarcACAOX=$(_dobra:11)/2  // DISTANCIA FURO DOBRADICA DE MARCACAO DA CENTRO DOBRADICA
+      #LET df_furobucha=$(_dobra_extra:3) // diametro furo bucha na porta
+      #LET pf_furobucha=$(_dobra_extra:4) // profundidade furo bucha na porta
+      #LOADVAR ape ape $(xx9:2)
+      
+      #IF $(XX9:2)[AGD;AGE]!0
+         #IF $(XX9:2)==AGE
+            2	FF	X={$(PA)+$(DA)/2} Y=$(DFDOBRACENTRAL) DF=$(diamdobracentral) PF=$(profc) NONESTING=1
+            2	FF	X={$(PA)+$(DA)/2+$(DFDOBRAmarcACAOX)} Y=$(DFDOBRAmarcACAO) NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+            2	FF	X={$(PA)+$(DA)/2-$(DFDOBRAmarcACAOX)} Y=$(DFDOBRAmarcACAO) NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+         #ELSE
+            2	FF	X={$(PA)+$(DA)/2} Y={$(XL)-$(DFDOBRACENTRAL)} DF=$(diamdobracentral) PF=$(profc) NONESTING=1
+            2	FF	X={$(PA)+$(DA)/2+$(DFDOBRAmarcACAOX)} Y={$(XL)-$(DFDOBRAmarcACAO)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+            2	FF	X={$(PA)+$(DA)/2-$(DFDOBRAmarcACAOX)} Y={$(XL)-$(DFDOBRAmarcACAO)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+         #ENDIF
+      #ELSE
+         #IF $(PA)<$(XA)/2
+            2	FF	x=$(DFDOBRACENTRAL)  y={$(PL)+$(DL)/2} DF=$(diamdobracentral) PF=$(profc) NONESTING=1
+            2	FF	x=$(DFDOBRAmarcACAO) y={$(PL)+$(DL)/2+$(DFDOBRAmarcACAOX)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+            2	FF	x=$(DFDOBRAmarcACAO) y={$(PL)+$(DL)/2-$(DFDOBRAmarcACAOX)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+         #ELSE
+            2	FF	x={$(XA)-$(DFDOBRACENTRAL)}  y={$(PL)+$(DL)/2} DF=$(diamdobracentral) PF=$(profc) NONESTING=1
+            2	FF	x={$(XA)-$(DFDOBRAmarcACAO)} y={$(PL)+$(DL)/2+$(DFDOBRAmarcACAOX)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+            2	FF	x={$(XA)-$(DFDOBRAmarcACAO)} y={$(PL)+$(DL)/2-$(DFDOBRAmarcACAOX)} NONESTING=1 DF=$(df_furobucha) PF=$(Pf_furobucha)
+            #IF $(ape:3)==AVF_S
+               2	MARC	X={$(PL)+$(DL)/2} Y={20} NONESTING=1
+               2	MARC	X={$(PL)+$(DL)/2} Y={20+32} NONESTING=1
+               2	MARC	X={$(PL)+$(DL)/2} Y={20+32} NONESTING=1
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

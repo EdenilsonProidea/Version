@@ -1,0 +1,10 @@
+#LET espacoinf=132
+#LET espacosup=132
+#LET espacogavetas=$a-1*($(espacoinf)+$(espacosup))
+#LET deltaa=$(espacogavetas)/3
+#LOADVAR _TPGAVALT _TPGAVALT 001
+internogaveta,SP=-$(espessura_gaveta:3),sa=$(espacoinf),gavetainterna=1,SL=-$(ESLAT:0)
+internogaveta,SP=-$(espessura_gaveta:3),sa=$(espacoinf)+$(deltaa),gavetainterna=1,SL=-$(ESLAT:0)
+internogaveta,SP=-$(espessura_gaveta:3),sa=$(espacoinf)+$(deltaa)*2,gavetainterna=1,SL=-$(ESLAT:0)
+#LET SAINT=$(espacogavetas)+$(ESLAT:0)*2
+// frontal

@@ -1,0 +1,16 @@
+{ 659   // Frente Porta de Passagem
+   *AZZERA*            =0
+   DESCRIZIONE         =Frente Porta de Passagem
+   CODICE              =000$(PP_FR:5) /_CORFAMILIA=$(_CORFR:10);_CORFR=$(_CORFR:1);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =,$(pp_sistema:12)
+   DIMENSIONE          =$(LPP),$(hv),$(espfre)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =$(xpfrente)
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)/FRI
+   X6                  =$(afriso:0)/$(NFRISOSH)/$(NFRISOSV)/$(parfrisosh)/$(parfrisosh)
+   X7                  =N/N/N/N/1/1/1/1/0/$(cava)/1/1/////0
+   X8                  =$(PP_fr:7)/$(PP_fr:8)/$(pospuxadores)/$(parfrente)
+   X9                  =$(PP_FR:1)/$(_CORFR:1)/$(APE:1)/$(AMBIENTE)/$(_bordaf:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/$(_CORcx:1)/$(PIVOTANTE)
+}

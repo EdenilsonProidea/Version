@@ -1,0 +1,25 @@
+mascara_frente,l={$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1},a={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))}
+#IF $(sabasesuporte)>0
+   sagbase
+   203.006,DIS=$(sagbase),sa=$(sabasesuporte)  // Base inferior elettros
+#ENDIF
+
+#IF $(decore:0)=1
+   #IF $(_tpmascara:3)=2
+      340,COD=$(VASIO),SL=$(TML),SA=$(TMA),SP=50,L=$(LFOROMMED),A=$(adec),P=$p-20,C1=308,C2=308,GL=FORNO.XP,X8=$(.percorso)\foto\s_forno\$(S_FORNO:6)  //Accessorio generico
+      //340,COD=$(VASIO),SL=$(TML),SA=$(TMA),SP=50,L=$(LFOROMMED),A=$(adec),P=$p-20,C1=308,C2=308,X8=$(.percorso)\FOTO\s_forno\FC52.2VIXHA.jpg,facc=120  //$(S_FORNO:6)
+   #ELSE
+      //340,COD=$(VASIO),SL=$(TML),SA=$(TMA),SP=50,L=$(LFOROMMED),A=$(adec),P=$p+100,C1=1,C2=1,X8=decoracao\decore\CombiBrasAppoggio.3ds  // Accessorio generico
+      #IF $(_tpmascara:3)=0
+         340,COD=$(VASIO),SL=$(ESLAT:0),SA=$(ESPRAT:0),SP=15,L=$(l)-2*$(ESLAT:0),A=$(a)-2*$(ABASE:0),P=$p,C1=1,C2=1,X8=decoracao\O_PIANOCOTTURA\$(O_PIANOCOTTURA:3) //$(O_PIANOCOTTURA:3)  // Accessorio generico
+      #ELSEIF $(_tpmascara:3) = 4
+         340,COD=$(VASIO),SL=148,SA=$(ABASE:0),SP=50,L=$(LFOROMMED),A=$(adec),P=$p+100,C1=1,C2=1,X8=decoracao\O_PIANOCOTTURA\$(O_PIANOCOTTURA:3) //$(O_PIANOCOTTURA:3)  // Accessorio generico
+      #ELSE
+         #IF $(_tpmascara:3)=11
+            340,COD=$(VASIO),SL=$(tml),SA=$(ABASE:0),SP=,L=$l-$(tml)*2,A=$(adec),P=$p+100,C1=1,C2=1,X8=decoracao\O_PIANOCOTTURA\$(O_PIANOCOTTURA:3) //$(O_PIANOCOTTURA:3)  // Accessorio generico
+         #ELSE
+          //  340,COD=$(VASIO),SL=$(tml),SA=$(TMA),SP=,L=$l-$(tml)*2,A=$(adec),P=$p+100,C1=1,C2=1,X8=decoracao\O_PIANOCOTTURA\$(O_PIANOCOTTURA:3) //$(O_PIANOCOTTURA:3)  // Accessorio generico
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

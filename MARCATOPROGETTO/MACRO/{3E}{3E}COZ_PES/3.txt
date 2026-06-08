@@ -1,0 +1,27 @@
+#IF $(excluir_pes)=0
+   #LET TPPES=$(_PES:3)
+   #IF $(TPPES)>0
+      _iniciapes
+      #IF $(TPPES)[1;10]!0    // PES
+         pes
+      #ELSEIF $(TPPES)=2 // RODAS
+         rodas
+      #ELSEIF $(TPPES)=3 // RODAPE
+         #LET AROD=$(_PES:5)
+         rodapes
+         #IF $(_PES:9)!!
+            pes
+         #ENDIF
+      #ELSEIF $(TPPES)=4 // SUSPENSA
+         #LET na=-$(ALT_SOSPENSO:0)
+         #IF $(_pes:9)!!
+            298,X9=$(_pes:9)/$(_pes:9)  //Item
+         #ENDIF
+      #ELSEIF $(TPPES)=5 // RODAS
+         #LET arod=$(arod_pers:0)
+         #LET na=-$(arod)
+         BASAMENTO
+         405,X3=1,x5=$(BasAuto:0)  // Interferenza per ROD-BASM lat
+      #ENDIF
+   #ENDIF
+#ENDIF

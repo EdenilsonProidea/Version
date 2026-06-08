@@ -1,0 +1,63 @@
+// ALEX FEITO EM VISITA - FOI SOLICITADO PARA PORTA FRAME BELLAGIO E VINTAGE TER POSIÇÃO DO PUXADOR BOLINHA NO CENTRO DA MOLDURA. PARA ISSO CRIAMOS MAIS UMA COLUNA NA VARIANTE _PUX_EXTRA PARA IDENTIFICAR OS PUXADORES BOLINHA. A COLUNA 6 PRECISA ESTAR IGUAL A 1 PARA CENTRALIZAR NA MOLDURA DESSA PORTAS EM ESPECÍFICO
+#LOADVAR _PARPUXEXTRA _PUX_EXTRA $(_PUX:1)
+#IF $(_PARPUXEXTRA:6)=1
+   #LETV _PUX:15={35-$(_PUX:4)/2}
+   #LETV _PUX:16={35-$(_PUX:5)/2}
+#ENDIF
+#IF $(_fr:6)!!98
+   _PUX,sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$A,sa=$(FOLGAFRENTEAI:0)
+#ENDIF
+#IF $(_pux:17)<$(esfre:0) & $(_pux:4)>0
+   // faço um buraco na frente para PUXADOR
+   // .FRENTE_PUXADOR_EMBUTIDO.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS xpfrente=FRENTE_PUXADOR_EMBUTIDO.XP
+   #LETS parfrente=$(pospuxadores)|$(sentido)|{$(_pux:4)-10}|{$(_pux:5)-10}|{$(_pux:15)+5}|{$(_pux:16)+5}    //popx|sentido|lpux|apux|slpux|sapux
+#ELSE
+   // .frente_lisa.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ENDIF
+#LET LESTR=70
+#IF $(AFRE)>1300
+   #LET TRAVESSAFRE=1
+#ELSE
+   #LET TRAVESSAFRE=0
+#ENDIF
+#IF $(pinatras:0)=1
+   #LOADVAR _corcx_extra _corcx_extra $(_corfrFU:0)
+   #LOADVAR _corbpdif _corfrfu $(_corcx_EXTRA:4)
+   #IF $(_corbpdif)==
+      #MSG NÃO EXISTE PINTURA DIFERENTE CADASTRADA PARA ESSA FRENTE. POR FAVOR ENTRE EM CONTATO COM A FÁBRICA. ESSE CADASTRO É FEITO NA VARIANTE _CORCX_EXTRA NA COLUNA 4.
+   #ENDIF
+   #LETS _CORTRDIF==$(_corbpdif:3)|$(.percorso)\foto\madeira\$(_corbpdif:4)|$(_corbpdif:5)
+   297,COD= / /Traseira do fundo com Pintura,SA=50,SP=-20,A=30,P=10  // TEXTO
+   #IF $(TRAVESSAFRE)=1 // 2 fundos
+      500,SP=4,L=$(LFRE:0)-2*($(LESTR:0)),SL=$(LESTR:0),A={$(ALTTRAVFRE:0)-$(LESTR:0)+1*(20+$(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SA=$(LESTR:0)-10,C1=$(_CORTRDIF),C2=$(_CORTRDIF) // fundo inf alt fixa
+      500,SP=4,L=$(LFRE:0)-2*($(LESTR:0)),SL=$(LESTR:0),A={$(AFRE:0)-1*($(ALTTRAVFRE:0)+120)},SA={1*($(ALTTRAVFRE:0))+60},C1=$(_CORTRDIF),C2=$(_CORTRDIF) // fundo sup sa fixo
+   #ELSE
+      500,SP=5,L=$(LFRE:0)-2*($(LESTR:0)),SL=$(LESTR:0),A=$(AFRE:0)-2*($(LESTR:0)),SA=$(LESTR:0),C1=$(_CORTRDIF),C2=$(_CORTRDIF)
+   #ENDIF
+#ENDIF
+#IF $(TRAVESSAFRE)=1 // 2 fundos
+#MSG ESFRE=6,SP=6,LFRE=$(LFRE:0)-2*($(LESTR:0)-10),SL=$(LESTR:0)-10,AFRE={$(ALTTRAVFRE:0)-$(LESTR:0)+1*(20+$(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SA=$(LESTR:0)-10 // fundo inf alt fixa
+
+   _FR_STANDARD,ESFRE=6,SP=6,LFRE=$(LFRE:0)-2*($(LESTR:0)-10),SL=$(LESTR:0)-10,AFRE={$(ALTTRAVFRE:0)-$(LESTR:0)+1*(20+$(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SA=$(LESTR:0)-10 // fundo inf alt fixa
+   _FR_STANDARD,ESFRE=6,SP=6,LFRE=$(LFRE:0)-2*($(LESTR:0)-10),SL=$(LESTR:0)-10,AFRE={$(AFRE:0)-1*($(ALTTRAVFRE:0)+120)},SA={1*($(ALTTRAVFRE:0))+60} // fundo sup sa fixo
+#ELSE
+   _FR_STANDARD,ESFRE=6,SP=6,LFRE=$(LFRE:0)-2*($(LESTR:0)-10),SL=$(LESTR:0)-10,AFRE=$(AFRE:0)-2*($(LESTR:0)-10),SA=$(LESTR:0)-10
+#ENDIF
+ESTR_FRAME,ESFRE=$(esfre:0)
+#IF $(TRAVESSAFRE)=1 // ADICIONA TRAVESSA NO MEIO
+   // 204
+   510,SL=$(LESTR:0)+$(FOLGAFRENTEL:0),SA=$(ALTTRAVFRE:0)+$(FOLGAFRENTEAI:0),SP=1,L=$(LFRE:0)-2*$(LESTR:0),A=$(LESTR:0),P=$(ESFRE),C1=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),C2=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),X3=$(curbox)/ /$(_FR:5)/$(_FR:6),X7=N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0/$(FITARSOVISTA:2),X9=$(_tpcaixa:1)/$(_corfr:1)/50453/$(_FR:6)  //Traversa verticale
+#ENDIF
+// CRIADO POR ALEX EM ACESSO COM NICHOLAS. SOLICITADO PARA RETORNAR ERRO QUANDO MODELO FRAME, FRAME VETRO E FRAME PAGLIA EM DORMITÓRIO E MAIOR QUE 450
+#IF $(ISDORMI:0)=1 & $(L)>450
+   #LETS idlogerros=$(idlogerros)127;
+#ENDIF

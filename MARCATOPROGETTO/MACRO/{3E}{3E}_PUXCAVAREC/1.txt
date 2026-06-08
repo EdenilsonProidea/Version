@@ -1,0 +1,82 @@
+!PARAMETRI tpbase=$(_tpbase:3)
+#IF $(_puxcava:3)=0 |  $(_puxcava:3)[2;3;4;5;7]!0
+   #LETS TRABALHOAT=CN$(escos:0)
+   #LETS CANAL=1
+   #LETS CAVA=0
+   //sagoma laterali
+   #IF $(_PuxCava:3)>0 #LET latcava=1 #LET latcava=0
+   #IF $(TPBASE)=1 #LET latcava=0
+   201  // Lateral Esquerda
+   202  // Lateral Direita
+   //   BASE_SUPERIOR,P=$(PLAT)
+   #IF $(emporio)=1
+      #LET escos=6
+      #LET afcos=15
+      204,sa=$a-1*($(abase:0)+$(atra:0)),sp=0
+      #IF $a>=1000
+         204,sa=$a/2-1*($(atra:0)/2),sp=0
+      #ENDIF
+   #ENDIF
+   //  coz_costasup
+   //  203.001,P=$(PLAT)  //Base Superior
+   #IF $(_puxcava:3)[2;3;4;5;7]!0
+      #LETV _tpcava=$(_PUXCAVA:11)
+   #ELSE
+      #LETV _tpcava=00
+   #ENDIF
+   #IF $L>800
+      #LET abase1=25
+      #LET redinfcaixa=$(ABASE1:0)
+   #ELSE
+      #LET abase1=$(abase:0)
+   #ENDIF
+#ELSEIF $(_puxcava:3)=1 | $(_puxcava:3)=6
+   #LET refcavasup=1
+   #LET acava=$(_puxcava:8)
+   #LET pcava=$(_puxcava:7)
+   #LET abase1=$(abase:0)
+   #LETS TRABALHOAT=CN$(escos:0)
+   #LETS CANAL=1
+   #LETS CAVA=1
+   #LET cavelatesq=$A-$(acava:0)
+   #LET cavelatDIR=$A-$(acava:0)
+   // Lateral Direita
+   
+   #IF $(tpRecorteCaixa:4)=1
+      205,L=$L-$(FIMCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,SL=$(FIMCOL)+$(eslat:0)-$(rag_cos:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)
+      243,sl=$(FIMCOL),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)  // Cobertura lateral coluna
+      246,sl=$(eslat:0),l=$(lcol:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)  // Cobertura frontal coluna
+      CALCOLASAGLATREC,plat=$P
+      201,SP=$(PCOL),P=$P-$(PCOL)  // Lateral Esquerda
+      202  // Lateral Direita
+   #ELSEIF $(tpRecorteCaixa:4)=2
+      CALCOLASAGLATREC,plat=$P
+      243,sl=$(slcol)-$(eslat:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)
+      205,L=$(SLCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)
+      205,L=$L-$(FIMCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,SL=$(FIMCOL)+$(eslat:0)-$(rag_cos:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)
+      243,sl=$(FIMCOL),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(abase:0)+$(_PUXCAVA:8)  // Cobertura lateral coluna
+      246,A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0) // Cobertura frontal coluna
+      201  // Lateral Esquerda
+      202
+   #ELSEIF $(tpRecorteCaixa:4)=3
+      CALCOLASAGLATREC,plat={$P-$(PCOL)}
+      205,L=$(SLCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,a=$(a_fundo_coluna),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)
+      243,sl=$(slcol)-$(eslat:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)  // Cobertura lateral coluna
+      246,l=$l-$(slcol:0),A=$A-$(_PUXCAVA:8)-$(abase:0)-18,SA=$(_PUXCAVA:8)+$(abase:0)  // Cobertura frontal coluna
+      201 // Lateral Esquerda
+      202,SP=$(PCOL),P=$P-$(PCOL) // Lateral Direita
+   #ENDIF
+   //  203,sa=$(acava),a=$(abase1:0)   // Base  (cozinha)
+   #IF $(emporio)=1
+      #LET escos=6
+      #LET afcos=15
+      //  204,sa=$a-1*($(abase:0)+$(atra:0)),sp=0
+      #IF $a>=1000
+         // 204,sa=$a/2-1*($(atra:0)/2),sp=0
+      #ENDIF
+   #ENDIF
+   //coz_costasup,sa=$(acava),a={$a-$(acava)}
+   //  203.001,P=$(PLAT)  //Base Superior
+   cavasuprec,superior=1
+   #LET abase1=$(abase1)+$(acava)
+#ENDIF

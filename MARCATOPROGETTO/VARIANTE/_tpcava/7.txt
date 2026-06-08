@@ -1,0 +1,38 @@
+{ _tpcava   // Tipo Cava
+   *AZZERA*            =0
+   DESCRIZIONE         =Tipo Cava
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 2520tipo 1140referencia ORCAMENTO cava (ALTA) 5985referencia ORCAMENTO cava (CENTRAL) 7740cor 6870REFERENCIA ESTRUTURA CAVA 3075REFERENCIA ESTRUTURA CAVA CENTRAL 3945A Cava 1200P cava 1200L cava 1200reducao fr 2685KIT CANTONEIRA 4140PARAFUSOS 1830LIBERA CORPROFILO 2955A CAVAC 1200anula desconto sup 2190Macro JOB 1455tam. max 1200cod kit PERFIL HOR 1200000COLUNA 19 - TAMANHO MÁXIMO DA CAVA, SE PASSA DISSO DA ERRO (GESTÃO FEITA EM VISITA PARA COMPATILIDADE COM CATÁLOGO ANTIGO, ERA COLUNA 16 NO ANTIGO)
+COLUNA 20 - KIT COMPLEMENTAR DA CAVA (TEM QUE LEMBRAR DE CADASTRAR/CRIAR A ESTRUTURA) (GESTÃO FEITA EM VISITA PARA COMPATILIDADE COM CATÁLOGO ANTIGO, ERA COLUNA 19 NO ANTIGO)
+   { 
+      //      ,Descrição                         ,tip,referencia ORC,referencia ,cor                                                                             ,REFERENCIA,REFERE,A C,P c,L c,red,KIT C,PARA,LI,A CAV,an,Macro JO,tam. ,cod kit P
+      000     ,Standard                          ,0  ,              ,           ,                                                                                ,          ,      ,   ,   ,   ,   ,     ,    ,  ,     ,  ,        ,     ,
+      001     ,Colorato                          ,0  ,              ,           ,                                                                                ,          ,      ,   ,   ,   ,   ,     ,    ,  ,     ,  ,        ,     ,
+      001.001 ,Canale Personalizado              ,1  ,000CANPER     ,000CANPER  ,3                                                                               ,20975     ,20975 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      001.002 ,Canale Creta                      ,1  ,000CANCRE     ,000CANCRE  ,172                                                                             ,20976     ,20976 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,KIT-CAN
+      001.003 ,Canale Argila                     ,1  ,000CANARG     ,000CANARG  ,173                                                                             ,20977     ,20977 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      001.004 ,Canale Quartzo                    ,1  ,000CANQUA     ,000CANQUA  ,174                                                                             ,20978     ,20978 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      001.005 ,Canale Dark                       ,1  ,000CANDAR     ,000CANDAR  ,175                                                                             ,20979     ,20979 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      001.006 ,Canale Grigio                     ,1  ,000CANGRI     ,000CANGRI  ,176                                                                             ,20980     ,20980 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      001.007 ,Canale Esmeralda                  ,1  ,000CANESM     ,000CANESM  ,177                                                                             ,20981     ,20981 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      002     ,Canale Sem Perfil                 ,1  ,              ,           ,004                                                                             ,          ,      ,45 ,30 ,   ,25 ,     ,    ,  ,45   ,1 ,CANALE  ,     ,
+      003     ,Profilo Orizzontale               ,6  ,000PROFHO     ,000PROFHO  ,$(_corprofilo:3)|$(.percorso)\foto\madeira\$(_corprofilo:4)|$(_corprofilo:5)    ,          ,      ,45 ,15 ,   ,25 ,2558 ,645 ,1 ,45   ,1 ,PROFILO ,     ,
+      004     ,Profilo Orizzontale Sem Perfil    ,6  ,              ,           ,004                                                                             ,          ,      ,45 ,15 ,   ,25 ,     ,    ,  ,45   ,1 ,PROFILO ,     ,
+      005     ,Canale Wood                       ,11 ,000CANWOO     ,000CANWOO  ,$(ccavaprofilo:3)|$(.percorso)\foto\madeira\$(ccavaprofilo:4)|$(ccavaprofilo:5) ,5552      ,5552  ,45 ,30 ,   ,25 ,2558 ,645 ,1 ,45   ,1 ,CANALE  ,2730 ,KIT-CANW
+      006     ,Canale Matt                       ,1  ,000CANMAT     ,000CANMAT  ,180                                                                             ,19890     ,19890 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      007     ,Canale Branco                     ,1  ,000CANBIA     ,000CANBIA  ,308                                                                             ,19892     ,19892 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      008     ,Canale Bronze                     ,1  ,000CANBRO     ,000CANBRO  ,186                                                                             ,19891     ,19891 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      009     ,Canale Preto                      ,1  ,000CANNER     ,000CANNER  ,8                                                                               ,19893     ,19893 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      010     ,Canale Inossidabile               ,1  ,000CANINO     ,000CANINO  ,7                                                                               ,19894     ,19894 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      011     ,Canale Effect Bronze              ,1  ,000CANEFFB    ,000CANEFFB ,310                                                                             ,19894     ,19894 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      012     ,Canale Mettalo                    ,1  ,000CANMETT    ,000CANMETT ,311                                                                             ,19894     ,19894 ,50 ,30 ,   ,25 ,2558 ,645 ,  ,50   ,1 ,CANALE  ,     ,
+      013     ,Profilo Verticale T Esq.          ,3  ,000PROFTV_ESQ ,           ,$(ccavaprofilo:3)|$(.percorso)\foto\madeira\$(ccavaprofilo:4)|$(ccavaprofilo:5) ,PrV_T_Esq ,      ,45 ,45 ,66 ,   ,2558 ,645 ,1 ,9999 ,1 ,        ,     ,
+      014     ,Profilo Verticale T Dir.          ,7  ,000PROFTV_DIR ,           ,$(ccavaprofilo:3)|$(.percorso)\foto\madeira\$(ccavaprofilo:4)|$(ccavaprofilo:5) ,PrV_T_Dir ,      ,45 ,45 ,66 ,   ,2558 ,645 ,1 ,9999 ,1 ,        ,     ,
+      015     ,Profilo Verticale L Esq.          ,4  ,000PROFLV_ESQ ,           ,$(ccavaprofilo:3)|$(.percorso)\foto\madeira\$(ccavaprofilo:4)|$(ccavaprofilo:5) ,PrV_L_Esq ,      ,45 ,45 ,48 ,   ,2558 ,645 ,1 ,9999 ,1 ,        ,     ,
+      016     ,Profilo Verticale L Dir.          ,5  ,000PROFLV_DIR ,           ,$(ccavaprofilo:3)|$(.percorso)\foto\madeira\$(ccavaprofilo:4)|$(ccavaprofilo:5) ,PrV_L_Dir ,      ,45 ,45 ,48 ,   ,2558 ,645 ,1 ,9999 ,1 ,        ,     ,
+      017     ,Profilo Verticale Esq. sem perfil ,4  ,              ,           ,                                                                                ,          ,      ,45 ,   ,   ,   ,2558 ,645 ,  ,9999 ,1 ,        ,     ,
+      018     ,Profilo Verticale Dir. sem perfil ,5  ,              ,           ,                                                                                ,          ,      ,45 ,   ,   ,   ,2558 ,645 ,  ,9999 ,1 ,        ,     ,
+   }
+}

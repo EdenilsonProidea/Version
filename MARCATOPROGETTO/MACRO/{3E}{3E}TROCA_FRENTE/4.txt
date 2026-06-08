@@ -1,0 +1,5 @@
+#LETS _FRLISCIO=
+#IF $(_fr:25)!!
+   #LOADVAR _FRLISCIO _FR $(_FR:25)
+#ENDIF
+

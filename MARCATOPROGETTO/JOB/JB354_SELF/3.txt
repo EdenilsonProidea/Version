@@ -1,0 +1,22 @@
+#IF $(XX8:0)=1 // Adicionado validação para apenas fazer os furos quando tiver suporte <c30279>
+   #LET F=1
+   #LET DF=5 //DIAMETRO
+   #LET Y1=60 // FURO NA FRENTE
+   #LET Y2={$(XP)-225} //FURO ATRÁS
+   #LET X=13
+   #IF $(XL)>800
+      $(F)	FF	X=$(X) Y=$(Y1) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)/2} Y=$(Y1) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)-$(X)} Y=$(Y1) DF=$(DF)  PF={$(XA)+1}
+      
+      $(F)	FF	X=$(X) Y=$(Y2) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)/2} Y=$(Y2) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)-$(X)} Y=$(Y2) DF=$(DF)  PF={$(XA)+1}
+   #ELSE
+      $(F)	FF	X=$(X) Y=$(Y1) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)-$(X)} Y=$(Y1) DF=$(DF)  PF={$(XA)+1}
+      
+      $(F)	FF	X=$(X) Y=$(Y2) DF=$(DF)  PF={$(XA)+1}
+      $(F)	FF	X={$(XL)-$(X)} Y=$(Y2) DF=$(DF)  PF={$(XA)+1}
+   #ENDIF
+#ENDIF

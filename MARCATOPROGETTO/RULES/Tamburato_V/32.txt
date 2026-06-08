@@ -1,0 +1,62 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Tamburato_V.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,ESP_TAMBURATO,,,Esp Total Tamburato,,,,,,,1
+T,ESP_PRAT,,,Esp Tampo Acabamento,,,,,,,1
+T,_COREX,,,,$(esp_prat:3)[$(_corex:12)]!!0,,,,,,4
+Z,SARRAFOEX,,,,,,,,,,4,,1=0
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,4
+T,TIPOPINTURA,,$(COR:7)!! | $(COR:19)!!,,,,,,,,4
+M,angz,,,Rotaciona?,,,,,,,7
+-,ILU,,,Il,,,,,,,2,,1=0
+D,ilubasLATE,,,Ilu.Lateral Esq,,!ilu.htm,,,,,2
+T,_ilubasLATE,,$(ilubasLATE:0)>0,Tipo Iluminação,,,,,,,2
+D,ilubasLATD,,,Ilu.Lateral Dir,,!ilu.htm,,,,,2
+T,_ilubasLATD,,$(ilubasLATD:0)>0,Tipo Iluminação,,,,,,,2
+T,_ilufonte,,,,,,,,,,2
+-,Borda,,,Bo,,,,,,,8
+Z,BFRE,,,Borda Dir?,,,,,,,8
+Z,BTRA,,,Borda Esq?,,,,,,,8
+Z,BESQ,,,Borda Tra?,,,,,,,8
+Z,BDIR,,,Borda Fre?,,,,,,,8
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+
+#LOADVAR COR _COREX $(_COREX:1) // <c26363>
+#LET L=$(esp_tamburato:0) // Altura total
+
+
+280,SL=0,AZ=$(angz:0),X7=N/N/N/N/0/0/0/0 //PAINEL HORIZONTAL
+
+
+ILU_TAMV,AZ=$(angz:0)  //--- Iluminação Tamburato ----
+
+FITADEBORDA_V,AZ=$(angz:0)  //--- Fita de Borda ----
+
+LOGERROS

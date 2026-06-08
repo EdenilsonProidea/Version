@@ -1,0 +1,43 @@
+// CHECK_GAV
+#IF $(_tpgav:10)!! // Adicionado em visita
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ENDIF
+#LET espgaveta=$(espessura_gaveta:0)
+#IF $(_TPGAVALT:3)=3
+   #LET lcfundog=126
+   #LET platint=$p-126
+   #LET acfunint=78
+   #LET lcuba=114
+   260.002,X6=acessorios\CUBAWOODBAIXA_LE.3ds  //Lateral Gaveta
+   260.003,SP=0,P=$p,X6=acessorios\CUBAWOODBAIXA_LD.3ds  //Lateral Gaveta
+   261.001,SL=0,SA=0,L=$(lcfundog),X5=1,X6=acessorios\CUBAWOODBAIXA_TE.3ds  //Traseira Gaveta
+   261.001,SL=$l-$(lcfundog),SA=0,L=$(lcfundog),X5=1,X6=acessorios\CUBAWOODBAIXA_TD.3ds  //Traseira Gaveta
+   260.004,SL=$(lcfundog)-$(espgaveta),SA=0,SP=$(espgaveta),P=$(platint)  //Lateral Gaveta interna
+   260.005,SL=$l-$(lcfundog),SA=0,SP=$(espgaveta),P=$(platint)  //Lateral Gaveta interna
+   261.001,X5=1,sa=0,l=$(l)-2*$(lcfundog),sl=$(lcfundog),sp=$(platint),p=$(espgaveta)  // Traseira interna
+   262.001,SL=0,L=$l,X5=1,X6=acessorios\CUBAWOODBAIXA_FR.3ds  // contra frente Gaveta
+   #LETS sagfung=0,0
+   #LETS sagfung=$(sagfung),$(lcuba:0),0
+   #LETS sagfung=$(sagfung),$(lcuba:0),$(platint:0)
+   #LETS sagfung=$(sagfung),$l-$(espgaveta:0)-$(lcuba:0)-$(canalgaveta:0),$(platint:0)
+   #LETS sagfung=$(sagfung),$l-$(espgaveta:0)-$(lcuba:0)-$(canalgaveta:0),0
+   #LETS sagfung=$(sagfung),$l-$(espgaveta:0)-$(canalgaveta:0),0
+   #LETS sagfung=$(sagfung),$l-$(espgaveta:0)-$(canalgaveta:0),{$P-2*$(espgaveta:0)}
+   #LETS sagfung=$(sagfung),0,{$P-2*$(espgaveta:0)}
+   !SAGOMAA sagfung $(sagfung)
+   #LOADVAR _CORFUNDOWOOD _CORCX BPS.LEG.BPS13 // LMN.JQT.LMN03 // Cadastro antigo - alterado em visita <c23846>
+   wood_fundoc,_corGV=$(_CORFUNDOWOOD)
+#ELSE
+   #LET espfundogaveta=15
+   260.002,SP=0,P=$(pgav),X6=acessorios\lat_esq_wood_baixa.3ds  //Lateral Gaveta
+   260.003,SP=0,P=$(pgav),X6=acessorios\lat_dir_wood_baixa.3ds  //Lateral Gaveta
+   261.001,SL=0,L=$L,X8=acessorios\cfundo_wood_baixa.3ds  //Traseira Gaveta
+   262.001,SL=0,L=$L,SP=$P-13,X8=acessorios\cfrente_wood_baixa.3ds  //Traseira Gaveta
+   #LOADVAR _CORFUNDOWOOD _CORCX BPS.LEG.BPS13 // LMN.JQT.LMN03 // Cadastro antigo - alterado em visita <c23846>
+   wood_fundo,_corGV=$(_CORFUNDOWOOD)
+#ENDIF
+
+CHECK_INT_GAV,LINTGAV={$L-$(espgaveta:0)*2},PINTGAV={$P-$(espgaveta:0)*2}
+
+264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0 //Caixa Gaveta oculta para furaçao
+// 260

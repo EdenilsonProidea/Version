@@ -1,0 +1,22 @@
+!parametri compartilhado=0
+//posd: valori
+//1=dobradiça esq - abrir direita
+//3=dobradiça dir - abrir esquerda
+//5=dobradiça superior  - Basculante
+//8=dobradiça inferior  - Pistao Invertido
+//AFINIDOBL  //AFASTAMENTO DOBRADICA DA INICIO PORTA SUPERIOR-INFERIOR
+//AFINIDOBB  //AFASTAMENTO DOBRADICA DA INICIO PORTA DIREITA-ESQUERDA
+//KITDOBRADIÇA
+#IF $(_DOBRAFECH:0)!! & $(ISDORMI:0)=1// ALEX VISITA - COLOQUEI ESSA CONDIÇÃO A MAIS POIS NOS DORMITORIOS INCLUIRAM UMA VARIANTE DE ESCOLHA DE DOBRADIÇA QUE NUNCA SETA _DOBRA, AI NUNCA REPRESENTAVA GRAFICAMENTE A DOBRADIÇA NOS DORMITÓRIOS
+   #LOADVAR _DOBRA _DOBRA $(_DOBRAFECH:4)
+#ENDIF
+
+#IF ($(_DOBRA:0)==999 | ($(_DOBRA:0)==
+   // faz nada
+#ELSE
+   #IF $(_FRINTERNA:0)=1 & $(posd)=5
+      kitdobradiçap1,abase=1
+   #ELSE
+      kitdobradiçap1
+   #ENDIF
+#ENDIF

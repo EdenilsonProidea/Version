@@ -1,0 +1,42 @@
+#LET FF=$(_FR:11)
+#LET FT=$(_FR:11)
+#LET FE=$(_FR:11)
+#LET FD=$(_FR:11)
+#LET sentido=1
+_calcola_popx
+#IF $(ape:0)==AVF_S
+   #LET aa={$(afre)-1*($(FOLGAFRENTEAS:0)+$(FOLGAFRENTEAI:0))}
+   #LET saa=$(FOLGAFRENTEAI:0)
+   #LETS parfrente=$(SENTIDO)|$(POPX)
+   #LETS xpfrente=$(_FR:7)
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ELSE
+   #LET aa={$(afre)-1*($(FOLGAFRENTEAS:0)+$(FOLGAFRENTEAI:0)+$(_PERFPUX:6))}
+   //#MSG $(afre)-1*($(FOLGAFRENTEAS:0)+$(FOLGAFRENTEAI:0)+$(_PERFPUX:6))
+   #IF $(popx)[7;8;9]!0
+      #LET saa=$(_PERFPUX:6)+$(FOLGAFRENTEAI:0)
+      _perfilpuxh_molise,POS=1
+   #ELSE
+      #LET saa=$(FOLGAFRENTEAI:0)
+      _perfilpuxh_molise,POS=2
+   #ENDIF
+   #IF $(_FR:7)!!
+      #LETS parfrente=$(SENTIDO)|$(POPX)
+      #LETS xpfrente=$(_FR:7)
+   #ELSE
+      #LETS parfrente=
+      #LETS xpfrente=frente_lisa.xp
+   #ENDIF
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+#ENDIF
+#IF 1=0
+   #IF $(_perfpux:26)!!
+      #LET aa=$(aa)
+   #ELSE
+      #LET aa=($(aa)-2)
+   #ENDIF
+#ENDIF
+_FR_STANDARD,FF=$(FF),FT=$(FT),FE=$(FE),FD=$(FD),SA=$(saa),A=$(aa),AFRE=$(AA),FOLGAFRENTEAI=0,FOLGAFRENTEAS=0

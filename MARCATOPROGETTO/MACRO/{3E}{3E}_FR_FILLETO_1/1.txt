@@ -1,0 +1,122 @@
+// 400,LATO=0,P=5,SP=50
+#LETS xpfrente=OBJETO3D.XP
+#IF $(lpuxfiletto:3)>0
+   #LET lpux=$(lpuxfiletto:3)
+#ELSE
+   #IF $(sentido) = 1
+      // horizontal
+      #LET lpux=$(lfre:0) // -98
+   #ELSE
+      // vertical
+      #LET lpux=$(afre:0) //-98
+   #ENDIF
+#ENDIF
+#LET apux=20
+#LET pfilleto=25
+#LET spfilleto=$(esfre)-7
+#LET slpux=2
+#LET sapux=2
+#LET dsl=$(slpux)
+#LET dsi=$(sapux)
+#IF $(sentido)=1
+   #LET lu=$(lpux)
+   #LET au=$(apux)
+#ELSE
+   #LET lu=$(apux)
+   #LET au=$(lpux)
+#ENDIF
+#FOR $(pospuxadores)
+   #LETS popx=$(i)
+   #IF $(sentido)=1
+      #SELECT $(popx)
+      #CASE 1
+         #LET offa=$(afre:0)/2-$(au)/2
+         #LET offl=$(dsl)
+         #LETS filetto3ds=filetto_5
+      #CASE 2
+         #LET offa=$(afre:0)/2-$(au)/2
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto_5
+      #CASE 3
+         #LET offa=$(afre:0)/2-$(au)/2
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_5
+      #CASE 4
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(dsl)
+         #LETS filetto3ds=filetto_5
+      #CASE 5
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto_5
+      #CASE 6
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_5
+      #CASE 7
+         #LET offa=$(dsi)
+         #LET offl=$(dsl)
+         #LETS filetto3ds=filetto_8
+      #CASE 8
+         #LET offa=$(dsi)
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto_8
+      #CASE 9
+         #LET offa=$(dsi)
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_8
+      #ENDSELECT
+   #ELSE
+      #SELECT $(popx)
+      #CASE 1
+         #IF $(lpux)>1040
+            #LET offa=$(afre:0)/2-$(au)/2
+         #ELSE
+            #LET offa=1040-$(lpux)
+         #ENDIF
+         #LET offl=$(DSL)
+         #LETS filetto3ds=filetto
+      #CASE 2
+         #LET offa=$(afre:0)/2-$(au)/2
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto
+      #CASE 3
+         #IF $(lpux)>1040
+            #LET offa=$(afre:0)/2-$(au)/2
+         #ELSE
+            #LET offa=1040-$(lpux)
+         #ENDIF
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_3
+      #CASE 4
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(dsl)
+         #LETS filetto3ds=filetto
+      #CASE 5
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto
+      #CASE 6
+         #LET offa=$(afre:0)-$(au)-$(dsi)
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_3
+      #CASE 7
+         #LET offa=$(dsi)
+         #LET offl=$(dsl)
+         #LETS filetto3ds=filetto
+      #CASE 8
+         #LET offa=$(dsi)
+         #LET offl=$(lfre:0)/2-$(lu)/2
+         #LETS filetto3ds=filetto
+      #CASE 9
+         #LET offa=$(dsi)
+         #LET offl=$(lfre:0)-$(lu)-$(dsl)
+         #LETS filetto3ds=filetto_3
+      #ENDSELECT
+   #ENDIF
+   #IF $(APE:3)[GAI;SAP]!0
+      674,SL=$(offl),SA=$(offa),L=$(lu),A=$(au),X9=8564/$(lpux) // Filleto
+   #ELSE
+      674,SL=$(offl),SA=$(offa),L=$(lu),A=$(au),X9=8564/$(lpux) // Filleto
+   #ENDIF
+#ENDFOR

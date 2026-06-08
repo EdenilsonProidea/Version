@@ -1,0 +1,10 @@
+{ 268   // Vidro Porta
+   *AZZERA*            =0
+   DESCRIZIONE         =Vidro Porta
+   POSIZIONE           =50,50,5
+   DIMENSIONE          =$l-100,$a-100,5
+   COLORI              =$(_VIDRO:3)|$(.percorso)\foto\madeira\$(_VIDRO:4)|$(_VIDRO:5),$(_VIDRO:3)|$(.percorso)\foto\madeira\$(_VIDRO:4)|$(_VIDRO:5)
+   ORIENTAMENTO        =LAP
+   X8                  =$(_vidro:11)
+   X9                  =$(_vidro:6)/$(_vidro:8)
+}

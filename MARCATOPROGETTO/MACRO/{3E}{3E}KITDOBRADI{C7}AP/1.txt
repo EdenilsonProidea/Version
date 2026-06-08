@@ -1,0 +1,18 @@
+!parametri compartilhado=0
+//posd: valori
+//1=dobradiça esq - abrir direita
+//3=dobradiça dir - abrir esquerda
+//5=dobradiça superior  - Basculante
+//8=dobradiça inferior  - Pistao Invertido
+//AFINIDOBL  //AFASTAMENTO DOBRADICA DA INICIO PORTA SUPERIOR-INFERIOR
+//AFINIDOBB  //AFASTAMENTO DOBRADICA DA INICIO PORTA DIREITA-ESQUERDA
+//KITDOBRADIÇA
+#IF $(_DOBRA:0)==999 | $(_DOBRA:0)==
+   // faz nada
+#ELSE
+   #IF $(_FRINTERNA:0)=1 & $(posd)=5
+      kitdobradiçap1,abase=1
+   #ELSE
+      kitdobradiçap1
+   #ENDIF
+#ENDIF

@@ -1,0 +1,8 @@
+{ 396   // Suporte Pensil
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte Pensil
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$(lpensil),$(apensil),$(ppensil)
+   COLORI              =8,8
+   ORIENTAMENTO        =LAP
+}

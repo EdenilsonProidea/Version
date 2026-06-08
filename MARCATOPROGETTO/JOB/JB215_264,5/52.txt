@@ -1,0 +1,73 @@
+#IF $(xx3:0)=$(xp3:0) & $(XP)>6 // MESMO BOX
+   // ****************************************************************************************************************
+   // *********************OBS: PARA ESSA GESTÃO PRECISA DE IDEAMOVEIS.DLL VERSÃO MINIMA V1.2.3 -04/01/2020 **********************
+   // ****************************************************************************************************************
+   
+   
+   #LOADVAR _corr _corr $(xp6:1) // CAREGO INFORMAÇÃO DE CORREDIÇA
+   #LOADVAR _tpgav _tpgav $(xp6:0)  // CAREGO INFORMAÇÃO DE TIPO GAVETA
+   #LET ESPGAVETA=$(XP6:2)  // CAREGO INFORMAÇÃO DE ESPESSURA DA GAVETA
+   #LOADVAR _UsiFrenteGav _UsiFrenteGav $(_tpgav:0) // CAREGO AS REGRAS DE ALTURAS PREVISTAS PARA ESSA GAVETA
+   #IF $(_UsiFrenteGav:3)!! // SE EXISTE GAVETA
+      #LET f=2 // SEMPRE FURA ATRAS DA GAVETA
+      #LET alturaref=0 // DEFINO ALTURAREF=0 CASO NÃO ENCONTRE ALTURA CERTA
+      // VOU CALCULAR QUAL A LINHA DE ALTURA DE REFERENCIA DENTRO _UsiFrenteGav	 QUANDO ENCONTRO PULO FORA E SALVO ALTURA REF
+      #FOR $(_UsiFrenteGav:3)
+         #IF $(da)<$(i)
+            #LET alturaref=$(i) // ENCONTREI
+            #EXITFOR // PULO FORA
+         #ENDIF
+      #ENDFOR
+      #IF $(alturaref)>0 // encontrou a altura para calculo furos
+         #LOADVAR _UsiFrenteGav _UsiFrenteGav $(_tpgav:1)_$(alturaref) // CARREGO INFORMAÇÃO DE FURAÇÃO PARA ALTURAREF
+         #FOR $(_UsiFrenteGav:3) // VOU ESCORRER TODOS OS VALORES DE FUROS PREVISTOS
+            
+            #LETS refsup=$[ex;$(i);|;1] // referencia superior inferior - se 1 calcula distancia da parte superior da gaveta	 se 0 da parte de baixo
+            #LETS px=$[ex;$(i);|;2] // posição em x (altura)
+            #LETS py=$[ex;$(i);|;3] // posição em y (largura)
+            #LETS di=$[ex;$(i);|;4]  // diametro furo
+            #LETS pf=$[ex;$(i);|;5] // profondidade furo
+            #IF $(px)==C #LET PX=$(DA)/2 // SE C CALCULA CENTRO GAVETA
+            #IF $(pY)==C #LET PY=$(ESPGAVETA)/2 // SE C CALCULA CENTRO LATERAL DA GAVETA
+            #IF $(REFSUP)=1 #LET PX=$(DA)-$(PX) // SE REFERENCIA SUPERIOR CALCULA A PARTIR DA PARTE DE CIMA DA GAVETA
+            
+            // #MSG 5 - $[ex;$(i);|;5] 2-$[ex;$(i);|;5] 3-$[ex;$(i);|;3] 4-$[ex;$(i);|;4]
+            #IF $(tipologiap)=215
+               // OBS: A REGRA A SEGUIR FUNCIONA SE ORIENTAÇÃO DA TIPOLOGIA É ALP - SE LAP TEM QUE MUDAR ESSA PARTE
+               $(F)	FF	 X={$(PL)+$(PY)}       Y={$(PA)+$(PX)} DF=$(DI) PF=$(PF)         // FURO ESQUERDA
+               $(F)	FF	 X={$(PL)+$(DL)-$(PY)} Y={$(PA)+$(PX)} DF=$(DI) PF=$(PF)   // FURO DIREITA
+            #ELSEIF $(tipologiap)=217
+               //  #LET PX={$(PX)-18)}    // ALEX VISITA - ISSO É PARA FURAÇÃO DE FRENTE DE GAVETA INTERNA
+               //  #LET PY={$(PY)-1*(16.5)}  // ALEX VISITA - ISSO É PARA FURAÇÃO DE FRENTE DE GAVETA INTERNA
+               //  $(F)	FF	X={$(PY)} Y={$(PX)}       DF=$(DI) PF=$(PF)   // FURO ESQUERDA
+               //  $(F)	FF	X={$(PY)} Y={$(XL)-$(PX)} DF=$(DI) PF=$(PF)   // FURO DIREITA
+               $(F)	FF	 x={$(PA)+$(PY)}  y={$(PX)+$(_corr:8)+$(PL)}            DF=$(DI) PF=$(PF)         // FURO ESQUERDA
+               $(F)	FF	 x={$(PA)+$(PY)}  y={$(XL)-1*($(_corr:8)+$(PX)+$(PL))}  DF=$(DI) PF=$(PF)   // FURO DIREITA
+               
+               
+            #ELSE
+               // OBS: PARA ORIENTAÇÃO LAP PROVAVELMENTE TEM QUE MUDAR DESSE JEITO - TESTAR
+               //#MSG $(xp6:0)
+               #IF $(xx3:3)[501;502;503]!0 // frente frame
+                  #IF $(xp6:0)=003 #LET PX=32
+                  #IF $(xp6:0)=004 #LET PX=25
+                  #IF $(xp6:0)=005 #LET PX=30.5
+                  #IF $(xp6:0)=008 #LET PX=32
+                  
+                  #IF $(XX10:8)==I // ajuste para não furar o requadrinho inferior
+                  #ELSEIF $(XX10:8)==D
+                     $(F)	FF	X={$(PY)} Y={$(XL)-$(PX)} DF=$(DI) PF=$(PF)   // FURO DIREITA
+                  #ELSEIF $(XX10:8)==E
+                     $(F)	FF	X={$(PY)} Y=$(PX) DF=$(DI) PF=$(PF)         // FURO ESQUERDA
+                  #ENDIF
+                  
+               #ELSE
+                  //#MSG $(PA)+$(PY)
+                  $(F)	FF	X={$(PA)+$(PY)} Y={$(PL)+$(PX)+$(_corr:8)} DF=$(DI) PF=$(PF)         // FURO ESQUERDA
+                  $(F)	FF	X={$(PA)+$(PY)} Y={$(PL)+$(DL)-($(_corr:8)+$(PX))} DF=$(DI) PF=$(PF)   // FURO DIREITA
+               #ENDIF
+            #ENDIF
+         #ENDFOR
+      #ENDIF
+   #ENDIF
+#ENDIF

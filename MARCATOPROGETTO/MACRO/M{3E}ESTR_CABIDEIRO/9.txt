@@ -1,0 +1,20 @@
+#LOADVAR _INT _INT $(X9:0)
+#IF $(DIML)>=800 #MSG AQUI
+#IF $(_LISTINO)=1
+   #IF $(_INT:22)==KIT-CAB // Adicionado para não passar o codigo do kit <c26363>
+      $(_INT:23),{$(X9:1)}
+      $(_INT:25),$(_INT:27) // Cod adicional <c26363>
+      $(_INT:29),{$(X9:2)} // Cod adicional <c26363>
+   #ELSE
+      $(_INT:22),1
+      $(_INT:23),{$(X9:1)}
+      $(_INT:25),$(_INT:27) // Cod adicional <c26363>
+      $(_INT:29),{$(X9:2)} // Cod adicional <c26363>
+   #ENDIF
+#ELSE
+   #IF $(_INT:22)==KIT-CAB // Adicionado para não passar o codigo do kit <c26363>
+      KIT-CAB,1,CODINT=$(_INT:23);QTDINT={$(X9:1)};CODADD=$(_INT:25);QTDADD=$(_INT:27);CODADD2=$(_INT:29);QTDINT2={$(X9:2)} // Cod adicional <c26363>
+   #ELSE
+      KIT-AVU,1,CODAVULSO=$(_INT:11);QTDAVULSO=1;CODADD1=$(_INT:23);QTDADD1={$(X9:1)};CODADD2=$(_INT:25);QTDADD2=$(_INT:27);CODADD3=$(_INT:29);QTDADD3={$(X9:2)} // Cod adicional <c26363>
+   #ENDIF
+#ENDIF

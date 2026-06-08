@@ -1,0 +1,10 @@
+{ 404   // Interferenza per calcolo fianchi su moduli
+   *AZZERA*            =0
+   DESCRIZIONE         =Interferenza per calcolo fianchi su moduli
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

@@ -1,0 +1,12 @@
+{ 437   // fRENTE INTERNA BLUM
+   *AZZERA*            =0
+   DESCRIZIONE         =fRENTE INTERNA BLUM
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(_TPGAVDET:21),$(_TPGAVDET:20),$P-$(_TPGAVDET:30)
+   DIMENSIONE          =$L-$(_TPGAVDET:21)*2,$(_TPGAVDET:19),$(_TPGAVDET:30)
+   COLORI              =$(_TPGAVDET:8),$(_TPGAVDET:8)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =gaveta\$(_TPGAVDET:17)
+   X9                  =$(_TPGAVDET:18)
+}

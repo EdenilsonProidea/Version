@@ -1,0 +1,209 @@
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1
+      419.011,A=20,L=20,SP=$P+20,SL=($A/2)+6.5,SA=0
+   #ELSE
+      419.010,A=20,L=20,SP=$P+20,SL=($A/2)+6.5,SA=0
+   #ENDIF
+#ENDIF
+#IF $(LUZ)=1
+   #IF $(LADO:0)[1;4]!0
+      #IF $(TP_LED:12)=1
+         #IF $(TP_LOCAL:3)=1
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SP=$P-65,SL=-1,AY=90
+            #LET tam_led=$A
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $P<=230
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=230
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $P<=380
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=380
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSEIF $(TP_LOCAL:3)=2
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SP={$P/2-4.5},SL=-1,AY=90
+            #LET tam_led=$A
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $P<=358
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=358
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $P<=658
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=658
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSE
+            #LET tam_led=$A
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SL=-1,SP=56,AY=90
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS IDLOGERROS=$(IDLOGERROS)79;
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ELSEIF $(TP_LED:12)=2
+         // FAZER ERRO
+         #LETS PECA=TAMPO VERTICAL
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=3
+         // FAZER ERRO
+         #LETS PECA=TAMPO VERTICAL
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=4
+         #LET pcalaleta=16.5
+         #IF $(TP_LOCAL:3)=1
+            #LET tam_led=$A
+            469,cod=000$(tp_led:10),a=$A,L=$(pcalaleta),P=2,SL=-1,SP={$P-69},AY=90
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $P<=230
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=230
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $P<=380
+               #IF $(ESP_TAMBURATO:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=380
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSEIF $(TP_LOCAL:3)=2
+            #LET tam_led=$L
+            469,cod=000$(tp_led:10),a=$a,L=$(pcalaleta),P=2,SP=$P-1,SL={$L/2-8.25}
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $l<=358
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=358
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $l<=658
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=658
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSE
+            469,cod=000$(tp_led:10),a=$a,L=$(pcalaleta),P=2,SP=$P-1,SL=52
+            #LET tam_led=$L
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+               #IF $(ESP_PRAT:3)<40
+                  #LETS IDLOGERROS=$(IDLOGERROS)79;
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+      #IF $(tam_led:0)<200 & $(TP_LED:12)[1;4]
+         #LETS IDLOGERROS=$(IDLOGERROS)77
+      #ENDIF
+      #LETS INFOPECA=$(INFOPECA)|PAINEL HOR
+   #ENDIF
+   #IF $(LADO:0)[3;4]!0
+      #IF $(TP_LED:12)=1
+         #IF $(TP_LOCAL:3)=1
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SL=$L-1,SP={$P-65},AY=90
+            #LET tam_led=$A
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $P<=230
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=230
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $l<=380
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=380
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSEIF $(TP_LOCAL:3)=2
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SL=$L-1,SP={$P/2-4.5},AY=90
+            #LET tam_led=$A
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $l<=358
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=358
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $l<=658
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=658
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSE
+            #LET tam_led=$A
+            476,cod=000$(tp_led:10),a=$a,L=8.5,P=2,SL=$L-1,SP=56,AY=90
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+               #IF $(ESP_PRAT:3)<40
+                  #LETS IDLOGERROS=$(IDLOGERROS)79;
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ELSEIF $(TP_LED:12)=2
+         // FAZER ERRO
+         #LETS PECA=TAMPO VERTICAL
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=3
+         // FAZER ERRO
+         #LETS PECA=TAMPO VERTICAL
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=4
+         #LET pcalaleta=16.5
+         #IF $(TP_LOCAL:3)=1
+            #LET tam_led=$A
+            469,cod=000$(tp_led:10),a=$A,L=$(pcalaleta),P=2,SL=$L-1,SP={$P-69},AY=90
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $l<=230
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=230
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $l<=380
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=380
+                  #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSEIF $(TP_LOCAL:3)=2
+            #LET tam_led=$L
+            469,cod=000$(tp_led:10),a=$a,L=$(pcalaleta),P=2,SP=-1,SL={$L/2-8.25}
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $l<=358
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=358
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $l<=658
+               #IF $(ESP_PRAT:3)<40
+                  #LETS profgrapa=$(SUPORTEPRAT:19)
+                  #LETS prof_tamb=658
+                  #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+               #ENDIF
+            #ENDIF
+         #ELSE
+            469,cod=000$(tp_led:10),a=$a,L=$(pcalaleta),P=2,SP=-1,SL=52
+            #LET tam_led=$L
+            #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+               #IF $(ESP_PRAT:3)<40
+                  #LETS IDLOGERROS=$(IDLOGERROS)79;
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+      #IF $(tam_led:0)<200 & $(TP_LED:12)[1;4]
+         #LETS IDLOGERROS=$(IDLOGERROS)77
+      #ENDIF
+      #LETS INFOPECA=$(INFOPECA)|PAINEL VERT
+   #ENDIF
+#ENDIF

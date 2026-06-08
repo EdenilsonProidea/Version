@@ -1,0 +1,123 @@
+// ESTRUTURA TUTORIALBR
+// PARAMETRO X5: PODE SER USADO PARA SAGOMAS
+// PARAMETRO X6:  livre
+// PARAMETRO X7: trabalhos topos/fitas/canal/cava
+// PARAMETRO X8: USO VARIO
+// PARAMETRO X9: USADO PARA _TPCAIXA/_CORCX/ TPFIX /CONF_BORDA_USADA (1=MINIMA-2=MEDIA-3=COMPLETA)
+// CAREGANDO VARIAVEIS DE GESTAO TOPOS
+// carega variavel geral de regra
+#LET curbox=$(x3:0)
+#M calcula_masc_vb
+#LOADVAR _TPCAIXA   _TPCAIXA  $(X9:0)
+#LETV ambiente=$(_tpcaixa:12)
+//fim carega variavel geral de regra
+#LET calculobordaespecial=0
+#LETS codbordafrente=
+#LETS te=$(X7:0)
+#LETS td=$(x7:1)
+#LETS tf=$(x7:2)
+#LETS tt=$(x7:3)
+#LET FACELAMINA=2
+#LET ADDFAIX10A=
+#LET ADDFAIX10L=
+#LOADVAR INCRELAM iniciaestrjob INCRELAM
+#LOADVAR CUSTO_PROD_ESTR iniciaestrjob CUSTO_PROD_ESTR
+// #LOADVAR FITARSOVISTA $(_TPCAIXA:10) FITARVISTA
+#IF $(AMBIENTE:3)==INICIADOR
+   #LET FITARSOVISTA=$(FITARSOVISTADOR:0)
+#ELSEIF $(AMBIENTE:3)==INICIAFECH
+   #LET FITARSOVISTA=$(FITARSOVISTAFECH:0)
+#ELSEIF $(AMBIENTE:3)==INICIABAN
+   #LET FITARSOVISTA=$(FITARSOVISTABAN:0)
+#ELSE
+   #LET FITARSOVISTA=$(FITARSOVISTACOZ:0)
+#ENDIF
+#LET fe=$(x7:4)
+#LET fd=$(x7:5)
+#LET ff=$(x7:6)
+#LET ft=$(x7:7)
+// fita costumizada
+#LET fe2=$(x7:12)
+#LET fd2=$(x7:13)
+#LET ff2=$(x7:14)
+#LET ft2=$(x7:15)
+#IF 1=0 // A GESTÃO DA MARCATO É DIFERENETE. USA A FITA DOIS PORQUE TEM DOIS TIPOS DE FITA NA MESMA PEÇA
+   // desativando fita customizada
+   #IF $(FITARSOVISTA:0)=0 // COM ESSE PARAMETROS AUTOMATICAMENTE O 3CAD VAI COLOCAR FITA SO NOS CANTOS A VISTA
+      #IF $(fe2)>0 #LET fe=1
+      #IF $(fd2)>0 #LET fd=1
+      #IF $(ff2)>0 #LET ff=1
+      #IF $(ft2)>0 #LET ft=1
+   #ELSEIF $(FITARSOVISTA:0)=2
+      #IF $(fe2)>0 #LET fe=1
+      #IF $(fd2)>0 #LET fd=0
+      #IF $(ff2)>0 #LET ff=1
+      #IF $(ft2)>0 #LET ft=0
+   #ELSEIF $(FITARSOVISTA:0)=3
+      #IF $(fe2)>0 #LET fe=1
+      #IF $(fd2)>0 #LET fd=0
+      #IF $(ff2)>0 #LET ff=1
+      #IF $(ft2)>0 #LET ft=0
+   #ENDIF
+   #IF $(TIP)[100;101;102;103;104;105]!1
+      #LET fe2=0
+      #LET fd2=0
+      #LET ff2=0
+      #LET ft2=0
+   #ENDIF
+#ENDIF
+// <c21984>
+#IF $(fe)>0 #LET fe=1
+#IF $(fd)>0 #LET fd=1
+#IF $(ff)>0 #LET ff=1
+#IF $(ft)>0 #LET ft=1
+// fim desativa fita customizada
+#LET CANAL=$(x7:8)
+#LET CAVA=$(x7:9)
+#LET junesq=$(x7:10)
+#LET jundir=$(x7:11)
+#LET NFIX1=0
+#LET NFIX2=0
+// **** REGRA PARA APLICAR FAIXA DE LAMINA E PINTURA NA FACE CONTRARIA // NOVA REGRA CONFORME CHAMADO <C22875>
+#LET FAIXA10ATRAS=(200*$(DIMA)+200*$(DIML))/1000000 // FAIXA PINTADA / LAMINADA ATRAS DE 10 CM
+// **** FIM REGRA PARA APLICAR FAIXA DE LAMINA E PINTURA NA FACE CONTRARIA
+#LET suptot=($(dima)*$(diml))*2/1000000+(($(dima)+$(DimL))*$(dimp)*2)/1000000
+#LET sup1faceB=($(dima)*$(diml))/1000000+(($(dima)+$(DimL))*$(dimp)*2)/1000000
+#LETV INICIACOD=CONVTINTA // feito em visita técnica <c23610>
+#LETS CONVTINTA=$(INICIACOD:2) // feito em visita técnica <c23610>
+#LET SUPTINTA={$(suptot)*$(CONVTINTA:0)} // Adicionado fator de conversão para fazer a conversão de m2 para L - feito em visita técnica <c23610>
+#LET SUPPRIME={$(suptot)*$(CONVTINTA:0)} // Adicionado fator de conversão para fazer a conversão de m2 para L - feito em visita técnica <c23610>
+// OBS FORMASOFT: AQUI NA EVENTUALIDADE DA PARA FAZER UM CALCULO PARA MUDAR OS CODIGOS DA GESTAO DE TOPOS DO CLIENTE
+// ***************GESTÃO PARA ALTERAR A FITA DE BORDA NO INICIA PARA IDEAMOVEIS
+#LOADVAR FITA_CAIXA iniciaestrjob FITA_CAIXA // <c19601>
+#IF $(TIP)[100;101;102;103;104;105]!0  // GESTÃO BORDA PEÇAS TÉCNICAS
+   #IF $(x9:7)=1
+      #IF $(fe2)>0 #LET fe=0
+      #IF $(fd2)>0 #LET fd=0
+      #IF $(ff2)>0 #LET ff=0
+      #IF $(ft2)>0 #LET ft=0
+   #ENDIF
+   #LET ESPB=$(X9:6)
+#ELSE
+   #LET ESPB=$(FITA_CAIXA:2)//$(X7:17)
+#ENDIF
+#LETS CORB=
+#LETS CORP=
+#LETS COR=
+#LETS tinta=
+#LETS LAMINADO=
+#LETS MASCARA=
+#IF $(x7:16)=1 //reaproveitamento
+   #LOADVAR _CORCX   _CORCX  REAPR
+#ELSE
+   #LOADVAR _CORCX   _CORCX  $(X9:1)
+#ENDIF
+#IF $(_corcx)==
+   #LOADVAR _CORCX   _CORfr  $(X9:1)
+#ENDIF
+#LOADVAR TPFIX TPFIX $(X9:2)
+#LETS NOTA1=
+#LET NFIXPRAT=0
+#LETS FIXPRAT=
+#LETV INICIACOD=TINTAPRIME
+#LETS CODPRIME=$(INICIACOD:2)

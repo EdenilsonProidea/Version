@@ -1,0 +1,9 @@
+{ 257   // CODIGOS SUPORTE PRATELEIRAS
+   *AZZERA*            =0
+   DESCRIZIONE         =CODIGOS SUPORTE PRATELEIRAS
+   CODICE              =$(SUPORTEPRAT:3 /SUPORTEPRAT=$(SUPORTEPRAT:1);LINHA=$(MODELLO:0) / /#Q{$(NREF)}
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X9                  =$(SUPORTEPRAT:1)
+}

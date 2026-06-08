@@ -1,0 +1,7 @@
+2	FF	X={$(PL)+80}       Y={$(XP)/2} DF=8 PF=12.5
+2	FF	X={$(PL)+$(DL)-80} Y={$(XP)/2} DF=8 PF=12.5
+2	FF	X={$(PL)+$(DL)/2}  Y={$(XP)/2} DF=8 PF=12.5
+#IF $(XL)>700
+   2	FF	X={$(PL)+$(DL)/3} Y={$(XP)/2} DF=8 PF=12.5
+   2	FF	X={$(PL)+$(DL)/3*2}  Y={$(XP)/2} DF=8 PF=12.5
+#ENDIF

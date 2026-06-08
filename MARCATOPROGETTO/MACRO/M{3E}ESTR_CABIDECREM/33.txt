@@ -1,0 +1,12 @@
+#LOADVAR cabideiro cabideiro $(x9:0)
+#IF $(_listino)=1
+   $(X9:1),$(DL)/1000
+   $(X9:4),$(DL)/1000
+   $(X9:2),1
+   #IF $(dl)>1090
+      571,1
+      671,1
+   #ENDIF
+#ELSE
+   KIT-CABIDEU,1,COD1=$(X9:1);COD2=$(X9:2);COD4=$(X9:4);,$(DL)
+#ENDIF

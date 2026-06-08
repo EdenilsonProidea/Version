@@ -1,0 +1,5 @@
+{ 289.001   // Cava central Furaçao
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava central Furaçao
+   X9                  =$(_TPCAVA:8)/$(_TPCAVA:18)/$(_TPCAVA:9)/$(_PUXCAVA:8)
+}

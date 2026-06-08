@@ -1,0 +1,12 @@
+{ 650   // Bandeira frontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Bandeira frontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =,$a-$(abandeira),$p-$(esp_bandeira)
+   DIMENSIONE          =$(ltrilho),$(abandeira),$(esp_bandeira)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/$(cava)/1/1
+   X9                  =/$(_CORFR:1)
+}

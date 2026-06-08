@@ -1,0 +1,42 @@
+#LET espperfpor=3
+// _iniciafrontal
+
+#LOADVAR PV_PORTAS PV_PORTAS FPV005
+#LOADVAR PER_ESQ PV_PERFIL $(PV_PORTAS:4)
+#LOADVAR PER_SUP PV_PERFIL $(PV_PORTAS:5)
+#LOADVAR PER_DIR PV_PERFIL $(PV_PORTAS:6)
+#LOADVAR PER_INF PV_PERFIL $(PV_PORTAS:7)
+#IF $(PER_SUP:10)!0 #LET DESCV_SUP=$(PER_SUP:10) #LET DESCV_SUP=$(FOLGAFRENTEAS:0)
+#IF $(PER_INF:10)!0 #LET DESCV_INF=$(PER_INF:10)#LET DESCV_INF=$(FOLGAFRENTEAI:0)
+#LET DESCV_ESQ=$(PER_ESQ:10)
+#LET DESCV_DIR=$(PER_DIR:10)
+#LET SLpainel=$(DESCV_ESQ)
+#LET SApainel=$(DESCV_INF)
+#LET Lpainel=$l-1*($(DESCV_ESQ)+$(DESCV_DIR))
+#LET Apainel=$A-1*($(DESCV_SUP)+$(DESCV_INF))
+#LET sppainel=$(pv_portas:8)
+!SAGOMA SAG_PER_ESQ $(PER_ESQ:8)
+!SAGOMA SAG_PER_SUP $(PER_SUP:8)
+!SAGOMA SAG_PER_DIR $(PER_DIR:8)
+!SAGOMA SAG_PER_INF $(PER_INF:8)
+601,SA=$A+$(FOLGAFRENTEAI:0)-$(affre),SL=$(FOLGAFRENTEL:0),X1=0,X2=0  //PERFIL ESQ
+602,SA=$A+$(FOLGAFRENTEAI:0),X1=0,X2=0,SL=$L-1*($(pv_portas:9))+$(FOLGAFRENTEL:0)  //PERFIL SUP
+603,SL=$L-1*($(pv_portas:9))+$(FOLGAFRENTEL:0),SA=$(FOLGAFRENTEAI:0)+$(affre),X1=0,X2=0  //PERFIL DIR
+604,SA=$(FOLGAFRENTEAI:0),x1=0,x2=0,SL=$(FOLGAFRENTEL:0)  // PERFIL INF
+//_PUX,SL=$(FOLGAFRENTEL:0)//,_PUX=$(PV_PUX)//,isportaperfil=1
+
+#IF $(AVANCAFRENTE:0)=0 // Adicionado validação a pedido do cliente, feito em visita
+   _pux,SP=-16,SL=$(FOLGAFRENTEL:0) // SP=-18,SA=3 // Alterado parametros em visita para ajustar melhor a gráfica do puxador
+#ENDIF
+
+#IF $(PV_TRAVESSAS:8)!!
+   pv_travessas,SL=$(FOLGAFRENTEL:0),sa=$(DESCV_INF),a=$a-1*($(DESCV_INF)+$(DESCV_sup))
+#ELSE
+   //$(_PALHA:3)|$(.percorso)\foto\PALHA\$(_PALHA:4)|$(_PALHA:3)
+   #LETS i=
+   #IF $(_PALHA:3)=20
+      268.001,L=$(lfre)-2*$(espperfpor),A=$(affinalporta)-2*$(espperfpor),P=1,sl=$(FOLGAFRENTEL:0)+$(espperfpor),sa=$(espperfpor)+$(FOLGAFRENTEAI),SP=$(_FR:4)  // Painel Porta Perfil
+   #ELSE
+      268.002,L=$(lfre)-2*$(espperfpor),A=$(affinalporta)-2*$(espperfpor),P=1,sl=$(FOLGAFRENTEL:0)+$(espperfpor),sa=$(espperfpor)+$(FOLGAFRENTEAI),SP=$(_FR:4)
+   #ENDIF
+#ENDIF

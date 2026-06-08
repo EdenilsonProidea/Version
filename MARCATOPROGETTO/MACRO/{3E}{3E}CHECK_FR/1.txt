@@ -1,0 +1,16 @@
+#IF $(_FR:15)>0 & $(_fr:16)>0
+   #IF $(LFRE)<$(_FR:15) //CHECK LARGURA MINIMA GAVETA
+      #LETS idlogerros=$(idlogerros)9^$(_fr:2)^$(_fr:15);
+   #ELSEIF $(LFRE)>$(_fr:16) //CHECK LARGURA MAXIMA GAVETA
+      #LETS idlogerros=$(idlogerros)10^$(_fr:2)^$(_fr:16);
+   #ENDIF
+#ENDIF
+#IF $(_FR:17)>0 & $(_fr:17)>0
+   #IF $(AFRE)<$(_FR:17) //CHECK LARGURA MINIMA GAVETA
+      #LETS idlogerros=$(idlogerros)11^$(_fr:2)^$(_fr:17);
+   #ELSEIF $(AFRE)>$(_fr:18) //CHECK LARGURA MAXIMA GAVETA
+      #LETS idlogerros=$(idlogerros)12^$(_fr:2)^$(_fr:18);
+   #ENDIF
+#ENDIF
+//LOGERROS
+

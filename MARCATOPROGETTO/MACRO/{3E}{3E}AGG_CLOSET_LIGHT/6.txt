@@ -1,0 +1,13 @@
+CAIXA,SL=$(slmodulo:0),L=$(lmodulo:0),SP=$(REDCORPOATRAS:0),A=$A,P={$P-$(REDCORPOATRAS:0)}
+#IF $(slmodulo:0)>50
+   // pula o primeiro modulo
+   #IF $(_PES:3)>0
+      //526,SA=$(_PES:5),SL=$(slmodulo:0)-$(eslat:0),SP=0,P=$p-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+   #ELSE
+      526,SL=$(slmodulo:0)-$(eslat:0),SP=0,P=$p-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+   #ENDIF
+#ENDIF
+#LET slmodulo=$(slmodulo:0)+$(lmodulo:0)+$(eslat:0)
+// 521
+// 305
+// 309

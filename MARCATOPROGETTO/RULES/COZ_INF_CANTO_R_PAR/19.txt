@@ -1,0 +1,94 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Inferior canto Reto
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 100, 100, 100
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=1,0,1
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,modello
+G,COZ_CAIXA
+G,COZ_ACAB
+G,FR_GERAL
+G,FR_INT
+-,Fm
+T,push,,PUSH[$(_TPFR:6)]!0,Tip-on Porta,,,,,,,4
+C,INVAPE,,,Inverter Abertura,,,,,,,4
+T,lavtopbang,,,Tipo Lav top,$(lavtopbang:3)=1,,,,,,,,1=0
+D,fmbang,,,Configura,,daucucina.crea.bangolo,,,,,,,1=0
+M,larganta,,1=0,Larg.Porta,,,500,,,,4
+M,plat1,,,Prof. Lateral Caixa,,,550|,,,,4
+M,plat2,,,Prof. Afastador,,,580,,,,4
+M,angolox,,,Angulo,,,0,,,,4,,1=0
+Z,enangulo,,,Em angulo?,,,,,,,4,,1=0
+D,incfrente,,,Incrementar Frente,,!incfrente.htm,,,,,4
+C,TiraAfastador,,,Tirar Afastador,,,,,,,4
+M,largFrenteFixa,,,Largura Fr. Fixa,,,601,586,900,,4
+M,espacoAtras,,,Espaço Atras,,,0,,,,4
+D,posadob,,,,,,,,,,,,1=0
+D,posadob2,,,,,,,,,,,,1=0
+G,varoculte
+
+[EXTRA]
+#IF $pm=3
+   #IF $(_tipoang)=0
+      PARETEOPPOSTA -$(l)
+   #ELSEIF $(_tipoang)=1
+      PARETE -$(l)
+   #ENDIF
+   // angolo 1
+#ELSE
+   #IF $(_tipoang)=1
+      PARETEOPPOSTA 0
+   #ELSEIF $(_tipoang)=0
+      PARETE 0
+   #ENDIF
+   // angolo 2
+#ENDIF
+
+[GRAFICA]
+coz_inicia
+//BAN_INICIA
+#LET cava=$(_TPCAVA:3)
+#IF $(CAVA)>0 #LET CAVA=1
+#LET INF=1
+#LET LTOT=$L
+iniciainfangolo,esfre=0
+inf_cantor_par,CANTOR=1
+
+// frontaleBATangolo
+// _int_canto_r
+// topangolo
+// pratcantor
+// 219
+// _FR
+// .quadratta
+
+// 416
+
+// _iniciafrontal
+
+// _int_canto_r
+
+// logerros
+
+// MOLD_SUP_CANTO_LR
+
+// portag

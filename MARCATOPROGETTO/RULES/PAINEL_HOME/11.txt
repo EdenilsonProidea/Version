@@ -1,0 +1,163 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PAINEL_HOME.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Dados
+T,MODELLO
+T,TIPOPAINEL,,,,,,,,,,4
+T,esp_prat,,,,,,,,,,1
+C,somaoamiga,,$(tipopainel:0)!006,Somente Mão Amiga,,,,,,,4
+T,espmao,,$(somaoamiga:0)=1,Espessura Mão Amiga ,,,,,,,4
+M,qtdmao,,,Quantidade Mão Amiga,,,2,,,,4
+C,divmao,,,Dividir Mão Amiga?,,,,,,,4
+M,espdivmao,,,Espessura Divisão Mão Amiga,,,,30,,,4,,1=0
+T,especial
+C,horiz,,,Paineis Horizontal?,,,,,,,4,,1=0
+C,MAOVER,,,Mão Amiga vertical?,,,,,,,4
+Z,TRAVESSAINFERIOR,,,Travessa Inferior?,,,,,,,4
+M,recuolateral,,,Recuo Travessas?,,,,,,,4,,1=0
+M,NSARAFFOS,,,Numero Saraffos?,,,,,,,4
+M,NPAINEIS,,$(tipopainel:3)=1,Numero Paineis?,,,,,,,4
+C,VEIOHORIZONTAL,,,Veio Horizontal?,,,,,,,4
+C,delestrutura,,,Remove estrutura,,,,,,,4
+-,AddBorda,,,Bo,,,,,,,,,1=0
+Z,BFRE,,,Borda Frente?,,,,,,,8
+Z,BTRA,,,Borda Atras?,,,,,,,8
+Z,BESQ,,,Borda Esquerda?,,,,,,,8
+Z,BDIR,,,Borda Direita?,,,,,,,8
+-,po,,,,,,,,,,,,1=0
+G,PONTOS
+-,AC,,,Acabamentos
+T,LATERAL_P_E,,,Acabamento Esquerdo,,,,,,,2
+T,LATERAL_P_D,,,Acabamento Direito,,,,,,,7
+T,LATERAL_P_C,,,Acabamento Superior,,,,,,,6
+T,LATERAL_P_B,,,Acabamento Inferior,,,,,,,4
+Z,BORDAESQ,,$(ESP_PRAT:3)[15;18]!1,Topo Esquerda,,,,,,,2
+Z,BORDADIR,,$(ESP_PRAT:3)[15;18]!1,Topo Direita,,,,,,,7
+Z,BORDASUP,,$(ESP_PRAT:3)[15;18]!1,Topo Superior,,,,,,,6
+Z,BORDAINF,,$(ESP_PRAT:3)[15;18]!1,Topo Inferior,,,,,,,4
+-,mat,,,Ma
+T,_COREX,,,Cor Painel/Fundo,$(_COREX:11)[$(TIPOPAINEL:4)]!0 ,,,,,,1
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,1
+T,_csaraffo
+T,_corripas,,$(TIPOPAINEL:3)[2;3]!0,,,,,,,,7
+T,_pinturaex,_pinturari,$(_corripas:9)=1,Pintura ripas,,,,,,,7
+-,RIPAS,,$(TIPOPAINEL:3)=2,Rp
+T,ESP_RIPA,,,Espessura da ripa?,,,,,,,7
+M,espacoripas,,,Espaço entre ripas?,,,15,15,,,7
+T,largurar,,$(ESP_RIPA:3)!6,Largura Ripas,,,,,,,7
+C,liberalargp,,$(ESP_RIPA:3)=6,Liberar largura?,,,,,,,7
+M,larrippers,,$(liberalargp:0)=1,Largura personalizada,,,15,,,,7
+M,inicioripascost,,,Inicio Ripas,,,,,,,7
+M,adicionaripas,,,Adiciona Ripas,,,,,,,7
+-,FRISOS,,$(TIPOPAINEL:3)[3;4;5;6]!0,Fs
+M,nfrisos,,$(TIPOPAINEL:3)[3;4;6]!0,Numero Frisos?,,,,1,,,6
+D,parfrisos,,$(TIPOPAINEL:3)[4;6]!0,,,,,,,,6,,1=0
+M,lfriso,,$(TIPOPAINEL:3)[4;6]!0,Larg Friso,,,6,6,,,6
+M,NFRISOSH,,$(TIPOPAINEL:3)=5,N° Frisos Hor.?,,,,1,,,6
+M,NFRISOSV,,$(TIPOPAINEL:3)=5,N° Frisos Ver.?,,,,1,,,6
+D,parfrisosh,,$(TIPOPAINEL:3)=5,,,,,,,,6,,1=0
+D,parfrisosV,,$(TIPOPAINEL:3)=5,,,,,,,,6,,1=0
+M,lfrisov,,$(TIPOPAINEL:3)=5,Larg Friso Vertical,,,6,6,,,6
+M,lfrisoh,,$(TIPOPAINEL:3)=5,Larg Friso Horiz,,,6,6,,,6
+T,TIPORISCO,,$(TIPOPAINEL:3)[3;4;5;6]!0 & $(_COREX:11)[BP;LMN]!0,Pintura Friso,,,,,,,,,1=0
+M,lfrisoh,,$(TIPOPAINEL:3)[5;6],Larg Friso Hor,,,6,6,,,,,1=0
+G,VAROCULTE
+M,old_nfrisos,,,,,,,,,,,,1=0
+M,old_nfrisosH,,,,,,,,,,,,1=0
+M,old_nfrisosV,,,,,,,,,,,,1=0
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+#LET ATIVARIPAS=0
+#LETS identp=
+#IF $(TIPOPAINEL:3)=2 #LET ATIVARIPAS=1
+#IF $(TIPOPAINEL:3)=2 #LETS identp=R
+#IF $(tipopainel:0)=006 #LET delestrutura=1
+#LET ESP_PRAT_TMP=$(ESP_PRAT:3)
+
+calcula_ferr_usi
+CALCULA_ESP_PAIN
+#LOADVAR _corcru _corcx ESP.001.MDF01 //MDF CRU
+#LOADVAR _cSARAFFO _corcx ESP.001.MDF01 //MDF CRU
+#LET ASARAFFO=80
+#LET ESSARAFFO=$(ESP_PRAT:0)
+#LETV cor=$(_COREX:6)
+#IF $(liberalargp:0)=1
+   #LET largripas=$(larrippers:0)
+#ENDIF
+#IF $(cor:3)=1  // se tem veio a chapa
+   #IF $(VEIOHORIZONTAL:0)=1
+      #LET amax=$(cor:6)
+      #LET lmax=$(cor:5)
+   #ELSE
+      #LET amax=$(cor:5)
+      #LET lmax=$(cor:6)
+   #ENDIF
+#ELSE // nao tem veio
+   #IF $l>$A
+      #LET lmax=$(cor:5)
+      #LET amax=$(cor:6)
+   #ELSE
+      #LET amax=$(cor:5)
+      #LET lmax=$(cor:6)
+   #ENDIF
+#ENDIF
+#IF $(delestrutura:0)=0
+   ESTR_ATRAS_PAI
+#ENDIF
+#IF $(horiz:0)=0
+   #IF $(NPAINEIS:0)=0
+      #IF $l<$(lmax)
+         #LET npaineis=1
+      #ELSE
+         #LET npaineis=int($l/$(lmax))+1
+      #ENDIF
+   #ENDIF
+   #LET ll=$l/$(NPAINEIS:0)
+   #FOR  $1:$(NPAINEIS:0),,k
+      PH_PAINEL,SL=$(ll)*($(k)-1),L=$(ll)// ,COD=FRPAINEL/MONTADO=1
+   #ENDFOR
+#ELSE
+   #IF $(NPAINEIS:0)=0
+      #IF $a<$(amax)
+         #LET npaineis=1
+      #ELSE
+         #LET npaineis=int($a/$(amax))+1
+      #ENDIF
+   #ENDIF
+   #LET aa=$a/$(NPAINEIS:0)
+   #FOR  $1:$(NPAINEIS:0),,k
+      // PH_PAINEL,SA=$(aa)*($(k)-1),A=$(aa)
+   #ENDFOR
+#ENDIF
+#IF $(TIPOPAINEL:3)[4;5]!0 & $(_COREX:11)[BP;LMN]!0
+   !COMMENTO4 - RISCO $(TIPORISCO:2)
+#ENDIF
+#LET na=-$(alt_piso:0)
+pontos,sp=$p+20
+#IF $(TIPOPAINEL:3)[4;5;6]!0 & $L>900  //<c20974>
+   #LETS idlogerros=$(idlogerros)3^ ^900;
+#ENDIF
+LOGERROS

@@ -1,0 +1,14 @@
+{ 269   // Moldura
+   *AZZERA*            =0
+   DESCRIZIONE         =Moldura
+   CODICE              =$(_tpmold:3) /_mold=$(_mold:1);_MONTADO=$(_MONTADO:0)
+   LATO                =19
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(_mold:3)|$(.percorso)\foto\madeira\$(_mold:4)|$(_mold:5),$(_mold:3)|$(.percorso)\foto\madeira\$(_mold:4)|$(_mold:5)
+   DISEGNO             =$(PERFIL)
+   ORIENTAMENTO        =LAP
+   X1                  =$(percor)
+   X3                  =$(CURBOX)/W
+   X9                  =$(_tpmold:1)/$(_MOLD:1)
+}

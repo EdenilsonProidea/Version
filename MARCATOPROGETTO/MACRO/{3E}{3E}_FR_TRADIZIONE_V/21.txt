@@ -1,0 +1,23 @@
+_calcola_popx
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+calc_n_prat,_prat=0,alt=$(afre)
+#IF $(rr)=0
+   #LETS parfrente=tradizione_0.3ds|100;100;100;100 // CLASSIC_vidro_0.3DS|100;100;100;100
+   #LET ladojobfrente=1
+   #LETS nomejobfrente=tradizionev_$(rr)
+   #LETS parjobfrente=
+#ELSE
+   #LETS parfrente=tradizione_$(rr).3ds|100;100;100;100 // CLASSIC_vidro_$(rr).3DS|100;100;100;100
+   #LET ladojobfrente=1
+   #LETS nomejobfrente=tradizionev_$(rr)
+   #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+   #LETS nomejobfrente2=tradizionevT_$(rr)
+#ENDIF
+#LETS xpfrente=frente_3D.xp
+#LET DOISLADOS=1
+_FR_STANDARD,frentecomvidro=1
+268,x9=$(_vidro:6)/$(_vidro:7),lato=6  // Vidro Port
+//215
+// .frente_3D.xp

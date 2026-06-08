@@ -1,0 +1,17 @@
+#IF $(x9:2)=1
+   #M ESTR_MADEIRA,CODITEM=PAINPHR
+#ELSE
+   #IF $(x3:1)==FV
+      #M ESTR_MADEIRA,CODITEM=PAINPHFV
+   #ELSE
+      #M ESTR_MADEIRA,CODITEM=PAINPH
+   #ENDIF
+#ENDIF
+
+#IF $(X9:3)>0
+   KIT_MAO_AMIGA,$(X9:3)
+#ENDIF
+
+#IF $(X5:0)!0 // Adicionado o custo do friso em visita
+   PreFriso,$(x5:0)*($(DIML)/1000)
+#ENDIF

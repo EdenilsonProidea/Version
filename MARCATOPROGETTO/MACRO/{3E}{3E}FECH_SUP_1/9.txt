@@ -1,0 +1,79 @@
+!PARAMETRI slfechsup=$(_FECHESQ:4),lfechsup={$l-1*($(_FECHESQ:4)+$(_FECHdir:4))},es=$(ESPACAB2:3)
+#IF $(_FECHESQ:3)[1;7;8]!0
+   #LET slfechsup={$(_FECHESQ:4)+$(ESPARM:3)/2}
+   #LET lfechsup={$l-1*($(_FECHESQ:4)+$(_FECHdir:4))-($(ESPARM:3)/2)}
+#ENDIF
+#IF $(_FECHDIR:3)[1;7;8]!0
+   #LET lfechsup={$(lfechsup)-($(ESPARM:3)/2)}
+#ENDIF
+// inicio  <c23346>
+#LET deltalfechsup=0
+#LET addlfechsup=0
+#LET deltalfechsup2=0
+#LET addlfechsup2=0
+#IF $(_FECHESQ:3)=4
+   #LET deltalfechsup=-$(eslat:0)/2
+#ENDIF
+#IF $(_FECHdir:3)=4
+   #LET addlfechsup=-$(eslat:0)/2
+#ENDIF
+#IF $(lat_fech_especial)=1 & $(tetotot:0)!1
+   #LET deltalfechsup=-11
+   #LET addlfechsup=-11
+   #LET deltalfechsup2=11
+   #LET addlfechsup2=11
+#ENDIF
+#IF $(_FECHESQ:0)=0 #LET deltalfechsup2=0,deltalfechsup=0
+#IF $(_FECHdir:0)=0 #LET ADDlfechsup2=0,ADDlfechsup=0
+#IF $(lat_fech_especial)=1
+   #IF $(_FECHdir:3)[5]
+      //   #MSG $(_FECHESQ:4)//-$(deltalfechsup)
+      382,SL=$(_FECHESQ:4)-$(deltalfechsup),L=$(lfechsup)+$(addlfechsup2) // Vista fechamento
+   #ELSEIF $(_FECHDIR:3)[6]
+      382,SL={$(_FECHESQ:4)-$(deltalfechsup)},L=$(lfechsup)//+$(addlfechsup2) // Vista fechamento
+   #ELSEIF $(_FECHesq:3)[5;6]
+      382,SL={$(_FECHESQ:4)},L=$(lfechsup)+$(addlfechsup2) // Vista fechamento
+   #ELSE
+      382,SL={$(_FECHESQ:4)-$(deltalfechsup)},L=$(lfechsup) // Vista fechamento
+   #ENDIF
+#ELSEIF $(lat_fech_especial)=2
+   #LOADVAR _MOLD _CORFR $(_CORFR:1)
+   !SAGOMA percor 0,{$P+$(ESFRE)},$L,{$P+$(ESFRE:0)}
+   #LETV _TPMOLD=001
+   !SAGOMA PERFIL $(_tpmold:6)
+   269,SA=$A-$(avista:0)  // Moldura
+   #IF $(tipocanto)=1
+      382,SL=0,L=$L,A=$(avista:0)-50  // Vista fechamento
+   #ELSE
+      #IF $a>2730 & $(lat_fech_especial)=2
+         382,SL=0,L=$L,SA=$a-$(avista)//$(LTOT)
+      #ELSE
+         382,SL=0,L=$L//$(LTOT)
+      #ENDIF
+   #ENDIF
+#ELSE
+   // fim   <c23346>
+   #IF $(rodateto:0)=1
+      #IF $(_tpfech:3)=3
+         382,sa=$a-$(arodateto:0)+$(es),a=$(arodateto:0)-$(es)  // Rodateto Fechamento
+         380.001  //Base Fechamento superior
+      #ELSEIF $(_TPFECH:3)=1 // adicionado em visita
+         382  //Rodateto Fechamento
+      #ELSE
+         382  //Rodateto Fechamento
+      #ENDIF
+   #ELSEIF $(rodateto:0)=2
+      #IF $(_tpfech:3)=3
+         382,sa=$a-$(arodateto:0)+$(es),a=$(arodateto:0)-$(es)  // Rodateto Fechamento
+         380.001  //Base Fechamento superior
+      #ELSEIF $(_tpfech:3)=4
+         380.001,SP=$P-100,P=100  //Base Fechamento superior
+         382  // Rodateto Fechamento
+      #ELSE
+         382,SA=$a-$(arodateto:0)+$(es),SP=$p,A=$(arodateto:0)-$(es)  //Rodateto Fechamento
+         380.001,SP=$p-100+$(es),P=100  //Base Fechamento superior
+      #ENDIF
+   #ENDIF
+#ENDIF
+// 201
+// 204

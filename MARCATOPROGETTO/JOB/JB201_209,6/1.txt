@@ -1,0 +1,3 @@
+#IF $(xx3:0)=$(xp3:0) & $(XP8:3)=0 // mesmo box
+   #M JOB_LAT_PRAT
+#ENDIF

@@ -1,0 +1,26 @@
+#LETV COR=$(CORP)
+#IF $(CODITEM)!!
+   #LET comprimento=$(diml)
+   #LET largura=$(dima)
+   #IF $(cor:3)=0
+      #IF $(diml)<$(dima)
+         #LET comprimento=$(dima)
+         #LET largura=$(diml)
+      #ENDIF
+   #ENDIF
+   #IF $(COR:5)>0
+      #IF $(comprimento)>$(COR:5)
+         #MSG ERRO - COMPRIMENTO MAXIMO CHAPA $(COR:2) MM $(comprimento) - MEDIDA ERRADA - TIPOLOGIA $(TIP)/$(CODITEM)
+      #ENDIF
+   #ENDIF
+   #IF $(COR:6)>0
+      #IF $(largura)>$(COR:6)
+         #MSG ERRO - LARGURA MAXIMA CHAPA $(COR:2) MM $(largura) - MEDIDA ERRADA - TIPOLOGIA $(TIP)/$(CODITEM)
+      #ENDIF
+   #ENDIF
+#ENDIF
+#LETS CODPAINEL=$[CODICEBARRA;XMDF-$(CORP)-$(DIMP);1000;1000;ERRORE]
+#LETS CHECKERRO=$[MID;$(CODPAINEL);2;1]
+#IF $(CHECKERRO)==+ | $(CHECKERRO)==R
+   #LETS CODPAINEL=ERROPAINEL;barra=XMDF-$(CORP)-$(DIMP)
+#ENDIF

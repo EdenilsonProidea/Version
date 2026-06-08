@@ -1,0 +1,57 @@
+{ _dobra   // Dobradiça
+   *AZZERA*            =0
+   DESCRIZIONE         =Dobradiça
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^2;5;100;100;5;#FOTO\DOBRA\;2;3
+   MEMO                =1Código 975Descrição 6915CODIGO DOBRADIÇA 2295ANGOLO ABERTURA 2685imagem 3300Distancia furo lat da frente 3645Distancia entre furos lat 3045pos larg furo principal 2085Diam furo princ 1740Distanca furo marc porta 2670distancia entre furos marcacao 2550CODIGO CALCO 1965CODIGO PARAFUROS 2280NUMERO PARAFUSOS 2610CODIGO ADICIONAL 2325tipo furo lateral 2460dist furo lateral long 1 2490dist furo lateral long 2 2490MONTADA? 1515033
+   { 
+      //  ,Descrição                                  ,CODIGO,ANGO,imagem                        ,Dis,Dis,pos l,Dia,Dista,dis,CODIGO,CODIGO,NU,CODIGO,ti,dis,dis,MO
+      001 ,DOBRA RETA MAD T 94° GESP - DORM C2BBAE6   ,50563 ,94  ,TITANIUM_RETA.jpg             ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      002 ,DOBRA RETA MAD T 110° - DORM C7B6AE6       ,7965  ,110 ,TITANIUM_RETA.jpg             ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      003 ,DOBRA RETA ALU T 110° - DORM C7A6AE6       ,50517 ,110 ,TITANIUM_RETA.jpg             ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      004 ,DOBRA CURVA MAD T 94° GESP - DORM C2BBGE6  ,50564 ,94  ,TITANIUM_CURVA.jpg            ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      005 ,DOBRA CURVA MAD T 100° - DORM C7B6GE6      ,50569 ,110 ,TITANIUM_CURVA.jpg            ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      006 ,DOBRA CURVA ALU T 100° - DORM C7A6GE6      ,50570 ,110 ,TITANIUM_CURVA.jpg            ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      007 ,DOBRA RETA MAD T 155° GESP - DORM C2BDAE6  ,50565 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      008 ,DOBRA RETA MAD T 155° - DORM C2BKAE6       ,50571 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      009 ,DOBRA RETA ALU T 155° - DORM C2AKAE6       ,50702 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      010 ,DOBRA CURVA MAD T 155° GESP - DORM C2BDGE6 ,50566 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      011 ,DOBRA CURVA MAD T 155° - DORM C2BKGE6      ,50732 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      012 ,DOBRA CURVA ALU T 155° - DORM C2AKGE6      ,50574 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      013 ,DOBRA EM LINHA MAD T 110° - DORM C7B6ND6AM ,7967  ,110 ,TITANIUM_AP.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,0
+      014 ,DOBRA EM LINHA ALU T 110° - DORM C7A6ND6AM ,50576 ,110 ,TITANIUM_AP.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      015 ,DOBRA RETA MAD F 94° GESP - DORM C2BBAE9   ,20991 ,94  ,FOSCA_RETA.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      016 ,DOBRA RETA MAD F 110° - DORM C7B6AE9       ,1104  ,110 ,FOSCA_RETA.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      017 ,DOBRA RETA ALU F 110° - DORM C7A6AE9       ,51137 ,110 ,FOSCA_RETA.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      018 ,DOBRA CURVA MAD F 94° GESP - DORM C2BBGE9  ,52547 ,94  ,FOSCA_CURVA.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      019 ,DOBRA CURVA MAD F 100° - DORM C7B6GE9      ,16951 ,110 ,FOSCA_CURVA.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      020 ,DOBRA CURVA ALU F 100° - DORM C7A6GE9      ,51139 ,110 ,FOSCA_CURVA.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      021 ,DOBRA RETA MAD F 155° GESP - DORM C2BDAE9  ,51141 ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      022 ,DOBRA RETA MAD F 155° - DORM C2BKAE9       ,1105  ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      023 ,DOBRA RETA ALU F 155° - DORM C2AKAE9       ,7973  ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      024 ,DOBRA CURVA MAD F 155° GESP - DORM C2BDGE9 ,51144 ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      025 ,DOBRA CURVA MAD F 155° - DORM C2BKGE9      ,51145 ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      026 ,DOBRA CURVA ALU F 155° - DORM C2AKGE9      ,51146 ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50421 ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      027 ,DOBRA EM LINHA MAD F 110° - DORM C7B6ND9AM ,51147 ,110 ,FOSCA_AP.jpg                  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,      ,  ,273   ,2 ,21 ,32 ,0
+      028 ,DOBRA EM LINHA ALU F 110° - DORM C7A6ND9AM ,5947  ,110 ,FOSCA_AP.jpg                  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,50582 ,2 ,50578 ,2 ,21 ,32 ,0
+      029 ,USINAGEM P/ DOBRA                          ,8386  ,110 ,usinagem dobradiça.jpg        ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,      ,      ,  ,      ,2 ,21 ,32 ,0
+      031 ,DOBRADIÇA INVISIVEL FOSCA                  ,39071 ,    ,DOBRADICA_INVISIVEL_FOSCA.jpg ,   ,   ,     ,   ,     ,   ,      ,      ,  ,      ,1 ,   ,   ,0
+      032 ,Tip-On                                     ,9890  ,    ,pushmagnetico.jpg             ,   ,   ,     ,   ,     ,   ,      ,      ,  ,      ,  ,   ,   ,
+      033 ,DOBRA RETA MAD T 110° - COZ C7B6AE6        ,7965  ,110 ,TITANIUM_RETA.jpg             ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      034 ,DOBRA RETA ALU T 110° - COZ C7A6AE6        ,50517 ,110 ,TITANIUM_RETA.jpg             ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      035 ,DOBRA RETA MAD T 155° - COZ C2BKAE6        ,50571 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      036 ,DOBRA RETA ALU T 155° - COZ C2AKAE6        ,50702 ,155 ,TITANIUM_L.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      037 ,DOBRA EM LINHA MAD T 110° - COZ C7B6ND6AM  ,7967  ,110 ,TITANIUM_AP.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      038 ,DOBRA EM LINHA ALU T 110° - COZ C7A6ND6AM  ,50576 ,110 ,TITANIUM_AP.jpg               ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      039 ,DOBRA RETA MAD F 110° - COZ C7B6AD9        ,1104  ,110 ,FOSCA_RETA.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,      ,  ,273   ,2 ,21 ,32 ,1
+      040 ,DOBRA RETA ALU F 110° - COZ C7A6AE9        ,51137 ,110 ,FOSCA_RETA.jpg                ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      041 ,DOBRA RETA MAD F 155° - COZ C2BKAE9        ,1105  ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,      ,  ,273   ,2 ,21 ,32 ,1
+      042 ,DOBRA RETA ALU F 155° - COZ C2AKAE9        ,7973  ,155 ,FOSCA_L.jpg                   ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      043 ,DOBRA EM LINHA MAD F 110° - COZ C7B6ND9AM  ,51147 ,110 ,FOSCA_AP.jpg                  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,      ,  ,273   ,2 ,21 ,32 ,1
+      044 ,DOBRA EM LINHA ALU F 110° - COZ C7A6ND9AM  ,51148 ,110 ,FOSCA_AP.jpg                  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,4760  ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      045 ,DOBRA SPAZIO T 94° - C2BBGE6               ,50564 ,94  ,TITANIUM_CURVA.jpg            ,21 ,32 ,26.5 ,35 ,32.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      046 ,DOBRA SPAZIO F 94° - C2BBGE9               ,52547 ,94  ,FOSCA_CURVA.jpg               ,21 ,32 ,26.5 ,35 ,32.5 ,48 ,50421 ,      ,  ,273   ,2 ,21 ,32 ,0
+      999 ,SEM USINAGEM E DOBRA                       ,999   ,    ,sem usinagem.jpg              ,21 ,32 ,     ,   ,     ,   ,      ,      ,  ,      ,1 ,   ,   ,0
+   }
+}

@@ -1,0 +1,11 @@
+{ 627   // ripas vertical
+   *AZZERA*            =0
+   DESCRIZIONE         =ripas vertical
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$p
+   DIMENSIONE          =$(largripas:0),$a,$(esp_prat:0)
+   COLORI              =$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5),$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5)
+   ORIENTAMENTO        =ALP
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =/$(_CORRIPAS:1)
+}

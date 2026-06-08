@@ -1,0 +1,50 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=INTERNO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,iniciacoz
+T,_int,,,,$(_int:3)>=1,,,,,,7
+T,_VIDROPRAT,,$(_INT:3)[2]!0,,,,,,,,3
+T,_corwood,,$(_INT:3)=5,,,,,,,,3
+T,_corr,,$(_int:3)>=50,,,,,,,,3
+T,_cortubo,,$(_int:3)=51,,,,,,,,3
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+
+#LET lagr=$l
+#LET aagr=$a
+#LET alt=$a
+
+#LET lint=$l // <c29855>
+#LET aint=$a // <c29855>
+#LET pint=$P // <c29855>
+
+INICIA_PDIV // <c29855>
+
+_INT
+
+LOGERROS

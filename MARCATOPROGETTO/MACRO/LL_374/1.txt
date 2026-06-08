@@ -1,0 +1,5 @@
+// <c28632> removido condiguracao para tamburato SEMMATRICULA=1
+#M ESTR_MADEIRA,CODITEM=ENCHCS,DIMP=25,tamburato=1  
+#M ESTR_MADEIRA,CODITEM=ENCHCS,DIMP=25,tamburato=1
+#LETV x7:16=1
+#M ESTR_MADEIRA,CODITEM=ENCHCS,DIMP=6,tamburato=1

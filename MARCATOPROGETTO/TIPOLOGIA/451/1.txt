@@ -1,0 +1,10 @@
+{ 451   // fita de borda avulsa
+   *AZZERA*            =0
+   DESCRIZIONE         =fita de borda avulsa
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(cor:12)|$(.percorso)\foto\madeira\$(cor:11)|$(cor:18),$(cor:12)|$(.percorso)\foto\madeira\$(cor:11)|$(cor:18)
+   ORIENTAMENTO        =LAP
+   X9                  =+XBOR-$(COR:1)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(mlfita:0)
+}

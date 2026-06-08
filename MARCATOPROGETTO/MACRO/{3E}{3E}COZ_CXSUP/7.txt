@@ -1,0 +1,33 @@
+//!PARAMETRI tpbase=$(_tpbase:3)
+#MSG $(_tpbase)
+#IF $(_puxcava:3)=0 |  $(_puxcava:3)=2
+   //paramatro x5 su laterali serve per informare job_cava che c un superior della getione multicaixas e scrivere i parametri diversi per il calcolo della
+   //sagoma laterali
+   #IF $(_PuxCava:3)>0 #LET latcava=1 #LET latcava=0
+   #IF $(TPBASE)=1 #LET latcava=0
+   201,x5=$(multicaixas) // Lateral Esquerda
+   202,x5=$(multicaixas)  // Lateral Direita
+   BASE_SUPERIOR,P=$(PLAT)
+   coz_costasup
+   203.001,P=$(PLAT)  //Base Superior
+#ELSEIF $(_puxcava:3)=1
+   //paramatro x5 su laterali serve per informare job_cava che c un superior della getione multicaixas e scrivere i parametri diversi per il calcolo della
+   #LET acava=$(_puxcava:8)
+   #LET pcava=$(_puxcava:7)
+   #LET abase1=$(abase:0)
+   !SAGOMAl sagLatEsq 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+   !SAGOMAl sagLatdir 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+   201 // lateral Esquerda
+   202  // Lateral Direita
+   #IF $L>800
+      #LET abase1=25
+      #LET redinfcaixa=$(ABASE1:0)
+   #ELSE
+      #LET abase1=$(abase:0)
+   #ENDIF
+   BASE_SUPERIOR,P=$(PLAT) // adicionado em visita
+   // 203,sa=$(acava),a=$(abase1:0)   // Base  (cozinha)
+   coz_costasup,sa=$(acava),a={$a-$(acava)}
+   203.001,P=$(PLAT)  //Base Superior
+   #LET abase1=$(abase1)+$(acava)
+#ENDIF

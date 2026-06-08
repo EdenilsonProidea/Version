@@ -1,0 +1,11 @@
+{ 626   // ripas horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =ripas horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$p
+   DIMENSIONE          =$L,$(largripas:0),$(esp_prat:0)
+   COLORI              =$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5),$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5)
+   ORIENTAMENTO        =LAP
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =/$(_CORRIPAS:1)
+}

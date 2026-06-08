@@ -1,0 +1,1 @@
+// invertida a face. fica errado no 3cad mas certo após o posprocessamento. Não consegui pensar em uma lógica de forma a corrigir isso não estragar o resto. Então preferi alterar aqui mesmo.#IF $(pl)>0 #LET f=1 #LET f=2$(F)	CANALGAVETA	X=0 Y=$(PA) DA=$(DA) PF=$(XP8:0) LAT=1

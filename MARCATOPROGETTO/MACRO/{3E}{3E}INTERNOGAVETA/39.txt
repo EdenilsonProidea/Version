@@ -1,0 +1,19 @@
+#IF $(FRONTALAVULSO)=0 & $(fr_avulsa:0)=0
+   #IF $(_tpgavalt:10)=1
+      #IF $(FRGAVINT:0)=0
+         #LET posgavint=0
+      #ELSE
+         #LET posgavint=0-1*($(fgavint:0)+$(espgaveta))
+      #ENDIF
+   #ELSE
+      #LET posgavint=0
+   #ENDIF
+   #IF $(_int:3)[41;42;43;44]!0
+      #LET posgavint=-$(red_f_prat:0)
+   #ENDIF
+   internogaveta_1,SP=$(posgavint)
+#ENDIF
+//#IF $(FRONTALAVULSO)=0
+//internogaveta_3
+//#ENDIF
+// 215

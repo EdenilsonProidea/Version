@@ -1,0 +1,70 @@
+{ INICIADOR   // INICIA DORMITORIOS
+   *AZZERA*            =0
+   DESCRIZIONE         =INICIA DORMITORIOS
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 4080Descrição 4920DESCR ESTESA 5340grupo 2250
+   { 
+      //                 ,Descrição          ,DESCR ESTESA                                        ,grupo
+      ABASE              ,$(espessura:0)     ,Espessura da Base                                   ,Caixa Base
+      AFAFUNDOGAVETA     ,12                 ,Afastamento Fundo Gaveta                            ,gaveta
+      AFBASE             ,0                  ,Afastamento base na profundidade                    ,Caixa
+      AFCOS              ,15                 ,Afastamento da Costa na Profundidade                ,Caixa Fundo
+      AFENCHP            ,0                  ,afastamento do enchimento gaveteiro em profondidade ,Caixa Gaveteiro
+      AFRESAPINCL        ,50                 ,Altura frente sapateira inclinada                   ,sapateira
+      AFRODF             ,50                 ,Afastamento Rodapé Na Frente                        ,Rodapé
+      AFRODL             ,50                 ,Afastamento Rodapé Na Lateral                       ,Rodapé
+      AGAVALTA           ,210                ,Altura da Gaveta Alta                               ,Gaveta
+      AGAVBAIXA          ,104                ,Altura da Gaveta Baixa                              ,Gaveta
+      AGAVMEDIA          ,175                ,Altura da Gaveta Média                              ,Gaveta
+      ALTMAX0PRAT        ,360                ,Altura Maxima para 0 Prateleira                     ,Caixa Prateleira
+      ALTMAX1PRAT        ,720                ,Altura Maxima para 1 Prateleira                     ,Caixa Prateleira
+      ALTMAX2PRAT        ,1080               ,Altura Maxima para 2 Prateleira                     ,Caixa Prateleira
+      ALTMAX3PRAT        ,1440               ,Altura Maxima para 3 Prateleira                     ,Caixa Prateleira
+      ALTMAX4PRAT        ,1800               ,Altura Maxima para 4 Prateleira                     ,Caixa Prateleira
+      ALTMAX5PRAT        ,2160               ,Altura Maxima para 5 Prateleira                     ,Caixa Prateleira
+      ALTMAX6PRAT        ,2750               ,Altura Maxima para 6 Prateleira                     ,Caixa Prateleira
+      ATRA               ,80                 ,Altura arramate inferior                            ,Caixa Travessas
+      CANALGAVETA        ,7                  ,Profundidade canal gaveta                           ,gaveta
+      CONTRAFRENTEGAVETA ,1                  ,Contra Frente gaveta                                ,gaveta
+      DESC_L_PRAT        ,1                  ,Desconto Do Prateleira Na Largura                   ,Caixa Folgas
+      DESCFREINF         ,1.5                ,Desconto Inicial Frente Inferior Frente/Tampo       ,Frente
+      DESCFRESUP         ,1.5                ,Desconto Inicial Frente Superior Frente/Tampo       ,Frente
+      DESCPSAPINCLINADA  ,50                 ,Desconto Sapateira inclinada na profundidade        ,sapateira
+      ENCHGAVETEIRO      ,50                 ,Enchimento gaveteiro                                ,Caixa Gaveteiro
+      ESCOS              ,15                 ,Espessura do Fundo                                  ,Caixa Fundo
+      ESDIVH             ,$(espessura:0)     ,espessura divisao horizontal                        ,Caixa Divisoria
+      ESDIVV             ,$(espessura:0)     ,espessura divisao vertical                          ,Caixa Divisoria
+      ESENCHGAV          ,15                 ,espessura enchimento gaveteiro                      ,Caixa Gaveteiro
+      ESLAT              ,$(espessura:0)     ,Espessura da Lateral                                ,Caixa Lateral
+      ESLATGAV           ,15                 ,espessura lateral gaveteiro                         ,Caixa Gaveteiro
+      ESTRA              ,15                 ,Espessura da Travessa                               ,Caixa Travessas
+      ESTRAGAV           ,15                 ,Espessura da Travessa gaveteiro                     ,Caixa Gaveteiro
+      FITARSOVISTA       ,1                  ,Colocar fita de borda so nos lados visiveis         ,caixa
+      FOLGAFRENTEAI      ,1.5                ,Folga das Frentes na Altura inferior                ,frente
+      FOLGAFRENTEAS      ,1.5                ,Folga das Frentes na Altura superior                ,frente
+      FOLGAFRENTEGAVL    ,1                  ,folga frente lateral gaveta dormitorio              ,Caixa Gaveteiro
+      FOLGAFRENTEL       ,{$(ESLAT:0)/2+1.5} ,Folga das Frentes na Largura lateral                ,frente
+      FOLGAFRENTELI      ,3                  ,Folga das Frentes na Largura centro duas portas     ,frente
+      IDBOX              ,1                  ,Adiciona id do box para subambientes                ,Caixa observaçao
+      INCRTAMPOGAV       ,29                 ,Incremento tampo gaveteiro na profundidade          ,Caixa Gaveteiro
+      LMAXPORTAABRIR     ,650                ,Largura maxima porta de abrir                       ,frente
+      PA_SAPATEIRA       ,10                 ,Posição na altura sapateira                         ,sapateira
+      PCANAL             ,7                  ,Profundidade canal para o fundo                     ,Caixa Fundo
+      PROD               ,10                 ,Profundidade da Rodapé                              ,Rodapé
+      PTRAGAV            ,96                 ,Profundidade da Travessa gaveteiro                  ,Caixa Gaveteiro
+      RAG_COS            ,5                  ,Incremento do fundo que entra no canal              ,Caixa Fundo
+      RED_BASEF          ,0                  ,Redução base frontal                                ,caixa
+      RED_F_DIVH         ,50                 ,reduçao frontal divisao HOR                         ,Caixa Divisoria
+      RED_F_DIVV         ,21                 ,reduçao frontal divisao VER                         ,Caixa Divisoria
+      RED_F_GAVET        ,79                 ,reduçao frontal gaveteiro                           ,Caixa Gaveteiro
+      RED_F_GAVETCLAVAN  ,28                 ,reduçao frontal gaveteiro CLOSET AVANCADO           ,Caixa Gaveteiro
+      RED_F_GAVETG       ,0                  ,reduçao frontal gaveteiro                           ,Caixa Gaveteiro
+      RED_F_PRAT         ,0                  ,Reduçao Frontal Prateleira                          ,Caixa Prateleira
+      RED_INTM           ,0                  ,Reducao no interno dos modulos para os dois lados.  ,Caixa Folgas
+      REDINFGAVETEIRO    ,1.5                ,reduçao inferior area para gavetas do gaveteiro     ,Caixa Gaveteiro
+      REDSUPGAVETEIRO    ,1.5                ,reduçao superior area para gavetas do gaveteiro     ,Caixa Gaveteiro
+      SEPARAFRENTEORCA   ,1                  ,separa as frentes no orçamento                      ,frente
+   }
+}

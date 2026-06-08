@@ -1,0 +1,13 @@
+{ 325   // Travessa Horizontal Gaveteiro
+   *AZZERA*            =0
+   DESCRIZIONE         =Travessa Horizontal Gaveteiro
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(ESLATGAV:0)+$(ENCHE),0,0
+   DIMENSIONE          =$l-2*$(ESLATGAV:0)-1*($(ENCHE)+$(ENCHD)),$(ESTRAGAV:0),$(PTRAGAV:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/0/0/0/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#325
+}

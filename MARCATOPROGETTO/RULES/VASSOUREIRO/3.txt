@@ -1,0 +1,53 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=VASSOUREIRO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=001
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=COZ_STRDIV,COZ_VASSOU,$(_tpcaixa:5),$(_tpcaixa:4),0,0,0,0
+TRADFLAGS=*,*,*,*,1
+
+
+[gene]
+T,MODELLO
+G,COZ_CAIXA
+-,TPFR,,,Tpfr
+T,_TPFR,,,,,,,,,,4
+D,incfrente,,$(_TPFR:3)=1,Incrementar Frente,,!incfrente.htm,,,,,4
+M,_LPORTA,,_LPORTA[$(_TPFR:6)]!0,Larg.Porta?,,,,,,,4
+T,PUSH,,PUSH[$(_TPFR:6)]!0,Tip-on porta,,,,,,,4
+T,_tpmascara,,_TPMASCARA[$(_TPFR:6)]!0,Tipo Masc.,,,,,,,4
+T,_dobra,,_DOBRA[$(_TPFR:6)]!0,,,,,,,,3
+G,FR_GERAL
++,COZ_VASSOU
+G,COZ_ACAB
+G,ILUCOZ
+G,VAROCULTE
+
+[GRAFICA]
+#LET VASSOUREIRO=1
+
+COZ_COL
+#IF $(desc_nota:0)=1
+   nota_frente
+#ENDIF
+calc_af_kit
+FRONTAL,pm=$(pm) //$(pmfre) corrigido dia 07/03 <c30814>
+
+//COZ_VASSOU
+
+#LETS VASSOUREIRO=
+//coz_especial

@@ -1,0 +1,147 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   
+   If DL=16 Then DL=15.5
+   If DL=19 Then DL=18.5
+   If DL=26 Then DL=25.5
+   
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   csemborda=wColore(77)
+   FITABRANCA=wColore(53)
+   SAGLAT=""
+   SUPERIOR=calcola(ex(p.parametro(8),"/",2))
+   ' ***************************** LADOS BORDA ***********************************
+   
+   csemborda=wColore(77)
+   besq=ucase(ex(p.parametro(7),"/",5))
+   bdir=ucase(ex(p.parametro(7),"/",6))
+   bfre=ucase(ex(p.parametro(7),"/",7))
+   btra=ucase(ex(p.parametro(7),"/",8))
+   besq2=ucase(ex(p.parametro(7),"/",13))
+   bdir2=ucase(ex(p.parametro(7),"/",14))
+   bfre2=ucase(ex(p.parametro(7),"/",15))
+   btra2=ucase(ex(p.parametro(7),"/",16))
+   fitasovisivel=(ex(p.parametro(7),"/",18))
+   
+   ' <C28340>
+   tpfundo=ucase(ex(p.parametro(9),"/",5))
+   
+   facefrente=c1
+   faceatras=c1
+   
+   If faceaplica<>3 Then
+      If faceaplica=1 Then
+         '  faceatras=corbasepainel
+      Elseif faceaplica=2 Then
+         ' facefrente=corbasepainel
+      End If
+   End If
+   
+   bordaesq=c1
+   bordadir=c1
+   bordafre=c1
+   bordatra=c1
+   
+   ' <c28340>
+   If tpfundo="30" Then
+      btra="N"
+   End If
+   If tpfundo="30" Then
+      btra2="N"
+   End If
+   
+   If besq="N" Or besq="" Or besq="0" Then bordaesq=csemborda
+   If bdir="N" Or bdir="" Or bdir="0" Then bordadir=csemborda
+   If bfre="N" Or bfre="" Or bfre="0" Then bordafre=csemborda
+   If btra="N" Or btra="" Or btra="0" Then bordatra=csemborda
+   
+   If fitasovisivel <> "1" Then
+      If besq2="1" Then bordaesq=FITABRANCA
+      If bdir2="1" Then bordadir=FITABRANCA
+      If bfre2="1" Then bordafre=FITABRANCA
+      If btra2="1" Then bordatra=FITABRANCA
+   End If
+   ' ***************************** FIM LADOS BORDA ***********************************
+   
+   
+   If LEFT(P.TIPO,3)="201" Or LEFT(P.TIPO,3)="202"  Then
+      SAGLAT=ex(p.parametro(6),"/",1)
+   End If
+   '<C27549>
+   If LEFT(P.TIPO,3)="301" Or LEFT(P.TIPO,3)="302" Or LEFT(P.TIPO,3)="306"  Then
+      SAGLAT=P.SAGOMA
+   End If
+   
+   If SAGLAT<>"" Then
+      c1=wColoreE(p.colore1) '<C25557>
+      ' c1=wColoreE(p.colore1,-90)
+      c2=wColoreE(p.colore2)
+      SS="#" & REPLACE(SAGLAT,"*",",")
+      If LEFT(SS,2)="#P" Then
+         AA=WSAGOMA(MID(ss,3),2).NOME
+         WESTRUDI 2, AA, DP, c1, bordatra, 0
+      Else
+         AA=WSAGOMA(MID(ss,3),3).NOME
+         WESTRUDI 3, AA, DL, bordatra,c1 , 0
+      End If
+   Else
+      wrPannelloExtended  "APL",dl,da,dp-1, 0,facefrente,faceatras,bordafre,bordatra,bordaDIR,bordaESQ,"1"
+      wrPannello2 dl,da,dp, nada,nada,nada,nada,nada,nada,-1
+   End If
+   
+   wrtrasforma 0,0,dp-0.5
+   cava=calcola(ex(p.parametro(7),"/",10))
+   
+   If cava=1 Then
+      passocava=ex(p.parametro(6),"/",2)
+      acava=calcola(ex(p.parametro(6),"/",3))
+      acavaC=calcola(ex(p.parametro(6),"/",4))
+      vv=split(passocava,";")
+      iniciaprox=0
+      ' MODULO SUPERIOR - FEITO ALEX VISITA 26/05/2025 POIS NOS MODULOS SUPERIORES COM CAVA NÃO RESPOSICIONAVA A FITA
+      If SUPERIOR=1 Then
+         aborda=calcola(vv(i))-iniciaprox
+         wrTrasforma 0,acava,0
+         wrPannello  "LAP",C2, DL,DA-acava, 1 , 0, 0, 0, 0, 0
+         wrchiudi
+      Else
+         For i=0 To ubound(vv)
+            If calcola(vv(i))>0 Then
+               If (calcola(vv(i))+acava+30)>DA Then
+                  aborda=calcola(vv(i))-iniciaprox
+                  wrTrasforma 0,iniciaprox,0
+                  wrPannello  "LAP",C2, DL,aborda, 1 , 0, 0, 0, 0, 0
+                  wrchiudi
+                  iniciaprox=iniciaprox+aborda+acava
+               Else
+                  aborda=calcola(vv(i))-iniciaprox
+                  wrTrasforma 0,iniciaprox,0
+                  wrPannello  "LAP",C2, DL,aborda, 1 , 0, 0, 0, 0, 0
+                  wrchiudi
+                  iniciaprox=iniciaprox+aborda+acavaC
+               End If
+            End If
+         Next
+      End If
+      
+   Else
+      If SAGLAT<>"" Then
+         If LEFT(SS,2)="#P" Then
+            WESTRUDI 2, AA, 1, c2, c2, 0
+         Else
+            partes = Split(AA, "*")
+            inicioaltura=partes(9)
+            If inicioaltura<>0 And (LEFT(P.TIPO,3)="301" Or LEFT(P.TIPO,3)="302"  Or LEFT(P.TIPO,3)="306") Then
+               wrTrasforma 0,inicioaltura,0
+               wrPannello "LAP",C2, DL,DA-inicioaltura, 1 , 0, 0, 0, 0, 0
+            Else
+               wrPannello "LAP",C2, DL,DA, 1 , 0, 0, 0, 0, 0
+            End If
+         End If
+      Else
+         wrPannello "LAP",C2, DL,DA, 1 , 0, 0, 0, 0, 0
+      End If
+   End If
+   wrChiudi
+End Sub

@@ -1,0 +1,10 @@
+{ 418   // Placer Multicatalogo
+   *AZZERA*            =0
+   DESCRIZIONE         =Placer Multicatalogo
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =43
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$P
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

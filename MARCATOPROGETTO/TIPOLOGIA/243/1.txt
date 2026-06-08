@@ -1,0 +1,16 @@
+{ 243   // Cobertura lateral coluna
+   *AZZERA*            =0
+   DESCRIZIONE         =Cobertura lateral coluna
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =$(SLCOL),0,$(ESCOS:0)+$(AFCOS:0)
+   DIMENSIONE          =$(ESLAT:0),$A,$(Pcol)-$(ESCOS:0)-$(AFCOS:0)-$(ESLAT:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =$(ESCOS:0)/$(SUP)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#243
+}

@@ -1,0 +1,796 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+C,info,,,Info (clicar para ver),,info
+F,logoCustomizado,,,Logo Customizado
+T,FormatoFoglio,,,Formato Pagina,,,A4; Formato A4;A4;9|A3; Formato A3;A3;12|A2; Formato A2;A2;14|A1; Formato A1;A1;16|A0; Formato A0;A0;18
+C,_qualidadebaixa,,,Baixa Qualidade?
+S,_SCALASTAMPA,,,Escala,,,1:25|1:50|1:40|1:30|1:20|1:10|1:5|Sem Escala:0
+M,DimFont,,,Dimensão texto,,,1.5|2|2.5|3|3.5|4|4.5|5,,,,,,1=0
+M,SLinea,,,Espessura da linha,,,1.5|2|2.5|3,1,,,,,1=0
+T,Stampa_Colore,,,Colorida?,,,1;Cor|0;Branco preto
+C,Esc_Acc,,,Oculta Decorações
+Z,Cartiglio,,,Legenda
+Z,Logo,,,Logo
+Z,AssinaturaCliente,,,Assinatura Cliente
+Z,IncluirPadroes,,,Imprimir padrões
+Z,Agradecimento,,,Agradecimento
+S,FileName,,,Nome Arquivo,,,,,,,5,2
+
+[TESTA]
+// idea_vistas_clips V1.001.001 - 02/02/2020
+
+// ***************** Layout Settings *****************************************
+PAPERSIZE $(FormatoFoglio:3) 5
+DIM 420 297
+ORIZZONTALE
+
+#IF $[ex;$(_SCALASTAMPA:0);:;1]== #LETS _SCALASTAMPA=1:25
+
+
+#LET _FONTSIZE=$(FormatoFoglio:4)
+#LETS _H1=TX L $(_FONTSIZE)
+#LETS _H2=TX L {$(_FONTSIZE)-2}
+#LETS _H3=TX L {$(_FONTSIZE)+1} // {$(_FONTSIZE)-3}
+
+// ***************************************************************************
+// ****** Data Header ********************************************************
+#IF $(.isecadpro)=1 // eCadPro
+   #LETS _CUSTOMER=$(TESTA_CLI_1)
+   #LETS _DATE=$(TESTA_DATA)
+   #LETS _ORDER=$(TESTA_numero)
+   #LETS _REF=$(TESTA_RIF)
+#ELSE // eCadLite
+   // ****** Global variable to import data from OUT.XML for eCadLite ********
+   #XML $(.TMPDIR)\OUT.XML
+   
+   // ************************************************************************
+   #LETS _CUSTOMER=$(TESTA_CLI_1)
+   #LETS _DATE=$(TESTA_DATA)
+   #LETS _ORDER=$(TESTA_numero)
+   #LETS _REF=$(TESTA_RIF)
+#ENDIF
+
+// ***************************************************************************
+
+// ***************** Footer and Header data **********************************
+
+#VB
+   V("OGGI")=xFormat(now, "DD/MM/YYYY HH:nn")
+   if v("logoCustomizado")<>"" then
+      saveprofile 2,"PROIDEA","LOGOIDEAVISTAS",v("logoCustomizado")
+   end if
+   V("LOGOIMPRESSAO")=GETprofile(2,"PROIDEA","LOGOIDEAVISTAS","")
+#ENDVB
+
+#IF $(LOGOIMPRESSAO)== #LETS LOGOIMPRESSAO=$(.percorso)\HTML\logo_cliente.jpg
+
+// ****** variable to name file's management ********************************
+#IF $(FileName:0)==
+   #LETS dh=$[replace;$(.dataora);/;_]
+   #LETS dh=$[replace;$(dh); - ;_]
+   #LETS dh=$[replace;$(dh);:;_]
+   #LETS _FILE=_PDF\idea_VISTAS_clip_$(testa_numero)_$(dh).pdf
+#ELSE
+   #LETS _FILE=_PDF\$(FileName:0).PDF
+#ENDIF
+// **************************************************************************
+
+
+ORIGINE (0,0)
+FONT Times New Roman
+
+
+// ***************** Logo **************************************************
+#IF $(Logo:0)=1
+   PIC (8,265) (70,25) $(LOGOIMPRESSAO)
+#ENDIF
+// **************************************************************************
+// ***************** Header data ********************************************
+#IF $(Cartiglio:0)=1
+   // ***************** Box valid for all drawings **************************
+   BX (5,5) (415,292)  // Outer box
+   
+   #IF $(AssinaturaCliente:0)=1
+      #LET D1=160
+      #LET D2=240
+      #LET D3=320
+   #ELSE
+      #LET D1=191.5
+      #LET D2=303
+      #LET D3=415
+   #ENDIF
+   
+   BX (5,263) (415,292)    // Data box
+   BX (80,263) (415,292)    // Data box
+   BX ($(D1),263) (415,292)    // Data box
+   BX ($(D2),263) (415,292)    // Data box
+   #IF $(AssinaturaCliente:0)=1
+      BX ($(D3),263) (415,292)    // Data box
+   #ENDIF
+   
+   LI ($(D1),272.6) ($(D3),272.6)
+   LI ($(D1),282.4) ($(D3),282.4)
+   
+   LI (80,282.4) (270,282.4)
+   
+   $(_H3) (82,270) Ambiente:
+   $(_H1) (82,280) $(_REF)
+   
+   $(_H3) (82,290) Tecnico:
+   $(_H3) (97,295) $(TESTA_TECNICO)
+   
+   $(_H3) ($(D1)+2,270) Cliente:
+   $(_H3) ($(D1)+2,280) Data:
+   $(_H3) ($(D1)+2,290) Pedido:
+   
+   $(_H3) ($(D1)+15,270) $(_CUSTOMER)
+   $(_H3) ($(D1)+15,280) $(_DATE)
+   $(_H3) ($(D1)+20,290) $(_ORDER) // ($(D1)+15,290)
+   
+   
+   $(_H3) ($(D2)+2,270) Arquiteto:
+   $(_H3) ($(D2)+2,280) Consultor:
+   $(_H3) ($(D2)+2,290) Projetista:
+   
+   $(_H3) ($(D2)+23,270) $(testa_arquiteto:0)
+   $(_H3) ($(D2)+23,280) $(testa_consultor:0)
+   $(_H3) ($(D2)+23,290) $(testa_projetista:0)
+   
+   #IF $(AssinaturaCliente:0)=1
+      #CALLGRUPPO GRTEXTASSINATURA
+      $(_H3) ($(D3)+2,268) $(LINHAASSINATURA1)
+      $(_H3) ($(D3)+2,272) $(LINHAASSINATURA2)
+      $(_H3) ($(D3)+2,276) $(LINHAASSINATURA3)
+      $(_H3) ($(D3)+2,280) $(LINHAASSINATURA4)
+      $(_H3) ($(D3)+2,284) $(LINHAASSINATURA5)
+      $(_H3) ($(D3)+2,292) $(LINHAASSINATURA6)
+   #ENDIF
+#ENDIF
+
+// ***************** Footer data ********************************************
+#IF $(Cartiglio:0)=1
+   $(_H3) (5,297) $(OGGI) / $(.username)
+#ENDIF
+// **************************************************************************
+
+
+#VB
+   set ct0=ambiente.getobject("CATALOGO")
+   v("TIPOLOGIASABERTO")=ct0.tipaperto
+   set ct0=nothing
+#ENDVB
+
+
+#CALLGRUPPO INICIAVARS
+
+[PAGINA]
+#CALLGRUPPO FOLHA1
+!P
+#CALLGRUPPO FOLHA2
+
+#IF $(IncluirPadroes:0)=1
+   !P
+   #CALLGRUPPO PADROES
+   
+#ENDIF
+
+#IF $(Esc_Acc:0)=1 #LETS ESC_ACC=excludecomplementi #LETS ESC_ACC=  // <c21980>
+
+#FOR $(listasvistas)
+   #LETS tirarfrentes=
+   
+   #LET mostrardetalhe=0
+   #LETS _tmpscalaMEMO=/SCALA$(_tmpscalaVal)
+   #LETS _SCALASTAMPAMEMO=$(_SCALASTAMPA)
+   #VB
+      v("nomevista")=ucase(amb.vista(calcola(v("i"))).nomevista)
+      if instr(1,v("nomevista"),"@A")>0 then
+         V("tirarfrentes")=v("TIPOLOGIASABERTO")
+      end if
+      if instr(1,v("nomevista"),"@LDE")>0 then
+         V("mostrardetalhe")=4
+         elseif instr(1,v("nomevista"),"@LDD")>0 then
+         V("mostrardetalhe")=5
+         elseif instr(1,v("nomevista"),"@LD")>0 then
+         V("mostrardetalhe")=2
+         
+         elseif instr(1,v("nomevista"),"@D")>0 then
+         V("mostrardetalhe")=1
+         elseif instr(1,v("nomevista"),"@L")>0 then
+         V("mostrardetalhe")=3
+         elseif instr(1,v("nomevista"),"@S")>0 then
+         V("_tmpscalaVal")=EX(EX(v("nomevista"),"@S",2),"@",1)
+         V("_tmpscala")="/SCALA" & V("_tmpscalaVal")
+      end if
+      v("nomevista")=ex(v("nomevista"),"@",1)
+   #ENDVB
+   !P
+   
+   #LET jj=0
+   #IF $(mostrardetalhe)=1
+      ARG (10,10) (280,260) VS$(i) /SL$(SLinea:0)  /$(COLOR)    $(_DPI) /$(ESC_ACC)   /TE*441*445*419*$(tirarfrentes)
+      $(_H2) (10,260) Vista:$(nomevista) | SEM ESCALA
+      #LET iniciodetalhe=285,fimdetalhe=415
+      #CALLGRUPPO DETALHEVARIANTI
+   #ELSEIF $(mostrardetalhe)=3
+      ARG (10,10) (280,260) VS$(i) /SL$(SLinea:0)  /$(COLOR)    $(_DPI) /$(ESC_ACC)   /TE*441*445*419*$(tirarfrentes)
+      $(_H2) (10,260) Vista:$(nomevista) | SEM ESCALA
+      #LET iniciodetalhe=285,fimdetalhe=415
+      
+      #CALLGRUPPO DETALHEITENS
+   #ELSEIF $(mostrardetalhe)=2
+      ARG (135,10) (280,130) VS$(i) /SL$(SLinea:0)  /$(COLOR)    $(_DPI) /$(ESC_ACC)   /TE*441*445*419* /TX0
+      ARG (135,130) (280,260) VS$(i) /SL$(SLinea:0)  /$(COLOR)   $(_DPI) /$(ESC_ACC)  /TE*441*445*419*$(TIPOLOGIASABERTO)
+      $(_H2) (135,260) Vista:$(nomevista) | SEM ESCALA
+      #LET iniciodetalhe=5,fimdetalhe=130
+      #CALLGRUPPO DETALHEITENS
+      #LET JJ=0
+      #LET iniciodetalhe=280,fimdetalhe=415
+      #CALLGRUPPO DETALHEVARIANTI
+   #ELSEIF $(mostrardetalhe)=4
+      ARG (135,10) (410,130) VS$(i) /SL$(SLinea:0)  /$(COLOR)    $(_DPI) /$(ESC_ACC)   /TE*441*445*419* /TX0
+      ARG (135,130) (410,260) VS$(i) /SL$(SLinea:0)  /$(COLOR)   $(_DPI) /$(ESC_ACC)  /TE*441*445*419*$(TIPOLOGIASABERTO)
+      $(_H2) (110,260) Vista:$(nomevista) | SEM ESCALA
+      #LET iniciodetalhe=5,fimdetalhe=130
+      #CALLGRUPPO DETALHEITENS
+      #LET JJ=$(JJ)+2
+      #CALLGRUPPO DETALHEVARIANTI
+   #ELSEIF $(mostrardetalhe)=5
+      ARG (10,10) (280,130) VS$(i) /SL$(SLinea:0)  /$(COLOR)    $(_DPI) /$(ESC_ACC)   /TE*441*445*419* /TX0
+      ARG (10,130) (280,260) VS$(i) /SL$(SLinea:0)  /$(COLOR)   $(_DPI) /$(ESC_ACC)   /TE*441*445*419*$(TIPOLOGIASABERTO)
+      $(_H2) (10,260) Vista:$(nomevista) | SEM ESCALA
+      #LET iniciodetalhe=285,fimdetalhe=415
+      #CALLGRUPPO DETALHEITENS
+      #LET JJ=$(JJ)+2
+      #CALLGRUPPO DETALHEVARIANTI
+   #ELSE
+      ARG (10,10) (405,260) VS$(i) /SL$(SLinea:0)  /$(COLOR) $(_tmpscala)  $(_DPI) /$(ESC_ACC)  /TE*441*445*419*$(tirarfrentes)
+      #IF $(_tmpscalaVAL)>0
+         $(_H2) (10,260) Vista:$(nomevista) | ESCALA 1:$(_tmpscalaVAL)
+      #ELSE
+         $(_H2) (10,260) Vista:$(nomevista) | SEM ESCALA
+      #ENDIF
+   #ENDIF
+   #LET _tmpscalaVal=$(_tmpscalaValMEMO)
+   #LETS _tmpscala=$(_tmpscalaMEMO)
+#ENDFOR
+
+
+#IF $(Agradecimento:0)=1
+   !P
+   #CALLGRUPPO PAGINAFINAL
+#ENDIF
+
+[GRTEXTFINAL]
+\red0\blue0\green0 - Necessária a apresentação das plantas elétrica, hidráulica e sanitária até a data de início da instalação do mobiliário, caso contrário a $(.PERCORSO) isenta-se de danos causados por sua não apresentação;
+\red0\blue0\green0 - Não instalamos eletros e eletrônicos, em nenhuma circunstância;
+\red0\blue0\green0 - Não executamos serviços hidráulicos, elétricos, obra civil e bombeiros;
+\red0\blue0\green0 - O projeto é elaborado de acordo com as informações definidas antecipadamente no ato da venda;
+\red0\blue0\green0 - Você está recebendo um projeto personalizado, verifique cuidadosamente todos os detalhes antes de aprova-lo. Depois de assinado, este projeto não poderá ser alterado.
+\red0\blue0\green0 Declaro estar ciente do detalhamento e descritivo deste documento, sendo assim, autorizo a continuidade do projeto com as medidas descritas.
+
+[FOLHA1]
+// PAGINA INICIAL
+
+BX (0,0) (420,297) HFFFFFF N  // LIMPAR PAGINA
+BX (5,5) (415,292)  // Outer box
+PIC  (10,10) (100,40) $(LOGOIMPRESSAO)
+
+TX TC 50B (200,80) $(TESTA_AMBIENTE:2)
+#LET INIDES=180
+#LET DIST=10
+TX TL 10 (8,$(INIDES))           CLIENTE:
+TX TL 10 (8,$(INIDES)+$(DIST))   CONTRATO:
+TX TL 10 (8,$(INIDES)+$(DIST)*2) CONSULTOR DE VENDA:
+TX TL 10 (8,$(INIDES)+$(DIST)*3) TECNICO DETALHAMENTO:
+
+TX TL 12B (80,$(INIDES))           $(TESTA_CLI_1)
+TX TL 12B (80,$(INIDES)+$(DIST))   $(TESTA_CONTRATO:0) //clicar um campo CONTATO no TESTA do tipo "Libero"
+TX TL 12B (80,$(INIDES)+$(DIST)*2) $(TESTA_CONSULTOR:0)
+TX TL 12B (80,$(INIDES)+$(DIST)*3) $(TESTA_TECNICO:0)
+
+TX TL 12B (8,$(INIDES)+$(DIST)*5) DATA DE ASSINATURA DO PROJETO: ___/___/______
+
+TX TL 12B (8,$(INIDES)+$(DIST)*7) ASS.CLIENTE:________________________________________________________________
+
+TX TL 12B (8,$(INIDES)+$(DIST)*9) ASS.ASSISTENTE VENDAS:____________________________________________________
+// FIM PAGINA INICIAL
+
+[FOLHA2]
+// inicia pagina 2
+
+BX (0,0) (420,297) HFFFFFF N // LIMPAR PAGINA
+BX (5,5) (415,292)  // Outer box
+WMF (10,10) (100,40) _ECADPRO\STAMPE\LOGO_CLIENTE.JPG
+
+LETG TEXTO=GRTEXTFINAL
+
+TESTO BJ 14 (10,60) (410,290) <TEXTO>
+
+TX BL 14 (20,260)  _____________________________
+
+TX BC 14 (208,260) _____________________________
+
+TX BR 14 (395,260) _____________________________
+
+
+TX TL 12 (40,263)  PROJETISTA TÉCNICO
+
+TX TC 12 (208,263) CLIENTE
+
+TX TR 12 (375,263) CONSULTOR VENDA
+// fim pagina 2
+
+[INICIAVARS]
+#IF $(Stampa_Colore:0)=1 #LETS COLOR=CO #LETS COLOR=BI
+#IF $(Esc_Acc:0)=1 #LETS ESC_ACC=excludecomplementi #LETS ESC_ACC=
+#LET _tmpscalaVal=$[ESTRAI;$(_SCALASTAMPA:0);:;2]
+#IF $(_qualidadebaixa:0)=1
+   #LETS _DPI=/DPI90
+#ELSE
+   #LETS _DPI=/DPI500
+#ENDIF
+
+#IF $(_tmpscalaVal)=0
+   #LETS _tmpscala=
+#ELSE
+   #LETS _tmpscala=/SCALA$(_tmpscalaVal)
+#ENDIF
+
+// VAR EXCLUI
+#LETV INIIDEAVISTAS=VARIANTESVISTAS
+#LETS ELEVAR=$(INIIDEAVISTAS:3)
+
+#IF $(ELEVAR)== #LETS ELEVAR=_CORCX;_FR;_FRG;_CORFR;_PUX;_CPRAT;_CORR;_CORR_0000;_CORR_0001;_SISBASC_0000;_SISCORR_0000;PCAIXA;_INT_0000;_INT_0001;_INT_0002
+#LETV INIIDEAVISTAS=VARIANTESVISTAS1
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS2
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS3
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS4
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS5
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS6
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS7
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS8
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTAS9
+#LETS ELEVAR=$(ELEVAR);$(INIIDEAVISTAS:3)
+// VAR EXCLUI
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI
+#LETS elevarexclui=$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI1
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI2
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI3
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI4
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI5
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI6
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI7
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI8
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#LETV INIIDEAVISTAS=VARIANTESVISTASEXCLUI9
+#LETS elevarexclui=$(elevarexclui);$(INIIDEAVISTAS:3)
+#VB
+   v("elevar")=UCASE(v("elevar"))
+   v("elevarexclui")=UCASE(v("elevarexclui"))
+   for i=0 TO amb.nViste-1
+      'if i<>calcola(v(".viewwalltop")) then
+      v("listasvistas")=v("listasvistas") & i & ";"
+      ' end if
+   next
+#ENDVB
+
+[DETALHEVARIANTI]
+LI ($(iniciodetalhe:0),5) ($(iniciodetalhe:0),263)
+LI ($(fimdetalhe:0),5) ($(fimdetalhe:0),263)
+
+// #LETS BOXS=$(.IDBOXWVIEW.$(i).1) //<C19794>
+#LETS vett*=
+#LETS listatipos=
+#LET ESPACAMENTOLINHAS=3
+
+#VB
+   
+   set xAmb=Ambiente.GetObject("XAMB")
+   RR=SPLIT(V(".IDBOXWVIEW." & V("i") & ".1"),";") ' <C19794>
+   
+   for i = 0 to UBOUND(RR)
+      set x=xamb.box(calcola(RR(I)))
+      
+      if instr(1,";;" & V("vett_" & x.tipo & "P" ) & ";", ";" & x.dimp & ";")=0 then
+         V("vett_" & x.tipo & "P")=V("vett_" &   x.tipo  & "P") & x.dimp &  ";"
+      end if
+      
+      vriga = split(Xamb.EPROPrepara(),vbcrlf)
+      vardaorcamento=""
+      
+      For j = 0 To xBound(vriga)
+         Set xr = Ambiente.GetObject("GG," & vriga(j))
+         if xr.xbox.xbox.idunico=x.idunico then
+            vardaorcamento=vardaorcamento & xr.var & ";"
+         end if
+      next
+      vv=split(x.regola & replace(vardaorcamento,";",vbtab),vbtab)
+      
+      for j = 0 to ubound(vv)
+         nr=ucase(ex(vv(j),"=",1))
+         opz=ucase(ex(vv(j),"=",2))
+         if instr(1,";;" & V("ELEVAR") & ";", ";" & NR & ";")>0 and instr(1,";;" & V("elevarexclui") & ";", ";" & UCASE(VV(J)) & ";")=0  then
+            if instr(1,";;" & V("vett_" & x.tipo & NR ) & ";", ";" & opz & ";")=0 then
+               V("vett_" & x.tipo & NR)=V("vett_" &   x.tipo  & NR) & opz &  ";"
+               if instr(1,";;" & V("listatipos") & ";", ";" & x.tipo & ";")=0 then
+                  V("listatipos")=V("listatipos") & x.tipo &  ";"
+               end if
+            end if
+         end if
+      next
+      set x=nothing
+   Next
+   set xAmb=nothing
+#ENDVB
+ORIGINE 0,5
+
+
+#FOR $(listatipos),,tipo
+   #VB
+      set ct0 = ambiente.getobject("CATALOGO")
+      v("destipo")=ex(ct0.xtlink(calcola(v("tipo"))),",",1)
+   #ENDVB
+   
+   BX ($(iniciodetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)}) ($(fimdetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)+$(ESPACAMENTOLINHAS)*2}) H404040
+   COLOREPENNA &HFFFFFF
+   #LET centrodetalhe=$(iniciodetalhe:0)+($(fimdetalhe:0)-$(iniciodetalhe:0))/2
+   TX TC 10B ($(centrodetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)+1}) $(desTIPO)
+   COLOREPENNA &H000000
+   #LET jj=$(jj)+2
+   #FOR $(elevar),,J
+      #LETS nomevar=$(J)
+      
+      #IF $(TIPO)=0
+         #LETS codvar=$(vett_0$(nomevar))
+      #ELSE
+         #LETS codvar=$(vett_$(tipo)$(nomevar))
+      #ENDIF
+      #LETS desvariante=
+      #LETS desvariante2=
+      #IF $(nomevar)==PCAIXA & $(CODVAR)>0
+         
+         TX TL 6B (325,1+$(ESPACAMENTOLINHAS)*$(jj)) PROFUNDIDADE:$(CODVAR)
+         #LET jj=$(jj)+1
+      #ELSE
+         #VB
+            
+            v("codvar")="*" & replace(v("Codvar"),";","*") & "*"
+            set ct0 = ambiente.getobject("CATALOGO")
+            aa=ct0.mvariante(v("nomevar"))
+            vv=split(aa,rt18)
+            desvariante=ex(vv(0),rt16,1)
+            if left(ex(vv(ubound(vv)),rt16,5),1)="^" then
+               datifoto=split(ex(vv(ubound(vv)),rt16,5),";")
+               colunafoto=datifoto(7)
+               percorsofoto=datifoto(6)
+               elseif left(ex(vv(ubound(vv)),rt16,5),1)="#" then
+               datifoto=split(ex(vv(ubound(vv)),rt16,5),",")
+               colunafoto=CALCOLA(replace(datifoto(0),"#B",""))
+               percorsofoto=datifoto(1)
+            end if
+            for i=0 to ubound(vv)
+               if i=0 then
+                  cod=ex(ex(vv(0),rt16,3),",",1)
+                  des=ex(ex(vv(0),rt16,3),",",2)
+                  foto=ex(ex(vv(0),rt16,3),",",colunafoto)
+               else
+                  cod=ex(vv(i),",",1)
+                  des=ex(vv(i),",",2)
+                  foto=ex(vv(i),",",colunafoto)
+               end if
+               
+               if instr(1,UCASE(V("CODVAR")),"*" & UCASE(cod) & "*")>0 then
+                  v("desVariante1")= UCase(Left(desvariante,1)) & LCase(Right(desvariante, Len(desvariante) - 1))
+                  
+                  v("desVariante2")=v("desVariante2") & ";" & UCase(Left(des ,1)) & LCase(Right(des , Len(des ) - 1))
+               end if
+            next
+            set ct0 = nothing
+         #ENDVB
+         
+         #IF $(desvariante2)!!
+            TX TL 6B ($(iniciodetalhe:0)+5,1+$(ESPACAMENTOLINHAS)*$(jj)) $(desvariante1):
+            
+            
+            #FOR $(desvariante2),,dd
+               TX TL 6 ($(iniciodetalhe:0)+40,1+$(ESPACAMENTOLINHAS)*$(jj)) $(dd)
+               #LET jj=$(jj)+1
+               
+            #ENDFOR
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+   #LET jj=$(jj)+1
+#ENDFOR
+ORIGINE 0,0
+
+[DETALHEITENS]
+LI ($(iniciodetalhe:0),5) ($(iniciodetalhe:0),263)
+LI ($(fimdetalhe:0),5) ($(fimdetalhe:0),263)
+// #LETS BOXS=$(.IDBOXWVIEW.$(i).1) //<C19794>
+#LETS vett*=
+#LETS listatipos=
+#LET ESPACAMENTOLINHAS=3
+//#LET jj=0
+#VB
+   set xAmb=Ambiente.GetObject("XAMB")
+   RR=SPLIT(V(".IDBOXWVIEW." & V("i") & ".1"),";") ' <C19794>
+   v("linhasorcamento")=""
+   OLDIDUNICO=0
+   for i = 0 to UBOUND(RR)
+      set x=xamb.box(calcola(RR(I)))
+      vriga = split(Xamb.EPROPrepara(),vbcrlf)
+      vardaorcamento=""
+      For j = 0 To xBound(vriga)
+         Set xr = Ambiente.GetObject("GG," & vriga(j))
+         if xr.xbox.xbox.idunico=x.idunico  AND OLDIDUNICO<>xr.xbox.xbox.idunico  then
+            v("linhasorcamento")=v("linhasorcamento") & xr.xbox.xbox.idunico & "@@@" & xr.des  & "@@@" & INT(xr.dl) & "x" & INT(xr.da) & "x" & INT(xr.dp) & ";"
+         end if
+         OLDIDUNICO=xr.xbox.xbox.idunico
+      next
+      set x=nothing
+   Next
+   set xAmb=nothing
+#ENDVB
+ORIGINE 0,5
+#LET centrodetalhe=$(iniciodetalhe:0)+($(fimdetalhe:0)-$(iniciodetalhe:0))/2
+BX ($(iniciodetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)}) ($(fimdetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)+$(ESPACAMENTOLINHAS)*2}) H404040
+COLOREPENNA &HFFFFFF
+TX TC 10B ($(iniciodetalhe:0)+5,{$(ESPACAMENTOLINHAS)*$(jj)+1}) Id
+TX TC 10B ($(centrodetalhe:0),{$(ESPACAMENTOLINHAS)*$(jj)+1}) Descrição
+TX TC 10B ($(fimdetalhe:0)-20,{$(ESPACAMENTOLINHAS)*$(jj)+1}) Dim
+
+COLOREPENNA &H000000
+#LET jj=$(jj)+2
+#LET OLDidbox=
+#FOR $(linhasorcamento),,linha
+   #LETS idbox=$[ex;$(linha);@@@;1]
+   #LETS des=$[ex;$(linha);@@@;2]
+   #LETS dim=$[ex;$(linha);@@@;3]
+   
+   
+   TX TL 5B ($(iniciodetalhe:0)+5,1+$(ESPACAMENTOLINHAS)*$(jj)) $(idbox)
+   TX TL 5 ($(iniciodetalhe:0)+15,1+$(ESPACAMENTOLINHAS)*$(jj)) $(des)
+   
+   TX TL 5 ($(FIMdetalhe:0)-25,1+$(ESPACAMENTOLINHAS)*$(jj)) $(DIM)
+   
+   #LET OLDidbox=$(idbox)
+   #LET jj=$(jj)+1
+#ENDFOR
+ORIGINE 0,0
+
+[PADROES]
+#LETS vett_VARG_*=
+
+#VB
+   
+   set xAmb=Ambiente.GetObject("XAMB")
+   vv=""
+   vardaregra=""
+   for i = 0 to XAMB.NBOX
+      set x=xamb.box(i)
+      vardaregra=vardaregra &  x.regola & vbtab
+      set x=nothing
+   Next
+   vriga = split(Xamb.EPROPrepara(),vbcrlf)
+   vardaorcamento=""
+   For j = 0 To xBound(vriga)
+      Set xr = Ambiente.GetObject("GG," & vriga(j))
+      vardaorcamento=vardaorcamento & xr.var & ";"
+   next
+   vv=vardaregra & VBTAB & replace(vardaorcamento,";",vbtab)
+   
+   vv=SPLIT(vv,VBTAB)
+   CONTAOPCOES=0
+   
+   for j = 0 to ubound(vv)
+      nr=ucase(ex(vv(j),"=",1))
+      opz=ucase(ex(vv(j),"=",2))
+      if instr(1,";;" & V("ELEVAR") & ";", ";" & NR & ";")>0 and instr(1,";;" & V("elevarexclui") & ";", ";" & UCASE(VV(J)) & ";")=0  then
+         if instr(1,";;" & V("vett_VARG_" & NR) & ";", ";" & opz & ";")=0 then
+            V("vett_VARG_" & NR)=V("vett_VARG_" & NR) & opz &  ";"
+            CONTAOPCOES=CONTAOPCOES+1
+         end if
+      end if
+   next
+   V("CONTAOPCOES")=CONTAOPCOES
+   set xAmb=nothing
+#ENDVB
+
+ORIGINE 0,5
+#LET JJ=0
+
+TX TC 24B (210,5) PADRÕES DE PROJETO
+#LET ESPACAMENTOLINHAS=29
+LI (5,20) (415,20)
+
+
+
+
+#LET NMAXLINHAS=INT((263-20)/$(ESPACAMENTOLINHAS))
+
+#LET NCOLUNAS=$(CONTAOPCOES)/$(NMAXLINHAS)
+#IF INT($(NCOLUNAS))!$(NCOLUNAS)
+   #LET NCOLUNAS=INT($(NCOLUNAS))+1
+#ELSE
+   #LET NCOLUNAS=INT($(NCOLUNAS))
+#ENDIF
+#IF $(COLUNAS)>1
+   #LET NCOLUNAS=$(NCOLUNAS)-1
+#ENDIF
+#LET LCOLUNA=INT(410/$(NCOLUNAS))
+#LET iniciodetalhe=5
+#LET FIMDETALHE=$(LCOLUNA)
+#LET centrodetalhe=$(iniciodetalhe:0)+($(fimdetalhe:0)-$(iniciodetalhe:0))/2
+
+// #MSG $(NMAXLINHAS) ---- $(LCOLUNA) ------- $(CONTAOPCOES)/$(NMAXLINHAS)
+#IF $(NCOLUNAS)>1
+   #FOR $1:$(NCOLUNAS)
+      #IF $(I)<$(NCOLUNAS)
+         LI ($(LCOLUNA)*$(I)+5,20) ($(LCOLUNA)*$(I)+5,258)
+      #ENDIF
+   #ENDFOR
+#ENDIF
+ORIGINE 0,25
+#FOR $(elevar),,J
+   #CALLGRUPPO CALCDADOSPADROES
+   #IF $(JJ)>$(NMAXLINHAS)-1
+      #LET JJ=0
+      #LET iniciodetalhe=$(iniciodetalhe)+$(LCOLUNA)
+      #LET FIMDETALHE=$(FIMDETALHE)+$(LCOLUNA)
+      #LET centrodetalhe=$(iniciodetalhe:0)+($(fimdetalhe:0)-$(iniciodetalhe:0))/2
+   #ENDIF
+   #IF $(desvariante2)!!
+      
+      //TX TC 12B ($(CENTRODETALHE:0)+5,2+$(ESPACAMENTOLINHAS)*$(jj)) $(desvariante1)
+      TX TR 12B ($(FIMDETALHE:0)-2,2+$(ESPACAMENTOLINHAS)*$(jj)) $(desvariante1)
+      #LET CONTADES=1
+      #FOR $(desvariante2),,dd
+         #IF $(JJ)>$(NMAXLINHAS)-1
+            #LET JJ=0
+            #LET iniciodetalhe=$(iniciodetalhe)+$(LCOLUNA)
+            #LET FIMDETALHE=$(FIMDETALHE)+$(LCOLUNA)
+            #LET centrodetalhe=$(iniciodetalhe:0)+($(fimdetalhe:0)-$(iniciodetalhe:0))/2
+         #ENDIF
+         #LETS FT=$[TK;$(CONTADES);$(FOTO)]
+         TX BL 8B ($(iniciodetalhe:0)+$(ESPACAMENTOLINHAS),{$(ESPACAMENTOLINHAS)*($(jj)+1)-5}) $(dd)
+         
+         BX ($(iniciodetalhe:0)+3,$(ESPACAMENTOLINHAS)*$(jj)+3) ($(iniciodetalhe:0)+$(ESPACAMENTOLINHAS)-3,$(ESPACAMENTOLINHAS)*($(JJ)+1)-3) N
+         WMF  ($(iniciodetalhe:0)+5,$(ESPACAMENTOLINHAS)*$(jj)+5) ($(ESPACAMENTOLINHAS)-10,$(ESPACAMENTOLINHAS)-10) $(FT)
+         #LET CONTADES=$(CONTADES)+1
+         
+         #LET jj=$(jj)+1
+      #ENDFOR
+      #IF $(ESPACAMENTOLINHAS)*$(jj)<230
+         LI ($(iniciodetalhe:0),$(ESPACAMENTOLINHAS)*$(jj)) ($(FIMDETALHE)+5,$(ESPACAMENTOLINHAS)*$(jj))
+      #ENDIF
+   #ENDIF
+#ENDFOR
+
+ORIGINE 0,0
+
+[CALCDADOSPADROES]
+#LETS nomevar=$(J)
+#LETS codvar=$(vett_VARG_$(nomevar))
+#LETS desvariante=
+#LETS desvariante2=
+#LETS FOTO=
+
+#VB
+   
+   v("codvar")="*" & replace(v("Codvar"),";","*") & "*"
+   set ct0 = ambiente.getobject("CATALOGO")
+   aa=ct0.mvariante(v("nomevar"))
+   vv=split(aa,rt18)
+   desvariante=ex(vv(0),rt16,1)
+   colunafoto=0
+   if left(ex(vv(ubound(vv)),rt16,5),1)="^" then
+      datifoto=split(ex(vv(ubound(vv)),rt16,5),";")
+      colunafoto=EX(datifoto(4),",",1)
+      percorsofoto=REPLACE(datifoto(5),"#", AMBIENTE.XPERCORSO & "\")
+      elseif left(ex(vv(ubound(vv)),rt16,5),1)="#" then
+      datifoto=split(ex(vv(ubound(vv)),rt16,5),",")
+      colunafoto=CALCOLA(replace(datifoto(0),"#B",""))
+      percorsofoto=datifoto(1)
+   end if
+   for i=0 to ubound(vv)
+      if i=0 then
+         cod=ex(ex(vv(0),rt16,3),",",1)
+         des=ex(ex(vv(0),rt16,3),",",2)
+         foto=ex(ex(vv(0),rt16,3),",",colunafoto)
+      else
+         cod=ex(vv(i),",",1)
+         des=ex(vv(i),",",2)
+         foto=ex(vv(i),",",colunafoto)
+      end if
+      
+      if instr(1,UCASE(V("CODVAR")),"*" & UCASE(cod) & "*")>0 then
+         v("desVariante1")= UCase(Left(desvariante,1)) & LCase(Right(desvariante, Len(desvariante) - 1))
+         v("desVariante2")=v("desVariante2") & ";" & UCase(Left(des ,1)) & LCase(Right(des , Len(des ) - 1))
+         IF FOTO<>"" AND CALCOLA(COLUNAFOTO)>0 THEN
+            V("FOTO")=V("FOTO")  & REPLACE(PERcorsofoto & "\" & FOTO,"\\","\") & ";"
+         ELSE
+            V("FOTO")=V("FOTO") & ";"
+         END IF
+      end if
+   next
+   set ct0 = nothing
+#ENDVB
+
+[GRTEXTAGRADECE]
+\red0\blue0\green0 Agradeçemos a escolha da $(.percorso)
+\red0\blue0\green0 Estamos felizes de poder atendelo, obrigado pela confiança
+\red0\blue0\green0  Equipe $(.percorso) Ltda
+
+[PAGINAFINAL]
+BX (0,0) (420,297) HFFFFFF N // LIMPAR PAGINA
+BX (5,5) (415,292)  // Outer box
+PIC (10,10) (100,40) $(logoimpressao)
+
+LETG TEXTO=GRTEXTAGRADECE
+
+TESTO C 32B (10,80) (410,290) <TEXTO>
+
+[COMANDI_INFO]
+#LETS msg= Acrescentar apos o nome da vista as seguintes informações: | \
+1 - @LDE - Nesse caso a vista será impressa com e se porta com detalhe de box e variantes a esquerda | \
+  2 - @LDD - Nesse caso a vista será impressa com e se porta com detalhe de box e variantes a direita | \
+  3 - @LD - Nesse caso a vista será impressa com e se porta com detalhe de box a esquerda e variantes a direita | \
+  4 - @D - Imprime a vista no formato que está com a lista de variantes a esquerda | \
+  5 - @L - Imprime a vista no formato que está com a lista de boxs a esquerda | \
+  obs: so uma das opçoes anteriores pode ser usadas nas vistas, a mais comprida vale mais (exemplo @LDE vale mais que @L) | \
+  6 - @S$(SCALA) - Imprime a vista na scala desejada, exemplo @S20 imprime em scala 1:20 | \
+  7 - @A - Oculta as frentes dos modulos | \
+  obs: as @opções @A e @S podem ser usada em conjunto com as outras opçoes | \
+  Importante: Essa impressão fornece detalhe de variantes e de item somente para vistas criadas com planos de clip e/ou vistas paredes ortogonais  | \
+  
+
+
+#MSG $[TOCRLF;|;$(msg)]
+
+[GRTEXTASSINATURA]
+#LETS LINHAASSINATURA1=DECLARO TER ANALISADO, ENTENDIDO E APROVADO
+#LETS LINHAASSINATURA2=ESTE PROJETO E OS ACABAMENTO DOS MOVEIS
+#LETS LINHAASSINATURA3=APÓS ASSINATURA DESTE CROQUI SEU PEDIDO
+#LETS LINHAASSINATURA4=SERÁ IMEDIATAMENTE PRODUZIDO, NÃO PODENDO
+#LETS LINHAASSINATURA5=SOFRER ALTERACÕES
+#LETS LINHAASSINATURA6=ASS:_______________________________DATA: ___/___/_____

@@ -1,0 +1,11 @@
+_calcola_popx
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+#LETS parfrente=BELLAGIO.3DS|150;150;150;150
+#LETS xpfrente=frente_3D.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=BELLAGIO
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+// .frente_3D.xp
+_FR_STANDARD

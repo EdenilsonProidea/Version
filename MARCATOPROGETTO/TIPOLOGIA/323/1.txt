@@ -1,0 +1,12 @@
+{ 323   // Travessa Vertical Gaveteiro Dormitório
+   *AZZERA*            =0
+   DESCRIZIONE         =Travessa Vertical Gaveteiro Dormitório
+   POSIZIONE           =$(ESLATGAV:0)+$(ENCHE),0,0
+   DIMENSIONE          =$l-2*$(ESLATGAV:0)-1*($(ENCHE)+$(ENCHD)),$(PTRAGAV:0),$(ESTRAGAV:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/0/0/0/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#323
+}

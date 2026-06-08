@@ -1,0 +1,55 @@
+#IF $(MALEIRO:0)=1 & $(fundodividido:0)=1
+   303.007  // Maleiro
+   305,SL=-$(RAG_COS:0),SA=$(sabaseinf)+$(ABASE:0)-$(RAG_COS:0),L=$L+$(RAG_COS:0)*2,A=$(pamaleiro:0)-1*($(ABASE:0)+$(sabaseinf))+$(RAG_COS:0)*2  // Fundo (dormitorio)
+   305,SL=-$(RAG_COS:0),SA=$(pamaleiro:0)+$(ESDIVH:0)-$(RAG_COS:0),L=$L+$(RAG_COS:0)*2,A=$A-1*($(pamaleiro:0))-1*($(ABASE:0)+$(ESDIVH:0))+$(RAG_COS:0)*2  //Fundo (dormitorio)
+   #IF $(_ilumal:3)>0 & 1=0 //REMOVIDO NO CHAMADO <C22071>
+      _ilu,sl=0,l={$l},sa=$(PAMALEIRO:0),_ilu=$(_ilumal),infoilu=$(ilumal),p={$P-1*($(RED_F_MALEIRO:0))}
+   #ENDIF
+#ELSEIF $(maleiro:0)=1 & $(fundodividido:0)=0
+   303.007,sp=$(afcos:0)+$(escos:0),p=$p-1*($(afcos:0)+$(escos:0)+$(red_f_maleiro:0))  // Maleiro
+   305,SL=-$(RAG_COS:0),SA=$(sabaseinf)+$(ABASE:0)-$(RAG_COS:0),L=$L+$(RAG_COS:0)*2,A=$A-1*($(ABASE:0)*2+$(sabaseinf))+$(RAG_COS:0)*2  // Fundo (dormitorio)
+  
+   ILU_PRAT,SA=$(pamaleiro:0),p=$p-1*($(afcos:0)+$(escos:0)+$(red_f_maleiro:0)),AMBIENTE=D,MACRO=MALEIRO
+
+ #IF $(_ilumal:3)>0 & 1=0 //REMOVIDO NO CHAMADO <C22071>
+      _ilu,SL=0,SA=$(PAMALEIRO:0),L={$l},P={$P-1*($(RED_F_MALEIRO:0))},_ILU=$(_ILUMAL),INFOILU=$(ILUMAL)
+   #ENDIF
+#ELSE
+   305,SL=-$(RAG_COS:0),SA=$(sabaseinf)+$(ABASE:0)-$(RAG_COS:0),L=$L+$(RAG_COS:0)*2,A=$A-1*($(ABASE:0)*2+$(sabaseinf))+$(RAG_COS:0)*2  // Fundo (dormitorio)
+#ENDIF
+#IF $(DIVCENTRAL:0)=1
+   303.005,SA=$(PADIVCENTRAL:0)  // Base intermediaria (dormitorio)
+#ENDIF
+#IF $(maleiro:0)=1
+   #IF $(DIVCENTRAL:0)=1
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(padivcentral:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+      403,SA=$(padivcentral:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$(pamaleiro:0)-1*($(padivcentral:0)+$(esdivh:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ELSE
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(pamaleiro:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ENDIF
+   403,SA=$(pamaleiro:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(pamaleiro:0)+$(abase:0)+$(esdivh:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   
+   #IF $(LADO_CANTO:)==ESQ
+      !QUOTA9 ($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT:0)-$(POSLARG_CAI:0)),                       ($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT)-1*($(POSLARG_CAI:0)+$L)),L.$L,-130
+      !QUOTA9 ($P,$(ARODAPE:0)+$(ABASE:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),                  ($P,$(ARODAPE)+$(pamaleiro:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),A VAO.{$(pamaleiro:0)-$(ABASE:0)},-130
+      !QUOTA9 ($P,$(ARODAPE:0)+$(pamaleiro:0)+$(ESDIVH:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),  ($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),A VAO.{$A-1*($(PAMALEIRO)+$(ABASE:0)+$(ESDIVH:0))},-130
+   #ELSE
+      !QUOTA9 ($(POSLARG_CAI:0),$A+$(ARODAPE:0)-$(ABASE:0),$P),($(POSLARG_CAI:0)+$L,$A+$(ARODAPE:0)-$(ABASE:0),$P),L.$L,-130
+      !QUOTA9 ($(POSLARG_CAI:0)+200,$(ARODAPE:0)+$(ABASE:0),$P),($(POSLARG_CAI:0)+200,$(ARODAPE)+$(pamaleiro:0),$P),A VAO.{$(pamaleiro:0)-$(ABASE:0)},-130
+      !QUOTA9 ($(POSLARG_CAI:0)+200,$(ARODAPE:0)+$(pamaleiro:0)+$(ESDIVH:0),$P),($(POSLARG_CAI:0)+200,$A+$(ARODAPE:0)-$(ABASE:0),$P),A VAO.{$A-1*($(PAMALEIRO)+$(ABASE:0)+$(ESDIVH:0))},-130
+   #ENDIF
+#ELSE
+   #IF $(DIVCENTRAL:0)=1
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(padivcentral:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+      403,SA=$(padivcentral:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(padivcentral:0)+$(esdivh:0)+$(abase:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ELSE
+      403,sa=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(sabaseinf)+$(ABASE:0)*2),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+      #IF $(LADO_CANTO:)==ESQ
+         !QUOTA9 ($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT:0)-$(POSLARG_CAI:0)),($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT)-1*($(POSLARG_CAI:0)+$L)),L.$L,-130
+         !QUOTA9 ($P,$(ARODAPE:0)+$(ABASE:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),($P,$A+$(ARODAPE:0)-$(ABASE:0),$(PTOT:0)-1*($(POSLARG_CAI:0)+200)),A VAO.{$A-$(ABASE:0)*2},-130
+      #ELSE
+         !QUOTA9 ($(POSLARG_CAI:0),$A+$(ARODAPE:0)-$(ABASE:0),$P),($(POSLARG_CAI:0)+$L,$A+$(ARODAPE:0)-$(ABASE:0),$P,L.$L,-130
+         !QUOTA9 ($(POSLARG_CAI:0)+200,$(ARODAPE:0)+$(ABASE:0),$P),($(POSLARG_CAI:0)+200,$A+$(ARODAPE:0)-$(ABASE:0),$P,A VAO.{$A-$(ABASE:0)*2},-130
+      #ENDIF
+   #ENDIF
+#ENDIF

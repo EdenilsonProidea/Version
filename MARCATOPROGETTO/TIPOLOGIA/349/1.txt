@@ -1,0 +1,12 @@
+{ 349   // Travessa interna adega
+   *AZZERA*            =0
+   DESCRIZIONE         =Travessa interna adega
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(AFADEGA)-18,$P-80
+   DIMENSIONE          =$L,18,80
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/2
+   ALIAS               =#349
+}

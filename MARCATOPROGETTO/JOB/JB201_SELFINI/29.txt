@@ -1,0 +1,31 @@
+#LOADVAR _tpcaixa _tpcaixa $(XX9:0)
+#IF $(tipo)=201 #LET f=2
+#IF $(tipo)=202 #LET f=1
+#LET aviga=0
+#LET pviga=0
+#IF $(xX8:6)!!
+   // gestão do recorte da viga no lateral
+   #LETS InfoRecorteLateral=$[TOTAB;$(xX8:6)]
+   #LET aviga=$(InfoRecorteLateral:1)
+   #LET pviga=$(InfoRecorteLateral:2)
+#ENDIF
+#IF $(XX8:5)=0 & $(_TPCAIXA:9)[3;2]!0 // SUPERIOR PENSIL
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51} df=10 pf=11
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51+32} df=10 pf=11
+#ENDIF
+#LOADVAR _TPFUNDOCAIXA _TPFUNDO $(_TPCAIXA:17)
+
+#IF $(_TPCAIXA:0)==CIN | $(_TPCAIXA:0)==CING  // inferior CANTONEIRA
+   $(f)	FF	X={$(XA)-18} Y=45.5 DF=3 PF=3
+   $(f)	FF	X={$(XA)-18-20} Y=45.5 DF=3 PF=3
+   $(f)	FF	X={$(XA)-28} Y=87.5 DF=3 PF=3
+#ELSE
+   $(f)	FF	X={$(XA)-18} Y=27 DF=3 PF=3
+   $(f)	FF	X={$(XA)-18-20} Y=27 DF=3 PF=3
+   $(f)	FF	X={$(XA)-28} Y=69 DF=3 PF=3
+#ENDIF
+#IF $(aviga)>0
+   // gestão do recorte da viga no lateral
+   #IF $(tipologiap)=201 #LET f=2 #LET f=1
+   $(f)	RETANGULO	X={$(XA)-$(AVIGA)} Y=0 DX=$(AVIGA) DY=$(PVIGA) PF=$(XL) RAIO=1
+#ENDIF

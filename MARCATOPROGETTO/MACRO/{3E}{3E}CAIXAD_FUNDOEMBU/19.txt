@@ -1,0 +1,11 @@
+//LATERAIS
+#LETS TRABALHOAT=CANAL15
+#LET contlat=$(teste)+1
+LATERAIS_1LAT
+#FOR $1:$(nportas:3),,idmodulotemp
+   #LET iold=$(idmodulotemp)-1
+   // DIVISORIA
+   DIV_1LAT
+   // CAIXA
+   CAIXA_1LAT
+#ENDFOR

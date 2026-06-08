@@ -1,0 +1,4 @@
+   #M ESTR_MADEIRA,CODITEM=PAINH$(X3:1),TIPOPINTURA=$(X9:3)
+   #IF $(x6:0)!!
+      12671,$(diml)/1000
+   #ENDIF

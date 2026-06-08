@@ -1,0 +1,122 @@
+!PARAMETRI lpers=0
+#LET especial=1
+//gest su medida
+
+CONFMEDIDAVB
+#MSG $(CONFMEDIDA)
+
+#IFDEF $(CONFMEDIDA)
+   #IF $(lpers)>0 #LET l=$(lpers)  //para gestao especial: vedi gaveteiro dormitorio
+   #IF $(especial:0)=1
+      #IF $(passoL)==L #LET passol=1
+      #IF $(passoA)==L #LET passoa=1
+      #IF $(passoP)==L #LET passop=1
+      #IF $(passol)>1
+         #IF int($l/$(passol))!$l/$(passol) #LET l=$(passol)*(int($l/$(passol)+1))
+      #ELSEIF $(passol)=0
+         #IF $l[$(lpadrao)]=0 & $(lpadrao)!!
+            #FOR $(lpadrao)
+               #IF $(i)>$l
+                  #LET l=$(i)
+                  #EXITFOR
+               #ENDIF
+            #ENDFOR
+         #ENDIF
+         #LETS lpadraoMemo=$(lpadrao)
+      #ENDIF
+      #IF $(passoa)>1
+         #IF int($a/$(passoa))!$a/$(passoa) #LET a=$(passoa)*(int($a/$(passoa)+1))
+      #ELSEIF $(passoa)=0
+         #IF $a[$(apadrao)]=0 & $(apadrao)!!
+            #FOR $(apadrao)
+               #IF $(i)>$a
+                  #LET a=$(i)
+                  #EXITFOR
+               #ENDIF
+            #ENDFOR
+         #ENDIF
+         #LETS apadraoMemo=$(apadrao)
+      #ENDIF
+      #IF $(passop)>1
+         #IF int($p/$(passop))!$p/$(passop) #LET p=$(passop)*(int($p/$(passop)+1))
+      #ELSEIF $(passop)=0
+         #IF $(passop)>1 | $(passop)=0  | ($(passoP)==L & $(ESPECIAL:0)=1)
+            #IF $p[$(ppadrao)]=0  & $(ppadrao)!!
+               #FOR $(ppadrao)
+                  #IF $(i)>$p
+                     #LET p=$(i)
+                     #EXITFOR
+                  #ENDIF
+               #ENDFOR
+            #ENDIF
+            #LETS ppadraoMemo=$(ppadrao)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(passol)>1 | $(passol)=0 | ($(passoL)==L & $(ESPECIAL:0)=1)
+         #IF $l[$(lpadrao)]=0 & $(lpadrao)!!
+            #FOR $(lpadrao)
+               #IF $(i)>$l
+                  #LET l=$(i)
+                  #EXITFOR
+               #ENDIF
+            #ENDFOR
+         #ENDIF
+         #LETS lpadraoMemo=$(lpadrao)
+      #ELSE
+         #LETS lpadraoMemo=$(lpadrao)
+         #LETS lpadrao=
+      #ENDIF
+      #IF $(passoa)>1 | $(passoa)=0 | ($(passoA)==L & $(ESPECIAL:0)=1)
+         #IF $a[$(apadrao)]=0 & $(apadrao)!!
+            #FOR $(apadrao)
+               #IF $(i)>$a
+                  #LET a=$(i)
+                  #EXITFOR
+               #ENDIF
+            #ENDFOR
+         #ENDIF
+         #LETS apadraoMemo=$(apadrao)
+      #ELSE
+         #LETS apadraoMemo=$(apadrao)
+         #LETS apadrao=
+      #ENDIF
+      #IF $(passop)>1 | $(passop)=0  | ($(passoP)==L & $(ESPECIAL:0)=1)
+         #IF $p[$(ppadrao)]=0  & $(ppadrao)!!
+            #FOR $(ppadrao)
+               #IF $(i)>$p
+                  #LET p=$(i)
+                  #EXITFOR
+               #ENDIF
+            #ENDFOR
+         #ENDIF
+         #LETS ppadraoMemo=$(ppadrao)
+      #ELSE
+         #LETS ppadraoMemo=$(ppadrao)
+         #LETS ppadrao=
+      #ENDIF
+   #ENDIF
+   //controlli
+   #IF $(especial:0)=0
+      #IF $l<$(lminpad) #LET l=$(lminpad)
+      #IF $a<$(aminpad) #LET a=$(aminpad)
+      #IF $p<$(pminpad) #LET p=$(pminpad)
+      #IF $l>$(lmaxpad) #LET l=$(lmaxpad)
+      #IF $a>$(amaxpad) #LET a=$(amaxpad)
+      #IF $p>$(pmaxpad) #LET p=$(pmaxpad)
+   #ELSE
+      #IF $l<$(lmin) #LET l=$(lmin)
+      #IF $a<$(amin) #LET a=$(amin)
+      #IF $p<$(pmin) #LET p=$(pmin)
+      #IF $l>$(lmax) #LET l=$(lmax)
+      #IF $a>$(amax) #LET a=$(amax)
+      #IF $p>$(pmax) #LET p=$(pmax)
+   #ENDIF
+#ENDIF
+#LET atot=$a
+#LET Ltot=$L
+#LET Ptot=$p
+402,SA=$a/2,SP=$P/2,A=1,X1=1,X3=L;L;$L,X4=1,X5=3  //Dragger
+402,SL=$L,SA=$a/2,SP=$P/2,A=1,X1=0,X3=L;L;$L,X4=1,X5=3  //Dragger
+402,SL=$l/2,SA=$a,SP=$p,L=$a,A=1,X1=10,X4=1,X5=4,X3=A;A;$A  // DRAGGER altezza
+402,SL=$l/2,SP=$p,L=$P,A=1,X1=2,X4=1,X5=2,X3=P;P;$P // DRAGGER profonditr

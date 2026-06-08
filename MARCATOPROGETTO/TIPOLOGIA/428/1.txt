@@ -1,0 +1,16 @@
+{ 428   // Dobradiça Porta
+   *AZZERA*            =0
+   DESCRIZIONE         =Dobradiça Porta
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$p-1*($(ESFRE))
+   DIMENSIONE          =0.1,0.1,0.1
+   COLORI              =18,18
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =DOBRADICAPORTA.XP
+   X3                  =$(curbox)
+   X5                  =$(compartilhado)
+   X6                  =$(posd)/$(curbox)/
+   X8                  =DOBRADICA\Dobradica_porta2.3ds/20;30;52
+   X9                  =0
+   X10                 =$(_dobra:3)/$(_dobra:4)/$(_dobra:6)/$(_DOBRA:5)/$(_dobra:7)
+}

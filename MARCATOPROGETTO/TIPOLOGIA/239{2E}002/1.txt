@@ -1,0 +1,5 @@
+{ 239.002
+   *AZZERA*            =0
+   X5                  =$(CORTACAVAESQ:0)/$(CORTACAVAdir:0)
+   ALIAS               =#239
+}

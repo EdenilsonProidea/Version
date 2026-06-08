@@ -1,0 +1,84 @@
+#DEBUG
+#LET lfrisov=$(lfrisov:0)
+#LET lfrisoh=$(lfrisoh:0)
+// calculo para inicio do friso na vertical
+#LET calcvaopaiv=$l/($(nfrisosv:0)+1)
+#IF $(iniciofrisoh:0)>0
+   #LET calcinifriv=$(calcvaopai:0)+$(iniciofrisoh:0)
+#ENDIF
+// calculo para inicio do friso na horizontal
+#LET calcvaopaih=$l/($(nfrisosh:0)+1)
+#IF $(iniciofrisov:0)>0
+   #LET calcinifrih=$(calcvaopai:0)+$(iniciofrisov:0)
+#ENDIF
+#IF $(old_nfrisosH$(_ctx):0)!!$(nfrisosH:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisosH$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisosH=
+#ENDIF
+#IF $(old_nfrisosV$(_ctx):0)!!$(nfrisosV:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisosV$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisosV=
+#ENDIF
+
+#LETS parfrisosscriptH=
+
+#FOR $1:$(nfrisosh:0)
+   #IF $(iniciofrisoh:0)>0 & $(parfrisosh$(_CTX):$(I))=0
+      #IF $(I)=1
+         #LET parfrisosh$(_ctx):$(I)=$(iniciofrisoh:0)
+      #ELSE
+         #IF $(ESPACOFRISOH:0)>0
+            #LET parfrisosh$(_CTX):$(I)=$(iniciofrisoh:0)+$(ESPACOFRISOH:0)*($(I)-1)
+         #ELSE
+            #LET parfrisosh$(_CTX):$(I)=$(iniciofrisoh:0)+$(calcvaopaih:0)*($(I)-1)
+         #ENDIF
+      #ENDIF
+      #LETS parfrisosscripth=$(parfrisosscripth)$(parfrisosh$(_CTX):$(I));
+   #ELSE
+      #LETS parfrisosscripth=$(parfrisosscripth)$(parfrisosh$(_CTX):$(I));
+   #ENDIF
+#ENDFOR
+#LETS parfrisosscriptV=
+
+#FOR $1:$(nfrisosV:0)
+   #IF $(iniciofrisoV:0)>0 & $(parfrisosv$(_CTX):$(I))=0
+      #IF $(I)=1
+         #LET parfrisosv:$(I)=$(iniciofrisoV:0)
+      #ELSE
+         #IF $(ESPACOFRISOV:0)>0
+            #LET parfrisosv:$(I)=$(iniciofrisoV:0)+$(ESPACOFRISOV:0)*($(I)-1)
+         #ELSE
+            #LET parfrisosv:$(I)=$(iniciofrisoV:0)+$(calcvaopaiv:0)*($(I)-1)
+         #ENDIF
+      #ENDIF
+      #LETS parfrisosscriptv=$(parfrisosscriptv)$(parfrisosv$(_CTX):$(I));
+   #ELSE
+      #LETS parfrisosscriptv=$(parfrisosscriptv)$(parfrisosv$(_CTX):$(I));
+   #ENDIF
+#ENDFOR
+
+#LETS parfrente=$(lfrisoh:0)|$(lfrisov:0)|$(nfrisosh:0)|$(nfrisosv:0)|$(parfrisosscripth)|$(parfrisosscriptv)
+#LETS xpfrente=frente_friso_vh.XP
+// .frente_friso_vh.xp
+
+// .frente_friso_V
+// .frente_friso_h
+
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOVH
+#LETS parjobfrente=$(afriso)|$(nfrisosH:0)|$(nfrisosV:0)|$(parfrisosscripth)|$(parfrisosscriptv)
+// .frente_friso_h.xp
+#IF $(VEIOHORIZONTAL:0)=1
+   639
+#ELSE
+   638
+#ENDIF
+_frfri_h_drag_VH,sa=0,a=$a,nfrisos=$(nfrisosh:0),flagtipofriso=H
+_frfri_v_drag_VH,SL=0,L=$l,nfrisos=$(nfrisosv:0),flagtipofriso=V
+#LETV old_nfrisosH$(_ctx)=$(nfrisosH$(_CTX):0)
+#LETV old_nfrisosV$(_ctx)=$(nfrisosV$(_CTX):0)
+// _FR_FRISO_VH_TETO,A=$P,AX=-90,SA=$P
+
+//  _PAIN_FRISO_H

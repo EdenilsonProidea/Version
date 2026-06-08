@@ -1,0 +1,11 @@
+{ 422   // Interferenza com dobradica
+   *AZZERA*            =0
+   DESCRIZIONE         =Interferenza com dobradica
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X5                  =objeto que interfere
+}

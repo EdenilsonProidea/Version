@@ -1,0 +1,165 @@
+CAIXA_MONTAGEM
+calcolasaglat
+// caixa_cparede_old
+#LET folgacoluna=$(folgacolunacost:0)
+#IF $(tpRecorteCaixa:4)=1 #LET plcoluna=0
+#IF $(tpRecorteCaixa:4)=3 #LET plcoluna=$l-$(lColuna:0)
+// 400,lato=0,sl=$(PlColuna:0),l=$(lColuna:0),p=$(PColuna:0),a=$a,sa=0,sp=0
+#LET MARGIM_LATERAL=80
+#IF $(fimcol)>$l-$(MARGIM_LATERAL) #LET fimcol=$l,lcol=$l-$(slcol)
+#IF $(slcol)>$l #LET slcol=0
+#LET AFBASE=$(Escos:0)+$(Afcos:0)
+#LET PCOL=$(PColuna:0)+$(folgacoluna:0)
+#LET prateleiras_divididas=0
+#IF $(tpRecorteCaixa:8)=1
+   #LET a_pains_coluna=$a-$(abase:0)
+   #LET a_fundo_coluna={$A-$(ABASE:0)+$(RAG_COS:0)}
+#ELSE
+   #LET a_pains_coluna=$a-$(abase:0)*2
+   #LET a_fundo_coluna={$A-$(ABASE:0)*2+$(RAG_COS:0)*2}
+#ENDIF
+#IF $(tpRecorteCaixa:3)=3
+   #LET PColuna=$p-30
+   #LET PCOL=$(PColuna:0)+$(folgacoluna:0)
+   #LET SLCOL=$(plColuna:0)-$(folgacoluna:0)
+   #LET LCOL=$(lColuna:0)+$(folgacoluna:0)*2
+   #LET FIMCOL=$(SLCOL)+$(LCOL)
+   recorte central viga
+   201  // Lateral Esquerda
+   205,L=$(SLCOL)-$(eslat:0)*2+$(RAG_COS:0)*2
+   243,sl=$(slcol)-$(eslat:0)  // Cobertura lateral coluna
+   202  // Lateral Esquerda
+   205,L=$L-$(FIMCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,SL=$(FIMCOL)+$(eslat:0)-$(rag_cos:0),a=$(a_fundo_coluna)
+   243,sl=$(FIMCOL)  // Cobertura lateral coluna
+   246  // Cobertura frontal coluna
+   #LETS InfoRecorteBase=2;{$(SLCOL)-$(eslat:0)};{$(lcol:0)};$(PCOL)// INFORMA합ES PARA FURA플O na base
+   #LET prateleiras_divididas=1
+#ELSEIF $(PlColuna:0)<$(eslat:0)+$(MARGIM_LATERAL) | $(tpRecorteCaixa:4)=1
+   #LET SLCOL=0
+   #LET LCOL=$(lColuna:0)+$(folgacoluna:0)
+   #LET FIMCOL=$(SLCOL)+$(LCOL)
+   // recorte a esquerda
+   CALCOLASAGLAT,plat={$P-$(PCOL)}
+   201,SP=$(PCOL),P=$P-$(PCOL)  // Lateral Esquerda
+   CALCOLASAGLAT
+   202  // Lateral Direita
+   #IF $(_TPCAIXA:17)=004
+      205,L=$L-$(FIMCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,SL=$(FIMCOL)+$(eslat:0)-$(rag_cos:0),a=$(a_fundo_coluna)
+      243,sl=$(FIMCOL)  // Cobertura lateral coluna
+      246,sl=$(eslat:0),l=$(lcol:0)  // Cobertura frontal coluna
+   #ELSEIF $(_TPCAIXA:17)=005
+      204,L=$L-$(FIMCOL)-$(eslat:0)*2,SL=$(FIMCOL)+$(eslat:0),SP=0
+      243,sl=$(FIMCOL)  // Cobertura lateral coluna
+      204,sl=$(eslat:0),l=$(lcol:0),SP=$(PCOL) // Cobertura frontal coluna
+   #ENDIF
+   #LETS InfoRecorteBase=1;0;{$(LCOL)-$(eslat:0)};$(PCOL) // INFORMA합ES PARA FURA플O na base
+#ELSEIF $(PlColuna:0)+$(lColuna:0)>$L-$(eslat:0)-$(MARGIM_LATERAL) | $(tpRecorteCaixa:4)=3
+   #IF $(slcol:0)+$(lcol:0)>$L | $(slcol:0)+$(lcol:0)<$L
+      #LET lcol=$l-$(slcol:0)
+   #ENDIF
+   #LET SLCOL=$(plColuna:0)-$(folgacoluna:0)
+   #LET LCOL=$l-1*($(lColuna:0)+$(folgacoluna:0))
+   #LET FIMCOL=$l
+   // recorte a direita
+   201  // Lateral Esquerda
+   CALCOLASAGLAT,plat={$P-$(PCOL)}
+   202,SP=$(PCOL),P=$P-$(PCOL) // Lateral Esquerda
+   #IF $(_TPCAIXA:17)=004
+      205,L=$(SLCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,a=$(a_fundo_coluna)
+      243,sl=$(slcol)-$(eslat:0)  // Cobertura lateral coluna
+      246,l=$l-$(slcol:0)  // Cobertura frontal coluna
+      //  #MSG $(SLCOL) $(LCOL) $(FIMCOL)
+   #ELSEIF $(_TPCAIXA:17)=005
+      243,sl=$(slcol)-$(eslat:0)  // Cobertura lateral coluna
+      204,SL=$(SLCOL)-$(eslat:0),SP=$(pColuna:0)+$(folgacoluna:0),L=$l-$(slcol:0)  //Cobertura frontal coluna
+      204,L=$(SLCOL)-$(eslat:0)*2,SP=0
+   #ENDIF
+   #LETS InfoRecorteBase=
+   #LETS InfoRecorteBase=3;{$(SLCOL)-$(eslat:0)};{$(lcol:0)-$(eslat:0)};$(PCOL)
+   // INFORMA합ES PARA FURA플O na base
+#ELSE
+   #LET SLCOL=$(plColuna:0)-$(folgacoluna:0)
+   #LET LCOL=$(lColuna:0)+$(folgacoluna:0)*2
+   #LET FIMCOL=$(SLCOL)+$(LCOL)
+   // recorte central
+   201  // Lateral Esquerda
+   202  // Lateral Esquerda
+   #IF $(_TPCAIXA:17)=004
+      205,L=$(SLCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,a=$(a_fundo_coluna)
+      243,sl=$(slcol)-$(eslat:0)  // Cobertura lateral coluna
+      205,L=$L-$(FIMCOL)-$(eslat:0)*2+$(RAG_COS:0)*2,SL=$(FIMCOL)+$(eslat:0)-$(rag_cos:0),a=$(a_fundo_coluna)
+      243,sl=$(FIMCOL)  // Cobertura lateral coluna
+      246 // Cobertura frontal coluna
+   #ELSEIF $(_TPCAIXA:17)=005
+      //#MSG $(pColuna:0)
+      204,L=$(SLCOL)-$(eslat:0)*2,SP=0
+      204,L=$L-$(FIMCOL)-$(eslat:0)*2,SL=$(FIMCOL)+$(eslat:0),SP=0
+      243,sl=$(slcol)-$(eslat:0)  // Cobertura lateral coluna
+      243,sl=$(FIMCOL)  // Cobertura lateral coluna
+      204,L=$(LCOL)+$(eslat:0)*2,SL=$(SLCOL)-$(eslat:0),SP=$(pColuna:0)+$(folgacoluna:0)// Cobertura frontal coluna
+   #ENDIF
+   #LETS InfoRecorteBase=2;{$(SLCOL)-$(eslat:0)};{$(lcol:0)};$(PCOL)// INFORMA합ES PARA FURA플O na base
+#ENDIF
+637,SL=$(PlColuna:0)-$(folgacoluna:0),SA=0,L=$(lColuna:0)+$(folgacoluna:0)*2,A=$a,P=$(PColuna:0)+$(folgacoluna:0),sp=0  //Operacao por tampo
+#LET LB={$L-$(eslat:0)*2-2*$(RED_INTM:0)}
+#LET PB=$p
+#LET afbase=0
+!SAGOMA BASE $(eslat:0),$(afbase:0),$(eslat:0)+$(LB),$(afbase:0),$(eslat:0)+$(LB),$(afbase:0)+$(PB),$(eslat:0),$(afbase:0)+$(PB)
+!SAGOMA COLUNA $(SLCOL),0,$(FIMCOL),0,$(FIMCOL),$(PCOL),$(SLCOL),$(PCOL),$(SLCOL),0
+!SAGDIFF BASE,$(BASE),$(COLUNA)
+!SAGREL SAGBASE,$(BASE),$(eslat:0),$(afbase:0)
+203.002,X3=$(curbox)/E/I  // Base  sagoma
+#IF $(tpRecorteCaixa:8)=1
+   #IF $(_TPCAVA:10)>0
+      220.003,sp=$p-1*($(ATRA:0)+$(_TPCAVA:10))  // Traversa Horizontal  (cozinha)
+   #ELSE
+      220.003,sp=$p-1*($(ATRA:0))  // Traversa Horizontal  (cozinha)
+   #ENDIF
+#ELSE
+   203.002,SA=$A-$(ABASE:0)  // Base  sagoma
+#ENDIF
+#LET CAIXA_CPAREDE=1
+paineis_laterais
+#LETV pcaixa=$p
+INICIA_PDIV
+#IF $(prateleiras_divididas)=0
+   #LET LB=$(LPRAT)-2*$(RED_INTM:0)
+   #LET PB=$(PPRAT)
+   #IF $(_TPCAIXA:17)=005
+      #LET AFPRATP={$(AFPRATP)-$(escos)-$(afcos)}
+      #LET PB={$(PPRAT)+$(escos)+$(afcos)}
+   #ELSEIF $(_TPCAIXA:17)=000
+      #LET AFPRATP={$(AFPRATP)-$(escos)-$(afcos)}
+      #LET PB={$(PPRAT)+$(escos)+$(afcos)}
+   #ENDIF
+   !SAGOMA sagprat $(AFPRATL),$(AFPRATP),$(AFPRATL)+$(LB),$(AFPRATP),$(AFPRATL)+$(LB),$(AFPRATP)+$(PB),$(AFPRATL),$(AFPRATP)+$(PB)
+   #IF $(_TPCAIXA:17)=000
+      !SAGOMA COLUNA $(SLCOL),0,$(FIMCOL),0,$(FIMCOL),$(PCOL),$(SLCOL),$(PCOL),$(SLCOL),0
+   #ELSE
+      !SAGOMA COLUNA $(SLCOL)-$(eslat:0),0,$(FIMCOL)+$(eslat:0),0,$(FIMCOL)+$(eslat:0),$(PCOL),$(SLCOL)-$(eslat:0),$(PCOL),$(SLCOL)-$(eslat:0),0
+   #ENDIF
+   !SAGDIFF sagprat,$(sagprat),$(COLUNA)
+   !SAGREL SAGPRAT,$(sagprat),$(AFPRATL),$(AFPRATP)
+   
+   #IF $(_tpcaixa:0)[CINSF]!0
+      #LET PCOLPRAT=$(PColuna:0)+2
+   #ELSE
+      #LET PCOLPRAT=$(PColuna:0)+$(ESLAT:0)
+   #ENDIF
+   #IF $(PlColuna:0)<$(eslat:0)+$(MARGIM_LATERAL) | $(tpRecorteCaixa:4)=1
+      #LETS InfoRecortePrateleira=1;0;{$(LCOL)};$(PCOLPRAT) // INFORMA합ES PARA FURA플O na base
+   #ELSEIF $(PlColuna:0)+$(lColuna:0)>$L-$(eslat:0)-$(MARGIM_LATERAL)  | $(tpRecorteCaixa:4)=3
+      #LETS InfoRecortePrateleira=3;{$(SLCOL)-$(eslat:0)*2};{$(lcol:0)+1000};$(PCOLPRAT)// INFORMA합ES PARA FURA플O na base
+   #ELSE
+      #LETS InfoRecortePrateleira=2;{$(SLCOL)-$(eslat:0)*2};{$(LCOL)+$(ESLAT:0)*2};$(PCOLPRAT) // INFORMA합ES PARA FURA플O na base
+   #ENDIF
+#ELSE
+   #IF ($(plcoluna:0)-$(eslat:0)*2-$(folgacoluna:0))<200 // prateleira esq menor <C30964>
+      #LETS idlogerros=$(idlogerros)120;
+   #ENDIF
+   #IF ($L-1*($(plcoluna:0)+$(lcoluna:0)-$(eslat:0)+$(folgacoluna:0)+$(eslat:0)))<200 // PRATELEIRA DIR MENOR
+      #LETS idlogerros=$(idlogerros)121;
+   #ENDIF
+#ENDIF
+
+// logerros

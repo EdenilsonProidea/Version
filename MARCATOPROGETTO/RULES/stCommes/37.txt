@@ -1,0 +1,108 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=Elaborazioni per stampe carico
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+
+
+[ST6]
+// STAMPA marcato_lista_ESTOQUE.stn,NCOMMESSA=$(carico:0);LP=$(LP:1);gruppopedido=1
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S007,SEPARAPEDIDO=1,AGRUPAR=1
+
+[ST4]
+// STAMPA MARCATO_lista_corte_perfis_REP.stn,NCOMMESSA=$(carico:0)
+STAMPA IDEA_PERFIS.stn,LOTE=$(carico:0),fasi=S010
+
+[ST11]
+STAMPA LOTE_PAIS_COM_IMAGEM.stn,LOTE=$(carico:0),SETOR=C013
+
+[ST9]
+STAMPA marcato_lista_corte_manual.stn,NCOMMESSA=$(carico:0)
+
+[ST10]
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S002,SEPARAPEDIDO=0,AGRUPAR=1
+
+[ST8]
+// STAMPA MARCATO_FORMAPACOTE_LISTA_FERRAGEM_REP.stn,NCOMMESSA=$(carico:0)
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S005,SEPARAPEDIDO=1,AGRUPAR=1
+
+[FILTRI]
+$(carico)       $(carichi) (è l'elenco dei carichi separato con ;)
+$(da_carico)    $(a_carico)
+$(da_reparto)   $(a_reparto)
+$(da_percorso)  $(a_percorso)
+$(da_numero)    $(a_numero)
+$(da_etichetta) $(a_etichetta)
+$(da_vettore)   $(a_vettore)
+$(da_scarico)   $(a_scarico)
+
+$(car_colore)   (Colore del carico)
+$(car_cod)      (carico)
+$(des_car)      (descrizione)
+$(elabora)      (Nr. dell'elaborazione)
+
+-----------------------------------------
+
+[FUNZIONI]
+STAMPA    nomemodulo.stg,$(...)parametri    // Stampa
+STAMPACRW nomemodulo.stg,$(...)parametri    // Cristal Report
+COLLI              // rigenera i colli
+ELABORA            // sviluppa DB a livelli
+RICALCOLA ETI JOB  // carica l'ordine e ricalcola etichette e job
+
+-----------------------------------------
+
+[LISTE]
+0001   - OBSERVAÇÕES
+0002   - LAMINA E LAMINADO
+0003   - PINTURA
+0004   - PERFIS
+0005   - CAIXAS
+0006   - ACESSÓRIOS
+0007   - FITAS
+0008   - EXPEDIÇÃO
+0009   - CIRCULAR
+0010   - FITA LOTE
+0011   - PORTAS ALUMINIO
+
+[ST7]
+//#LETV LP=S002
+//#SQL alfa=select top 1 * from lista_stampe_prod where commessa='$(carico:0)' and n2c like '$(LP:3)_$(LP:4)'
+//#IF $(alfa)!!
+//   STAMPA marcato_lista_ESTOQUE.stn,NCOMMESSA=$(carico:0);LP=$(LP:1);gruppopedido=1
+//#ENDIF
+
+STAMPA IDEA_INSUMOS.stn,LOTE=$(carico:0),fasi=S002,SEPARAPEDIDO=1,AGRUPAR=1
+
+[ST1]
+STAMPA Marcato_Obs.stn,NCOMMESSA=$(carico:0)
+
+[ST2]
+#LETV LP=0010
+STAMPA marcato_lista_LAMINA_REP.stn,NCOMMESSA=$(carico:0)
+
+[ST3]
+STAMPA marcato_lista_PINTURA_REP.stn,NCOMMESSA=$(carico:0)
+
+[ST5]
+STAMPA MARCATO_lista_caixas.stn,NCOMMESSA=$(carico:0)
+//STAMPA LOTE_PAIS_COM_IMAGEM.stn,LOTE=$(carico:0),SETOR=C011

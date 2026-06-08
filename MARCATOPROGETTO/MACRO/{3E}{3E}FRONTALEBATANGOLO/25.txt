@@ -1,0 +1,237 @@
+#LET lmas=$(esfre)  //spessore massello
+// FRONTAL
+#LET folgafrenteai=$(folgafrenteai:0)+$(_tpcaixa:4)
+#LET folgafrenteas=$(folgafrenteas:0)+$(_tpcaixa:5)
+#IF $(pm)=1
+   //fascia frontale
+   !RETTA 71,0,$(ptop1)-$(PING:0)+$(esfre)
+   !RETTA 72,0,$(ptop2)-$(PING:0),1
+   !RETTA 73,1,0,1
+   !RETTA 76,0,$(ptop1)-$(PING:0)
+   //!RETTA 77,0,$(p2)+$(an1),1
+   !RETTA 77,0,{$(largfrentefixa:0)+$(espacoAtras:0)},1
+   !INTERSECA l5,l5y,76,77
+   !RETTA 78,1,$(l5)
+   !RETTA 79,0,0
+   !INTERSECA l5,l5y,78,79
+   #LET l5=$l-$(l5)
+   !INTERSECA px1,py1,71,72
+   !INTERSECA px2,py2,73,72
+   !PUNTO mmx,mmy,0,$(ptop2)-$(PING:0)
+   !DISTANZA mm,$(px1),$(py1),$(px2),$(py2)
+   //frontali e masselli
+   !DISTANZA mm1,$(px1),$(py1),$L-$(L5),$(py1) //calcolo massellino frontale
+   #LET lfechfro=$(lscocca)-$(L5)-$(ESLAT:0)-$(FOLGAFRENTEL:0)//-1*($(L5)-(2*$(eslat:0))//-$(folgafrentel:0)
+   #LET slfechfro=$(espacoAtras:0)+$(eslat)//$L-$(lscocca)+$(eslat:0)
+   #IF $(inf)=1
+      #IF $(cava)=1
+         224,SL=$(slfechfro),l=$(lfechfro),a=$a-$(abase:0)-$(acava:0)  // Fechamento Frontal Canto Reto
+      #ELSE
+         #IF $(_FR:6)=601 // <C20687>
+            224,SL=$(slfechfro),l=$(lfechfro),A={$A-$(ABASE:0)}  // Fechamento Frontal Canto Reto
+         #ELSE
+            224,SL=$(slfechfro),l=$(lfechfro)  // Fechamento Frontal Canto Reto
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(sup)=1 & $(_PUXCAVA:3)=1
+      224,sl=$(slfechfro),l=$(lfechfro),sa=$(abase:0)+$(acava:0),a=$a-2*$(abase:0)-$(acava:0)  // Fechamento Frontal Canto Reto
+   #ELSEIF $(sup)=1
+      224,sl=$(slfechfro),l=$(lfechfro),sa=$(abase1),a=$a-$(abase:0)-$(abase1:0)  // Fechamento Frontal Canto Reto
+   #ELSE
+      224,sl=$(slfechfro),l=$(lfechfro)  // Fechamento Frontal Canto Reto
+   #ENDIF
+   #LET afre=$a
+   #LET descfre=0
+   #IF $(CANTOR:0)!!1 // <C20687>
+      _INICIAFRONTAL
+   #ENDIF
+   _INICIA_AFRE_CAVA
+   #IF $(TiraAfastador:0)=0
+      !QUOTA5 ({$L-$(lscocca)} 0 {$(ptop1)-$(PING:0)}),({$(px1))} 0 {$(ptop1)-$(PING:0)}),,-20
+      219,SL=$(px1)-$(folgafrentel:0),SA=,SP=$(ptop1)-$(PING:0),L=$(mm1),A=$A-$(FOLGAFRENTEAS:0)-$(FOLGAFRENTEAI:0),P=$(lmas)  //massello verticale // Correção da altura feita em visita
+      !QUOTA5 ({$(px1)} 0 {$(ptop1)-$(PING:0)}),({$(px1)+$(mm1)} 0 {$(ptop1)-$(PING:0)}),{rnd($(mm1))},-20
+      #IF $(mm)>$(pant)+5
+         219,SL=$(mmx)-$(folgafrentel:0),SA=,SP=$(mmy),L=$(mm),A=$A-$(FOLGAFRENTEAS:0)-$(FOLGAFRENTEAI:0),P=$(lmas),AY=-$(ang)  //Fascia di chiusura // Correção da altura feita em visita
+         !QUOTA5 ({$(px1)} 0 {$(py1)}),({$(px2)} 0 {$(py2)}),{rnd($(mm))},-20
+      #ELSE
+         #MSG erro na costruçao - verificar frontais
+      #ENDIF
+   #ENDIF
+   // *********************** pannelli per fissaggio *******************************
+   !RETTA 71,0,$(ptop1)-$(PING:0)+$(ESLAT:0)
+   !RETTA 72,0,$(ptop2)-$(PING:0),1
+   !RETTA 73,1,0,1
+   !RETTA 74,1,$L-$(lscocca)
+   !INTERSECA px1,py1,71,74
+   !INTERSECA px2,py2,71,72
+   !INTERSECA px3,py3,73,72
+   !INTERSECA px4,py4,74,73
+   !SAGOMA tmp $(px1),$(py1),$(px2),$(py2),$(px3),$(py3),$(px4),$(py4)
+   !SAGREL tmp1,$(tmp),$(px1),$(py1),0
+   // 503,SL=$(px1),SP=$(py1),L=$(lscocca)-2*$(ESLAT:0)-$(l5),P=$(mm),DIS=$(tmp1)  // RIP.STRUTTURALE
+   #IF $(cava)=1 & $(INF)=1
+      cava,SL=$L-$(lscocca),SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),L=$(lscocca),P=$(PSCOCCA),AFPCAVA={$(PTOP1)-1*($(PING:0)+$(PCAVA:0))},A={$A-$(_TPCAIXA:5)}
+      // ******************** ricalcolo sagoma per pannello di fissaggio superiore ******************************
+      !RETTA 71,0,$(ptop1)-$(PING:0)+$(ESLAT:0)
+      !RETTA 72,0,$(ptop2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 73,1,0,1
+      !RETTA 74,1,$L-$(lscocca)
+      !INTERSECA px1,py1,71,74
+      !INTERSECA px2,py2,71,72
+      !INTERSECA px3,py3,73,72
+      !INTERSECA px4,py4,74,73
+      !SAGOMA tmp $(px1),$(py1),$(px2),$(py2),$(px3),$(py3),$(px4),$(py4)
+      !SAGREL tmp1,$(tmp),$(px1),$(py1),0
+      //  503,sl=$(px1),sp=$(py1),l=$(lscocca)-2*$(ESLAT:0)-$(l5)-$(PCAVA:0),p=$(mm),dis=$(tmp1),sa=$a-$(afon)
+      // ******************** ricalcolo lunghezza della gola superiore ************************
+      !RETTA 71,0,$(ptop1)-$(PING:0)-$(PCAVA:0)
+      !RETTA 72,0,$(ptop2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 73,1,0,1
+      !INTERSECA px1,py1,71,72
+      !INTERSECA px2,py2,73,72
+      !DISTANZA mm,$(px1),$(py1),$(px2),$(py2)
+      cava,sp=$(py2),sl=$(px2),ay=-$(ang),l=$(mm),p=$(ptop2)-$(PING:0),AFPCAVA=0,A={$A-$(_TPCAIXA:5)}
+   #ELSE
+      //   503,SL=$(px1),SA=$a-$(afon),SP=$(py1),L=$(lscocca)-2*$(ESLAT:0)-$(l5),P=$(mm),DIS=$(tmp1)  // RIP.STRUTTURALE
+   #ENDIF
+   // **************************** frontale ***************************************************************
+   #IF $(invape:0)=0
+      #LET flpm=1
+   #ELSE
+      #LET flpm=3
+   #ENDIF
+   //#IF $(cava)=1 & $(INF)=1
+   //   229,SL=$L-$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0),A=$a-$(ABASE:0)-$(ACAVA:0)  // PRUMO
+   //#ELSEIF $(cava)=1 & $(SUP)=1
+   //   229,SL=$L-$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0)+$(INCR_FR_SUP_GOLA),A=$a-$(ABASE:0)*2-$(INCR_FR_SUP_GOLA)  // PRUMO
+   //#ELSE
+   //   229,SL=$L-$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0),A=$a-$(ABASE:0)-$(ESTRA:0)  // PRUMO
+   //#ENDIF
+   #LET afre=$a
+   #LET descfre=0
+   frontal,SL=$L-$(FOLGAFRENTEL:0)-$(L5),lfre=$(l5),AFFREP=$(plat),l=$(l5),PM=$(flpm),sposta=0,semdesenhocava=1,AFRE={$(afre)},a={$(afre)}
+   !QUOTA5 ({$L-$(L5)} 0 {$(ptop1)-$(PING:0)}),({$l)} 0 {$(ptop1)-$(PING:0)}),{rnd($(l5))},-20
+   #IF $(_FR:6)=601  // <C20687>
+      219,SL=$L-$(FOLGAFRENTEL:0)-$(L5)+$(lmas),SA=$(abase:0),SP=$(plat)-70,L=70,A=$A-$(abase:0),P=$(lmas),AY=$(ang)  // PINO FRONTAL CANTO RETO
+   #ELSE
+      // <C23703>
+      //  219,SL=$L-$(FOLGAFRENTEL:0)-$(L5)+$(lmas),SA=$(abase:0),SP=$(plat)-70,L=70,A=$A-$(abase:0)*2,P=$(lmas),AY=$(ang)  // PINO FRONTAL CANTO RETO
+   #ENDIF
+#ELSE
+   //frontali e masselli
+   //fascia frontale
+   !RETTA 71,0,{$(ptop1)-$(PING:0)+$(esfre)}
+   !RETTA 72,0,$(ptop2)-$(PING:0),1
+   !RETTA 73,1,0,1
+   !RETTA 74,0,$(ptop2)-$(PING:0),1
+   !INTERSECA px1,py1,71,72
+   !INTERSECA px2,py2,73,72
+   !DISTANZA mm,$(px1),$(py1),$(px2),$(py2)
+   !RETTA 75,1,{-$(mm)},1
+   !RETTA 76,0,$(ptop1)-$(PING:0)
+   !RETTA 77,0,{$(largfrentefixa:0)+$(espacoAtras:0)},1
+   //!RETTA 77,0,$(p2)+$(an1),1
+   !INTERSECA l5,l5y,76,77
+   !INTERSECA mmx,mmy,75,74
+   //fianco di chiusura frontale
+   #LET lfechfro=$(lscocca:0)-1*{$(l5)+$(esfre:0)-$(eslat:0)/2}-$(eslat:0)
+   #IF $(inf)=1
+      #IF $(cava)=1
+         224,SL=$(L5)+{$(esfre:0)-$(eslat:0)/2},l=$(lfechfro),a=$a-$(abase:0)-$(acava:0)  // Fechamento Frontal Canto Reto
+      #ELSE
+         #IF $(_FR:6)=601 // <C20687>
+            224,SL=$(L5)+{$(esfre:0)-$(eslat:0)/2},l=$(lfechfro),A=$A-($(ABASE:0))  // Fechamento Frontal Canto Reto <C13025>
+         #ELSE
+            224,SL=$(L5)+{$(esfre:0)-($(eslat:0)/2)-$(lmas)},l=$(lfechfro)+$(lmas)  // Fechamento Frontal Canto Reto <C13025>
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(sup)=1 & $(_PUXCAVA:3)=1
+      // 224,SL=$(L5)-$(eslat:0),l=$(lfechfro),sa=$(abase:0)+$(acava:0),a=$a-2*$(abase:0)-$(acava:0)  // Fechamento Frontal Canto Reto
+224,SL={$(l5)+$(esfre:0)-$(eslat:0)/2},l=$(lfechfro),sa=$(abase:0)+$(acava:0),a=$a-2*$(abase:0)-$(acava:0)  // Fechamento Frontal Canto Reto
+   #ELSEIF $(sup)=1
+      //224,SL=$(L5)-$(eslat:0),l=$(lfechfro),l=$(lfechfro),sa=$(abase1),a=$a-$(abase:0)-$(abase1:0)  // Fechamento Frontal Canto Reto
+      // <c20824>
+      224,SL={$(l5)+$(esfre:0)-$(eslat:0)/2},l=$(lfechfro),l=$(lfechfro),sa=$(abase1),a=$a-$(abase:0)-$(abase1:0)  // Fechamento Frontal Canto Reto
+   #ELSE
+      224,SL=$(L5)-$(eslat:0),l=$(lfechfro)  // Fechamento Frontal Canto Reto
+   #ENDIF
+   #LET afre=$a
+   #LET descfre=0
+   #IF $(CANTOR:0)!!1  // <C20687>
+      _iniciafrontal
+   #ENDIF
+   _INICIA_AFRE_CAVA
+   #IF $(TiraAfastador:0)=0
+      !QUOTA5 ({$(PX1)} 0 {$(ptop1)-$(PING:0)}),({$(LSCOCCA))} 0 {$(ptop1)-$(PING:0)}),{$(lscocca)-$(px1)},-20
+      219,SL=$(l5)+$(folgafrenteL:0),SA=,SP=$(ptop1)-$(PING:0),L=$(px1)-$(l5),A=$A-$(FOLGAFRENTEAS:0)-$(FOLGAFRENTEAI:0),P=$(lmas)  // PINO FRONTAL CANTO RETO // Correção da altura feita em visita
+      !QUOTA5 ({$(L5)} 0 {$(ptop1)-$(PING:0)}),({$(px1)} 0 {$(ptop1)-$(PING:0)}),{rnd($(px1)-$(l5))},-20
+      #IF $(mm)>5
+         219,SL=$(mmx)+$(folgafrenteL:0),SA=,SP=$(mmy),L=$(mm),A=$A-$(FOLGAFRENTEAS:0)-$(FOLGAFRENTEAI:0),P=$(lmas),AY=$(ang)  // PINO FRONTAL CANTO RETO // Correção da altura feita em visita
+         !QUOTA5 ({$(px1)} 0 {$(py1)}),({$(px2)} 0 {$(py2)}),{rnd($(mm))},-20
+      #ELSE
+         #MSG erro na costruçao - verificar frontais
+      #ENDIF
+   #ENDIF
+   // *********************** pannelli per fissaggio *******************************
+   !RETTA 71,0,$(ptop1)-$(PING:0)+$(ESLAT:0)
+   !RETTA 72,0,$(ptop2)-$(PING:0),1
+   !RETTA 73,1,0,1
+   !RETTA 74,1,$(lscocca)
+   !INTERSECA px1,py1,71,72
+   !INTERSECA px2,py2,71,74
+   !INTERSECA px3,py3,73,74
+   !INTERSECA px4,py4,72,73
+   !SAGOMA tmp $(px1),$(py1),$(px2),$(py2),$(px3),$(py3),$(px4),$(py4)
+   !SAGREL tmp1,$(tmp),$(px1),$(py1),0
+   // 503,sl=$(px1),sp=$(py1),l=$(lscocca)-2*$(ESLAT:0)-$(l5),p=(mm),dis=$(tmp1)
+   #IF $(cava)=1 & $(INF)=1
+      cava,SL=0,SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),L=$(lscocca),P=$(PSCOCCA),AFPCAVA={$(PTOP1)-1*($(PING:0)+$(PCAVA:0))},A=$A-$(_TPCAIXA:5)
+      // ***************** calcolo nuovamente la sagoma per pannello di fissaggio superiore   *****************************
+      !RETTA 71,0,$(ptop1)-$(PING:0)+$(ESLAT:0)
+      !RETTA 72,0,$(ptop2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 73,1,0,1
+      !RETTA 74,1,$(lscocca)
+      !INTERSECA px1,py1,71,72
+      !INTERSECA px2,py2,71,74
+      !INTERSECA px3,py3,73,74
+      !INTERSECA px4,py4,72,73
+      !SAGOMA tmp $(px1),$(py1),$(px2),$(py2),$(px3),$(py3),$(px4),$(py4)
+      !SAGREL tmp1,$(tmp),$(px1),$(py1),0
+      // 503,sl=$(px1),sp=$(py1),l=$(lscocca)-2*$(ESLAT:0)-$(l5)-$(PCAVA:0),p=(mm),dis=$(tmp1),sa=$a-$(afon)
+      // ********************** inserimento gola con calcolo dimensioni  ************************************************
+      !RETTA 71,0,$(ptop1)-$(PING:0)-$(PCAVA:0)
+      !RETTA 72,0,$(ptop2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 73,1,0,1
+      !INTERSECA px1,py1,71,72
+      !INTERSECA px2,py2,73,72
+      !DISTANZA mm,$(px1),$(py1),$(px2),$(py2)
+      !PUNTO pxx,pyy,-$(mm),0
+      cava,sp=$(PY1),sl=$(pX1),ay=$(ang),l=$(mm),p=0,AFPCAVA=0,A=$A-$(_TPCAIXA:5)
+   #ELSE
+      // 503,sl=$(px1),sp=$(py1),l=$(lscocca)-2*$(ESLAT:0)-$(l5),p=(mm),dis=$(tmp1),sa=$a-$(afon)
+   #ENDIF
+   // **************************** frontale ***************************************************************
+   #IF $(invape:0)=0
+      #LET flpm=3
+   #ELSE
+      #LET flpm=1
+   #ENDIF
+   //#IF $(cava)=1 & $(INF)=1
+   //   229,SL=$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0),A=$a-$(ABASE:0)-$(ACAVA:0) // PRUMO
+   //#ELSEIF $(CAVA)=1 & $(SUP)=1
+   //   229,SL=$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0)+$(INCR_FR_SUP_GOLA),A=$a-$(ABASE:0)*2-$(INCR_FR_SUP_GOLA) // PRUMO
+   //#ELSE
+   //   229,SL=$(L5)-$(ESPRUMO:0)/2,SA=$(ABASE:0),A=$a-$(ABASE:0)-$(ESTRA:0)  // PRUMO
+   //#ENDIF
+   #LET afre=$a
+   #LET descfre=0
+   frontal,SL=$(FOLGAFRENTEL:0),Lfre=$(l5),AFFREP=$(ptop1)-$(PING:0),l=$(l5),PM=$(flpm),sposta=0,semdesenhocava=1,AFRE={$(afre)},a={$(afre)}
+   !QUOTA5 (0 0 {$(ptop1)-$(PING:0)}),({$(L5)} 0 {$(ptop1)-$(PING:0)}),{rnd($(l5))},-20
+   #IF $(_FR:6)=601 // <c20687>
+      219,SL=$(l5)+$(esfre:0)-$(eslat:0)/2,SA=$(abase:0),SP=$(plat)-70,L=70,A=$A-$(abase:0),P=$(lmas),AY=$(ang)  //PINO FRONTAL CANTO RETO
+   #ELSE
+      // <C23703>
+      //   219,SL=$(l5)+$(esfre:0)-$(eslat:0)/2,SA=$(abase:0),SP=$(plat)-70,L=70,A=$A-$(abase:0)*2,P=$(lmas),AY=$(ang)  //PINO FRONTAL CANTO RETO
+   #ENDIF
+#ENDIF
+//#MSG $(PM)

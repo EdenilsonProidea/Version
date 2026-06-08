@@ -1,0 +1,9 @@
+{ 433   // ERRO
+   *AZZERA*            =0
+   DESCRIZIONE         =ERRO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =-0.5,-0.5,-0.5
+   DIMENSIONE          =$L+1,$a+1,$P+$(esfre)+1
+   COLORI              =998,998
+   ORIENTAMENTO        =ALP
+}

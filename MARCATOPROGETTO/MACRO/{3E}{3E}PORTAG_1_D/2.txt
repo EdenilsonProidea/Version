@@ -1,0 +1,11 @@
+#LET deslocafrente=0
+#LET aumentafrente=0
+#LET LFREREAL=$(lfre)-1*($(SOBREDOBRA_ESQ:0)+$(SOBREDOBRA_DIR:0))
+#LET deslocafrente=$(SOBREDOBRA_ESQ:0)
+#LET aumentafrente=$(SOBREDOBRA_DIR:0)
+#LET largurafrente={$(lfre:0)-1*($(deslocafrente)+$(aumentafrente))}
+#IF $(TPCANTO:3)=3 & $(lado_canto)[ESQ]!0 & $(primeiromodulo)=1 & $(ultimomodulo)=0 & $(ARMCANTORETO:0)=1 // <C30430P2>
+   PORTAG_D,sl=$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),PM=1,macro=frontalgiro
+#ELSE
+   PORTAG_D,sl=$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),macro=frontalgiro
+#ENDIF

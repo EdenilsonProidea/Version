@@ -1,0 +1,44 @@
+{ _SISCORRER   // Sistemas de correr
+   *AZZERA*            =0
+   DESCRIZIONE         =Sistemas de correr
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250tipo 1200preview 1440cod trilho sup 1875cod trilho inf 2100cod carrinho interno 2190cod carrinho externo 2235tipo trilho sistema (desenho) 3345TIPO SISTEMA(-1 INTERNO/1 EXTERNO) 2640DESCONTO ACRESIMO PORTA INF 3615DESCONTO ACRESIMO PORTA SUP 3510NVIAS 2535COD CINEX SISTEMA 1440sistema CINEX 1755macro porta 1590furos porta sup esquerda 2775furos porta inf esquerda 2670macro trilho superior 2370macro trilho inferior 2265cod sistema orçamento 2535coluna 3: filtro para relacionar com _tpfr
+   { 
+      //  ,Descrição                                          ,ti,preview        ,cod trilho su,cod trilho in,c,cod carrinho e,ti,TIP,DES,DES,NV,COD CINE,s,m,f,f,m,m,cod sistema
+      001 ,Kit 1 Porta de Correr PS48 sem sistema Fosco       ,3 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-1P    ,3 ,1  ,25 ,60 ,1 ,STD0900 , , , , , , ,000SIS-COR1
+      002 ,Kit 2 Portas de Correr PS48 com amort Fosco        ,4 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-2P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      003 ,Kit 2 Portas de Correr PS48 sem amort Fosco        ,4 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-2P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      004 ,Kit 3 Portas de Correr PS48 com amort Fosco        ,5 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-3P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      005 ,Kit 3 Portas de Correr PS48 sem amort Fosco        ,5 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-3P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      006 ,Kit 4 Portas de Correr PS48 com amort Fosco        ,6 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-4P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      007 ,Kit 4 Portas de Correr PS48 sem amort Fosco        ,6 ,CORRER_ext.jpg ,8148         ,8148         , ,KP-PS48-4P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      008 ,Sem sistema                                        ,4 ,CORRER_ext.jpg ,             ,             , ,              ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,
+      009 ,Kit 1 Portas de Correr RO 46                       ,2 ,CORRER_ext.jpg ,KIT-RO26-SUP ,KIT-RO26-INF , ,KIT-CAR2-RO26 ,1 ,-1 ,32 ,12 ,2 ,        , , , , , , ,
+      010 ,Kit 2 Portas de Correr RO 46                       ,2 ,CORRER_ext.jpg ,KIT-RO26-SUP ,             , ,              ,1 ,-1 ,32 ,12 ,2 ,        , , , , , , ,
+      011 ,Kit 3 Portas de Correr RO 46                       ,2 ,CORRER_ext.jpg ,KIT-RO26-SUP ,KIT-RO26-INF , ,KIT-CAR2-RO26 ,1 ,-1 ,32 ,12 ,2 ,        , , , , , , ,
+      012 ,Kit 4 Portas de Correr RO 46                       ,2 ,CORRER_ext.jpg ,KIT-RO26-SUP ,KIT-RO26-INF , ,KIT-CAR2-RO26 ,1 ,-1 ,32 ,12 ,2 ,        , , , , , , ,
+      013 ,Kit 1 Porta de Correr PS48 sem sistema Preto       ,3 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-1P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR1
+      014 ,Kit 2 Portas de Correr PS48 c amort Preto          ,4 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-2P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      015 ,Kit 2 Portas de Correr PS48 s amort Preto          ,4 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-2P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      016 ,Kit 3 Portas de Correr PS48 c amort Preto          ,5 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-3P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      017 ,Kit 3 Portas de Correr PS48 s amort Preto          ,5 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-3P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      018 ,Kit 4 Portas de Correr PS48 c amort Preto          ,6 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-4P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      019 ,Kit 4 Portas de Correr PS48 s amort Preto          ,6 ,CORRER_ext.jpg ,12012        ,12012        , ,KP-PS48-4P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      020 ,Kit 1 Porta de Correr PS48 sem sistema Champagne   ,3 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-1P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR1
+      021 ,Kit 2 Portas de Correr PS48 c amort Champagne      ,4 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-2P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      022 ,Kit 2 Portas de Correr PS48 s amort Champagne      ,4 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-2P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      023 ,Kit 3 Portas de Correr PS48 c amort Champagne      ,5 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-3P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      024 ,Kit 3 Portas de Correr PS48 s amort Champagne      ,5 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-3P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      025 ,Kit 4 Portas de Correr PS48 c amort Champagne      ,6 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-4P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      026 ,Kit 4 Portas de Correr PS48 s amort Champagne      ,6 ,CORRER_ext.jpg ,11880        ,11880        , ,KP-PS48-4P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      027 ,Kit 1 Porta de Correr PS48 s sistema Personalizado ,3 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-1P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR1
+      028 ,Kit 2 Portas de Correr PS48 c amort Personalizado  ,4 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-2P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      029 ,Kit 2 Portas de Correr PS48 s amort Personalizado  ,4 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-2P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR2
+      030 ,Kit 3 Portas de Correr PS48 c amort Personalizado  ,5 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-3P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      031 ,Kit 3 Portas de Correr PS48 s amort Personalizado  ,5 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-3P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR3
+      032 ,Kit 4 Portas de Correr PS48 c amort Personalizado  ,6 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-4P    ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+      033 ,Kit 4 Portas de Correr PS48 s amort Personalizado  ,6 ,CORRER_ext.jpg ,16631        ,16631        , ,KP-PS48-4P-S  ,3 ,1  ,25 ,60 ,2 ,STD0900 , , , , , , ,000SIS-COR4
+   }
+}

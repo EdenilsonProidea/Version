@@ -1,0 +1,42 @@
+_calcola_popx
+#IF $(TPF)=65 & ($(_pux:0)=999 | $(pv_pux:0)=999) // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de cozinha - feito em visita
+   #LETS xpfrente=
+   #LETS parfrente=
+   #LET ladojobfrente=
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+#ELSE
+   #IF $(_TPCAIXA:9)=1 | $(APE:7)=5
+      #IF $(BERGAPARCIAL:0)=1
+         #IF ($(PM)=3 & $(APE:1)!!AGE) | $(APE:1)==AGD
+            #LETV _FR:7=BERGA_INFERIOR_DIR.3DS
+         #ELSE
+            #LETV _FR:7=BERGA_INFERIOR_ESQ.3DS
+         #ENDIF
+      #ELSE
+         #LETV _FR:7=BERGA_INFERIOR.3DS
+      #ENDIF
+   #ELSEIF $(_TPCAIXA:9)=2 | $(APE:7)=8
+      #IF $(BERGAPARCIAL:0)=1
+         #IF ($(PM)=3 & $(APE:1)!!AGE) | $(APE:1)==AGD
+            #LETV _FR:7=BERGA_SUPERIOR_DIR.3DS
+         #ELSE
+            #LETV _FR:7=BERGA_SUPERIOR_ESQ.3DS
+         #ENDIF
+      #ELSE
+         #LETV _FR:7=BERGA_SUPERIOR.3DS
+      #ENDIF
+   #ELSE
+      // COLUNAS OU DORMITORIO
+      #LETV _FR:8=50_50_1100_50;
+      #IF ($(PM)=3 & $(APE:1)!!AGE) | $(APE:1)==AGD
+         #LETV _FR:7=BERGA_COLUNA_DIR.3DS
+      #ELSE
+         #LETV _FR:7=BERGA_COLUNA_ESQ.3DS
+      #ENDIF
+   #ENDIF
+   #LETS xpfrente=FRENTE3D.XP
+   #LET AFRE=$(AFRE:0)
+   JOBBERGA
+#ENDIF
+_FR_STANDARD

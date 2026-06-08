@@ -1,0 +1,15 @@
+{ 264   // Caixa Gaveta oculta para furaçao
+   *AZZERA*            =0
+   DESCRIZIONE         =Caixa Gaveta oculta para furaçao
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =$(slgav)-$(scorr),$(AFGAVA),$(spgav)
+   DIMENSIONE          =$(lgav)+$(scorr)*2,$(AGAV),$(PGAV)+1
+   COLORI              =0,0
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X6                  =$(_tpgav:1)/$(_corr:1)/$(espessura_gaveta:0)
+   X7                  =$(_tpgavalt:1)/$(ISSAPATEIRA:0)
+   X8                  =$(pcorredica)/$(_CORR:1)/$(_tpgav:4)$(_tpgavalt:4)$(PCORREDICA)$(FLAGINTERNA)$(FLAGCORGAVETA)/$(_TPGAV:1)
+   X9                  =$(_tpcaixa:1)/$(_corgv:1)/$(TPFIX:1)
+}

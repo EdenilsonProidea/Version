@@ -1,0 +1,12 @@
+{ 340   // Acessórios SO GRAFICA MASCARA
+   *AZZERA*            =0
+   DESCRIZIONE         =Acessórios SO GRAFICA MASCARA
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(_int:9),$(_int:9)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X3                  =$(curbox)
+   X8                  =INTERNO\$(Acessorios:3)
+}

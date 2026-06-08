@@ -1,0 +1,15 @@
+#IF $(INF)=1 #LET FOLGAFRENTEA=$(FOLGAFRENTEAI)
+#IF $(SUP)=1 #LET FOLGAFRENTEA=$(FOLGAFRENTEAS)
+_FR_STANDARD
+#IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+#LET PASSO=$(espacoripas:0)+$(LARGripas:0)
+#LET NRIPAS=INT($l/$(PASSO))+$(adicionaripas:0)
+#LET INIRIPAS=($l-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+#IF $(inicioripascost:0)!0
+   #LET INIRIPAS=$(inicioripascost:0)
+#ENDIF
+#FOR $1:$(NRIPAS),,IDRIPA
+   627,Sl=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),P=$(ESP_RIPA:3),x3=$(curbox)/P,SA=$(FOLGAFRENTEA),SP=$p+1
+#ENDFOR
+
+#MSG $(FOLGAFRENTEAI:0)+$(affre)

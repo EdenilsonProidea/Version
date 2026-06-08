@@ -1,0 +1,50 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=COZ_INF_NEWCANTOL.ERG
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 100, 100, 100
+DIM.MASSIMA= 1140, 5000, 1225
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+G,COZ_CAIXA
+-,FR
+G,FR_GERAL
+G,COZ_ACAB
+G,FR_INT
+-,fm
+D,fmbang,,1=0,Configura,,daucucina.crea.pangolo
+C,invertiap,,,Enverter Abertura,,,,,,,4
+T,lavtopbang,,1=0,Tipo Lav top,$(lavtopbang:3)=1
+M,angolox,,1=0,angulo,,,0|
+M,plat1,,,Prof Lat 1,,,560,,,,4
+M,plat2,,,Prof Lat 2,,,560,,,,4
+V,travvesq,,,Larg Trav Vertical Esq,,,80,80,,,4
+M,TRAVVDIR,,,Larg Trav Vertical Dir,,,80,80,,,4
+G,VAROCULTE
+
+[GRAFICA]
+CANTO_L_COZINF
+
+// 220
+
+// PRATSLCOZ
+
+// frontal

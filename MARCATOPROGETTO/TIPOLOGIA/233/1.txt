@@ -1,0 +1,13 @@
+{ 233   // Rodas
+   *AZZERA*            =0
+   DESCRIZIONE         =Rodas
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,-$(_pes:5),0
+   DIMENSIONE          =$(_pes:4),$(_pes:5),$(_pes:6)
+   COLORI              =$(_pes:8),$(_pes:8)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X3                  =$(curbox)
+   X8                  =pes\$(_pes:7)
+   X9                  =$(_PES:9)
+}

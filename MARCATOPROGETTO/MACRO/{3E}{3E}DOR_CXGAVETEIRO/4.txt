@@ -1,0 +1,58 @@
+// GAVETEIRO DOIS ENCHIMENTOS  0  31
+// GAVETEIRO ENCHIMENTO ESQUERDO  0  32
+// GAVETEIRO ENCHIMENTO DIREITO  0  33
+// GAVETEIRO SEM ENCHIMENTO  0  34
+#LET pdivhg=$p
+318,SL=$(ENCHE)  //Lateral Gaveteiro
+318,SL=$l-$(ESLATGAV:0)-$(ENCHD)  // Lateral Gaveteiro
+!QUOTA9 ($(ENCHE),0,$P),($l-$(ENCHD),0,$P),,80
+// para messagem interferencia dobradica
+422,SL=$(enche),L=$(ESLATGAV:0),P=$p+200,X5=Lateral Esquerdo Gaveteiro - BOX-$(CURBOX)  // Interferenza com dobradica
+422,SL=$l-$(ESLATGAV:0)-$(ENCHD),L=$(ESLATGAV:0),P=$p+200,X5=Lateral Direito Gaveteiro - BOX-$(CURBOX)  // Interferenza com dobradica
+#IF $(ENCHE)>0
+   #LET lench=$(ENCHE)
+   #IF $(afenchpcost:0)>0
+      319,SP=$p-1*($(AFENCHPCOST:0)+$(ESENCHGAV:0)),X5=1  //enchimento gaveteiro
+   #ELSE
+      // 319,SP=$(AFENCHP:0)  // enchimento gaveteiro
+      319,SP=$p-1*($(AFENCHP:0)+$(ESENCHGAV:0)),X5=1  //enchimento gaveteiro
+   #ENDIF
+   !QUOTA9 (0,0,$P),($(ENCHE),0,$P),,80
+#ENDIF
+#IF $(enchd)>0
+   #LET lench=$(enchd)
+   #IF $(afenchpcost:0)>0
+      319,SL=$l-1*($(lench)),SP=$p-1*($(AFENCHPCOST:0)+$(ESENCHGAV:0)),X5=1  //enchimento gaveteiro
+   #ELSE
+      //  319,SL=$l-$(lench),SP=$(AFENCHP:0)  // enchimento gaveteiro
+      319,SL=$l-1*($(lench)),SP=$p-1*($(AFENCHP:0)+$(ESENCHGAV:0)),X5=1,L={$(LENCH)}  // enchimento gaveteiro
+   #ENDIF
+   !QUOTA9 ($l-1*($(lench)),0,$P),($l,0,$P),,80
+#ENDIF
+#LET tmp=$l-1*($(eslatgav:0)*2+$(ENCHE)+$(ENCHd))
+//204,SL=$(enche)+$(eslatgav:0),SA=50,SP=0,L=$(tmp),X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1  //Traversa verticale
+//204,SL=$(enche)+$(eslatgav:0),SP=0,L=$(tmp),X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1  //Traversa verticale
+#IF 1==0 // Comentado gestão do gaveteiro padrão ideamoveis  <c23341>
+   325  // Travessa Horizontal Gaveteiro
+   325,SP=$P-$(PTRAGAV:0)  //Travessa Horizontal Gaveteiro
+   325,SA=$A-$(ESTRAGAV:0)  //Travessa Horizontal Gaveteiro
+   #IF $(temfolga)>5
+      325,SA=$A-$(ESTRAGAV:0),SP=$P-$(PTRAGAV:0)-30  //Travessa Horizontal Gaveteiro
+   #ELSE
+      325,SA=$A-$(ESTRAGAV:0),SP=$P-$(PTRAGAV:0)  //Travessa Horizontal Gaveteiro
+   #ENDIF
+#ELSE // Nova gestão seguindo o padrão Marcato  <c23341>
+   323,SA=$A-$(PTRAGAV:0)  // Travessa Vertical Gaveteiro Dormitório
+   323,SA=50  // Travessa Vertical Gaveteiro Dormitório
+#ENDIF
+#LET redinfcai=$(ESTRAGAV:0)
+#LET redsupcai=$(ESTRAGAV:0)
+#LET atotgvsp=$a
+#LET aini=0
+#IF $(_fechmag:3)!!  //fechadura gaveta
+   298,X9=$(_fechmag:3)  // Item
+#ENDIF
+
+!QUOTA9 (150,0,$P),(150,$A,$P),,0
+
+// dor_gvsp_interno,SL=$(enche),SA=$(REDINFGAVETEIRO:0),L=$l-1*($(enche)+$(enchd)),A=$a-1*($(REDSUPGAVETEIRO:0)+$(REDINFGAVETEIRO:0)),ESLAT=$(ESLATGAV:0),REDINFCAIXA={$(REDINFCAIXA)-$(REDINFGAVETEIRO:0)},PLAT=$P,ATOTGVSP=$(ATOTGVSP)

@@ -1,0 +1,27 @@
+#LET pdiv=$P-$(esfundo:0)-$(POSFUNDO:0)-$(RED_DIV_NICHO:0)
+#IF $(prof_prat:0)>0
+   // SL=$(es)-$(RAG_COS:0),SA=$(es)-$(RAG_COS:0),SP=15,L=$L-2*$(es)+$(RAG_COS:0)*2,A={$A-2*$(es)+$(RAG_COS:0)*2},P=$(esfundo)
+   #LET pdiv=$(prof_prat:0)
+#ENDIF
+#LET CONTADIV=$(CONTADIV)+1
+#LOADVAR SUPORTEPRAT SUPORTEPRAT $(SUPORTEPRAT_$(CONTADIV):1)
+#LOADVAR LEDPRAT LEDPRAT $(LEDPRAT_$(CONTADIV):1)
+#IF $(ORIENTA)=1
+   280,SP=$(POSFUNDO:0)+$(ESFUNDO:0),P=$(pdiv),C1=$(_Cprat:3)|$(.percorso)\foto\madeira\$(_Cprat:4)|$(_Cprat:5),C2=$(_Cprat:3)|$(.percorso)\foto\madeira\$(_Cprat:4)|$(_Cprat:5),CX=SUPORTEPRAT_$(CONTADIV),X9=_/$(_Cprat1)/$(TPFIX:1)/$(TIPOPINTURA:1)  //PAINEL VERTICAL
+   297,COD= / /$(SUPORTEPRAT:2),SA=$A/2,SP=$P,L=500,A=30,P=10,sl=-250,CX=SUPORTEPRAT_$(CONTADIV)  //TEXTO
+#ELSE
+   
+   DIV_HOR_ESP,P=$(pdiv),_corex=$(_cprat)//,MACRO=DIV_HOR_ESP
+   // 297,COD= / /$(SUPORTEPRAT:2),SA=$A/2,SP=$P,L=500,A=30,P=10,sl=$L/2-250,CX=SUPORTEPRAT_$(CONTADIV)  //TEXTO
+   //   297,COD= / /$(LEDPRAT:2),SL=-75,SA=$A/2,SP=$P,L=250,A=30,P=10,CX=LEDPRAT_$(CONTADIV)  //TEXTO
+   #LETS AMBIENTE=NICHO
+   ILU_PRAT,SA=-1,P=$(pdiv),NICHO=1,ESCOS=$(esfundo),MACRO=ILU_PRAT
+   #SELECT $(LEDPRAT_$(CONTADIV)) // CONTA PRATELEIRA ONDE VAI O LED
+   #CASE 1 // LED EM BAIXO
+      //  635,SA=-2,SP=$(POSFUNDO:0)+$(ESFUNDO:0)+10  //LED
+   #CASE 2 // LED EM CIMA
+      //    635,SA=$A-2,SP=$(POSFUNDO:0)+$(ESFUNDO:0)+10  //LED
+   #ENDSELECT
+#ENDIF
+SUPORTEPRAT
+// PAINEIS_LATERAIS

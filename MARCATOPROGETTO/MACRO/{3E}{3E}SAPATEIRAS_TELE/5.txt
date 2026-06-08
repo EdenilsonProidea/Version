@@ -1,0 +1,20 @@
+!PARAMETRI ALT=$A
+#LETS TRABALHOAT=N
+calc_n_prat
+#IF $(rr)>0
+   #FOR $1:$(rr),,idsapa
+      #IF $(disativadraggerprat)=1
+         
+         SAPATEIRA_TELE,SA={INT($(ALT)/($(RR)+1)*$(idsapa))},L=$l,A=96,P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+      #ELSE
+         #IF $(posprata$(_ctx):$(idsapa))>0
+            SAPATEIRA_TELE,SA={INT($(posprata$(_ctx):$(idsapa)))},L=$l,A=96,P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+            402,SL=$l/2,SA=$(posprata$(_ctx):$(idsapa)),SP=$p+10,L=$(posprata$(_ctx):$(idsapa)),A=1,X1=9,X3=SaSapateira;Posprata$(_ctx);{$(idsapa)+1},X4=1,X5=3  //DRAGGER
+            #MSG $(_MONTADO:0)
+         #ELSE
+            SAPATEIRA_TELE,SA={INT($(ALT)/($(RR)+1)*$(idsapa))},L=$l,A=96,P=$p,COD=$(_INT:4)/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+            402,SL=$l/2,SA=INT($(ALT)/($(RR)+1)*$(idsapa)),SP=$p+10,L=INT($(ALT)/($(RR)+1)*$(idsapa)),A=1,X1=9,X3=SaSapateira;Posprata$(_ctx);{$(idsapa)+1},X4=1,X5=3  //DRAGGER
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+#ENDIF

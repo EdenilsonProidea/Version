@@ -1,0 +1,79 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Tamburato.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,ESP_TAMBURATO,,,Esp Total Tamburato,,,,,,,1
+T,ESP_PRAT,,,Esp Tampo Acabamento,,,,,,,1
+Z,SARRAFOEX,,,,,,,,,,4,,1=0
+T,_COREX,,,,$(esp_prat:3)[$(_corex:12)]!!0,,,,,,4
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,4
+M,angz,,,Rotaciona?,,,,,,,7
+-,ILU,,,Il,,,,,,,2
+D,iluInf,,,Ilu.Inferior,,!ilu.htm,,,,,2
+T,_iluinf,,$(iluInf:0)>0,,$(_iluinf:3)=$(iluInf:1),,,,,,2
+D,ilubasSup,,,Ilu. Superior,,!ilu.htm,,,,,2
+T,_ilubassup,,$(ilubasSup:0)>0,,,,,,,,2
+T,_ilufonte,,,,,,,,,,2
+-,Borda,,,Bo
+Z,BFRE,,,Borda Frente?,,,,,,,8
+Z,BTRA,,,Borda Atras?,,,,,,,8
+Z,BESQ,,,Borda Esquerda?,,,,,,,8
+Z,BDIR,,,Borda Direita?,,,,,,,8
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+
+#LET A=$(esp_tamburato:0) // Altura total
+
+
+#IF $(ESP_TOTAL:3)[18;25;30;40;50]!0
+   ILU_TAMPOINF,L=$L,SA=-1,inc_pain_acab=0,incpainti=0,MACRO=ILU_TAMPOINF,usagrapa=1
+#ENDIF
+
+
+281,SA=0,AZ=$(angz:0),X7=N/N/N/N/0/0/0/0 //PAINEL HORIZONTAL
+
+
+ILU_TAM,AZ=$(angz:0)  // --- Iluminação tamburato ----
+
+
+//FITADEBORDA_H,AZ=$(angz:0)
+
+
+#IF $(angz)!0
+   #LET ul=-(1-cos($(angz:0)))*$l
+   #IF $(angz:0)>0
+      #LET ua=-cos($(angz:0))*$l-$(ESP_PRAT:3)*2
+   #ELSE
+      #LET ua=cos($(angz:0))*$l-$(ESP_PRAT:3)
+   #ENDIF
+#ENDIF
+
+!COMMENTO1 $(BORDAPRAT:2) $(SUPORTEPRAT:2) - $(TIPOPINTURA:2)
+!COMMENTO4 LED=$(INFOPECA)
+
+LOGERROS

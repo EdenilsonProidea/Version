@@ -1,0 +1,40 @@
+#LET lench=56
+#LET aench=96
+#LET affrontalsapateira=70
+#LET afatrassapateira=5
+
+
+#IF $(AVANCOCLOSETL:0)>0
+   #LET PENCH=$P-1*($(AVANCOCLOSETL:0))
+#ELSE
+   #LET PENCH=$P-1*($(affrontalsapateira))
+#ENDIF
+#IF $(enchimento:3)=1 // esq
+   #LETS ENCH=E
+   #LET lsapateira=$l-$(lench)
+   #LET slsapateira=$(lench)
+   374  // Enchimento Sapateira/Calceiro
+#ELSEIF $(enchimento:3)=2 // dois
+   #LETS ENCH=D/E
+   #LET lsapateira=$l-$(lench)*2
+   #LET slsapateira=$(lench)
+   374  // Enchimento Sapateira/Calceiro
+   374,X3=$(curbox)/D,SL=$L-$(LENCH)  // Enchimento Sapateira/Calceiro
+#ELSEIF $(enchimento:3)=3 // dir
+   #LETS ENCH=D
+   #LET lsapateira=$l-$(lench)
+   #LET slsapateira=0
+   374,X3=$(curbox)/D,SL=$L-$(LENCH)  // Enchimento Sapateira/Calceiro
+#ELSE
+   // sem
+   #LETS ENCH=S
+   #LET lsapateira=$l
+   #LET slsapateira=0
+#ENDIF
+// #MSG $p-1*($(affrontalsapateira)+$(afatrassapateira))
+#IF $(CLOSETLIGHT:0)=1
+   sapateira_CL,sp=0,p=$p,sl=$(slsapateira),l=$(lsapateira),lagr=$(lsapateira),_tpgav=
+#ELSE
+   sapateira_livre,sp=$(afatrassapateira),p=$p-1*($(affrontalsapateira)+$(afatrassapateira)),sl=$(slsapateira),l=$(lsapateira),lagr=$(lsapateira),_tpgav=
+#ENDIF
+// sapateira_livre,sp=$(afatrassapateira),p=$p-1*($(affrontalsapateira)+$(afatrassapateira)),sl=$(slsapateira),l=$(lsapateira),lagr=$(lsapateira),_tpgav=

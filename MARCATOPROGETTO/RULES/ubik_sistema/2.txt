@@ -1,0 +1,71 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=ubik_sistema.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*,
+
+
+[gene]
+T,MODELLO
+G,UBIK_SISTEMA
++,UBIK_AGG_FUNDO
+G,VAROCULTE
+
+[GRAFICA]
+#LOADVAR _corcx _corfu $(_corfu:1)
+ubik_inicia
+
+#LETS codpainelu=$(codmod)U662
+#LETS _macrofinale=ubik_finale
+#LET espacio=11
+
+
+#LET LCANTONEIRA=73
+
+// inserimento fundo
+580,SL=$(LCANTONEIRA)+$(espacio),SP=$(pubik)-15,L=$(lfundou:0),P=15  // Painel Ubik
+517,SL=$(LCANTONEIRA)+$(espacio)-3.5,SP=$(pubik),L=$(lfundou:0)+7,P=15,X1=5,X2=Ins,X3=15,X4=1,X5=$(lfundou:0)+6/$a  // Area di vestizione <c21068> alteração de 7 p/ 6
+
+#LET ltmp=$(LCANTONEIRA)+$(ESPACIO)+$(lfundou:0)
+#LET sltmp=$(LCANTONEIRA)+$(ESPACIO)+$(lfundou:0)+$(ESPACIO)
+
+
+
+#IF $(_fechesqu:3)=1
+   #LET nl=0
+#ELSEIF  $(_fechesqu:3)=2
+   #LET nl=$(pubik)
+#ELSEIF $(_fechesqu:3)=3
+   #LET nl=$(LCANTONEIRA)
+#ENDIF
+
+#IF $(_fechdiru:3)=1
+   #LET ul=0
+#ELSEIF  $(_fechdiru:3)=2
+   #LET ul=-$(espacio)-$(pubik)-1
+#ELSEIF $(_fechdiru:3)=3
+   #LET ul=-$(LCANTONEIRA)-$(ESPACIO)-1
+#ENDIF
+// ubik_agg_fundo
+// ubik_finale
+// base_ubik
+
+// 590
+
+// 260

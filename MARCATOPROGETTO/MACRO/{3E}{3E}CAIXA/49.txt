@@ -1,0 +1,89 @@
+!PARAMETRI cantoapr=0,iscanto=0
+#LET TPCX=$(_tpcaixa:3) // TIPO CAIXA
+// #MSG $(TPCX)
+#IF $(_corcx:1)!!999 & $(TPCX)>0
+   calcolasaglat
+   CAIXA_MONTAGEM
+   #LET redinfcaixa=$(ABASE:0)
+   #LET redsupcaixa=$(ABASE:0)
+   #IF $(TPCX)=8 // DIVISOR DE AMBIENTE 2 LADOS
+      coz_cxdiv_amb2l
+   #ELSEIF $(TPCX)=13  //SUPERIOR MICROONDE
+      coz_cxsup_MICRO
+   #ELSEIF $(TPCX)=10  //SUPERIOR MICROONDE
+      coz_cxsup
+   #ELSEIF $(TPCX)=11  //SUPERIOR MICROONDE
+      coz_cxsup_div
+   #ELSEIF $(TPCX)=12  //SUPERIOR MICROONDE
+      COZ_CXSUP_coifa
+   #ELSEIF $(TPCX)=17
+      COZ_COL_CONC
+   #ELSEIF $(tpcx)=18
+      coz_fogao
+   #ELSEIF $(TPCX)=26 // modulo dormitorio
+      dor_cxmod
+   #ELSEIF $(TPCX)=28 //bancada dormitorios
+      dor_cxmod_banc
+   #ELSEIF $(TPCX)=29 //modulo dormitorio
+      DOR_CXMOD_corr2
+   #ELSEIF $(TPCX)=293 //modulo dormitorio
+      DOR_CXMOD_corr3
+   #ELSEIF $(TPCX)=30 //CRIADO COM RODIZIO
+      DOR_CRIADO_RODIZIO
+   #ELSEIF $(tpcx)=31  //maleiro
+      DOR_MALEIRO
+   #ELSEIF $(tpcx)=32  //closet AVANÇADO com fundo
+      #IF $(CLOSET_L:0)=1 //<C20060>
+         DOR_CLOSETL //GESTÃO CLOSET LIGHT MARCATO
+      #ELSE
+         DOR_CLOSETAVAN // ****GESTÃO IDEAMOVEIS****
+      #ENDIF
+   #ELSEIF $(tpcx)=33  //closet AVANÇADO com fundo
+      DOR_FUNDOFALSO
+   #ELSEIF $(TPCX)=36 // caixa especial -- nao mexer
+      coz_especial,SP=$(PFUNTRAS),P=$P-$(PFUNTRAS)
+   #ELSEIF $(TPCX)=90 // caixa torre
+      coz_cxtorre
+   #ELSEIF $(TPCX)=501 // caixa torre
+      #IF $(_TPCAIXA:17)!!
+         #LOADVAR _TPFUNDO _TPFUNDO $(_TPCAIXA:17)
+      #ENDIF
+      BAN_ESP,P=$P-$(PFUNTRAS),SP=$(PFUNTRAS)
+   #ELSEIF $(TPCX)=100  // caixa especial -- nao mexer
+      #LETS TMP=$(_TPCAIXA:16)
+      #VB
+         V("CAIXAPERS")=REPLACE(V("TMP"),";",",")
+      #ENDVB
+      //       #LETS CAIXAPERS=$[TOTAB;$(_TPCAIXA:16)]
+      #LOADVAR _TPFUNDO _TPFUNDO $(_TPCAIXA:17)
+      coz_especial,P=$P-$(PFUNTRAS),SP=$(PFUNTRAS)
+   #ELSEIF $(TPCX)=101
+      #LOADVAR _TPFUNDO _TPFUNDO $(_TPCAIXA:17)
+      funtravhor,P=$P-$(PFUNTRAS),SP=$(PFUNTRAS),tps=2
+   #ELSEIF $(TPCX)=110
+      CAIXA_ELETRO
+   #ELSEIF $(TPCX)=111
+      CAIXA_GELADEIRA
+   #ELSEIF $(TPCX)=998
+      CAIXA_FAKE_GAVAVU
+   #ENDIF
+   #IF $(CLOSET_L:0)=0 & $(CANTOR:0)=0
+      #IF $(SEMLED:0)=0
+         #IF $(SUP:0)=0
+            ILU_CAIXA
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   dis_2d
+   notacaixa
+   disp_cxsup
+   paineis_laterais,iscanto=$(iscanto),PLAT=$P,FACELAMINA=$(TIPOPINTURA:1) // <c21108> ADD ,PLAT=$P  // FACELAMINA=1 <26807>
+   check_caixa
+   CAVAVERT
+   #IF $(TPCX)!=12
+     // fixa_superior
+   #ENDIF
+#ELSE
+   #LET ESLAT=0
+#ENDIF
+//cava

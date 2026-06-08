@@ -1,0 +1,123 @@
+!PARAMETRI colonna=0
+#IF $(dietro)=0
+   #LET l1=$(l1)+$(l5)//dimensionamento della base in larghezza rispetto al pensile
+#ENDIF
+#LET l=$(l1),p=$(l2) //dimensionamento base angolo
+#LET lscocca=$L-$(espacoAtras:0)
+#LET plat=$(pscocca)
+!COMMENTO1 caixa $(lscocca)x$(pscocca) mm
+!MATHAZZERA
+#IF $PM=1 // ************************b.angolo sx *****************************
+   #LETV painelesq=0
+   !AZZERA
+   !TIPOBOX 10
+   // ********  impostazioni di base ************************
+   !MTCOLLEGA {$(l2)},0,0,0,{-$(ANG)}
+   !PUNTO px0,py0,0,0
+   !ADDLINK1 ESQUERDA, 198,$(PX0),0,$(PY0),{-$(ANG)}
+   !ADDLINK1 DIREITA, 101
+   !ADDLINK2 ESQUERDA, 198,$(PX0),0,$(PY0),{-$(ANG)}
+   !ADDLINK2 DIREITA, 101
+   gestint,tipo=1
+   // ******************** controllo per dimensionamento scocca ****************************************
+   #IF $(ang)<-90 & $(enangulo:0)=1
+      !RETTA 73,0,0,1
+      !RETTA 74,0,$(ptop1)-$(PING:0)
+      !INTERSECA px1,py1,73,74
+      #IF $(px1)>$L-$(lscocca) //è necessario ridurre la scocca
+         #LET LSCOCCA=$l-$(PX1)-50
+      #ENDIF
+   #ENDIF
+   // ******************* costruzione scocca /ripiani  ********************
+   caixa,SL=$L-$(lscocca),SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),L=$(lscocca),P=$(PSCOCCA),iscanto=1
+   400,SL=$L-$(lscocca),SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),L=$(lscocca),P=$(PSCOCCA)  // COLISÃO
+   
+   _int_canto_r,SL=$L-$(lscocca),SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),L=$(lscocca),P=$(PSCOCCA)
+   // ******************* frontali angolo ********************************
+   frontaleBATangolo
+   #IF $(SUP)=0
+      // **************************** zoccolo e piedini ***********************
+      zoccoloangolo
+      #IF $a<1400
+         // ********************************  TOP ******************************
+         topangolo
+         // ***************************** alzatina *****************************
+         FILETEANGOLO
+         BORDATURAANGOLO,TIPO=1
+      #ENDIF
+   #ELSE
+      #IF $(CAVA)=1
+         MOLD_SUP_CANTO_LR,SA=$(INCR_FR_SUP_GOLA),A=$A-$(INCR_FR_SUP_GOLA)
+      #ELSE
+         MOLD_SUP_CANTO_LR
+      #ENDIF
+   #ENDIF
+   // quote
+   !QUOTA1 ({$(px0)} 0 {$(py0)}),(0 0 0),{rnd($(l2))},-50
+   !QUOTA1 (0 0 0),({$l} 0 0),{rnd($(l1))},-50
+   !QUOTA5 ({$l-$(lscocca)} 0 0),({$l} 0 0),{rnd($(lscocca))},-10
+   !QUOTA5 ({$l} 0 {$(PTOP1)-$(PSCOCCA)-$(PING:0)}),({$l} 0 {$(PTOP1)-$(PING:0)}),{rnd($(PSCOCCA))},-10
+#ELSE
+   //#LETV paineldir=0
+   !AZZERA
+   !TIPOBOX 9
+   // ********  impostazioni di base ************************
+   !MTCOLLEGA -$(l2),0,$(l1),0,$(ang)
+   !PUNTO px0,py0,0,0
+   !ADDLINK1 ESQUERDA, 201
+   !ADDLINK1 DIREITA, 198,$(PX0),0,$(PY0),$(ANG)
+   !ADDLINK2 ESQUERDA, 201
+   !ADDLINK2 DIREITA, 198,$(PX0),0,$(PY0),$(ANG)
+   // calcola anta
+   // ********************************* gestione interferenze *******************************************************
+   gestint,tipo=1
+   // ******************** controllo per dimensionamento scocca ****************************************
+   #IF $(ang)<-90 & $(enangulo:0)=1
+      !RETTA 73,0,0,1
+      !RETTA 74,0,$(ptop1)-$(PING:0)+$(ESFRE)
+      !INTERSECA px1,py1,73,74
+      #IF $(px1)<$(lscocca) //è necessario ridurre la scocca
+         #LET LSCOCCA=$(PX1)-50
+      #ENDIF
+   #ENDIF
+   // **************************** costruzione scocca ***********************************
+   caixa,sp={$(PTOP1)-$(PSCOCCA)-$(PING:0)},l=$(lscocca),p=$(pScocca),iscanto=1
+   400,SP={$(PTOP1)-$(PSCOCCA)-$(PING:0)},L=$(lscocca),P=$(pScocca)  // COLISÃO
+   _int_canto_r,SP={$(PTOP1)-($(PSCOCCA))-$(PING:0)},L=$(lscocca),P=$(pScocca),QUOTARIP=1
+   // ******************* frontali angolo ********************************
+   frontaleBATangolo
+   #IF $(SUP)=0
+      // **************************** zoccolo e piedini ***********************
+      zoccoloangolo
+      // ********************************  TOP ******************************
+      #IF $a<1400
+         topangolo
+         // ***************************** alzatina *****************************
+         FILETEANGOLO
+         // ************** Costruzione del Top pm1*****************************
+         BORDATURAANGOLO,TIPO=1
+      #ENDIF
+   #ELSE
+      #IF $(CAVA)=1
+         MOLD_SUP_CANTO_LR,SA=$(INCR_FR_SUP_GOLA),A=$A-$(INCR_FR_SUP_GOLA)
+      #ELSE
+         MOLD_SUP_CANTO_LR
+      #ENDIF
+   #ENDIF
+   // quote
+   !QUOTA1 ({$(L1)} 0 0),({$(px0)} 0 {$(py0)}),{rnd($(l2))},-50
+   !QUOTA1 (0 0 0),({$(L1)} 0 0),{rnd($(l1))},-50
+   !QUOTA5 (0 0 0),({$(lscocca)} 0 {0}),{rnd($(lscocca))},-10
+   !QUOTA5 (0 0 {$(PTOP1)-$(PING:0)}),(0 0 {$(PTOP1)-$(PSCOCCA)-$(PING:0)}),{rnd($(PSCOCCA))},-10
+#ENDIF
+#IF $(ANG2)!90
+   #IF $pm=3
+      297,lato=10,COD= / /FS $(ANG2)°,SL=$L-200,SA=$A,SP=100,L=150,A=100,P=10,AY=-45// QUOTE
+   #ELSE
+      297,lato=10,COD= / /FS $(ANG2)°,SL=50,SA=$A,SP=100,L=150,A=100,P=10,AY=45// QUOTE
+   #ENDIF
+#ENDIF
+#LET np=0
+#LET na=-$(_pes:5)
+
+ILU_CAIXA,P=$(PLAT1:0),INF=1,AMBIENTE=C

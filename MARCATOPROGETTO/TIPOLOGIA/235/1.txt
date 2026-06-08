@@ -1,0 +1,11 @@
+{ 235   // rodape LATERAL
+   *AZZERA*            =0
+   DESCRIZIONE         =rodape LATERAL
+   CODICE              =$(_pes:13) /_CORRODAPE=$(_CORRODAPE:1);_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,-$(arod),0
+   DIMENSIONE          =$(PROD:0),$(arod),$p-$(PROD:0)
+   COLORI              =$(corrodape),$(corrodape)
+   ORIENTAMENTO        =PAL
+   X3                  =$(curbox)
+}

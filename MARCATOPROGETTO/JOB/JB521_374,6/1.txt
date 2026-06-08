@@ -1,0 +1,1 @@
+#IF $(pl)<0 #LET F=1 #LET F=2$(F),FF,x={$(PA)+32} y={$(PP)+80} DF=3 PF=5$(F),FF,x={$(PA)+32} y={$(PP)+$(DP)-80} DF=3 PF=5$(F),FF,x={$(PA)+32} y={$(PP)+$(DP)/3} DF=3 PF=5$(F),FF,x={$(PA)+32} y={$(PP)+$(DP)/3*2} DF=3 PF=5

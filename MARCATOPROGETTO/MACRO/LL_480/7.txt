@@ -1,0 +1,4 @@
+#MSG TESTE
+#IF $(X:4)==60
+   8581,0
+#ENDIF

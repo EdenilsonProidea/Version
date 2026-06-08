@@ -1,0 +1,74 @@
+{ iniciafech   // INICIA FECHAMENTO DORMITORIO
+   *AZZERA*            =0
+   DESCRIZIONE         =INICIA FECHAMENTO DORMITORIO
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 4080Descrição 2205DESCR ESTESA 5340grupo 2250
+   { 
+      //                ,Descrição        ,DESCR ESTESA                                                   ,grupo
+      ABASE             ,$(ESPARM:3)      ,Espessura da Base                                              ,Caixa Base
+      AFCOS             ,15               ,Afastamento do fundo da caixa na Profundidade                  ,Caixa Fundo
+      AFINIDOBB         ,100              ,Afastamento dobradiça inicio/fim para porta de giro            ,dobradiça
+      AFINIDOBL         ,94.5             ,Afastamento Dobradiça Inicio/Fim Para Porta Basculante         ,
+      AFRODF            ,30               ,Afastamento Rodapé Na Frente                                   ,Rodapé
+      AFRODL            ,50               ,Afastamento Rodapé Na Lateral                                  ,Rodapé
+      ALT_MIN_DESEMP    ,                 ,ALTURA MINIMA DA PORTA PARA DESEMPENADOR                       ,Desempenador
+      ALTMAX2DOBBASC    ,1100             ,Altura Maxima para 2 Dobradiças Basculante                     ,
+      ALTMAX2DOBGIRO    ,1100             ,Altura Maxima para 2 Dobradiças Giro                           ,dobradiça
+      ALTMAX3DOBBASC    ,1550             ,Altura Maxima para 3 Dobradiças Basculante                     ,
+      ALTMAX3DOBGIRO    ,1500             ,Altura Maxima para 3 Dobradiças Giro                           ,dobradiça
+      ALTMAX4DOBBASC    ,2510             ,Altura Maxima para 4 Dobradiças Basculante                     ,
+      ALTMAX4DOBGIRO    ,2000             ,Altura Maxima para 4 Dobradiças Giro                           ,dobradiça
+      ALTMAX5DOBBASC    ,2750             ,Altura Maxima para 5 Dobradiças Basculante                     ,
+      ALTMAX5DOBGIRO    ,2400             ,Altura Maxima para 5 Dobradiças Giro                           ,dobradiça
+      ALTMAX6DOBBASC    ,0                ,Altura Maxima para 6 Dobradiças Basculante                     ,
+      ALTMAX6DOBGIRO    ,2730             ,Altura Maxima para 6 Dobradiças Giro                           ,dobradiça
+      ATIVADRETACURVA   ,1                ,Ativa dobra Reta e Curva                                       ,dobradiça
+      CODDOBRACURVA     ,                 ,Codigo dobra curva                                             ,dobradiça
+      CODDOBRARETA      ,                 ,Codigo dobra reta                                              ,dobradiça
+      CORBASSEP         ,0                ,HABILITA ESCOLHA DA COR DA BASE                                ,Caixa cor
+      CORFUNSEP         ,1                ,HABILITA ESCOLHA DA COR DO FUNDO                               ,Caixa cor
+      CORLATSEP         ,0                ,HABILITA ESCOLHA DA COR DA LATERAL                             ,Caixa cor
+      DESC_CANTOR_LAT   ,100              ,AFASTAMENTO CAIXA CANTO RETO                                   ,Caixa
+      DESC_L_PRAT       ,1                ,DESCONTO DO PRATELEIRA NA LARGURA                              ,Caixa Folgas
+      ESCOS             ,15               ,Espessura do Fundo                                             ,Caixa Fundo
+      ESDIVH            ,$(ESPDIVARM:0)   ,Espessura divisao horizontal                                   ,Caixa Divisoria
+      ESDIVV            ,$(ESPDIVARM:0)   ,Espessura divisao vertical                                     ,Caixa Divisoria
+      ESLAT             ,$(ESPARM:0)      ,Espessura da Lateral                                           ,Caixa Lateral
+      ESTRA             ,15               ,Espessura da Travessa                                          ,Caixa Travessas
+      FITARSOVISTA      ,1                ,Colocar fita de borda so nos lados visiveis                    ,caixa
+      FOLGAFRENTEAI     ,1.5              ,Folga das Frentes na Altura inferior                           ,frente
+      FOLGAFRENTEAS     ,1.5              ,Folga das Frentes na Altura superior                           ,frente
+      FOLGAFRENTEL      ,{$(ESLAT:0)/2+4} ,Folga das Frentes na Largura lateral                           ,frente
+      FOLGAFRENTELI     ,2                ,Folga das Frentes na Largura centro duas portas                ,frente
+      FOLGAFRENTELLD    ,1.5              ,Folga das Frentes na Largura lateral (MODULO LAT DUPLO)        ,frente
+      IDBOX             ,1                ,Adiciona id do box para subambientes                           ,Caixa observaçao
+      LARG_MIN_2DESEMP  ,                 ,LARGURA MINIMA DA PORTA PARA 2 DESEMPENADORES                  ,Desempenador
+      LARG_MIN_DESEMP   ,                 ,LARGURA MINIMA DA PORTA PARA 1 DESEMPENADOR                    ,Desempenador
+      LMAXPORTAABRIR    ,650              ,Largura maxima porta de abrir                                  ,frente
+      NOTAMEDIDACAIXA   ,0                ,Nota com Medida Da Caixa Na Frente Dos Modulos (0=NAO - 1=SIM) ,Caixa observaçao
+      PADIVCENTRAL      ,1000             ,Posição na altura divisão central                              ,Caixa Divisoria
+      PAMALEIRO         ,1800             ,Posição na altura padrão maleiro                               ,Caixa Divisoria
+      PCANAL            ,7                ,Profundidade canal para fundo                                  ,Caixa Fundo
+      PROD              ,10               ,Profundidade da Rodapè                                         ,Rodapé
+      RAG_COS           ,5                ,Incremento do fundo que entra no canal                         ,Caixa Fundo
+      RED_BASEF         ,0                ,Redução base frontal                                           ,caixa
+      RED_F_DIVH        ,50               ,reduçao frontal divisao HOR                                    ,Caixa Divisoria
+      RED_F_DIVH_COR1   ,40               ,reduçao frontal divisao HOR CORRER 1 VIA                       ,Caixa Divisoria
+      RED_F_DIVH_COR2   ,80               ,reduçao frontal divisao HOR CORRER 2 VIA                       ,Caixa Divisoria
+      RED_F_DIVV        ,50               ,reduçao frontal divisao VER                                    ,Caixa Divisoria
+      RED_F_DIVV_COR1   ,40               ,reduçao frontal divisao VER CORRER 1 VIA                       ,Caixa Divisoria
+      RED_F_DIVV_COR2   ,80               ,reduçao frontal divisao VER CORRER 2 VIA                       ,Caixa Divisoria
+      RED_F_GAVET       ,79               ,reduçao frontal gaveteiro                                      ,Caixa Gaveteiro
+      RED_F_GAVETG      ,75               ,reduçao frontal gaveteiro                                      ,Caixa Gaveteiro
+      RED_F_MALEIRO     ,50               ,Reduçao Frontal Maleiro                                        ,Maleiro
+      RED_F_PRAT        ,50               ,reduçao frontal prateleira                                     ,Caixa Prateleira
+      RED_F_ROD         ,50               ,reduçao frontal rodapè                                         ,Caixa
+      RED_INTM          ,0                ,Reducao no interno dos modulos para os dois lados.             ,Caixa Folgas
+      RED_VAO_PORTAGIRO ,45               ,Reduçao vao porta de giro                                      ,Caixa Divisoria
+      SEPARAFRENTEORCA  ,1                ,separa as frentes no orçamento                                 ,frente
+      SOBREP            ,20               ,SOBREPOSTO PORTA DE CORRER                                     ,frente
+      SOBREPBASEFECH    ,150              ,SOBREPOSTO FECHAMENTO                                          ,fechamento
+   }
+}

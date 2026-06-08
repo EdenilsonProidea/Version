@@ -1,0 +1,12 @@
+#LET LFRE=$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1
+_iniciafr
+// #LET folgafrenteaS=0
+// #LET folgafrenteai=0
+#IF $(vfr:1)!!999
+   #LETS CINEX_VAR_OBRIGATORIAS=_SISTEMAS=STD0901;_USINAGEMCLIENTE=000;_APLICACAO=FG_01_01;_POSPORTAS=FG_01_01_01;
+   #LETS CINEX_VAR_DEFAULT=
+#MSG $(afre)
+   _fr,move=$(movfr)
+   fechadura,move=$(movfr)
+#ENDIF
+ACEINTFRENTE,SL=$(eslat:0),L=$(lfre:0),TPAPER=1,MOVE=$(MOVFR)

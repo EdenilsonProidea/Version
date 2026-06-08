@@ -1,0 +1,14 @@
+#IF $(_TPGAVALT:0)=008
+   #LET mintracub=48
+   #LET maxtracub=127
+   #IF $(red_v_esq)<$(mintracub:0) | $(red_v_esq)>$(maxtracub:0)| $(red_v_dir)<$(mintracub:0) | $(red_v_dir)>$(maxtracub:0)
+    //  #LETS idlogerros=$(idlogerros)46;
+   #ENDIF
+#ELSE
+   #LET mintracub=48
+   #LET maxtracub=225
+   #IF $(red_v_esq)<$(mintracub:0) | $(red_v_esq)>$(maxtracub:0) | $(red_v_dir)<$(mintracub:0) | $(red_v_dir)>$(maxtracub:0)
+      // #LETS idlogerros=$(idlogerros)46;
+      //logerros
+   #ENDIF
+#ENDIF

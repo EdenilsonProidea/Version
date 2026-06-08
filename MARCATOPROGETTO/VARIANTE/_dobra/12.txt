@@ -1,0 +1,31 @@
+{ _dobra   // Dobradiça
+   *AZZERA*            =0
+   DESCRIZIONE         =Dobradiça
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^2;5;100;100;5;#FOTO\DOBRA\;2;3
+   MEMO                =1Código 975Descrição 6915CODIGO DOBRADIÇA 2295ANGOLO ABERTURA 2685imagem 2400Distancia furo lat da frente 3645Distancia entre furos lat 3045pos larg furo principal 2085Diam furo princ 1740Distanca furo marc porta 2670distancia entre furos marcacao 2550CODIGO CALCO 1965CODIGO PARAFUROS 2280NUMERO PARAFUSOS 2610CODIGO ADICIONAL 2325tipo furo lateral 2460dist furo lateral long 1 2490dist furo lateral long 2 2490MONTADA? 1515
+   { 
+      //  ,Descrição                                   ,CODIGO,ANGO,imagem                  ,Dis,Dis,pos l,Dia,Dista,dis,CODIGO,CODIGO,NU,CODIGO,ti,dis,dis,MO
+      001 ,DOBRA RETA MAD TITANIO 94° GESP - C2BBAE6   ,50563 ,94  ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1 DB-01,0,
+      002 ,DOBRA RETA MAD TITANIO 110° - C7B6AD6       ,50567 ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1 DB-02,0,
+      003 ,DOBRA RETA ALU TITANIO 110° - C7A6AD6       ,50568 ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      004 ,DOBRA CURVA MAD TITANIO 94° GESP - C2BBGE6  ,50564 ,94  ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      005 ,DOBRA CURVA MAD TITANIO 100° - C7B6GD6      ,50569 ,110 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      006 ,DOBRA CURVA ALU TITANIO 100° - C7A6GD6      ,50570 ,110 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      007 ,DOBRA RETA MAD TITANIO 155° GESP - C2BDAE6  ,50565 ,155 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      008 ,DOBRA RETA MAD TITANIO 155° - C2BMAD6       ,50571 ,155 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      009 ,DOBRA RETA ALU TITANIO 155° - C2AMAD6       ,50572 ,155 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      010 ,DOBRA CURVA MAD TITANIO 155° GESP - C2BDGE6 ,50566 ,155 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      011 ,DOBRA CURVA MAD TITANIO 155° - C2BMGD6      ,50573 ,155 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      012 ,DOBRA CURVA ALU TITANIO 155° - C2AMGD6      ,50574 ,155 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      013 ,DOBRA EM LINHA MAD TITANIO 110° - C7B6ND6AM ,50575 ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      014 ,DOBRA EM LINHA ALU TITANIO 110° - C7A6ND6AM ,50576 ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      015 ,DOBRA RETA MAD FOSCA 94° GESP - C2BBAE9     ,20991 ,94  ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1 DB-01,0,
+      016 ,DOBRA RETA MAD FOSCA 110° - C7B6AD9         ,1104  ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50580 ,      ,  ,50577 ,2 ,21 ,32 ,1 DB-02,0,
+      017 ,DOBRA RETA ALU FOSCA 110° - C7A6AD9         ,51137 ,110 ,dobradica_reta_110.jpg  ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+      018 ,DOBRA CURVA MAD TITANIO 94° GESP - C2BBGE6  ,16951 ,94  ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      019 ,DOBRA CURVA MAD TITANIO 100° - C7B6GD6      ,51138 ,110 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,      ,  ,50577 ,2 ,21 ,32 ,1
+      020 ,DOBRA CURVA ALU TITANIO 100° - C7A6GD6      ,51139 ,110 ,dobradica_curva_110.jpg ,21 ,32 ,22.5 ,35 ,28.5 ,48 ,50579 ,50582 ,2 ,50578 ,2 ,21 ,32 ,1
+   }
+}

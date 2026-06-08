@@ -1,0 +1,10 @@
+#IF $(cava)=1 & $(_FR:6)!111 // CAVA TIME PROFILO NÃO TEM DESCONTO
+#MSG ($(afre)+$(FOLGAFRENTEAS:0))-$(RIDFRECAVA:0)
+   #IF $(SPOSTAA)+$A>$(ATOT)-100
+      #LET afre=($(afre)+$(FOLGAFRENTEAS:0))-$(RIDFRECAVA:0)
+   #ELSE
+      #LET afre=($(afre)+$(FOLGAFRENTEAS:0))-$(RIDFRECAVA:0)
+   #ENDIF
+   #LETV _pux=999
+   #LETV _pux$(_ctx)=999
+#ENDIF

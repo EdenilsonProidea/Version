@@ -1,0 +1,25 @@
+//GAVETA_ALTA_INT_A
+#IF $(sapratgav:0)=0
+   #LET sapratgav=1231
+#ENDIF
+Inica_calc_gav
+Gaveta_alta_1_intc,AFGAVA=18
+Gaveta_alta_1_intc,AFGAVA={313+33}
+Gaveta_alta_1_intc,AFGAVA={346+262+33}
+Gaveta_alta_1_intc,AFGAVA={313+623+33}
+#IF $(pratgav:0)=1
+   #LET AFPRATL=$(RED_INTM:0)
+   #IF $(ltot)>800 & $(_int:7)=15
+      209,a=25,cod=000D521/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0),SA=$(sapratgav:0)
+   #ELSE
+      209,a=18,cod=000A123/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0),SA=$(sapratgav:0)
+   #ENDIF
+   #IF $A>1750
+      #LET AFPRATA=($A-1231)/2
+      #IF $(ltot)>800 & $(_int:7)=15
+         209,a=25,cod=000D521/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0),SA=$(sapratgav:0)+$(AFPRATA)-12.5
+      #ELSE
+         209,a=18,cod=000A123/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0),SA=$(sapratgav:0)+$(AFPRATA)-9
+      #ENDIF
+   #ENDIF
+#ENDIF

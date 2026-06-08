@@ -1,0 +1,4 @@
+#IF $(XP10:0)>0
+   // 2	FF	Y={$(PA)} X={$(PL)} DF=$(XP10:0) PF={$(XP)+1}
+   2	FF	Y={$(PL)} X={$(PA)} DF=$(XP10:0) PF={$(XP)+1} // <c26556>
+#ENDIF

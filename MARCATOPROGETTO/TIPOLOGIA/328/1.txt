@@ -1,0 +1,15 @@
+{ 328   // Base Bau
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Bau
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(esp_prat:0),50,$(esp_prat:0)
+   DIMENSIONE          =$l-$(esp_prat:0)*2,$(esp_prat:0),$p-$(esp_prat:0)*2
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/1/1/0/0/0/0/0
+   X8                  =$(pcanal:0)
+   X9                  =$(_tpcaixa:1)/$(_COREX:1)/$(TPFIX:1)
+   ALIAS               =#326
+}

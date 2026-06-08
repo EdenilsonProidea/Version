@@ -1,0 +1,2 @@
+2	MA	X={$(PA)+$(da)/2} Y={$(Pl)+$(DL)/2} NM=PENSIL df=10 pf=10  KO_ZERO=1
+2	MA	X={$(PA)+$(da)/2} Y={$(XL)-$(DL)/2} NM=PENSIL df=10 pf=10  KO_ZERO=1

@@ -1,0 +1,5 @@
+{ 268.002
+   *AZZERA*            =0
+   COLORI              =$(_PALHA:3)|$(.percorso)\foto\PALHA\$(_PALHA:4)|$(_PALHA:3),$(_PALHA:3)|$(.percorso)\foto\PALHA\$(_PALHA:4)|$(_PALHA:3)
+   X9                  =$(_PALHA:6)/$(_PALHA:8)
+}

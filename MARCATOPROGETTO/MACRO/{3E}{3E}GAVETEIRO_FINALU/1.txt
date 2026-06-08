@@ -1,0 +1,26 @@
+#LET afinal=$(afinal)+7//+$(REDSUPGAVETEIRO:0)
+#IF $(afinal)>100
+   #LET a=$(afinal)
+#ELSE
+   #LET AFINAL=$A
+#ENDIF
+#IF $(BASESUPERIORGAV:0)=1 & $(GAVETEIROUBIK)=1
+   #IF $(JUNTATAMU:0)=1
+      // 313,SL=0,SA=$(afinal),L=$l+7,A=$(esptampo:3),P=$P+20,X7=N/N/N/N/1/1/1/1/0/0/1/1/1/1/0/1  //TAMPO DORMITORIO GAVETEIRO
+      813,SL=0,SA=$(afinal),L=$l+7,A=$(esptampo:3),P=$P+20,X7=N/N/N/N/1/1/1/1/0/0/1/1/1/1/0/1  //TAMPO DORMITORIO GAVETEIRO
+   #ELSE
+      // 313,SL=0,SA=$(afinal),L=$l,A=$(esptampo:3),P=$P+20,X7=N/N/N/N/1/1/1/1/0/0/1/1/1/1/0/1  //TAMPO DORMITORIO GAVETEIRO
+      813,SL=0,SA=$(afinal),L=$l,A=$(esptampo:3),P=$P+20,X7=N/N/N/N/1/1/1/1/0/0/1/1/1/1/0/1  //TAMPO DORMITORIO GAVETEIRO
+   #ENDIF
+   // 309.006,SL=0,SA=$(afinal),L=$l,P=$P+20,X7=N/N/N/N/1/1/1/1/0/0/1/1/1/1/0/1  // TAMPO DORMITORIO GAVETEIRO
+#ENDIF
+//DOR_GAVETEIROU,A=$(AFINAL),_corbf=$(_corcx)
+297,COD= / /AGAV $(afinal) mm,SA=$(afinal)+$(ABASE:0),SP=$P,A=75,P=10  // TEXTO
+#IF $(_tpsuppge:3)>0
+   ubik_suporte_gav,L=$(_tpsuppge:6),A=$(_tpsuppge:7),P=$(_tpsuppge:8),COD=$(_tpsuppge:5)/LINHA=$(MODELLO:0),_TPSUPPG=$(_TPSUPPGE),AY=-90,sa=$a-$(_tpsuppge:7),_frente=$(_frenteg)
+#ENDIF
+#IF $(_tpsuppgD:3)>0
+   ubik_suporte_gav,SL=$L,SP=$(_tpsuppgD:6),L=$(_tpsuppgD:6),A=$(_tpsuppgD:7),P=$(_tpsuppgD:8),AY=90,COD=$(_TPSUPPGD:5)/LINHA=$(MODELLO:0),_TPSUPPG=$(_TPSUPPGD),sa=$a-$(_tpsuppge:7),_frente=$(_frenteg)
+#ENDIF
+!COMMENTO4 $(memoinfocorr)PCORR=$(Pcorredica)
+LOGERROS

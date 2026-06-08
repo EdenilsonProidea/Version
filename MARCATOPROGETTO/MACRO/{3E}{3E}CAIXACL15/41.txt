@@ -1,0 +1,44 @@
+#LET ESCOS=15
+// BASE
+!SAGOMA sagbaseL 0,0, $L-$(ESLAT:0),0, $L-$(ESLAT:0),$P-$(ESLAT:0), ($L-$(ESLAT:0))-$(PLAT2:0),$P-$(ESLAT:0), ($L-$(ESLAT:0))-$(PLAT2:0),$(PLAT1:0), 0,$(PLAT1:0)
+203.007, DIS=$(SAGBASEL),SP=0,P=$P-$(ESLAT:0),SL=$(ESLAT:0),L=$L-$(ESLAT:0),X8=$(ESCOS:0)/$(PLAT1:0)/$(PLAT2:0)/$(SEMUSINAGEMBASEESTR)
+// 203
+// LATERAL ESQUERDA
+calcolasaglat,PLAT=$(PLAT1:0)
+
+201,p=$(PLAT1:0)
+// LATERAL DIREITA
+#LETS cavelatdir=$(cavelatESQ)
+calcolasaglat,PLAT=$(PLAT2:0)
+202,AY=-90,SL=$L,P=$(PLAT2:0),SP=$P-$(ESLAT:0)
+#IF $(_tpcaixa:9)=1
+   // FUNDO ESQUERDO ESP CAIXA
+   205,L=1*($L+$(RAG_COS:0)-$(ESLAT:0)),A={$A-$(ABASE:0)+$(RAG_COS:0)}  //Fundo
+   // FUNDO DIREITO ESP CAIXA - FUNDO ENCAIXADO
+   205,SL=$l-$(ESCOS:0),SP=$(AFCOS:0)+($(ESCOS:0)-$(RAG_COS:0)+$(red_intm:0)),L=1*($P+2*$(RAG_COS:0)-1*($(ESLAT:0)+$(AFCOS:0)+$(ESCOS:0)),A={$A+$(RAG_COS:0)-$(ABASE:0)},AY=-90  //Fundo
+   #IF $(CAVA)=1 | $(_FR:6)=601
+      // TRAVESSA FRONTAL VERTICAL ESQUERDA
+      204,L=($L-$(AFCOS:0))-2*($(ESLAT:0)),SP=$(PLAT1:0)-$(ESTRA:0)-$(PCAVA:0)
+      // TRAVESSA FRONTAL VERTICAL DIREITA
+      204,AY=90,SP=$P-$(ESLAT:0),SL=$L-$(PLAT2:0)+$(PCAVA:0),L=$P-1*($(PLAT1:0)+$(ESLAT:0))+$(PCAVA:0)
+   #ELSE
+      // TRAVESSA FRONTAL HORIZONTAL ESQUERDA ------- Alterado para travessa horizontal pelos padrões do cliente <c22602>
+      220.002,SP=$(PLAT1:0)-$(ATRA:0),L=($L-$(ESLAT:0))-2*($(ESCOS:0))  // Traversa Horizontal  (cozinha) CANTO L
+      // TRAVESSA FRONTAL HORIZONTAL DIREITA
+      220.002,AY=-90,SP=$P-1*($P-1*($(PLAT1:0))),SL=$L-$(PLAT2:0)+$(ATRA:0),L=$P-1*($(PLAT1:0)+$(ESLAT:0))
+      #IF 1==0 // --------------------------------- Gestão antiga
+         // TRAVESSA FRONTAL VERTICAL ESQUERDA
+         204,L=($L-$(AFCOS:0))-2*($(ESLAT:0)),SP=$(PLAT1:0)-$(ESTRA:0)
+         // TRAVESSA FRONTAL VERTICAL DIREITA
+         204,AY=90,SP=$P-$(ESLAT:0),SL=$L-$(PLAT2:0),L=$P-1*($(PLAT1:0)+$(ESLAT:0))
+      #ENDIF
+   #ENDIF
+#ELSE
+   // FUNDO ESQUERDO ESP CAIXA
+   205,L=1*($L+$(RAG_COS:0)-$(ESLAT:0)),A={$A-2*($(ABASE:0)-$(RAG_COS:0))}  //Fundo
+   // FUNDO DIREITO ESP CAIXA - FUNDO ENCAIXADO
+   205,SL=$l-$(ESCOS:0),SP=$(AFCOS:0)+($(ESCOS:0)-$(RAG_COS:0)+$(red_intm:0)),L=1*($P+2*$(RAG_COS:0)-1*($(ESLAT:0)+$(AFCOS:0)+$(ESCOS:0)),A={$A-2*($(ABASE:0)-$(RAG_COS:0))},AY=-90  //Fundo
+   // BASE SUPERIOR
+   !SAGOMA sagbaseL 0,0, $L-$(ESLAT:0),0, $L-$(ESLAT:0),$P-$(ESLAT:0), ($L-$(ESLAT:0))-$(PLAT2:0),$P-$(ESLAT:0), ($L-$(ESLAT:0))-$(PLAT2:0),$(PLAT1:0), 0,$(PLAT1:0)
+   203.008, DIS=$(SAGBASEL),SP=0,P=$P-$(ESLAT:0),SL=$(ESLAT:0),L=$L-$(ESLAT:0),SA=$A-$(ABASE:0),X8=$(ESCOS:0)/$(PLAT1:0)/$(PLAT2:0)/$(SEMUSINAGEMBASEESTR)
+#ENDIF

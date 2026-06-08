@@ -1,0 +1,49 @@
+#LET LFOROMMED=$(LFOROM:0)
+#LET AFOROMMED=$(AFOROM:0)
+#LET sabasesuporte=0
+#IF $(_tpmascara:3)=1 //mascara U
+   #LET tml=($l-$(lforom:0))/2
+   #LET tma=$a-$(aforom:0)
+   !SAGOMAP sagmascara -$(incrfreE),-$(incrfreI),-$(incrfreE),$a+$(incrfreA),$(tml),$a+$(incrfreA),$(tml),$(tma),{$l-$(tml)},$(tma),{$l-$(tml)},$a+$(incrfreA),$l+$(incrfreD),$a+$(incrfreA),$l+$(incrfreD),-$(incrfreI)
+   #LET adec=$(aforom:0)+$(_TAMPO:4)+50 //PER DISEGNO FOGAO
+   #IF $(_FR:6)>0
+      242  // Mascara
+   #ENDIF
+   255,SL=$(tml),SA=$a-100,SP=50,L=$l-$(tml)*2,A=200  // Operacao por tampo
+   #LET sabasesuporte=$(tma)
+#ELSEIF $(_tpmascara:3)=11 //mascara U invertido
+   #LET tml=($l-$(lforom:0))/2
+   #LET tma=$a-$(aforom:0)
+   !SAGOMAP sagmascara 0,0,0,$a,$(tml),$a,$(tml),$(tma),{$l-$(tml)},$(tma),{$l-$(tml)},$a,$l,$a,$l,0
+   #LET adec=$(aforom:0)+$(estampo)+30 //PER DISEGNO FOGAO
+   #IF $(_FR:6)>0
+      242,az=180,sl=$l,sa=$A  // Mascara
+   #ENDIF
+#ELSEIF $(_tpmascara:3)=2 //mascara quadra
+   #IF $(s_forno:7)=1
+      #LET tml=($l-$(LFOROMMED))/2
+      #LET tma=($a-$(AFOROMMED))/2
+   #ELSE
+      #LET tml=($l-$(LFOROMMED))/2
+      #LET tma=($a-$(AFOROMMED))/2
+   #ENDIF
+   !SAGOMAP sagmascara -$(incrfreE),0,-$(incrfreE),$a,$l,$a,$l,0,FO,$(TML),$(tma),$(TML),{$a-$(TMA)},{$l-$(TML)},{$a-$(TMA)},{$l-$(TML)},$(TMA),$(TML),$(TMA)
+   #LET adec=$(AFOROMMED) //PER DISEGNO decoro
+   #IF $(_FR:6)>0
+      242  // Mascara
+   #ENDIF
+   #LET sabasesuporte=$(tma)
+#ELSEIF $(_tpmascara:3)=3 //mascara reta
+   #LET tma=$a-$(aforom:0)
+   !SAGOMAP sagmascara 0,0,0,$(tma),$l,$(tma),$l,0,0,0
+   #IF $(_FR:6)>0
+      242,a=$(tma)
+   #ENDIF
+   #LET adec=$(aforom:0)+$(estampo)+30 //PER DISEGNO FOGAO
+   #LET sabasesuporte=$(tma)
+#ELSEIF $(_tpmascara:3)=4 //faixas laterals
+   #LET tma=($a-$(aforom:0))/2
+   222,L=($l-$(lforom:0))/2,sp=$p,p=$(ESLAT:0)  // Madera vertical
+   222,L=($l-$(lforom:0))/2,sl=$l-($l-$(lforom:0))/2,sp=$p,p=$(ESLAT:0)  // Madera vertical
+   #LET adec=$(aforom:0)+$(estampo) //PER DISEGNO FOGAO
+#ENDIF

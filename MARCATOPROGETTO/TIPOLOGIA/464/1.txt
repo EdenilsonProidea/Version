@@ -1,0 +1,15 @@
+{ 464   // Spot
+   *AZZERA*            =0
+   DESCRIZIONE         =Spot
+   CODICE              =$(tp_led:10) /_ILU=$(_ILU:1);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(d1)-$(_ilu:7)/2,-$(_ilu:8),$p-$(d2)-$(_ilu:9)/2
+   DIMENSIONE          =$(TP_LED:7),$(TP_LED:8),$(TP_LED:7)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =LUZSPOT.XP
+   X5                  =$(tp_led:10)
+   X6                  =$(AMBIENTE:0)//$(TP_LED:12)/$(TP_LOCAL:3)/$(N_LEDS:3)/$(D1:0)/$(D2:0)/$(E:0)/$(V_OLD:0)
+   X7                  =1
+   X8                  =ilu\$(TP_LED:6)
+   X9                  =$(TP_LED:1)/$(LigarLuz:0)
+}

@@ -1,0 +1,14 @@
+{ 228   // borda tampo
+   *AZZERA*            =0
+   DESCRIZIONE         =borda tampo
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =31
+   POSIZIONE           =0,$(afbordoa),$(ptampo)
+   DIMENSIONE          ={$l+$(INCTESQ:0)+$(INCTDER:0)},$(_tampo:4),5
+   COLORI              =$(bordo:6),$(bordo:6)
+   DISEGNO             =$(tmp)
+   ORIENTAMENTO        =LAP
+   X1                  =$(XBORDO)
+   X3                  =$(curbox)
+   X10                 =$(cdbordox)
+}

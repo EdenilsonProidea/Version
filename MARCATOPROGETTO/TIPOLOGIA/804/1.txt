@@ -1,0 +1,19 @@
+{ 804   // Lateral Direita
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Direita
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           ={$L-$(ESLAT:0)},0,0
+   DIMENSIONE          =$(ESLAT:0),$A,$(PLAT)-$(redlatdir)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)
+   DISEGNO             =$(sagLatDir)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X6                  =$(sagLatdir)/$(cavelatdir:0)/$(acava:0)/$(refcavasup:0)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/1/1/0/1
+   X8                  =$(ESCOS:0)/$(SUP)/$(ABASE:0)/$(PM:0)/$(item:0)/$(RMPENSIL:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#803
+}

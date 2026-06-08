@@ -1,0 +1,45 @@
+{ _tpSuppUD   // Suporte Direito
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte Direito
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250tipo 11403d 2820ref 1560L 1140A 1140P 1140cod estru 1200cor 1200001.002coluna 10 : deve ser a cor dacastrada na variante _corsuppe e _corsuppd
+   { 
+      //      ,Descrição           ,ti,3,ref           ,L ,A  ,P   ,cod est,cor
+      001     ,500 mm              ,  , ,              ,  ,   ,    ,       ,
+      001.001 ,Prat. Direita Preta ,3 , ,$(codmod)U414 ,4 ,25 ,500 ,16759  ,002
+      001.002 ,Prat. Central Fosco ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,287    ,001
+      001.003 ,Prat. Direita Fosco ,3 , ,$(codmod)U412 ,4 ,25 ,500 ,285    ,001
+      001.004 ,Só Furação          ,4 , ,$(codmod)U414 ,4 ,25 ,500 ,       ,
+      001.005 ,Prat. Central Preto ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,16757  ,002
+      001.006 ,Sap. Direita Preto  ,3 , ,$(codmod)U414 ,4 ,25 ,500 ,19763  ,002
+      001.007 ,Sap. Direita Fosco  ,3 , ,$(codmod)U414 ,4 ,25 ,500 ,16930  ,001
+      001.008 ,Sap. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,20983  ,002
+      001.009 ,Sap. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,20984  ,001
+      002     ,450 mm              ,  , ,              ,  ,   ,    ,       ,
+      002.001 ,Prat. Direita Preta ,3 , ,$(codmod)U414 ,4 ,25 ,450 ,53146  ,002
+      002.002 ,Prat. Central Fosco ,2 , ,$(codmod)U414 ,4 ,25 ,450 ,53168  ,001
+      002.003 ,Prat. Direita Fosco ,3 , ,$(codmod)U412 ,4 ,25 ,450 ,53172  ,001
+      002.004 ,Só Furação          ,4 , ,$(codmod)U414 ,4 ,25 ,450 ,       ,
+      002.005 ,Prat. Central Preto ,2 , ,$(codmod)U414 ,4 ,25 ,450 ,53145  ,002
+      003     ,400 mm              ,  , ,              ,  ,   ,    ,       ,
+      003.001 ,Prat. Direita Preta ,3 , ,$(codmod)U414 ,4 ,25 ,400 ,53101  ,002
+      003.002 ,Prat. Central Fosco ,2 , ,$(codmod)U414 ,4 ,25 ,400 ,53167  ,001
+      003.003 ,Prat. Direita Fosco ,3 , ,$(codmod)U412 ,4 ,25 ,400 ,53171  ,001
+      003.004 ,Só Furação          ,4 , ,$(codmod)U414 ,4 ,25 ,400 ,       ,
+      003.005 ,Prat. Central Preto ,2 , ,$(codmod)U414 ,4 ,25 ,400 ,53100  ,002
+      004     ,350 mm              ,  , ,              ,  ,   ,    ,       ,
+      004.001 ,Prat. Direita Preta ,3 , ,$(codmod)U414 ,4 ,25 ,350 ,53149  ,002
+      004.002 ,Prat. Central Fosco ,2 , ,$(codmod)U414 ,4 ,25 ,350 ,53166  ,001
+      004.003 ,Prat. Direita Fosco ,3 , ,$(codmod)U412 ,4 ,25 ,350 ,53170  ,001
+      004.004 ,Só Furação          ,4 , ,$(codmod)U414 ,4 ,25 ,350 ,       ,
+      004.005 ,Prat. Central Preto ,2 , ,$(codmod)U414 ,4 ,25 ,350 ,53148  ,002
+      005     ,300 mm              ,  , ,              ,  ,   ,    ,       ,
+      005.001 ,Prat. Direita Preta ,3 , ,$(codmod)U414 ,4 ,25 ,300 ,53152  ,002
+      005.002 ,Prat. Central Fosco ,2 , ,$(codmod)U414 ,4 ,25 ,300 ,53165  ,001
+      005.003 ,Prat. Direita Fosco ,3 , ,$(codmod)U412 ,4 ,25 ,300 ,53169  ,001
+      005.004 ,Só Furação          ,4 , ,$(codmod)U414 ,4 ,25 ,300 ,       ,
+      005.005 ,Prat. Central Preto ,2 , ,$(codmod)U414 ,4 ,25 ,300 ,53151  ,002
+   }
+}

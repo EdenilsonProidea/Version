@@ -1,0 +1,13 @@
+{ 657   // Carrinho interno porta de passagem
+   *AZZERA*            =0
+   DESCRIZIONE         =Carrinho interno porta de passagem
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(poscarro),$(hv)+$(pp_sistema:12),$(pp_sistema:10)-$(pp_sistema:16)/2
+   DIMENSIONE          =$(pp_sistema:17),$(pp_sistema:15),$(pp_sistema:16)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X6                  =0
+   X8                  =sispassagem\$(pp_sistema:13)
+   X9                  =$(PP_SISTEMA:14)
+}

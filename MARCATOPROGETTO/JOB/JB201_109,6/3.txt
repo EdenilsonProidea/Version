@@ -1,0 +1,10 @@
+#IF $(xx3:0)=$(xp3:0)
+   #IF $(pl)>0 #LET f=2 #LET f=1
+   #IF $(XP3:1)=
+      #M JOB_LAT_TRAVV
+   #ELSE
+      #IF $(pl)<0 #LET f=1 #LET f=2
+      #IF $(F)=1 #LET LAT=2 #LET LAT=1
+
+   #ENDIF
+#ENDIF

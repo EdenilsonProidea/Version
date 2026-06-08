@@ -1,0 +1,23 @@
+#IF $(LAT_FECH_ESPECIAL)=1 // <c23346>
+   #LET Lintarmario=$(Lintarmario)+$(_FECHESQ:4)+$(_FECHDIR:4)
+   #IF $(TPLATARM:3)=1
+      dor_fechr_1Lat,sl=$(_FECHESQ:4),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ELSE
+      #LET ATIVADRETACURVA=0 // <c18184>
+      dor_fechr_2Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ENDIF
+#ELSEIF $(LAT_FECH_ESPECIAL)=2
+   #IF $(TPLATARM:3)=1
+      dor_fechr_1Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ELSE
+      #LET ATIVADRETACURVA=0 // <c18184>
+      dor_fechr_2Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ENDIF
+#ELSE
+   #IF $(TPLATARM:3)=1
+      dor_fechr_1Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ELSE
+      #LET ATIVADRETACURVA=0 // <c18184>
+      dor_fechr_2Lat,sl=$(red_esq),l=$(Lintarmario),sa=$(pacaixa),a=$(acaixa)
+   #ENDIF
+#ENDIF

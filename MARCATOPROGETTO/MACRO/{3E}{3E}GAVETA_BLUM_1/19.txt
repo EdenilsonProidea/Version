@@ -1,0 +1,15 @@
+#LETV _tpgavdet=$(_tpgav:4)$(_tpgavalt:4)$(PCORREDICA)
+
+#LET espgaveta=$(espessura_gaveta:0) // Adicionado em visita, esses valores estavam zerados e alteravam quando colocado outra gaveta - correção feita em visita
+#LET espfundogaveta=$(espessura_gaveta:0)  // Adicionado em visita, esses valores estavam zerados e alteravam quando colocado outra gaveta - correção feita em visita
+
+#IF $(_tpgavdet:1)==
+   #LETS idlogerros=$(idlogerros)40^$(_tpgav:2);
+#ELSE
+   #LET DELTAP={$P-$(_TPGAVDET:4)}
+      #MSG $(_TPGAVDET:4) ---- $(DELTAP)
+
+   GAVETA_BLUM_2,P=$(_TPGAVDET:4),SP=$(DELTAP)
+#ENDIF
+
+// logerros

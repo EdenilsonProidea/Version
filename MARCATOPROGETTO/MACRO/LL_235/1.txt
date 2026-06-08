@@ -1,0 +1,7 @@
+//#IF $(X9:1)=1
+//   #M ESTR_PUX_PORTAUN
+//#ELSE
+//   #M estr_pux_madeira
+//#ENDIF
+
+#M ESTR_MADEIRA,CODITEM=RODL,CALCULAFIXA=1

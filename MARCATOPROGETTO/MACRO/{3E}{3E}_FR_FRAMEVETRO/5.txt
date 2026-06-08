@@ -1,0 +1,44 @@
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+#IF $(_pux:17)<$(esfre:0) & $(_pux:4)>0
+   // faço um buraco na frente para PUXADOR
+   // .FRENTE_PUXADOR_EMBUTIDO.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS xpfrente=FRENTE_PUXADOR_EMBUTIDO.XP
+   #LETS parfrente=$(pospuxadores)|$(sentido)|{$(_pux:4)-10}|{$(_pux:5)-10}|{$(_pux:15)+5}|{$(_pux:16)+5}    //popx|sentido|lpux|apux|slpux|sapux
+#ELSE
+   // .frente_lisa.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ENDIF
+#LET LESTR=70
+
+#IF $(AFRE)>1300
+   #LET TRAVESSAFRE=1
+#ENDIF
+
+#IF ($(_TPCAIXA:9)=2 & $(_tpcava:3)>0) | ($(_TPCAIXA:9)=2 & $(_PUXCAVA:3)>0) // superior quando usa cava tem que deslocar para cima
+   #LET deslocaalt=$(RIDFRECAVA:0)
+#ELSE
+   #LET deslocaalt=0
+#ENDIF
+
+#IF $(TRAVESSAFRE)=1 // 2 fundos
+   268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={$(LESTR:0)-10+$(FOLGAFRENTEAI:0))},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(ALTTRAVFRE:0)-$(LESTR:0)+1*(20))},SP=6.5,P=5  //VIDRO INF ALT FIXA
+   268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={1*($(ALTTRAVFRE:0))+60+$(FOLGAFRENTEAI:0)},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(AFRE:0)-1*($(ALTTRAVFRE:0)+120)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SP=6.5,P=5  //VIDRO SUP SA FIXO
+#ELSE
+   268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={$(LESTR:0)-10+$(FOLGAFRENTEAI:0)+$(deslocaalt:0)},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(AFRE:0)-2*($(LESTR:0)-10)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SP=6.5,P=5  //VIDRO
+#ENDIF
+ESTR_FRAME,ESFRE=$(esfre:0)
+
+#IF $(TRAVESSAFRE)=1 // ADICIONA TRAVESSA NO MEIO
+   204,SL=$(LESTR:0)+$(FOLGAFRENTEL:0),SA=$(ALTTRAVFRE:0)+$(FOLGAFRENTEAI:0),SP=1,L=$(LFRE:0)-2*$(LESTR:0),A=$(LESTR:0),P=$(ESFRE),C1=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),C2=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),X3=$(curbox)/ /$(_FR:5)/$(_FR:6),X9=$(_tpcaixa:1)/$(_corfr:1)/50453/$(_FR:6)  // Traversa verticale
+#ENDIF
+
+// _cavafrontal

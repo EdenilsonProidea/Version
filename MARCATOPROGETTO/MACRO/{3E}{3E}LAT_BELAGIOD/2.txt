@@ -1,0 +1,67 @@
+// fechamento tradizione
+#LET incpainID=0
+#LET incpainSD=0
+#LETS _frmemo=$(_fr:1)
+#LETS nomeprogramacncfrente=$(_fr:25)
+#LETS parprogramacncfrente=PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+#LETS faceprogramacncfrente=$(_fr:27)
+#LETS nomeprogramacncfrente2=// FRENTEVINTAGEPINTURAT
+#LETS parprogramacncfrente2=//PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+#LETS faceprogramacncfrente2=0//2
+#IF $(_fr:6)=105 | $(_fr:6)=106 // VINTAGE VETRO E VINTAGE
+   #LOADVAR _fr _fr 001.021
+   #LETS nomeprogramacncfrente=$(_fr:25)
+   #LETS parprogramacncfrente=PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente=$(_fr:27)
+   #LETS nomeprogramacncfrente2=FRENTEVINTAGEPINTURAT
+   #LETS parprogramacncfrente2=PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente2=2
+#ENDIF
+#IF $(_fr:6)=104 | $(_fr:6)=117 // BELLAGIO VETRO E BELLAGIO
+   #LOADVAR _fr _fr 001.023
+   #LETS nomeprogramacncfrente=$(_fr:25)
+   #LETS parprogramacncfrente=PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente=$(_fr:27)
+   #LETS nomeprogramacncfrente2=// FRENTEVINTAGEPINTURAT
+   #LETS parprogramacncfrente2=//PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente2=0//2
+#ENDIF
+#IF $(_fr:6)==201 | $(_fr:6)==202 // Tradizione VETRO E Tradizione
+   #LOADVAR _fr _fr 002.003
+   #LETS nomeprogramacncfrente=$(_fr:25)
+   #LETS parprogramacncfrente=PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente=$(_fr:27)
+   #LETS nomeprogramacncfrente2=
+   #LETS parprogramacncfrente2=//PPUX@$(popxm)^SENPUX@$(sentido)^$(_fr:26)
+   #LETS faceprogramacncfrente2=//2
+#ENDIF
+#LET ltmp=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)
+#LET atmp={$a+$(incpainID:0)+$(incpainSD:0)}
+LAT_BELAGIOD_1,COD=000$(_FR:5)/_CORFAMILIA=$(_CORFR:10);_CORFR=$(_CORFR:1),l=$(ltmp),a=$(atmp),p=$(ESPAINAE:0)
+#LOADVAR _MOLD _CORFR $(_CORFR:1)
+!SAGOMA percor 0,-30,0,$p
+#LETV _TPMOLD=001
+!SAGOMA PERFIL $(_tpmold:6)
+#IF $(ESPAINA:0)!!$(_fr:4)
+   #LETS idlogerros=$(idlogerros)57;
+#ENDIF
+#IF $(_CORFR:11)[$(_FR:19)]=0
+   #LETS idlogerros=$(idlogerros)59;
+#ENDIF
+#IF $(_tampsup:3)=1
+   269,SA=$A,SL=$l+$(espaina:0),SP=$p-5,AY=180  // Moldura
+#ENDIF
+#LETV _TPMOLD=002
+!SAGOMA PERFIL $(_tpmold:6)
+#IF $(_tampinf:3)=1
+   269,SA=0,SL=$l+$(espaina:0),SP=$p-5,AY=180  // Moldura
+#ENDIF
+#LOADVAR _fr _fr $(_frmemo)
+
+
+
+
+
+
+
+

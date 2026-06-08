@@ -1,0 +1,5 @@
+!parametri slDivVert={($(inicalcmodulo:0)+$(lmodulo)*$(IDMODULOtemp)+$(eslat:0)*($(IDMODULOtemp)-1)+$(eslat:0)/2)}
+DOR_CALC_SAG_LAT
+#MSG $(comled)
+306,sl=$(slDivVert)
+ILU_DIV_DOR,MACRO=ILU_DIV_DOR

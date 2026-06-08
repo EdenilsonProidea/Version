@@ -1,0 +1,45 @@
+#IF $(XX10:0)>0
+   // TRABALHOS FRENTES
+   #IF $(XX10:1)==FRISOH
+      #LET F=$(XX10:0)
+      #LETS PARFRISO=$(XX10:5)
+      #M FRISOH
+   #ELSEIF $(XX10:1)==FRISOV
+      #LET F=$(XX10:0)
+      #LETS PARFRISO=$(XX10:5)
+      #M FRISOV
+   #ELSEIF $(XX10:1)==FRISOVH
+      #LET F=$(XX10:0)
+      #LETS PARFRISOH=$(XX10:6)
+      #M FRISOH	PARFRISO=$(PARFRISOH)
+      #LETS PARFRISOV=$(XX10:7)
+      #M FRISOV	PARFRISO=$(PARFRISOV)
+   #ELSE
+      #LETS PARM=$(XX10:2)
+      #VB
+         V("PARM")=REPLACE(V("PARM")	"="	"@")
+      #ENDVB
+      #MSG $(PARM)
+      $(XX10:0)	MA 	X=0 Y=0  NM=$(XX10:1) PARM=$(PARM) KO_ZERO=1
+   #ENDIF
+   #M USI_FR_2
+#ENDIF
+#IF $(XX6:1)=2 // Usinagem puxador porta Molise <c21385>
+   #IF $(XX9:2)==AGE
+      1	BLOCO_MOLISE	 X=0 Y=0 P_PUX=1
+   #ELSEIF $(XX9:2)==AGD
+      1	BLOCO_MOLISE	 X=0 Y=0 P_PUX=2
+   #ELSEIF $(XX9:2)==ABI
+      1	BLOCO_MOLISE	 X=0 Y=0 P_PUX=3
+   #ELSE
+      1	BLOCO_MOLISE	 X=0 Y=0 P_PUX=4
+   #ENDIF
+#ENDIF
+
+#IF $(XX10:1)==FILLETO
+#MSG $(XX8:9)
+#MSG $(XX8:10)
+#MSG $(XX8:11)
+
+#ENDIF
+// V("TM1")=V("TM2")

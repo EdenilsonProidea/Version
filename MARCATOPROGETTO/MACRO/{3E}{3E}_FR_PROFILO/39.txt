@@ -1,0 +1,126 @@
+_calcola_popx
+#IF _PUXPROFILO2[$(_FR:9)]!0
+   #LETS corprofilo=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+#ELSE
+   // #LETS corprofilo=$(_PUXPROFILO:4)
+   #LETS corprofilo=$(_CORPROFILO:4)
+#ENDIF
+//frontal
+#IF {($(PM)=1 & $(IDP)=2) | ($(PM)!1 & $(IDP)=1)}
+   #LETS pospuxadores=$(POPX)
+   #LETS xpfrente=$(_FR:7)
+   #LET PAPUX=104
+   #IF $(SENTIDO)=2
+      #IF $(AFRE)>1400
+         #LET PAPUX=1040
+      #ELSE
+         #IF $(POPX)[1;3]!0
+            #LET PAPUX=$(AFRE:0)/2
+         #ELSEIF $(POPX)[4;6]!0
+            #LET PAPUX=$(AFRE)-135-$(FOLGAFRENTEAS:0)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #IF ($(_tpfr:3)=81 & $(INVERTE_PROFILO:0)=1 )// C16194
+      #LETS pospuxadores=8
+   #ENDIF
+   #LETS PARFRENTE=$(sentido)/$(_CORPROFILO:4)
+   #LET ladojobfrente=2
+   #IF $(APE:3)[GAI;SAP]!0
+      #IF $(_fr:5)==F30
+         #LETS nomejobfrente=PROFILOLACATTOGAV
+      #ELSE
+         #LETS nomejobfrente=PROFILOGAV
+      #ENDIF
+   #ELSE
+      #IF $(APE:9)=1
+         #IF $(_fr:5)==F30
+            #LETS nomejobfrente=PROFILOLACATTOGAV
+         #ELSE
+            #LETS nomejobfrente=PROFILOGAV
+         #ENDIF
+      #ELSE
+         #IF $(ape:3)[AGE;AGD]!!
+            #IF $(_fr:5)==F30
+               #LETS nomejobfrente=PROFILOLATLACATTO
+            #ELSE
+               #LETS nomejobfrente=PROFILOLAT
+            #ENDIF
+         #ELSE
+            #IF $(_fr:5)==F30
+               #LETS nomejobfrente=PROFILOLACATTO
+            #ELSE
+               #LETS nomejobfrente=PROFILO
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@
+#ELSEIF $(TPF)=65 & ($(_pux:0)=999 | $(pv_pux:0)=999) // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de cozinha - feito em visita
+   #LETS xpfrente=
+   #LETS parfrente=
+   #LET ladojobfrente=
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+#ELSE
+   #LETS pospuxadores=$(POPX)
+   #LETS xpfrente=$(_FR:7)
+   #LET PAPUX=104
+   #IF $(SENTIDO)=2
+      #IF $(AFRE)>1400
+         #LET PAPUX=1040
+      #ELSE
+         #IF $(POPX)[1;3]!0
+            #LET PAPUX=$(AFRE:0)/2
+         #ELSEIF $(POPX)[4;6]!0
+            #LET PAPUX=$(AFRE)-135-$(FOLGAFRENTEAS:0)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #IF ($(_tpfr:3)=81 & $(INVERTE_PROFILO:0)=1 )// C16194
+      #LETS pospuxadores=8
+   #ENDIF
+   #LETS PARFRENTE=$(sentido)/$(_CORPROFILO:4)
+   #LET ladojobfrente=2
+   #IF $(APE:3)[GAI;SAP]!0
+      #IF $(_fr:5)==F30
+         #LETS nomejobfrente=PROFILOLACATTOGAV
+      #ELSE
+         #LETS nomejobfrente=PROFILOGAV
+      #ENDIF
+   #ELSE
+      #IF $(APE:9)=1
+         #IF $(_fr:5)==F30
+            #LETS nomejobfrente=PROFILOLACATTOGAV
+         #ELSE
+            #LETS nomejobfrente=PROFILOGAV
+         #ENDIF
+      #ELSE
+         #IF $(ape:3)[AGE;AGD]!!
+            #IF $(_fr:5)==F30
+               #LETS nomejobfrente=PROFILOLATLACATTO
+            #ELSE
+               #LETS nomejobfrente=PROFILOLAT
+            #ENDIF
+         #ELSE
+            #IF $(_fr:5)==F30
+               #LETS nomejobfrente=PROFILOLACATTO
+            #ELSE
+               #LETS nomejobfrente=PROFILO
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@
+#ENDIF
+//#IF $(fr_avulsa)=0
+//  204.003,cod=000PROFHO,SL=0,L=$L+3,sp=-$(ESTRA:0),a=45,sa=$a-42,X3=$(curbox)/$(_FR:6),X7=N/N/N/N/0/0/0/1/0/0/1/1/0/0/0/0/_/$(FITARSOVISTA:2)
+// #LET AFRE=$(AFRE:0)-$(RIDFRECAVA45:0)
+//#ENDIF
+_FR_STANDARD
+// .FRENTE_PROFILO.XP
+#IF $(_fr:5)==F29 & $(apenasfurpux:0)=0
+   298,X3=$(curbox)/$(_CORPROFILO:5),X9=$(_CORPROFILO:5) // Item
+#ELSE
+   #MSG APESAR DE SER REPRESENTADO GRÁFICAMENTE O PUXADOR NÃO SERÁ CONTABILIZADO
+#ENDIF

@@ -1,0 +1,11 @@
+#IF $(_TPBASARM:3)>0
+   #IF $(div_rod_vis)!!
+      #LET old_i=0
+      #FOR $(div_rod_vis)
+         fech_inf_1,slfechinf={$(_FECHESQ:4)+$(old_i)},lfechinf=$(i)
+         #LET old_i=$(old_i)+$(i)
+      #ENDFOR
+   #ELSE
+      fech_inf_1
+   #ENDIF
+#ENDIF

@@ -1,0 +1,82 @@
+201  // Lateral Esquerda
+202  // Lateral Direita
+//205  // Fundo
+// AtivaRecorteBaseInf
+// LfuroBaseRecorteInf
+// PfuroBaseRecorteInf
+#LETS slB=$(ESLAT:0)+$(RED_INTM:0)
+#LETS lB={$L-$(ESLAT:0)*2-2*$(RED_INTM:0)}
+#LETS pB={$P-1*($(AFBASE:0)+$(red_basef))}
+!SAGOMA sagbase 0,0,$(lb),0,$(lb),$(pb),0,$(pb),0,0
+#LETS InfoRecorteBase=
+#IF $(AtivaRecorteBaseInf:0)=1
+   #IF $(LfuroBaseRecorteInf:0)=0 #LET LfuroBaseRecorteInf={$L-$(ESLAT:0)*2-2*$(RED_INTM:0)-100} //$l-100-$(eslat:0)*2
+   #IF $(PfuroBaseRecorteInf:0)=0 #LET PfuroBaseRecorteInf={$P-1*($(AFBASE:0)+$(red_basef))-100} //$p-100
+   #LET SLF=($L-$(LfuroBaseRecorteInf:0)-$(ESLAT:0)*2)/2
+   #LET SPF=($p-$(pfuroBaseRecorteInf:0))/2
+   // POSIRECINF
+   // AJPOSIINF
+   #IF $(POSIRECINF:0)=0
+      #LET SLF=($L-$(LfuroBaseRecorteInf:0)-$(ESLAT:0)*2)/2
+      #LET SPF=($p-$(PfuroBaseRecorteInf:0))/2
+   #ELSEIF $(POSIRECINF:0)=1
+      #LET SPF=$(AJPOSIINF:0)
+      #LET SLF=($L-$(LfuroBaseRecorteInf:0)-$(ESLAT:0)*2)/2
+   #ELSEIF $(POSIRECINF:0)=2
+      #LET SPF={$P-$(PfuroBaseRecorteInf:0)-$(AJPOSIINF:0)}
+      #LET SLF=($L-$(LfuroBaseRecorteInf:0)-$(ESLAT:0)*2)/2
+   #ELSEIF $(POSIRECINF:0)=3
+      #LET SPF=($p-$(pfuroBaseRecorteInf:0))/2
+      #LET SLF=$(AJPOSIINF:0)
+   #ELSEIF $(POSIRECINF:0)=4
+      #LET SPF=($p-$(pfuroBaseRecorteInf:0))/2
+      #LET SLF={$L-($(LfuroBaseRecorteInf:0)+$(ESLAT:0)*2+$(AJPOSIINF:0))}
+   #ENDIF
+   !SAGOMA FURO $(slf),$(spf),{$(slf)+$(LfuroBaseRecorteInf:0)},$(spf),{$(slf)+$(LfuroBaseRecorteInf:0)},{$(spf)+$(PfuroBaseRecorteInf:0)},{$(slf)},{$(spf)+$(PfuroBaseRecorteInf:0)}
+   !SAGDIFF sagbase,$(sagbase),$(furo)
+   #LETS InfoRecorteBase=5;$(SLF);$(LfuroBaseRecorteInf:0);$(PfuroBaseRecorteInf:0);// INFORMA합ES PARA FURA플O na base
+   203.002,dis=$(sagbase),sa=0,X3=$(curbox)/I
+   637,SL=$(slf)+$(ESLAT:0),SP=$(spf),A=1,SA=-1,L=$(LfuroBaseRecorteInf:0),P=$(PfuroBaseRecorteInf:0)
+   // LOGERRO
+   CHECK_RECORTE,LfuroBaseRecorte=$(LfuroBaseRecorteInf:0),PfuroBaseRecorte=$(PfuroBaseRecorteInf:0),AJPOSI=$(AJPOSIINF:0),POSIREC=$(POSIRECINF:0),TPBASE=INFERIOR
+#ELSE
+   203  // Base inferior
+#ENDIF
+// AtivaRecorteBaseSup
+// LfuroBaseRecorteSup
+// PfuroBaseRecorteSup
+#LETS InfoRecorteBase=
+!SAGOMA sagbase 0,0,$(lb),0,$(lb),$(pb),0,$(pb),0,0
+#IF $(AtivaRecorteBaseSup:0)=1
+   #IF $(LfuroBaseRecorteSup:0)=0 #LET LfuroBaseRecorteSup={$L-$(ESLAT:0)*2-2*$(RED_INTM:0)-100} //$l-100-$(eslat:0)*2
+   #IF $(PfuroBaseRecorteSup:0)=0 #LET PfuroBaseRecorteSup={$P-1*($(AFBASE:0)+$(red_basef))-100} //$p-100
+   #LET SLF=($L-$(LfuroBaseRecorteSup:0)-$(ESLAT:0)*2)/2
+   #LET SPF=($p-$(pfuroBaseRecorteSup:0))/2
+   // POSIRECSUP
+   // AJPOSISUP
+   #IF $(POSIRECSUP:0)=0
+      #LET SLF=($L-$(LfuroBaseRecorteSup:0)-$(ESLAT:0)*2)/2
+      #LET SPF=($p-$(PfuroBaseRecorteSup:0))/2
+   #ELSEIF $(POSIRECSUP:0)=1
+      #LET SPF=$(AJPOSISUP:0) //50
+      #LET SLF=($L-$(LfuroBaseRecorteSup:0)-$(ESLAT:0)*2)/2
+   #ELSEIF $(POSIRECSUP:0)=2
+      #LET SPF={$P-$(PfuroBaseRecorteSup:0)-$(AJPOSISUP:0)}
+      #LET SLF=($L-$(LfuroBaseRecorteSup:0)-$(ESLAT:0)*2)/2
+   #ELSEIF $(POSIRECSUP:0)=3
+      #LET SPF=($p-$(pfuroBaseRecorteSup:0))/2
+      #LET SLF=$(AJPOSISUP:0) //50
+   #ELSEIF $(POSIRECSUP:0)=4
+      #LET SPF=($p-$(pfuroBaseRecorteSup:0))/2
+      #LET SLF={$L-($(LfuroBaseRecorteSup:0)+$(ESLAT:0)*2+$(AJPOSISUP:0))}
+   #ENDIF
+   !SAGOMA FURO $(slf),$(spf),{$(slf)+$(LfuroBaseRecorteSup:0)},$(spf),{$(slf)+$(LfuroBaseRecorteSup:0)},{$(spf)+$(PfuroBaseRecorteSup:0)},{$(slf)},{$(spf)+$(PfuroBaseRecorteSup:0)}
+   !SAGDIFF sagbase,$(sagbase),$(furo)
+   #LETS InfoRecorteBase=5;$(SLF);$(LfuroBaseRecorteSup:0);$(PfuroBaseRecorteSup:0);// INFORMA합ES PARA FURA플O na base
+   203.002,dis=$(sagbase),sa=$a-$(abase),X3=$(curbox)/S
+   637,SL=$(slf)+$(ESLAT:0),SP=$(spf),A=1,SA=$A+1,L=$(LfuroBaseRecorteSup:0),P=$(PfuroBaseRecorteSup:0)
+   // LOGERRO
+   CHECK_RECORTE,LfuroBaseRecorte=$(LfuroBaseRecorteSup:0),PfuroBaseRecorte=$(PfuroBaseRecorteSup:0),AJPOSI=$(AJPOSISUP:0),POSIREC=$(POSIRECSUP:0),TPBASE=SUPERIOR
+#ELSE
+   203.001  // Base Superior
+#ENDIF

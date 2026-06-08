@@ -1,0 +1,15 @@
+{ 811   // Frente Sapateira Inclinada
+   *AZZERA*            =0
+   DESCRIZIONE         =Frente Sapateira Inclinada
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFPRATL),$(AFPRATA)-77/2+15/2,$(AFPRATP)+$(PPRATINC)-15
+   DIMENSIONE          =$(LPRAT),77,15
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X4                  =$(FUROREGULAVEL:0)
+   X7                  =N/N/N/N/0/0/1/1/0/0/1/1
+   X8                  =$(jobfixprat:0)/$(codfixprat:0)/$(distfixprat:0)
+   X9                  =$(_tpcaixa:1)/$(_corfr:1)/$(TPFIX:1)
+   ALIAS               =#811
+}

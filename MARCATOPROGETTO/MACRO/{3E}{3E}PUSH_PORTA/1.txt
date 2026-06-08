@@ -1,0 +1,68 @@
+#IF 1=0
+   !parametri posd=1
+   #IF $(posd)=1
+      #LET slpush=$(lfre)-45
+   #ELSE
+      #LET slpush=45
+   #ENDIF
+   #IF $(push:0)=1
+      #IF $(AFRE)+50>$(ATOT)
+         #IF $(_TPCAIXA:9)=1
+            // INFERIOR
+            444,SA=$A-10-5  // push Porta
+         #ELSEIF $(_TPCAIXA:9)=2
+            444  // push Porta
+         #ELSEIF $(_TPCAIXA:9)=3 | $(_TPCAIXA:12)==D
+            444  // push Porta
+         #ELSE
+            #LETS idlogerros=$(idlogerros)33;
+         #ENDIF
+      #ELSE
+         #LETS idlogerros=$(idlogerros)33;
+      #ENDIF
+   #ENDIF
+#ELSE
+   !parametri posd=1
+   #IF $(PUSH2PORTAS)=1
+      #IF $(posd)=1
+         #LET slpush=$(LTOT)/2-30
+      #ELSE
+         #LET slpush=30
+      #ENDIF
+      // PORTASG
+   #ELSEIF $(posd)=1
+      #LET slpush=$(LTOT:0)-$(ESLAT:0)-30
+   #ELSE
+      #LET slpush=$(ESLAT:0)+30
+   #ENDIF
+   #IF $(push:0)=1
+      #IF $(PORTAVENDA)=1
+         #IF $(_TPCAIXA:9)=1
+            // INFERIOR
+            444,SA=$A-10-5  // push Porta
+         #ELSE
+            444  // push Porta
+         #ENDIF
+      #ELSE
+         #IF $(AFRE)+50>$(ATOT)
+            #IF $(_TPCAIXA:9)=1
+               // INFERIOR
+               444,SA=$A-10-5  // push Porta
+            #ELSEIF $(_TPCAIXA:9)=2
+               #IF $(_TPBASE:3)=0
+                  444  // push Porta
+               #ELSE
+                  #LETS idlogerros=$(idlogerros)34;
+                  // LOGERROS
+               #ENDIF
+            #ELSE
+               #LETS idlogerros=$(idlogerros)33;
+            #ENDIF
+         #ELSE
+            #LETS idlogerros=$(idlogerros)33;
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   // 220
+   
+#ENDIF

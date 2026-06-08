@@ -1,0 +1,11 @@
+{ 213   // Colmeia Horizontal MDF
+   *AZZERA*            =0
+   DESCRIZIONE         =Colmeia Horizontal MDF
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(_acegav:7)
+   COLORI              =$(_cprat:3)|$(.percorso)\foto\madeira\$(_cprat:4)|$(_cprat:5),$(_cprat:3)|$(.percorso)\foto\madeira\$(_cprat:4)|$(_cprat:5)
+   ORIENTAMENTO        =LAP
+   X3                  =H/$(_idunico:0)
+   X9                  =$(_ACEGAV:4)/$(_cPRAT:1)
+}

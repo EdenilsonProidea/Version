@@ -1,0 +1,15 @@
+{ 386   // Frente lateral especial esq (guarnição)
+   *AZZERA*            =0
+   DESCRIZIONE         =Frente lateral especial esq (guarnição)
+   CODICE              =DORGUAFECH /_CORFR=$(CORFR:1);_CORFAMILIA=$(CORFR:10);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,{$p-$(sobrepbasefech)}
+   DIMENSIONE          =$(e2),$(acabLateral),{$(sobrepbasefech)+$(_tpfech:8)}
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   DISEGNO             =$(sag_lat_esp_e)
+   ORIENTAMENTO        =APL
+   DATI                =_corfr
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/1/0/0/1/1
+   X9                  =$(_tpcaixa:1)/$(_corfr:1)/$(TPFIX:1)
+   ALIAS               =#386
+}

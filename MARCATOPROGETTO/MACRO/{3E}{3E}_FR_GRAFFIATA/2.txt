@@ -1,0 +1,25 @@
+_calcola_popx
+#LETS pospuxadores=$(POPX)
+#LET CALC=INT(($(LFRE)-305)/32)
+#LET FLLARG=305+$(CALC)*32
+#IF $(LFRE)<337 #LET FLLARG=305
+#IF $(LFRE)>689 #LET FLLARG=697
+#IF $(_tpfr:3)=1
+   #IF $(PM)=1
+      #LETS FLTIPO=ESQ
+   #ELSE
+      #LETS FLTIPO=DIR
+   #ENDIF
+#ELSE
+   #IF $(IDP)=2
+      #LETS FLTIPO=$(_LADOPUXGRAF:6)
+   #ELSE
+      #LETS FLTIPO=$(_LADOPUXGRAF:5)
+   #ENDIF
+#ENDIF
+#LETS xpfrente=FRENTE3D.XP
+#LETV _fr:7=Graffiata_$(FLTIPO)_$(FLLARG).3ds
+#LET ladojobfrente=1
+#LETS nomejobfrente=Graffiata_$(FLTIPO)_$(FLLARG)
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+_FR_STANDARD

@@ -1,0 +1,29 @@
+!PARAMETRI DOBRADICADIF=0 // nova gestão dobradiça com seleção por subregra unida a _dobradif - ver continuação dentro macro dobradiça
+_iniciafr
+// gestao orientamento certo do perfil com lado
+#IF $(vfr:6)=3 // perfil vertical
+   #IF $(VPERFPUX)!!
+      //  #LOADVAR VPERFPUX   _PERFPUX $(VPERFPUX:19)
+   #ENDIF
+#ELSE
+   #IF $(VPERFPUX:17)!!
+      //  #LOADVAR VPERFPUX   _PERFPUX $(VPERFPUX:18)
+   #ENDIF
+#ENDIF
+// fim gestao orientamento certo do perfil com lado
+#IF $(_fr:1)!!999
+   #LETS CINEX_VAR_OBRIGATORIAS=_SISTEMAS=STD0024;_USINAGEMCLIENTE=000;_APLICACAO=AB_01_02;_POSPORTAS=AB_01_02_01
+   #LETS CINEX_VAR_DEFAULT=
+   _fr,move=$(movfr)
+   push_porta,posd=1
+#ENDIF
+ACEINTFRENTE,tpaper=1,l=$(lfre:0),sl=$(eslat:0)
+#IF $(APE:0)==AGE
+   #IF $(_TPCAIXA:0)==CINCR | $(_TPCAIXA:0)==CINCRSF | $(_TPCAIXA:0)==CINCRSFSR
+    //  dobradiça,posd=1,SL=$(ESLAT:0)
+   #ELSE
+      dobradiça,posd=1
+   #ENDIF
+#ELSE
+   dobradiça,posd=1//,sa=$(affre)// ALEX VISITA - TIREI ISSO POIS QUANDO COLOCAVA FRENTE AVANÇADA DAVA PROBLEMA DE POSICIONAMENTO. AGORA A COMPENSAÇÃO ESTÁ POR FORA DA TIPOLOGIA
+#ENDIF

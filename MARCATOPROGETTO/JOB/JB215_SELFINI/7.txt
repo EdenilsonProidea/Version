@@ -1,0 +1,29 @@
+#IF $(tipologiap)[217]!1 // Exceto gaveta interna <c28682>
+   // ini <C23498>
+   #IF $(xx3:3)[501;502;503]!0
+      #LET PF=12
+      #IF $(xx3:3)=501 // frame trad
+         #LET L_CANAL=7
+      #ELSEIF $(xx3:3)=502 // frame vetro
+         #LET L_CANAL=5
+      #ELSEIF $(xx3:3)=503 // paglia
+         #LET L_CANAL=8
+      #ENDIF
+      #IF $(XX10:8)==S | $(XX10:8)==I
+         2	MA	 X=0 Y=0 NM=CANAL_TOPO_$(XX10:8) PARM=PF@$(PF)^L_CANAL@$(L_CANAL:0) KO_ZERO=1 L_CANAL=$(L_CANAL:0)
+      #ELSEIF $(XX10:8)==E
+         #LET XI=30
+         #LET XF={$(XA)-30}
+         #LETS YI=0.0
+         #LETS YF=0.0
+         2	MA	 X=0 Y=0 NM=CANAL_TOPO_$(XX10:8) PARM=PF@$(PF)^XI@$(XI)^YI@$(YI)^XF@$(XF)^YF@$(YF)^L_CANAL@$(L_CANAL:0) KO_ZERO=0 L_CANAL=$(L_CANAL:0)
+      #ELSE
+         #LET XI=30
+         #LET XF={$(XA)-30}
+         #LET YI=$(XL)
+         #LET YF=$(XL)
+         2	MA	 X=0 Y=0 NM=CANAL_TOPO_$(XX10:8) PARM=PF@$(PF)^XI@$(XI)^YI@$(YI)^XF@$(XF)^YF@$(YF)^L_CANAL@$(L_CANAL:0) KO_ZERO=0 L_CANAL=$(L_CANAL:0)
+      #ENDIF
+   #ENDIF
+   // fim
+#ENDIF

@@ -1,0 +1,61 @@
+#IF $(_TPFR:3)>0
+   #LET tpf=$(_TPFR:3)
+   #LET AFFREA=0
+   //#IF $(CAVA)=1 & $(inf)=1
+   //   #LET AFRE=$A-$(RIDFRECAVA:0)-$(_TPCAIXA:5)
+   //#ELSEIF    $(_PUXCAVA:3)=1 & $(SUP)=1
+   //   #LET AFRE=$A-$(_PUXCAVA:4))
+   //   #LET AFFREA=$(_PUXCAVA:4))
+   // #ELSE
+   //   #LET AFRE=$A-$(_TPCAIXA:5)
+   //#ENDIF
+   #LET AFRE=$A-$(DESCFRESUP:0)
+   _iniciafrontal
+   #IF $(INVERTIAP:0)=1
+      !RETTA 4,0,$(ptop1)-$(PING:0)+3
+      !RETTA 51,0,$(ptop1)-$(PING:0)
+      !RETTA 52,0,$(ptop2)-$(PING:0),1
+      !RETTA 522,0,{$(ptop2)-$(PING:0)+$(ESFRE)+1.5+$(FOLGAFRENTEL:0)},1
+      !RETTA 53,1,$(FOLGAFRENTEL:0)
+      !RETTA 54,1,-$(FOLGAFRENTEL:0),1
+      !INTERSECA ppx0,ppy0,51,53
+      !INTERSECA ppx1,ppy1,51,522
+      !INTERSECA ppx2,ppy2,51,52
+      !INTERSECA ppx3,ppy3,52,4
+      !INTERSECA ppx4,ppy4,52,54
+      !DISTANZA l5,$(ppx0),$(ppy0),$(ppx1),$(ppy1)
+      !DISTANZA l6,$(ppx3),$(ppy3),$(ppx4),$(ppy4)
+      PORTAGE,APE=AGE,IDP=1,P=$(ESFRE),SP=$(ptop1)-$(PING:0),LFRE={$(l5)},sl=$(ppx0),l=$(l5),CAVA=0,folgafrentel=0  // Anta (SX)
+      PORTAGD,APE=AGD,IDP=1,P=$(ESFRE),LFRE={$(l6)},SL=$(Ppx3),SP=$(pPy3),AY=$(ANG),_pux=999,folgafrentel=0
+   #ELSE
+      PORTAGE,APE=AGE,IDP=1,SP=$(plat1:0),P=$(ESFRE),macro=frontal,LFRE=$l-$(plat2:0)+$(eslat:0),_pux=999,l=$(lfre),CAVA=0,SA=$(AFFREA)  // Anta (SX)
+      PORTAGD,APE=AGD,IDP=1,P=$(ESFRE),LFRE={$(l6)},SL=$(Ppx3),SP=$(pPy3),AY=$(ANG),folgafrentel=0,SA=$(AFFREA)
+   #ENDIF
+   // COSTRUZIONE GOLA
+   #IF $(CAVA)=1 & $(inf)=1
+      !RETTA 101,1,0
+      !RETTA 102,0,$(PTOP1)-$(PING:0)-$(PCAVA:0)
+      !RETTA 103,0,$(PTOP2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 104,1,0,1
+      !INTERSECA PCX1,PCY1,101,102
+      !INTERSECA PCX2,PCY2,102,103
+      !INTERSECA PCX3,PCY3,103,104
+      // Grafica Gola
+      !ADDPUNTO $(pcx2),$a-$(acava:0),$(pcy2)
+      !SAGOMA PERC1 $(PCX1),$(PCY1),$(PCX2),$(PCY2),$(PCX3),$(PCY3)
+      CAVA,perccava=$(PERC1),AFPCAVA=0,A={$A-$(_TPCAIXA:5)}  // CATENA per gola
+      #LETS cavelatdir=$(cavelatESQ)
+   #ELSEIF $(SUP)=1 & $(_puxcava:3)=1
+      !RETTA 101,1,0
+      !RETTA 102,0,$(PTOP1)-$(PING:0)-$(PCAVA:0)
+      !RETTA 103,0,$(PTOP2)-$(PING:0)-$(PCAVA:0),1
+      !RETTA 104,1,0,1
+      !INTERSECA PCX1,PCY1,101,102
+      !INTERSECA PCX2,PCY2,102,103
+      !INTERSECA PCX3,PCY3,103,104
+      // Grafica Gola
+      !SAGOMA PERC1 $(PCX1),$(PCY1),$(PCX2),$(PCY2),$(PCX3),$(PCY3)
+      CAVASUP,perccava=$(PERC1),AFPCAVA=0,A={$A-$(_TPCAIXA:5)}  // CATENA per gola
+      #LETS cavelatdir=$(cavelatESQ)
+   #ENDIF
+#ENDIF

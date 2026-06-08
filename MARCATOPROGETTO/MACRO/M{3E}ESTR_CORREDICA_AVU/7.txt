@@ -1,0 +1,12 @@
+#LETV _corr=$(x8:1)
+#IFDEF $(_corr:5)
+   #LETS codcorredica=$[CODICEBARRA;X$(_corr:5)-$(X8:0);$(X8:0);10;errore] // ,,,,,1,,,,$(MAT)
+#ENDIF
+#MSG $(codcorredica)
+#IF $(_listino)=1
+   #IFDEF $(_corr:5)
+      $(codcorredica),1,,$(X8:0) // ,,,,,1,,,,$(MAT)
+   #ENDIF
+#ELSE
+   KIT-CORR,1,CODCORR=$(CODCORREDICA);
+#ENDIF

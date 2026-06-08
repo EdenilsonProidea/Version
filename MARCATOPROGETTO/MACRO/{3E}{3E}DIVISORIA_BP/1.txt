@@ -1,0 +1,1 @@
+351,SL=$L/2,SP=$(AFCOS:0)+$(ESCOS:0),P=$P-($(AFCOS:0)+$(ESCOS:0)+$(RED_F_DIVH:0)+$(RED_F_PRAT:0))

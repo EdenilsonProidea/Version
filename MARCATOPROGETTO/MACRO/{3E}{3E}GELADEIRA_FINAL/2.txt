@@ -1,0 +1,3 @@
+CAIXA
+#LETV A=$(ESPACOVAOFIM:0)
+coz_pes,P={$P-$(DESC_BASE:0)}

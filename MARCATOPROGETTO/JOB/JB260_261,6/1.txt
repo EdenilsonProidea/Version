@@ -1,0 +1,4 @@
+#IF $(xp3:0)==$(xx3:0)
+   // #M JOB_LATG_TRG
+   #M JOB_LATG_TRAS
+#ENDIF

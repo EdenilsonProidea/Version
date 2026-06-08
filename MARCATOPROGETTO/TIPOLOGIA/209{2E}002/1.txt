@@ -1,0 +1,10 @@
+{ 209.002   // PRATELEIRAS DE MADEIRA (COZINHA) sagoma
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS DE MADEIRA (COZINHA) sagoma
+   CODICE              =/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);
+   DIMENSIONE          =$(LPRAT)
+   DISEGNO             =$(sagprat)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)/L
+   ALIAS               =#209
+}

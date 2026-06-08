@@ -1,0 +1,20 @@
+#LETV _TPCAIXA=dmo
+#LET enche=0
+#LET enchd=0
+#IF $(_int:3)=31
+   #LET enche=50
+   #LET enchd=50
+#ELSEIF $(_int:3)=32
+   #LET enche=50
+   #LET enchd=0
+#ELSEIF $(_int:3)=33
+   #LET enche=0
+   #LET enchd=50
+#ENDIF
+#LETV tpfix=1
+#LET frentecinex=0
+#LET netiquetasgav=0
+#LET esfre=$(_frg:4)
+#LET etiquetagav=1
+#LET liberaespacoatras=0
+#LETS memoinfocorr=

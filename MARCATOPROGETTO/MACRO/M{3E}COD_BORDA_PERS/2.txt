@@ -1,0 +1,9 @@
+#IF $(QTB2)>0 & $(DIMP)>=15 & $(TINTA)== & $(_CORBORDIFVERO:0)==
+   #IF $(dimp)<18
+      #LETS CODBORDA2=133
+   #ELSEIF $(dimp)<25
+      #LETS CODBORDA2=134
+   #ELSE
+      #LETS CODBORDA2=135
+   #ENDIF
+#ENDIF

@@ -1,0 +1,15 @@
+{ 309   // PRATELEIRAS DE MADEIRA (DORMITORIO)
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS DE MADEIRA (DORMITORIO)
+   CODICE              =$(codprat) /_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORPR:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFPRATL),$(AFPRATA),$(AFPRATP)
+   DIMENSIONE          =$(LPRAT),$(ESPRAT:0),$(PPRAT)
+   COLORI              =$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5),$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X4                  =$(FUROREGULAVEL:0)/$(pprat:0)/$(RED_F_PRAT)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corPR:1)/$(TPFIXPRAT:1)
+   X10                 =$(AVANCOCLOSETL)
+   ALIAS               =#309
+}

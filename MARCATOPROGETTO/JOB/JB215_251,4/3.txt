@@ -1,0 +1,62 @@
+#IF $(XP7:2)!!
+   #IF $(TIPO)=216 & 1=0 //<C22074> RETIRADO POIS O PUXADOR SAIA INVERTIDO PARA GAVETAS DE COZINHA
+      // INVERTE X E Y
+      #LET PASSO=$(XP7:1)
+      #LET SENTIDO=$(XP7:0)
+      #IF $(XP7:2)==PX2
+         #IF $(SENTIDO)=1 // HORIZONTAL
+            // 2	MARC	Y=$(PA) X={$(PL)-$(PASSO)/2}
+            // 2	MARC	Y=$(PA) X={$(PL)+$(PASSO)/2}
+            2	FF	Y=$(PA) X={$(PL)-$(PASSO)/2} DF=5 PF={$(XP)+4}
+            2	FF	Y=$(PA) X={$(PL)+$(PASSO)/2} DF=5 PF={$(XP)+4}
+            2	FF	Y=$(PA) X={$(PL)-$(PASSO)/2} DF=8 PF=8
+            2	FF	Y=$(PA) X={$(PL)+$(PASSO)/2} DF=8 PF=8
+         #ELSE // VERTICAL
+            //2	MARC	Y={$(PA)-$(PASSO)/2} X={$(PL)}
+            //2	MARC	Y={$(PA)+$(PASSO)/2} X={$(PL)}
+            2	FF	Y={$(PA)-$(PASSO)/2} X={$(PL)} DF=5 PF={$(XP)+4}
+            2	FF	Y={$(PA)+$(PASSO)/2} X={$(PL)} DF=5 PF={$(XP)+4}
+            2	FF	Y={$(PA)-$(PASSO)/2} X={$(PL)} DF=8 PF=8
+            2	FF	Y={$(PA)+$(PASSO)/2} X={$(PL)} DF=8 PF=8
+         #ENDIF
+      #ELSEIF $(XP7:2)==PX1
+         // 2	MARC	Y={$(PA)} X={$(PL)}
+         2	FF	Y={$(PA)} X={$(PL)} DF=5 PF={$(XP)+4}
+         2	FF	Y={$(PA)} X={$(PL)} DF=8 PF=8
+      #ELSE
+         1	MA	Y={$(PA)} X={$(PL)} NM=$(XP7:2) PARM=PY=$(PA);PX=$(PL) // MACRO
+      #ENDIF
+   #ELSE
+      #LET PASSO=$(XP7:1)
+      #LET SENTIDO=$(XP7:0)
+      #IF $(PL)>0 | $(pl)=0 //pra furar somente quando necessário <c23498>
+         #IF $(XP7:2)==PX2
+            #IF $(SENTIDO)=1 // HORIZONTAL
+               // 2	MARC	X=$(PA) Y={$(PL)-$(PASSO)/2}
+               // 2	MARC	X=$(PA) Y={$(PL)+$(PASSO)/2}
+               #IF {$(PL)-$(PASSO)/2}<0 //pra furar somente quando necessário <c23498>
+                  // faz nada
+               #ELSE
+                  2	FF	X=$(PA) Y={$(PL)-$(PASSO)/2} DF=5 PF={$(XP)+4}
+                  2	FF	X=$(PA) Y={$(PL)-$(PASSO)/2} DF=8 PF=8
+               #ENDIF
+               2	FF	X=$(PA) Y={$(PL)+$(PASSO)/2} DF=5 PF={$(XP)+4}
+               2	FF	X=$(PA) Y={$(PL)+$(PASSO)/2} DF=8 PF=8
+            #ELSE // VERTICAL
+               // 2	MARC	X={$(PA)-$(PASSO)/2} Y={$(PL)}
+               // 2	MARC	X={$(PA)+$(PASSO)/2} Y={$(PL)}
+               2	FF	X={$(PA)-$(PASSO)/2} Y={$(PL)} DF=5 PF={$(XP)+4}
+               2	FF	X={$(PA)+$(PASSO)/2} Y={$(PL)} DF=5 PF={$(XP)+4}
+               2	FF	X={$(PA)-$(PASSO)/2} Y={$(PL)} DF=8 PF=8
+               2	FF	X={$(PA)+$(PASSO)/2} Y={$(PL)} DF=8 PF=8
+            #ENDIF
+         #ELSEIF $(XP7:2)==PX1
+            // 2	MARC	X={$(PA)} Y={$(PL)}
+            2	FF	X={$(PA)} Y={$(PL)} DF=5 PF={$(XP)+4}
+            2	FF	X={$(PA)} Y={$(PL)} DF=8 PF=8
+         #ELSE
+            1	MA	X={$(PA)} Y={$(PL)} NM=$(XP7:2) PARM=PX=$(PA);PY=$(PL) // MACRO
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

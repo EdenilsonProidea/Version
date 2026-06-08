@@ -1,0 +1,29 @@
+#IF $(x3:1)==W
+   #LOADVAR _CORwood   _CORwood  $(X9:1)
+   #IF $(_corwood:6)==LAMINA | $(_corwood:11)==LAM  | $(_corwood:11)==LMN
+      #LET ESP=15 // o valor era 26 porém foi solicitado alteração sempre 25 lamina ou pintura no chamado 186
+   #ELSE
+      #LET ESP=15
+   #ENDIF
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML=$(DL),DIMA=43,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML=$(DL),DIMA=43,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML=$(DL),DIMA=30,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML=$(DL),DIMA=30,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML={$(DP)-50},DIMA=30,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML={$(DP)-50},DIMA=30,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML={$(DP)-50},DIMA=30,DIMP=$(ESP)
+   #M ESTR_MADEIRA,CODITEM=SARWOOD,DIML={$(DP)-50},DIMA=30,DIMP=$(ESP)
+   #IF $(_LISTINO)=1
+      4196,$(DL)*($(DP)-7)/1000000
+   #ELSE
+      #IF $(_corwood:6)==LAMINA | $(_corwood:11)==LAM  | $(_corwood:11)==LMN
+         #LET ESPVID=8
+      #ELSE
+         #LET ESPVID=8 // o valor era 10 porém foi solicitado alteração sempre 8 lamina ou pintura no chamado 186
+      #ENDIF
+      VID-WOOD,1,,$(DL),{$(DP)-7},$(ESPVID)
+   #ENDIF
+   KITSUPPRAT,4
+#ELSE
+   #M ESTR_MADEIRA,CODITEM=PRTM
+#ENDIF

@@ -1,0 +1,52 @@
+#LET sentido=1
+_calcola_popx
+#LETS pospuxadores=$(popx)
+#IF $(pospuxadores)[1;3]!0 #LET sentido=2
+#IF $(TPF)=65 & ($(_pux:0)=999 | $(pv_pux:0)=999) // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de cozinha - feito em visita
+   #LETS xpfrente=
+   #LETS parfrente=
+   #LET ladojobfrente=
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+#ELSE
+   #IF $(ape:0)==AVF_S
+      #LET aa={$(afre)-1*($(FOLGAFRENTEAS:0)+$(FOLGAFRENTEAI:0))}
+      #LET saa=$(FOLGAFRENTEAI:0)
+      #LETS parfrente=$(SENTIDO)|$(POPX)
+      #LETS xpfrente=$(_FR:7)
+      #LETS parfrente=
+      #LETS xpfrente=frente_lisa.xp
+   #ELSE
+      #IF $(_FR:20)!!
+         #FOR $(_FR:20)
+            #LETS TM1=$[EX;$(I);=;1]
+            #LETS TM2=$[EX;$(I);=;2]
+            #LETS $(TM1)=$(TM2)
+         #ENDFOR
+      #ENDIF
+      #IF $(SAPUX)=0 #LET sapux=50
+      #IF $(RAIO)=0  #LET raio=2
+      #LET lvid=$(LPUXLUNG:3)+25
+      #LET avid=$(LPUXLUNG:4)+50
+      // .FRENTE_PUX_USI_E.XP
+      #IF $(ambiente)==D & $(ISCANTOLDOR:0)=1 & $(FRENTENORMAL:0)=1 // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L <c25052>
+         #LETS xpfrente=
+         #LETS parfrente=
+         #LET ladojobfrente=
+         #LETS nomejobfrente=
+         #LETS parjobfrente=
+      #ELSE
+         #LETS xpfrente=FRENTE_PUX_USI_E.XP
+        // #LETS parfrente=$(pospuxadores)|$(sentido)|{$(LPUXLUNG:3)}|{$(LPUXLUNG:4)}|{$(LPUXLUNG:5)}|{$(SAPUX)}|$(raio)|$(LVID)|$(AVID)
+         // obs silvio: precisa mudar essa regra. o calculo do centro da orientação serão feitos na regra
+         // não dentro do xp, depois passar a xp os parametros
+         // e mesma coisa o job: parametros: centrox / centroy / lpux /apux /raio
+         // vai ser feito quando chegar nova modalidade obj da italia
+         #LET ladojobfrente=1
+         #LETS nomejobfrente=LUNGHI
+         #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@1040^LPUX@$(LPUXLUNG:3)
+         // da finalizar quando precisar
+      #ENDIF
+   #ENDIF
+#ENDIF
+_FR_STANDARD

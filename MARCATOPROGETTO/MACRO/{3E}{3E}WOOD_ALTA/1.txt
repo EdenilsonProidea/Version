@@ -1,0 +1,25 @@
+CHECK_GAV
+#LET espgaveta=13
+#LET espfundogaveta=15
+#LET afafundogaveta=12
+#LET canalgaveta=5
+#LET alatg=195
+#LET acfundog=195
+#LET acfrente=195
+#LET llat3ds=$(espgaveta)
+#LET Alat3ds=$(alatg)
+#LET plat3ds=$(pgav)-4.5
+#LET llat3dscfu=$l
+#LET Alat3dscfu=$(alatg)
+#LET plat3dscfu=$(espgaveta)
+#LET llat3dscfr=$l
+#LET Alat3dscfr=$(alatg)
+#LET plat3dscfr=$(espgaveta)
+#LET agav=90
+// #MSG $(_CORCX:2)
+260.007,SP=0,A=$(Alat3ds),P=$(pgav),X6=acessorios\lat_esq_wood_baixa.3ds  //Lateral Gaveta
+260.008,SP=0,A=$(Alat3ds),P=$(pgav),X6=acessorios\lat_dir_wood_baixa.3ds  //Lateral Gaveta
+261.002,SL=0,SA=$(alatg)-$(acfundog),SP=-1,L=$(llat3dscfu),A=$(Alat3dscfu),P=$(plat3dscfu),X6=acessorios\cfundo_wood_baixa.3ds  //Traseira Gaveta
+262.002,SL=0,SP=$P-13,L=$(llat3dscfr),A=$(Alat3dscfr),P=$(plat3dscfr),X6=acessorios\cfrente_wood_baixa.3ds  //Traseira Gaveta
+#LOADVAR _CORFUNDOWOOD _CORCX LMN.C01.JEQ
+wood_fundo,_corcx=$(_CORFUNDOWOOD)

@@ -1,0 +1,27 @@
+calc_n_adega
+#IF $(ltot)=500
+   #LETS adega3ds=AdegaTradizione500mm
+#ELSEIF $(ltot)=600
+   #LETS adega3ds=AdegaTradizione600mm
+#ELSEIF $(ltot)=700
+   #LETS adega3ds=AdegaTradizione700mm
+#ELSEIF $(ltot)=800
+   #LETS adega3ds=AdegaTradizione800mm
+#ELSEIF $(ltot)=900
+   #LETS adega3ds=AdegaTradizione900mm
+#ELSE
+   #MSG Tamanho Indisponivel para adega apenas l=[500;600;700;800;900]
+#ENDIF
+#LET AFADEGA=0
+#IF $(rr)>0
+   #FOR $1:$(rr)
+#MSG $(AFADEGA)
+      343,x8=ACESSORIOS\$(adega3ds).3ds/$(i)
+      #IF $(i)>1
+         349
+      #ENDIF
+      #LETS AFADEGA=$(AFADEGA)+155+$(_int:7)
+   #ENDFOR
+#ENDIF
+//400,lato=0,c1=10,c2=10
+// 204

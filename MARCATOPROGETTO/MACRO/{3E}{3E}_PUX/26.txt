@@ -1,0 +1,21 @@
+!PARAMETRI isportaperfil=0
+#IF $(_pux:1)!!999 & $(_pux:1)!!
+   #LET sentido=$(_pux:8) // 1= horizontal / 2=vertical
+   #LET lpx=$(_pux:4) // l pux
+   #LET apx=$(_pux:5) // a pux
+   #LET Ppx=$(_pux:6) // p pux
+   #IF $(_fr:6)[117;104;105;106;201;202]!0
+      #LET offpxa={($(_pux:5)-1*(55+$(_pux:16)))/2} // offset altura pux
+      //#LET offpxL={($(_pux:4)-1*(55+$(_pux:15)))/2} // offset largura pux
+   #ELSE
+      #LET offpxa=$(_pux:16) // offset altura pux
+      #LET offpxl=$(_pux:15) // offset largura pux
+   #ENDIF
+   #LET ppxp=$(_pux:17) //  // offset prof pux
+   _calcola_popx
+   #LETS pospuxadores=$(popx)
+   #FOR $(popx)
+      _inspux,popx=$(I)
+      //  #EXITFOR // assim pega so o primeiro
+   #ENDFOR
+#ENDIF

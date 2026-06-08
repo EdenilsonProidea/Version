@@ -1,0 +1,15 @@
+{ 383   // lateral fechamento
+   *AZZERA*            =0
+   DESCRIZIONE         =lateral fechamento
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,-$(INCR_ATRAS:0)
+   DIMENSIONE          =$(espacab:3),$(acabLateral),$P+1*($(_tpfech:8)+$(INCR_ATRAS:0))
+   COLORI              =$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5)|90,$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5)|90
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL.XP
+   DATI                =_corex
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1//////$(FITARSOVISTA:2)
+   X9                  =$(_tpcaixa:1)/$(_corex:1)/$(TPFIX:1)
+   ALIAS               =#383
+}

@@ -1,0 +1,28 @@
+// ALEX FEITO EM VISITA - FOI SOLICITADO PARA PORTA FRAME BELLAGIO E VINTAGE TER POSIÇÃO DO PUXADOR BOLINHA NO CENTRO DA MOLDURA. PARA ISSO CRIAMOS MAIS UMA COLUNA NA VARIANTE _PUX_EXTRA PARA IDENTIFICAR OS PUXADORES BOLINHA. A COLUNA 6 PRECISA ESTAR IGUAL A 1 PARA CENTRALIZAR NA MOLDURA DESSA PORTAS EM ESPECÍFICO
+#LOADVAR _PARPUXEXTRA _PUX_EXTRA $(_PUX:1)
+#IF $(_PARPUXEXTRA:6)=1
+   #LETV _PUX:15={32-$(_PUX:4)/2} // COLOQUEI + 0.01 POIS O LETV NÃO ACEITA 0
+   #LETV _PUX:16={32-$(_PUX:5)/2} // COLOQUEI + 0.01 POIS O LETV NÃO ACEITA 0
+#ENDIF
+_calcola_popx
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$A
+#ENDIF
+#LETS parfrente=porta_palha.3DS|100;100;100;100
+#LETS xpfrente=frente_3D.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRENTEVINTAGEPINTURA
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+#IF $A<150
+   #LETS idlogerros=$(idlogerros)61
+#ENDIF
+_FR_STANDARD,FRENTECOMPALHA=1
+#LET descaporta=$a-110
+#LET desclporta=$l-110
+#LET espfunporta=6
+#LET spfunporta=3
+#LET descsaporta=55-$(abafrente:3)+$(_PUXCAVA:4)
+#LET descslporta=55
+//215.001,SL=$(descslporta),SA=$(descsaporta),SP=$(spfunporta),L=$(desclporta),A=$(descaporta),P=$(espfunporta),gl=0
+//.frente_3D.xp
+// 215

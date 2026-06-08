@@ -1,0 +1,2 @@
+mod_str_1
+LOGERROS

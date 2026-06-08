@@ -1,0 +1,4 @@
+// #IF $(diml)+30<2750 #LET diml=$(diml)+30 #LET diml=2750
+// #MSG (($(DIML)+30)*$(FF)+($(DIML)+30)*$(FT)+($(DIMA)+30)*$(FD)+($(DIMA)+30)*$(FE))
+#MSG $(DIMA)
+#M ESTR_MADEIRA,CODITEM=DISFECH

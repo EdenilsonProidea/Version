@@ -1,0 +1,12 @@
+{ 515   // Caninho sapa
+   *AZZERA*            =0
+   DESCRIZIONE         =Caninho sapa
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slcan),$(afa_mad_sap)+$(espsapamont),0
+   DIMENSIONE          =$(lcan),$(caninhosapa:5),$(caninhosapa:6)
+   COLORI              =$(caninhosapa:8),$(caninhosapa:8)
+   FACCIATA            =22
+   ORIENTAMENTO        =LAP
+   X8                  =acessorios\$(caninhosapa:7)
+   X9                  =$(caninhosapa:3)
+}

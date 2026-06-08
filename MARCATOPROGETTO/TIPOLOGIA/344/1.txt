@@ -1,0 +1,13 @@
+{ 344   // Acessórios Avulso
+   *AZZERA*            =0
+   DESCRIZIONE         =Acessórios Avulso
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(acessorios:9),$(acessorios:9)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   DATI                =acessorios$(_ctx)
+   X8                  =INTERNO\$(ACESSORIOS:5)
+   X9                  =$(ACESSORIOS:1)
+}

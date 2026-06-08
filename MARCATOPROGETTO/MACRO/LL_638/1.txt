@@ -1,0 +1,6 @@
+#M ESTR_MADEIRA,CODITEM=PAIFVH
+
+#IF $(X5:0)!0 // Adicionado o custo do friso em visita
+   PreFriso,$(x5:0)*($(DIML)/1000)
+   PreFriso,$(x5:0)*($(DIMA)/1000)
+#ENDIF

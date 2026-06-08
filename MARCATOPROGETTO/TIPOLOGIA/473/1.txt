@@ -1,0 +1,13 @@
+{ 473   // ESPADA
+   *AZZERA*            =0
+   DESCRIZIONE         =ESPADA
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =-7,$A/2-1*(17/2),-25/2
+   DIMENSIONE          =250,17,110
+   COLORI              =1,1
+   ORIENTAMENTO        =PAL
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =INTERNO\ESPADA.3ds
+   X9                  =$L
+   ALIAS               =#473
+}

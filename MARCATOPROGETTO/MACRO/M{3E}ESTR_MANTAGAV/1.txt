@@ -1,0 +1,11 @@
+#LOADVAR _MANTAGAV _MANTAGAV $(X8:3)
+#LOADVAR _TPGAV _TPGAV $(X8:4) // <C5084> ADICIONADA COLUNA 17 _TPGAV
+#IF $(_MANTAGAV:3)>0
+   #IF $(_LISTINO)=1
+      // $(_MANTAGAV:5),($(DIML)-$(_TPGAV:17))*$(DIMA)/1000000
+      $(_MANTAGAV:5),($(DIML)-$(_TPGAV:22))*($(DIMA)-$(_TPGAV:23))/1000000 // Utiliza as colunas 22 e 23 de _TPGAV para fazer o desconto das mantas <c22411>
+   #ELSE
+      // KIT-MANTAGAV,1,CODMANTA=$(_MANTAGAV:5),{$(DIML)-$(_TPGAV:17)},$(dima),1
+      KIT-MANTAGAV,1,CODMANTA=$(_MANTAGAV:5),{$(DIML)-$(_TPGAV:22)},($(DIMA)-$(_TPGAV:23)),1  //Utiliza as colunas 22 e 23 de _TPGAV para fazer o desconto das mantas <c22411>
+   #ENDIF
+#ENDIF

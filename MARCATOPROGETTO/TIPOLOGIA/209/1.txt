@@ -1,0 +1,14 @@
+{ 209   // PRATELEIRAS DE MADEIRA (COZINHA)
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS DE MADEIRA (COZINHA)
+   CODICE              =$(codprat) /_CORFAMILIA=$(_CORPR:10);_CORCX=$(_CORPR:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX
+   POSIZIONE           =$(AFPRATL),$(AFPRATA)-$(ESPRAT:0)/2,$(AFPRATP)
+   DIMENSIONE          =$(LPRAT)-2*$(RED_INTM:0),$(ESPRAT:0),$(PPRAT)
+   COLORI              =$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5),$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X4                  =/$(pprat:0)/$(RED_F_PRAT:0)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/1/1/0/1
+   X9                  =$(_tpcaixa:1)/$(_corPR:1)/$(TPFIXPRAT:1)
+   ALIAS               =#209
+}

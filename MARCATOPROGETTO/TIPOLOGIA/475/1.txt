@@ -1,0 +1,11 @@
+{ 475   // CAPA TAMBURATO
+   *AZZERA*            =0
+   DESCRIZIONE         =CAPA TAMBURATO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$(ESP_PRAT:3),$P
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   X9                  =/$(_corEX:1)//$(_corbf:1)/$(_altBORDA:1)
+   ALIAS               =#470
+}

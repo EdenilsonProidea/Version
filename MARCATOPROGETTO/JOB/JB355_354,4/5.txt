@@ -1,0 +1,1 @@
+1,FF,X={80} Y={$(DA)/2} DF=8 PF=121,FF,X={$(XL)-80} Y={$(DA)/2} DF=8 PF=121,FF,X={$(XL)/2} Y={$(DA)/2} DF=8 PF=12#IF $(XL)>7001,FF,X={$(XL)/3} Y={$(DA)/2} DF=8 PF=121,FF,X={$(XL)/3*2} Y={$(DA)/2} DF=8 PF=12#ENDIF2,FF,X=23 Y=11 DF=8 PF=112,FF,X={$(XL)-23} Y=11 DF=8 PF=11

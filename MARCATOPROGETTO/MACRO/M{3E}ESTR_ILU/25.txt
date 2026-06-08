@@ -1,0 +1,35 @@
+#LOADVAR TP_LED TP_LED $(X9:0)
+
+#LET largled=$(x7:2)
+#IF $(TP_LED:3)=1 // METRO LINEAR
+   #IF $(_listino:0)=1
+      #IF $(TP_LED:16)=1 // cobrança somente usinagem usinagem
+         $(TP_LED:15),{$(largled:0)/1000}
+      #ELSE
+         // ,$(ml)
+         $(X5:0),{$(largled:0)/1000},codled=$(X5:0)
+         $(TP_LED:15),{$(largled)/1000} // cobrança usinagem
+      #ENDIF
+   #ELSE
+      //      kit-led,{$(diml)/1000},codled=$(X5:0)
+      #IF $(diml)=2
+         kit-led,1,codled=$(X5:0),$(dima)
+      #ELSE
+         kit-led,1,codled=$(X5:0),$(diml)
+      #ENDIF
+   #ENDIF
+   #IF $(TP_LED:14)!!
+      $(TP_LED:14),1
+   #ENDIF
+#ELSE  // UNIDADE
+   #IF $(_listino:0)=1
+      #IF $(TP_LED:16)=1 // cobrança somente usinagem usinagem
+         $(TP_LED:15),1
+      #ELSE
+         $(X5:0),1,codspot=$(X5:0)
+         $(TP_LED:15),1
+      #ENDIF
+   #ELSE
+      kit-spot,1,codspot=$(X5:0)
+   #ENDIF
+#ENDIF

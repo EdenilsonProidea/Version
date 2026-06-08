@@ -1,0 +1,6 @@
+#LET apensil=25
+#LET lpensil=60
+#LET ppensil=20
+#IF ($(sup)=1 | $(COL)=1)  & $(RMPENSIL:0)=0
+  // 396,sa=$(A)-$(apensil)-$(Abase:0),sl=$(l)-$(eslat:0)-$(lpensil)
+#ENDIF

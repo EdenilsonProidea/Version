@@ -1,0 +1,16 @@
+{ 463   // LED
+   *AZZERA*            =0
+   DESCRIZIONE         =LED
+   CODICE              =000$(tp_led:10) /;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =$(d1),,$p-$(d2)-$(_ilu:9)
+   DIMENSIONE          =$l-1*($(d1)+$(d3)),$(_ilu:8),$(_ilu:9)
+   COLORI              =30,30
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =LED.XP
+   X3                  =$(curbox)
+   X5                  =$(tp_led:10)
+   X6                  =$(AMBIENTE:0)//$(TP_LED:12)/$(TP_LOCAL:3)/$(N_LEDS:3)
+   X7                  =$(TP_LED:12)//$(TAM_LED:0)
+   X9                  =$(TP_LED:1)/$(LigarLuz:0)
+}

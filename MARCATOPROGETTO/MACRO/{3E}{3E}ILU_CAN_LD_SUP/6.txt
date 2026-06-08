@@ -1,0 +1,38 @@
+#IF $(SUP)=1 & $(CANTOSUPNEW)=1
+   #IF $(FLAG_ILU:0)=1
+      #IF $(LIGARLUZ)=1
+         419.011,A=20,L=20,SP=$P+20,SL=($A/2)+6.5,SA=0
+      #ELSE
+         419.010,A=20,L=20,SP=$P+20,SL=($A/2)+6.5,SA=0
+      #ENDIF
+   #ENDIF
+   #IF $(LUZ)=1
+      #IF $(TP_LED:12)=1
+         #IF $(TP_LOCAL:3)=1
+            467,A=2,P=8.5,L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0)-1,SL={$L-($(PLAT2:0))+100},AY=90,AZ=-90
+         #ELSEIF $(TP_LOCAL:3)=2
+            467,A=2,P=8.5,L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0)-1,SL={$L-($(PLAT2:0)/2)+25},AY=90,AZ=-90
+         #ELSE
+            467,A=2,P=8.5,L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0)-1,SL={$L-67},AY=90,AZ=-90
+         #ENDIF
+      #ELSEIF $(TP_LED:12)=2
+         // FAZER ERRO
+         #LETS PECA=LATERAL DIREITA
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=3
+         // FAZER ERRO
+         #LETS PECA=LATERAL DIREITA
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ELSEIF $(TP_LED:12)=4
+         #LET pcalaleta=16.5
+         #IF $(TP_LOCAL:3)=1
+            468,A=2,P=$(pcalaleta:0),L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0),SL={$L-($(PLAT2:0))+$(pcalaleta:0)+28},AX=90,AZ=-90,X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0)
+         #ELSEIF $(TP_LOCAL:3)=2
+#MSG AQUI
+            468,A=2,P=$(pcalaleta:0),L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0),SL={$L-($(PLAT2:0)/2)+25},AX=90,AZ=-90,X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0)
+         #ELSE
+            468,A=2,P=$(pcalaleta:0),L={$A-2*$(ABASE:0)+3},SA=$(ABASE:0),SP=$P-$(ESLAT:0),SL={$L-67},AX=90,AZ=-90,X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

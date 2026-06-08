@@ -1,0 +1,78 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Generale
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+-,caixa
+T,Modello
+T,_corcx
+T,_CORBF
+T,_tpgav
+T,espessura
+T,espessura_gaveta
+T,_CORR
+T,_corblum
+T,_corpr
+-,frente
+G,FR_GERAL_GENE
+-,tampo
+T,_tampo
+T,_cortampo
+T,BORDO,,$(_tampo:6)==999
+T,_filete,,,,$(_filete:1)[$(_tampo:10)]
+M,ATAMPOP,,$(_tampo:6)==999,Espessura Tampo?,,,25,5
+M,afilesp,,$(_tampo:6)==999 & $(_filete:1)!!999,Altura filete?,,,60,10
+-,rodape
+T,_pes
+T,_corpes,,$(_PES:3)=5
+T,_corrodape,,$(_PES:3)=3,Cor Rodapè
+M,alt_sospenso,,$(_pes:3)=4,Alt.Suspenso,,,200|,10
+M,arod_pers,,$(_PES:3)=5,Altura Basamento,,,200|,10
+-,Paineis
+T,_COREX,,,Cor Paineis
+T,_pinturaex,,$(_COREX:9)=1
+T,_tampSup,,,Tamponamento Sup
+M,AVISTATAMP,,$(_tampsup:3)=1,Altura Rodateto?,,,,30
+T,_tampInf,,,Tamponamento Inf
+T,PAINELESQ
+T,PAINELDIR
+T,esppainel,,,Esp.Tamponamentos?
+T,notamedidacaixa,,,Medida Caixa
+
+[GRAFICA]
+// altezze
+#LET apes=$(_pes:4)
+#IF $(apes)=135
+   !ALTEZZE 0
+#ELSEIF $(apes)=153
+   !ALTEZZE 1
+#ELSEIF $(apes)=165
+   !ALTEZZE 2
+#ELSEIF $(apes)=200
+   !ALTEZZE 3
+#ELSE
+   #IF $(modello:0)==001
+      !ALTEZZE 5
+   #ELSE
+      !ALTEZZE 4
+   #ENDIF
+#ENDIF

@@ -1,0 +1,4 @@
+#IF $(pl)>0 #LET f=2 #LET f=1
+$(f)	FF	 x={$(XA)-100} y={$(xp)-25/2} DF=5 PF={$(XL)+1}
+$(f)	FF	 x={$(XA)/2} y={$(xp)-25/2} DF=5 PF={$(XL)+1}
+$(f)	FF	 x=100 y={$(xp)-25/2} DF=5 PF={$(XL)+1}

@@ -1,0 +1,7 @@
+{ 215.035   // LATERAIS CLASSICAS
+   *AZZERA*            =0
+   DESCRIZIONE         =LATERAIS CLASSICAS
+   X3                  =$(curbox)/TLAT
+   X8                  =$(_fr:24)/$(_fr:8)/$(pospuxadores)/$(parfrente)/$(LFRISO)/$(LFRISOV)/$(LFRISOH)//$(POSCENTROISA:0)//$(_CORLDIF)
+   ALIAS               =#215
+}

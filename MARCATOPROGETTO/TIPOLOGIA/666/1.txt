@@ -1,0 +1,13 @@
+{ 666   // Base Superior PORTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Superior PORTAL
+   CODICE              =/_CORCX=$(_CORBA:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_corba:3)|$(.percorso)\foto\madeira\$(_corba:4)|$(_corba:5),$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)/S
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/0/0/0/0
+   X8                  =$(ESCOS:0)/$(PLATE)/$(PLATD)/$(SEMUSINAGEMBASEESTR)
+   X9                  =$(_tpcaixa:1)/$(_corba:1)/$(TPFIX:1)/$(_corbf:1)/$(_ilubassup:1)
+   ALIAS               =#203
+}

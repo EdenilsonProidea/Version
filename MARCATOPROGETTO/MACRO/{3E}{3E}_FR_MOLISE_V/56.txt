@@ -1,0 +1,69 @@
+#LET sentido=2
+_CALCOLA_POPX
+#LET FF=$(_FR:11)
+#LET FT=$(_FR:11)
+#LET FE=$(_FR:11)
+#LET FD=$(_FR:11)
+#LET SLL=0
+// FEITO GESTÃO PARA PEGAR O LADO CERTO
+
+#IF $(ambiente)==D & $(ISCANTOLDOR:0)=1 & $(FRENTENORMAL:0)=1 // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de DORMITORIO <C24980>
+   // NÃO DESENHA O PUXADOR
+#ELSE
+   #IF $(APE:0)==AGE #LET popx=3
+   #IF $(APE:0)==AGD #LET popx=1
+   #IF $(popx)==5 #LET popx=1
+   #MSG $(PM)
+   #IF 3[$(popx)]!0 | 6[$(popx)]!0 | 9[$(popx)]!0 // PORTA ESQUERDA
+      #LET pdir=1
+      // #LET SLL=$(FOLGAFRENTEL:0)
+      #IF $(_POSPUXMOLISE:3)==D & {$(LTOT)>$(LMAXPORTAABRIR:0)} // Utilizado para colocar o perfil molise sem pega <c22525>
+         #LETS _perfpux:5=$(_perfpux:5)  // PUXADOR_MOLISE_SEM PEGA_$(_perfpux:13).3ds
+         #LETS _perfpux:8=19
+         #LETS _perfpux:4=$(_PERFPUX:27)
+      #ELSE
+         #LETS _perfpux:5=$(_perfpux:19) // <c22525>
+         #LETS _perfpux:4=$(_PERFPUX:28)
+      #ENDIF
+      _perfilpuxh_molise,POS=3//,sl=$(FOLGAFRENTEL:0)
+   #ENDIF
+   
+   #IF 1[$(popx)]!0 | 4[$(popx)]!0 | 7[$(popx)]!0 // PORTA DIREITA
+      #LET pesq=1
+      #LET sLL=$(_PERFPUX:6)//+$(FOLGAFRENTEL:0)
+      #IF $(_POSPUXMOLISE:3)==E & {$(LTOT)>$(LMAXPORTAABRIR:0)} // Utilizado para colocar o perfil molise sem pega <c22525>
+         #LETS _perfpux:5=$(_perfpux:5)  // PUXADOR_MOLISE_SEM PEGA_$(_perfpux:13).3ds
+         #LETS _perfpux:8=19
+         #LETS _perfpux:4=$(_PERFPUX:27)
+      #ELSE
+         #LETS _perfpux:5=$(_perfpux:18) // <c22525>
+         #LETS _perfpux:4=$(_PERFPUX:4)
+      #ENDIF
+      _perfilpuxh_molise,POS=4,SL=$(FOLGAFRENTEL:0)//+$(_perfpux:6)
+   #ENDIF
+#ENDIF
+#IF $(pdir)+$(pesq)=2
+   // #LET sLL=$(_PERFPUX:6)+$(FOLGAFRENTEL:0)
+   #LET ll={$(lfre)-2*($(_PERFPUX:6))}
+   #LET FOLGAFRENTELAGR=(2*$(_PERFPUX:6))+$(FOLGAFRENTEL:0) // ALEX VISITA - CRIEI UMA VARIAVEL INTGERMEDIARIA POS ISSO ESTAVA FERRANDO QUANDO MAIS DE UMA PORTA
+#ELSE
+   //  #IF $(APE:3)==AGD  #LET FOLGAFRENTEL=$(_PERFPUX:6)+$(FOLGAFRENTEL:0) // Adicionado em visita, retirado em acesso
+   #LET ll={$(lfre)-$(_PERFPUX:6)}
+   #LET lfreAGR={$(lfre)-$(_PERFPUX:6)} // ALEX VISITA - CRIEI UMA VARIAVEL INTGERMEDIARIA POS ISSO ESTAVA FERRANDO QUANDO MAIS DE UMA PORTA
+   #LET FOLGAFRENTELAGR=$(FOLGAFRENTEL:0) // ALEX VISITA - CRIEI UMA VARIAVEL INTGERMEDIARIA POS ISSO ESTAVA FERRANDO QUANDO MAIS DE UMA PORTA
+#ENDIF
+
+#IF $(_FR:7)!!
+   #LETS parfrente=$(SENTIDO)|$(POPX)
+   #LETS xpfrente=$(_FR:7)
+#ELSE
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ENDIF
+#LET ladojobfrente=0
+#LETS nomejobfrente=
+#LETS parjobfrente=
+#LET pesq=0
+#LET pdir=0
+
+_FR_STANDARD,FOLGAFRENTEL=$(FOLGAFRENTELAGR),LFRE=$(LFREAGR:0),SL=$(SLL)

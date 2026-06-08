@@ -1,0 +1,31 @@
+#IF $(XA)>15 // MAIOR = 18
+   #LET PF=15
+#ELSE // 15 MM
+   #LET PF=10
+#ENDIF
+#LET f=2
+#IF $(XX3:1)==PTL
+   #IF $(PL)>0
+          $(f)	FF	X=64 Y={$(XP)-6.5} DF=15 PF=15.2
+       $(f)	FF	X={$(XX6:0)-64} Y={$(XP)-6.5} DF=15 PF=15.2
+   #ELSE
+           $(f)	FF	X={$(XL)-6.5} Y=64 DF=15 PF=15.2
+         $(f)	FF	X={$(XL)-6.5} Y={$(XX6:1)-64} DF=15 PF=15.2
+   #ENDIF
+#ELSE
+   #IF $(XX10:0)> // SE MAIOR QUE 0 É CLOSET LIGHT
+      #IF $(PL)>0
+         //      1	MA 	X=0 Y=0 NM=PRAT_CLOSET_LIGHT_DIR PROFLAT=$(DP)
+      #ELSE
+         //       1	MA 	X=0 Y=0 NM=PRAT_CLOSET_LIGHT_ESQ PROFLAT=$(DP)
+      #ENDIF
+   #ELSE
+      #IF $(PL)>0
+         //      $(f)	FF	X=6.5 Y=64 DF=15 PF=15.2
+         //   $(f)	FF	X=6.5 Y={$(XP)-64} DF=15 PF=15.2
+      #ELSE
+         //   $(f)	FF	X={$(XL)-6.5} Y=64 DF=15 PF=15.2
+         //   $(f)	FF	X={$(XL)-6.5} Y={$(XP)-64} DF=15 PF=15.2
+      #ENDIF
+   #ENDIF
+#ENDIF

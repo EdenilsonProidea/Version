@@ -1,0 +1,47 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=CAVA_HORIZONTAL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,_TPCAVA,,,,$(_tpcava:3)>0
+T,_pinturaperfis,,$(_TPCAVA:21)=1,,,,,,,,4
+T,_CORPROFILO,,$(_TPCAVA:15)=1 & $(_TPCAVA:3)!6 & $(_TPCAVA:3)[3;4;5;7]=0
+T,CCAVAPROFILO,,$(_tpcava:15)=1,Cor cava/pux,,,,,,,4
+T,_pinturacava,,$(CCAVAPROFILO:9)=1,Cor da pintura cava?,,,,,,,4
+
+[GRAFICA]
+INICIA
+
+#LET semdesenhocava=0
+
+#IF $(_TPCAVA:3)[3;4;5;7]!0
+   #LET P=$(_TPCAVA:10)
+   #LET L=$(_TPCAVA:11)
+  #MSG CAVAVERT
+#ELSE
+   #LET A=$(_TPCAVA:9)
+   #LET P=$(_TPCAVA:10)
+   CAVA
+#ENDIF
+
+LOGERROS

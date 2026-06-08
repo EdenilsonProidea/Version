@@ -1,0 +1,91 @@
+#IF $(_CTX)[_0000]!1
+   #IF $(TPCLOSETLIGHT:3)=3
+      #IF $(LADOMODULO$(_CTX):3)=1 // DIREITO
+         #LET ADCDIR=$(ADCDIR:0)+1
+         DOR_CLOSETL,SL=$(slmodulo:0)+$(PROFESQLIGHT:0),L=$(lmodulo:0),SP=$(REDCORPOATRAS:0),A=$A,P={$(PROFDIRLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ELSE // ESQUERDO
+         #LET LMODULOE=$(LMODULO:0)
+         #LET ADCESQ=$(ADCESQ:0)+1
+         DOR_CLOSETL,AY=90,SL=0,L=$(lmoduloe:0),SP=$(REDCORPOATRAS:0)+1*($(AFASTLIGHT:0)+$(LMODULOE:0)+$(SLMODULOE:0)),A=$A,P={$(PROFESQLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ENDIF
+   #ELSEIF $(TPCLOSETLIGHT:3)=2
+      #IF $(LADOMODULO$(_CTX):3)=1 // DIREITO
+         #LET ADCDIR=$(ADCDIR:0)+1
+         DOR_CLOSETL,SL=$(slmodulo:0),L=$(lmodulo:0),SP=$(REDCORPOATRAS:0),A=$A,P={$(PROFDIRLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ELSE // ESQUERDO
+         #LET LMODULOE=$(LMODULO:0)
+         #LET ADCESQ=$(ADCESQ:0)+1
+         DOR_CLOSETL,AY=90,SL=0,L=$(lmoduloe:0),SP=$(REDCORPOATRAS:0)+1*($(SLMODULOE:0)+$(LMODULOE:0)),A=$A,P={$(PROFESQLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ENDIF
+   #ELSEIF $(TPCLOSETLIGHT:3)=1
+      #IF $(LADOMODULO$(_CTX):3)=1 // DIREITO
+         #LET ADCDIR=$(ADCDIR:0)+1
+         DOR_CLOSETL,SL=$(slmodulo:0)+$(AFASTLIGHT:0),L=$(lmodulo:0),SP=$(REDCORPOATRAS:0),A=$A,P={$(PROFDIRLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ELSE // ESQUERDO
+         #LET LMODULOE=$(LMODULO:0)
+         #LET ADCESQ=$(ADCESQ:0)+1
+         DOR_CLOSETL,AY=90,SL=0,L=$(lmoduloe:0),SP=$(REDCORPOATRAS:0)+1*($(PROFDIRLIGHT:0)+$(SLMODULOE:0)+$(LMODULOE:0)),A=$A,P={$(PROFESQLIGHT:0)-$(REDCORPOATRAS:0)}
+      #ENDIF
+   #ENDIF
+#ELSE
+   CAIXA,SL=$(slmodulo:0),L=$(lmodulo:0),SP=$(REDCORPOATRAS:0),A=$A,P={$P-$(REDCORPOATRAS:0)}
+#ENDIF
+#IF $(TPCLOSETLIGHT:3)=3
+   #IF $(slmodulo:0)>50 & $(LADOMODULO$(_CTX):3)=1
+      // pula o primeiro modulo
+      #IF $(_PES:3)>0
+         526,SA=$(_PES:5),SL=$(slmodulo:0)+$(PROFESQLIGHT:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,SL=$(slmodulo:0)+$(PROFESQLIGHT:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+   #IF $(slmoduloe:0)>50 & $(LADOMODULO$(_CTX):3)=2
+      #IF $(_PES:3)>0
+         526,ay=90,SA=$(_PES:5),SP=$(slmoduloe:0)+$(AFASTLIGHT:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,ay=90,SL=0,SP=$(slmoduloe:0)+$(AFASTLIGHT:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+#ELSEIF $(TPCLOSETLIGHT:3)=2
+   #IF $(slmodulo:0)>50 & $(LADOMODULO$(_CTX):3)=1
+      // pula o primeiro modulo
+      #IF $(_PES:3)>0
+         526,SA=$(_PES:5),SL=$(slmodulo:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,SL=$(slmodulo:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+   #IF $(slmoduloe:0)>50 & $(LADOMODULO$(_CTX):3)=2
+      #IF $(_PES:3)>0
+         526,ay=90,SA=$(_PES:5),SP=$(slmoduloe:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,ay=90,SL=0,SP=,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+#ELSEIF $(TPCLOSETLIGHT:3)=1
+   #IF $(slmodulo:0)>50 & $(LADOMODULO$(_CTX):3)=1
+      // pula o primeiro modulo
+      #IF $(_PES:3)>0
+         526,SA=$(_PES:5),SL=$(slmodulo:0)+$(AFASTLIGHT:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,SL=$(slmodulo:0)+$(AFASTLIGHT:0)-$(eslat:0),SP=0,P=$(PROFDIRLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+   #IF $(slmoduloe:0)>50 & $(LADOMODULO$(_CTX):3)=2
+      #IF $(_PES:3)>0
+         526,ay=90,SA=$(_PES:5),SP=$(slmoduloe:0)+$(PROFDIRLIGHT:0),SL=0,P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ELSE
+         526,ay=90,SL=0,SP=$(slmoduloe:0)+$(PROFDIRLIGHT:0),P=$(PROFESQLIGHT:0)-$(AVANCOCLOSETL:3)  // LATERAL INTERNA
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(_CTX)[_0000]!1
+   #IF $(LADOMODULO$(_CTX):3)=1 // DIREITO
+      #LET slmodulo=$(slmodulo:0)+$(lmodulo:0)+$(eslat:0)
+   #ELSE // ESQUERDO
+      #LET slmoduloe=$(slmoduloe:0)+$(lmoduloe:0)+$(eslat:0)
+   #ENDIF
+#ELSE
+   #LET slmodulo=$(slmodulo:0)+$(lmodulo:0)+$(eslat:0)
+   #LET slmoduloe=$(slmoduloe:0)+$(lmodulo:0)+$(eslat:0)
+#ENDIF

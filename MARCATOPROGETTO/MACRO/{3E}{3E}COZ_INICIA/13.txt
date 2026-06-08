@@ -1,0 +1,127 @@
+!parametri logerrosseparado=0
+inicia
+gestaomedida
+regra_esp_medida
+#LETS AFBASMFRE=$(afbasf:0) //afastamento basamento frontal
+#LETS AFBASMLAT=$(afbasl:0) //afastamento basamento LATERAL
+#LETS AFBORDOA=$A //AFASTAMENTO BORDO NA ALTURA
+#LETS AFFRE=0 //Afastamento Inicial Frontal in altura
+#LETS AFFREP=$P //Afastamento Inicial Frontal in profundidade
+#LETS AFPRATA=0 //Afastamento in altura prateleiras
+#LETS AFPRATL=$(ESLAT:0)+$(RED_INTM:0) //Afastamento in largura prateleiras
+#LETS AFRE=$a //Altura Frontal
+#LETS AFTAMPOA=$A //AFASTAMENTO TAMPO NA ALTURA
+#LETS ALTRES=$(afre) //Altura Residual (quanto sobra na altura)
+#LETS ANOTAPRATESTESA=25 //altura nota com referencia prateleiras
+#LETS ATAMPO=$(_tampo:4) //Altura Tampo
+#LETS AFFILETEA=$A+$(ATAMPO) //AFASTAMENTO FILETE NA ALTURA
+#LETS ATOT=$A //ALTURA TOTAL MODULOS
+#LETS CONTADIV=0 //CONTA DIVISORI
+#LETS LFRE=$l //Largura das Frentes
+#LETS LPRAT=$L-$(ESLAT:0)*2-2*$(RED_INTM:0) //LARGURA PRATELEIRA INTERNA
+#LETS LTOT=$L
+#LETS PINTRODA=$P //PROFUNDIDADE INTERFERECIA X CALCULO RODAPE
+#LOADVAR _fundoatras _tpfundo $(_TPCAIXA:17)
+#IF $(_TPFUNDO:3)=30
+   #LOADVAR _fundoatras _tpfundo $(_TPFUNDO:0)
+#ENDIF
+#IF $(_fundoatras:3)=30
+   #LET PFUNTRAS=$(_fundoatras:4)
+   #LETS PLAT={$p-$(_fundoatras:4)} //Profundidade da Lateral
+#ELSE
+   #LET PFUNTRAS=0
+   #LETS PLAT=$p //Profundidade da Lateral
+#ENDIF
+#LETS PTAMPO=$P+$(PING:0) //Profundidade do Tampo
+#LETS RED_BASEF=0 //Reducao frontal da base
+#LET esfre=$(_FR:4)
+#IF $(esfre)=0 #LET esfre=18
+#LETS ambiente=$(_tpcaixa:12)
+#IF $(ambiente)== #LETS ambiente=C
+#LET excluir_pes=0
+#LET excluir_tampo=0
+#LET arod=$(_pes:5)
+#LETV cor=$(_CORFU:6)
+#LET escos=$(cor:10)
+inicia_pdiv
+#SELECT $(_TPCAIXA:9)
+#CASE 1
+   #LET INF=1
+#CASE 2
+   #LET SUP=1
+#CASE 3
+   #LET COL=1
+#ENDSELECT
+#LET MASCHIO=$(BORDO:12)
+#LET CANTO=0
+#LET PCOL=0
+#LETS _macrofinale=Coz_fim
+#LETV _CORFAMILIA=$(_CORCX:10)
+#IF $(sup)=1
+   #IF $(_PUXCAVA:3)>0 #LETV _pux=999
+#ENDIF
+!ADDPUNTO 0,0,{$P+$ESFRE:0)}
+!ADDPUNTO $L,0,{$P+$ESFRE:0)}
+#LETS vettfundos=
+#FOR $(_TPCAIXA:26)
+   #LETS tm1=$[ex;$(i);=;1]
+   #LETS tm2=$[ex;$(i);=;2]
+   #LET $(tm1)=$(tm2)
+#ENDFOR
+idm_iniciacoz
+// IDM_INICIABAN
+// IDM_INICIACAMA
+// IDM_INICIADOR
+// IDM_INICIAFECH
+// 201
+#LET contavao=0
+#LET memoinfocorrtodos=0
+#LET contaga=0
+#LET ATIVADRETACURVA=0
+#SETVARS COSTVARIAVEIS
+#LET SERVOHK=0
+#LET fr_avulsa=0
+#LET pistao2=0
+#LET distFHl=0
+#LET GAVETEIROUBIK=0
+#LET usagrapa=0
+#LETS INFOPECA=0
+#LET canto_r=0
+#LET ubik=0
+#LET PRATDOR=0
+#LET DIVISOR=0
+#IF $(item)[M20;M21;M22;M23;M24;M25;M26;M27;M28;M29;M291;M292;M293;M294;M611;M612]!0
+   #LET SEMLED=1
+#ELSE
+   #LET SEMLED=0
+#ENDIF
+// #LET TRAVESSAFRE=0
+#LET ALTFAIXAPAI=70
+#LETS LADOLAT==
+#LETS _CORTRDIF=
+#LETS _corbpdif==
+#LET TRAVESSAFRE=0
+#LET deslocaalt=0
+#LET DESCSPAZIO=0 //<c26378>
+#LET lffre=0 //<c26378>
+#IF $(ativadoispux:0)=1 #LET DIST_PUX=$(DIST_PUX:0) #LET DIST_PUX=0 //<C27048>
+#LET ISDORMI=0
+#LET folgafrdor1=0 // <C26425>
+#LET folgafrdor2=0 // <C26425>
+#LET folgafrdor3=0 // <C26425>
+// INICIO <C28278>
+#LET SLBASAMENTOD=0
+#LET LBASAMENTOD=0
+#LET l1D=0
+// FIM <C28278>
+#LET DOBRALINHA=0
+// ALEX VISITA FEV 2025 - CRIADA GESTÃO PARA AUTOMATIZAR ESCOLHA DE MONTADO E DESMONTADO PARA TODOS OS MÓDULOS DE COZINHA.
+GESTAOAUTOMONT
+#IF $(tpRecorteCaixa:3)>0
+   #LETV desacolu=1
+   #LET desacolu=1
+#ENDIF
+#LET InfoRecorteBase=
+#LET InfoRecorteLateral=
+#LETS InfoRecortePrateleira=
+#LET SEM_USINAGEM=0

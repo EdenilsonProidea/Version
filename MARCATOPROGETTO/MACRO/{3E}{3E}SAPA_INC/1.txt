@@ -1,0 +1,20 @@
+!PARAMETRI ALT=$A,TIPO=M,AFPRATL=0
+calc_n_sapa
+#IF $(rr)>0
+   #FOR $1:$(rr)
+      #IF $(disativadraggerprat)=1
+         sapinc,AFPRATA={INT($(ALT)/($(RR)+1)*$(i))},TIPO=$(TIPO)
+      #ELSE
+         #IF $(posprata$(_ctx):$(i))>0
+            sapinc,AFPRATA={INT($(posprata$(_ctx):$(i)))},TIPO=$(TIPO)
+            402,SL=$l/2,SA=$(posprata$(_ctx):$(i)),SP=$p+10,L=$(posprata$(_ctx):$(i)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+         #ELSE
+            //#MSG 1
+#MSG $P
+            sapinc,AFPRATA={INT($(ALT)/($(RR)+1)*$(i))},TIPO=$(TIPO),LPRAT=$L
+            402,SL=$l/2,SA=INT($(ALT)/($(RR)+1)*$(i)),SP=$p+10,L=INT($(ALT)/($(RR)+1)*$(i)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+            //209  // PRATELEIRAS DE MADEIRA (COZINHA)
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+#ENDIF

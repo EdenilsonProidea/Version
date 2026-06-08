@@ -1,0 +1,8 @@
+#LETV _tpgavdet=$(_tpgav:4)$(_tpgavalt:4)$(PCORREDICA)
+
+#IF $(_tpgavdet:1)==
+   #LETS idlogerros=$(idlogerros)40;$(_tpgav:2);$(PCORREDICA);
+#ELSE
+   #LET DELTAP={$P-$(_TPGAVDET:4)}
+   GAVETA_BLUM_2,P=$(_TPGAVDET:4),SP=$(DELTAP)
+#ENDIF

@@ -1,0 +1,43 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=DOBRADICA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,_dobra,,,,$(_dobra:3)!!
+G,varoculte
+
+[GRAFICA]
+INICIA
+#LET a=50,p=5,l=250
+#LET ndob=1
+!SETCODICE
+//400,lato=0,c1=1,p=$p // <c24986>
+423,COD= / /$(_dobra:2),SP=$p+2,L=$l,A=50,P=5  //Kit Dobradiças // <c24986>
+
+#LET L=120 // <c24986>
+#LET A=80 // <c24986>
+#LET P=60 // <c24986>
+
+340,X8=DOBRADICA\$(_DOBRA:4).3ds  //Acessórios SO GRAFICA MASCARA // <c24986>
+
+LOGERROS

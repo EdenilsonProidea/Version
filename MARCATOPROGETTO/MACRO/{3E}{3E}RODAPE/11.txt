@@ -1,0 +1,15 @@
+!PARAMETRI DISROD=_acab:$(PROD:0);$(_PES:5),X1=0,rodlat=
+//coz_pes
+
+#IF $(_PES:3)[3;6]!0
+   #LETS corrodape=$(_corrodape:3)|$(.percorso)\foto\madeira\$(_corrodape:4)|$(_corrodape:5)|90
+   
+   
+   //232,c1=$(corrodape),c2=$(corrodape) // P=$p-$(prod)//,X1=/  //rodape
+   #IF $(RODD)=1
+      235,c1=$(corrodape),c2=$(corrodape)  // rodape LATERAL
+   #ENDIF
+   #IF $(RODE)=1
+      235, sl=$L-$(PROD:0),c1=$(corrodape),c2=$(corrodape)  // rodape LATERAL
+   #ENDIF
+#ENDIF

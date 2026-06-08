@@ -1,0 +1,15 @@
+#LETS _CORFU=$(_CORCX)
+#LETS _CORBA=$(_CORCX)
+#LETS _CORLD=$(_CORCX)
+#LETS _CORLE=$(_CORCX)
+#LETS _CORBF=$(_CORCX)
+203.005,DIS=0,SA={$(AFINAL:0)-$(AVAO$(IDVAO):0)},P={$P-$(DESC_BASE:0)},SP=$(DESC_BASE:0),X7=N/N/N/$(TRABALHOAT)/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1  // Base intermediaria
+#IF $(RMFUNDO:0)=0
+   #IF $(_TPFR:3)[96;98]!1
+      #IF $(NVAO:0)=$(IDVAO)
+         205,SP={$(DESC_BASE:0)+$(AFCOS:0)},SA={$(AINI:0)+$(INCREA:0)+$(ABASE:0)-$(RAG_COS:0)-$(AVAO$(IDVAO):0)},A={$(AVAO$(IDVAO):0)-2*$(ABASE:0)+2*$(RAG_COS:0)}
+      #ELSE
+         205,SP={$(DESC_BASE:0)+$(AFCOS:0)},SA={$(AINI:0)+$(INCREA:0)+$(ABASE:0)-$(RAG_COS:0)-$(AVAO$(IDVAO):0)},A={$(AVAO$(IDVAO):0)-$(ABASE:0)+2*$(RAG_COS:0)}
+      #ENDIF
+   #ENDIF
+#ENDIF

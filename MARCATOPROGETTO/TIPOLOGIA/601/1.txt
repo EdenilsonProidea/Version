@@ -1,0 +1,15 @@
+{ 601   // PERFIL ESQ
+   *AZZERA*            =0
+   DESCRIZIONE         =PERFIL ESQ
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =22
+   POSIZIONE           =0,$a,0
+   DIMENSIONE          =$A,0,0
+   ANGOLI(ZYX)         =90
+   COLORI              =$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5),$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5)
+   DISEGNO             =$(SAG_PER_ESQ)
+   ORIENTAMENTO        =ALP
+   X1                  =45
+   X2                  =45
+   X9                  =$(per_esq:1)/$(pv_corper:1)
+}

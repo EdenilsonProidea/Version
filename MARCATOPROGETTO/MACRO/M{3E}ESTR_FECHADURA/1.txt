@@ -1,0 +1,9 @@
+#LETS codfechadura=$(X9:0)
+#LETS codtrava=$(X9:1)
+#LETS QTDtrava=$(X9:2)
+#IF $(_listino)=1
+   $(codfechadura),0.25
+   $(codtrava),$(qtatrava)
+#ELSE
+   kit-fechadura,0.25,codfechadura=$(codfechadura);codtesta=$(codtrava);cod=$(qtatrava)
+#ENDIF

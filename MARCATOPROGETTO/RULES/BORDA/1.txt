@@ -1,0 +1,40 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=BORDA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,COR,,,,$(COR:8)!!
+T,_altfita,,,Medidas Fita,$(_altfita:1)[$(cor:15)]!0
+M,mlfita,,,Metros Lineares,,,1
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+#LET A=$(_altfita:4)
+#LET P=$(_altfita:3)
+#IF  $(MLFITA:0)=0 #LET MLFITA=$L/1000
+#MSG $(COR:1) -- $(COR:2)
+451  // fita de borda avulsa
+297,COD= / /BORDA $(COR:2) $(_ALTFITA:2) - ML $(MLFITA:0),SP=3  //TEXTO
+
+LOGERROS

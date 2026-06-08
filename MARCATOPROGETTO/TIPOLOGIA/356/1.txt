@@ -1,0 +1,11 @@
+{ 356   // Caninho Sapateira
+   *AZZERA*            =0
+   DESCRIZIONE         =Caninho Sapateira
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =10,21+18,15
+   DIMENSIONE          =$l-20,50,15
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =DOR_CANINHO.XP
+   X9                  =$(_TUBOS:1)
+}

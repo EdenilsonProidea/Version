@@ -1,0 +1,14 @@
+$(PA)
+#IF $(tipologiaP)=202 & $(xx9:0)==CINCLNEW & $(xx6:5)!!
+   #LET f=1
+   $(f)	MA	X=(xx6:2) Y=0  NM=$(xx6:6)_INFERIOR$(XX3:1) PARM=PX@$(xx6:1)^PY@0^PCAVA@$(xx6:3)^LAT@2^ACAVA@$(xx6:2)
+#ENDIF
+#IF $(xx3:0)=$(xp3:0) & $(XP8:3)=0 // mesmo box
+   #IF $(xx10:0)=1
+      #LET NAOFURAR=0
+      #IF $(PA)<10 & $(XX7:10)!1 #LET NAOFURAR=1
+      #IF $(PA)>$(XA)-$(DA)-10 & $(XX7:11)!1 #LET NAOFURAR=1
+      #M JOB_LAT_BASE_CP	CENTROFA1={$(XA)-$(XX10:1)/2}
+      #M JOB_LAT_BASE_CP	CENTROFA1={$(XX10:1)/2}
+   #ENDIF
+#ENDIF

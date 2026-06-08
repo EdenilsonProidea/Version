@@ -1,0 +1,8 @@
+#IF $(x9:0)!!
+   #IF $(_LISTINO)=1
+      $(x9:0),$(DIML)*$(DIMA)/1000000
+   #ELSE
+      //      KIT-LAMINA-AVULSA,1,CODLAM=$(x9:0),$(DIML),$(DIMA),$(DIMP)
+      KIT-LAMINA-AVULSA,1,LAMINADO=$(x9:0),$(DIML),$(DIMA),6 //,$(DIMP)
+   #ENDIF
+#ENDIF

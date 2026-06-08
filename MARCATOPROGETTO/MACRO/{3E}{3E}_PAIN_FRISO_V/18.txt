@@ -1,0 +1,51 @@
+//#LET afriso=3
+#LET AFRISO=$(LFRISO:0)
+#LET POSOLDFRISOS=
+#LET calcvaopai=$l/($(nfrisos:0)+1)
+#IF $(iniciofrisov:0)>0
+   #LET calcinifri=$(calcvaopai:0)+$(iniciofrisov:0)
+#ENDIF
+#IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+// #LETS parfrisos=100;300;400
+#LETS parfrisosscript=
+#FOR $1:$(nfrisos:0)
+   #IF $(iniciofrisov:0)>0 & $(parfrisos:$(I))=0
+      #IF $(I)=1
+         !ADDPUNTO {$(iniciofrisov:0)-$(afriso:0)/2},0,0
+         !ADDPUNTO {$(iniciofrisov:0)+$(afriso:0)/2},0,0
+         #LET parfrisos:$(I)=$(iniciofrisov:0)
+      #ELSE
+         #IF $(ESPACOFRISOV:0)>0
+            !ADDPUNTO {$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)-$(afriso:0)/2},0,0
+            !ADDPUNTO {$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)+$(afriso:0)/2},0,0
+            #LET parfrisos:$(I)=$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)
+         #ELSE
+            !ADDPUNTO {$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)-$(afriso:0)/2},0,0
+            !ADDPUNTO {$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)+$(afriso:0)/2},0,0
+            #LET parfrisos:$(I)=$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)
+         #ENDIF
+      #ENDIF
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I));
+   #ELSE
+      #LET POSOLDFRISOS={$(POSOLDFRISOS:0)+{$(calcvaopai:0)}
+      !ADDPUNTO {$(POSOLDFRISOS:0)+$(afriso:0)/2},0,0
+      !ADDPUNTO {$(POSOLDFRISOS:0)-$(afriso:0)/2},0,0
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I));
+#MSG $(parfrisosscript)
+   #ENDIF
+#ENDFOR
+#LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+#LETS xpfrente=frente_friso_V.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOV
+#LETS parjobfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+
+// .frente_friso_v.xp
+624.001  //<c14604> // Painel Frontal Home veio VERTICAL FRISADO
+_fr_friso_v_drag,SL=0,L=$L
+#LETV old_nfrisos$(_ctx)=$(nfrisos$(_ctx):0)
+// _PAIN_FRISO_V

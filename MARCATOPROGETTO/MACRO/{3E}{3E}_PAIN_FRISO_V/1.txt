@@ -1,0 +1,21 @@
+//#LET afriso=3
+#LET AFRISO=$(LFRISO:0)
+#IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+// #LETS parfrisos=100;300;400
+#LETS parfrisosscript=
+#FOR $1:$(nfrisos:0)
+   #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I))|
+#ENDFOR
+#LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+#LETS xpfrente=frente_friso_V.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOV
+#LETS parjobfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+// .frente_friso_v.xp
+624.001, x7 N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0 //<c14604> // Painel Frontal Home veio VERTICAL FRISADO
+_fr_friso_v_drag,SL=0,L=$L
+#LETV old_nfrisos$(_ctx)=$(nfrisos$(_ctx):0)

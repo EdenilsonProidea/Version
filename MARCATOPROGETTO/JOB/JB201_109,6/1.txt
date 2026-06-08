@@ -1,0 +1,11 @@
+#IF $(xx3:0)=$(xp3:0)
+   #IF $(pl)>0 #LET f=2 #LET f=1
+   #IF $(pp)>=0
+      #M calc_vett_furos_c	canal=0	pbase=$(da)
+      #LET distancia=$(pa)+$(da)
+      #FOR $(vettfuros)
+         #LET distancia=$(distancia)-$(i)
+         $(F)	F2C	X={$(distancia)} Y={$(pp)+$(dp)/2}
+      #ENDFOR
+   #ENDIF
+#ENDIF

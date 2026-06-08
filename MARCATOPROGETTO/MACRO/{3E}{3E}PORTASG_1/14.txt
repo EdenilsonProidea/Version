@@ -1,0 +1,23 @@
+#LET deslocafrente=0
+#LET aumentafrente=0
+
+#IF $(DESCONTOSFRE:0)!1
+   #IF $(primeiromodulo)=1
+      #LET deslocafrente=$(eslat:0)/2
+   #ENDIF
+   #IF $(ultimomodulo)=1
+      #LET aumentafrente=$(eslat:0)/2
+   #ENDIF
+#ENDIF
+
+
+
+#LET largurafrente=$(lfre:0)+1*($(deslocafrente)+$(aumentafrente))
+
+#IF $(ISCANTOLDOR)=1
+   #LETS IDLOGERROS=$(IDLOGERROS)91;
+#ELSE
+   pORTASG,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente)
+#ENDIF
+
+// LOGERROS

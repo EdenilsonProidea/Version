@@ -1,0 +1,5 @@
+#IF $(_LISTINO)=1
+   KIT-CONC,1
+#ELSE
+   KIT-CONC,1,,$(DL),$(DA),$(DP)
+#ENDIF

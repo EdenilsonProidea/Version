@@ -1,0 +1,22 @@
+_calcola_popx
+#LETS pospuxadores=$(popx)
+#LET SENTIDO=2
+#LET ladojobfrente=1
+#LETS nomejobfrente=RUSTICA
+#LETS parjobfrente=PPUX@$(POPX)^SENPUX@$(SENTIDO)
+#LETS parfrente=$(sentido)/1105/85/0/0
+#LETS xpfrente=RUSTICA.xp
+
+_FR_STANDARD
+
+#IF $(pospuxadores:0)=3 // Correção nas posições do acabamento do puxador - feito em visita
+   285,LATO=0,SL=$(LFRE)+$(folgafrenteL)-85,SA=$(FOLGAFRENTEAI),SP=$(ppxp),L=85,A=1100,P=15,X9=8565  //puxador parte da porta // Adcionado Lato=0 pois o puxador estava como tipologia oculta - feito em visita
+#ELSEIF $(pospuxadores:0)=1
+   285,LATO=0,SL=$(folgafrenteL),SA=$(FOLGAFRENTEAI),SP=$(ppxp),L=85,A=1100,P=15,X9=8565  //puxador parte da porta // Adcionado Lato=0 pois o puxador estava como tipologia oculta - feito em visita
+#ENDIF
+
+// .RUSTICA.xp
+
+
+// Gestão antiga
+// 285,L=85,A=1100,P=15,X9=8565  //puxador parte da porta

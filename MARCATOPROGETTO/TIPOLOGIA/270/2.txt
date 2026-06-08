@@ -1,0 +1,14 @@
+{ 270   // FRONTAL BASE MADEIRA
+   *AZZERA*            =0
+   DESCRIZIONE         =FRONTAL BASE MADEIRA
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =0,0,$P-$(ESPESSURA:0)
+   DIMENSIONE          =$L,$A,$(ESPESSURA:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =FUNDO_CAIXA.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+}

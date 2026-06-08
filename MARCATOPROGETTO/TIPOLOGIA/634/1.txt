@@ -1,0 +1,10 @@
+{ 634   // Vidro tampo
+   *AZZERA*            =0
+   DESCRIZIONE         =Vidro tampo
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(lfaixaesq:0),$a-$(_vidromakeup:7),$(lfaixaatr:0)
+   DIMENSIONE          =$(lfuro),$(_vidromakeup:7),$(pfuro)
+   COLORI              =$(_vidromakeup:3)|$(.percorso)\foto\VIDRO\$(_vidromakeup:4)|$(_vidromakeup:5),$(_vidromakeup:3)|$(.percorso)\foto\VIDRO\$(_vidromakeup:4)|$(_vidromakeup:5)
+   ORIENTAMENTO        =LPA
+   X9                  =$(_vidromakeup:6)
+}

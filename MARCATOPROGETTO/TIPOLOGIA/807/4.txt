@@ -1,0 +1,15 @@
+{ 807   // Base Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Ubik
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(ESLAT:0)+$(RED_INTM:0),0,0
+   DIMENSIONE          =$L-$(ESLAT:0)*2-2*$(RED_INTM:0),$(ESPESSURA:0),$P
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =base.xp
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/0/0/0/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#805
+}

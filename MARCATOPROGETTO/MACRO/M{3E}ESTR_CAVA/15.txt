@@ -1,0 +1,67 @@
+// LEMBRAR DE MODIFICAR TAMBEM LIS CAVA - COM LINEARES NAO DA PARA COPIAR MACROS
+#LOADVAR _TPCAVA _TPCAVA $(X8:0)
+#LOADVAR _PINTURAPERFIS _PINTURAPERFIS $(X9:1)
+#IF $(_tpcava:3)=1 & $(DL)>$(_TPCAVA:19)
+   #MSG TAMANHO MÁXIMO DO PERFIL $(_TPCAVA:2) É $(_TPCAVA:16). USE O CORTA PROFILO NA ABA FR.
+#ELSE
+   #IF $(X5:1)=1  // Adicionado para não ter diferença de tamanho quando utilizado a gestão de cortar a cava <c21955>
+      #LET DIML=$(DIML)+0.6
+      #LET DL=$(DL)+0.6
+   #ENDIF
+   #IF $(X5:1)=1  // Adicionado para não ter diferença de tamanho quando utilizado a gestão de cortar a cava <c21955>
+      #LET DIML=$(DIML)+0.6
+      #LET DL=$(DL)+0.6
+   #ENDIF
+   #IF $(_tpcava:3)=6
+      // cava madeira
+      #M ESTR_MADEIRA,CODITEM=PROFILOM,X9=$(X7)
+   #ELSEIF $(_tpcava:3)=11
+      #M ESTR_MADEIRA,CODITEM=CANALEW,X9=$(X7),DIMP=9,DIMA={$(DA)-10}
+      #M ESTR_MADEIRA,CODITEM=CANALEW,X9=$(X7),DIMA={$(DP)},DIMP=9
+   #ENDIF
+   #LET NCANT=0
+   #LET NPAR=0
+   #IF $(_TPCAVA:13)!!
+      #IF $(DIML)<1000
+         #LET NCANT=2
+         #LET NPAR=2
+      #ELSEIF $(DIML)<1400
+         #LET NCANT=3
+         #LET NPAR=3
+      #ELSEIF $(DIML)<2000
+         #LET NCANT=4
+      #ELSEIF $(DIML)<3000
+         #LET NCANT=5
+         #LET NPAR=5
+      #ELSEIF $(DIML)<4000
+         #LET NCANT=6
+      #ELSEIF $(DIML)<5000
+         #LET NCANT=8
+      #ELSE
+         #LET NCANT=10
+      #ENDIF
+   #ENDIF
+   #LETS MASCARA=
+   #IF $(_TPCAVA:13)!!
+      #LETS MASCARA=CODCANT=$(_TPCAVA:13);NCANT=$(NCANT);
+   #ENDIF
+   #IF $(_TPCAVA:14)!!
+      #LETS MASCARA=$(MASCARA)CODPARAFUSOS=$(_TPCAVA:14);NPARAFUSOS=$(NPAR);
+   #ENDIF
+   // NOVA GESTÃO FEITA EM ACESSO COM JOÃO. OPÇÃO DE ESCOLHA DE PINTURA DE PERFIL
+   #IF $(_TPCAVA:21)=1
+      #LETS CODPINTURAPERF=$(_PINTURAPERFIS:5)
+      #LETV INICIACOD=CONVTINTA
+      #LETS CONVTINTA=$(INICIACOD:2)
+      #LET QTDPINTURAPERFIL=$(_PINTURAPERFIS:6)*($(DIML)/1000)
+      #LETS MASCARA=$(MASCARA)TINTAPERFIL=$(CODPINTURAPERF);QTDPINTURAPERFIL=$(QTDPINTURAPERFIL);DESCTINTAPERFIL=$(_PINTURAPERFIS:2),teste=
+   #ENDIF
+   #IF $(_TPCAVA:20)!!
+      #LET QTDPERF=int($(DIML)/2980)
+      #IF $(x10:0)[cil;csl]!!0
+         $(_TPCAVA:20),1,CODCANALE=$(X9:0);$(MASCARA),{$(DL)+200},$(DA),$(DP)
+      #ELSE
+         $(_TPCAVA:20),1,CODCANALE=$(X9:0);$(MASCARA),$(DL),$(DA),$(DP)
+      #ENDIF
+   #ENDIF
+#ENDIF

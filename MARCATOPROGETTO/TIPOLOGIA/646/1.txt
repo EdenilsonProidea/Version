@@ -1,0 +1,16 @@
+{ 646   // FUNDO ESTANTE ALP
+   *AZZERA*            =0
+   DESCRIZIONE         =FUNDO ESTANTE ALP
+   CODICE              =/_COREX=$(_COREX:1);_PINTURAEX=$(_PINTURAEX:1);TPCOR=EX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5),$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5)
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =FUNDO_CAIXA.XP
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/0
+   X9                  =_/$(_corEX:1)/$(TPFIX:1)/$(_corEX:1)
+   ALIAS               =#647
+}

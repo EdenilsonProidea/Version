@@ -1,0 +1,100 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Ubik_prateleira.erg
+COMMENTI=
+CODICE=
+POSMODE=20
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=5
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+G,UBIK_PRATELEIRA
+T,_tpSuppUE
+T,_tpSuppUD
+T,_ladosupc
+C,Cabideiro,,1=0
+T,CaninhoSapa,,1=0,,$l>=$(CaninhoSapa:9) & $l<=$(CaninhoSapa:10)
+G,VAROCULTE
+
+[GRAFICA]
+ubik_inicia
+
+#IF $(_placer)=1
+   #LET l=$[ex;$(_PLX5);/;1]
+   #LET lpratl=$[ex;$(_PLX5);/;1]
+#ELSE
+   #LET lpratl=$p
+   #LET l=$p
+#ENDIF
+
+
+#LETS codpratu= //004U664
+
+#IF $(_ladosupc:3)=1 // <c21068>
+   #LET INCRELARGU=8
+   #LET INCREPROFU=3
+   #LET recorl1=498
+   #LET recorl2=503
+   #LET AJUSTAGRAFSUPD=0
+   #LET AJUSTAGRAFSUPE=5
+#ELSE
+   #LET INCRELARGU=3
+   #LET INCREPROFU=8
+   #LET recorl1=503
+   #LET recorl2=498
+   #LET AJUSTAGRAFSUPD=9
+   #LET AJUSTAGRAFSUPE=0
+#ENDIF
+
+
+#LET lprat2=$(lpratl:0)+$(INCREPROFU:0)
+#LET lpratl=$(lpratl:0)+$(INCRELARGU:0)
+
+!SAGOMA sagpratu 0;0;$(lpratl:0);0;$(lpratl:0);$(lprat2:0);$(lpratl:0)-$(recorl2:0);$(lprat2:0);{$(lpratl:0)-$(recorl2:0)};$(recorl1:0);0;$(recorl1:0)
+
+595,dis=$(sagpratu),SL=-3,L=$(lpratl:0),P=$(lprat2:0),X3=$(CURBOX)/L  // PRATELEIRAS UBIK
+
+#IF $(_tpSuppUE:3)>0 & $(_tpSuppUE:3)<4
+   ubik_suporte_prat,SL=-$(_tpSuppUE:6)-$(INCRELARGU)+$(AJUSTAGRAFSUPE),SA=0,SP=0,L=$(_tpSuppUE:6),A=$(_tpSuppUE:7),P=$(_tpSuppUE:8),_TPSUPPU=$(_TPSUPPUE),COD=$(_tpSuppUE:5)/linha=$(modello:0)
+#ENDIF
+
+#IF $(_ladosupc:3)=1
+   ubik_suporte_prat,SL=$L-500,SA=0,SP=5,L=$(_tpSuppUD:6),A=$(_tpSuppUD:7),P=$(_tpSuppUD:8),_TPSUPPU=$(_TPSUPPUD),COD=$(_tpSuppUD:5)/linha=$(modello:0),ay=90
+#ELSE
+   ubik_suporte_prat,SL=$L-5,SA=0,SP=5,L=$(_tpSuppUD:6),A=$(_tpSuppUD:7),P=$(_tpSuppUD:8),_TPSUPPU=$(_TPSUPPUD),COD=$(_tpSuppUD:5)/linha=$(modello:0)
+#ENDIF
+
+
+#IF $(_tpSuppUD:3)>0 & $(_tpSuppUD:3)<4
+   ubik_suporte_prat,SL=$L-500+5,SA=0,SP=$(lpratl)+$(AJUSTAGRAFSUPD),L=$(_tpSuppUD:6),A=$(_tpSuppUD:7),P=$(_tpSuppUD:8),_TPSUPPU=$(_TPSUPPUD),COD=$(_tpSuppUD:5)/linha=$(modello:0),ay=90
+#ENDIF
+
+
+#IF $(cabideiro:0)=1
+   ubik_cabideiro,sa=-70,a=70,p=25,sp=$p/2-12.5,cod=$(CODMOD)U673/linha=$(modello:0),l=$l
+#ENDIF
+
+#LET P=$(lprat2)
+#LET L=$(lpratl)
+
+//#IF $(CaninhoSapa:1)!!999
+
+//   ubik_sapateira,a=74,p=400,sp=50,cod=$(CODMOD)U677/linha=$(modello:0),L=$L-40,SL=20
+//#ENDIF
+
+//595

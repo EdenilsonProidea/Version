@@ -1,0 +1,80 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+S,nCOMMESSA,,,LOTE
+S,npedobs,,,PEDIDO
+
+[TESTA]
+VERTICALE
+DIM 200 280
+
+//INTESTAZIONE
+FONT ARIAL
+
+BX (0,0) (200,280) HFFFFFF N
+
+
+//BX (0,0) (200,30)
+//BX (0,13) (58,13)
+//BX (58,5) (142,22)
+//BX (142,13) (200,30)
+WMF (4,6) (47,10) _ECADPRO\stampe\LOGO.jpg
+//WMF (143,14) (56,15) $(.percorso)\html\LOGO_CLIENTE.jpg
+
+#LETS _file=_pdf\GERAL_OBS.pdf
+
+
+#LETV lp=0015
+#LETS DEStipo=LOTE
+#LETS CODTIPO=GERAL SEMANAS
+#LETS STRINGNOME=CLIENTE:
+//TX TC 18BC (100,1) $(LP:2)
+//TX BC 12BC (100,12) $(LP:5) --> $(LP:6)
+
+
+//  LI (58,13) (142,13)
+
+LI (4,22) (196,22)
+TX TC 7BC (165,25) IMPRESSO $(.USERNAME) - $(.DATAORA)
+!P
+TX bL 11 (190,275) ^<pag>^
+
+#IF $(nCOMMESSA)!
+   #LETS SQL=select numero,obsfab,destrag1,cliente,rif from ecadmaster.dbo.tordine where commessa='$(NCOMMESSA:0)' and obsfab<>'' and  obsfab is not null
+   
+#ELSEIF $(npedobs)==999
+   
+   #LETS SQL=select numero,obsfab,destrag1,cliente,rif from ecadmaster.dbo.tordine where NUMERO IN ('2296', '2323', '2324', '2325', '2326', '2327', '2328', '2329', '2330', '2331'); and obsfab!=''
+#ENDIF
+NTAB (0,35,200,275,35,1) \
+     (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+     ($(sql)) \ // COMANDO SQL
+     (Numero     ,7L  ,, ^<numero>^,-,Loja:<cliente>) \
+     (Obs  ,60L  ,,  ^$(STRINGNOME)<destrag1>^,-------------------,^<rif>^,-------------------,<obsfab>)
+
+#LET II=$(II)+50
+#ENDIF
+
+
+// macroimpr

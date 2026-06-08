@@ -1,0 +1,152 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+S,nCOMMESSA,,,LOTE
+
+[DETTPADRE]
+(select top 1 *,DBO.ZEROPAD(NUMERO,6) +'M' + DBO.ZEROPAD(NBOX,4) AS IDBOX, \
+        DBO.FORMA_DesVariante(VAR,'_CORCX',';'),dbo.DAU_DescrizioniVarianti4(var,0,'=',';','^_MONTADO^_CORCX^_CORFR^_FR^_DOBRA^_SISCORRER^_TPGAV^_SISBASC^_SISBASC_0000^_SISCORRER^_SISCORRER_0000^_CORR^_CORR_0000^_CORR_0001^_CORR_0002^_CORR_0003^') + ';' + 'NOTA4 = ' + NOTE4  as variantiAggiunte \
+        from ecadmaster.dbo.rordine  \
+        where percorso='$(.percorso)' and numero=<NUMERO> and nbox=<NBOX> AND (SUBSTRING(CODART,1,3) IN ('COZ','BAN','HOM') or codart in (select codopz from varianti where codvar='lista_caixas')) \
+        ORDER BY RIGA)
+(NÂº PEDIDO  ,16C  ,,<font1> ^<IDBOX>^) \
+     (descricao  ,40c  ,, <font1> ^<des>^) \
+     (dimensoes  ,12C  ,, <font1> ^[dim;<diml>;<dima>;<dimp>]^) \
+     (Qta        ,6C   ,, <font1> ^<pz>^) \
+     (Cor        ,35C  ,, <font1> ^<variantiAggiunte>^)
+
+[VARIABILI]
+FONT1=\red0\green0\blue0 \fs8
+FONT2=\red127\green0\blue0 \fs14
+
+[SCRIPTTAB]
+if len(v("variantiAggiunte"))>0 then
+   v("variantiAggiunte")= "\red0\green0\blue0 \fs10" &    REPLACE(replace(v("variantiAggiunte"),";",vbcrlf),",","")
+else
+   v("variantiAggiunte")=""
+end if
+
+[TESTA]
+VERTICALE
+DIM 200 280
+
+//INTESTAZIONE
+FONT TAHOMA
+
+BX (0,0) (200,280) HFFFFFF N
+
+
+//BX (0,0) (200,30)
+//BX (0,13) (58,13)
+//BX (58,5) (142,22)
+//BX (142,13) (200,30)
+WMF (4,6) (47,10) _ECADPRO\stampe\LOGO.jpg
+//WMF (143,14) (56,15) $(.percorso)\html\LOGO_CLIENTE.jpg
+#LETS DEStipo=LOTE
+#LETS CODTIPO=$(NCOMMESSA:0)
+#LETS STRINGNOME=NOME CLIENTE :
+#SQL DESTIPOESTESA=select DES from ECADMASTER.DBO.CARICO WHERE COD='$(CODTIPO)'
+
+
+#LETS _file=_pdf\$(DESTIPOESTESA:0)_CAIXAS.pdf
+
+
+
+#IF $(NCOMMESSA:0)==
+   //  #MSG DEFINIR LOTE
+#ELSE
+   #LETV lp=0011
+   
+   
+   //TX TC 18BC (100,1) $(LP:2)
+   //TX BC 12BC (100,12) $(LP:5) SETOR $(LP:6)
+   
+   
+   TX TC 20B (100,9) $(DESTIPOESTESA:0)
+   LI (4,22) (196,22)
+   TX TC 7BC (165,25) IMPRESSO $(.USERNAME) - $(.DATAORA)
+   //FINE INTESTAZIONE
+   fontsize 18
+   #LET UU=5
+   #LET II=0
+   #LET CONTA=1
+   !P
+   TX bL 11 (190,275) ^<pag>^
+   
+   #FORDBS beta=select numero from ECADMASTER.DBO.tordine where commessa='$(NCOMMESSA:0)'
+      #FORDBS ALFA=select DISTINCT NBOX from ecadmaster.dbo.rordine where percorso='$(.percorso)' and numero=$(beta:0) and nbox>0 and nbox<>9999 AND (SUBSTRING(CODART,1,3) IN ('COZ','BAN','HOM') or codart in (select codopz from varianti where codvar='lista_caixas'))
+         
+         #IF $(II)>199
+            #LET CONTA=1
+            #LET II=0
+            !P
+            TX bL 11 (190,275) ^<pag>^
+         #ENDIF
+         ORIGINE 0,$(II)
+         #LETS IDBOX=$[FORMAT;$(beta:0);000000]$[FORMAT;$(ALFA:0);000000]
+         
+         #LETS sql=select DESTRAG1,NUMERO from ecadmaster.dbo.tordine where numero=$(beta:0)
+         
+         NTAB (0,{$(CONTA)*$(UU)+30.5},135,100,32,DB_1_1) \
+              () \  // GRUPPI AGGIUNTI DA VALUTARE
+              ($(sql)) \ // COMANDO SQL
+              (CLIENTE  ,17L  ,,<DESTRAG1>)
+         
+         
+         #LETS NOMEIMG=_ECADPRO\IMGBOXSARTORIA\$(IDBOX).JPG
+         #LETS sql=select DISTINCT codcli,cliente,numero,NBOX,PERCORSO
+         #LETS SQL=$(SQL) from lista_stampe_prod where COMMESSA='$(NCOMMESSA:0)'  AND NUMERO=$(beta:0) AND NBOX=$(ALFA:0)
+         // WMF (145,{35+$(UU)*$(CONTA)}) (52,49) $(NOMEIMG)
+         WMF (145,-10) (52,49) $(NOMEIMG)
+         //  LI (0,32) (178,32)
+         // LI (0,45) (200,45)
+         
+         NTAB (0,0,135,100,32,AB_1_1) \
+              (scripttab,dettpadre) \  // GRUPPI AGGIUNTI DA VALUTARE
+              ($(sql)) \ // COMANDO SQL
+              (NUM PEDIDO  ,17L  ,,) \
+              (DESCRIÇÃO  ,22L  ,,) \
+              (DIMENSÃO        ,16R  ,,) \
+              (QTA        ,7R   ,,) \
+              (INFORMAÇÕES        ,35L  ,,)
+         
+         
+         #LETS  sql=select xnote from ecadmaster.dbo.rordine  where percorso='$(.percorso)' and numero=$(beta:0)  AND NBOX=$(ALFA:0) and nbox>0 and nbox<>9999 AND (SUBSTRING(CODART,1,3) IN ('COZ','BAN','HOM') or codart in (select codopz from varianti where codvar='lista_caixas'))
+         NTAB (0,0,135,15,25,AB_1_1) \
+              () \  // GRUPPI AGGIUNTI DA VALUTARE
+              ($(sql)) \ // COMANDO SQL
+              (NOTAS,17L  ,,<XNOTE>)
+         
+         
+         #LET II=$(II)+55
+         #LET UU=5
+         #LET CONTA=$(CONTA)+1
+      #ENDDBS
+   #ENDDBS
+#ENDIF
+
+[NOMECLI]
+(select destrag1 from ecadmaster.dbo.tordine \
+        where numero=<NUMERO>)
+(Nome cliente  ,16C  ,,<font1> ^<destrag1>^)

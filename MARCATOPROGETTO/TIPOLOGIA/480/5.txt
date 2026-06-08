@@ -1,0 +1,9 @@
+{ 480   // Collisão Lateral/Fundo (PARA JOB)
+   *AZZERA*            =0
+   DESCRIZIONE         =Collisão Lateral/Fundo (PARA JOB)
+   LATO                =6
+   POSIZIONE           =($l-$(_RECORTESTOMADAS:9))/2,($a-$(_RECORTESTOMADAS:10))/2,0
+   DIMENSIONE          =$(_RECORTESTOMADAS:9),$(_RECORTESTOMADAS:10),$p
+   ORIENTAMENTO        =LAP
+   X9                  =$(_RECORTESTOMADAS:4);$(_RECORTESTOMADAS:8)
+}

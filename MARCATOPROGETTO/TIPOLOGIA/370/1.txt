@@ -1,0 +1,12 @@
+{ 370   // Faixa lastro horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Faixa lastro horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$(afaixa:0),$(pfaixa:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#370
+}

@@ -1,0 +1,11 @@
+// #MSG $(LINTGAV:0)<$(_ACEGAV:5)
+// #MSG LINTGAV={$L-$(espgaveta:0)*2},PINTGAV={$P-$(espgaveta:0)}
+#IF $(LINTGAV:0)<$(_ACEGAV:5)
+   #LETS idlogerros=$(idlogerros)73^$(LINTGAV:0)^$(_ACEGAV:5)^;
+#ENDIF
+
+#IF $(PINTGAV:0)<$(_ACEGAV:7)
+   #LETS idlogerros=$(idlogerros)74^$(PINTGAV:0)^$(_ACEGAV:7)^;
+#ENDIF
+
+//LOGERROS

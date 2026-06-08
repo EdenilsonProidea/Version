@@ -1,0 +1,9 @@
+{ 683   // TIPOLOGIA DESATIVA
+   *AZZERA*            =0
+   DESCRIZIONE         =TIPOLOGIA DESATIVA
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =$(ativarbot:0)
+   DIMENSIONE          =50,50,2
+   COLORI              =201,201
+   ORIENTAMENTO        =LAP
+}

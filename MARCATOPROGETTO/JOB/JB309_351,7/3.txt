@@ -1,0 +1,9 @@
+#IF $(xx3:0)=$(xp3:0) // mesmo box
+   // ********************* juncao LATERAL incide nA BASE  ******************************
+   #LET NAOFURAR=0
+   #IF $(PL)<25 & $(XX7:10)!3 #LET NAOFURAR=1
+   #IF $(PL)>$(XL)-50 & $(XX7:11)!3 #LET NAOFURAR=1
+   #IF $(NAOFURAR)=0
+      #M JOB_PRAT_DIVVD
+   #ENDIF
+#ENDIF

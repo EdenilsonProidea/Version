@@ -1,0 +1,23 @@
+!PARAMETRI DOBRADICADIF=0 // nova gestão dobradiça com seleção por subregra unida a _dobradif - ver continuação dentro macro dobradiça
+#MSG $(INCRFRENTE)
+_iniciafr
+// gestao orientamento certo do perfil com lado
+#IF $(vfr:6)=3 // perfil vertical
+   #IF $(VPERFPUX:17)!!
+      //  #LOADVAR VPERFPUX   _PERFPUX $(VPERFPUX:18)
+   #ENDIF
+#ELSE
+   #IF $(VPERFPUX:18)!!
+      //   #LOADVAR VPERFPUX   _PERFPUX $(VPERFPUX:19)
+   #ENDIF
+#ENDIF
+// fim gestao orientamento certo do perfil com lado
+
+#IF $(_fr:1)!!999
+   #LETS CINEX_VAR_OBRIGATORIAS=_SISTEMAS=STD0025;_USINAGEMCLIENTE=000;_APLICACAO=AB_01_01;_POSPORTAS=AB_01_01_01
+   #LETS CINEX_VAR_DEFAULT=
+   _fr,move=$(movfr)
+   push_porta,posd=3
+#ENDIF
+ACEINTFRENTE,tpaper=2,l=$(lfre),sl=$(eslat:0)
+dobradiça,posd=3,sa=$(affre)

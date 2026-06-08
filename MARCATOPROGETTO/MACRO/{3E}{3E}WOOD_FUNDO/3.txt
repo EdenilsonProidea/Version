@@ -1,0 +1,5 @@
+263,SL=10,SP=9.5,L=$l-20,P=$p-20,X3=$(curbox)/W  //Fundo Gaveta
+#IF $(_mantagav:0)>0
+   350,SP=9.5,p=$p-20,sl=10,l=$l-20  // MANTA GAVETA
+#ENDIF
+#MSG GG

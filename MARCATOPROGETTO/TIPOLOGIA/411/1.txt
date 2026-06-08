@@ -1,0 +1,13 @@
+{ 411   // Trilho Superior
+   *AZZERA*            =0
+   DESCRIZIONE         =Trilho Superior
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$a-35,$p-80
+   DIMENSIONE          =$l,35,80
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =sistemas\trilho_sup_interno.3ds
+   X9                  =$(_siscorrer:5)/$(_siscorrer:14)
+   X10                 =$(_siscorrer:19)
+}

@@ -1,0 +1,4 @@
+fech_inf,macro=acabRODAPEdor,es=$(_esppearm:3),L=$L+$(INCREPEARME:0)+$(INCREPEARMD:0),SL=-$(INCREPEARME:0)
+fech_sup,macro=acabRODATETOdor
+fech_esq,macro=acablatdor
+fech_dir,macro=acablatdor

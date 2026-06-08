@@ -1,0 +1,12 @@
+{ 438   // Componente interno blum
+   *AZZERA*            =0
+   DESCRIZIONE         =Componente interno blum
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(xstart),0,$(ystart)
+   DIMENSIONE          =$(bi_components:24),$(bi_components:25),$(bi_components:26)
+   COLORI              =1,1
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =$(bi_components:14)
+   X9                  =$(bi_components:1)
+}

@@ -1,0 +1,1 @@
+201,6,Lateral Esquerda202,6,Lateral Direita280,6,PAINEL VERTICAL463,7,LED464,7,Spot

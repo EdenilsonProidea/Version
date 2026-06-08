@@ -1,0 +1,13 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   
+   par=split(ex(zParametro(8),"/",4),"|")
+   ReDim Preserve par(2)
+   finitura=par(0)
+   V=SPLIT(par(1),";")
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\frente\" & finitura)
+   wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+End Sub

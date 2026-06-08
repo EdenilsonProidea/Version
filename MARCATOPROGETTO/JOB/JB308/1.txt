@@ -1,0 +1,1 @@
+301,6,Lateral Esquerda  (dormitorios)302,6,Lateral Direita  (dormitorios)305,7,Fundo (dormitorio)306,6,LATERAL INTERNA351,6,divisao interna vertical

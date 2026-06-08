@@ -1,0 +1,11 @@
+{ 413   // carrinho interno desenho
+   *AZZERA*            =0
+   DESCRIZIONE         =carrinho interno desenho
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =50,-7,-5
+   DIMENSIONE          =120,50,20
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =sistemas\carrinho_interno_encaixe_inf.3ds
+}

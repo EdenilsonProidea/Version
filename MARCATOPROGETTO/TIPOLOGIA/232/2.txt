@@ -1,0 +1,13 @@
+{ 232   // rodape
+   *AZZERA*            =0
+   DESCRIZIONE         =rodape
+   CODICE              =$(_pes:13) /_CORRODAPE=$(_CORRODAPE:1);_MONTADO=$(_MONTADO:0)
+   LATO                =19
+   POSIZIONE           =0,-$(arod),0
+   DIMENSIONE          =$l,$(arod),$(PROD:0)
+   COLORI              =$(_corrodape:3)|$(.percorso)\foto\pes\$(_corrodape:4)|$(_corrodape:5)|90,$(_corrodape:3)|$(.percorso)\foto\pes\$(_corrodape:4)|$(_corrodape:5)|90
+   DISEGNO             =$(DISROD)
+   ORIENTAMENTO        =LAP
+   X1                  =$(X1)
+   X3                  =$(curbox)
+}

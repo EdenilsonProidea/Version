@@ -1,0 +1,36 @@
+DOR_CALC_SAG_LAT,plat=$(platDIR:0),p=$(platDIR:0)
+//206,SL=$(DESC_CANTOR_LAT:0),SA=0,A=$A,SP=$(platDIR:0),L=$(PLATESQ:0)+$(desc_p_dir:0)-$(DESC_CANTOR_LAT:0) original
+#LET ESPVISTA=18 // <30430P2>
+#IF $(_TPFECHDIR:3)>1 // <C30430>
+   #LETS cfr_fixa=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   206,SL=$(DESC_CANTOR_LAT:0)+$(eslat:0),SA=$(abase),SP=$(platDIR:0)-18,L=$(PLATESQ:0)+$(desc_p_dir:0)-($(DESC_CANTOR_LAT:0)+$(eslat:0)-$(espvista:0)),A=$A-2*$(abase),P=18,C1=$(cfr_fixa),C2=$(cfr_fixa)  //Frente fixa canto aproveitavel // Alterado espessura para 18mm <c30278>
+   #IF $(_TPFECHESQ:3)[2;4]!0
+      #IF $(TPCANTO:3)=1 & $(_tpfechesq:3)=4//largura
+         #LET largvesq=$(afastmods:0)
+      #ENDIF
+      #IF $(retiravdir:0)=0
+         210,SL=$(platesq:0),SA=$(FOLGAFRENTEAI:0),p=$(espvista:0),A=$A-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0)),SP=$(platDIR:0),L=$(largvdir:0)+$(espvista:0),C1=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),C2=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),X9=$(_tpcaixa:1)/$(_corFR:1)/$(TPFIX:1)
+      #ENDIF
+      #IF $(TRAV_DIV_ESQ:0)=1 & $(retiravesq:0)=0
+         312,SL=$(platESQ:0),SA=$(FOLGAFRENTEAI:0),SP=$(PLATDIR:0)+1*($(desc_p_esq:0)-$(ESLAT:0)/2),L=$(largvesq:0)+$(espvista:0),A=$A-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0)),AY=90  // TRAVESSA DIVISORIA DORMITORIA
+      #ENDIF
+   #ELSE
+      210,SL=$(desc_p_dir:0)+$(PLATESQ:0)-100,SA=0,p=$(espvista:0),A=$A,SP=$(platDIR:0),L=100,C1=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),C2=$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),X9=$(_tpcaixa:1)/$(_corFR:1)/$(TPFIX:1)
+      #IF $(TRAV_DIV_ESQ:0)=1  & $(retiravesq:0)=0
+         312,L=$(desc_p_ESQOR:0)+7,SL=$(platESQ:0),SP=$(platDIR:0)+$(desc_p_ESQOR:0)+$(ESLAT:0),AY=90
+      #ENDIF
+   #ENDIF
+#ENDIF
+301,p=$(platDIR:0),SL=$(DESC_CANTOR_LAT:0)
+#IF $(TPLATARM:0)=2
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATDIR:0),L=$L-($(DESC_CANTOR_LAT:0)+$(ESLAT:0)*2),SL=$(DESC_CANTOR_LAT:0)+$(ESLAT:0)
+   301,p=$(platDIR:0),SL=$L-$(ESLAT:0)
+#ELSE
+   #IF $(TPCANTO:3)=1 & $(_TPFECHDIR:3)=4// lado largura <C30436>
+      #IF {$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0))}>1275
+         #LET IDLOGERROS=$(IDLOGERROS)119;
+      #ENDIF
+   #ENDIF
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATDIR:0),L=$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(DESC_CANTOR_LAT:0)+$(ESLAT:0)
+#ENDIF
+LOGERROS

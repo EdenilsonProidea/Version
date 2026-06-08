@@ -1,0 +1,25 @@
+_calcola_popx
+
+#IF $(ambiente)==D & $(ISCANTOLDOR:0)=1 & $(FRENTENORMAL:0)=1 // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de DORMITORIO - feito em visita
+   _FR_STANDARD
+#ELSE
+   #LETS pospuxadores=$(POPX)
+   #IF $(pospuxadores)[3;9;6]!0
+      #LETV _fr:7=Graffiata_abrir_esq_sem_friso.3ds
+   #ELSE
+      #LETV _fr:7=Graffiata_abrir_dir_sem_friso.3ds
+   #ENDIF
+   #IF $(IDP)=2
+      #LETS FLTIPO=$(_LADOPUXGRAF:6)
+   #ELSE
+      #LETS FLTIPO=$(_LADOPUXGRAF:5)
+   #ENDIF
+   #LET ladojobfrente=1
+   #LETS nomejobfrente=GraffiataABRIRSEMFRISO
+   #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+   #LETS xpfrente=FRENTE3D.XP
+   #IF $(fltipo)==DIRSP | $(fltipo)==ESQSP
+      #LETV _fr:7=_
+   #ENDIF
+   _FR_STANDARD
+#ENDIF

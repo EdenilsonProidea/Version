@@ -1,0 +1,49 @@
+#IF $(cavelatesq:0)!! & $(cava)=1
+   ordinastringa,stringa=$(cavelatesq:0),decrescente=1
+   saglat,elecave=$(stringaord)
+   //!SAGOMAL saglatesq $(tmp)
+   #IF $(tpRecorteCaixa:4)=1
+      #IF $(cavainternaesq:0)=0
+         !SAGOMAl sagLatEsq 0,0,0,$(a),$(p)-$(PCOL),$(a),$(p)-$(PCOL),$(acava:0),$(p)-$(pcava:0)-$(PCOL),$(acava:0),$(p)-$(pcava:0)-$(PCOL),0
+      #ENDIF
+   #ELSEIF $(tpRecorteCaixa:4)=2
+      #IF $(cavainternaesq:0)=0
+         !SAGOMAl sagLatEsq 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+      #ENDIF
+   #ELSEIF $(tpRecorteCaixa:4)=3
+      #IF $(cavainternaesq:0)=0
+         !SAGOMAl sagLatEsq 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+      #ENDIF
+   #ENDIF
+   ordinastringa,stringa=$(cavelatesq:0),decrescente=0
+   #LETS cavelatesq=$(stringaord)
+#ELSE
+   !SAGOMA saglatesq .
+   #LETS saglatesq=
+#ENDIF
+
+#IF $(cavelatdir:0)!! & $(cava)=1
+   ordinastringa,stringa=$(cavelatdir:0),decrescente=1
+   #LETS cavelatdir=$(stringaord)
+   saglat,elecave=$(stringaord)
+   #IF $(tpRecorteCaixa:4)=1
+      #IF $(cavainternadir:0)=0
+         !SAGOMAl sagLatdir 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+      #ENDIF
+   #ELSEIF $(tpRecorteCaixa:4)=2
+      #IF $(cavainternadir:0)!1
+         !SAGOMAl sagLatdir 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+      #ENDIF
+   #ELSEIF $(tpRecorteCaixa:4)=3
+      #IF $(cavainternadir:0)!1
+         !SAGOMAl sagLatdir 0+,0,0,$(a),$(p)-$(PCOL),$(a),$(p)-$(PCOL),$(acava:0),$(p)-$(pcava:0)-$(PCOL),$(acava:0),$(p)-$(pcava:0)-$(PCOL),0
+      #ENDIF
+   #ELSE
+   #ENDIF
+   // !SAGOMAL saglatdir $(tmp)
+   ordinastringa,stringa=$(cavelatdir:0),decrescente=0
+   #LETS cavelatdir=$(stringaord)
+#ELSE
+   !SAGOMA saglatdir .
+   #LETS saglatdir=
+#ENDIF

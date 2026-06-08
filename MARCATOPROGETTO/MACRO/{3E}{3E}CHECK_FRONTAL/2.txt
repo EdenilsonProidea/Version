@@ -1,0 +1,13 @@
+#IF $(LFRE)<$(_tpfr:8) //CHECK LARGURA MINIMA GAVETA
+   #LETS idlogerros=$(idlogerros)13^$(_tpfr:2)^$(_tpfr:8);
+#ELSEIF $(LFRE)>$(_tpfr:9) //CHECK LARGURA MAXIMA GAVETA
+   #LETS idlogerros=$(idlogerros)14^$(_tpfr:2)^$(_tpfr:9);
+#ENDIF
+#IF $(AFRE)<$(_tpfr:10) //CHECK LARGURA MINIMA GAVETA
+   #LETS idlogerros=$(idlogerros)15^$(_tpfr:2)^$(_tpfr:8);
+#ELSEIF $(AFRE)>$(_tpfr:11) //CHECK LARGURA MAXIMA GAVETA
+   #LETS idlogerros=$(idlogerros)16^$(_tpfr:2)^$(_tpfr:9);
+#ENDIF
+#LET LPORTAFINAL=$(LFRE)
+CALCULAERROGAV //GESTÃO DE ERROS GAVETAS  <C22068>
+// 297,COD= / /LARGURA DA PORTA $(LPORTAFINAL) MM,SA=10,SP=$P+50,A=100,P=10  // TEXTO

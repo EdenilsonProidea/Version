@@ -1,0 +1,4 @@
+#LOADVAR _
+#IF $L==60
+   8581,0
+#ENDIF

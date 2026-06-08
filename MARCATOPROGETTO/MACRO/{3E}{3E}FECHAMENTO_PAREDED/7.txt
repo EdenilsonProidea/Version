@@ -1,0 +1,28 @@
+// ACABAMENTO com distanciador
+#IF $(lat_fech_especial)=1 // Adicionado gestão especial Marcato <c23346>
+   386.001,SL=$l-$(e2)-$(distanciadordir:0),SP=$p-$(PL2)  //Frente lateral especial esq
+   #IF $(somguarn:3)=0
+      385.002,SL=$l-$(distanciadordir:0)  // Distanciador lateral Fechamento
+   #ENDIF
+   //  385.003,SL=$l-$(distanciadordir:0)  // Distanciador lateral Fechamento
+#ELSEIF $(lat_fech_especial)=2 // Adicionado gestão especial Marcato <c23346>
+   #LET acabLateral=$A-$(avistadesconto:0)-$(arodape:0)
+   385.002,SL=$l-$(distanciadordir:0),A=$(acabLateral),SA=$(arodape:0)  // Distanciador lateral Fechamento
+   // 385.003,SL=$l-$(distanciadordir:0),A=$(acabLateral),SA=$(arodape:0)  // Distanciador lateral Fechamento
+#ELSE
+   #IF $(_tpfech:3)=4
+      #IF $(pm)=3
+         384,sl=$l-$(espacab:3)-$(distanciadordir:0),SP={$p-1*($(espacab2:3))+$(_tpfech:4)-$(INCR_ATRAS:0)-52},p={$(sobrepbasefech:0)+$(_tpfr:12)+$(INCR_ATRAS:0)} // Adicionado SP diferente para igualar ao catáLlogo antigo, feito em visita
+         // * Adicionado o INCR_ATRAS para funcionar o incremento, feito em visita
+      #ELSE
+         384,sl=$l-$(espacab:3)-$(distanciadordir:0),SP={$p-1*($(espacab2:3))+$(_tpfech:4)-$(INCR_ATRAS:0)-52},p={$(sobrepbasefech:0)+$(_tpfr:13)+$(INCR_ATRAS:0)} // Adicionado SP diferente para igualar ao catáLlogo antigo, feito em visita
+         // * Adicionado o INCR_ATRAS para funcionar o incremento, feito em visita
+      #ENDIF
+   #ELSE
+#MSG a
+      384,sl=$l-$(espacab:3)-$(distanciadordir:0)  // acabamento lateral fechamento
+   #ENDIF
+   #IF $(distanciadordir:0)>0
+      385.002,SL=$l-$(distanciadordir:0),SP={$p-1*($(espacab2:3))+$(_tpfech:4)} // ,sp=$p Comentado em visita //Distanciador lateral Fechamento // Adicionado nova SP em visita
+   #ENDIF
+#ENDIF

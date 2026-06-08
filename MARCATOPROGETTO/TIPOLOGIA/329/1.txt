@@ -1,0 +1,15 @@
+{ 329   // teto Bau
+   *AZZERA*            =0
+   DESCRIZIONE         =teto Bau
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$a,0
+   DIMENSIONE          =$l,$(esp_prat:0),$p+7
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X8                  =$(pcanal:0)
+   X9                  =$(_tpcaixa:1)/$(_COREX:1)/$(TPFIX:1)
+   ALIAS               =#329
+}

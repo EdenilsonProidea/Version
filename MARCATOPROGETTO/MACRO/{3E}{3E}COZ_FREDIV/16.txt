@@ -1,0 +1,22 @@
+#MSG $(_FRINTERNA:0)
+#LET pmfre=$(pm)
+#IF $(pm2:0)>0 #LET pmfre=$(pm2:0)
+#IF $(_FRINTERNA:0)==1
+   #LETV _TPCAIXA:5=1.5
+   calc_af_kit
+   FRONTAL,SL=$(slagr),SA=$(sAagr),L=int($(lagr)),A=int($(Aagr)),Lfre=int($(lagr)),Afre=int($(Aagr)),sp=-$(esfre:0)-2,pm=$(pmfre),ESLAT=0
+   #IF $(_tpfr:3)>0
+      #LET PPRAT=$P-1*($(ESCOS:0)+$(AFCOS:0)+$(ESFRE:0)+$(ATRA:0)+3)
+   #ENDIF
+#ELSE
+   calc_af_kit
+   FRONTAL,pm=$(pmfre)
+#ENDIF
+_int,SL=$(slagr),SA=$(sAagr),L=int($(lagr)),A=int($(Aagr))
+#IF $(SUP:0)=1
+   #IF $(_TPFR:3)=0
+      ILU_CAIXA,NICHO=1
+   #ELSE
+      ILU_CAIXA,NICHO=0
+   #ENDIF
+#ENDIF

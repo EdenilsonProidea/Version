@@ -1,0 +1,11 @@
+{ 223   // Porta Tempero/Latas Aramado
+   *AZZERA*            =0
+   DESCRIZIONE         =Porta Tempero/Latas Aramado
+   CODICE              =000TEMPARAM /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(espessura:0),$(AFGAVA:0),$p-$(PGARA:0)
+   DIMENSIONE          =$(LGARA:0),$(AGARA:0),$(PGARA:0)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X8                  =GAVETA\ptempero.3ds/0;0;0;0
+}

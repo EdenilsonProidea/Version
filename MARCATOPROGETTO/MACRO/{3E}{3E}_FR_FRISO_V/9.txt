@@ -1,0 +1,55 @@
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+#LET afriso=$(LFRISO:0)//3 <c22010>
+#LET LFRISO=$(LFRISO:0)
+#LET POSOLDFRISOS=
+#LET calcvaopai=$l/($(nfrisosV:0)+1)
+#IF $(iniciofrisov:0)>0
+   #LET calcinifri=$(calcvaopai:0)+$(iniciofrisov:0)
+#ENDIF
+#IF $(old_nfrisosV$(_ctx):0)!!$(nfrisosV:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+#LETS parfrisosscript=
+#FOR $1:$(nfrisosV:0)
+   #IF $(iniciofrisov:0)>0 & $(parfrisos:$(I))=0
+      #IF $(I)=1
+         !ADDPUNTO {$(iniciofrisov:0)-$(afriso:0)/2},0,0
+         !ADDPUNTO {$(iniciofrisov:0)+$(afriso:0)/2},0,0
+         #LET parfrisos$(_ctx):$(I)$=$(iniciofrisov:0)
+      #ELSE
+         #IF $(ESPACOFRISOV:0)>0
+            !ADDPUNTO {$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)-$(afriso:0)/2},0,0
+            !ADDPUNTO {$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)+$(afriso:0)/2},0,0
+            #LET parfrisos$(_ctx):$(I)=$(iniciofrisov:0)+$(ESPACOFRISOV:0)*($(I)-1)
+         #ELSE
+            !ADDPUNTO {$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)-$(afriso:0)/2},0,0
+            !ADDPUNTO {$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)+$(afriso:0)/2},0,0
+            #LET parfrisos$(_ctx):$(I)=$(iniciofrisov:0)+$(calcvaopai:0)*($(I)-1)
+         #ENDIF
+      #ENDIF
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos$(_ctx):$(I));
+   #ELSE
+#MSG a
+      #LET POSOLDFRISOS=$(POSOLDFRISOS:0)+{$(calcvaopai:0)}
+      !ADDPUNTO {$(POSOLDFRISOS:0)+$(afriso:0)/2},0,0
+      !ADDPUNTO {$(POSOLDFRISOS:0)-$(afriso:0)/2},0,0
+      #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I));
+   #ENDIF
+   
+#ENDFOR
+
+#LETS parfrente=$(afriso)|$(nfrisosV:0)|$(parfrisosscript)
+#LETS xpfrente=frente_friso_V.xp
+// .frente_friso_V
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOV
+#LETS parjobfrente=$(afriso)|$(nfrisosV:0)|$(parfrisosscript)
+#LET LL=$(Lfre)-2*($(folgafrenteL:0))
+_fr_friso_v_drag,SL=$(folgafrenteL:0),L=$(LL),nfrisos=$(nfrisosv:0)
+_FR_STANDARD
+#LETV old_nfrisosV$(_ctx)=$(nfrisosV$(_ctx):0)
+//215

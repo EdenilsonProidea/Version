@@ -1,0 +1,10 @@
+{ 419   // desativa divisao (div no  attiva)
+   *AZZERA*            =0
+   DESCRIZIONE         =desativa divisao (div no  attiva)
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           ={$(RED_ESQ)+$(VAOL_BASE)*$(I)-50},$a+20,0
+   DIMENSIONE          =100,100,1
+   COLORI              =188,188
+   ORIENTAMENTO        =ALP
+   DATI                =DIVIDICAIXA$(i)
+}

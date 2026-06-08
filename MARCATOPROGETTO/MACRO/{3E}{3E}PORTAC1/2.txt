@@ -1,0 +1,11 @@
+#IF $(_lporta:0)>0
+   #LET LFRE=$(_lporta:0)
+#ELSE
+   #LET LFRE=$l/2
+#ENDIF
+#IF $(PM)=1
+   //#IF $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D // Adicionado em visita  
+ FRCORR,P=$(ESFRE),APE=C1D,IDP=1,macro=frontal
+#ELSE
+   FRCORR,P=$(ESFRE),APE=C1E,IDP=1,SL=$L-$(LFRE),macro=frontal
+#ENDIF

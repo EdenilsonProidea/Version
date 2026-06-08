@@ -1,0 +1,86 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PALPA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+D,USIF,,,Forma
+C,TEMUSIF,,,,,,,,,,,,1==0
+T,ESPPECA,,,Espessura
+T,_COREX,,,Material
+T,_PINTURAEX,,$(_COREX:9)=1,Cor Pintura
+C,ATIVACOTA,,,Ativa cotas?,,,,,,,2
+-,FIX
+T,FACEUSINAGEMLPA,FACEUSINAGEM,,Face Usinagem
+T,TPFIXPTECESQ,,,Fix Esquerda,,,,,,,1
+M,NfurosEsq,,$(TPFIXPTECESQ:5)>0 & $(TPFIXPTECESQ:6)=0 ,Num.Usinagem Esq (0=padrão),,,,,,,1
+M,DistIniFimEsq,,$(NfurosEsq:0)>0,Distancia Inicio/Fim Furos esq,,,,25,,,1
+D,posusi3,,,,,,,,,,1,,1==0
+T,TPFIXPTECDIR,,,Fix Direita,,,,,,,2
+M,NfurosDir,,$(TPFIXPTECDIR:5)>0 & $(TPFIXPTECDIR:6)=0 ,Num.Usinagem Dir (0=padrão),,,,,,,2
+M,DistIniFimDir,,$(NfurosDir:0)>0,Distancia Inicio/Fim Furos dir,,,,25,,,2
+D,posusi4,,,,,,,,,,1,,1==0
+T,TPFIXPTECATR,,,Fix Atras,,,,,,,3
+M,NfurosAtr,,$(TPFIXPTECATR:5)>0 & $(TPFIXPTECATR:6)=0 ,Num.Usinagem Atras (0=padrão),,,,,,,3
+M,DistIniFimAtr,,$(NfurosAtr:0)>0,Distancia Inicio/Fim Furos Atras,,,,25,,,3
+D,posusi5,,,,,,,,,,1,,1==0
+T,TPFIXPTECFRE,,,Fix Frente,,,,,,,4
+M,NfurosFre,,$(TPFIXPTECFRE:5)>0 & $(TPFIXPTECFRE:6)=0 ,Num.Usinagem Atras (0=padrão),,,,,,,4
+M,DistIniFimFre,,$(NfurosFre:0)>0,Distancia Inicio/Fim Furos frente,,,,25,,,4
+D,posusi6,,,,,,,,,,1,,1==0
+-,FITA
+T,ESPBO
+C,FITADIF,,,Fita Diferente?
+T,_corbo,,$(FITADIF:0)=1,Cor fita
+Z,FITAESQ,,,Fita Esquerda,,,,,,,,,$(TEMUSIF:0)=0
+Z,FITADIR,,,Fita Direita,,,,,,,,,$(TEMUSIF:0)=0
+Z,FITAFRE,,,Fita Frente,,,,,,,,,$(TEMUSIF:0)=0
+Z,FITATRA,,,Fita Atras,,,,,,,,,$(TEMUSIF:0)=0
+-,INFO
+S,CODITEM,,,Cod Do Item
+M,ID,,,Id Peça
+S,OBSITEM,,,Obs Item
+-,TRT
+T,TRABALHOES,,,Trabalho Esquerda
+T,TRABALHODI,,,Trabalho Direita
+T,TRABALHOFR,,,Trabalho Frontal
+T,TRABALHOAT,,,Trabalho Atras
+-,ILU
+D,ilu1,,,Ilu. Face Superior,,!ilu.htm,,,,,2
+D,ilu2,,,Ilu. Face Inferior,,!ilu.htm,,,,,2
+T,_ilu,_ilu1,$(ilu1:0)>0 ,Tipo Iluminação Superior,$(_ilu1:3)=$(ilu1:1),,,,,,3
+T,_ilu,_ilu2,$(ilu2:0)>0 ,Tipo Iluminação Inferior,$(_ilu2:3)=$(ilu2:1),,,,,,3
+C,LigarLuz,,($(ilu1:0)>0 | $(ilu2:0)>0),Ligar Luz?,,,,,,,5
+K,corled,,($(ilu1:0)>0 | $(ilu2:0)>0) & $(LigarLuz:0)=1,Cor Led?,,,,,,,5
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+#LET A=$(ESPPECA:3)
+IDM_INICIAAVULSO
+
+PALPA,PECAAVULSA=1,MACRO=PALPA

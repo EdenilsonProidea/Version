@@ -1,0 +1,17 @@
+#LOADVAR _FR _FR $(X9:0)
+#LOADVAR _TPFR _TPFR $(X9:14)// <C31357>
+#IF $(x6:2)!1 // se for frente invisivel
+#IF $(_TPFR:3)=100 // <C31357>
+   #M ESTR_MADEIRA,CODITEM=$(X10:9)
+#ELSE
+   #M ESTR_MADEIRA,CODITEM=$(_FR:5)$(X3:1)
+#ENDIF
+#IF $(_fr:21)!!
+   $(_fr:21),1
+#ENDIF
+#ENDIF
+
+
+
+
+

@@ -1,0 +1,10 @@
+{ 405   // Interferenza per ROD-BASM lat
+   *AZZERA*            =0
+   DESCRIZIONE         =Interferenza per ROD-BASM lat
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,-$(arod),0
+   DIMENSIONE          =$l,$(arod),$(PINTRODA)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

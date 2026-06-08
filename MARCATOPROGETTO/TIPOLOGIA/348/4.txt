@@ -1,0 +1,15 @@
+{ 348   // Cabideiro
+   *AZZERA*            =0
+   DESCRIZIONE         =Cabideiro
+   CODICE              =$(CODACE) /LINHA=$(MODELLO:0)
+   POSIZIONE           =$(_int:10),0,$(_int:12)+30
+   DIMENSIONE          =$(LACEINT),$(AACEINT),$(PACEINT)
+   COLORI              =$(_int:9),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =CABIDEIRO.XP
+   DATI                =_int$(_ctx)
+   X3                  =$(curbox)
+   X6                  =0/0/0/$(LACEINT)/$(AACEINT)/$(PACEINT)
+   X8                  =ACESSORIOS\$(_INT:5)
+   X9                  =$(_INT:1)/$(_INT:24)/$(_INT:30)
+}

@@ -1,0 +1,1805 @@
+// ------------------------ Definizione Variabili Gruppo ----------------
+[BASAMENTO]
+-,Bas,,,Basamento
+T,_pes
+T,_corpes,,$(_PES:3)=5
+T,_corrodape,,$(_PES:3)=3,Cor Rodapè
+M,esprodape,,$(_PES:3)=3,Esp. Rodape,,,25
+M,alt_sospenso,,$(_pes:3)=4,Alt.Suspenso,,,,10
+T,ladoPes,,$(_PES:3)=1
+C,ventilacao,,$(_PES:3)=5,Ventilação
+M,lventilacao,,$(ventilacao:0)=1,Largura Ventilação
+M,aventilacao,,$(ventilacao:0)=1,Altura Ventilação
+C,rodesq,,$(_PES:3)=3,Rodapè Lat Esq?
+C,roddir,,$(_PES:3)=3,Rodapè Lat Dir?
+M,sbzsx,,$(_PES:3)=3,Incr.Rodapè Esq?
+M,sbzdx,,$(_PES:3)=3,Incr.Rodapè Dir?
+M,arod_pers,,$(_PES:3)=5,Altura Rodapè,,,,10
+C,basmesq,,$(_PES:3)=5,Red.Bas.esq.?
+C,basmder,,$(_PES:3)=5,Red.Bas.Der.?
+Z,BasAuto,,$(_PES:3)=5,Basamento Auto?
+M,afbasl,,$(_PES:3)=5,Red.Base Lat?
+M,afbasf,,$(_PES:3)=5,Red.Base Fre?
+M,BASAESQ,,$(_PES:3)=5,Bas.esq
+M,BASADIR,,$(_PES:3)=5,Bas.dir
+
+[COZ_ACAB]
+-,tt,,,Ac
+T,_Tampo,,$a<1400 & $(_tpcaixa:3)[110;111]!1,,,,,,,,6
+T,_cortampo,,$(_TAMPO:6)=999 & $(_tpcaixa:3)[110;111]!1,,,,,,,,6
+K,_rgb_TAMPO,,$(_TAMPO:12)=1 & $(_tpcaixa:3)[110;111]!1,,,,,,,,6
+T,_filete,,$a<1400 & $(_tampo:1)!!999 & $(_tpcaixa:3)[110;111]!1,,$(_filete:1)[$(_tampo:10)],,,,,,6
+T,bordo,,$a<1400 & $(_tampo:1)!!999 & $(_tpcaixa:3)[110;111]!1,,,,,,,,6
+M,ATAMPOP,,($(_tampo:6)==999 | $(_tampo:12)=1) & $(_TAMPO:1)!!999 & $(_tpcaixa:3)[110;111]!1,Espessura Tampo?,,,25,,,,6
+M,afilesp,,(($(_tampo:6)==999  | $(_tampo:12)=1) & $(_filete:1)!!999) & $(_TAMPO:1)!!999 & $(_tpcaixa:3)[110;111]!1,Altura filete?,,,60,,,,6
+C,latoasx,,$(_filete:5)>0 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Filete Esq?,,,,,,,6
+C,latoadx,,$(_filete:5)>0 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Filete Dir?,,,,,,,6
+C,latobsx,,$a<1400 & $(_tampo:1)!!999 & $(_tpcaixa:3)[110;111]!1,Borda Esq?,,,,,,,6
+C,latobdx,,$a<1400 & $(_tampo:1)!!999 & $(_tpcaixa:3)[110;111]!1,Borda Dir?,,,,,,,6
+M,INCTESQ,,$(_tampo:1)!!999 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Incr.Tampo Esq?,,,,,,,6
+M,INCTDeR,,$(_tampo:1)!!999 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Incr.Tampo Dir?,,,,,,,6
+M,INCTATR,,$(_tampo:1)!!999 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Incr.Tampo Atr?,,,,,,,6
+M,INCTFRO,,$(_tampo:1)!!999 & $a<1400 & $(_tpcaixa:3)[110;111]!1,Incr.Tampo Fro?,,,,,,,6
+T,_pes,,,,,,,,,,7
+T,_corpes,,$(_PES:3)=5,,,,,,,,7
+T,esprodape,,$(_PES:3)[3;5]!0,Esp. Rodape?,,,,,,,7
+T,_corrodape,,$(_PES:3)=3,Cor Rodapè,$(esprodape:1)[$(_corrodape:12)]!0,,,,,,7
+T,_pinturafr,_pinturape,$(_corrodape:9)=1,Cor da Pintura?,,,,,,,7
+M,alt_sospenso,,$(_pes:3)=4,Alt.Suspenso,,,200|,10,,,7
+T,ladoPes,,$(_PES:3)[1;6],,,,,,,,7
+C,ventilacao,,$(_PES:3)=5,Ventilação,,,,,,,7
+M,lventilacao,,$(ventilacao:0)=1,Largura Ventilação,,,300||,,,,7
+M,aventilacao,,$(ventilacao:0)=1,Altura Ventilação,,,50|,,,,7
+C,rodesq,,$(_PES:3)=3,Rodapè Lat Esq?,,,,,,,7
+C,roddir,,$(_PES:3)=3,Rodapè Lat Dir?,,,,,,,7
+M,sbzsx,,$(_PES:3)=3,Incr.Rodapè Esq?,,,,,,,7
+M,sbzdx,,$(_PES:3)=3,Incr.Rodapè Dir?,,,,,,,7
+M,arod_pers,,$(_PES:3)[5;10;11;12],Altura Rodapè,,,200,50,300,,7
+C,basmesq,,$(_PES:3)[5;10;11;12],Red.Bas.esq.?,,,,,,,7
+C,basmder,,$(_PES:3)[5;10;11;12],Red.Bas.Der.?,,,,,,,7
+Z,BasAuto,,$(_PES:3)=5,Basamento Auto?,,,,,,,7
+M,afbasl,,$(_PES:3)[5;10;11;12],Red.Base Lat?,,,20,,,,7
+M,afbasf,,$(_PES:3)[5;10;11;12],Red.Base Fre?,,,50,,,,7
+M,afbast,,$(_PES:3)[5;10;11;12],Red.Base Tra?,,,,,300,,7
+M,BASAESQ,,$(_PES:3)=5,Bas.esq,,,,,,,7
+M,BASADIR,,$(_PES:3)=5,Bas.dir,,,,,,,7
+M,red_rodape_f,,$(_PES:3)=3,Red.Rodapé frente(0=Padrão),,,,,,,7
+
+[COZ_CAIXA]
+V,INICIACOZ
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIACOZ;$(.ISECADPRO),,,,,1,,$(.isecadpro)=1
+T,_montado,,,,,,,,,,1,,$(.isecadpro)=1
+T,_tpcaixa,,,,,,,,,,1
+T,espessura,,,,$(espessura:0)>=15,,,,,,1,,$(_tpcaixa:0)!!CIAD
+T,espessura_ADEGA,,$(_tpcaixa:0)==CIAD,,,,,,,,1
+T,_pinturacx,,$(_corcx:9)=1,,,,,,,,1
+T,_corcx_EXTRA,,,,$(_CORCX:1)[$(_corcx_EXTRA:1)]!0 ,,,,,,,,1=0
+T,espfundo,,$(_TPCAIXA:26)=7,,,,,,,,1
+T,espfundo2,,$(_TPCAIXA:26)=7,,,,,,,,1
+T,MODELOCL,,$(_tpcaixa:3)=110|$(_tpcaixa:3)=120,,,,,,,,1
+T,_tpbase,,$(_TPCAIXA:9)=2,,,,,,,,1
+T,_tpbase1,,$(_TPCAIXA:3)=11,,,,,,,,1
+C,furobase,,$(_TPCAIXA:3)=18,,,,,,,,1,,1=0
+M,lfurobase,,$(furobase:0)=1,,,,100,,,,1,,1=0
+M,afurobase,,$(furobase:0)=1,,,,100,,,,1,,1=0
+T,rmpensil,,$(_TPCAIXA:9)[2;3],Remov. pensil
+T,TPFIX,,,,,,,,,,3
+T,TPFIXGAV,,$(_tpcaixa:25)=1,,,,,,,,3
+T,_VerParcaixa,,$(_TPCAIXA:3)=36,,,,,,,,1
+D,CaixaPers,,$(_TPCAIXA:3)=36,Costumiza Caixa,,!custocaixa.HTM,,,,,1,,$(_VerParcaixa:0)
+T,_tpFundo,,$(_TPCAIXA:3)=36,,,,,,,,1
+T,_tpgav,,$(_tpcaixa:25)==1,,,,,,,,9
+T,espessura_gaveta,,$(_TPCAIXA:25)=1,,$(espessura_gaveta:0)>=15,,,,,,9
+T,_corblum,,$(_tpgav:3)=3 & $(_tpgav:19)!!,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9,,1=0
+T,_CORR,,$(_tpcaixa:25)=1,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,9,,$(_TPGAV:13)=1
+M,espaco_gav_atras,,$(_tpcaixa:25)=1,Espaços atras da gaveta,,,,,,,9
+C,FLAG_ILU,,$(_tpcaixa:3)!!998,Iluminação,,,,,,,2
+T,notamedidacaixa,,$(_tpcaixa:3)!!998,Medida Caixa,,,,,,,1
+C,adcbasealu,,$(_tpcaixa:9)=1,Adicionar base de alumínio?,,,,,,,4
+T,basealu,,,,,,,,,,4,,1=0
+-,MA
+T,_corcx,,$(_TPCAIXA:1)!!CIAD,,$(espessura:3)[$(_corcx:12)]!!0 | $(espessura_ADEGA:3)[$(_corcx:12)]!!0,,,,,,7
+T,_CORBF,,,,,,,,,,4,,$(corbfsep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corpr,,,,$(esprat:0)[$(_corpr:12)]!!0,,,,,,4,,$(corprasep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corle,,,,$(espessura:3)[$(_corcx:12)]!!0,,,,,,4,,$(corlatsep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corld,,,,$(espessura:3)[$(_CORLD:12)]!!0,,,,,,4,,$(corlatsep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corba,,,,$(espessura:3)[$(_corcx:12)]!!0,,,,,,4,,$(corbassep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corgv,,$(_tpcaixa:25)=1,,$(espessura_gaveta:3)[$(_corgv:12)]!!0,,,,,,4,,$(corgavsep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corfu,,,,$(espfundo:3)[$(_corfu:12)]!!0 & $(espfundo2:3)[$(_corfu:12)]!!0,,,,,,2,,$(corfunsep:0)=1 & $(_tpcaixa:0)!!CIAD
+T,_corADEGA,,$(_tpcaixa:0)==CIAD,Cor Adega
+C,veiofun,,$(_tpcaixa:0)==CSUDE_N,Altera veio fundo
+-,tec0,,,Ta
+M,pcaixa,,,,,,,,,,,,1=0
+T,painelesq,,$(_TPCAIXA:3)>0,,,,,,,,2
+M,incpainFE,,$(painelesq:0)>0,Inc Esq Fre ,,,,,,,2
+M,incpainTE,,$(painelesq:0)>0,Inc Esq Atras ,,,,,,,2
+C,IncrEsp,,$(painelesq:0)>0 | $(paineldir:0)>0 | $(_tampsup:3)>0 | $(_tampinf:3)>0,Incrementos Diferentes?
+M,incpainIE,,$(painelesq:0)>0 & $(incresp:0)=1,Inc Esq Inf ,,,,,,,2
+M,incpainSE,,$(painelesq:0)>0 & $(incresp:0)=1,Inc Esq Sup ,,,,,,,2
+M,larrematee,,$(painelesq:3)[3;4]!0,Larg Pino Esq?,,,,10,,,2
+M,sparrpinesq,,$(painelesq:3)=3 | $(painelesq:3)=4,Pos. Prof.,,,,,,,2
+T,paineldir,,$(_TPCAIXA:3)>0,,,,,,,,7
+M,incpainFD,,$(paineldir:0)>0,Inc Dir Fre ,,,,,,,7
+M,incpainTD,,$(paineldir:0)>0,Inc Dir Atras ,,,,,,,7
+M,larremated,,$(paineldir:3)[3;4]!0,Larg Pino Dir?,,,,10,,,7
+M,sparrpindir,,$(paineldir:3)=3 | $(paineldir:3)=4,Pos. Prof.,,,,,,,7
+T,_tampSup,,$(_TPCAIXA:9)[1;2;3;35]!0,Tamponamento Sup,,,,,,,6
+M,incpainFS,,$(_tampsup:3)>0,Inc Sup Fre ,,,,,,,2
+M,incpainTS,,$(_tampsup:3)>0,Inc Sup Atras ,,,,,,,2
+M,AVISTATAMP,,$(_tampSup:3)[1;3]!0,Altura Rodateto?,,,,30,,,6
+T,_tampInf,,$(_TPCAIXA:9)[1;2;3;35]!0,Tamponamento Inf,,,,,,,1
+M,incpainFI,,$(_tampInf:3)>0,Inc Inf Fre ,,,,,,,2
+M,incpainTI,,$(_tampInf:3)>0,Inc Inf Atras ,,,,,,,2
+T,esppainel,,$(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0 ,,,,,,,,4
+T,_corex,,$(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0 ,,$(esppainel:3)[$(_corex:12)]!!0,,,,,,4
+T,_pinturaex,,($(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0)  & $(_COREX:9)=1,,,,,,,,4
+T,TIPOPINTURA,,$(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0 ,,,,,,,,4
+M,incpainID,,$(paineldir:0)>0 & $(incresp:0)=1,Inc Dir Inf ,,,,,,,7
+M,incpainSD,,$(paineldir:0)>0 & $(incresp:0)=1,Inc Dir Sup ,,,,,,,7
+M,incpainEI,,$(_tampInf:0)>0 & $(incresp:0)=1,Inc Inf Esq,,,,,,,2
+M,incpainDI,,$(_tampInf:0)>0 & $(incresp:0)=1,Inc Inf Dir,,,,,,,2
+M,incpainES,,$(_tampsup:0)>0 & $(incresp:0)=1,Inc Sup Esq,,,,,,,2
+M,incpainDS,,$(_tampsup:0)>0 & $(incresp:0)=1,Inc Sup Dir,,,,,,,2
+C,CostVigaVert,,,Costumiza Viga,,,,,,,,,1=0
+S,colunaparede,,,Viga Vertical,,,,,,,,,1=0
+S,colunaparedeh,,,Viga Horizontal,,,,,,,,,1=0
+C,dividirfundo,,,Dividir Fundo,,,,,,,,,$(CXINFMONOLAT:0)=1
+C,FOLGAAZERO,,,Sem folga na altura?,,,,,,,,,$(CXINFMONOLAT:0)=1
+M,cortabase,,,Corta Base?,,,,,,,,,$(CXINFMONOLAT:0)=1
+-,RE,,,Re
+T,tpRecorteCaixa,,,,$(_tpcaixa:9)[$(tpRecorteCaixa:7)]!0 | ($(_tpcaixa:1)==CSC1 & $(tpRecorteCaixa:1)==5),,,,,,,,$(_TPCAIXA:25)!1
+C,desacolu,,$(_tpcaixa:3)!!998 & $(tpRecorteCaixa:3)=0 & $(_tpcaixa:3)!12,Desativa colisão coluna
+M,PlColuna,,$(tpRecorteCaixa:4)=2,Pos.Largura Coluna?,,,,,,,2
+M,LColuna,,$(tpRecorteCaixa:3)=1 | $(tpRecorteCaixa:4)=2,Largura Coluna?,,,,,,,2
+M,PColuna,,$(tpRecorteCaixa:3)=1,Profundidade Coluna?,,,,,,,2
+M,Aviga,,$(tpRecorteCaixa:3)=2,Altura Recorte?,,,,,,,3
+M,Pviga,,$(tpRecorteCaixa:3)=2,Profundidade recorte?,,,,,,,3
+M,folgacolunacost,,$(tpRecorteCaixa:3)>0,Folga Recorte,,,2,2,,,4
+Z,AtivaRecorteBaseInf,,$(_tpcaixa:3)=12,Ativa Rec.Inf.
+M,LfuroBaseRecorteInf,,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseInf:0)=1,Largura Inf.,,,,,,,5
+M,PfuroBaseRecorteInf,,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseInf:0)=1,Prof.Inf,,,,,,,5
+T,POSIREC,POSIRECINF,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseInf:0)=1,Pos Rec Bas Inf
+M,AJPOSIINF,,$(POSIRECINF:0)>0,Pos min recorte,,,50,50
+Z,AtivaRecorteBaseSup,,$(_tpcaixa:3)=12,Ativa Rec.Sup.,,,,,,,6
+M,LfuroBaseRecorteSup,,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseSup:0)=1,Largura Sup.,,,,,,,6
+M,PfuroBaseRecorteSup,,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseSup:0)=1,Prof.Sup.,,,,,,,6
+T,POSIREC,POSIRECSUP,$(_tpcaixa:3)=12 & $(AtivaRecorteBaseSup:0)=1,Pos Rec Bas Sup,,,,,,,6
+M,AJPOSISUP,,$(POSIRECSUP:0)>0,Pos min recorte,,,50,50,,,6
+C,recorte_bassup,,$(_tpcaixa:9)[2;3]!0,recorte base sup,,,,,,,4
+M,LRECBASSUP,,$(recorte_bassup:0)=1,Largura Sup.,,,,,,,4
+M,PRECBASSUP,,$(recorte_bassup:0)=1,Prof.Sup.,,,,,,,4
+T,SPREC,SPRECSUP,$(recorte_bassup:0)=1,,,,,,,,4
+C,recorte_basinf,,$(_tpcaixa:9)[1;2;3]!0,recorte base inf,,,,,,,4
+M,LRECBASINF,,$(recorte_basinf:0)=1,Largura Inf.,,,,,,,4
+M,PRECBASINF,,$(recorte_basinf:0)=1,Prof.Inf,,,,,,,4
+T,SPREC,SPRECINF,$(recorte_basinf:0)=1,,,,,,,,4
+
+[VAROCULTE]
+-,CONF,,,Cf,,,,,,,,,$(.ISECADPRO)=1
+T,MODELLOIDEAMOV
+D,confMedida,,,,,drgenerico.crea.ConfMedida2|$(_codicemacro)
+T,isobsoleto,,,,,,,,,,,,1=0
+S,erroscriptjobfim,,,,,,,,,,,,1=0
+T,_LOCKA,,,,,,,,,,,,1=0
+S,cavelatesq,,,,,,,,,,,,1=0
+S,cavelatDIR,,,,,,,,,,,,1=0
+D,divhor,,,,,,,,,,,,1=0
+D,divver,,,,,,,,,,,,1=0
+D,divveria,,,,,,,,,,,,1=0
+D,divverfa,,,,,,,,,,,,1=0
+D,divhoril,,,,,,,,,,,,1=0
+D,divhorfl,,,,,,,,,,,,1=0
+M,erroscript,,,,,,,,,,,,1=0
+S,ListaErros,,,,,,,,,,,,1=0
+M,redlatesq,,,,,,,,,,,,1=0
+M,redlatdir,,,,,,,,,,,,1=0
+T,_corfamilia,,,,,,,,,,,,1=0
+D,deslocadivh,,,,,,,,,,,,1=0
+S,OLD_PERFPUX,,,,,,,,,,,,1=0
+D,POSDIVFF,,,,,,,,,,,,1=0
+-,abfr,,1=0
+D,abrirFrente1,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente3,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente4,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente5,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente6,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente7,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente8,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente9,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente3_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente4_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente5_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente6_0000,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0001,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0001,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0002,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0002,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0003,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0003,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0004,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0004,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0005,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0005,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0006,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0006,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0007,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0007,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0008,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0008,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente1_0009,,,Abrir Frente,,!aberturas.htm
+D,abrirFrente2_0009,,,Abrir Frente,,!aberturas.htm
+
+[COZ_DECINF]
+-,Decori,,$(_tpcaixa:8)[1;2;3]!0,De
+C,Piadec,,$(_tpcaixa:8)[1;3]!0 & $(FOGAODEC:0)=0,Pia?,,,,,,,9
+T,o_lavello,,$(piadec:0)=1,,,,,,,,9
+T,O_RUBINETTO,,$(piadec:0)=1,,,,,,,,9
+C,FOGAODEC,,$(_tpcaixa:8)[2;3]!0 & $(piadec:0)=0,Fogao?,,,,,,,8
+T,O_PIANOCOTTURA,,(($(_TPMASCARA##:3)!2) & $(decore##:0)=1) | $(fogaodec)=1,,,,,,,,8
+M,AFLDEC,,$(piadec:0)+$(fogaodec:0)>0,Af.Larg,,,,,,,8
+M,AFPDEC,,$(piadec:0)+$(fogaodec:0)>0,Af.Prof,,,,,,,8
+M,LDEC,,$(piadec:0)+$(fogaodec:0)>0,Largura,,,,,,,8
+M,PDEC,,$(piadec:0)+$(fogaodec:0)>0,Profondidade,,,,,,,8
+M,ADEC,,$(piadec:0)>0,Altura Cuba
+M,SADEC,,$(piadec:0)>0,Pos. Altura Cuba
+M,SARUBIN,,$(O_RUBINETTO:0)[000]!1,Pos. Altura Torneira
+C,ativa_ilu,,,Iluminação?,,,,,,,2,,1=0
+D,ilubasInf,,$(ativa_ilu:0)=1,Ilu.Base Inferior,,!ilu.htm,,,,,2
+T,_ilu,_ilubasinf,$(ilubasInf:0)>0 & $(ativa_ilu:0)=1,,$(_ilubasinf:3)=$(ilubasInf:1),,,,,,2
+D,ilubasSup,,$(ativa_ilu:0)=1,Ilu.Base Superior,,!ilu.htm,,,,,2
+T,_ilu,_ilubassup,$(ilubasSup:0)>0 & $(ativa_ilu:0)=1,,$(_ilubasSup:3)=$(ilubassup:1),,,,,,2
+T,_ilufonte,,$(ativa_ilu:0)=1,,,,,,,,2
+D,iludiv,,$(ativa_ilu:0)=1,Ilu. Divisorias,,!ilu.htm,,,,,2
+T,_ilu,_iludiv,$(iludiv:0)>0 & $(ativa_ilu:0)=1,,$(_ilupratinf:3)=$(ilupratInf:1),,,,,,2
+T,_ilufonte,,$(ativa_ilu:0)=1,,,,,,,,2
+C,LigarLuz,,$(ativa_ilu:0)=1,Ligar Luz?,,,,,,,2
+K,corled,,$(LigarLuz:0)=1 & $(ativa_ilu:0)=1,Cor Led?,,,,,,,2
+
+[COZ_FREDIV]
+-,VAO,,,V##
+T,_TPFR,,,,,,,,,,4
+T,_tpmascara,,_TPMASCARA[$(_TPFR##:6)]!0,Tipo Masc.,,,,,,,4
+D,incfrente,,$(_TPFR##:3)!0 & $(_tpmascara##:3)=0,Incrementar Frente,,!incfrente.htm,,,,,4
+T,_FRT,,$(_TPFR##:3)>0,,,,,,,,4
+M,_LPORTA,,_LPORTA[$(_TPFR##:6)]!0,Larg.Porta?,,,,,,,4
+T,PUSH,,PUSH[$(_TPFR##:6)]!0,Tip-on porta,,,,,,,4
+T,_TPGAVALT,,_TPGAVALT[$(_TPFR##:6)]!0 & $(_tpgav:3)!2,,$(_tpgav:17)[$(_tpgavalt##:9)]!0 & $(_tpgavalt##:11)=0,,,,,,9
+T,_TPGAVALT2,,_TPGAVALT2[$(_TPFR##:6)]!0,,$(_tpgav:17)[$(_tpgavalt2##:9)]!0,,,,,,9
+T,_TPGAVALT3,,_TPGAVALT3[$(_TPFR##:6)]!0,,$(_tpgav:17)[$(_tpgavalt3##:9)]!0 ,,,,,,9
+D,dadosvaocuba,,$(_tpgavalt##:7)=1,Dim Vão Cuba,,!vaocuba.htm,,,,,9
+D,parfrisos,,,NECESSARIO PARA FRISO p,,,,,,,,,1=0
+D,parfrisosh,,,NECESSARIO PARA FRISO ph,,,,,,,,,1=0
+D,parfrisosv,,,NECESSARIO PARA FRISO pv,,,,,,,,,1=0
+M,nfrisos,,nfrisos[$(_fr:9)]!0,Numero Frisos Porta?,,,,1,,,6,,1=0
+M,nfrisosv,,NFRISOSV[$(_FR:9)]!0,Frisos Verticais?,,,,,,,6,,1=0
+M,nfrisosh,,NFRISOSH[$(_FR:9)]!0,Frisos Horizontais?,,,,,,,6,,1=0
+M,old_nfrisosh,,,NECESSARIO PARA FRISO oldh,,,,,,,,,1=0
+M,old_nfrisosV,,,NECESSARIO PARA FRISO oldv,,,,,,,,,1=0
+T,_dobra,,_DOBRA[$(_TPFR##:6)]!0,,,,,,,,3
+T,_siscorrer,,_siscorrer[$(_TPFR##:6)]!0,,$(_TPFR##:7)==$(_siscorrer##:3),,,,,,3
+T,_sisbasc,,_sisbasc[$(_TPFR##:6)]!0,,$(_TPFR##:7)==$(_sisbasc##:3),,,,,,3
+C,servodrivehk,,$(_sisbasc##:0)==A02,Ab. Eletrônica de Toque
+Z,decore,,_TPMASCARA[$(_TPFR##:6)]!0,Decore?,,,,,,,8
+T,s_forno,,$(_TPMASCARA##:3)=2 & $(decore##:0)=1,,,,,,,,8
+M,LforoM,,_TPMASCARA[$(_TPFR##:6)]!0,L.Foro Masc.,,,300|,,,,8
+M,AforoM,,_TPMASCARA[$(_TPFR##:6)]!0,A.Foro Masc.,,,300,,,,8
+T,s_forno2,,$(_TPMASCARA##:3)=2 & $(decore##:0)=1 & $(_TPFR##:3)=98,,,,,,,,8
+M,LforoM2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,L.Foro Masc. 2,,,300|,,,,8
+M,AforoM2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,A.Foro Masc. 2,,,300|,,,,8
+M,PaForno1,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,Pos.Altura Forno 1,,,100|,,,,8
+M,PaForno2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,Pos.Altura Forno 2,,,700|,,,,8
+T,O_PIANOCOTTURA,,$(_TPMASCARA##:3)!2 & $(decore##:0)=1,,,,,,,,8
+D,ppuxpers1,,($(_TPFR##:4)>0  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[401;402;107;102;103;203;110])),Pos.Pux,,!VARMAN.HTM,,,,,2
+D,ppuxpers2,,($(_TPFR##:4)>1  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 2,,!VARMAN.HTM,,,,,2
+D,ppuxpers3,,($(_TPFR##:4)>2  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 3,,!VARMAN.HTM,,,,,2
+D,ppuxpers4,,($(_TPFR##:4)>3  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 4,,!VARMAN.HTM,,,,,2
+T,_ACEINTFRE,,_ACEINTFRE[$(_TPFR##:6)]!0,Acessorio Int Fre,,,,,,,1
+T,_acegav,,$(_tpgav:3)>0 & _TPGAV[$(_tpfr##:6)]!0,,,,,,,,9
+T,_acegav2,,($(_tpfr##:3)=13 | _TPGAVALT2[$(_TPFR##:6)]!0) & $(_tpgav:3)>0  & _TPGAV[$(_tpfr##:6)]!0  ,,,,,,,,9
+T,_acegav3,,_TPGAVALT3[$(_TPFR##:6)]!0 & $(_tpgav:3)>0  & _TPGAV[$(_tpfr##:6)]!0,,,,,,,,9
+T,cordtalher,,$(_acegav##:3)=3,,,,,,,,9
+T,_mantagav,,$(_tpgav:3)>0,,,,,,,,7
+M,ndivcolmh,,$(_acegav##:3)=2,Num.Divisão Colmeia Horizontal,,,,1,,,7
+M,ndivcolmv,,$(_acegav##:3)=2,Num.Divisão Colmeia Vertical,,,,1,,,7
+T,NRELING,,$(_acegav##:3)=5,Quant. reling?,,,,,,,7
+D,BI_internogaveta,,$(_TPGAV:18)!!,Interno Blum,,!!plugin3cad.proidea.com.br/#/InternosBlum,,,,,7,,1=0
+T,_INT,,$(_tpfr##:3)[9;11;12]=0 & $(_ACEINTFRE##:3)=0,,,,,,,,7
+T,_corwood,,$(_INT##:3)=5,,,,,,,,3
+T,_PRAT,,$(_INT##:26)=1,,,,,,,,7
+T,tpfixprat,,$(_INT##:3)=1 | $(_tpmascara##:3)>0,,,,,,,,7
+D,iluPrat,,$(_int##:3)=1,Ilu.Prateleiras,,!ilu.htm,,,,,7,,1=0
+T,_iluPrat,,$(iluPrat##:0)>0,,$(_iluPrat##:3)=$(iluPrat##:1),,,,,,7,,1=0
+C,adcbasealup,,$(_tpcaixa:9)=1 & $(_tpcaixa:17)[005]!0 & $(_INT##:3)=1,Adicionar base de alumínio?,,,,,,,7
+T,basealup,,,,,,,,,,7,,1=0
+D,posprata,,,,,,,,,,,,1=0
+D,postravporta,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,9,,1=0
+Z,mascfundo,,$(_tpcaixa##:3)=95 & $(_TPFR##:3)!96 & $(tpnicho##:1)!0,Fundo?,,,,,,,8
+T,_VIDROPRAT,,$(_INT##:3)[2]!0,,,,,,,,7
+T,_fechmag,,_FECHMAG[$(_TPFR##:6)]!0,,,,,,,,3
+M,slfechmag,,$(_FECHMAG##:3)!!,Posição Horizontal,,,,,,,3
+M,sapratgav,,$(_INT##:3)[41;42;43;44],Altura Prateleira?,,,1231
+C,FUROREGULAVEL,,$(_INT##:3)[1;2;3],Furo Regulável,,,,,,,7
+M,nfurospinsup,,$(FUROREGULAVEL##:0)=1,Qtd furo cima?,,,2,,,,7
+M,nfurospininf,,$(FUROREGULAVEL##:0)=1,Qtd furo baixo?,,,2,,,,7
+M,distfurpin,,$(FUROREGULAVEL##:0)=1,Dist. entre furos?,,,64,,,,7
+>,sg,,$(_tpfr##:3)[9;11;12;14]!0,Costumiza Gaveta?,,,,,,,9
+T,VERSIONGAV,,,,,,2|,,,,,,1=0
+M,SAGAVETA_cost,,$(_tpfr##:3)[9;11;12;14]!0,desloc. gaveta,,,,,,,9
+M,AGAVETA_cost,,$(_tpfr##:3)[9;11;12;14]!0,altura gaveta,,,,,,,9
+M,espaco_gav_atras,,$(_tpfr##:3)[9;11;12;14]!0,Espaços atras da gaveta,,,,,,,9
+M,SAGAVETAi_cost,,$(_tpfr##:3)[9;11;12;14]!0 & _TPGAVALT2[$(_TPFR##:6)]!0,desloc. gaveta int.,,,,,,,9
+M,SAGAVETAi2_cost,,$(_tpfr##:3)[9;11;12]!0 & _TPGAVALT3[$(_TPFR##:6)]!0,desloc. gaveta int. 2,,,,,,,9
+D,ppratcost,,,,,,,,,,,,1=0
+D,posadob,,,,,,,,,,,,1=0
+D,posadob2,,,,,,,,,,,,1=0
+
+[DOR_GAVETEIRO]
+T,_TPCAIXA
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,_montado,,,,,,,,,,4
+T,_corcx,,,,$(espessura:3)[$(_corcx:12)]!!0 & $(espessura:3)[$(_corcx:12)]!!0,,,,,,4
+T,_CORBF,,$(_corcx:1)=3,,,,,,,,4
+T,tpfix,,,,,,,,,,3
+T,tpfixgav,,,,,,,,,,3
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4,,1=0
+T,espessura,,,,,,,,,,1
+T,espessura_gaveta,,,Esp. Gav/Sap,,,,,,,1
+T,esptampogav,,,Esp Tampo Gav,,,,,,,1
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+C,DOISPUXGAVETA,,,Dois puxadores Gaveta,,,,,,,4
+M,distdoispux,,$(DOISPUXGAVETA:0)>0,Distância puxador,,,45,45,100,,4
+M,LENCHCOST,,$(ENCHGAV:3)>0,L.Enchimento?,,,,,,,6
+M,AFENCHPCOST,,$(enchgav:3)>0,Afast Enchi?,,,,0,100,,6
+Z,BASESUPERIORGAV,,,Tampo Gaveteiro,,,,,,,4
+T,_cortampogav,,$(BASESUPERIORGAV:0)=1,,$(esptampogav:3)[$(_cortampogav:12)]!!0 & $(esptampogav:3)[$(_cortampogav:12)]!!0,,,,,,4
+T,_TPGAV,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+
+[COZ_STRDIV]
+M,TMP
+Z,Prateleira,,,Prateleira Divisora
+
+[DECORICAMA]
+-,decori
+C,colch,,,Colchão
+T,C_ABBILETTO,C_ABBILETTO1,$(colch:0)=1
+K,COLORERGB1,,$(colch:0)=1 & $(_tpcama:3)!10
+C,cober,,$(_tpcama:3)!10,Cobertores
+C,trave,,,Travesseiros
+T,C_ABBILETTO,C_ABBILETTO2,$(trave:0)=1 
+K,COLORERGB2,,$(trave:0)=1 & $(_tpcama:3)!10
+
+[DIVIDER_PAINEL_VAO]
+C,FUNDO,,,FUNDO?,,,,,,,4
+M,posfundo,,,POS P FUNDO,,,,,,,4
+C,veioFundoH,,,Veio Fundo Horizontal?
+
+[DIVINT]
+-,div,,1=0
+D,divhor
+D,divver
+D,divveria
+D,divverfa
+D,divhoril
+D,divhorfl
+T,_LOCKA
+D,PersItem,,,,,DrGenerico.crea.pers_item|$(.PERCORSO);$(_TPCAIXA:10)
+D,MemoPosAccA
+S,infolat
+D,POSPRAT
+M,plat1
+M,plat2
+
+[DOR_CAIXA]
+V,INICIADOR
+T,espessura
+T,espessura_gaveta
+T,_tpcaixa
+T,TPFIX
+T,TPFIXGAV
+T,_VerParcaixa,,$(_TPCAIXA:3)=36
+D,CaixaPers,,$(_TPCAIXA:3)=36,Costumiza Caixa,,drgenerico.crea.CAIXAESPECIAL|*1*3*/ /3/1,,,,,,,$(_VerParcaixa:0)
+T,_tpFundo,,$(_TPCAIXA:3)=36
+T,especial
+T,_corcx,,,,,,,,,,,,$(PLACER)=0
+T,_corfu
+T,LATESQ,,$(_TPCAIXA:11)=1,,,,,,,,,,$(_PLACER)=0
+T,LATDiR,,$(_TPCAIXA:11)=1,,,,,,,,,,$(_PLACER)=0
+M,pcaixa,,,,,,,,,,,,1=0
+
+[DOR_CAIXA2]
+V,INICIADOR
+T,espessura
+T,especial
+T,_tpcaixa,,,,$(_TPCAIXA:6)==D
+T,TPFIX
+T,TPFIXGAV
+T,_corcx
+T,c_corcx,,$(_corcx:7)=1
+K,rgbcaixa,,$(_corcx:7)=1,Cor Caixa
+S,CodCorCaixa,,$(_corcx:7)=1,Ref Cor Caixa
+T,_VISTA,,$(_TPCAIXA:1)[DMR;DBR]!0 & 1=0
+T,LATESQ,,$(_TPCAIXA:11)=1
+T,LATDiR,,$(_TPCAIXA:11)=1
+D,infolat,,,,,,,,,,,,0
+
+[MOD_VAO_CORR]
+-,VV,,,V##
+T,_INT
+T,_PRAT,,$(_INT##:3)[1;2;3]
+M,ndivav,,$(_INT##:3)[20]!0,N° Divisao Verticais,,,,1
+M,ndivaH,,$(_INT##:3)[20]!0,N° Divisao Horizontais,,,,1
+D,ConfGvSp,,$(_INT##:3)[31;32;33;34]!0,Conf.Gaveteiro,,drgenerico.crea.gaveteiro|$(gvSp_tipo:2)/$(GVSP_GVSP_ALTF:2)/$(GVSP_GVSP_ALTV:2)/$(GVSP_GVSP_ALTI:2)/$(GVSP_GVSP_CORR:2)/$(GVSP_REDULTIMO_VAO:2)/$(REDINFGAVETEIRO)/$(REDsupGAVETEIRO)/$(GVSP_AttivaDivisao)/$(GVSP_GVSP_TPGAV:2)
+T,_FRG,,$(_INT##:3)[31;32;33;34]!0
+T,_CORFRG,,_CORFRG[$(_FRG##:9)]!0 
+T,_PUXG,,_PUXG[$(_FRG##:9)]!0
+T,_BORDAFG,,_BORDAFG[$(_FRG##:9)]!0
+T,_PERFPUXG,,_PERFPUXG[$(_FRG##:9)]!0
+D,posprata,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,,,1=0
+
+[FR_GERAL]
+-,FR
+T,selfolgafrente,,$(_tpcaixa:3)=501 
+T,_FR,,,,,,,,,,4
+T,_FRINTERNA,,,,,,,,,,4
+T,LADOALMOFADA,,LADOALMOFADA[$(_FR:9)]!0,,,,,,,,4
+T,_palha,,_palha[$(_FR:9)]!0,Cor Palha,,,,,,,4
+T,_CORFR,,_CORFR[$(_FR:9)]!0,,$(_CORFR:11)[$(_FR:19)]!!0 & $(ESFRE)[$(_CORFR:12)]!!0,,,,,,4
+T,_CORFRA,,_CORFRA[$(_FR:9)]!0,,$(_CORFRA:11)[$(_FR:19)]!0,,,,,,4
+T,_CORFRFU,,$(_fr:6)=501,,$(_CORFRFU:11)[$(_FR:19)]!!0 & 6[$(_CORFRFU:12)]!!0
+C,LAMDIF,,$(_CORFR:11)[LAM]!0,,,,,,,,4
+Z,pinatras,,$(_fr:6)=501 & $(_corfrFU:11)[MDF]!0,Pintar traseira BP?,,,,,,,,,1=0
+T,_corcx_EXTRA,,,,$(_CORFR:1)[$(_corcx_EXTRA:1)]!0 ,,,,,,,,1=0
+T,veiofrente,,$(_CORFR:12)=1,,,,,,,,4
+T,_pinturafr,,$(_CORFR:9)=1,Cor da Pintura?,,,,,,,4
+T,_pinturafra,,$(_CORFRA:9)=1,Cor da Pintura Fra?,,,,,,,4
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0,,$(_FR:12)[$(_PERFPUX:14)]!0 ,,,,,,2
+M,LPUX,,LPUX[$(_FR:9)]!0,,,,,,,,2
+M,APUX,,APUX[$(_FR:9)]!0,,,,,,,,2
+T,_PUX,,_PUX[$(_FR:9)]!0,,,,,,,,2
+T,_pinturaperfis,,$(_TPCAVA:21)=1  | $(_CORPROFILO:0)[004] | $(PERFBASE:7)=1 | $(_PERFPUX:30)=1 | $(_PUX:23)=1 | $(_puxcava:13)=1,,,,,,,,8
+C,ativadoispux,,$(_pux:0)!999 & $(_tpcaixa:0)[cing;cingsf;hcg] | $(_tpfr:3)=9,Dois puxadores?,,,,,,,2
+M,dist_pux,,$(ativadoispux:0)=1,Distancia pux. da lateral?,,,90,,,,2
+T,_CORFR,_CORFUNVAR,$(_fr:6)=103,Cor fundo porta?,,,,,,,2
+T,_CORPERFPUX,,_PERFPUX[$(_FR:9)]!0,,,,,,,,2
+T,lpuxquad,,LPUXQUAD[$(_FR:9)]!0,Larg pux Quad,,,,,,,2
+T,LPUXCAVA,,LPUXCAVA[$(_FR:9)]!0,,,,,,,,2
+T,_TPCAVA,,_TPCAVA[$(_FR:9)]!0 & $(_TPCAIXA:9)[1;3]!0),,($(_TPCAIXA:9)[1;2]!0 & $(_TPCAVA:3)[0;1;2;11]!0 & $(_FR:6)[0;101;103;305;302;301;303;304;9800;9801;501;502;503]!0) | ($(_TPCAIXA:9)[1;2]!0 & $(_TPCAVA:3)[6]!0 & $(_FR:6)[0;110;111;103;112;9800;9801;501;502;503]!0) |($(_TPCAIXA:9)=3 & $(_TPCAVA:3)[0;3;4;5;7]!0  & $(_FR:6)[0;110;111;112;9800;9801]!0)|($(_TPCAIXA:9)=3 & $(_TPCAVA:3)[0;3;4;5;7]!0  & $(_FR:6)[0;101;9800;9801;301;302;303;304;305]!0),,,,,,8
+T,_puxcava,,_TPCAVA[$(_FR:9)]!0 & $(_TPCAIXA:9)=2,,,,,,,,8
+C,ApenasFurPux,,$(_PUX:0)!999 & $(_FR:6)=101,Só Fur/Usin Puxador?,,,,,,,4
+T,_CORPROFILO,,_PUXPROFILO[$(_FR:9)]!0 & _PUXPROFILO[$(_FR:9)]!11,,,,,,,,4
+T,CCAVAPROFILO,,$(_tpcava:15)=1 | $(_PUXCAVA:12)=1 | $(_tpcava:3)!11,Cor cava/pux,,,,,,,4
+T,CCAVAPROFILO,,$(_tpcava:15)=1 | $(_PUXCAVA:12)=1 & $(_tpcava:3)!11,Cor cava/pux,,,,,,,4
+T,_pinturacava,,$(CCAVAPROFILO:9)=1,Cor da pintura cava?,,,,,,,4
+T,Lpuxlung,,Lpuxlung[$(_FR:9)]!0,Larg pux Lung,,,,,,,4
+T,_CORPUX,,_CORPUX[$(_FR:9)]!0,Cor puxador,,,,,,,4
+T,_pinturapux,,$(_CORPUX:9)=1,Cor da Pintura?,,,,,,,4
+C,VEIOQUADRATA,,VEIOQUADRATA[$(_FR:9)]!0 | VEIOQUADRATA[$(_FR2:9)]!0  ,Veio Vertical pux.quadrata?,,,,,,,4
+T,lpuxfiletto,,lpuxfiletto[$(_FR:9)]!0 ,,,,,,,,4
+T,_LADOTIMEPROFILO,,_LADOTIMEPROFILO[$(_FR:9)]!0  ,,,,,,,,4
+T,_LADOTIMEPROFILO2,,_LADOTIMEPROFILO[$(_FR:9)]!0,,,,,,,,4
+C,BERGAPARCIAL,,BERGAPARCIAL[$(_FR:9)]!0,,,,,,,,4
+T,_LADOPUXGRAF,,_LADOPUXGRAF[$(_FR:9)]!0 & $(_tpfr:3)!!1,,$(PM)[$(_LADOPUXGRAF:4)]!0,,,,,,4
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0,,$(_PERFPUX:14)[$(_FR:12)]!0
+T,LPUXFORMARE,,LPUXFORMARE[$(_FR:9)]!0
+T,_POSPUXMOLISE,,_POSPUXMOLISE[$(_fr:9)]!0,Posição Puxador
+T,PERFBASE,,PERFBASE[$(_FR:9)]!0
+T,bordaversatile,,bordaversatile[$(_FR:9)]!0,,,,,,,,2
+T,PV_CORPER,,PV_CORPER[$(_FR:9)]!0,,$(PV_CORPER:6)[$(_FR:19)]!0 ,,,,,,3
+T,PV_PAINEL,,PV_PAINEL[$(_FR:9)]!0,,,,,,,,3
+T,PV_Pux,,PV_PUX[$(_FR:9)]!0,,$(pv_pux:21)[$(pv_portas:12)]!0,,,,,,3
+T,PV_TRAVESSAS,,PV_TRAVESSAS[$(_FR:9)]!0,,$(pv_travessas:12)[$(pv_portas:11)]!0,,,,,,3
+M,PV_N_TRAVESSAS,,$(PV_TRAVESSAS:8)!!,Numero Travessas?,,,,1,,,3
+T,_VIDRO,,_VIDRO[$(_FR:9)]!0,,,,,,,,3
+M,alttravfre,,$(_FR:6)[501;502;503]!0 & $A>1550,Alt. Travessa ,,,970,600,1400,,3
+T,AVANCAFRENTE,,$(_tpcaixa:9)=2 | $(_tpcaixa:0)[cincr;cincrsf;cincrsfsr;cinclnew]!0,Frente Avançada?,,,,,,,4
+T,corfriso,,CORFRISO[$(_FR:9)]!0 & $(_corfr:11)[PIN]!1,Cor friso?,,,,,,,6
+M,nfrisos,,NFRISOS[$(_FR:9)]!0,Numero Frisos Porta?,,,,1,,,6
+M,nfrisosv,,NFRISOSV[$(_FR:9)]!0,Frisos Verticais?,,,1,1,,,6
+M,nfrisosh,,NFRISOSH[$(_FR:9)]!0,Frisos Horizontais?,,,1,1,,,6
+M,iniciofrisov,,NFRISOSV[$(_FR:9)]!0,Inicio frisos vert,,,,,,,6,,1=0
+M,ESPACOFRISOV,,NFRISOSV[$(_FR:9)]!0,espaco friso vert,,,,,,,6,,1=0
+M,iniciofrisoh,,NFRISOSH[$(_FR:9)]!0,Inicio frisos hor,,,,,,,6,,1=0
+M,ESPACOFRISOH,,NFRISOSH[$(_FR:9)]!0,espaco friso hor,,,,,,,6,,1=0
+M,LFRISO,,,Larg Friso?,,,4,4,,,6,,1=0
+M,LFRISOV,,,Larg Friso Vert?,$(LFRISOV:0)[$(_FR:19)]!0 ,,4,4,,,6,,1=0
+M,LFRISOH,,,Larg Friso Hor?,$(LFRISOH:0)[$(_FR:19)]!0,,4,4,,,6,,1=0
+M,cavaesq,,,,,,,,,,8,,1=0
+M,cavadir,,,,,,,,,,8,,1=0
+C,CORTACAVAESQ,,$(_TPCAVA:3)>0 | $(_PUXCAVA:3)!0,Corta Cava esq?,,,,,,,8
+C,CORTACAVADIR,,$(_TPCAVA:3)>0 | $(_PUXCAVA:3)!0,Corta Cava dir?,,,,,,,8
+C,CAVAINTERNAESQ,,$(_tpcava:3)[1;6;11]!0 | $(_puxcava:3)[1;6]!0 | $(_PUXCAVA:12)=1,Cava Interna esq?,,,,,,,8
+C,CAVAINTERNADIR,,$(_tpcava:3)[1;6;11]!0 | $(_puxcava:3)[1;6]!0 | $(_PUXCAVA:12)=1,Cava Interna dir?,,,,,,,8
+T,abrirTudo
+M,POSCENTROISA,,POSCENTROISA[$(_FR:9)]!0 ,Posição altura ISA/CORINA?,,,1017.5
+-,SE,,,,,,,,,,,,1=0
+T,PV_PAINEL,PV_PAINEL1,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL2,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL3,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL4,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL5,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL6,,,,,,,,,2
+-,RI,,RIPAS[$(_FR:9)]!0
+T,_CORRIPAS,,,Cor Ripas,,,,,,,7
+M,espacoripas,,,Espaço entre ripas?,,,15,,,,7
+T,largripas,,,Largura Ripas?,,,,,,,7
+M,inicioripascost,,,Inicio Ripas,,,,,,,7
+M,adicionaripas,,,Adiciona Ripas,,,,,,,7
+T,esp_ripa,,,Profundidade da ripa,,,,,,,7
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[FR_INT]
+-,VV,,,Fi
+T,_TPFR,,,,,,,,,,4
+T,_FRT,,$(_TPFR:3)>0,,,,,,,,4
+M,_LPORTA,,_LPORTA[$(_TPFR:6)]!0,Larg.Porta?,,,,,,,4
+T,_tpgav,,_TPGAV[$(_TPFR:6)]!0,,,,,,,,9
+T,_CORR,,_CORR[$(_TPFR:6)]!0,,,,,,,,3
+T,_dobra,,,,$(_dobra:1)[$(_tpcaixa:15)]!0,,,,,,3
+T,_dobra,_dobracanto,,Dobradiça canto,,,,,,,3
+T,_sisbasc,,_sisbasc[$(_TPFR:6)]!0,,,,,,,,3
+T,_siscorrer,,_siscorrer[$(_TPFR:6)]!0,,$(_TPFR:7)==$(_SISCORRER:3),,,,,,3
+M,IncrCorrerSup,,$(_siscorrer:15)=0 & $(_siscorrer:10)=1 & $(_siscorrer:3)>0,Incremento Superior Portas,,,65,,,,3
+M,IncrCorrerInf,,$(_siscorrer:15)=0 & $(_siscorrer:10)=1 & $(_siscorrer:3)>0,Incremento Inferior Portas,,,25,,,,3
+M,RedCorrerSup,,$(_siscorrer:15)=0 & $(_siscorrer:10)=-1 & $(_siscorrer:3)>0,Redução Superior Portas,,,10,,,,3
+M,RedCorrerInf,,$(_siscorrer:15)=0 & $(_siscorrer:10)=-1 & $(_siscorrer:3)>0,Redução Inferior Portas,,,10|,,,,3
+T,_tpmascara,,_TPMASCARA[$(_TPFR:6)]!0,Tipo Masc.,,,,,,,8
+M,LforoM,,_TPMASCARA[$(_TPFR:6)]!0,L.Foro Masc.,,,,,,,8
+M,AforoM,,_TPMASCARA[$(_TPFR:6)]!0,A.Foro Masc.,,,,,,,8
+D,ppuxpers1,,$(_TPFR:4)>0  & $(_PUX:8)>0,Pos.Pux,,!VARMAN.HTM,,,,,2
+D,ppuxpers2,,$(_TPFR:4)>1  & $(_PUX:8)>0,Pos.Pux 2,,!VARMAN.HTM,,,,,2
+D,ppuxpers3,,$(_TPFR:4)>2  & $(_PUX:8)>0,Pos.Pux 3,,!VARMAN.HTM,,,,,2
+D,ppuxpers4,,$(_TPFR:4)>3  & $(_PUX:8)>0,Pos.Pux 4,,!VARMAN.HTM,,,,,2
+T,_INT,,,,,,,,,,7
+T,_corwood,,$(_INT:3)=5,,,,,,,,3
+T,_VIDROPRAT,,$(_INT:3)=2,Tipo de Vidro?,,,,,,,7
+T,_PRAT,,$(_INT:3)=1,,,,,,,,7
+T,TPFIXPRAT,,$(_INT:3)=1,,,,,,,,7
+D,posprata,,,,,,,,,,,,1=0
+D,postravporta,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,,,1=0
+D,ppratcost,,,,,,,,,,,,1=0
+
+[MOD_VAO]
+-,VV,,,V##
+T,_TPFR
+T,_TPGAVALT,,_TPGAVALT[$(_TPFR##:6)]!0
+T,_FRT,,$(_TPFR##:3)>0
+M,_LPORTA,,_LPORTA[$(_TPFR##:6)]!0,Larg.Porta?
+T,_tpgav,,_TPGAV[$(_TPFR##:6)]!0
+T,_CORR,,_CORR[$(_TPFR##:6)]!0
+T,_dobra,,_DOBRA[$(_TPFR##:6)]!0,,$(_dobra##:1)[$(_tpcaixa:15)]!0
+T,_mecfre,,_MECFRE[$(_TPFR##:6)]!0,,$(_TPFR##:7)==$(_MECFRE##:8)
+T,_tpmascara,,_TPMASCARA[$(_TPFR##:6)]!0,Tipo Masc.
+M,LforoM,,_TPMASCARA[$(_TPFR##:6)]!0,L.Foro Masc.
+M,AforoM,,_TPMASCARA[$(_TPFR##:6)]!0,A.Foro Masc.
+D,ppuxpers1,,$(_TPFR##:4)>0  & $(_PUX:8)>0,Pos.Pux,,!VARMAN.HTM
+D,ppuxpers2,,$(_TPFR##:4)>1  & $(_PUX:8)>0,Pos.Pux 2,,!VARMAN.HTM
+D,ppuxpers3,,$(_TPFR##:4)>2  & $(_PUX:8)>0,Pos.Pux 3,,!VARMAN.HTM
+D,ppuxpers4,,$(_TPFR##:4)>3  & $(_PUX:8)>0,Pos.Pux 4,,!VARMAN.HTM
+D,incfrente,,$(_TPFR##:3)!0,Incrementar Frente,,!incfrente.htm
+T,_INT
+T,_PRAT,,$(_INT##:3)[1;2;3;10]
+T,_vidroint,,$(_INT##:3)[2;17]
+T,ppainint,,$(_INT##:3)[19;20]
+T,cpainelint,,$(_INT##:3)[19;20]
+T,npraint,,$(_INT##:3)[19;20]
+T,esppratint,,$(_INT##:3)[19;20]
+M,profprat,,$(_INT##:3)[19;20],,,,,100,250
+C,FUROREGULAVEL,,$(_INT##:3)[1;2;3],FURO REGULAVEL
+M,ndivav,,$(_INT##:3)[21]!0,N° Divisao Verticais,,,,1
+M,ndivaH,,$(_INT##:3)[21]!0,N° Divisao Horizontais,,,,1
+D,ConfGvSp,,$(_INT##:3)[31;32;33;34]!0,Conf.Gaveteiro,,drgenerico.crea.gaveteiro|$(gvSp_tipo:1)/$(GVSP_GVSP_ALTF:1)/$(GVSP_GVSP_ALTV:1)/$(GVSP_GVSP_ALTI:1)/$(GVSP_GVSP_CORR:1)/$(GVSP_REDULTIMO_VAO:1)/$(REDINFGAVETEIRO)/$(REDsupGAVETEIRO)/$(GVSP_AttivaDivisao)/$(GVSP_GVSP_TPGAV:1)
+T,_FRG,,$(_INT##:3)[31;32;33;34]!0
+T,_CORFRG,,$(_INT##:3)[31;32;33;34]!0
+T,_PUXG,,_PUXG[$(_FRG##:9)]!0
+T,_BORDAFG,,_BORDAFG[$(_FRG##:9)]!0
+T,_PERFPUXG,,_PERFPUXG[$(_FRG##:9)]!0
+D,posprata,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,,,1=0
+C,cfropratesq,,$(_INT##:26)=1,Chanfro Prat Esq
+C,cfropratdir,,$(_INT##:26)=1,Chanfro Prat Dir
+M,medidacfro,,$(_INT##:26)=1,Medida Chanfro,,,,5
+
+[MOD_VAO_2L]
+-,sv,,,V##
+T,LadoIns
+T,_KIT_INT_DOR
+T,_KIT_INT_DOR_1
+T,_KIT_INT_DOR_2
+T,_CORCX,,$(_KIT_INT_dor##:30)=1 | $(_KIT_INT_dor_1##:30)=1 | $(_KIT_INT_dor_2##:30)=1
+T,_PRAT,,$(_KIT_INT_dor##:3)[1;2;3]!0 | $(_KIT_INT_dor_1##:3)[1;2;3]!0 | $(_KIT_INT_dor_2##:3)[1;2;3]!0
+T,CaninhoSapa,,$(_KIT_INT_DOR##:3)[8;9;10]!0 | $(_KIT_INT_DOR_1##:3)[8;9;10]!0 | $(_KIT_INT_DOR_2##:3)[8;9;10]!0,Tubos,$l>=$(CaninhoSapa##:9) & $l<=$(CaninhoSapa##:10)
+T,_frenteg,,$(_KIT_INT_DOR##:3)[20;21;22]!0 | $(_KIT_INT_DOR_1##:3)[20;21;22]!0 | $(_KIT_INT_DOR_2##:3)[20;21;22]!0
+T,_pux,,$(_KIT_INT_DOR##:3)[20;21;22]!0 | $(_KIT_INT_DOR_1##:3)[20;21;22]!0 | $(_KIT_INT_DOR_2##:3)[20;21;22]!0
+D,ConfGvSp,,$(_KIT_INT_DOR##:3)[20;21;22]!0 | $(_KIT_INT_DOR_1##:3)[20;21;22]!0 | $(_KIT_INT_DOR_2##:3)[20;21;22]!0,Conf.Gaveteiro,,drgenerico.crea.gaveteiro|$(gvSp_tipo)/$(GVSP_GV_ALTF)-$(GVSP_SP_ALTF)/$(GVSP_GV_ALTV)-$(GVSP_SP_ALTV)/$(GVSP_GV_ALTI)-$(GVSP_SP_ALTI)/$(REDINFGAVETEIRO)/$(REDsupGAVETEIRO)/$(GVSP_AttivaDivisao)
+T,nacc,,$(_KIT_INT_dor##:29)=1 | $(_KIT_INT_dor_1##:29)=1  | $(_KIT_INT_dor_2##:29)=1
+T,LADO,,$(_KIT_INT_DOR##:3)=16 | $(_KIT_INT_DOR_1##:3)=16  | $(_KIT_INT_DOR_2##:3)=16
+D,pos_ace_a_1,,,,,,,,,,,,0
+D,pos_ace_a_2,,,,,,,,,,,,0
+D,pos_ace_a_3,,,,,,,,,,,,0
+D,posprat,,,,,,,,,,,,0
+M,AVaoIns,,,Alt.Vao?,,,0|
+Z,InsDivisao,,,Ins.Divisao Sup?
+
+[PAR_CANTON]
+T,_tpcantoneira,,,Tipo Cantoneira
+C,UmArco,,,Arco?
+M,cll,,,Chanfro larg.,,,$L/2
+M,cpp,,$(umarco:0)=0 ,Chanfro Prof.,,,$P/2
+M,r11,,$(umarco:0)=0,rajo 1,,,80
+M,r22,,$(umarco:0)=0 ,rajo 2,,,80
+T,_prat,,,Numero de Prateleiras
+
+[AVULSO_CAIXA]
+V,INICIACOZ
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIACOZ;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,espessura,,,,$(espessura:0)>=15,,,,,,1
+T,_corcx,,,,$(espessura:3)[$(_corcx:12)]!!0,,,,,,4
+T,_corbf,,,,,,,,,,4
+M,pesq,,$(_listcomponentes:4)=1,Profondidade Esquerda?,,,500|,,900,,6
+M,pdir,,$(_listcomponentes:4)=1,Profondidade Direita?,,,500|,,900,,6
+V,recorteatras,,$(_listcomponentes:4)=1,Recorte Atras?
+
+[BAN_CAIXA]
+V,INICIABAN
+D,cantos,,,Cantos,,!custocantos.HTM,,,,,,,1=0
+T,espessura,,,,,!DIVIDER,,,,,,,$(_placer)=0
+T,espessura_gaveta
+T,_tpcaixa
+T,TPFIX
+T,TPFIXGAV
+T,_VerParcaixa,,$(_TPCAIXA:3)=36
+D,CaixaPers,,$(_TPCAIXA:3)=36,Costumiza Caixa,,drgenerico.crea.CAIXAESPECIAL|*1*3*/ /3/1,,,,,,,$(_VerParcaixa:0)
+T,_tpFundo,,$(_TPCAIXA:3)[36;501]
+T,especial
+T,_corcx,,,,,,,,,,,,$(_placer)=0
+T,_CORFU
+T,LATESQ,,$(_TPCAIXA:11)=1
+T,LATDiR,,$(_TPCAIXA:11)=1
+T,_CORR
+-,MAT
+T,_CORBF,,,,,,,,,,,,$(corbfsep:0)=1
+T,_corfu,,,,,,,,,,,,$(corfunsep:0)=1
+T,_corpr,,,,,,,,,,,,$(corprasep:0)=1
+T,_corle,,,,,,,,,,,,$(corlatsep:0)=1
+T,_corld,,,,,,,,,,,,$(corlatsep:0)=1
+T,_corba,,,,,,,,,,,,$(corbassep:0)=1
+T,_corgv,,,,,,,,,,,,$(corgavsep:0)=1
+K,_rgb,,$(_corcx:9)=1
+-,tecban,,,Tb
+M,sarodape,,,Alt Rodapé,,,50
+M,AFRODFRE,,,Recuo Rodapé,,,3
+-,tec0,,,Paineis
+M,pcaixa,,,,,,,,,,,,1=0
+T,painelesq,,$(_TPCAIXA:3)>0
+T,paineldir,,$(_TPCAIXA:3)>0
+T,_tampSup,,$(_TPCAIXA:9)[1;2;3]!0,Tamponamento Sup
+M,AVISTATAMP,,$(_tampSup:3)[1;3]!0,Altura Rodateto?,,,,30
+T,_tampInf,,$(_TPCAIXA:9)[1;2;3]!0,Tamponamento Inf
+T,esppainel,,$(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0 
+T,_corex,,$(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0 
+T,_pinturaex,,($(painelesq:3)>0 | $(painelDIR:3)>0 $(_tampinf:3)>0 | $(_tampsup:3)>0)  & $(_COREX:9)=1
+M,incpainFE,,$(painelesq:0)>0,Inc Esq Fre 
+M,incpainTE,,$(painelesq:0)>0,Inc Esq Atras 
+M,incpainFD,,$(paineldir:0)>0,Inc Dir Fre 
+M,incpainTD,,$(paineldir:0)>0,Inc Dir Atras 
+M,larrematee,,$(painelesq:3)[3;4]!0,Larg Pino Esq?,,,50,10
+M,larremated,,$(paineldir:3)[3;4]!0,Larg Pino Dir?,,,50,10
+M,sparrpinesq,,$(painelesq:3)=3 | $(painelesq:3)=4,Prof Arr Esq
+M,sparrpindir,,$(paineldir:3)=3 | $(paineldir:3)=4,Prof Arr DIr
+C,IncrEsp,,,Incrementos Diferentes?
+M,incpainIE,,$(painelesq:0)>0 & $(incresp:0)=1,Inc Esq Inf 
+M,incpainSE,,$(painelesq:0)>0 & $(incresp:0)=1,Inc Esq Sup 
+M,incpainID,,$(paineldir:0)>0 & $(incresp:0)=1,Inc Dir Inf 
+M,incpainSD,,$(paineldir:0)>0 & $(incresp:0)=1,Inc Dir Sup 
+C,CostVigaVert,,,Costumiza Viga,,,,,,,,,1=0
+S,colunaparede,,,Viga Vertical,,,,,,,,,1=0
+S,colunaparedeh,,,Viga Horizontal,,,,,,,,,1=0
+C,dividirfundo,,,Dividir Fundo,,,,,,,,,$(CXINFMONOLAT:0)=1
+C,FOLGAAZERO,,,Sem folga na altura?,,,,,,,,,$(CXINFMONOLAT:0)=1
+M,cortabase,,,Corta Base?,,,,,,,,,$(CXINFMONOLAT:0)=1
+
+[MOD_VAO_SIMPLES]
+-,VV,,,V##
+T,_INT
+T,enchimento,,$(_INT##:3)[50;51]
+T,_PRAT,,$(_INT##:3)[1;2;3]
+T,_vidroint,,$(_INT##:3)[2;17]
+T,ppainint,,$(_INT##:3)[19;20]
+T,cpainelint,,$(_INT##:3)[19;20]
+T,npraint,,$(_INT##:3)[19;20]
+T,esppratint,,$(_INT##:3)[19;20]
+M,profprat,,$(_INT##:3)[19;20],,,,,100,250
+C,FUROREGULAVEL,,$(_INT##:3)[1;2;3],FURO REGULAVEL
+M,ndivav,,$(_INT##:3)[21]!0,N° Divisao Verticais,,,,1
+M,ndivaH,,$(_INT##:3)[21]!0,N° Divisao Horizontais,,,,1
+D,ConfGvSp,,$(_INT##:3)[31;32;33;34]!0,Conf.Gaveteiro,,drgenerico.crea.gaveteiro|$(gvSp_tipo:1)/$(GVSP_GVSP_ALTF:1)/$(GVSP_GVSP_ALTV:1)/$(GVSP_GVSP_ALTI:1)/$(GVSP_GVSP_CORR:1)/$(GVSP_REDULTIMO_VAO:1)/$(REDINFGAVETEIRO)/$(REDsupGAVETEIRO)/$(GVSP_AttivaDivisao)/$(GVSP_GVSP_TPGAV:1)
+T,_FRG,,$(_INT##:3)[31;32;33;34]!0
+T,_CORFRG,,_CORFRG[$(_FRG##:9)]!0 
+T,_PUXG,,_PUXG[$(_FRG##:9)]!0
+T,_BORDAFG,,_BORDAFG[$(_FRG##:9)]!0
+T,_PERFPUXG,,_PERFPUXG[$(_FRG##:9)]!0
+D,posprata,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,,,1=0
+
+[ADDINTD]
+-,SEPINT,,,INT##
+T,_INT,,,,$(_int##:3)>0 & ($l>=$(_int##:16) & $l<=$(_int##:17) & $a>=$(_int##:18) & $a<=$(_int##:19) & $p>=$(_int##:20) & $p<=$(_int##:21)),,,,,,7
+T,_PINTURAPERFIS,,$(_INT##:32)=1,,,,,,,,7
+T,_PRAT,,$(_INT##:26)=1,,,,,,,,7
+T,_VIDROPRAT,,$(_INT##:3)[2],,,,,,,,7
+T,enchimento,,$(_INT##:3)[50;51],,,,,,,,6
+T,_corr,,$(_INT##:3)[50;51]!0,,,,,,,,3
+T,_cortubo,,$(_INT##:3)[51],,,,,,,,3
+T,_corwood,,$(_INT##:3)=5,,,,,,,,3
+C,FUROREGULAVEL,,$(_INT##:3)[1;2;3],FURO REGULAVEL
+D,posprata,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,,,1=0
+Z,suportesap,,$(_INT##:3)[10;50],Suporte Sapateira,,,,,,,3
+D,ppratcost,,,,,,,,,,,,1=0
+M,angsap,,$(_INT##:3)[10],Angulo Sapateira,,,20|,10,,,3,,1=0
+T,COR_SUP_SAP,,$(_INT##:3)[10],Cor Suporte sapateira,,,,,,,3
+T,_tubos,,$(_INT##:3)[50]
+M,lcabideiro,,$(_INT##:3)[4],Largura Cabideiro,,,,,,,7
+M,slcabideiro,,$(_INT##:3)[4],Pos Largura Cabideiro,,,,,,,7
+
+[VAO_DIVISORD]
+M,TMP,,1=0
+
+[ADDINTGAVETEIRO]
+T,_tpfr
+T,_TPINTGAVETEIRO,,,,,,,,,,4
+M,espacosapateira,,$(_TPINTGAVETEIRO##:7)=1,Incrementa espaço superior?,,,100,,,,4
+M,repeticoes,,,Numero,,,,1,,,4
+Z,suportesap,,$(_TPINTGAVETEIRO##:3)=2,Suporte Sapateira,,,200|,150,,,3
+T,_CORTUBO,,$(suportesap##:0)=1 | $(_TPINTGAVETEIRO##:3)=4,,,,,,,,3,,1=0
+T,_corr,,,,,,,,,,3
+T,_pux,,$(_TPINTGAVETEIRO##:3)!!2,,,,,,,,2
+D,ppuxpers1,,$(_PUX##:8)>0,Pos.Pux,,!VARMAN.HTM,,,,,2
+T,_mantagav,,$(_tpgav:3)>0,,,,,,,,8
+T,_ACEGAV,,,,,,,,,,8
+M,ndivcolmh,,$(_acegav##:3)=2,Divisão Colmeia Horizontal,,,,2,,,8
+M,ndivcolmv,,$(_acegav##:3)=2,Divisão Colmeia Vertical,,,,2,,,8
+T,_cprat,,$(_acegav##:7)>6,,,,,,,,8
+T,_fechmag,,_FECHMAG[_TPFR##:6]!0,,,,,,,,3
+M,slfechmag,,$(_FECHMAG##:3)!!,Posição Horizontal,,,,,,,3
+
+[FR_GERAL_GENE]
+-,FR
+T,_FR,,,,,,,,,,4
+T,_FRINTERNA,,,,,,,,,,4
+T,_CORFR,,_CORFR[$(_FR:9)]!0,,$(_CORFR:11)[$(_FR:19)]!0,,,,,,4
+T,_pinturafr,,$(_CORFR:9)=1 | $(_CORFR2:9)=1,,,,,,,,4
+T,_VIDRO,,_VIDRO[$(_FR:9)]!0 | $(_fr:6)=14,,$(_vidro:$(_fr:21))!!,,,,,,4
+T,_PUX,,_PUX[$(_FR:9)]!0,,,,,,,,2
+T,_CORPROFILO,,_CORPROFILO[$(_FR:9)]!0,,,,,,,,4
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0 ,,$(_PERFPUX:14)[$(_FR:12)]!0,,,,,,2
+T,_TPCAVA,,_TPCAVA[$(_FR:9)]!0,,,,,,,,8
+T,CCAVAPROFILO,,$(_tpcava:15)=1 | $(_PUXCAVA:12)=1,COR PUX PROFILO,,,,,,,4
+T,_CORPROFILO,,$(_tpcava:15)=1,,,,,,,,8
+T,PV_CORPER,,PV_CORPER[$(_FR:9)]!0 ,,,,,,,,8
+T,PV_PAINEL,,PV_PAINEL[$(_FR:9)]!0 ,,,,,,,,8
+T,PV_Pux,,PV_PUX[$(_FR:9)]!0 ,,,,,,,,8
+T,AVANCAFRENTE,,,Frente Avançada?
+T,abrirtudo
+
+[COLMEIA_VAO]
+M,TMP,,1=0
+
+[AVULSO_TAMPO]
+T,_Tampo,,,,$(_tampo:1)!!999,,,,,,4
+T,_cortampo,,$(_TAMPO:6)=999,,,,,,,,4
+K,_rgb_TAMPO,,$(_TAMPO:12)=1,,,,,,,,4
+T,_filete,,$(_tampo:1)!!999,,$(_filete:1)[$(_tampo:10)],,,,,,8
+T,bordo,,$(_tampo:1)!!999,,,,,,,,8
+M,ATAMPOP,,$(_tampo:6)==999 | $(_tampo:12)=1,Espessura Tampo?,,,25,,,,1
+M,afilesp,,($(_tampo:6)==999  | $(_tampo:12)=1) & $(_filete:1)!!999,Altura filete?,,,60,,,,8
+C,latoasx,,$(_filete:5)>0,Filete Esq?,,,,,,,8
+C,latoadx,,$(_filete:5)>0,Filete Dir?,,,,,,,8
+C,latobsx,,$(_tampo:1)!!999,Borda Esq?,,,,,,,8
+C,latobdx,,$(_tampo:1)!!999,Borda Dir?,,,,,,,8
+
+[AVULSO_TAMPOV]
+T,_Tampo,,,,$(_tampo:1)!!999
+T,_cortampo,,$(_TAMPO:6)=999
+K,_rgb_TAMPO,,$(_TAMPO:12)=1
+M,ATAMPOP,,$(_tampo:6)==999 | $(_tampo:12)=1,Espessura Tampo?,,,25
+
+[FR_AVULSA]
+T,_TPFR,,,,$(_TPFR:3)>0,,,,,,4
+T,_FR,,,,,,,,,,4
+D,incfrente,,,Incrementar Frente,,!incfrente.htm,,,,,4
+T,push,,$(_TPFR:0)=001 | $(_TPFR:3)=002,Tip-on?
+T,_FRINTERNA,,,,,,,,,,4
+T,_CORFR,,_CORFR[$(_FR:9)]!0,,$(_CORFR:11)[$(_FR:19)]!0 ,,,,,,4
+T,_CORFRFU,,$(_fr:6)=501,,$(_CORFRFU:11)[$(_FR:19)]!!0 & 6[$(_CORFRFU:12)]!!0,,,,,,4
+T,_palha,,_palha[$(_FR:9)]!0,Cor Palha,,,,,,,4
+T,BORDAVERSATILE,,BORDAVERSATILE[$(_FR:9)]!0,,,,,,,,2
+T,veiofrente,,$(_CORFR:12)=1,,,,,,,,4
+T,_pinturafr,,$(_CORFR:9)=1,,,,,,,,4
+Z,pinatras,,$(_fr:6)=501 & $(_corfrFU:11)[MDF]!0,Pintar traseira BP?,,,,,,,,,1=0
+T,_corcx_EXTRA,,,,$(_CORFR:1)[$(_corcx_EXTRA:1)]!0 ,,,,,,,,1=0
+T,_PUX,,_PUX[$(_FR:9)]!0,,,,,,,,2
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0,,$(_FR:12)[$(_PERFPUX:14)]!0,,,,,,2
+T,LPUXCAVA,,LPUXCAVA[$(_FR:9)]!0,,,,,,,,8
+T,lpuxquad,,LPUXQUAD[$(_FR:9)]!0,Larg pux Quad,,,,,,,8
+T,Lpuxlung,,Lpuxlung[$(_FR:9)]!0,Larg pux Lung,,,,,,,8
+T,lpuxfiletto,,lpuxfiletto[$(_FR:9)]!0 ,,,,,,,,4
+T,_TPCAVA,,_TPCAVA[$(_FR:9)]!0,,,,,,,,8
+T,_CORPROFILO,,_PUXPROFILO[$(_FR:9)]!0 ,,,,,,,,8
+T,PV_CORPER,,PV_CORPER[$(_FR:9)]!0,,,,,,,,3
+T,_CORPUX,,_CORPUX[$(_FR:9)]!0,COR PUXADOR,,,,,,,4
+C,VEIOQUADRATA,,VEIOQUADRATA[$(_FR:9)]!0 | VEIOQUADRATA[$(_FR2:9)]!0,Veio Vertical pux.quadrata?,,,,,,,4
+T,_LADOTIMEPROFILO,,_LADOTIMEPROFILO[$(_FR:9)]!0  ,,,,,,,,4
+T,_LADOTIMEPROFILO2,,_LADOTIMEPROFILO[$(_FR:9)]!0  ,,,,,,,,4
+T,PV_PAINEL,,PV_PAINEL[$(_FR:9)]!0,,,,,,,,3
+T,PV_Pux,,PV_PUX[$(_FR:9)]!0,,,,,,,,3
+T,PV_TRAVESSAS,,PV_TRAVESSAS[$(_FR:9)]!0,,,,,,,,3
+M,PV_N_TRAVESSAS,,$(PV_TRAVESSAS:8)!!,Numero Travessas?,,,,1,,,3
+T,_VIDRO,,_VIDRO[$(_FR:9)]!0,,,,,,,,3
+M,alttravfre,,$(_FR:6)[501;502;503]!0 & $A>1550,Alt. Travessa ,,,,600,1400,,3
+T,AVANCAFRENTE,,$(_tpcaixa:9)=2,Frente Avançada?,,,,,,,4
+D,parfrisos,,,NECESSARIO PARA FRISO p,,,,,,,,,1=0
+D,parfrisosh,,,NECESSARIO PARA FRISO ph,,,,,,,,,1=0
+D,parfrisosv,,,NECESSARIO PARA FRISO pv,,,,,,,,,1=0
+M,old_nfrisosh,,,NECESSARIO PARA FRISO oldh,,,,,,,,,1=0
+M,old_nfrisosV,,,NECESSARIO PARA FRISO oldv,,,,,,,,,1=0
+M,nfrisos,,NFRISOS[$(_FR:9)]!0,Numero Frisos Porta?,,,,1,,,6
+M,nfrisosv,,NFRISOSV[$(_FR:9)]!0,Frisos Verticais?,,,,1,,,6
+M,nfrisosh,,NFRISOSH[$(_FR:9)]!0,Frisos Horizontais?,,,,1,,,6
+M,iniciofrisov,,NFRISOSV[$(_FR:9)]!0,Inicio frisos vert,,,,,,,6
+M,ESPACOFRISOV,,NFRISOSV[$(_FR:9)]!0,espaco friso vert,,,,,,,6
+M,iniciofrisoh,,NFRISOSH[$(_FR:9)]!0,Inicio frisos hor,,,,,,,6
+M,ESPACOFRISOH,,NFRISOSH[$(_FR:9)]!0,espaco friso hor,,,,,,,6
+M,LFRISO,,,Larg Friso?,,,,4,,,6,,1=0
+M,LFRISOV,,,Larg Friso Vert?,$(LFRISOV:0)[$(_FR:19)]!0 ,,,4,,,6,,1=0
+M,LFRISOH,,,Larg Friso Hor?,$(LFRISOH:0)[$(_FR:19)]!0,,,4,,,6,,1=0
+M,POSCENTROISA,,POSCENTROISA[$(_FR:9)]!0 ,Posição altura ISA/CORINA?,,,1017.5
+D,ppuxpers1,,$(_TPFR:4)>0  & ($(_PUX:8)>0 || $(_FR:6)[102;107;203;110]!0),Pos.Pux,,!VARMAN.HTM,,,,,2
+D,ppuxpers2,,$(_TPFR:4)>1  & ($(_PUX:8)>0 || $(_FR:6)[102;107;203;110]!0),Pos.Pux 2,,!VARMAN.HTM,,,,,2
+D,ppuxpers3,,$(_TPFR:4)>2  & ($(_PUX:8)>0 || $(_FR:6)[102;107;203;110]!0),Pos.Pux 3,,!VARMAN.HTM,,,,,2
+D,ppuxpers4,,$(_TPFR:4)>3  & ($(_PUX:8)>0 || $(_FR:6)[102;107;203;110]!0),Pos.Pux 4,,!VARMAN.HTM,,,,,2
+C,BERGAPARCIAL,,BERGAPARCIAL[$(_FR:9)]!0,,,,,,,,4
+T,_LADOPUXGRAF,,_LADOPUXGRAF[$(_FR:9)]!0 & $(_tpfr:3)!!1,,$(PM)[$(_LADOPUXGRAF:4)]!0,,,,,,4
+M,_LPORTA,,_LPORTA[$(_TPFR:6)]!0,Larg.Porta?,,,,,,,4
+T,_tpgav,,_TPGAV[$(_TPFR:6)]!0,,,,,,,,9
+T,_CORR,,_TPGAV[$(_TPFR:6)]!0,,$(_tpgav:3)[$(_corr:14)]!0,,,,,,3
+T,_corblum,,$(_tpgav:3)=3 & $(_tpgav:19)!!,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9,,1=0
+T,_dobra,,_DOBRA[$(_TPFR:6)]!0,,,,,,,,3
+T,_distDobraSup,,,Dist.Dobra.Sup.,,,,,,,3,,1=0
+T,_sisbasc,,_sisbasc[$(_TPFR:6)]!0,,,,,,,,3
+T,_siscorrer,,_siscorrer[$(_TPFR:6)]!0,,$(_TPFR:7)==$(_SISCORRER:3),,,,,,3
+T,_tpmascara,,_TPMASCARA[$(_TPFR:6)]!0,Tipo Masc.,,,,,,,8
+T,LPUXFORMARE,,LPUXFORMARE[$(_FR:9)]!0
+M,LforoM,,_TPMASCARA[$(_TPFR:6)]!0,L.Foro Masc.,,,,,,,8
+M,AforoM,,_TPMASCARA[$(_TPFR:6)]!0,A.Foro Masc.,,,,,,,8
+M,cavaesq,,,,,,15,,,,8,,1=0
+M,cavadir,,,,,,,,,,8,,1=0
+-,seppvpainel,,,,,,,,,,,,1=0
+T,PV_PAINEL,PV_PAINEL1
+T,PV_PAINEL,PV_PAINEL2
+T,PV_PAINEL,PV_PAINEL3
+T,PV_PAINEL,PV_PAINEL4
+T,PV_PAINEL,PV_PAINEL5
+T,PV_PAINEL,PV_PAINEL6
+-,RI,,RIPAS[$(_FR:9)]!0
+T,_CORRIPAS,,,Cor Ripas,,,,,,,7
+M,espacoripas,,,Espaço entre ripas?,,,,,,,7
+T,largripas,,,Largura Ripas?,,,,,,,7
+M,inicioripascost,,,Inicio Ripas,,,,,,,7
+M,adicionaripas,,,Adiciona Ripas,,,,,,,7
+T,esp_ripa,,,Profundidade da ripa,,,,,,,7
+
+[GAVETA_AVULSA]
+V,iniciacoz
+T,_TPFR
+T,espessura_gaveta,,,,$(espessura_gaveta:0)>=15,,,,,,9
+T,_tpgav,,,,,,,,,,4
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,3
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3,,$(_TPGAV:13)=1
+T,_corcx,,,,,,,,,,1
+T,_TPGAVALT,,_TPGAVALT[$(_TPFR:6)]!0,,,,,,,,9
+T,TPFIXGAV,,,,,,,,,,3
+D,dadosvaocuba,,$(_tpgavalt:7)=1,Dim Vão Cuba,,!vaocuba.htm,,,,,9
+T,_acegav,,$(_tpgav:3)>0 & _TPGAV[$(_tpfr:6)]!0,,,,,,,,9
+T,_mantagav,,$(_tpgav:3)>0,,,,,,,,7
+M,ndivcolmh,,$(_acegav:3)=2,Num.Divisão Colmeia Horizontal,,,,1,,,8
+M,ndivcolmv,,$(_acegav:3)=2,Num.Divisão Colmeia Vertical,,,,1,,,8
+
+[INT_GAV_AVULSA]
+T,_TPGAV
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0
+T,_TPGAVALT
+T,_CORR
+T,_ACEGAV,,,,$(_acegav:3)>0
+M,ndivcolmh,,$(_acegav:3)=2,Num.Divisão Colmeia Horizontal,,,,1
+M,ndivcolmv,,$(_acegav:3)=2,Num.Divisão Colmeia Vertical,,,,1
+
+[INT_GAV_AVULSA_BLUM]
+T,_TPGAV,,,,$(_TPGAV:18)!!
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0
+T,_TPGAVALT
+D,BI_internogaveta,,$(_TPGAV:18)!!,Interno Blum,,!!plugin3cad.proidea.com.br/#/InternosBlum
+
+[AGG_FERRAGENS]
+T,ferragens
+M,qtd,,,,,,,1
+
+[FR_GERAL_GAVETEIRO]
+-,FR
+T,_FRG,,,,,,,,,,4
+T,_CORFR,,_CORFR[$(_FRG:9)]!0,,$(_CORFR:11)[$(_FRG:19)]!0 ,,,,,,4
+T,_CORFRFU,,$(_frg:6)=501,,$(_CORFRFU:11)[$(_FRG:19)]!!0 & 6[$(_CORFRFU:12)]!!0
+Z,pinatras,,$(_frg:6)=501 & $(_corfrFU:11)[MDF]!0,Pintar traseira BP?,,,,,,,,,1=0
+T,_corcx_EXTRA,,,,$(_CORFR:1)[$(_corcx_EXTRA:1)]!0 ,,,,,,,,1=0
+T,_palha,,_palha[$(_FRG:9)]!0,Cor Palha,,,,,,,4
+T,BORDAVERSATILE,,BORDAVERSATILE[$(_FRG:9)]!0,,,,,,,,2
+T,veiofrente,,$(_CORFR:12)=1,,,,,,,,4
+T,_pinturafr,,$(_CORFR:9)=1,,,,,,,,4
+T,_PUX,,_PUX[$(_FRG:9)]!0,,,,,,,,2
+T,_PERFPUX,,_PERFPUX[$(_FRG:9)]!0,,$(_FRG:12)[$(_PERFPUX:14)]!0 ,,,,,,2
+T,_pinturaperfis,,$(_TPCAVA:21)=1  | $(_CORPROFILO:0)[004] | $(PERFBASE:7)=1 | $(_PERFPUX:30)=1 | $(_PUX:23)=1 | $(_puxcava:13)=1,,,,,,,,8
+C,doispuxgaveta,,$(_pux:4)>0,Dois Puxadores por Gaveta,,,,,,,2
+T,lpuxquad,,LPUXQUAD[$(_FRG:9)]!0,Larg pux Quad,,,,,,,2
+T,_corpux,,_corpux[$(_FRG:9)]!0,,,,,,,,2
+T,LPUXCAVA,,LPUXCAVA[$(_FRG:9)]!0,,,,,,,,8
+T,_TPCAVA,,_TPCAVA[$(_FRG:9)]!0,,,,,,,,8
+T,_CORPROFILO,,$(_tpcava:15)=1,,,,,,,,8
+T,PV_CORPER,,PV_CORPER[$(_FRG:9)]!0,,,,,,,,3
+T,PV_PAINEL,,PV_PAINEL[$(_FRG:9)]!0,,,,,,,,3
+T,PV_Pux,,PV_PUX[$(_FRG:9)]!0,,,,,,,,3
+T,PV_TRAVESSAS,,PV_TRAVESSAS[$(_FRG:9)]!0,,,,,,,,3
+T,Lpuxlung,,Lpuxlung[$(_FRG:9)]!0,Larg pux Lung,,,,,,,4
+T,lpuxfiletto,,lpuxfiletto[$(_FRG:9)]!0 ,,,,,,,,4
+M,PV_N_TRAVESSAS,,$(PV_TRAVESSAS:8)!!,Numero Travessas?,,,,1,,,3
+T,_VIDRO,,_VIDRO[$(_FRG:9)]!0,,,,,,,,3
+M,nfrisos,,NFRISOS[$(_FRG:9)]!0,Numero Frisos Porta?,,,,1,,,6
+M,cavaesq,,,,,,,,,,,,1=0
+M,cavadir,,,,,,,,,,,,1=0
+T,lpuxfiletto,,lpuxfiletto[$(_FR:9)]!0 ,,,,,,,,4
+-,seppvpainel,,,,,,,,,,,,1=0
+T,PV_PAINEL,PV_PAINEL1
+T,PV_PAINEL,PV_PAINEL2
+T,PV_PAINEL,PV_PAINEL3
+T,PV_PAINEL,PV_PAINEL4
+T,PV_PAINEL,PV_PAINEL5
+T,PV_PAINEL,PV_PAINEL6
+T,PV_PAINEL,PV_PAINEL3
+T,PV_PAINEL,PV_PAINEL4
+T,PV_PAINEL,PV_PAINEL5
+T,PV_PAINEL,PV_PAINEL6
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[PP_FRGERAL]
+-,L1
+T,PP_FRLADO1,,,Frente,,,,,,,4
+T,_corfr1,,,Cor Frente,,,,,,,4
+T,_pinturafr1,,$(_corfr1:9)=1,Pintura Porta L 1,,,,,,,4
+T,_VIDRO,_vidro1,_VIDRO[$(PP_FRLADO1:4)]!0,Cor Vidro?,,,,,,,3
+T,pv_corper,,PV_CORPER[$(PP_FRLADO1:4)]!0|PV_CORPER[$(PP_FRLADO2:4)]!0,Cor Perfil?,,,,,,,3
+M,nfrisosv1,,$(PP_FRLADO1:3)=5|$(pp_frlado1:3)=6,Frisos Verticais?,,,,1,,,6
+M,nfrisosh1,,$(PP_FRLADO1:3)=4|$(pp_frlado1:3)=6,Frisos Horizontais?,,,,1,,,6
+M,LFRISOV1,,$(PP_FRLADO1:3)=5|$(pp_frlado1:3)=6,Larg Friso Vert?,,,,6,,,6
+M,LFRISOH1,,$(PP_FRLADO1:3)=4|$(pp_frlado1:3)=6,Larg Friso Hor?,,,,6,,,6
+D,parfrisosV1,,,,,,,,,,,,1=0
+D,parfrisosH1,,,,,,100|,,,,,,1=0
+M,POSAUSI1,,POSAUSI[$(PP_FRLADO2:4)]!0,Pos.Altura?,,,1040,,,,2
+M,AUSI1,,$(PP_FRLADO1:3)=3,Altura?,,,,,,,2
+M,PP_PPUXA1,,$(PP_PUX1:4)>0,Dist. Puxador em A,,,,,,,2,,1=0
+M,POSLUSI1,,POSLUSI[$(PP_FRLADO2:4)]!0,Pos.Largura?,,,,50,,,2
+-,RIPA_L1,,$(PP_frlado1:3)=8,Rp
+T,_cripa1,,iniRipas[$(PP_FRLADO1:4)]!0,Cor Ripa L 1,,,,,,,7
+T,espripa1,,iniRipas[$(PP_FRLADO1:4)]!0,Espessura ripa,,,,,,,7
+M,espacoripas1,,,Espaço entre ripas?,,,,,,,7
+Z,ripa20_1,,,Ripa Fixa 20mm?,,,,,,,7
+M,largripas1,,$(ripa20_1:0)=0,Largura Ripas?,,,,15,,,7
+M,iniripas1,,,Inicio Ripas,,,,,,,7
+M,addripas1,,,Adiciona Ripas,,,,,,,7
+-,L2
+T,PP_FRLADO2,,,Usinagem Atras,,,,,,,4
+T,_corfr2,,_CORFR[$(_FR:9)]!0,Cor Frente,,,,,,,4
+T,_pinturafr2,,$(_corfr2:9)=1,Pintura Porta L 2,,,,,,,4
+T,_VIDRO,_vidro2,_VIDRO[$(PP_FRLADO2:4)]!0,Cor Vidro?,,,,,,,3
+T,pv_corper,,PV_CORPER[$(PP_FRLADO1:4)]!0|PV_CORPER[$(PP_FRLADO2:4)]!0,Cor Perfil?,,,,,,,3
+M,nfrisosv2,,$(PP_FRLADO2:3)=5|$(pp_frlado2:3)=6,Frisos Verticais?,,,,1,,,6
+M,nfrisosh2,,$(PP_FRLADO2:3)=4|$(pp_frlado2:3)=6,Frisos Horizontais?,,,,1,,,6
+M,LFRISOV2,,$(PP_FRLADO2:3)=5|$(pp_frlado2:3)=6,Larg Friso Vert?,,,,6,,,6
+M,LFRISOH2,,$(PP_FRLADO2:3)=4|$(pp_frlado2:3)=6,Larg Friso Hor?,,,,6,,,6
+D,parfrisosV2,,,,,,,,,,,,1=0
+D,parfrisosH2,,,,,,,,,,,,1=0
+M,POSAUSI2,,POSAUSI[$(PP_FRLADO2:4)]!0,Pos.Altura?,,,,,,,2
+M,AUSI2,,$(PP_FRLADO2:3)=3,Altura?,,,,,,,2
+M,POSLUSI2,,POSLUSI[$(PP_FRLADO2:4)]!0,Pos.Largura?,,,,50,,,2
+T,PP_PUX2,,,Puxador,,,,,,,2,,1=0
+M,PP_PPUXA2,,$(PP_PUX2:4)>0,Dist. Puxador em A,,,,,,,2
+-,RIPA_L2,,$(PP_frlado2:3)=8
+T,_cripa2,,iniRipas[$(PP_FRLADO2:4)]!0,Cor Ripa L 2,,,,,,,7
+T,espripa2,,iniRipas[$(PP_FRLADO2:4)]!0,Espessura ripa,,,,,,,7
+M,espacoripas2,,,Espaço entre ripas?,,,,,,,7
+Z,ripa20_2,,,Ripa Fixa 20mm?,,,,,,,7
+M,largripas2,,$(ripa20_2:0)=0,Largura Ripas?,,,,50,,,7
+M,iniripas2,,,Inicio Ripas,,,,,,,7
+M,addripas2,,,Adiciona Ripas,,,,,,,7
+
+[ES_VAO]
+C,fundo,,$(FUNDOTOTAL:0)=0,Fundo?,,,,,,,8
+C,rasgoesq,,$(fundo##:0)=1,Rasgo Esq?,,,,,,,8
+C,rasgodir,,$(fundo##:0)=1,Rasgo Dir?,,,,,,,8
+C,rasgoinf,,$(fundo##:0)=1,Rasgo Inf?,,,,,,,8
+C,rasgosup,,$(fundo##:0)=1,Rasgo Sup?,,,,,,,8
+C,GRAPA,,$(fundo##:0)=1,Grapa?,,,,,,,8
+T,_COREX,,$(fundo##:0)=1,,,,,,,,4
+T,_pinturaex,,$(_corex##:9)=1,,,,,,,,4
+M,pmovel,,,Profundidade Movel?,,,,,,,4
+D,ilubasInf,,,Ilu.Inferior,,!ilu.htm,,,,,2
+T,_ilu,_ilubasinf,$(ilubasInf##:0)>0,,$(_ilubasinf##:3)=$(ilubasInf##:1),,,,,,2
+D,ilubasSup,,,Ilu.Superior,,!ilu.htm,,,,,2
+T,_ilu,_ilubassup,$(ilubasSup##:0)>0,,$(_ilubasSup##:3)=$(ilubassup##:1),,,,,,2
+T,_ilufonte,,,,,,,,,,2
+C,ledesq,,,Led Esquerda?,,,,,,,2
+C,leddir,,,Led Direita?,,,,,,,2
+M,PosPLed,,$(ledesq##:0)=1 | $(leddir##:0)=1,Pos.ProF.led,,,50,,,,2
+T,_ilu,,$(ledesq##:0)=1 | $(leddir##:0)=1,,$(_ilu##:3)=1
+
+[PONTOS]
+M,NPONTOS,,,NUM.PONTOS ,,,,0,5
+Z,COTAS,,$(NPONTOS:0)>0,COTAS?,,,,,,,5
+T,_TPPONTO,_TPPONTO1,$(NPONTOS:0)>0,TIPO PONTO 1,,,,,,,1
+M,DIML1,,$(_tpponto1:7)=1 & $(NPONTOS:0)>0,LARGURA 1,,,,,,,2
+M,DIMA1,,$(_tpponto1:7)=1 & $(NPONTOS:0)>0,ALTURA 1,,,,,,,2
+Z,refcentro1,,$(NPONTOS:0)>0,REF.CENTRO 1,,,,,,,3
+M,POSL1,,$(NPONTOS:0)>0,POS.LARGURA 1,,,,,,,4
+M,POSA1,,$(NPONTOS:0)>0,POS.ALTURA 1,,,,,,,4
+M,AFPPONTO1,,$(NPONTOS:0)>0,POS.PROF. 1,,,,,,,4
+K,CORPONTO1,,$(_tpponto1:11)=1  & $(NPONTOS:0)>0,COR PONTO,,,,,,,6
+T,_TPPONTO,_TPPONTO2,$(NPONTOS:0)>1,TIPO PONTO 2,,,,,,,1
+M,DIML2,,$(_tpponto2:7)=1  & $(NPONTOS:0)>1,LARGURA 2,,,,,,,2
+M,DIMA2,,$(_tpponto2:7)=1  & $(NPONTOS:0)>1,ALTURA 2,,,,,,,2
+Z,refcentro2,,$(NPONTOS:0)>1,REF.CENTRO 2,,,,,,,3
+M,POSL2,,$(NPONTOS:0)>1,POS.LARGURA 2,,,,,,,4
+M,POSA2,,$(NPONTOS:0)>1,POS.ALTURA 2,,,,,,,4
+M,AFPPONTO2,,$(NPONTOS:0)>1,POS.PROF. 2,,,,,,,4
+K,CORPONTO2,,$(_tpponto2:11)=1  & $(NPONTOS:0)>1,COR PONTO 2,,,,,,,6
+T,_TPPONTO,_TPPONTO3,$(NPONTOS:0)>2,TIPO PONTO 3,,,,,,,1
+M,DIML3,,$(_tpponto3:7)=1  & $(NPONTOS:0)>2,LARGURA 3,,,,,,,2
+M,DIMA3,,$(_tpponto3:7)=1  & $(NPONTOS:0)>2,ALTURA 3,,,,,,,2
+Z,refcentro3,,$(NPONTOS:0)>2,REF.CENTRO 3,,,,,,,3
+M,POSL3,,$(NPONTOS:0)>2,POS.LARGURA 3,,,,,,,4
+M,POSA3,,$(NPONTOS:0)>2,POS.ALTURA 3,,,,,,,4
+M,AFPPONTO3,,$(NPONTOS:0)>2,POS.PROF. 3,,,,,,,4
+K,CORPONTO3,,$(_tpponto3:11)=1  & $(NPONTOS:0)>2,COR PONTO 3,,,,,,,6
+T,_TPPONTO,_TPPONTO4,$(NPONTOS:0)>3,TIPO PONTO 4,,,,,,,1
+M,DIML4,,$(_tpponto4:7)=1  & $(NPONTOS:0)>3,LARGURA 4,,,,,,,2
+M,DIMA4,,$(_tpponto4:7)=1  & $(NPONTOS:0)>3,ALTURA 4,,,,,,,2
+Z,refcentro4,,$(NPONTOS:0)>3,REF.CENTRO 4,,,,,,,3
+M,POSL4,,$(NPONTOS:0)>3,POS.LARGURA 4,,,,,,,4
+M,POSA4,,$(NPONTOS:0)>3,POS.ALTURA 4,,,,,,,4
+M,AFPPONTO4,,$(NPONTOS:0)>3,POS.PROF. 4,,,,,,,4
+K,CORPONTO4,,$(_tpponto4:11)=1  & $(NPONTOS:0)>3,COR PONTO 4,,,,,,,6
+T,_TPPONTO,_TPPONTO5,$(NPONTOS:0)>4,TIPO PONTO 5,,,,,,,1
+M,DIML5,,$(_tpponto5:7)=1  & $(NPONTOS:0)>4,LARGURA 5,,,,,,,2
+M,DIMA5,,$(_tpponto5:7)=1  & $(NPONTOS:0)>4,ALTURA 5,,,,,,,2
+Z,refcentro5,,$(NPONTOS:0)>4,REF.CENTRO 5,,,,,,,3
+M,POSL5,,$(NPONTOS:0)>4,POS.LARGURA 5,,,,,,,4
+M,POSA5,,$(NPONTOS:0)>4,POS.ALTURA 5,,,,,,,4
+M,AFPPONTO5,,$(NPONTOS:0)>4,POS.PROF. 5,,,,,,,4
+K,CORPONTO5,,$(_tpponto5:11)=1  & $(NPONTOS:0)>4,COR PONTO 5,,,,,,,6
+T,PONTOS
+T,PONTOS
+
+[METAL_VAO]
+-,VV,,,V##
+
+[METALOCULTA]
+T,DESATIVAD,DESATIVAD0,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE0,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF0,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT0,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD1,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE1,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF1,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT1,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD2,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE2,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF2,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT2,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD3,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE3,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF3,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT3,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD4,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE4,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF4,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT4,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD5,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE5,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF5,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT5,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD6,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE6,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF6,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT6,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD7,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE7,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF7,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT7,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD8,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE8,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF8,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT8,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD9,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE9,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF9,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT9,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD10,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE10,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF10,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT10,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD11,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE11,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF11,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT11,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD12,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE12,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF12,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT12,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD13,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE13,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF13,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT13,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD14,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE14,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF14,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT14,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD15,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE15,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF15,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT15,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD16,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE16,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF16,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT16,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD17,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE17,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF17,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT17,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD18,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE18,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF18,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT18,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD19,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE19,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF19,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT19,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD20,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE20,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF20,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT20,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD21,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE21,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF21,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT21,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD22,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE22,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF22,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT22,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD23,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE23,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF23,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT23,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD24,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE24,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF24,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT24,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD25,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE25,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF25,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT25,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD26,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE26,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF26,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT26,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD27,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE27,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF27,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT27,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD28,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE28,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF28,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT28,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD29,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE29,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF29,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT29,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVAD30,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAE30,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAF30,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVAT30,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVADS,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAES,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAFS,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVATS,,DESATIVA PERFIL TRASEIRO?
+T,DESATIVAD,DESATIVADI,,DESATIVA PERFIL DIREITO?
+T,DESATIVAE,DESATIVAEI,,DESATIVA PERFIL ESQUERDO?
+T,DESATIVAF,DESATIVAFI,,DESATIVA PERFIL FRONTAL?
+T,DESATIVAT,DESATIVATI,,DESATIVA PERFIL TRASEIRO?
+
+[GAVDIV_DOR]
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,,,$(.isecadpro)=1
+M,afinalgaveteiro,,,Altura,,,880,,,,4,,$(_placer)=1
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4
+T,_TPFECH,,,,,,,,,,4,,$(_PLACER)=0
+T,_tpgaveteiro,,,,,,,,,,,,1=0
+T,espessura,,$(_tpgaveteiro:3)==1,,,,,,,,1
+T,espessura_gaveta,,,,,,,,,,1
+T,tpfixgav,,,,,,,,,,3
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+T,_corcx,,,,$(espessura:3)[$(_corcx:12)]!!0 & $(espessura:3)[$(_corcx:12)]!!0,,,,,,4
+T,_corgv,,,,$(espessura_gaveta:3)[$(_corgv:12)]!!0 & $(espessura_gaveta:3)[$(_corgv:12)]!!0,,,,,,4
+T,_CORBF,,$(_tpgaveteiro:3)==1,,,,,,,,4,,1=0
+Z,BASESUPERIORGAV,,,Tampo,,,,,,,4
+T,esptampogav,,$(BASESUPERIORGAV:0)==1,Esp Tampo Gav,,,,,,,4
+T,_cortampogav,,$(BASESUPERIORGAV:0)=1,,$(esptampogav:3)[$(_cortampogav:12)]!!0 & $(esptampogav:3)[$(_cortampogav:12)]!!0,,,,,,4
+T,_TPGAV,,,,,,,,,,9
+T,_CORR,,,,,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+D,INCFRENTE,,,,,,,,,,,,1=0
+M,ndivcolmh,,,Divisão Colmeia Horizontal,,,,2,,,8
+M,ndivcolmv,,,Divisão Colmeia Vertical,,,,2,,,8
+
+[GAVN_VAO]
+T,ComEspacamentoFro,,,Com espacamento Superior,,,,,,,4
+T,_pux,,$(ComEspacamentoFro##:3)=0,,,,,,,,2
+T,_qtdpux,,$(ComEspacamentoFro##:3)=0,,,,,,,,2
+D,ppuxpers1,,$(_PUX##:8)>0 & $(_qtdpux##:3)!2,Pos.Pux,,!VARMAN.HTM
+T,_mantagav,,$(_tpgav:3)>0,,,,,,,,8
+T,_ACEGAV,,,,,,,,,,8
+
+[PORTA _FR]
+-,L1
+T,PP_FRLADO1,,,Frente,,,,,,,4
+T,_corfr1,,,Cor Frente,,,,,,,4
+T,_pinturafr1,,$(_corfr1:9)=1,Pintura Porta L 1,,,,,,,4
+T,_VIDRO,_vidro1,_VIDRO[$(PP_FRLADO1:4)]!0,Cor Vidro?,,,,,,,3
+T,pv_corper,,PV_CORPER[$(PP_FRLADO1:4)]!0|PV_CORPER[$(PP_FRLADO2:4)]!0,Cor Perfil?,,,,,,,3
+M,nfrisosv1,,$(PP_FRLADO1:3)=5|$(pp_frlado1:3)=6,Frisos Verticais?,,,,1,,,6
+M,nfrisosh1,,$(PP_FRLADO1:3)=4|$(pp_frlado1:3)=6,Frisos Horizontais?,,,,1,,,6
+M,LFRISOV1,,$(PP_FRLADO1:3)=5|$(pp_frlado1:3)=6,Larg Friso Vert?,,,,6,,,6
+M,LFRISOH1,,$(PP_FRLADO1:3)=4|$(pp_frlado1:3)=6,Larg Friso Hor?,,,,6,,,6
+D,parfrisosV1,,,,,,,,,,,,1=0
+D,parfrisosH1,,,,,,100|,,,,,,1=0
+M,POSAUSI1,,POSAUSI[$(PP_FRLADO2:4)]!0,Pos.Altura?,,,1040,,,,2
+M,AUSI1,,$(PP_FRLADO1:3)=3,Altura?,,,,,,,2
+M,PP_PPUXA1,,$(PP_PUX1:4)>0,Dist. Puxador em A,,,,,,,2,,1=0
+M,POSLUSI1,,POSLUSI[$(PP_FRLADO2:4)]!0,Pos.Largura?,,,,50,,,2
+-,RIPA_L1,,$(PP_frlado1:3)=8
+T,_cripa1,,iniRipas[$(PP_FRLADO1:4)]!0,Cor Ripa L 1,,,,,,,7
+T,espripa1,,iniRipas[$(PP_FRLADO1:4)]!0,Espessura ripa,,,,,,,7
+M,espacoripas1,,,Espaço entre ripas?,,,,,,,7
+Z,ripa20_1,,,Ripa Fixa 20mm?,,,,,,,7
+M,largripas1,,$(ripa20_1:0)=0,Largura Ripas?,,,,50,,,7
+M,iniripas1,,,Inicio Ripas,,,,,,,7
+M,addripas1,,,Adiciona Ripas,,,,,,,7
+-,L2
+T,PP_FRLADO2,,,Usinagem Atras,,,,,,,4
+T,_corfr2,,_CORFR[$(_FR:9)]!0,Cor Frente,,,,,,,4
+T,_pinturafr2,,$(_corfr2:9)=1,Pintura Porta L 2,,,,,,,4
+T,_VIDRO,_vidro2,_VIDRO[$(PP_FRLADO2:4)]!0,Cor Vidro?,,,,,,,3
+T,pv_corper,,PV_CORPER[$(PP_FRLADO1:4)]!0|PV_CORPER[$(PP_FRLADO2:4)]!0,Cor Perfil?,,,,,,,3
+M,nfrisosv2,,$(PP_FRLADO2:3)=5|$(pp_frlado2:3)=6,Frisos Verticais?,,,,1,,,6
+M,nfrisosh2,,$(PP_FRLADO2:3)=4|$(pp_frlado2:3)=6,Frisos Horizontais?,,,,1,,,6
+M,LFRISOV2,,$(PP_FRLADO2:3)=5|$(pp_frlado2:3)=6,Larg Friso Vert?,,,,6,,,6
+M,LFRISOH2,,$(PP_FRLADO2:3)=4|$(pp_frlado2:3)=6,Larg Friso Hor?,,,,6,,,6
+D,parfrisosV2,,,,,,,,,,,,1=0
+D,parfrisosH2,,,,,,,,,,,,1=0
+M,POSAUSI2,,POSAUSI[$(PP_FRLADO2:4)]!0,Pos.Altura?,,,,,,,2
+M,AUSI2,,$(PP_FRLADO2:3)=3,Altura?,,,,,,,2
+M,POSLUSI2,,POSLUSI[$(PP_FRLADO2:4)]!0,Pos.Largura?,,,,50,,,2
+T,PP_PUX2,,,Puxador,,,,,,,2,,1=0
+M,PP_PPUXA2,,$(PP_PUX2:4)>0,Dist. Puxador em A,,,,,,,2
+-,RIPA_L2,,$(PP_frlado2:3)=8
+T,_cripa2,,iniRipas[$(PP_FRLADO2:4)]!0,Cor Ripa L 2,,,,,,,7
+T,espripa2,,iniRipas[$(PP_FRLADO2:4)]!0,Espessura ripa,,,,,,,7
+M,espacoripas2,,,Espaço entre ripas?,,,,,,,7
+Z,ripa20_2,,,Ripa Fixa 20mm?,,,,,,,7
+M,largripas2,,$(ripa20_2:0)=0,Largura Ripas?,,,,50,,,7
+M,iniripas2,,,Inicio Ripas,,,,,,,7
+M,addripas2,,,Adiciona Ripas,,,,,,,7
+
+[BAS]
+V,iniciacoz
+T,_TPFR,,,,$(_tpfr:3)=9,,,,,,4,,1=0
+T,_tpgav,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3,,$(_TPGAV:13)=1
+T,_TPGAVALT,,_TPGAVALT[$(_TPFr:6)]!0,,,,,,,,9
+T,TPFIXGAV,,,,,,,,,,3
+D,dadosvaocuba,,$(_tpgavalt:7)=1,Dim Vão Cuba,,!vaocuba.htm,,,,,9
+T,_acegav,,$(_tpgav:3)>0 & _TPGAV[$(_tpfr:6)]!0,,,,,,,,9
+M,ndivcolmh,,$(_acegav:3)=2,Num.Divisão Colmeia Horizontal,,,,1,,,8
+M,ndivcolmv,,$(_acegav:3)=2,Num.Divisão Colmeia Vertical,,,,1
+
+[DOR_CLOSET_LIGHT]
+V,INICIAFECH
+V,INICIAGVSP
+T,_montado
+T,_tpcaixa,,,,,,,,,,4
+T,ESPARM,,,,,,,,,,1
+T,espessura_gaveta,,,,,,,,,,1
+M,LMODULO,,,Largura Modulo?,,,,275,1275,,4
+T,CLIGHT_FUNDO,,$(_TPCAIXA:3)[32]!0,,,,,,,,4
+T,ESPFUNDO,,$(CLIGHT_FUNDO:0)=1,,,,,,,,1
+T,TPFIX,,,,,,,,,,3
+T,_corcx,,,,$(esparm:3)[$(_corcx:12)]!!0,,,,,,8
+T,_corfu,,,,$(espfundo:3)[$(_corfu:12)]!!0,,,,,,8
+T,LATESQ,,$(_TPCAIXA:11)=1
+T,LATDiR,,$(_TPCAIXA:11)=1
+T,_PES,,,,,,,,,,4
+Z,adcrodape,,$(_pes:3)=1,Adiciona Rodape,,,,,,,4
+T,arodp,,$(_pes:3)<1,Alt Rodape,,,,,,,4
+T,AVANCOCLOSETL,,$(_TPCAIXA:3)[32]!0,,,,,,,,4
+Z,BASESUPAVANCO,,,Base Superior Avançada?,,,,,,,4
+C,FLAG_ILU,,,Iluminação,,,,,,,2
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[AGG_CLOSET_LIGHT]
+-,corpo,,,C##
+M,LMODULO,,,Largura Modulo?,,,,275,1275,,4
+T,_CORFU,,,,,,,,,,4
+T,_PES,,,,,,,,,,4,,1=0
+Z,adcrodape,,$(_pes:3)=1,Adiciona Rodape,,,,,,,4,,1=0
+T,arodp,,$(_pes:3)<1,Alt Rodape,,,,,,,4,,1=0
+
+[UBIK_SISTEMA]
+V,iniciaubik
+M,LFUNDOU,,,Largura Fundo,,,,400,1200
+T,_fechesqu
+T,_fechdiru
+T,_corfu,,,Cor Ubik
+T,_corcx,_corbase,,Cor Base
+T,_tpbase_ubik
+T,_pbase_ubik,,$(_tpbase_ubik:3)>1,Profondidade Base
+C,AROTAAVEIA,,,Rotacionar veio base?
+
+[UBIK_AGG_FUNDO]
+V,iniciaubik
+M,LFUNDOU,,,Largura Fundo,,,,400,1200
+T,_corfu,,,Cor Ubik
+
+[ADDFIX]
+T,TPFIXV,,,,$(TPFIXV##:0)[000;101;102;104;105;106;107]!0
+T,FACEFIX,,$(tpfixV##:3)>0
+C,FIXESQ,,$(tpfixV##:3)>0,Fixação Esquerda?
+C,FIXDIR,,$(tpfixV##:3)>0,Fixação Direita?
+C,FIXTRA,,$(tpfixV##:3)>0,Fixação Atras?
+C,FIXFRE,,$(tpfixV##:3)>0,Fixação Frente?
+M,REDTOPOESQ,,$(FIXESQ##:0)=1,Desl.Furos Esq
+M,REDTOPODIR,,$(FIXDIR##:0)=1,Desl.Furos dir 
+M,REDTOPOTRAS,,$(FIXTRA##:0)=1,Desl.Furos tras
+M,REDTOPOFRE,,$(FIXFRE##:0)=1,Desl.Furos fre
+
+[UBIK_PRATELEIRA]
+V,iniciaubik
+T,_corcx
+T,_pprat_ubik,,,Profundidade Prat
+
+[FR_GERAL_GAV]
+T,_TPCAIXA
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,_corcx,,,,,,,,,,4
+T,_CORBF,,$(_corcx:1)=3,,,,,,,,4
+T,tpfix,,,,,,,,,,3
+T,tpfixgav,,,,,,,,,,3
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4
+T,espessura,,,,,,,,,,1
+T,espessura_gaveta,,,Esp. Gav/Sap,,,,,,,1
+T,esptampogav,,,Esp Tampo Gav,,,,,,,1
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+M,LENCHCOST,,$(ENCHGAV:3)>0,L.Enchimento?,,,,,,,6
+M,AFENCHPCOST,,$(enchgav:3)>0,Afast Enchi?,,,,0,100,,6
+Z,BASESUPERIORGAV,,,Tampo Gaveteiro,,,,,,,4
+Z,fixatampog,,,Fix Tampo Gav?,,,,,,,4,,1=0
+T,_TPGAV,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+
+[ADDINTGAVUB]
+T,_TPINTGAVUB,,,,,,,,,,4
+M,espacosapateira,,$(_TPINTGAVUB##:7)=1,Incrementa espaço superior?,,,,,,,4
+M,repeticoes,,,Numero,,,,1,,,4
+Z,suportesap,,$(_TPINTGAVUB##:3)=2,Suporte Sapateira,,,,150,,,3
+T,_CORTUBO,,$(suportesap##:0)=1 | $(_TPINTGAVUB##:3)=4,,,,,,,,3
+T,_PUX,,_PUX[$(_FRG:9)]!0,,,,,,,,7
+D,ppuxpers1,,$(_PUX##:8)>0,Pos.Pux,,!VARMAN.HTM,,,,,7
+C,DOISPUXGAVETA,,,Dois puxadores Gaveta,,,,,,,7
+T,_mantagav,,$(_tpgav:3)>0,,,,,,,,8
+T,_ACEGAV,,,,,,,,,,8
+T,_CORR,,,,,,,,,,6
+
+[DOR_GAV_UBIK]
+T,_TPCAIXA
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,_corcx,,,,,,,,,,4
+T,_CORBF,,$(_corcx:1)=3,,,,,,,,4
+T,tpfix,,,,,,,,,,3
+T,tpfixgav,,,,,,,,,,3
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4
+T,espessura,,,,,,,,,,1
+T,espessura_gaveta,,,Esp. Gav/Sap,,,,,,,1
+T,esptampogav,,,Esp Tampo Gav,,,,,,,1
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+M,LENCHCOST,,$(ENCHGAV:3)>0,L.Enchimento?,,,,,,,6
+M,AFENCHPCOST,,$(enchgav:3)>0,Afast Enchi?,,,,0,100,,6
+Z,BASESUPERIORGAV,,,Tampo Gaveteiro,,,,,,,4
+Z,fixatampog,,,Fix Tampo Gav?,,,,,,,4
+T,_TPGAV,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+
+[DOR_GAVE_UBIK]
+T,_TPCAIXA
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,_corcx,,,,,,,,,,4
+T,_CORBF,,$(_corcx:1)=3,,,,,,,,4
+T,tpfix,,,,,,,,,,3
+T,tpfixgav,,,,,,,,,,3
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4
+T,espessura,,,,,,,,,,1
+T,espessura_gaveta,,,Esp. Gav/Sap,,,,,,,1
+T,esptampogav,,,Esp Tampo Gav,,,,,,,1
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+M,LENCHCOST,,$(ENCHGAV:3)>0,L.Enchimento?,,,,,,,6
+M,AFENCHPCOST,,$(enchgav:3)>0,Afast Enchi?,,,,0,100,,6
+Z,BASESUPERIORGAV,,,Tampo Gaveteiro,,,,,,,4
+Z,fixatampog,,,Fix Tampo Gav?,,,,,,,4
+T,_TPGAV,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+
+[DOR_UBIK_GAV]
+T,_TPCAIXA
+D,COSTVARIAVEIS,,,Costumiza Parametros,,DrGenerico.crea.pers_item|$(.PERCORSO);INICIAdor;$(.ISECADPRO),,,,,4,,$(.isecadpro)=1
+T,_corcx,,,,,,,,,,4
+T,_CORBF,,$(_corcx:1)=3,,,,,,,,4
+T,tpfix,,,,,,,,,,3
+T,tpfixgav,,,,,,,,,,3
+T,REDGAV,,,,,,,,,,4
+M,PCAIXAGAVETEIRO,,$(redgav:0)=2,Prof. Caixa Gaveteiro,,,,,,,4
+T,espessura,,,,,,,,,,1
+T,espessura_gaveta,,,Esp. Gav/Sap,,,,,,,1
+T,esptampogav,,,Esp Tampo Gav,,,,,,,1
+V,INICIADOR
+T,ENCHGAV,,,,,,,,,,6
+M,LENCHCOST,,$(ENCHGAV:3)>0,L.Enchimento?,,,,,,,6
+M,AFENCHPCOST,,$(enchgav:3)>0,Afast Enchi?,,,,0,100,,6
+Z,BASESUPERIORGAV,,,Tampo Gaveteiro,,,,,,,4
+Z,fixatampog,,,Fix Tampo Gav?,,,,,,,4
+T,_TPGAV,,,,,,,,,,9
+T,_corblum,,$(_tpgav:3)=3,Cor Blum?,$(_corblum:4)[$(_tpgav:19)]!0,,,,,,9
+T,_CORR,,,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,3
+S,memoitem,,,,,,,,,,,,1=0
+
+[ARM_DIVMOVEL]
+-,ARM_DIVMOVEL,,,,,,,,,,,,1=0
+C,DIVMOVEL
+C,DIVMOVEL1
+C,DIVMOVEL2
+C,DIVMOVEL3
+C,DIVMOVEL4
+C,DIVMOVEL5
+C,DIVMOVEL6
+C,DIVMOVEL7
+C,DIVMOVEL8
+C,DIVMOVEL9
+C,DIVMOVEL10
+C,DIVMOVEL11
+C,DIVMOVEL12
+
+[ARML_DIVMOVEL]
+-,ARM_DIVMOVEL,,,,,,,,,,,,1=0
+C,DIVMOVELE1
+C,DIVMOVELE2
+C,DIVMOVELE3
+C,DIVMOVELE4
+C,DIVMOVELE5
+C,DIVMOVELE6
+C,DIVMOVELE7
+C,DIVMOVELE8
+C,DIVMOVELE9
+C,DIVMOVELE10
+C,DIVMOVELE11
+C,DIVMOVELE12
+C,DIVMOVELD1
+C,DIVMOVELD2
+C,DIVMOVELD3
+C,DIVMOVELD4
+C,DIVMOVELD5
+C,DIVMOVELD6
+C,DIVMOVELD7
+C,DIVMOVELD8
+C,DIVMOVELD9
+C,DIVMOVELD10
+C,DIVMOVELD11
+C,DIVMOVELD12
+
+[LEDNICHO]
+-,LED,,,Led,,,,,,,,,1=0
+T,LEDPRAT,ALEDI,,Led Base Inf.
+T,LEDPRAT,ALEDS,,Led Base Sup.
+
+[NICO_ESPECIAL_VAO]
+-,LED,,,Led,,,,,,,,,1=0
+T,LEDPRAT,ALEDI,,Led Base Inf.,,,,,,,,,1=0
+T,LEDPRAT,ALEDS,,Led Base Sup.,,,,,,,,,1=0
+
+[VAROCULTENICHO]
+-,FIXACAO,,,,,,,,,,,,1=0
+T,SUPORTEPRAT,SUPORTEPRAT_1
+T,SUPORTEPRAT,SUPORTEPRAT_2
+T,SUPORTEPRAT,SUPORTEPRAT_3
+T,SUPORTEPRAT,SUPORTEPRAT_4
+T,SUPORTEPRAT,SUPORTEPRAT_5
+T,SUPORTEPRAT,SUPORTEPRAT_6
+T,SUPORTEPRAT,SUPORTEPRAT_7
+T,SUPORTEPRAT,SUPORTEPRAT_8
+T,SUPORTEPRAT,SUPORTEPRAT_9
+T,SUPORTEPRAT,SUPORTEPRAT_10
+T,SUPORTEPRAT,SUPORTEPRAT_11
+T,SUPORTEPRAT,SUPORTEPRAT_12
+T,SUPORTEPRAT,SUPORTEPRAT_13
+T,SUPORTEPRAT,SUPORTEPRAT_14
+T,SUPORTEPRAT,SUPORTEPRAT_15
+T,SUPORTEPRAT,SUPORTEPRAT_16
+T,SUPORTEPRAT,SUPORTEPRAT_17
+T,SUPORTEPRAT,SUPORTEPRAT_18
+T,SUPORTEPRAT,SUPORTEPRAT_19
+T,SUPORTEPRAT,SUPORTEPRAT_20
+T,ledprat,ledprat_1
+T,ledprat,ledprat_2
+T,ledprat,ledprat_3
+T,ledprat,ledprat_4
+T,ledprat,ledprat_5
+T,ledprat,ledprat_6
+T,ledprat,ledprat_7
+T,ledprat,ledprat_8
+T,ledprat,ledprat_9
+T,ledprat,ledprat_10
+T,ledprat,ledprat_11
+T,ledprat,ledprat_12
+T,ledprat,ledprat_13
+T,ledprat,ledprat_14
+T,ledprat,ledprat_15
+T,ledprat,ledprat_16
+T,ledprat,ledprat_17
+T,ledprat,ledprat_18
+T,ledprat,ledprat_19
+T,ledprat,ledprat_20
+
+[COZ_VASSOU]
+-,VAO,,,V##
+T,_INT,,$(_tpfr##:3)[9;11;12]=0 & $(_ACEINTFRE##:3)=0,,,,,,,,7
+T,_corwood,,$(_INT##:3)=5,,,,,,,,3
+T,_PRAT,,$(_INT##:26)=1,,,,,,,,7
+T,tpfixprat,,$(_INT##:3)=1,,,,,,,,7
+D,iluPrat,,$(_int##:3)=1,Ilu.Prateleiras,,!ilu.htm,,,,,7,,1=0
+T,_iluPrat,,$(iluPrat##:0)>0,,$(_iluPrat##:3)=$(iluPrat##:1),,,,,,7,,1=0
+D,posprata,,,,,,,,,,,,1=0
+D,postravporta,,,,,,,,,,,,1=0
+D,posace,,,,,,,,,,9,,1=0
+Z,mascfundo,,$(_tpcaixa##:3)=95 & $(_TPFR##:3)!96 & $(tpnicho##:1)!0,Fundo?,,,,,,,8
+T,_VIDROPRAT,,$(_INT##:3)[2]!0,,,,,,,,7
+T,_fechmag,,_FECHMAG[$(_TPFR##:6)]!0,,,,,,,,3
+M,slfechmag,,$(_FECHMAG##:3)!!,Posição Horizontal,,,,,,,3
+M,sapratgav,,$(_INT##:3)[41;42;43;44],Altura Prateleira?,,,1231
+>,sg,,$(_tpfr##:3)[9]!0,Costumiza Gaveta?,,,,,,,9
+M,SAGAVETA_cost,,$(_tpfr##:3)[9]!0,posição Gaveta,,,,,,,9
+M,AGAVETA_cost,,$(_tpfr##:3)[9]!0,Altura da gaveta,,,,,,,9
+M,espaco_gav_atras,,$(_tpfr##:3)[9]!0,Espaços atras da gaveta,,,,,,,9
+D,ppratcost,,,,,,,,,,,,1=0
+D,posadob,,,,,,,,,,,,1=0
+D,posadob2,,,,,,,,,,,,1=0
+
+[ADDVAO]
+T,_tpfr,,,,,,000
+D,ppuxpers1,,($(_TPFR##:4)>0  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[401;402;107;102;103;203;110])),Pos.Pux,,!VARMAN.HTM,,,,,2
+D,ppuxpers2,,($(_TPFR##:4)>1  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 2,,!VARMAN.HTM,,,,,2
+D,ppuxpers3,,($(_TPFR##:4)>2  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 3,,!VARMAN.HTM,,,,,2
+D,ppuxpers4,,($(_TPFR##:4)>3  & (($(_PUX:8)>0 | $(PV_PUX:8)>0)  | $(_fr##:6)[11;12;13;14;16;17;18;19;107;102;103;203;110])) ,Pos.Pux 4,,!VARMAN.HTM,,,,,2
+M,APORTA_1,,$(_TPFR##:3)=100,Altura porta inf?,,,500,,,,4
+M,ESPACOVAO,,,Altura vão?,,,200,,,,4
+Z,RMFUNDO,,$(_TPCAIXA:3)=110,Remove Fundo,,,,,,,2
+C,ADD_VAOINT,,$(_TPFR##:3)[100;101]!0 & $(_TPCAIXA:3)=110,Add vão interno,,,,,,,4
+M,alt_vao_int,,$(ADD_VAOINT##)==1,Altura vão interno,,,,,,,4
+T,_TPMASCARA,,_TPMASCARA[$(_TPFR##:6)]!0
+M,LforoM,,_TPMASCARA[$(_TPFR##:6)]!0,L.Foro Masc.,,,500|,,,,8
+M,AforoM,,_TPMASCARA[$(_TPFR##:6)]!0,A.Foro Masc.,,,300,,,,8
+M,PaForno1,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,Pos.Altura Forno 1,,,50,,,,8
+M,LforoM2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,L.Foro Masc. 2,,,500|,,,,7
+M,AforoM2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,A.Foro Masc. 2,,,300,,,,7
+M,PaForno2,,_TPMASCARA[$(_TPFR##:6)]!0 & $(_TPFR##:3)=98,Pos.Altura Forno 2,,,600,,,,7
+T,_dobra,,_DOBRA[$(_TPFR##:6)]!0,,,,,,,,3
+T,_siscorrer,,_siscorrer[$(_TPFR##:6)]!0,,$(_TPFR##:7)==$(_siscorrer##:3),,,,,,3
+T,_sisbasc,,_sisbasc[$(_TPFR##:6)]!0,,$(_TPFR##:7)==$(_sisbasc##:3),,,,,,3
+T,_TPGAV,,$(_TPFR##:3)[9;13]!!0,,,,,,,,3
+T,_TPGAVALT,,$(_TPFR##:3)[9;13]!!0,,,,,,,,3
+T,ESPESSURA_GAVETA,,$(_TPFR##:3)[9;13]!!0,,,,,,,,3
+T,TPFIXGAV,,$(_TPFR##:3)[9;13]!!0,,,,,,,,3
+T,_CORR,,$(_TPFR##:3)[9;13]!0,,$(_tpgav:17)[$(_corr:14)]!0,,,,,,9,,$(_TPGAV:13)=1
+
+[OBS]
+-,OBS,,,OBS
+T,ESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(ESPECIAL:0)>0,,,,,,,,4
+S,OBSETIQUETA,,$(ESPECIAL:0)>0,,,,,,,,4
+S,OBS_ESP,,$(ESPECIAL:0)>0,,,,,,,,4
+
+[FR_GERALD]
+-,FR
+T,selfolgafrente,,$(_tpcaixa:3)=501 
+T,_FR,,,,,,,,,,4
+T,_FRINTERNA,,,,,,,,,,4
+T,LADOALMOFADA,,LADOALMOFADA[$(_FR:9)]!0,,,,,,,,4
+T,_palha,,_palha[$(_FR:9)]!0,Cor Palha,,,,,,,4
+T,_CORFR,,_CORFR[$(_FR:9)]!0,,($(_CORFR:11)[$(_FR:19)]!!0 & $(ESFRE)[$(_CORFR:12)]!!0),,,,,,4
+T,_CORFRA,,_CORFRA[$(_FR:9)]!0,,$(_CORFRA:11)[$(_FR:19)]!0,,,,,,4
+T,_CORFRFU,,$(_fr:6)=501,,$(_CORFRFU:11)[$(_FR:19)]!!0 & 6[$(_CORFRFU:12)]!!0
+C,LAMDIF,,$(_CORFR:11)[LAM]!0,,,,,,,,4
+Z,pinatras,,$(_fr:6)=501 & $(_corfrFU:11)[MDF]!0,Pintar traseira BP?,,,,,,,,,1=0
+T,_corcx_EXTRA,,,,$(_CORFR:1)[$(_corcx_EXTRA:1)]!0 ,,,,,,,,1=0
+T,veiofrente,,$(_CORFR:12)=1,,,,,,,,4
+T,_pinturafr,,$(_CORFR:9)=1,Cor da Pintura?,,,,,,,4
+T,_pinturafra,,$(_CORFRA:9)=1,Cor da Pintura Fra?,,,,,,,4
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0,,$(_FR:12)[$(_PERFPUX:14)]!0 ,,,,,,2
+M,LPUX,,LPUX[$(_FR:9)]!0,,,,,,,,2
+M,APUX,,APUX[$(_FR:9)]!0,,,,,,,,2
+T,_PUX,,_PUX[$(_FR:9)]!0,,,,,,,,2
+C,ativadoispux,,$(_pux:0)!999 & $(_tpcaixa:0)[cing;cingsf;hcg] | $(_tpfr:3)=9,Dois puxadores?,,,,,,,2
+M,dist_pux,,$(ativadoispux:0)=1,Distancia pux. da lateral?,,,90,,,,2
+T,_CORFR,_CORFUNVAR,$(_fr:6)=103,Cor fundo porta?,,,,,,,2
+T,_CORPERFPUX,,_PERFPUX[$(_FR:9)]!0,,,,,,,,2
+T,lpuxquad,,LPUXQUAD[$(_FR:9)]!0,Larg pux Quad,,,,,,,2
+T,LPUXCAVA,,LPUXCAVA[$(_FR:9)]!0,,,,,,,,2
+T,_TPCAVA,,_TPCAVA[$(_FR:9)]!0 & $(_TPCAIXA:9)[1;3]!0),,($(_TPCAIXA:9)[1;2]!0 & $(_TPCAVA:3)[0;1;2;11]!0 & $(_FR:6)[0;101;103;305;302;301;303;304;9800;501;502;503]!0) | ($(_TPCAIXA:9)[1;2]!0 & $(_TPCAVA:3)[6]!0 & $(_FR:6)[0;110;111;103;112;9800;501;502;503]!0) |($(_TPCAIXA:9)=3 & $(_TPCAVA:3)[3;4;5;7]!0  & $(_FR:6)[0;110;111;112;9800]!0)|($(_TPCAIXA:9)=3 & $(_TPCAVA:3)[0;3;4;5;7]!0  & $(_FR:6)[0;101;9800;301;302;303;304;305]!0),,,,,,8
+T,_puxcava,,_TPCAVA[$(_FR:9)]!0 & $(_TPCAIXA:9)=2,,,,,,,,8
+C,ApenasFurPux,,$(_PUX:0)!999 & $(_FR:6)=101,Só Fur/Usin Puxador?,,,,,,,4
+T,_CORPROFILO,,_PUXPROFILO[$(_FR:9)]!0 ,,,,,,,,4
+T,CCAVAPROFILO,,$(_tpcava:15)=1 | $(_PUXCAVA:12)=1,Cor cava/pux,,,,,,,4
+T,_pinturacava,,$(CCAVAPROFILO:9)=1,Cor da pintura cava?,,,,,,,4
+T,Lpuxlung,,Lpuxlung[$(_FR:9)]!0,Larg pux Lung,,,,,,,4
+T,_CORPUX,,_CORPUX[$(_FR:9)]!0,Cor puxador,,,,,,,4
+T,_pinturapux,,$(_CORPUX:9)=1,Cor da Pintura?,,,,,,,4
+C,VEIOQUADRATA,,VEIOQUADRATA[$(_FR:9)]!0 | VEIOQUADRATA[$(_FR2:9)]!0  ,Veio Vertical pux.quadrata?,,,,,,,4
+T,lpuxfiletto,,lpuxfiletto[$(_FR:9)]!0 ,,,,,,,,4
+T,_LADOTIMEPROFILO,,_LADOTIMEPROFILO[$(_FR:9)]!0  ,,,,,,,,4
+T,_LADOTIMEPROFILO2,,_LADOTIMEPROFILO[$(_FR:9)]!0,,,,,,,,4
+C,BERGAPARCIAL,,BERGAPARCIAL[$(_FR:9)]!0,,,,,,,,4
+T,_LADOPUXGRAF,,_LADOPUXGRAF[$(_FR:9)]!0 & $(_tpfr:3)!!1,,$(PM)[$(_LADOPUXGRAF:4)]!0,,,,,,4
+T,_PERFPUX,,_PERFPUX[$(_FR:9)]!0,,$(_PERFPUX:14)[$(_FR:12)]!0
+T,LPUXFORMARE,,LPUXFORMARE[$(_FR:9)]!0
+T,_POSPUXMOLISE,,_POSPUXMOLISE[$(_fr:9)]!0,Posição Puxador
+T,PERFBASE,,PERFBASE[$(_FR:9)]!0
+T,bordaversatile,,bordaversatile[$(_FR:9)]!0,,,,,,,,2
+T,_pinturaperfis,,$(_TPCAVA:21)=1  | $(_CORPROFILO:0)[001] | $(PERFBASE:7)=1 | $(_PERFPUX:30)=1,,,,,,,,8
+T,PV_CORPER,,PV_CORPER[$(_FR:9)]!0,,$(PV_CORPER:6)[$(_FR:19)]!0 ,,,,,,3
+T,PV_PAINEL,,PV_PAINEL[$(_FR:9)]!0,,,,,,,,3
+T,PV_Pux,,PV_PUX[$(_FR:9)]!0,,$(pv_pux:21)[$(pv_portas:12)]!0,,,,,,3
+T,PV_TRAVESSAS,,PV_TRAVESSAS[$(_FR:9)]!0,,$(pv_travessas:12)[$(pv_portas:11)]!0,,,,,,3
+M,PV_N_TRAVESSAS,,$(PV_TRAVESSAS:8)!!,Numero Travessas?,,,,1,,,3
+T,_VIDRO,,_VIDRO[$(_FR:9)]!0,,,,,,,,3
+M,alttravfre,,$(_FR:6)[501;502;503]!0 & $A>1550,Alt. Travessa ,,,970,600,1400,,3
+T,AVANCAFRENTE,,$(_tpcaixa:9)=2 | $(_tpcaixa:0)[cincr;cincrsf;cincrsfsr;cinclnew]!0,Frente Avançada?,,,,,,,4
+T,corfriso,,CORFRISO[$(_FR:9)]!0 & $(_corfr:11)[PIN]!1,Cor friso?,,,,,,,6
+M,nfrisos,,NFRISOS[$(_FR:9)]!0,Numero Frisos Porta?,,,1,1,,,6
+M,nfrisosv,,NFRISOSV[$(_FR:9)]!0,Frisos Verticais?,,,1,1,,,6
+M,nfrisosh,,NFRISOSH[$(_FR:9)]!0,Frisos Horizontais?,,,1,1,,,6
+M,iniciofrisov,,NFRISOSV[$(_FR:9)]!0,Inicio frisos vert,,,,,,,6,,1=0
+M,ESPACOFRISOV,,NFRISOSV[$(_FR:9)]!0,espaco friso vert,,,,,,,6,,1=0
+M,iniciofrisoh,,NFRISOSH[$(_FR:9)]!0,Inicio frisos hor,,,,,,,6,,1=0
+M,ESPACOFRISOH,,NFRISOSH[$(_FR:9)]!0,espaco friso hor,,,,,,,6,,1=0
+M,LFRISO,,,Larg Friso?,,,4,4,,,6,,1=0
+M,LFRISOV,,,Larg Friso Vert?,$(LFRISOV:0)[$(_FR:19)]!0 ,,4,4,,,6,,1=0
+M,LFRISOH,,,Larg Friso Hor?,$(LFRISOH:0)[$(_FR:19)]!0,,4,4,,,6,,1=0
+M,cavaesq,,,,,,,,,,8,,1=0
+M,cavadir,,,,,,,,,,8,,1=0
+C,CORTACAVAESQ,,$(_TPCAVA:3)>0 | $(_PUXCAVA:3)!0,Corta Cava esq?,,,,,,,8
+C,CORTACAVADIR,,$(_TPCAVA:3)>0 | $(_PUXCAVA:3)!0,Corta Cava dir?,,,,,,,8
+C,CAVAINTERNAESQ,,$(_tpcava:3)[1;6;11]!0 | $(_puxcava:3)[1;6]!0 | $(_PUXCAVA:12)=1,Cava Interna esq?,,,,,,,8
+C,CAVAINTERNADIR,,$(_tpcava:3)[1;6;11]!0 | $(_puxcava:3)[1;6]!0 | $(_PUXCAVA:12)=1,Cava Interna dir?,,,,,,,8
+T,abrirTudo
+M,POSCENTROISA,,POSCENTROISA[$(_FR:9)]!0 ,Posição altura ISA/CORINA?,,,1017.5
+-,SE,,,,,,,,,,,,1=0
+T,PV_PAINEL,PV_PAINEL1,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL2,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL3,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL4,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL5,,,,,,,,,2
+T,PV_PAINEL,PV_PAINEL6,,,,,,,,,2
+-,RI,,RIPAS[$(_FR:9)]!0
+T,_CORRIPAS,,,Cor Ripas,,,,,,,7
+M,espacoripas,,,Espaço entre ripas?,,,15,,,,7
+T,largripas,,,Largura Ripas?,,,,,,,7
+M,inicioripascost,,,Inicio Ripas,,,,,,,7
+M,adicionaripas,,,Adiciona Ripas,,,,,,,7
+T,esp_ripa,,,Profundidade da ripa,,,,,,,7
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[ESP]
+-,esp,,,ESP
+T,ESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(ESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(ESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(ESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[DOR_CLOSET_LIGHTL]
+V,INICIAFECH
+V,INICIAGVSP
+T,_montado
+T,_tpcaixa,,,,,,,,,,4
+T,ESPARM,,,,,,,,,,1
+T,espessura_gaveta,,,,,,,,,,1
+M,LMODULO,,,Largura Modulo?,,,,275,1275,,4
+T,CLIGHT_FUNDO,,$(_TPCAIXA:3)[32;34]!0,,,,,,,,4
+T,ESPFUNDO,,$(CLIGHT_FUNDO:0)=1,,,,,,,,1
+T,TPFIX,,,,,,,,,,3
+T,_corcx,,,,$(esparm:3)[$(_corcx:12)]!!0,,,,,,8
+T,_corfu,,,,$(espfundo:3)[$(_corfu:12)]!!0,,,,,,8
+T,LATESQ,,$(_TPCAIXA:11)=1
+T,LATDiR,,$(_TPCAIXA:11)=1
+T,_PES,,,,,,,,,,4
+Z,adcrodape,,$(_pes:3)=1,Adiciona Rodape,,,,,,,4
+T,arodp,,$(_pes:3)<1,Alt Rodape,,,,,,,4
+T,AVANCOCLOSETL,,$(_TPCAIXA:3)[32;34]!0,,,,,,,,4
+Z,BASESUPAVANCO,,,Base Superior Avançada?,,,,,,,4
+C,FLAG_ILU,,,Iluminação,,,,,,,2
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+
+[AGG_CLOSET_LIGHTL]
+-,corpo,,,C##
+M,LMODULO,,,Largura Modulo?,,,,275,1275,,4
+T,ladomodulo,,,,,,,,,,4
+T,_CORFU,,,,,,,,,,4
+T,_PES,,,,,,,,,,4,,1=0
+Z,adcrodape,,$(_pes:3)=1,Adiciona Rodape,,,,,,,4
+T,arodp,,$(_pes:3)<1,Alt Rodape,,,,,,,4,,1=0
+

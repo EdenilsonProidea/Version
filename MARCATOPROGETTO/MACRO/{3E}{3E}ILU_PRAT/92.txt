@@ -1,0 +1,154 @@
+#LET TP_PECA=2
+#LET V_OLD=
+#LET d1=0
+#IF $(ESPRAT:0)[18;25]!0
+   #IF $(FLAG_ILU:0)=1
+      #IF $(LIGARLUZ:0)=1
+         419.011,A=20,L=20,SP=$P+20,SL={$L/2}-10,SA=20,AZ=90
+      #ELSE
+         419.010,A=20,L=20,SP=$P+20,SL={$L/2}-10,SA=20,AZ=90
+      #ENDIF
+   #ENDIF
+   #IF $(LUZ)=1
+      #IF $(TP_LED:12)=1
+         #IF $(TP_LOCAL:3)=1
+            #IF $(_tpcaixa:0)[CINCRSF;CINSF]!0
+               463,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P-1*(42)},SA=-1 // escos e afcos zerado passado 30 pra substituir
+               #LET tam_led=$L
+            #ELSE
+               #IF $(NICHO:0)=1
+                  463,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P-23},SA=-1
+                  #LET tam_led=$L
+               #ELSEIF $(AMBIENTE:0)==D
+                  463,cod=000$(tp_led:10),A=2,P=8.5,L={$L-2},sl=1,SP={$P-(8.5+33)},SA=-1
+                  #LET tam_led=$L
+               #ELSEIF $(ubik:0)=1
+                  463,cod=000$(tp_led:10),A=2,P=8.5,L={$L-2},sl=1,SP={$P-41.5},SA=-1
+               #ELSE
+                  463,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P-12},SA=-1
+                  #LET tam_led=$L
+               #ENDIF
+            #ENDIF
+            #LET tam_led=$L
+         #ELSEIF $(TP_LOCAL:3)=2
+            #IF $(ubik:0)=1
+               463,cod=000$(tp_led:10),A=2,P=8.5,L={$L-2},sl=1,SP=($P/2)-4.5,SA=-1
+               #LET tam_led=$L
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P/2-4.5+$(escos:0)+$(afcos:0)},SA=-1
+               #LET tam_led=$L
+            #ENDIF
+            #LET tam_led=$L
+         #ELSE
+            #IF $(canto_r:0)=1
+               463,cod=000$(tp_led:10),A=2,P=8.5,SP=63,L={$L},SA=-1
+               #LET tam_led=$L
+            #ELSEIF $(ubik:0)=1
+               463,cod=000$(tp_led:10),A=2,P=8.5,SP=33,L={$L-2},sl=1,SA=-1
+               #LET tam_led=$L
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=8.5,SP=$(escos:0)+$(afcos:0)+33,L={$L},SA=-1
+               #LET tam_led=$L
+            #ENDIF
+            #LET tam_led=$L
+         #ENDIF
+      #ELSEIF $(TP_LED:12)=2
+         #IF $(NICHO)=1
+            // FAZER ERRO
+            #LETS PECA=NICHO
+            #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+         #ELSEIF $(AMBIENTE)==C
+            #IF $L>200 & $L<650
+               #LET X=1
+            #ELSEIF $L>651 & $L<1300
+               #LET X=2
+            #ENDIF
+         #ELSEIF $(AMBIENTE)==D
+            #IF $L>250 & $L<675
+               #LET X=1
+            #ELSEIF $L>676 & $L<1320
+               #LET X=2
+            #ENDIF
+         #ENDIF
+         #FOR $1:$(X)
+            #IF $(i)=1
+               #IF $(ubik:0)=1
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={($P/2)-32}
+               #ELSEIF $(PRATDOR:0)=1
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={($P/2)-32}
+               #ELSE
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={$P/2+$(escos:0)+$(afcos:0)-28}
+               #ENDIF
+               #LET V_OLD=$(V_OLD)+1
+            #ELSE
+               #IF $(ubik:0)=1
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={($P/2)-29}
+               #ELSEIF $(DIVISOR:0)=1
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={$P/2+$(escos:0)+$(afcos:0)-28}
+               #ELSEIF $(PRATDOR:0)=1
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={($P/2)-29}
+               #ELSE
+                  464,cod=000$(tp_led:10),SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={$P/2+$(escos:0)+$(afcos:0)-28}
+               #ENDIF
+            #ENDIF
+         #ENDFOR
+      #ELSEIF $(TP_LED:12)=3
+         #IF $l<450
+            #LETS IDLOGERROS=$(IDLOGERROS)82;
+         #ENDIF
+         #IF $(AMBIENTE)==D
+            #IF $(ubik:0)=1
+               463,cod=000$(tp_led:10),A=2,P=8.5,L=420,SP=($P-41.5),SL={($L/2)-(420/2)},SA=-1
+            #ELSEIF $(PRATDOR:0)=1
+               463,cod=000$(tp_led:10),A=2,P=8.5,L=420,SP={$P-(8.5+33)},SL={($L/2)-(420/2)},SA=-1
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=8.5,L=420,SP={$P-(37+8.5)},SL={($L/2)-(420/2)},SA=-1
+            #ENDIF
+         #ELSE
+            // FAZER ERRO
+            #LETS PECA=PRATELEIRA
+            #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+         #ENDIF
+      #ELSEIF $(TP_LED:12)=4
+         #LET pcalaleta=16.5
+         #IF $(TP_LOCAL:3)=1
+            #IF $(NICHO:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={$P-26)},SA=-1,GL=0,C1=34,C2=34
+            #ELSEIF $(ubik:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L-2},sl=1,SP={$P-(29+$(pcalaleta:0))},SA=-1,GL=0,C1=34,C2=34
+            #ELSEIF $(PRATDOR:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={$P-(29+$(pcalaleta:0))},SA=-1,GL=0,C1=34,C2=34
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={$P-16},SA=-1,GL=0,C1=34,C2=34
+            #ENDIF
+            #LET tam_led=$L
+         #ELSEIF $(TP_LOCAL:3)=2
+            #IF $(ubik:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L-2},sl=1,SP={($P/2)-8.25},GL=0,C1=34,C2=34,SA=-1
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L},SP={$P/2+$(escos:0)+$(afcos:0)-8.25},GL=0,C1=34,C2=34,SA=-1
+            #ENDIF
+            #LET tam_led=$L
+         #ELSE
+            #IF $(NICHO:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),SP=$(escos:0)+$(afcos:0)+29,L={$L},GL=0,C1=34,C2=34,SA=-1
+            #ELSEIF $(ubik:0)=1 | $(PRATDOR:0)=1
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),SP=29,L={$L-2},sl=1,GL=0,C1=34,C2=34,SA=-1
+            #ELSE
+               463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),SP=59,L={$L},GL=0,C1=34,C2=34,SA=-1
+            #ENDIF
+            #LET tam_led=$L
+         #ENDIF
+      #ENDIF
+      
+      #LETS INFOPECA=$(INFOPECA)|PRAT$(ID)
+      #LETS INFOUSIPRAT$(ID)=_LED_$(TP_LOCAL:2)
+      !COMMENTO4 LED=$(INFOPECA)
+#LETS INFOUSIPRAT$(ID)=0
+   #ENDIF
+#ENDIF
+#IF $(tam_led:0)<200 & $(TP_LED:12)[1;4]
+   #LETS IDLOGERROS=$(IDLOGERROS)77;
+#ENDIF
+// logerros
+// 309

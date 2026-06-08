@@ -1,0 +1,100 @@
+#IF $(VEIOHORIZONTAL:0)=1
+   #IF $(TIPOPAINEL:3)<=2
+      #IF $(ESP_PRAT:0)[24;41;43;45;48]!0 #LET ESP_PRAT=15
+      625,X7=N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0 //<c14604>  // Painel Frontal Home
+   #ELSEIF $(TIPOPAINEL:3)=3
+      #LET APFRISO=70
+      #LET passo=$a/($(nfrisos:0)+1)
+      #FOR $1:$(nfrisos:0),,IDFRISO
+         628,SA=$(PASSO:0)*$(IDFRISO:0)-$(APFRISO:0)/2
+      #ENDFOR
+      #LET ARIPA=($A-$(nfrisos:0)*$(LFRISO:0))/($(nfrisos:0)+1)
+      #LET nfrisos=$(nfrisos:0)+1
+      #LET DELTA=0
+      #FOR $1:$(nfrisos:0),,IDFRISO
+         626,SA=($(ARIPA:0)+$(LFRISO:0))*($(IDFRISO:0)-1),SP=$P-$(esp_prat:0),A=$(ARIPA:0),x7=N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0 //<c14604>
+      #ENDFOR
+   #ELSEIF $(TIPOPAINEL:3)=4
+      // _PAIN_FRISO_H
+      #MSG NÃO É POSSIVEL FAZER PAINEL FRISADO COM VEIO HORIZONTAL
+   #ELSEIF $(TIPOPAINEL:3)=6
+      #MSG NÃO É POSSIVEL FAZER PAINEL FRISADO COM VEIO HORIZONTAL
+   #ELSEIF $(TIPOPAINEL:3)=5
+      _FR_FRISO_VH
+   #ENDIF
+   #IF $(ativaripas:0)=1
+      #IF $(esp_ripa:3)=6
+         #IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+         #LET PASSO=$(espacoripas:0)+$(larrippers:0)
+         #LET NRIPAS=INT($A/$(PASSO))+$(adicionaripas:0)
+         #LET INIRIPAS=($A-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+         #IF $(inicioripascost:0)!0
+            #LET INIRIPAS=$(inicioripascost:0)
+         #ENDIF
+         #FOR $1:$(NRIPAS),,IDRIPA
+            626,SA=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),a=$(larrippers:0)
+         #ENDFOR
+      #ELSE
+         #IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+         #LET PASSO=$(espacoripas:0)+$(largurar:3)
+         #LET NRIPAS=INT($A/$(PASSO))+$(adicionaripas:0)
+         #LET INIRIPAS=($A-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+         #IF $(inicioripascost:0)!0
+            #LET INIRIPAS=$(inicioripascost:0)
+         #ENDIF
+         #FOR $1:$(NRIPAS),,IDRIPA
+            626,SA=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),a=$(largurar:3)
+         #ENDFOR
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(TIPOPAINEL:3)<=2
+      #IF $(ESP_PRAT:0)[24;30;41;43;45;48]!0 #LET ESP_PRAT=15
+      624,X7=N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0  //<c14604> // Painel Frontal Home
+   #ELSEIF $(TIPOPAINEL:3)=3
+      #LET APFRISO=70
+      #LET passo=$L/($(nfrisos:0)+1)
+      #FOR $1:$(nfrisos:0),,IDFRISO
+         629,SL=$(PASSO:0)*$(IDFRISO:0)-$(APFRISO:0)/2
+      #ENDFOR
+      #LET ARIPA=($L-$(nfrisos:0)*$(LFRISO:0))/($(nfrisos:0)+1)
+      #LET nfrisos=$(nfrisos:0)+1
+      #LET DELTA=0
+      #FOR $1:$(nfrisos:0),,IDFRISO
+         627,SL=($(ARIPA:0)+$(LFRISO:0))*($(IDFRISO:0)-1),SP=$P-$(esp_prat:0),L=$(ARIPA:0),x7=N/N/N/N/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0)/0/0/1/1/0/0/0/0/0 //<c14604>
+      #ENDFOR
+   #ELSEIF $(TIPOPAINEL:3)=4
+      _PAIN_FRISO_V
+   #ELSEIF $(TIPOPAINEL:3)=5
+      _FR_FRISO_VH
+   #ELSEIF $(TIPOPAINEL:3)=6
+      _PAIN_FRISO_H
+   #ENDIF
+   #IF $(ativaripas:0)=1
+      #IF $(esp_ripa:3)=6
+         #IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+         #LET PASSO=$(espacoripas:0)+$(larrippers:0)
+         #LET NRIPAS=INT($l/$(PASSO))+$(adicionaripas:0)
+         #LET INIRIPAS=($l-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+         #IF $(inicioripascost:0)!0
+            #LET INIRIPAS=$(inicioripascost:0)
+         #ENDIF
+         #FOR $1:$(NRIPAS),,IDRIPA
+            627,Sl=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),P=$(ESP_RIPA:0),L=$(larrippers:0)
+         #ENDFOR
+      #ELSE
+         #IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+         #LET PASSO=$(espacoripas:0)+$(largurar:3)
+         #LET NRIPAS=INT($l/$(PASSO))+$(adicionaripas:0)
+         #LET INIRIPAS=($l-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+         #IF $(inicioripascost:0)!0
+            #LET INIRIPAS=$(inicioripascost:0)
+         #ENDIF
+         #FOR $1:$(NRIPAS),,IDRIPA
+            // 627,Sl=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),P=$(ESP_RIPA:0),L=$(largurar:3)
+            627,Sl=$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),P=$(largripas:3),L=$(largurar:3) // acesso 09/10
+         #ENDFOR
+      #ENDIF
+   #ENDIF
+#ENDIF
+// #M CALCULA_MASCARA

@@ -1,0 +1,15 @@
+#LOADVAR tp_led tp_led $(x9:0)
+#MSG $(tp_led:3)
+#IF $(x9:3)=1 // METRO LINEAR
+   #IF $(_listino)=1
+      $(X5:0),{$(diml)/1000}
+   #ELSE
+      kit-led,1,codled=$(X5:0),$(diml)
+   #ENDIF
+#ELSE  // UNIDADE
+   #IF $(_listino)=1
+      $(X5:0),1
+   #ELSE
+      kit-spot,1,codspot=$(X5:0)
+   #ENDIF
+#ENDIF

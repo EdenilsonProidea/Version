@@ -1,0 +1,2 @@
+231.001,SL=$(_pes:10),SP=$p-1*($(_pes:6)+$(_pes:11))//+$(posrodape:0) // Rodas
+231.001,SL=($l-1*($(_pes:4)+$(_pes:10))),SP=$p-1*($(_pes:6)+$(_pes:11))//+$(posrodape:0)  // Rodas

@@ -1,0 +1,2 @@
+GAVETA_BLUM_1,move=$(mvm)
+#MSG teste

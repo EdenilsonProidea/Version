@@ -1,0 +1,310 @@
+Sub main(p,dl,da,dp,hTerra)
+   
+   popx=CALCOLA(ex(p.PARAMETRO(8),"/",3))
+   senpux=CALCOLA(ex(p.PARAMETRO(8),"/",4))
+   lpux=109
+   apux=10
+   slpux=35
+   sapux=0
+   raio=3
+   lvid=104
+   avid=15
+   
+   
+   
+   If popx="1;3" Or popx="3;1" Then
+      npux=2
+   Else
+      npux=1
+   End If
+   criapux p,dl,da,dp,hTerra,senpux,popx,lpux,apux,lvid,avid,slpux,sapux,raio
+   par=ex(p.Parametro(4),"/",0)
+   If PAR<>"" Then
+      c3=wColoreE(par)
+      wrtrasforma slpux,da-apux,5
+      ' wrPannelloExtended "LAP",lpux,apux,1,-1,c3,c3,c3,c3,c3,c3,5 '"2"
+      wrchiudi
+   End If
+   
+End Sub
+
+
+Sub criapux(p,dl,da,dp,hTerra,senpux,popx,lpux,apux,lvid,avid,slpux,sapux,raio)
+   per=ex(p.Parametro(4),"/",0)
+   If per="1" Then
+      percfile=UCASE(percorso & "\3ds\puxadores\PUX_PROFILO_1.3ds")
+   Elseif per="2" Then
+      percfile=UCASE(percorso & "\3ds\puxadores\PUX_PROFILO_branco.3ds")
+   Else
+      percfile=UCASE(percorso & "\3ds\puxadores\PUX_PROFILO_3.3ds")
+   End If
+   
+   'PUX_PROFILO_NEW.3ds
+   'pux_profilo.3ds
+   
+   If senpux = 2  Then
+      dsl=sapux
+      dsi=sapux
+      dsl2=sapux
+      dsi2=sapux+4
+      lu=apux+8
+      au=lpux+8
+      lu2=apux
+      au2=lpux
+      dslv=0
+      dsiv=10
+      luv=avid
+      auv=lvid
+   Else
+      dsl=slpux-4
+      dsi=0
+      dsl2=slpux
+      dsi2=0
+      lu=lpux+8
+      au=apux+8
+      lu2=lpux
+      au2=apux
+      dslv=0
+      dsiv=10
+      luv=lvid
+      auv=avid
+   End If
+   
+   If da>1400 Then
+      refcentro=1040
+   Else
+      refcentro=da/2
+   End If
+   
+   Select Case popx
+   Case "1":
+      offa=CALCOLA(refcentro-au/2)
+      offl=CALCOLA(dsl)
+      offa2=CALCOLA(refcentro-au2/2)
+      offl2=CALCOLA(dsl2)
+      offaV=CALCOLA(refcentro-auV/2)
+      offlV=0
+   Case "2":
+      offa=CALCOLA(refcentro-au/2)
+      offl=CALCOLA(dl/2-lu/2)
+      offa2=CALCOLA(refcentro-au2/2)
+      offl2=CALCOLA(dl/2-lu2/2)
+      offaV=CALCOLA(refcentro-auV/2)
+      offlV=CALCOLA(dl/2-luV/2)
+   Case "3":
+      offa=CALCOLA(refcentro-au/2)
+      offl=CALCOLA(dl-lu-dsl)
+      offa2=CALCOLA(refcentro-au2/2)
+      offl2=CALCOLA(dl-lu2-dsl2)
+      offaV=CALCOLA(refcentro-auV/2)
+      offlV=CALCOLA(dl-luV)
+   Case "4":
+      
+      offa=CALCOLA(da-au-dsi)
+      offl=CALCOLA(dsl)
+      offa2=CALCOLA(da-au2-dsi2)
+      offl2=CALCOLA(dsl2)
+      offaV=CALCOLA(da-au/2-auv/2)
+      offlV=0
+   Case "5":
+      offa=CALCOLA(da-au)
+      offl=CALCOLA(dl/2-lu/2)
+      offa2=CALCOLA(da-au2)
+      offl2=CALCOLA(dl/2-lu2/2)
+      offaV=CALCOLA(da-auV)
+      offlV=CALCOLA(dl/2-luV/2)
+   Case "6":
+      offa=CALCOLA(da-au-dsi)
+      offl=CALCOLA(dl-lu-dsl)
+      offa2=CALCOLA(da-au2-dsi2)
+      offl2=CALCOLA(dl-lu2-dsl2)
+      offaV=CALCOLA(da-au/2-auv/2)
+      offlV=CALCOLA(dl-luV)
+   Case "7":
+      offa=CALCOLA(dsi)
+      offl=CALCOLA(dsl)
+      offa2=CALCOLA(dsi2)
+      offl2=CALCOLA(dsl2)
+      offaV=CALCOLA(dsi+au/2-auv/2)
+      offlV=0
+   Case "8":
+      offa=CALCOLA(dsi)
+      offl=CALCOLA(dl/2-lu/2)
+      offa2=CALCOLA(dsi2)
+      offl2=CALCOLA(dl/2-lu2/2)
+      offaV=CALCOLA(dsiV)
+      offlV=CALCOLA(dl/2-luV/2)
+   Case "9":
+      offa=CALCOLA(dsi)
+      offl=CALCOLA(dl-lu-dsl)
+      offa2=CALCOLA(dsi2)
+      offl2=CALCOLA(dl-lu2-dsl2)
+      offaV=CALCOLA(dsi+au/2-auv/2)
+      offlV=CALCOLA(dl-luV)
+   Case Else
+      
+   End Select
+   
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   popx=calcola(popx)
+   'msgbox senpux & " ---- " & popx
+   If senpux=1 Then
+      If popx=4 Or popx=5 Or popx=6 Then
+         wrtrasforma offl2,da-apux,0
+         wrX2 percfile,0,c2,lpux,apux,10,3,"",0,0,0,0
+         wrChiudi
+         ss="#0,0,"
+         ss=ss & "0," & da & ","
+         ss=ss & offl & "," & da & ","
+         ss=ss & offl & "," & offa & ","
+         ss=ss & offl+lu & "," & offa & ","
+         ss=ss & offl+lu & "," & da & ","
+         ss=ss & dl & "," & da & ","
+         ss=ss & dl & "," & 0 & ","
+         ss2="#0,0,"
+         ss2=ss2 & "0," & da & ","
+         ss2=ss2 & offl2 & "," & da & ","
+         ss2=ss2 & offl2 & "," & offa2+raio &  ",T" & raio & "_0_10,"
+         ss2=ss2 & offl2+raio & "," & offa2 & ","
+         ss2=ss2 & offl2+lu2-raio & "," & offa2 &  ",T" & raio & "_0_10,"
+         ss2=ss2 & offl2+lu2 & "," & offa2+raio & ","
+         ss2=ss2 & offl2+lu2 & "," & da & ","
+         ss2=ss2 & dl & "," & da & ","
+         ss2=ss2 & dl & "," & 0 & ","
+         ssV="#0,0,"
+         ssV=ssV & "0," & da & ","
+         ssV=ssV & offlV & "," & da & ","
+         ssV=ssV & offlV & "," & offaV+raio &  ",T" & raio & "_0_10,"
+         ssV=ssV & offlV+raio & "," & offaV & ","
+         ssV=ssV & offlV+luV-raio & "," & offaV &  ",T" & raio & "_0_10,"
+         ssV=ssV & offlV+luV & "," & offaV+raio & ","
+         ssV=ssV & offlV+luV & "," & da & ","
+         ssV=ssV & dl & "," & da & ","
+         ssV=ssV & dl & "," & 0 & ","
+      Elseif popx=7 Or popx=8 Or popx=9 Or popx=1 Or popx=2 Or popx=3 Then
+         wrtrasforma offl2,0,10,0,90
+         wrX2 percfile,0,c2,lpux,apux,14,3,"",0,0,0,0
+         wrChiudi
+         ss="#0,0,"
+         ss=ss & "0," & da & ","
+         ss=ss & dl & "," & da & ","
+         ss=ss & dl & "," & 0 & ","
+         ss=ss & offl+lu & "," & 0 & ","
+         ss=ss & offl+lu & "," & au & ","
+         ss=ss & offl & "," & au & ","
+         ss=ss & offl & "," & 0 & ","
+         ss2="#0,0,"
+         ss2=ss2 & "0," & da & ","
+         ss2=ss2 & dl & "," & da & ","
+         ss2=ss2 & dl & "," & 0 & ","
+         ss2=ss2 & offl2+lu2 & "," & 0 & ","
+         ss2=ss2 & offl2+lu2 & "," & au2-raio &  ",T" & raio & "_0_10,"
+         ss2=ss2 & offl2+lu2-raio & "," & au2 & ","
+         ss2=ss2 & offl2+raio & "," & au2 &  ",T" & raio & "_0_10,"
+         ss2=ss2 & offl2 & "," & au2-raio & ","
+         ss2=ss2 & offl2 & "," & 0 & ","
+         ssV="#0,0,"
+         ssV=ssV & "0," & da & ","
+         ssV=ssV & dl & "," & da & ","
+         ssV=ssV & dl & "," & 0 & ","
+         ssV=ssV & offlV+luV & "," & 0 & ","
+         ssV=ssV & offlV+luV & "," & auV-raio &  ",T" & raio & "_0_10,"
+         ssV=ssV & offlV+luV-raio & "," & auV & ","
+         ssV=ssV & offlV+raio & "," & auV &  ",T" & raio & "_0_10,"
+         ssV=ssV & offlV & "," & auV-raio & ","
+         ssV=ssV & offlV & "," & 0 & ","
+      End If
+   Else
+      If popx=4 Or popx=1 Or popx=7 Or popx=2 Or popx=5 Or popx=8 Then
+         wrtrasforma 10,offA2,0,0,0,-90
+         wrX2 percfile,0,c2,lpux,apux,14,3,"",0,0,0,0
+         wrChiudi
+         ss="#0,0,"
+         ss=ss & 0 & "," & offa & ","
+         ss=ss & lu & "," & offa & ","
+         ss=ss & lu & "," & offa+au & ","
+         ss=ss & 0 & "," & offa+au & ","
+         ss=ss & 0 & "," & da & ","
+         ss=ss & dl & "," & da & ","
+         ss=ss & dl & "," & 0 & ","
+         
+         ss2="#0,0,"
+         ss2=ss2 & 0 & "," & offa2 & ","
+         ss2=ss2 & lu2-raio & "," & offa2 &   ",T" & raio & "_0_10,"
+         ss2=ss2 & lu2 & "," & offa2+raio & ","
+         ss2=ss2 & lu2 & "," & offa2+au2-raio & ",T" & raio & "_0_10,"
+         ss2=ss2 & lu2-raio & "," & offa2+au2 & ","
+         ss2=ss2 & 0 & "," & offa2+au2 & ","
+         ss2=ss2 & 0 & "," & da & ","
+         ss2=ss2 & dl & "," & da & ","
+         ss2=ss2 & dl & "," & 0 & ","
+         
+         ssV="#0,0,"
+         ssV=ssV & 0 & "," & offaV & ","
+         ssV=ssV & luV-raio & "," & offaV &   ",T" & raio & "_0_10,"
+         ssV=ssV & luV & "," & offaV+raio & ","
+         ssV=ssV & luV & "," & offaV+auV-raio & ",T" & raio & "_0_10,"
+         ssV=ssV & luV-raio & "," & offaV+auV & ","
+         ssV=ssV & 0 & "," & offaV+auV & ","
+         ssV=ssV & 0 & "," & da & ","
+         ssV=ssV & dl & "," & da & ","
+         ssV=ssV & dl & "," & 0 & ","
+         
+         
+      Elseif popx=6 Or popx=3 Or popx=9 Then
+         wrtrasforma DL-14,offA2+LPUX,0,0,0,90
+         wrX2 percfile,0,c2,lpux,apux,14,3,"",0,0,0,0
+         wrChiudi
+         ss="#0,0,"
+         ss=ss & "0," & da & ","
+         ss=ss & dl & "," & da & ","
+         ss=ss & dl & "," & offa+au & ","
+         ss=ss & dl-lu & "," & offa+au & ","
+         ss=ss & dl-lu & "," & offa & ","
+         ss=ss & dl & "," & offa & ","
+         ss=ss & dl & "," & 0 & ","
+         
+         ss2="#0,0,"
+         ss2=ss2 & "0," & da & ","
+         ss2=ss2 & dl & "," & da & ","
+         ss2=ss2 & dl & "," & offa2+au2 & ","
+         ss2=ss2 & dl-lu2+raio & "," & offa2+au2 &   ",T" & raio & "_0_10,"
+         ss2=ss2 & dl-lu2 & "," & offa2+au2-raio & ","
+         ss2=ss2 & dl-lu2 & "," & offa2+raio &   ",T" & raio & "_0_10,"
+         ss2=ss2 & dl-lu2+raio & "," & offa2 & ","
+         ss2=ss2 & dl & "," & offa2 & ","
+         ss2=ss2 & dl & "," & 0 & ","
+         
+         ssV="#0,0,"
+         ssV=ssV & "0," & da & ","
+         ssV=ssV & dl & "," & da & ","
+         ssV=ssV & dl & "," & offaV+auV & ","
+         ssV=ssV & dl-luV+raio & "," & offaV+auV &   ",T" & raio & "_0_10,"
+         ssV=ssV & dl-luV & "," & offaV+auV-raio & ","
+         ssV=ssV & dl-luV & "," & offaV+raio &   ",T" & raio & "_0_10,"
+         ssV=ssV & dl-luV+raio & "," & offaV & ","
+         ssV=ssV & dl & "," & offaV & ","
+         ssV=ssV & dl & "," & 0 & ","
+         
+      End If
+   End If
+   
+   'AA=WSAGOMA(MID(ss,2),2).NOME
+   'wrTrasforma 0,0,5
+   ' WESTRUDI 2, AA, dP-8, c1, c1, 0
+   'wrchiudi
+   
+   
+   wrTrasforma 0,0,10
+   
+   wrPannello "LAP",C1, dl,da, DP-8 , 0, 0, 0, 0, 0
+   
+   WRCHIUDI
+   
+   AA2=WSAGOMA(MID(ss2,2),2).NOME
+   WESTRUDI 2, AA2, 10, c1, c1, 0
+   
+   
+   
+End Sub

@@ -1,0 +1,11 @@
+#LOADVAR _int _int $(xp9:0)
+#LET DF=5
+#LET PF={$(XA)+4}
+
+#IF $(_int:22)==KIT-CAB
+   2	FF	 X=$(PL) Y=$(PP) DF=$(DF) PF=$(PF)
+   2	FF	 X={$(PL)+$(DL)} Y=$(PP) DF=$(DF) PF=$(PF)
+   #IF $(DL)>=784
+      2	FF	 X={$(PL)+($(DL)/2)} Y=$(PP) DF=$(DF) PF=$(PF)
+   #ENDIF
+#ELSE

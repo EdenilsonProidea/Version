@@ -1,0 +1,13 @@
+#MSG $(tipo)
+#IF $(xx3:0)=$(xp3:0) & $(xx6:5)=0 //<c27572> // mesmo b
+   //#MSG TESTE
+   #LET f=1
+   #IF $(pa)<80
+      // cava de superior
+      $(f)	MA	X=$(PA) Y=0  NM=$(XP9:1)_INFERIOR$(XX3:1) PARM=PX@$(PA)^PY@0^PCAVA@$(xp7:0)^LAT@1^ACAVA@$(XP9:3)
+   #ELSEIF $(PA)+$(DA)+20>$(XA)
+      $(f)	MA	X=$(PA) Y=0  NM=$(XP9:1)_SUPERIOR$(XX3:1) PARM=PX@$(PA)^PY@0^PCAVA@$(xp7:0)^LAT@2^ACAVA@$(XP9:2)
+   #ELSE
+      $(f)	MA	X=$(PA) Y=0  NM=$(XP9:1)_CENTRAL$(XX3:1) PARM=PX@{$(PA)-$(DA)}^PY@0^PCAVA@$(xp7:0)^LAT@2^ACAVA@$(XP9:2)
+   #ENDIF
+#ENDIF

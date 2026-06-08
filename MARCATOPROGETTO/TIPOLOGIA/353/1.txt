@@ -1,0 +1,13 @@
+{ 353   // ESCORREDOR DE PRATO
+   *AZZERA*            =0
+   DESCRIZIONE         =ESCORREDOR DE PRATO
+   CODICE              =$(_tpbase:5)
+   POSIZIONE           =$(ESLAT:0)+$(RED_INTM:0),0,$(afbase:0)
+   DIMENSIONE          ={$L-$(ESLAT:0)*2-2*$(RED_INTM:0)},50,{$P-1*($(afbase:0)+$(red_basef:0))}
+   COLORI              =180,180
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =objeto3d.xp
+   X4                  =$(eleid:0)
+   X8                  =ACESSORIOS\SCOLAPIATTI.3DS
+   X9                  =$(_tpbase:4)
+}

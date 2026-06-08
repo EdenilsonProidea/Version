@@ -1,0 +1,145 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Importa Referencias
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+F,percfile
+C,inserenovos,,,Insere Itens não cadastrados
+C,infoLayoutImport,,,Info (clicar para ver),,info
+
+[SQL]
+#LETS percfile=$(percfile:0)
+#IF $(inserenovos:0)=1
+   #MSG Atenção: se aconselha de não usar a criação do novos itens, mas de criar antes os itens pelo formafacil e depois importar
+   #INPUT inserenovos,0,se tem certeza que quer criar novos itens dentro do 3cad coloque 1
+#ENDIF
+#LET inserenovos=$(inserenovos:0)
+
+#VB
+   
+   dim vv,vv1
+   dim i
+   dim sql
+   dim db0
+   dim cod,des,um,costo,catmer,descategoria,diml,dima,dimp,ativa,listanaocriados,excluir,peso,teste
+   dim inserenovos
+   inserenovos=calcola(v("inserenovos"))
+   
+   '0 - codigo
+   '1 - descrição
+   '2 - unidade de medida
+   '3 - custo
+   '4 - família de produto
+   '5 - desfamília de produto
+   '6 - largura
+   '7 - altura
+   '8 - profundidade
+   '9 - flag Ativo Sim/Não (ou 0 e 1)
+   '10 - flag excluir
+   '11 - peso
+   
+   
+   set db0=Ambiente.GetObject("DB")
+   listanaocriados=""
+   dim rc
+   vv=split(leggifiletesto(v("percfile")),vbcrlf)
+   for i=0 to ubound(vv)
+      
+      Ambiente.xmessaggio "Importando " & vv(i)
+      vv1=split(replace(vv(i),"'",""),";")
+      
+      redim preserve vv1(11)
+      cod=vv1(0)
+      des=replace(replace(vv1(1),","," "),"'"," ")
+      um=vv1(2)
+      costo=replace(vv1(3),",",".")
+      catmer=vv1(4)
+      descategoria=vv1(5)
+      diml=calcola(replace(vv1(6),",","."))
+      dima=calcola(replace(vv1(7),",","."))
+      dimp=calcola(replace(vv1(8),",","."))
+      ativa=calcola(replace(vv1(9),",","."))
+      excluir=calcola(replace(vv1(10),",","."))
+      peso=replace(vv1(11),",",".")
+      if calcola(peso)=0 then peso=0
+      
+      if len(cod)>0 and ativa>0 then
+         set rc=db0.openview("select cod from articoli where cod='" & cod & "'")
+         teste=rc.eof
+         if rc.eof=false then
+            if excluir=1 then
+               sql="delete from articoli   where cod='" & cod & "'"
+            else
+               sql="update articoli  set des='" & des & "',um='" & um  & "',costo=" & costo  & ",catmer='" & catmer & "',diml=" & diml & ",dima=" & dima & ",dimp=" & dimp & ",peson=" & peso & " where cod='" & cod & "'"
+            end if
+            
+            db0.execute sql
+         else
+            if inserenovos=1 then
+               sql="insert into articoli (cod,des,um,costo,catmer,diml,dima,dimp,flmag,peson) "
+               sql=sql & "select '" & cod & "','" & des & "','" & um & "'," & costo & ",'" & catmer & "'," & diml & "," & dima & "," & dimp & ",1," & peso
+               
+               db0.execute sql & sql
+            else
+               listanaocriados=listanaocriados & cod & vbcrlf
+            end if
+         end if
+         
+         set rc=nothing
+      end if
+      'msgbox sql
+   next
+   
+   
+   if err<>0 then
+      msgbox err.description
+   else
+      
+      if listanaocriados<>"" then
+         msgbox "ok" & vbcrlf & vbcrlf & "Lista itens não criados:" & vbcrlf & listanaocriados
+      else
+         msgbox "ok"
+      end if
+   end if
+#ENDVB
+
+[COMANDI_INFO]
+#LETS msg= Arquivo .csv separador punto e virgula | \
+0 - codigo | \
+  1 - descrição | \
+  2 - unidade de medida | \
+  3 - custo | \
+  4 - família de produto (codigo) | \
+  5 - desfamília de produto | \
+  6 - largura | \
+  7 - altura | \
+  8 - profundidade | \
+  9 - flag Ativo Sim/Não (ou 0 e 1) | \
+  10 - flag excluir (ou 0 e 1) | \
+  11 - peso | \
+  é possivel exportar os itens e importar com essa função. | \
+  Quando importar com essa procedura o sistema entende esses itens como comprados | \
+  e coloca o flag comprado. Isso significa que esses itens vao nas listas de produção | \
+  e não tem estrutura de produto. | \
+  O sistema vai exportar os itens que tem flag comprado no cadastro de itens
+
+#MSG $[TOCRLF;|;$(msg)]

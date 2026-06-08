@@ -1,0 +1,37 @@
+// **************** FRENTE GAVETA INTERNA ************************
+#LET deslocapgaveta=0
+
+#IF $(_tpgav:3)!5 & $(_tpgav:3)!6 & $(_tpgav:10)!! // Adicionado validação em _tpgav:10 - feito em visita
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ELSE // Adicionado em visista
+   #LOADVAR _CORGV _CORCX $(_corcx:1)
+#ENDIF
+
+#IF $(_tpgavdet:19)>0
+   #IF $(_TPGAVDET:17)!!
+      // FRENTE BLUM
+      437
+   #ELSE
+      // FRENTE MADEIRA
+      #LET deslocapgaveta=$(_tpgavdet:30)
+      #LET tmp=$(_corr:8)-$(_tpgavdet:21)
+      #IF $(_tpgavdet:37)=1
+         217,sp=$p-$(_tpgavdet:30),sa=$(_tpgavdet:20)-3,sl=-$(tmp),l=$l+$(tmp)*2,p=$(_tpgavdet:30),a=$(_tpgavdet:19)
+         435  //Suporte frontal para gaveta interna ESQUERDO
+         435,SL=$L-$(_tpgavdet:21)-2.5,X8=GAVETA\ZIF3000D.3DS  // Suporte frontal para gaveta interna esquerdo
+      #ELSE
+         #IF $(_tpgavalt:7)=1 & $(_tpgavalt:11)=1
+            217,sa=$(_tpgavdet:20),sl=-$(tmp),l=$l+$(tmp)*2,p=$(_tpgavdet:30),a=$(_tpgavdet:19),sp=$p-$(_tpgavdet:30)// ISSO TEM QUE VER SE TEM FRENTE DE MADEIRA DENTRO DAS LATERIAS TEM QUE DESENVOLVER
+         #ELSE
+          //  217,sa=$(_tpgavdet:20),sl=-$(tmp),l=$l+$(tmp)*2,p=$(_tpgavdet:30),a=$(_tpgavdet:19),sp=$p // -$(_tpgavdet:30) ISSO TEM QUE VER SE TEM FRENTE DE MADEIRA DENTRO DAS LATERIAS TEM QUE DESENVOLVER
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF
+// **************** FIM FRENTE GAVETA INTERNA ************************
+#IF $(_tpgavalt:4)[_IA;_IB;_IAM;_IBM] & $(_tpgavdet:19)>0 & $(_tpgavdet:37)=0 // Corrige a posição das gavetas internas que utilizam frente interna de madeira<c22592>
+   GAVETA_BLUM_3 // ,sp=-$(deslocapgaveta)
+#ELSE
+   GAVETA_BLUM_3,sp=-$(deslocapgaveta)
+#ENDIF
+#LET agav=$(_TPGAVdet:3)

@@ -1,0 +1,20 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wcoloree(p.colore1)
+   c2=wcoloree(8)
+   wrPannello "LAP",c1,9,da,DP,0,0,0,0,0
+   wrtrasforma dl-9,0,0
+   wrPannello "LAP",c1,9,da,DP,0,0,0,0,0
+   wrchiudi
+   If dl>=835 Then
+      wrtrasforma dl/2-4.5,0,0
+      wrPannello "LAP",c1,9,da,DP,0,0,0,0,0
+      wrchiudi
+   End If
+   wrTrasforma dl/2,14,14,90,0,0
+   wrCilindro 12,12, dl-4, 40, 0,c1
+   wrChiudi
+   wrTrasforma dl/2,24,14,90,0,0
+   wrCilindro 3,3, dl-4, 10, 0,c2
+   wrChiudi
+End sub

@@ -1,0 +1,1 @@
+#IF $(xx3:0)=$(xp3:0)// & $(X4:0)=0#LET travessa=1#LET NAOFURAR=0#IF $(PL)<0 & $(XX7:10)!1 #LET NAOFURAR=1#IF $(PL)>0 & $(XX7:11)!1 #LET NAOFURAR=1#IF $(NAOFURAR)=0#M JOB_BASE_LAT#ENDIF#ENDIF

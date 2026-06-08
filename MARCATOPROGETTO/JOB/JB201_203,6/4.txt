@@ -1,0 +1,16 @@
+#IF $(xx3:0)=$(xp3:0) & $(XP8:3)=0 // mesmo box
+   #LET NAOFURAR=0
+   #IF $(PA)<10 & $(XX7:10)!1 #LET NAOFURAR=1
+   #IF $(PA)>$(XA)-$(DA)-10 & $(XX7:11)!1 #LET NAOFURAR=1
+   #IF $(XP3:1)[ICL;SCL;MALL;INTL;SICL]!0) & $(TIPOLOGIAP)=202 #LET NAOFURAR=1  // <C29108>
+   #IF $(xx10:0)=1 #LET NAOFURAR=1
+   #IF $(SX2)>0
+      #LET DP=$(SX2) // REGRA PARA RECORTE DE COLUNA
+      #LET PP=$(PP)*-1
+   #ENDIF
+ //  #M JOB_LAT_BASE
+   #IF $(XP3:1)[ICL;SCL;MALL;INTL;SICL]!0 & $(TIPOLOGIAP)=202
+      #LET NAOFURAR=0
+     // #M JOB_LATD_BASE_L
+   #ENDIF
+#ENDIF

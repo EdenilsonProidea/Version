@@ -1,0 +1,13 @@
+//#IF $(_tpbasarm:3)=3 #LET posrodape=$(_TPFECH:4) //comentado para ficar no mesmo posicionamento do catálogo antigo
+#IF $(ladopes:3)=1
+   231,SL=$(_pes:10),SP=$(_pes:12)  // Rodas
+   231.001,SL=$(_pes:10),SP=$p-1*($(_pes:6)+$(_pes:11))  // Rodas
+#ELSEIF $(ladopes:3)=2
+   231,SL=($l-1*($(_pes:4)+$(_pes:10))),SP=$(_pes:12)  // Rodas
+   231.001,SL=($l-1*($(_pes:4)+$(_pes:10))),SP=$p-1*($(_pes:6)+$(_pes:11))  // Rodas
+#ELSE
+   231,SL=$(_pes:10),SP=$(_pes:12)  // Rodas
+   231.001,SL=$(_pes:10),SP=$p-1*($(_pes:6)+$(_pes:11))//+$(posrodape:0) // Rodas
+  // 231,SL=($l-1*($(_pes:4)+$(_pes:10))),SP=$(_pes:12)  // Rodas
+  // 231.001,SL=($l-1*($(_pes:4)+$(_pes:10))),SP=$p-1*($(_pes:6)+$(_pes:11))//+$(posrodape:0)  // Rodas
+#ENDIF

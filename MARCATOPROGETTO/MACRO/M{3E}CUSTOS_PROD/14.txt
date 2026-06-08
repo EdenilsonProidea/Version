@@ -1,0 +1,76 @@
+// ***************** CORTE
+#LETV INICIACOD=CUSTOCORTE
+#IF $(tip)[627;637;626;646]!0
+   $(INICIACOD:2),0.5  // ripa cobra metade
+#ELSE
+   $(INICIACOD:2),1 // corte
+#ENDIF
+// ***************** FIM CORTE
+// ***************** CUSTO ADICIONAL PORTAS
+#IF $(tip)[215;216;217;218]!0
+   #IF $(_fr:21)!!
+      #LETS FABPORTA=$(_fr:22)
+      #LETS QTD_FABPORTA=1
+   #ENDIF
+   #IF $(_fr:6)[301;302;303;304;305]!0 // Adicionado o custo do m2 dos frisos a pedido do cliente no plano conex„o <c29856>
+      #LETS QTDM2FRISO=
+      #IF $(_fr:6)[302]!0 // Friso VERTICAL
+#MSG aqui
+         #LETS QTDM2FRISO={(($(DIMA)*4)*$(X5:0))/1000000} // M2 dos frisos
+      #ELSEIF $(_fr:6)[301]!0 // Friso HORIZONTAL
+         #LETS QTDM2FRISO={(($(DIML)*4)*$(X5:1))/1000000} // M2 dos frisos
+      #ELSEIF $(_fr:6)[303]!0 // Friso VERTICAL e HORIZONTAL
+         #LETS QTDM2FRISO={((($(DIMA)*4)*$(X5:0))+(($(DIML)*4)*$(X5:1)))/1000000} // M2 dos frisos
+      #ENDIF
+      16574,$(QTDM2FRISO) // Custo de usinagem dos frisos
+   #ENDIF
+#ENDIF
+// ***************** FIM CUSTO ADICIONAL PORTAS
+// ***************** FURA«√O
+#IF $(reaproveitamento)=0
+   #IF $(tip)[627;637;626;646]!0   // ripa cobra metade
+      8386,0.5 // furaÁao
+   #ELSE
+      8386,1 // furaÁao
+   #ENDIF
+#ENDIF
+// ***************** FIM FURA«√O
+// ***************** FITA DE BORDA
+#IF $(DIMP)>=9 & $(QTB)>0
+   // 556,$(QTB)*0.013 // <c28314>
+   556,$(QTB)*0.00395
+   8383,$(QTB)
+#ENDIF
+// #IF $(CODBORDAFRENTE)!!
+#IF $(DIMP)>=15 & $(QTBFRENTE)>0
+   #IF $(_LISTINO)=1
+      // $(CODBORDAFRENTE),($(DIML)+30)/1000
+      556,$(QTB)*0.00395
+   #ENDIF
+#ENDIF
+// ***************** FIM FITA DE BORDA
+// ***************** FITA DE BORDA 2
+#IF $(DIMP)>=9 & $(QTB2)>0
+   556,$(QTB)*0.00395
+   8383,$(QTB2)
+#ENDIF
+// ***************** FIM FITA DE BORDA 2
+// ***************** TINTA
+#IF $(TINTA)!!
+   //  $(TINTA),$(SUPTINTA),TIPO1=$(TIPO1PRECO);TIPO2=TINTA;VARIANTE=$(_CORCX:8)
+   //  $(prime),$(SUPPRIME),TIPO1=$(TIPO1PRECO);TIPO2=PRIME;VARIANTE=$(_CORCX:8)
+   //  #IF $(OutraCor)!!
+   //     $(OutraCor),$(supprime),tipo1=$(tipo1preco);tipo2=prime;variante=$(_corcx:8)
+   //  #ENDIF
+   #IF $(LAMINADO)!!
+      13383,$(SUPTINTA)
+   #ELSE
+      8384,$(SUPTINTA)
+   #ENDIF
+#ENDIF
+// ***************** FIM TINTA
+// *************** CUSTO PRODU«√” PORTA
+//#IF $(_fr:21)!! //gest„o comentada <c24495>
+//   $(_fr:21),1
+//#ENDIF
+// *************** FIM CUSTO PRODU«√” PORTA

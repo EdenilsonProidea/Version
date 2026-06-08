@@ -1,0 +1,135 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   csemborda=wColore(77)
+   FITABRANCA=wColore(53)
+   SAGLAT=""
+   
+   ' ***************************** LADOS BORDA ***********************************
+   
+   csemborda=wColore(77)
+   besq=ucase(ex(p.parametro(7),"/",5))
+   bdir=ucase(ex(p.parametro(7),"/",6))
+   bfre=ucase(ex(p.parametro(7),"/",7))
+   btra=ucase(ex(p.parametro(7),"/",8))
+   besq2=ucase(ex(p.parametro(7),"/",13))
+   bdir2=ucase(ex(p.parametro(7),"/",14))
+   bfre2=ucase(ex(p.parametro(7),"/",15))
+   btra2=ucase(ex(p.parametro(7),"/",16))
+   fitasovisivel=(ex(p.parametro(7),"/",18))
+   
+   facefrente=c1
+   faceatras=c1
+   
+   If faceaplica<>3 Then
+      If faceaplica=1 Then
+         '  faceatras=corbasepainel
+      Elseif faceaplica=2 Then
+         ' facefrente=corbasepainel
+      End If
+   End If
+   
+   bordaesq=c1
+   bordadir=c1
+   bordafre=c1
+   bordatra=c1
+   
+   If besq="N" Or besq="" Or besq="0" Then bordaesq=csemborda
+   If bdir="N" Or bdir="" Or bdir="0" Then bordadir=csemborda
+   If bfre="N" Or bfre="" Or bfre="0" Then bordafre=csemborda
+   If btra="N" Or btra="" Or btra="0" Then bordatra=csemborda
+   
+   If fitasovisivel <> "1" Then
+      If besq2="1" Then bordaesq=FITABRANCA
+      If bdir2="1" Then bordadir=FITABRANCA
+      If bfre2="1" Then bordafre=FITABRANCA
+      If btra2="1" Then bordatra=FITABRANCA
+   End If
+   ' ***************************** FIM LADOS BORDA ***********************************
+   
+   If LEFT(P.TIPO,3)="201" Or LEFT(P.TIPO,3)="202"  Then
+      SAGLAT=ex(p.parametro(6),"/",1)
+   End If
+   
+   If SAGLAT<>"" Then
+      c1=wColoreE(p.colore1,-90)
+      c2=wColoreE(p.colore2)
+      SS="#" & REPLACE(SAGLAT,"*",",")
+      If LEFT(SS,2)="#P" Then
+         AA=WSAGOMA(MID(ss,3),2).NOME
+         WESTRUDI 2, AA, DP, c1, bordatra, 0
+         'wrChiudi
+         
+         SS=Replace(SS,dl,dl-1)
+         SS=Replace(SS,da,da+2)
+         
+         AA=WSAGOMA(MID(ss,3),2).NOME
+         
+         wrtrasforma 0.5,-1,0
+         WESTRUDI 2, AA, DP, bordatra, bordatra, 0
+         wrChiudi
+      Else
+         AA=WSAGOMA(MID(ss,3),3).NOME
+         WESTRUDI 3, AA, DL, c1, c1, 0
+         SS=Replace(SS,DL,DL-2)
+         SS=Replace(SS,da,da+2)
+         AA=WSAGOMA(MID(ss,3),3).NOME
+         wrtrasforma DL-0.5,-1,-0.5,-90
+         WESTRUDI 2, AA, DL-1, bordatra, bordatra, 0
+         wrChiudi
+      End If
+   Else
+      msgbox facefrente' + "_" + faceatras
+      wrPannelloExtended  "APL",dl,da,dp-1, 0,facefrente,faceatras,bordafre,bordatra,bordaDIR,bordaESQ,"1"
+      wrPannello2 dl,da,dp, nada,nada,nada,nada,nada,nada,-1
+      
+   End If
+   
+   
+   wrtrasforma 0,0,dp-0.5
+   cava=calcola(ex(p.parametro(7),"/",10))
+   
+   If cava=1 Then
+      sup=ex(p.parametro(6),"/",5)
+      If sup="" Then sup=0
+      passocava=ex(p.parametro(6),"/",2)
+      acava=calcola(ex(p.parametro(6),"/",3))
+      acavaC=calcola(ex(p.parametro(6),"/",4))
+      vv=split(passocava,";")
+      iniciaprox=0
+      For i=0 To ubound(vv)
+         If calcola(vv(i))>0 Then
+            If sup=1 Then
+               aborda=calcola(vv(i))-iniciaprox
+               wrTrasforma 0,acava,0
+               wrPannello  "LAP",C2, DL,aborda, 1 , 0, 0, 0, 0, 0
+               wrchiudi
+            Elseif (calcola(vv(i))+acava+30)>DA Then
+               aborda=calcola(vv(i))-iniciaprox
+               wrTrasforma 0,iniciaprox,0
+               wrPannello  "LAP",C2, DL,aborda, 1 , 0, 0, 0, 0, 0
+               wrchiudi
+               iniciaprox=iniciaprox+aborda+acava
+            Else
+               aborda=calcola(vv(i))-iniciaprox
+               wrTrasforma 0,iniciaprox,0
+               wrPannello  "LAP",C2, DL,aborda, 1 , 0, 0, 0, 0, 0
+               wrchiudi
+               iniciaprox=iniciaprox+aborda+acavaC
+            End If
+         End If
+      Next
+   Else
+      If SAGLAT<>"" Then
+         SS="#" & REPLACE(SAGLAT,"*",",")
+         AA=WSAGOMA(MID(ss,3),2).NOME
+         WESTRUDI 2, AA, 1, c2, c2, 0
+      Else
+         wrPannello "LAP",C2, DL,DA, 1 , 0, 0, 0, 0, 0
+      End If
+   End If
+   wrChiudi
+   
+   
+End Sub

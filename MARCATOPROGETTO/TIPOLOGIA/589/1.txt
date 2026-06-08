@@ -1,0 +1,15 @@
+{ 589   // BASE UBIK
+   *AZZERA*            =0
+   DESCRIZIONE         =BASE UBIK
+   CODICE              =/_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(arodubik),$(PUBIK)
+   DIMENSIONE          =$L,$(ESRODAPEU),$(_pbase_ubik:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   X4                  =$(eleid)
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/1/$(canal)/$(cava)/0/0/0/0/0/0
+   X8                  =$(_pbase_ubik:0)/$(ESbaseU:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   X10                 =$(FRONTAL1:0)/$(FRONTAL2:0)/$(lvaoubil)
+   ALIAS               =#589
+}

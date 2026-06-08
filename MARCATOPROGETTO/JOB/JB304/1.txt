@@ -1,0 +1,1 @@
+301,1,Lateral Esquerda  (dormitorios)302,0,Lateral Direita  (dormitorios)521,1,Lateral Esquerda  (closet light)522,0,Lateral Direita  closet light526,6,LATERAL INTERNA CLOSET LIGHT

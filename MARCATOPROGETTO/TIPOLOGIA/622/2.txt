@@ -1,0 +1,12 @@
+{ 622   // Base painel Home
+   *AZZERA*            =0
+   DESCRIZIONE         =Base painel Home
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(esp_prat:0)+$(recuolateral:0),$(recuolateral:0),0
+   DIMENSIONE          =$l-2*($(esp_prat:0)+$(recuolateral:0)),$(esp_prat:0),$p-$(esp_prat:0)
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   X7                  =N/N/N/N/1/1/0/00/0/0/1/1/0/0/0/1/0
+   X9                  =/$(_COREX:1)
+   ALIAS               =#622
+}

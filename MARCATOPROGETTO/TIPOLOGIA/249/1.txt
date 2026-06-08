@@ -1,0 +1,14 @@
+{ 249   // Cava Vertical
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava Vertical
+   CODICE              =$(_TPCAVA:4) /;_MONTADO=$(_MONTADO:0)
+   LATO                ={6*$(mostracavav:0)}
+   POSIZIONE           =0,0,$(AFPCAVA)
+   DIMENSIONE          =$(lcava),$A,$(PCAVA:0)
+   COLORI              =$(_tpcava:6),$(_tpcava:6)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X8                  =$(_TPCAVA:1)/$(_TPCAVA:4)/$(_TPCAVA:7)
+   X9                  =/$(ccavaprofilo:1)
+   ALIAS               =#249
+}

@@ -1,0 +1,13 @@
+{ 681   // BARRA VERTICAL
+   *AZZERA*            =0
+   DESCRIZIONE         =BARRA VERTICAL
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(TIPOPERFVER:3),$A,$(TIPOPERFVER:4)
+   COLORI              =$(CORESTR:4),$(CORESTR:4)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =TUBOVERTICAL.XP
+   X6                  =$(SAGE)
+   X9                  =$(TIPOPERFVER:5)
+}

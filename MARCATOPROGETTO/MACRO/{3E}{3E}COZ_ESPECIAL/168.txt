@@ -1,0 +1,198 @@
+// ******** INFO FORMASOFT ***** PRECISA MUITO CONHECIMENTO E MUITO CUIDADO PARA MEXER NESSA MACRO ******************************
+//tpg =1 : laterale passante
+//tpg =2 : giunzione 45
+//tpg =3 : base passante
+//tpg =4 : rag insert
+//tpg =5 : rag insert invert.
+#LET afcos=$(_tpfundo:5)
+#LET escos=$(_tpfundo:4)
+#LET rag_cos=$(_tpfundo:6)
+#LETS TRABALHOAT=$(_tpfundo:8)
+#LET canal=$(_tpfundo:9)
+#IF $(CaixaPers:0)>0  #LET TPG1=$(CaixaPers:0) #LET TPG1=1  //GIUNZIONE ESQ INF
+#IF $(CaixaPers:1)>0  #LET TPG2=$(CaixaPers:1) #LET TPG2=1  //GIUNZIONE ESQ SUP
+#IF $(CaixaPers:2)>0  #LET TPG3=$(CaixaPers:2) #LET TPG3=1  //GIUNZIONE DIR SUP
+#IF $(CaixaPers:3)>0  #LET TPG4=$(CaixaPers:3) #LET TPG4=1  //GIUNZIONE DIR INF
+#IF $(CaixaPers:4)>0  #LET TPS=$(CaixaPers:4) #LET TPS=1   //TIPO SUPERIOR (1=BASE 2=TRAVESSA HOR 3=TRAVESSA VERTICAL)
+#LET exclbasei=$(CaixaPers:5)  //excluir base inferior
+#LET excllate=$(CaixaPers:6)  //excluir lateral esquerda
+#LET exclbases=$(CaixaPers:7)  //excluir base superior
+#LET excllatd=$(CaixaPers:8)   //excluir lateral direita
+#IF $(_FR:6)[601]!0 & $(CAVA)=0 // FRENTE CAVA
+   #LET exclbases=1
+#ENDIF
+CALCOLA_LBASEIES
+CALCOLA_LBASESES
+CALCOLA_ALATEEES
+CALCOLA_ALATEDES
+#LETS CC1=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90
+#LETS CC2=$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)|90
+#LETS CC1E=$(_corle:3)|$(.percorso)\foto\madeira\$(_corle:4)|$(_corle:5)
+#LETS CC1D=$(_corld:3)|$(.percorso)\foto\madeira\$(_corld:4)|$(_corld:5)
+#LETS CC1B=$(_corba:3)|$(.percorso)\foto\madeira\$(_corba:4)|$(_corba:5)|90
+#LET redsupcaixa=0
+#LET redinfcaixa=0
+#IF $(TPG1)=1 & $(TPG2)=1 & $(TPG3)=1 & $(TPG4)=1
+   #IF $(_PUXCAVA:3)=0 // <C22064> GESTÃO DE CAVA PARA MÓDULOS SUPERIORES
+      #IF $(excllate)=0
+         201  //Lateral Esquerda
+      #ENDIF
+      #IF $(excllatd)=0
+         202  // Lateral Direita
+      #ENDIF
+      #IF $(exclbasei)=0
+         #IF $(cortabase:0)>0
+            203,SL=$(ESLAT:0),L={$(cortabase:0)-$(ESLAT:0)}  // Base inferior
+            203,SL=$(cortabase:0),L=$l-1*($(cortabase:0)+$(eslat:0))  // Base inferior
+         #ELSE
+            #IF $(_TPCAIXA:0)==CSUDC // Módulos superiores
+               BASE_SUPERIOR,P=$(PLAT),A=25 // adicionado em visita
+            #ELSE
+               #IF $(SUP)=1 | $(COL) & $L>800
+                  203,A=25  // Base inferior
+                  #LET ABASE1=25
+               #ELSE
+                  #IF $(RECORTE_BASINF:0)=1
+                     BAS_INF_REC // BASE COM RECORTE <C30738>
+                  #ELSE
+                     203  // Base inferior
+                  #ENDIF
+                  #LET ABASE1=$(ABASE:0)
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(cava)=1
+      #MSG configuraçao nao possivel com uso de cava
+   #ELSE
+      #IF $(excllate)=0
+         CALCOLA_SAGLATEES,ALE=$(ALEN)
+         201,SA=$(SALE),A=$(ALE),C1=$(CC1E),C2=$(CC2),X6=$(SAG),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg1)/$(tpg2)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)  //Lateral Esquerda 45
+      #ENDIF
+      #IF $(excllatd)=0
+         CALCOLA_SAGLATDES,ALD=$(ALDN)
+         202,SA=$(SALD),A=$(ALD),C1=$(CC1D),C2=$(CC2),X6=$(SAG),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg4)/$(tpg3)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)  //Lateral Direita  45
+      #ENDIF
+      #IF $(exclbasei)=0
+         CALCOLA_SAGBASIES,LBI=$(LBIN)
+         #IF $(cortabase:0)>0
+            203,SL=$(slbi),L={$(cortabase:0)-$(slbi)},X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg1)/$(tpg4)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)/$(adcbasealu:0)  //Base  45
+            203,SL=$(cortabase:0),L=$(lbi)-1*($(cortabase:0))+$(slbi),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg1)/$(tpg4)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)/$(adcbasealu:0)  //Base  45
+         #ELSE
+            203,SL=$(slbi),L=$(lbi),C1=$(CC1b),x6=$(sag),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg1)/$(tpg4)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)/$(adcbasealu:0)  //Base  45
+         #ENDIF
+         #LET redinfcaixa=$(ABASE:0)
+      #ELSE
+         #LET redinfcaixa=0
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(tps)=2
+   #IF $(exclbases)=0
+      CALCOLA_SAGBASSES,LBS=$(LBSN)-2*$(RED_INTM:0),ABASE=$(ESTRA:0)
+      #IF $(cava)=1
+         // 220,SL=$(slbS),SA=$a-$(ABASE:0),SP=$p-$(ATRA:0)-$(pcava:0),L=$(lbS),C1=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/1/0/$(cava)/$(tpg2)/$(tpg3)  //Traversa orizontal  (cozinha)
+      #ELSE
+         #IF $(cortabase:0)>0
+            220.003,SL=$(slbS),SA=$a-$(ESTRA:0),SP=$p-$(ATRA:0),L={$(cortabase:0)-$(slbS)},C1=$(CC1),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+            220.003,SL=$(cortabase:0),SA=$a-$(ESTRA:0),SP=$p-$(ATRA:0),L=$(lbS)-1*($(cortabase:0))+$(slbs),C1=$(CC1),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+         #ELSE
+            //<C22074>
+            #IF $(_FR:6)[110;111;112]!1
+               220.003,SL=$(slbS)+$(RED_INTM:0),SA=$a-$(ESTRA:0),SP=$p-$(ATRA:0),L=$(lbS)-2*$(RED_INTM:0),C1=$(CC1),x6=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+            #ENDIF
+         #ENDIF
+      #ENDIF
+      #LET redsupcaixa=$(ESTRA:0)
+   #ELSE
+      #LET redsupcaixa=0
+   #ENDIF
+#ELSEIF $(tps)=3
+   #IF $(exclbases)=0
+      #IF $(cava)=1
+         204,sp=$p-$(ESTRA:0)-$(pcava:0),a=$(atra:0),sa=$a-$(atra:0)
+      #ELSE
+         204.003,sp=$p-$(ESTRA:0),a=$(atra:0),sa=$a-$(atra:0)
+      #ENDIF
+      #LET redsupcaixa=$(atra)
+   #ELSE
+      #LET redsupcaixa=0
+   #ENDIF
+#ELSE
+   #IF $(_PUXCAVA:3)=0
+      #IF $(exclbases)=0
+         CALCOLA_SAGBASSES,LBS=$(LBSN)-2*$(RED_INTM:0)
+         #IF $(cava)=1
+            #IF $(cortabase:0)>0
+               203.001,SL=$(slbS),L={$(cortabase:0)-$(slbS)},P={$P-1*($(AFBASE:0)+$(red_basef)+$(pcava:0))},X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)/0  //Traversa orizontal  (cozinha)
+               203.001,SL=$(cortabase:0),L=$(lbS)-1*($(cortabase:0))+$(slbs),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)/0,P={$P-1*($(AFBASE:0)+$(red_basef)+$(pcava:0))}  //Traversa orizontal  (cozinha)
+            #ELSE
+               203.001,SL=$(slbS),L=$(lbS)-2*$(RED_INTM:0),P={$P-1*($(AFBASE:0)+$(red_basef)+$(pcava:0))},C1=$(CC1b),X6=$(sag),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg2)/$(tpg3)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)/0  //Base  45 superior
+            #ENDIF
+         #ELSE
+            #IF $(cortabase:0)>0
+               203.001,SL=$(slbS),L={$(cortabase:0)-$(slbS)},X7=$(LAV1)/$(LAV2)/N/N/0/0/0/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/0/0/$(FITARSOVISTA:2)/0  //Traversa orizontal  (cozinha)
+               203.001,SL=$(cortabase:0),L=$(lbS)-1*($(cortabase:0))+$(slbs),X7=$(LAV1)/$(LAV2)/N/N/0/0/0/0/0/$(cava)/$(tpg2)/$(tpg3)/0/0/0/0/0/$(FITARSOVISTA:2)/0  //Traversa orizontal  (cozinha)
+            #ELSE
+               #IF $(_puxcava:3)=6 & $(sup)=1 & $(_fr:6)=111 // ACESSO 09/10
+                  // FAZ NADA
+               #ELSE
+                  #IF $(recorte_bassup:0)=1
+                     BAS_SUP_REC
+                  #ELSE
+                     203.001,L=$(lbS)-2*$(RED_INTM:0),SL=$(slbS)+$(RED_INTM:0),C1=$(CC1b),X6=$(sag),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/$(tpg2)/$(tpg3)/$(FE)/$(FD)/0/1/0/$(FITARSOVISTA:2)/0  //Base  45 superior
+                  #ENDIF
+               #ENDIF
+            #ENDIF
+         #ENDIF
+         #LET redsupcaixa=$(ABASE:0)
+      #ELSE
+         #LET redsupcaixa=0
+      #ENDIF
+   #ENDIF
+#ENDIF
+#LET REDSUPCAIXA=$(REDSUPCAIXA)-1*($(_TPCAIXA:5))
+#IF $(_PUXCAVA:3)=0 // <C24293>
+   #IF $(dividirfundo:0)=0
+      // gestione fundo
+      #IF $(_tpfundo:3)=30
+         205,SL=0,SA=0,SP=-$(PFUNTRAS:0),L=$l,A=$a  //Fundo
+      #ELSE
+         #IF $(_puxcava:3)=6 & $(sup)=1 & $(_fr:6)=111 // ACESSO 09/10
+            // FAZ NADA
+         #ELSE
+            fundo_caixa,atra=$(atrafundo:0)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(_tpfundo:3)>0
+         #LETS AFPRATP=$(AFCOS:0)+$(ESCOS:0) //Afastamento da prateleiras de madeira em relação a lateral
+         #LETS AFPRATV=$(AFCOS:0)+$(ESCOS:0) //Afastamento da prateleiras de vidro em relação a lateral
+         #LETS PPRAT=$P-1*($(RED_F_PRAT:0)+$(ESCOS:0)+$(AFCOS:0)) //Profundidade da prateleira de madeira
+      #ENDIF
+   #ENDIF
+#ENDIF
+// <c23790>
+#IF $(_TPCAIXA:0)[CSUDC_N;CSUDD_N;CSUDE_N] // Adicionado condição pois estava passando em todos os módulos as travessas, criado tipos de fundo específicos para os nichos <c23846>
+   #LET amaoamiga=80
+   #LET lmaoamiga=$l-2*$(es)
+   #LET esmaoamiga=15
+   259.001,SL=$(escos:0),SA=$(a)-$(escos)-$(amaoamiga),L=$(lmaoamiga)-2*$(esmaoamiga),A=$(amaoamiga),P=$(esmaoamiga),C1=16,C2=16,X9=$(_tpcaixa:1)/$(_COREX:1)  //Travessa Painel Parede
+   259.001,SL=$(escos:0),SA=$(a)-$(escos)-$(amaoamiga)*2,L=$(lmaoamiga)-2*$(esmaoamiga),A=$(Amaoamiga),P=$(esmaoamiga),C1=16,C2=16,X9=$(_tpcaixa:1)/$(_COREX:1)  //Travessa Painel Parede
+#ENDIF
+#IF $(_PUXCAVA:3)>0 // <C22064> GESTÃO DE CAVA PARA MÓDULOS SUPERIORES
+   _PUXCAVA
+#ENDIF
+#IF $(adcbasealu:0)=1 // <c30839>
+   #IF $l>900
+      #LETV basealu=002
+      #LET ABASEALU={25+15}
+   #ELSE
+      #LETV basealu=001
+      #LET ABASEALU={$(abase1)+15}
+   #ENDIF
+   360
+#ENDIF
+INICIA_PDIV

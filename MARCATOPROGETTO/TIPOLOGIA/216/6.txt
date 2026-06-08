@@ -1,0 +1,19 @@
+{ 216   // FRENTE LAP
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE LAP
+   CODICE              =/_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0);_PERFPUX=$(_PERFPUX:1)
+   POSIZIONE           ={$(FOLGAFRENTEL:0)+$(lffre:0)},$(FOLGAFRENTEAI:0)+$(affre),0
+   DIMENSIONE          =$(LFRE),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},$(ESFRE)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)|90
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =$(xpfrente)
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)
+   X4                  =$(_CORPROFILO:4)
+   X5                  =$(QTDfrisoV:0)/$(QTDfrisoH:0)
+   X7                  =N/N/N/N/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1
+   X8                  =$(_fr:7)/$(_fr:8)/$(pospuxadores)/$(parfrente)/$(LFRISO)/$(LFRISOV)/$(LFRISOH)//$(POSCENTROISA:0)
+   X9                  =$(_FR:1)/$(_CORFR:1)/$(APE:1)/$(AMBIENTE)/$(_CORFR:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)////$(_corlamdif:8)
+   X10                 =$(ladojobfrente)/$(nomejobfrente)/$(PARjobfrente)/$(DOISLADOS:0)/$(nomejobfrente2)/$(parfrisosscript)/$(parfrisosscripth)/$(parfrisosscriptv)
+   ALIAS               =#215
+}

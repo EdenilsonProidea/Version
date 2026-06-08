@@ -1,0 +1,30 @@
+420  // PLACER MULTICATALOGO FRENTE
+//298,x9=/8436^$(MQUADRADOFRENTE) // Acresimo sem frente, comentado gestão antiga <c23910>
+
+#IF $(emporio)=1 //<c23910>
+   #IF $(fechamentofacil)=1
+      298,cod=PO_CORRER,x9=/10294^$(MQUADRADOFRENTE) // Acresimo sem frente
+   #ELSE
+      298,x9=/10294^$(MQUADRADOFRENTE) // Acresimo sem frente
+   #ENDIF
+#ELSE
+   #IF $(fechamentofacil)=1
+      298,cod=PO_CORRER,x9=/8436^$(MQUADRADOFRENTE) // Acresimo sem frente
+   #ELSE
+      298,x9=/8436^$(MQUADRADOFRENTE) // Acresimo sem frente
+   #ENDIF
+#ENDIF
+// ********custos emporio *******************
+// 10287,CUSTO PRODUÇÃO - CORTE - pç - ok
+// 10288,CUSTO PRODUÇÃO - COLAGEM BORDO - ml - ok
+// 10289,CUSTO PRODUÇÃO - PINTURA - m2 - ok
+// 10290,CUSTO PRODUÇÃO - LAMINAÇÃO - m2 - ok
+// 10291,CUSTO PRODUÇÃO - FURAÇÃO - pç - ok
+// 10292,CUSTO PRODUÇÃO - MONTAGEM - pç
+// 10293,CUSTO PRODUÇÃO - MONTAGEM GAVETA -pç
+// 10294,CUSTO SEM FRENTE - m2 - ok
+// 10295,USINAGEM 1 - pç
+// 10296,USINAGEM 2  - pç
+// 10297,USINAGEM 3  - pç
+// 10298,USINAGEM 4  - pç
+// ******** fim custos emporio *******************

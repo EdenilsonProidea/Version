@@ -1,0 +1,58 @@
+{ PV_CORPER   // Cor Perfil
+   *AZZERA*            =0
+   DESCRIZIONE         =Cor Perfil
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^3;6;120;120;4,5;#FOTO\PAINEISPORTA\;2;3
+   MEMO                =1Código 1590Descrição 3945Rif Colore 1245foto 7155rgb 1650filtro porta 1335;MARCATO
+   { 
+      //      ,Descrição          ,Rif ,foto                                     ,rgb              ,fi
+      001     ,Cores Cinex        ,    ,                                         ,                 ,1
+      001.001 ,Bianco             ,28  ,                                         ,                 ,1
+      001.002 ,Carbone            ,28  ,PERFIL_CINEX_CARBONE.jpg                 ,                 ,1
+      001.003 ,Corten             ,28  ,PERFIL_CINEX_CORTEN.jpg                  ,                 ,1
+      001.004 ,Crema              ,28  ,PERFIL_CINEX_CREMA.jpg                   ,                 ,1
+      001.005 ,Fosco              ,183 ,PERFIL_CINEX_FOSCO.jpg                   ,                 ,1
+      001.006 ,Grigio Chiaro      ,28  ,PERFIL_CINEX_GRIGIO_CHIARO.jpg           ,                 ,1
+      001.007 ,Grigio Gotico      ,28  ,PERFIL_CINEX_GRIGIO_GOTICO.jpg           ,                 ,1
+      001.008 ,Likelnox           ,28  ,PERFIL_CINEX_LIKELNOX.jpg                ,                 ,1
+      001.009 ,Lonra              ,28  ,PERFIL_CINEX_LONRA.jpg                   ,                 ,1
+      001.010 ,Malto              ,28  ,PERFIL_CINEX_MALTO.jpg                   ,                 ,1
+      001.011 ,Marine             ,28  ,PERFIL_CINEX_MARINE.jpg                  ,                 ,1
+      001.012 ,Marrone Cioccolata ,28  ,PERFIL_CINEX_MARRONE_CIOCCOLATA.jpg      ,                 ,1
+      001.013 ,Moka               ,28  ,PERFIL_CINEX_MOKA.jpg                    ,                 ,1
+      001.014 ,Nacciola           ,28  ,PERFIL_CINEX_NACCIOLA.jpg                ,                 ,1
+      001.015 ,Nebbia             ,28  ,PERFIL_CINEX_NEBBIA.jpg                  ,                 ,1
+      001.017 ,Nero Industriale   ,28  ,PERFIL_CINEX_NERO_INDUSTRIALE.jpg        ,                 ,1
+      001.018 ,Nero Intenso       ,28  ,PERFIL_CINEX_NERO_INTENSO.jpg            ,                 ,1
+      001.019 ,New Prada          ,28  ,PERFIL_CINEX_NEW_PRADA.jpg               ,                 ,1
+      001.020 ,Oro                ,28  ,PERFIL_CINEX_ORO.jpg                     ,                 ,1
+      001.021 ,Panna              ,28  ,PERFIL_CINEX_PANNA.jpg                   ,                 ,1
+      001.022 ,Piombo             ,28  ,PERFIL_CINEX_PIOMBO.jpg                  ,                 ,1
+      001.023 ,Quartzo            ,28  ,PERFIL_CINEX_QUARTZO.jpg                 ,                 ,1
+      001.024 ,Rosè               ,28  ,PERFIL_CINEX_ROSÈ.jpg                    ,                 ,1
+      001.025 ,Safari             ,28  ,PERFIL_CINEX_SAFARI.jpg                  ,                 ,1
+      001.026 ,Salvia             ,28  ,PERFIL_CINEX_SALVIA.jpg                  ,                 ,1
+      001.027 ,Titanium           ,28  ,PERFIL_CINEX_TITANIUM.jpg                ,                 ,1
+      001.028 ,Vanilla            ,28  ,PERFIL_CINEX_VANILLA.jpg                 ,                 ,1
+      002     ,Marcato            ,    ,                                         ,                 ,2
+      002.001 ,Branco             ,28  ,PERFIL_MARCATO_BRANCO.jpg                ,                 ,2
+      002.002 ,Bronze             ,28  ,PERFIL_MARCATO_BRONZE.jpg                ,                 ,2
+      002.003 ,Effect Bronze      ,310 ,PERFIL_MARCATO_EFFECT BRONZE.jpg         ,                 ,2
+      002.004 ,Fosco              ,183 ,PERFIL_MARCATO_FOSCO.jpg                 ,                 ,2
+      002.005 ,Mettalo            ,28  ,PERFIL_MARCATO_METTALO.jpg               ,                 ,2
+      002.006 ,Preto              ,28  ,PERFIL_MARCATO_PRETO.jpg                 ,                 ,2
+      002.007 ,Inox               ,18  ,PERFIL_MARCATO_INOX.jpg                  ,                 ,2
+      002.008 ,Pinturas           ,28  ,PERFIL_CINEX_BIANCO.jpg                  ,$(_RGB$(_CTX):0) ,2
+      003     ,Neocomponente      ,    ,                                         ,                 ,3
+      003.001 ,Branco             ,28  ,PERFIL_NEOCOMPONENTE_BRANCO.jpg          ,                 ,3
+      003.002 ,Bronze             ,28  ,PERFIL_NEOCOMPONENTE_BRONZE.jpg          ,                 ,3
+      003.003 ,Desert Gold        ,28  ,PERFIL_NEOCOMPONENTE_DESERT GOLD.jpg     ,                 ,3
+      003.004 ,Effect Bronze      ,28  ,PERFIL_NEOCOMPONENTE_EFFECT BRONZE.jpg   ,                 ,3
+      003.005 ,Fosco              ,183 ,PERFIL_NEOCOMPONENTE_FOSCO.jpg           ,                 ,3
+      003.006 ,Metalizado Rosè    ,28  ,PERFIL_NEOCOMPONENTE_METALIZADO ROSÉ.jpg ,                 ,3
+      003.007 ,Mettalo            ,28  ,PERFIL_NEOCOMPONENTE_METTALO.jpg         ,                 ,3
+      003.008 ,Preto              ,28  ,PERFIL_NEOCOMPONENTE_PRETO.jpg           ,                 ,3
+      999     ,Sem                ,    ,                                         ,                 ,0
+   }
+}

@@ -1,0 +1,104 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+S,nCOMMESSA,,,LOTE
+S,npedobs,,,PEDIDO
+
+[DETTPADRE]
+#IF $(nCOMMESSA)!
+   (select select numero,obsfab from ecadmaster.dbo.tordine where COMMESSA='$(carico:0)' and obsfab<>'' and  obsfab is not null)
+   (Numero  ,15R  ,,<font1> ^<NUMERO>^) \
+           (Obs  ,40L  ,, <font1> ^<obsfab>^)
+#ELSEIF $(npedobs)!
+   (select select numero,obsfab from ecadmaster.dbo.tordine where NUMERO='$(numero:0)' and obsfab<>'' and  obsfab is not null)
+   (Numero  ,15R  ,,<font1> ^<NUMERO>^) \
+           (Obs  ,40L  ,, <font1> ^<obsfab>^)
+#ENDIF
+
+[VARIABILI]
+FONT1=\red0\green0\blue0 \fs15
+FONT2=\red127\green0\blue0 \fs14
+
+[SCRIPTTAB]
+if len(v("variantiAggiunte"))>0 then
+   v("variantiAggiunte")= "\red127\green0\blue0 \fs14" &    REPLACE(replace(v("variantiAggiunte"),";",vbcrlf),",","")
+else
+   v("variantiAggiunte")=""
+end if
+
+[TESTA]
+VERTICALE
+DIM 200 280
+
+//INTESTAZIONE
+FONT ARIAL
+
+BX (0,0) (200,280) HFFFFFF N
+
+
+//BX (0,0) (200,30)
+//BX (0,13) (58,13)
+//BX (58,5) (142,22)
+//BX (142,13) (200,30)
+WMF (4,6) (47,10) _ECADPRO\stampe\LOGO.jpg
+//WMF (143,14) (56,15) $(.percorso)\html\LOGO_CLIENTE.jpg
+
+#LETS _file=_pdf\$(nCOMMESSA:0)_OBS.pdf
+
+#IF $(NCOMMESSA:0)== & $(ncarico:0)
+   #MSG DEFINIR LOTE
+#ELSE
+   #LETV lp=0015
+   #LETS DEStipo=LOTE
+   #LETS CODTIPO=$(NCOMMESSA:0)
+   #LETS STRINGNOME=CLIENTE:
+   //TX TC 18BC (100,1) $(LP:2)
+   //TX BC 12BC (100,12) $(LP:5) --> $(LP:6)
+   
+   #SQL DESTIPOESTESA=select DES from ECADMASTER.DBO.CARICO WHERE COD='$(CODTIPO)'
+   
+   //  LI (58,13) (142,13)
+   // TX TL 7BC (59,14) $(DESTIPO)
+   TX TC 20B (100,10) $(DESTIPOESTESA:0)
+   LI (4,22) (196,22)
+   TX TC 7BC (165,25) IMPRESSO $(.USERNAME) - $(.DATAORA)
+   !P
+   TX bL 11 (190,275) ^<pag>^
+   
+   #IF $(nCOMMESSA)!
+      #LETS SQL=select numero,obsfab,destrag1,cliente,rif,numero_server from ecadmaster.dbo.tordine where commessa='$(NCOMMESSA:0)' and obsfab<>'' and  obsfab is not null
+   #ELSEIF $(npedobs)!
+      #LETS SQL=select numero,obsfab,destrag1,cliente,rif,numero_server from ecadmaster.dbo.tordine where numero='$(npedobs:0)' and obsfab<>'' and  obsfab is not null
+   #ENDIF
+   NTAB (0,35,200,275,35,1) \
+        (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+        ($(sql)) \ // COMANDO SQL
+        (Numero     ,7L  ,, ^<numero>^,-,Loja:<cliente>, -, ^<numero_server>^) \
+        (Obs  ,60L  ,,  ^$(STRINGNOME)<destrag1>^,-------------------,^<rif>^,-------------------,<obsfab>)
+   
+   #LET II=$(II)+50
+#ENDIF
+
+
+// macroimpr

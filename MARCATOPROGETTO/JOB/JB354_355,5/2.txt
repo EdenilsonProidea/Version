@@ -1,0 +1,7 @@
+2	FT5	X={$(PL)+80}              Y={$(DP)/2} DF=8 PF=24 Z={$(XA)/2}
+2	FT5	X={$(PL)+$(DL)-80}        Y={$(DP)/2} DF=8 PF=24 Z={$(XA)/2}
+2	FT5	X={$(PL)+$(DL)/2}         Y={$(DP)/2} DF=8 PF=24 Z={$(XA)/2}
+#IF $(DL)>700
+   2	FT5	X={$(PL)+$(DL)/3}      Y={$(DP)/2} DF=8 PF=24 Z={$(XA)/2}
+   2	FT5	X={$(PL)+$(DL)/3*2}    Y={$(DP)/2} DF=8 PF=24 Z={$(XA)/2}
+#ENDIF

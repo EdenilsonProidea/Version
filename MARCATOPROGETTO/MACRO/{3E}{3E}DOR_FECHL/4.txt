@@ -1,0 +1,37 @@
+INICIA
+#MSG $p
+dor_inicia_fech
+dor_fechL_esq,l=$p,p=$(platEsq:0),ay=90,sp=$p,_TPFECH=$(_TPFECHESQ),_TPFR=$(_TPFRESQ),NPORTAS=$(NPORTAESQ),_siscorrer=$(_siScorreresq),_dobra=$(_dobraesq),LADO_CANTO=ESQ
+dor_fechL_dir,p=$(platDir:0),_TPFECH=$(_TPFECHDIR),_TPFR=$(_TPFRDIR),NPORTAS=$(NPORTADIR),_siscorrer=$(_siScorrerdir),_dobra=$(_dobradir)
+dor_fechL_canto,SA=$(pacaixa),L=$(lcantodir),A=$(acaixa),P=$(lcantoesq)
+// PARA DESENHAR O BASAMENTO
+#IF $(TPCANTO:3)>0
+   #IF $(_pes:3)=5 // basamento
+      #LET arod=$(arod_pers:0)
+      #LET lbas=$l-1*{$(_fechdir:4)}
+      #LET pbas=$p-1*{$(_fechesq:4)}
+      #LET p1bas={$(PLATDIR:0)-$(red_f_rod:0)-$(es)}
+      #LET p2bas={$(PLATESQ:0)-$(red_f_rod:0)-$(es)}
+      !SAGOMA basamento 0,0, $(lbas),0, $(lbas),$(p1bas), $(p2bas),$(p1bas), $(p2bas),$(pbas), 0,$(pbas), 0,0
+      237,sa=0,dis=$(basamento)
+   #ENDIF
+#ENDIF
+
+!QUOTA9 (0,$A,0),($L,$A,0),LTOT.$L,-130
+!QUOTA9 (0,$A,0),(0,$A,$P),PTOT.$P,-130
+
+#IF $(_fechEsq:3)>0
+   !QUOTA9 (0,$A,$P),($(_fechesq:4),$A,$P),,-50
+#ENDIF
+#IF $(_fechDir:3)>0
+   !QUOTA9 ($L-1*($(_fechDIR:4)),$A,0),($L,$A,0),,-50
+#ENDIF
+!QUOTA9 (0,0,$P),(0,$A,$P),,-130
+!QUOTA9 (0,0,$P),(0,$(ARODAPE:0),$P),,-50
+!QUOTA9 (0,$(ARODAPE:0),$P),(0,$A-$(arodateto:0),$P),,-50
+!QUOTA9 (0,$A-$(arodateto:0),$P),(0,$A,$P),,-50
+
+LOGERROS
+// BOTAO_SERRA
+
+//INREPEARMEE//INREPEARMED//INREPEARMDE//INREPEARMDD

@@ -1,0 +1,13 @@
+#IF 1=0 // <C29108>
+   #IF $(XX3:1)[ICL;SCL;MALL;INTL;SICL]!0
+      #IF $(XX3:1)[ICL;INTL]
+         1	MACL	X=0 Y=0  NM=BASECL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+      #IF $(XX3:1)[SICL]
+         1	MACL	X=0 Y=0  NM=BASECSL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+      #IF $(XX3:1)[SCL]
+         2	MACL	X=0 Y=0  NM=BASECIL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+      #ENDIF
+   #ENDIF
+#ENDIF

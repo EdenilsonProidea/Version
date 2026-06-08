@@ -1,0 +1,12 @@
+{ 207   // PRATELEIRAS ARAMADA (COZINHA)
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS ARAMADA (COZINHA)
+   CODICE              =$(_INT:4) /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =($L-$(_KIT_INT_COZ:6))/2,$(AFPRATA),$(AFPRATP)
+   DIMENSIONE          =$(_KIT_INT_COZ:6),$(_KIT_INT_COZ:7),$(_KIT_INT_COZ:8)
+   COLORI              =180,180
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =objeto3d.xp
+   X3                  =$(curbox)
+   X8                  =INTERNO\$(_int:5)
+}

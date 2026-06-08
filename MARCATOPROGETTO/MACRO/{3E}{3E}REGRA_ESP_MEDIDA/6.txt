@@ -1,0 +1,53 @@
+#IF $(_TPCAIXA:9)=2 // superior
+   #IF $(_TPBASE:7)>0 #LET p=$(_TPBASE:7)
+   #IF $(_tpbase:6)!!
+      #LETS lpadrao=$(_tpbase:6)
+      #IF $l[$(lpadrao)]=0
+         #LET old_i=0
+         #FOR $(lpadrao)
+            #IF $(_tpcaixa:3)=11 // armario dividido
+               #IF $(i)>$l/2
+                  #LET l=$(i)*2
+                  #IF $l>$(lmax)
+                     #IF $(old_i)>0
+                        #LET l=$(old_i)*2
+                     #ELSE
+                        #LETS idlogerros=$(idlogerros)31;
+                     #ENDIF
+                  #ENDIF
+                  #EXITFOR
+               #ENDIF
+            #ELSE
+               #IF $(i)>$l
+                  #LET l=$(i)
+                  #IF $l>$(lmax)
+                     #IF $(old_i)>0
+                        #LET l=$(old_i)
+                     #ELSE
+                        #LETS idlogerros=$(idlogerros)31;
+                     #ENDIF
+                  #ENDIF
+                  #EXITFOR
+               #ENDIF
+            #ENDIF
+            #LET old_i=$(i)
+#IF $l>$(i) #LET l=$(old_i)
+         #ENDFOR
+      #ENDIF
+   #ENDIF
+   #IF $(_TPBASE:8)>0 & $A<$(_TPBASE:8) #LET A=$(_TPBASE:8)
+   #IF $(_TPBASE:9)>0 & $A>$(_TPBASE:9) #LET A=$(_TPBASE:8)
+#ENDIF
+#IF $(_INT_0000:16)=$(_INT_0000:17) & $(_INT_0000:16)>0
+   #LET L=$(_INT_0000:16)+$(ESLAT:0)*2
+#ENDIF
+#IF $(_ACEINTFRE_0000:13)=$(_ACEINTFRE_0000:14) & $(_ACEINTFRE_0000:13)>0
+   #LET L=$(_ACEINTFRE_0000:13)+$(ESLAT:0)*2
+#ENDIF
+
+// Comentado as variantes abaixo pois estava entrando em conflito com a gestão de basculantes
+// comentado em visita 26/01/2024
+//#LET atot=$a
+//#LET Ltot=$L
+//#LET Ptot=$p
+//#LET ATOTFRE=$A-$(_TPCAIXA:4)-$(_TPCAIXA:5)

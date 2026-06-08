@@ -1,0 +1,25 @@
+#LET espgaveta=$(espessura_gaveta:0)
+#IF $(_TPGAVALT:3)=4
+   #IF $A>150 // CUBA ALTA
+      CUBA_ALTA_NATU
+   #ELSE
+      CUBA_BAIXA_NATU
+   #ENDIF
+#ELSE
+   #LET acfundog={$A-15}
+   260,X7=N/N/N/CN/1/1/1/1/0/0/0/0/0/0/0/1      // Lateral Gaveta
+   260.001,X7=N/N/N/CN/1/1/1/1/0/0/0/0/0/0/0/1  // Lateral Gaveta
+   261,A=$(acfundog),sa=$A-$(acfundog) // Traseira Gaveta
+   262  //CONTRA FRETNE Gaveta
+   263,SP=15,P=$p-30  //Fundo Gaveta
+   #IF $(_mantagav:0)>0
+      350,SP=15,P=$p-30  //Fundo Gaveta
+   #ENDIF
+#ENDIF
+
+ACEGAV,SP=-$(espgaveta:0)
+
+CHECK_INT_GAV,LINTGAV={$L-$(espgaveta:0)*2},PINTGAV={$P-$(espgaveta:0)*2}
+
+
+264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0 //Caixa Gaveta oculta para furaçao

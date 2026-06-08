@@ -1,0 +1,31 @@
+#IF $(CAVA)=1 & $(inf)=1 & $(_fr:6)[301;302;303]=0 // Adicionado validação de frente pois nessas tres frentes estava passando cava, cliente pediu para retirar em visita
+   !RETTA 101,1,0
+   !RETTA 102,0,{$(PTOP1:0)-$(PCAVA:0)-$(PING:0)}
+   !RETTA 103,0,{$(PTOP2:0)-$(PCAVA:0)-$(PING:0)},1
+   !RETTA 104,1,0,1
+   !INTERSECA PCX1,PCY1,101,102
+   !INTERSECA PCX2,PCY2,102,103
+   !INTERSECA PCX3,PCY3,103,104
+   // Grafica Gola
+   !ADDPUNTO $(pcx2),$a-$(acava:0),$(pcy2)
+   !SAGOMA PERC1 $(PCX1),$(PCY1),$(PCX2),$(PCY2),$(PCX3),$(PCY3)
+   CAVA,perccava=$(PERC1),AFPCAVA=0,A={$A-$(_TPCAIXA:5)}  // CATENA per gola
+   // 289,SL=0,SA={$A-$(ACAVA)-$(_TPCAIXA:5)},SP={$(PTOP1:0)-$(PCAVA:0)-$(PING:0)},P=$(PCAVA),L=$(PCX2),A=$(ACAVA),LATO=0,C1=1,C2=1  // Cava para furaça
+   #LETS cavelatdir=$(cavelatESQ)
+#ELSEIF $(SUP)=1 & $(_puxcava:3)=1
+   !RETTA 101,1,0
+   !RETTA 102,0,$(PTOP1)-$(PING:0)-$(PCAVA:0)
+   !RETTA 103,0,$(PTOP2)-$(PING:0)-$(PCAVA:0),1
+   !RETTA 104,1,0,1
+   !INTERSECA PCX1,PCY1,101,102
+   !INTERSECA PCX2,PCY2,102,103
+   !INTERSECA PCX3,PCY3,103,104
+   // Grafica Gola
+   !SAGOMA PERC1 $(PCX1),$(PCY1)-$(_PUXCAVA:8),$(PCX2)+$(_PUXCAVA:8),$(PCY2)-$(_PUXCAVA:8),$(PCX3)+$(_PUXCAVA:8),$(PCY3)
+
+   CAVASUP_CLNEW,perccava=$(PERC1),AFPCAVA=0,A={$A-$(_TPCAIXA:5)} // Alterado a macro para a gestão ser apenas do canto L novo, feito em visita
+   #LETS cavelatdir=$(cavelatESQ)
+   
+   // !SAGOMA PERC1 $(PCX1),$(PCY1),$(PCX2),$(PCY2),$(PCX3),$(PCY3)
+   // CAVASUP,perccava=$(PERC1),AFPCAVA=0,A={$A-$(_TPCAIXA:5)}  // CATENA per gola
+#ENDIF

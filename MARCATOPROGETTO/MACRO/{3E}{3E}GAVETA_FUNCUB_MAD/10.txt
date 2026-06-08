@@ -1,0 +1,16 @@
+!PARAMETRI RED_V_ESQ_FUN={$(RED_V_ESQ)+$(canalgaveta)},RED_V_DIR_FUN={$(RED_V_DIR)+$(canalgaveta)}
+// correção realizada pois para essas gavetas o padrão da marcato é o fundo ser por dentro
+#LET RED_V_ESQ_FUN=$(RED_V_ESQ_FUN:0)-$(espgaveta:0)
+#LET RED_V_DIR_FUN=$(RED_V_DIR_FUN:0)-$(espgaveta:0)
+#LET LF_VAO=$L
+#LET PF_VAO=$P
+#LET V_PROFF=$(V_PROF:0)-1*($(_TPGAVDET:11)+$(espgaveta:0))
+!SAGOMAA FUNDOCUB 0,0,$(RED_V_ESQ_FUN),0,$(RED_V_ESQ_FUN),$(V_PROFF),{$L-$(RED_V_DIR_FUN)},$(V_PROFF),{$L-$(RED_V_DIR_FUN)},0,$L,0,$L,{$P-$(espgaveta:0)},0,{$P-$(espgaveta:0)}
+#LET LADO_A=$(RED_V_ESQ_FUN)
+#LET LADO_C=$(RED_V_DIR_FUN)
+#LET LADO_D=$(V_PROFF)
+263.001,SL=0,SP=$(espgaveta:0),L=$l,P=$p-$(espgaveta:0),GL=basegaveta_cub.xp  //Fundo gaveta cuba
+
+#MSG $(V_PROFF) {$P-$(espgaveta:0)}
+// .basegaveta_cub.xp
+//263

@@ -1,0 +1,12 @@
+#M JOB_INICIA_TPFIX
+#IF $(pa)<-100 #LET f=2 #LET f=1
+#IF $(TIPOLOGIAP)!220.002 & $(TIPOLOGIAP)!310
+   #IF $(PP)+$(XP)>$(DP) #LET XP=$(DP)-$(PP)
+#ENDIF
+#IF $(PL)<0
+   #LETS F1=3
+   #LET DISTX=0
+#ELSE
+   #LETS F1=4
+   #LET DISTX=$(XL)
+#ENDIF

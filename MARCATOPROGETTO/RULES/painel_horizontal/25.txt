@@ -1,0 +1,97 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PAINEL_HORIZONTAL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,ESP_PRAT,,,Esp Tampo de Acabamento,,,,,,,1,,1=0
+T,ESP_TOTAL,,,Esp Total Tamponamento,,,,,,,1
+C,INVERTERVEIO,,,Inverter Veio?,,,,,,,4
+T,_COREX,,,,$(esp_prat:3)[$(_corex:12)]!!0,,,,,,4
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,4
+T,COR,,,,$(COR:1)==$(_COREX:8),,,,,,,,1=0
+T,SUPORTEPRAT,,,,,,,,,,4
+M,NSupCost,,$(SUPORTEPRAT:4)>0,N°Suporte
+T,TIPOPINTURA,,$(COR:7)!! | $(COR:19)!!,,,,,,,,4
+M,angz,,,Rotaciona?,,,,,,,0,,1=0
+Z,BFRE,,,Borda Frente?,,,,,,,8
+Z,BTRA,,,Borda Atras?,,,,,,,8
+Z,BESQ,,,Borda Esquerda?,,,,,,,8
+Z,BDIR,,,Borda Direita?,,,,,,,8
+C,FLAG_ILU,,,Iluminação,,,,,,,2
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+SUPORTEPRAT
+#LETS INFOPECA=0
+
+// A gestão abaixo foi alterada em visita - 25/01/2024
+#LET A_TAMPO=$(ESP_PRAT:3) // Altura das chapas de acabamento
+#LET A=$(ESP_TOTAL) // Altura total do tamponamento
+#LET ESP_ENGROSSO={$(ESP_TOTAL)-(2*$(ESP_PRAT:3))} // Altura do engrosso
+
+#IF $(PAIN_INF:0)=1
+   #LET UA=-$(ESP_PRAT:3)*2
+   #IF $(ESP_PRAT:3)[18;25;30;40;50]!0
+      ILU_TAMPOINF,L=$L,SA=-1,inc_pain_acab=0,incpainti=0,MACRO=ILU_TAMPOINF,usagrapa=1
+   #ENDIF
+#ENDIF
+
+
+#IF $(inverterveio:0)=1
+   281,SL=$l,SA=$(afa),L=$p,A=$(ESP_PRAT:3),P=$l,AY=-90,X8=$(SUPORTEPRAT:2)/$(TIPOPINTURA:1)  //PAINEL HORIZONTAL
+#ELSE
+   #IF $(PAIN_INF:0)=1
+      281,SA=-$(ESP_PRAT:3),A=$(ESP_PRAT:3),AZ=$(angz:0),X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0) //PAINEL HORIZONTAL
+   #ELSE
+      281,SA=$(afa),A=$(ESP_PRAT:3),X8=$(SUPORTEPRAT:2)/$(TIPOPINTURA:1)  //PAINEL HORIZONTAL
+   #ENDIF
+#ENDIF
+
+
+// painel_hor_antigo // Macro com a gestão padrão do ideamoveis
+
+#IF $(angz)!0
+   #LET ul=-(1-cos($(angz:0)))*$l
+   #IF $(angz:0)>0
+      #LET ua=-cos($(angz:0))*$l-$(ESP_PRAT:3)*2
+   #ELSE
+      #LET ua=cos($(angz:0))*$l-$(ESP_PRAT:3)
+   #ENDIF
+   
+#ENDIF
+
+!COMMENTO1 $(BORDAPRAT:2) $(SUPORTEPRAT:2) - $(TIPOPINTURA:2)
+!COMMENTO4 LED=$(INFOPECA)
+
+LOGERROS
+
+
+
+
+
+
+// 463
+
+// ILU_CAIXA

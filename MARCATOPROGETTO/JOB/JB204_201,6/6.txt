@@ -1,0 +1,9 @@
+#IF $(XX10:0)!1
+   #IF $(xx3:0)=$(xp3:0)
+      #M JOB_TRAVV_LAT
+   #ENDIF
+#ELSE
+ #IF $(xx3:0)=$(xp3:0)
+      #M JOB_TRAVVN_LAT
+   #ENDIF
+#ENDIF

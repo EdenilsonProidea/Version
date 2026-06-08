@@ -1,0 +1,15 @@
+{ 670   // base rodape 43
+   *AZZERA*            =0
+   DESCRIZIONE         =base rodape 43
+   CODICE              =/_COREX=$(_COREX:1);_PINTURAEX=$(_PINTURAEX:1);TPCOR=EX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,$a-18,0
+   DIMENSIONE          =$L,18,$P
+   COLORI              =4,4
+   ORIENTAMENTO        =LPA
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/1
+   X9                  =_/$(_corEX:1)/_/$(_corEX:1)
+   ALIAS               =#650
+}

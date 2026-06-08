@@ -1,0 +1,15 @@
+// #LOADVAR _dobra _dobra $(xp8:2)
+#IF $(APE:3)!='AGD'
+   1	FT5	X=30 Y=$(XP) DF=8 PF=25
+#ELSE
+   1	FT5	X=$(XL)-30 Y=$(XP) DF=8 PF=25
+#ENDIF
+
+
+
+
+
+
+
+// 1	FT5	X=$(XL)/2-30 Y=$(XP) DF=8 PF=25
+//  1	FT5	X=$(XL)/2+30 Y=$(XP) DF=8 PF=25

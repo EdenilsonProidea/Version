@@ -1,0 +1,3 @@
+#M JOB_INICIA_TPFIX
+#IF $(pl)>=0 #LET f=2 #LET f=1
+#MSG $(PL) $(f)

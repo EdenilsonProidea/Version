@@ -1,0 +1,13 @@
+{ 420   // PLACER MULTICATALOGO FRENTE
+   *AZZERA*            =0
+   DESCRIZIONE         =PLACER MULTICATALOGO FRENTE
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =43
+   POSIZIONE           =$(FOLGAFRENTEL:0),$(FOLGAFRENTEAI:0),1
+   DIMENSIONE          =$(LFRE),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},$(ESFRE)
+   COLORI              =0,0
+   ORIENTAMENTO        =ALP
+   X1                  =_porta_avulsa;$(MODELLOCINEX);CINEX;PORTA CINEX
+   X4                  =$(CINEX_VAR_OBRIGATORIAS)/$(CINEX_VAR_DEFAULT)/$(movfr)
+   X8                  =APE=$(APE:0);
+}

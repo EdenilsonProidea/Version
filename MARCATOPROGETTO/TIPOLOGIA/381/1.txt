@@ -1,0 +1,15 @@
+{ 381   // Rodape fechamento
+   *AZZERA*            =0
+   DESCRIZIONE         =Rodape fechamento
+   CODICE              =DORRODFECH /_CORFAMILIA=$(CORFR:10);_CORFR=$(CORFR:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slfechinf),0,{$p-$(es)+$(_TPFECH:4)}
+   DIMENSIONE          =$(lfechinf),$a,$(es)
+   CORRETTIVI          =,10
+   COLORI              =$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5),$(_corex:3)|$(.percorso)\foto\madeira\$(_corex:4)|$(_corex:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corex
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corex:1)/$(TPFIX:1)
+   ALIAS               =#381
+}

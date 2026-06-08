@@ -1,0 +1,45 @@
+{ _tpSuppUE   // Suporte Esquerdo
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte Esquerdo
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250tipo 11403d 2820ref 1560L 1140A 1140P 1140cod estru 1200cor 1200coluna 10 : deve ser a cor dacastrada na variante _corsuppe e _corsuppd
+   { 
+      //      ,Descrição            ,ti,3,ref           ,L ,A  ,P   ,cod es,cor
+      001     ,500 mm               ,  , ,              ,  ,   ,    ,      ,
+      001.001 ,Prat. Esquerda Fosco ,1 , ,$(codmod)U414 ,4 ,25 ,500 ,286   ,001
+      001.002 ,Prat. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,287   ,001
+      001.003 ,Prat. Esquerdo Preto ,1 , ,$(codmod)U414 ,4 ,25 ,500 ,16760 ,002
+      001.004 ,So Furação           ,4 , ,$(codmod)U414 ,4 ,25 ,500 ,      ,
+      001.005 ,Prat. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,16757 ,002
+      001.006 ,Sap. Esquerda Fosco  ,1 , ,$(codmod)U414 ,4 ,25 ,500 ,16912 ,001
+      001.007 ,Sap. Esquerda Preto  ,1 , ,$(codmod)U414 ,4 ,25 ,500 ,19762 ,002
+      001.008 ,Sap. Central Preto   ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,20983 ,002
+      001.009 ,Sap. Central Fosco   ,2 , ,$(codmod)U414 ,4 ,25 ,500 ,20984 ,001
+      002     ,450 mm               ,  , ,              ,  ,   ,    ,      ,
+      002.001 ,Prat. Esquerda Fosco ,1 , ,$(codmod)U414 ,4 ,25 ,450 ,16759 ,002
+      002.002 ,Prat. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,450 ,287   ,001
+      002.003 ,Prat. Esquerdo Preto ,1 , ,$(codmod)U412 ,4 ,25 ,450 ,285   ,001
+      002.004 ,So Furação           ,4 , ,$(codmod)U414 ,4 ,25 ,450 ,      ,
+      002.005 ,Prat. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,450 ,16757 ,002
+      003     ,400 mm               ,  , ,              ,  ,   ,    ,      ,
+      003.001 ,Prat. Esquerda Fosco ,1 , ,$(codmod)U414 ,4 ,25 ,400 ,16759 ,002
+      003.002 ,Prat. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,400 ,287   ,001
+      003.003 ,Prat. Esquerdo Preto ,1 , ,$(codmod)U412 ,4 ,25 ,400 ,285   ,001
+      003.004 ,So Furação           ,4 , ,$(codmod)U414 ,4 ,25 ,400 ,      ,
+      003.005 ,Prat. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,400 ,16757 ,002
+      004     ,350 mm               ,  , ,              ,  ,   ,    ,      ,
+      004.001 ,Prat. Esquerda Fosco ,1 , ,$(codmod)U414 ,4 ,25 ,350 ,16759 ,002
+      004.002 ,Prat. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,350 ,287   ,001
+      004.003 ,Prat. Esquerdo Preto ,1 , ,$(codmod)U412 ,4 ,25 ,350 ,285   ,001
+      004.004 ,So Furação           ,4 , ,$(codmod)U414 ,4 ,25 ,350 ,      ,
+      004.005 ,Prat. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,350 ,16757 ,002
+      005     ,300 mm               ,  , ,              ,  ,   ,    ,      ,
+      005.001 ,Prat. Esquerda Fosco ,1 , ,$(codmod)U414 ,4 ,25 ,300 ,16759 ,002
+      005.002 ,Prat. Central Fosco  ,2 , ,$(codmod)U414 ,4 ,25 ,300 ,287   ,001
+      005.003 ,Prat. Esquerdo Preto ,1 , ,$(codmod)U412 ,4 ,25 ,300 ,285   ,001
+      005.004 ,So Furação           ,4 , ,$(codmod)U414 ,4 ,25 ,300 ,      ,
+      005.005 ,Prat. Central Preto  ,2 , ,$(codmod)U414 ,4 ,25 ,300 ,16757 ,002
+   }
+}

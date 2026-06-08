@@ -1,0 +1,11 @@
+{ 208   // PRATELEIRAS DE VIDRO (COZINHA)
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS DE VIDRO (COZINHA)
+   CODICE              =$(_INT:4) /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFPRATL),$(AFPRATA),$(AFPRATP)
+   DIMENSIONE          =$(LPRAT)-9,$(_vidroprat:7),$(PPRAT)
+   COLORI              =$(_VIDROPRAT:3)|$(.percorso)\foto\madeira\$(_VIDROPRAT:4)|$(_VIDROPRAT:5),$(_VIDROPRAT:3)|$(.percorso)\foto\madeira\$(_VIDROPRAT:4)|$(_VIDROPRAT:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X9                  =$(_VIDROPRAT:6)/$(_VIDROPRAT:8)
+}

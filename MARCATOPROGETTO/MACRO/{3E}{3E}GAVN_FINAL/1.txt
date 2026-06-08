@@ -1,0 +1,5 @@
+297,COD= / /GAVD $(afinalgaveteiro:0) mm,SA=$(afinalgaveteiro:0)+$(ABASE:0),SP=$P,A=75,P=10  // TEXTO
+!COMMENTO4 $(memoinfocorr)PCORR=$(Pcorredica)
+!QUOTA9 (150,$(afinalgaveteiro:0)+$(ESPTAMPOGAV:3),$P),(150,$A,$P),,0
+
+LOGERROS

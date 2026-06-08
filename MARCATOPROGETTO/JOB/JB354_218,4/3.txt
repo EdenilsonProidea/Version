@@ -1,0 +1,13 @@
+#LET f=2
+
+
+$(f)	FT6	x=80          y=$(xp) df=8 pf=25 z={$(xa)/2}
+$(f)	FT6	x={$(xl)-80}  y=$(xp) df=8 pf=25 z={$(xa)/2}
+$(f)	FT6	x={$(xl)/2}   y=$(xp) df=8 pf=25 z={$(xa)/2}
+
+#IF $(DL)>700
+   
+   $(f)	FT6	x={$(PL)+$(DL)/3}    y=$(xp) df=8 pf=25 z={$(xa)/2}
+   $(f)	FT6	x={$(PL)+$(DL)/3*2}  y=$(xp) df=8 pf=25 z={$(xa)/2}
+   
+#ENDIF

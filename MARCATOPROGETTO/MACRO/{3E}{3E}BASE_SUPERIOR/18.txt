@@ -1,0 +1,39 @@
+#LET abase1=$(abase:0)
+#MSG $(_tpfr:3)
+#IF $(_tpfr:3)[7;28;25;23;24;27;26]!0 & $(_TPBASE:3)!0
+   #LETS idlogerros=$(idlogerros)92;
+#ELSE
+   #IF $(_TPBASE:3)=1  //FUNDO ILLUMINADO
+      352,P=$(P)-$(AFCOS:0)-$(ESCOS:0),SP=$(ESCOS:0)+$(AFCOS:0)  // FUNDO ILLUMINADO
+      #LET abase1=5
+   #ELSEIF $(_TPBASE:3)=2  //ESCOREDOR DE PRATO
+      353,P=$(P)-$(AFCOS:0)-$(ESCOS:0),SP=$(ESCOS:0)+$(AFCOS:0)    //ESCORREDOR DE PRATO
+   #ELSEIF $(_TPBASE:3)=3  //SEM BASE
+      #LET abase1=0
+   #ELSE //BASE COMUN
+      #IF $(_PuxCava:3)>0
+         #IF $L>800
+            #LET abase1=25
+            #LET redinfcaixa=$(ABASE1:0)
+            !SAGOMAl SAGBASECANALETOPO 0,0,0,$(abase1:0),$p,$(abase1:0),$p,$(_puxcava:8),$p-$(_puxcava:7),$(_puxcava:8),$p-$(_puxcava:7),0,0,0
+            203.009,SP=0,A=$(ABASE1:0),P={$P-1*($(afbase)+$(red_basef))}  // Base inferior canale topo 25
+         #ELSE
+            203,P={$P-1*($(afbase)+$(red_basef)+17)} //Base  (cozinha)
+         #ENDIF
+         247 // Cava Superior
+         #LETV _PUX_0000=999
+      #ELSE
+         #IF $L>800 & $(tpcx)!14
+            #LET abase1=25
+            #LET redinfcaixa=$(ABASE1:0)
+            203,A=$(abase1:0)
+         #ELSE
+            #LET abase1=$(abase:0)
+            203
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   
+   REGRA_ESP_MEDIDA // Adicionado em visita para fazer o controle dos tamanhos das bases especiais
+#ENDIF
+//logerros

@@ -1,0 +1,4 @@
+#IF $(XX8:5)=0 & $(_TPCAIXA:9)[3;2]!0 // SUPERIOR PENSIL
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51} df=10 pf=11
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51+32} df=10 pf=11
+#ENDIF

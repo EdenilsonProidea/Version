@@ -1,0 +1,14 @@
+{ 289   // Cava para furaçao
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava para furaçao
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =$(slcava),$a-$(ACAVA:0)+$(_TPCAIXA:5),$(AFPCAVA)
+   DIMENSIONE          ={$l+1*($(CAVAESQ:0)+$(CAVADIR:0))},$(ACAVA:0),$(PCAVA:0)
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =$(_TPCAVA:10)
+   X8                  =$(_TPCAVA:1)
+   X9                  =$(_TPCAVA:7)/$(_TPCAVA:18)/$(_TPCAVA:9)/$(_PUXCAVA:8)
+}

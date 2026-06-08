@@ -1,0 +1,10 @@
+{ 461   // Vidro Avulso Horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Vidro Avulso Horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$(_vidro:7),$p
+   COLORI              =$(_VIDRO:3)|$(.percorso)\foto\VIDRO\$(_vidro:4)|$(_vidro:5),$(_VIDRO:3)|$(.percorso)\foto\VIDRO\$(_vidro:4)|$(_vidro:5)
+   ORIENTAMENTO        =LPA
+   X9                  =$(_vidro:6)
+}

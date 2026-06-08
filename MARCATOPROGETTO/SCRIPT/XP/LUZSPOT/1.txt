@@ -1,0 +1,55 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   ' If 1=0 Then
+   'FINITURA OGGETTI 3D
+   C1=wColoreE(P.COLORE1)
+   C2=wColoreE(P.COLORE2)
+   ligarluz=calcola(ex(p.parametro(9),"/",2))
+   V=SPLIT(ex(P.PARAMETRO(7),"/",1),";")
+   finitura=ex(ex(P.Parametro(8),"/",1),";",1)
+   tipoogg=calcola(ex(ex(P.Parametro(8),"/",1),";",2))
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\" & finitura)
+   
+   'msgBox da & "---" & dp
+   If ucase(right(finitura,3))=".XP" Or ucase(right(finitura,2))=".X" Or ucase(right(finitura,4))=".3DS"  Or ucase(right(finitura,5))=".DR3D" Or ucase(right(finitura,5))=".TREE" Then
+      wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+      'wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+   Else
+      wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+      ' MSGBOX "FILE NON COMPATIBILE CON 3CAD"
+   End If
+   If ligarluz=1 Then
+      intense=calcola(ex(p.parametro(7),"/",1))
+      cor="" 'ex(p.parametro(7),"/",2)
+      If cor="" Then cor="HFFFFFF"
+      
+      xx = wColoreE("203||" & cor)
+      wrTrasforma 0,-5,0
+      wrAreaLightHide xx, dl, 0, 0, 0, 0, 0, 0, 0, dp, dl, 0, dp, intense, true
+      wrchiudi
+      
+      'Public Sub wrAreaLightHide(ByVal idColore As Long, ByVal x1!, ByVal y1!, ByVal Z1!, ByVal x2!, ByVal y2!, ByVal z2!, _
+      'ByVal x3!, ByVal Y3!, ByVal z3!, ByVal x4!, ByVal y4!, ByVal z4!, Optional ByVal intensity As Single = 50, Optional ByVal hide As Boolean
+      
+      'wrLightExtended(int lightType, float px, float py, float pz, float dx, float dy, float dz, float angle, float intensity, float temp, int hasShadows = 1, float attx = -1, float atty = -1, float attz = -1, int notrender = 0)
+      'tipolouce = 0 For omni; 1 For spot (**SPOT Not YET SUPPORTED On NEXT**)
+      'px,py,pz = phisycal position of the light
+      'dx,dy,dz = point of arrival of the spotlight
+      'angolo = opening angle of the spolight
+      'intensity = 0 To 200
+      'temp = light temperature
+      'hasshadow = throws Or Not shadows
+      'attx,atty,attz = all this are deprecated since are determined by the intensity
+      'norender = 0 Not used On renderfarm
+      angLight=45 'calcola(ex(p.parametro(8),"/",3))
+      potenza=50 'calcola(ex(p.parametro(8),"/",3))
+      temperatura=5500 ' calcola(ex(p.parametro(8),"/",4))
+      wrLightExtended 1, dl/2, -10, dp/2, 0, -2000, -dp/4, angLight, potenza, temperatura
+      potenza=5 'calcola(ex(p.parametro(8),"/",3))
+      angLight=20 'calcola(ex(p.parametro(8),"/",3))
+      
+      
+      wrLightExtended 0, dl/2, -50, dp/2, 0, 60, 0, angLight, potenza, temperatura
+   End If
+End Sub

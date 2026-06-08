@@ -1,0 +1,4 @@
+//#IF $(X3:1)=
+#LET largled=$(x7:2)
+#M estr_ilu,_listino=0
+//#ENDIF

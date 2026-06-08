@@ -1,0 +1,9 @@
+!PARAMETRI AFPRATA=0
+SAPINC_DIV_UB,_CORFR=$(_CORDIVSP)
+810,X3=$(curbox)/SUB  // Sapateira Inclinada
+811,SA=($(AFPRATA)-77/2+29.5/2),X3=$(curbox)/FUB  //Frente Sapateira Inclinada // <c30279>
+426  // fix prateleira lateral
+426,sp=$(AFPRATP)+$(PPRATINC)-15-40  // fix prateleira lateral
+426,sl=$(LPRAT)-2-2  // fix prateleira lateral
+426,sl=$(LPRAT)-2-2,sp=$(AFPRATP)+$(PPRATINC)-15-40  // fix prateleira lateral
+// 595

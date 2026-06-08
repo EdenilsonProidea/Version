@@ -1,0 +1,15 @@
+{ 327   // Lateral Bau
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Bau
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$(esp_prat:0)
+   DIMENSIONE          =$(esp_prat:0),$a,$p-$(esp_prat:0)*2
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/0/0/0/0/1/1/0/0/0/0/0
+   X8                  =$(pcanal:0)
+   X9                  =$(_tpcaixa:1)/$(_COREX:1)/$(TPFIX:1)
+   ALIAS               =#327
+}

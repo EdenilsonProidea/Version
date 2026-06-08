@@ -1,0 +1,8 @@
+#LETS CFUNDO=$(_CFUNDO:3)|$(.percorso)\foto\madeira\$(_CFUNDO:4)|$(_CFUNDO:5)
+#IF $(veioFundoH:0)=1
+   205,SL=$(es)-$(RAG_COS:0)+1*($L-2*$(es)+2*$(RAG_COS:0)),SA=$(es)-$(RAG_COS:0),SP=$(POSFUNDO:0),a=$L-2*$(es)+2*$(RAG_COS:0),l={$A-2*$(es)+$(RAG_COS:0)*2},P=$(esfundo),C1=$(CFUNDO),C2=$(CFUNDO),X8=$(pcanal:0)/$(FACELAMPIN),X9=$(_tpcaixa:1)/$(_CFUNDO:1)/$(item)/$(TIPOPINTURA:1)  //Fundo
+#ELSE
+   205,az=-90,SL=$(es)-$(RAG_COS:0),SA=$(es)-$(RAG_COS:0),SP=$(POSFUNDO:0),L=$L-2*$(es)+2*$(RAG_COS:0),A={$A-2*$(es)+$(RAG_COS:0)*2},P=$(esfundo),C1=$(CFUNDO),C2=$(CFUNDO),X8=$(pcanal:0)/$(FACELAMPIN),X9=$(_tpcaixa:1)/$(_CFUNDO:1)/$(item)/$(TIPOPINTURA:1)  //Fundo
+#ENDIF
+// #MSG $(RAG_COS:0)
+// 403,X1=100,P=$P-20  // Placer

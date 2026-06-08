@@ -1,0 +1,9 @@
+#IF $(distanciadoresq:0)>0
+   #IF $(_TPFECH:3)=1 // Adicionado em visita
+      385,X7=N/N/N/N/1/0/0/0/0/0/1/1  //L={$(distanciadoresq:0)+$(ESPARM:3)/2},sp=$p comentado em visita  // Adicionado fita em visita // Distanciador lateral Fechamento
+   #ELSE
+      385,SP=$p,X7=N/N/N/N/1/0/0/0/0/0/1/1  //L={$(distanciadoresq:0)+$(ESPARM:3)/2} comentado em visita  // Adicionado fita em visita // Distanciador lateral Fechamento
+   #ENDIF
+#ENDIF
+// 201
+// 204

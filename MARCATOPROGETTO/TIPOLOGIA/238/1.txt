@@ -1,0 +1,11 @@
+{ 238   // Sistema Pivotante
+   *AZZERA*            =0
+   DESCRIZIONE         =Sistema Pivotante
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =1,1,1
+   COLORI              =001,001
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X8                  =$(_SISTPIVOT:6)
+   X9                  =$(_SISTPIVOT:3)
+}

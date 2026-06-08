@@ -1,0 +1,9 @@
+#MSG $(_DOBRA:3)
+#MSG teste
+
+ #IF $(_DOBRA:3)!! & $(_DOBRA:3)!!999
+
+1	FT5	X=30 Y=$(XP) DF=8 PF=25
+
+
+1	FT5	X=$(XL)-30 Y=$(XP) DF=8 PF=25

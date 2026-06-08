@@ -1,0 +1,15 @@
+{ 333   // Base armario Simples Inferior
+   *AZZERA*            =0
+   DESCRIZIONE         =Base armario Simples Inferior
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$(escos:0)
+   DIMENSIONE          =$L,$(ABASE:0),$p-$(escos:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_corcx
+   X3                  =$(curbox)/I
+   X7                  =N/N/N/N/1/1/1/0/0/0/2/2/0/0/0/1
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#303
+}

@@ -1,0 +1,5 @@
+#IF $(XX3:1)!!L & $(PL)<=0 & $(PL)>-$(DL)
+   #LET F=1
+   $(f)	FT4	X=0 Y={20}       DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:13)
+   $(f)	FT4	X=0 Y={$(xa)-20} DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:13)
+#ENDIF

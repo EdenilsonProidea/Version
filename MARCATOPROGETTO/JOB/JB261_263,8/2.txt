@@ -1,0 +1,2 @@
+#IF $(pp)>0 #LET f=1 #LET f=2
+$(F)	CANALGAVETA	X=0 Y=$(PA) DA=$(DA) PF=$(XP8:0)

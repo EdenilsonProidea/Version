@@ -1,0 +1,24 @@
+CAIXA_MONTAGEM
+#LET folgacoluna=$(folgacolunacost:0)
+#LETS InfoRecorteLateral=2;{$(aviga:0)+$(folgacoluna:0)};{$(pviga)+$(folgacoluna:0)} // INFORMAÇÕES PARA FURAÇÃO NO LATERAL
+#LET FOLGAVIGA=$(folgacoluna:0)
+#LET PAVIGA=$A-$(Aviga:0)
+#LET PVIGA=$(Pviga:0)
+203,sp=0,p=$p  // Base inferior
+203.001,SP=$(PVIGA)+$(FOLGAVIGA:0),P=$P-1*($(PVIGA)+$(FOLGAVIGA:0)),A=$(ABASESUP:0),SA=$a-$(ABASESUP:0)  // Base Superior
+!SAGOMAL sagLatEsq 0,0,0,{$(PAVIGA)-$(FOLGAVIGA:0)},$(pviga)+$(folgaviga:0),{$(PAVIGA)-$(FOLGAVIGA:0)},$(pviga)+$(folgaviga:0),$a,$p,$a,$p,0,0,0
+!SAGOMAL sagLatDir 0,0,0,{$(PAVIGA)-$(FOLGAVIGA:0)},$(pviga)+$(folgaviga:0),{$(PAVIGA)-$(FOLGAVIGA:0)},$(pviga)+$(folgaviga:0),$a,$p,$a,$p,0,0,0
+201  // Lateral Esquerda
+202  // Lateral Direita
+203.001,sa=$(PAVIGA)-$(folgaviga:0)-$(abase:0),sp=0,p=$(pviga)+$(folgaviga:0)
+//#IF $(SUP)=1 & $L>800 // ACESSO 13/01
+   
+//#ELSE
+   #LET afundo1=$(paviga)-$(folgaviga:0)-$(abase:0)*2+$(rag_cos:0)*2
+//#ENDIF
+//205,A=$(afundo1)  // Fundo
+#LET afundo2=$a-$(paviga)+$(folgaviga:0)
+244,SL=$(eslat:0),SA=$(paviga)-$(folgaviga:0)-$(ABASE:0),SP=$(pviga)+$(folgaviga:0),L=$l-$(eslat:0)*2,A=$(afundo2),X7=N/N/N/N/0/0/1/1  //Cobertura frontal coluna
+paineis_laterais
+#LETV pcaixa=$p
+INICIA_PDIV

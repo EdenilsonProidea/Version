@@ -1,0 +1,9 @@
+#IF $(DIVIDICAIXA$(iold):0)=1 | $(IOLD)=0
+ #MSG $(DIVIDICAIXA$(iold):0)=1 | $(IOLD)=0
+
+   #IF $(DIVIDICAIXA$(idmodulotemp):0)=0
+      dor_caixa_1L,sa=0,sl={$(eslat:0)+($(lmodulo:0)+$(eslat:0))*($(idmodulotemp)-1)},l={$(lmodulo:0)*2+$(eslat:0)},MACRO=caixa_fechr,a=$a,p=$p
+   #ELSE
+      dor_caixa_1L,sa=0,sl={$(eslat:0)+($(lmodulo:0)+$(eslat:0))*($(idmodulotemp)-1)},l=$(lmodulo:0),MACRO=caixa_fechr,a=$a,p=$p
+   #ENDIF
+#ENDIF

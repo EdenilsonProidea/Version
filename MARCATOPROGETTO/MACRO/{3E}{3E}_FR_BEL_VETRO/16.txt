@@ -1,0 +1,19 @@
+_calcola_popx
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$(afre)
+#ENDIF
+#IF $(_TPFR:3)[7;28]!0 #LET ALT=$(LFRE) #LET ALT=$(ALT)
+calc_n_prat,_prat=0,alt=$(afre)
+// #IF $(_TPFR:3)[7;28]!0 #LETV _FR:7=belagio_vetro_BASC_$(RR).3ds #LETV _FR:7=belagio_vetro_$(RR).3ds // Adicionado em visita - utiliza outro 3ds para basculantes
+#LETV _FR:7=belagio_vetro_$(RR).3ds
+#LETS nomejobfrente=BELAGIO_VETRO_$(rr)
+#LETS nomejobfrente2=BELAGIO_VETROT_$(rr)
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+#LETS parfrente=belagio_vetro_$(rr).3DS|100;100;100;100
+#LETS xpfrente=frente_3D.xp
+#LET DOISLADOS=1
+#LET ladojobfrente=1
+_FR_STANDARD,frentecomvidro=1
+268,x9=$(_vidro:6)/$(_vidro:7),lato=6  // Vidro Porta
+// .frente_3D.xp
+// 215

@@ -1,0 +1,14 @@
+{ 590   // RODAPE UBIK FRONTAL
+   *AZZERA*            =0
+   DESCRIZIONE         =RODAPE UBIK FRONTAL
+   CODICE              =/_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$(P)-$(ESBASEu)-10
+   DIMENSIONE          =$L,$(arodubik),$(ESBASEu)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   X4                  =$(eleid)
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/1/$(canal)/$(cava)/0/0/0/0/0/0
+   X8                  =/$(ESbaseU:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#590
+}

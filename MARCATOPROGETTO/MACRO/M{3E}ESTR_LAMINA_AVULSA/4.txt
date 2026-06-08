@@ -1,0 +1,8 @@
+#IF $(x9:0)!!
+   #IF $(_LISTINO)=1
+      $(x9:0),$(DIML)*$(DIMA)/1000000
+   #ELSE
+#MSG $(x9:1)
+      KIT-LAMINA-AVULSA,1,CODLAM=$(x9:0);CODCHAPA=$(X9:1),$(DIML),$(DIMA),$(DIMP) // <c30049>
+   #ENDIF
+#ENDIF

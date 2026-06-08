@@ -1,0 +1,16 @@
+
+#IF $(_pes:13)!!
+   #IF $(_tpfech:3)=3
+      #IF $(_TPBASARM:3)=4
+         //#MSG aqui
+         381,A=$(arodape:0)-$(es),sp={$p+$(_tpfech:5)-$(es)-2}  // Rodape fechamento
+         380,sa=$(arodape:0)-$(es)
+      #ELSE
+         381,A=$(arodape:0)-$(es),sp={$p-$(sobrepbasefech:0)} // Rodape fechamento
+         381,A=$(arodape:0)-$(es),sp={$p+$(_tpfech:5)-$(es)-2}  // Rodape fechamento
+         380,sa=$(arodape:0)-$(es)
+      #ENDIF
+   #ELSE
+      381,a=$(arodape:0),SP={$p-($(es)+$(RED_F_ROD))}  // Rodape fechamento
+   #ENDIF
+#ENDIF

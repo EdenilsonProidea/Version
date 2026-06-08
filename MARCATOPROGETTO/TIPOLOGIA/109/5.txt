@@ -1,0 +1,14 @@
+{ 109   // SARAFFO HORIZONTAL PAINEL PAREDE nicho fixa parede
+   *AZZERA*            =0
+   DESCRIZIONE         =SARAFFO HORIZONTAL PAINEL PAREDE nicho fixa parede
+   CODICE              =/LINHA=$(MODELLO:0)
+   POSIZIONE           =$(AMAOAMIGA),0,0
+   DIMENSIONE          =$l-$(AMAOAMIGA)*2,$(AMAOAMIGA),$(esmaoamiga)
+   COLORI              =$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5),$(cor:3)|$(.percorso)\foto\madeira\$(cor:4)|$(cor:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/1/1/1/1/0
+   X8                  =$(_tpcaixa:1)/$(_corEX:0)
+   X9                  =$(_tpcaixa:1)/$(_corEX:1)/$(TPFIX:1)/$(_corbf:1)/1
+   ALIAS               =#204
+}

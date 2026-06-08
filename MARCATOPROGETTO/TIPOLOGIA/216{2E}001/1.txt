@@ -1,0 +1,9 @@
+{ 216.001   // FRENTE COM VIDRO LAP
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE COM VIDRO LAP
+   COLORI              =,$(_VIDRO:3)|$(.percorso)\foto\VIDRO\$(_vidro:4)|$(_vidro:5)
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =FRENTE3D.XP
+   DATI                =$(CXFRENTE)
+   ALIAS               =#215
+}

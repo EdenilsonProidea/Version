@@ -1,0 +1,15 @@
+#LET rrr=0
+#LET AROD=$(_PES:5)
+#LET pz1=-$(sbzsx:0)+$(rodesq:0)*$(afrodl:0)-1*$(prod:0),pz2={$l+$(prod:0)-1*$(afrodl:0)*$(roddir:0)+$(sbzdx:0)}
+#MSG $(esprodape)
+#IF $(rodesq:0)=1
+   !SAGOMA percorso $(AFRODL:0)-$(sbzsx:0),$(rrr),$(AFRODL:0)-$(sbzsx:0),$p-$(AFRODF:0)
+   RODAPE,X1=$(PERCORSO),rodlat=L
+#ENDIF
+#IF $(roddir:0)=1
+   !SAGOMA percorso $l-$(AFRODL:0)+$(sbzdx:0),$p-$(AFRODF:0), $l-$(AFRODL:0)+$(sbzdx:0),$(rrr)
+   RODAPE,X1=$(PERCORSO),rodlat=L
+#ENDIF
+!SAGOMA percorso $(pz1),$p-$(AFRODF:0),$(pz2),$p-$(AFRODF:0)
+RODAPE,X1=$(PERCORSO),x0=. //ZOCCOLO
+#LET NA=-$(arod) //deslocamento do modulo na altura para inserir rodapè

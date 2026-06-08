@@ -1,0 +1,6 @@
+#IF $(xx3:0)=$(xp3:0)
+   #LET NAOFURAR=0
+   #IF $(PL)>=0 & $(XP7:10)!3 #LET NAOFURAR=1
+   #IF $(PL)<-100 & $(XP7:11)!3 #LET NAOFURAR=1
+   #M JOB_LAT_BASE_SI
+#ENDIF

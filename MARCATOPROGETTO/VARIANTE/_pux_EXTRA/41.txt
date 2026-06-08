@@ -1,0 +1,205 @@
+{ _pux_EXTRA
+   *AZZERA*            =0
+   DESCRIZIONE         =
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^4;8;100;100;3;#FOTO\puxadores\;2;3;;;1;4;3;;3
+   MEMO                =1Código 1800Descrição 5250modelo frente pux diff 2340pos pux a diff 1485pos pux L diff 1575001.017COLUNA 3 - CÓDIGO DE FRENTE QUE TEM REGRA DIFERENTE DE POSIÇÃO DE PUXADOR (COLUNA 6 DE _FR)
+COLUNA 4 - POSIÇÃO DIFERENTE NA ALTURA SE É FRENTE COM POSIÇÃO DIFERENTE
+COLUNA 5 - POSIÇÃO DIFERENTE NA LARGURA SE É FRENTE COM POSIÇÃO DIFERENTE
+   { 
+      //      ,Descrição                                          ,modelo frente pux diff              ,pos pu,pos p
+      001     ,Modello                                            ,                                    ,      ,
+      001.001 ,Pux Personalizado                                  ,                                    ,      ,
+      001.002 ,Pux Eden - Preto - L82mm                           ,201;202;104;502;503                 ,10    ,13
+      001.003 ,Pux Sotile Fosco                                   ,                                    ,      ,
+      001.004 ,Pux Rodeo - Preto - D30mm                          ,                                    ,      ,
+      001.005 ,Pux Al?a - Niquel - L184mm                         ,117;104;106;105;201;202;501;502;503 ,12.5  ,12.5
+      001.006 ,Pux Al?a - Cobre - L184mm                          ,117;104;106;105;201;202;501;502;503 ,12.5  ,12.5
+      001.007 ,Pux Orion - Niquel - D33mm                         ,                                    ,      ,
+      001.008 ,Pux Orion - Niquel - D55mm                         ,                                    ,      ,
+      001.009 ,Pux Orion - Cobre - D33mm                          ,                                    ,      ,
+      001.010 ,Pux Orion - Cobre - D55mm                          ,                                    ,      ,
+      001.011 ,Pux Concha Niquel - L89mm                          ,117;104;106;105;201;202;501;502;503 ,5     ,8
+      001.012 ,Pux Concha Cobre - L89mm                           ,117;104;106;105;201;202;501;502;503 ,5     ,8
+      001.013 ,Pux Haste Granado - Niquel L170mm                  ,117;104;106;105;201;202;501;502;503 ,20    ,17
+      001.014 ,Pux Haste Granado - Niquel L458mm                  ,117;104;106;105;201;202;501;502;503 ,20    ,17
+      001.015 ,Pux Haste Granado - Cobre L170mm                   ,117;104;106;105;201;202;501;502;503 ,20    ,17
+      001.016 ,Pux Haste Granado - Cobre L458mm                   ,117;104;106;105;201;202;501;502;503 ,20    ,17
+      001.017 ,Pux Piaui - Branco - L166mm                        ,                                    ,      ,
+      001.018 ,Pux Piaui - Branco - L358mm                        ,                                    ,      ,
+      001.019 ,Pux Piaui - Preto - L166mm                         ,                                    ,      ,
+      001.020 ,Pux Piaui - Preto - L358mm                         ,                                    ,      ,
+      001.021 ,Pux Korvo - Preto - L212mm                         ,                                    ,      ,
+      001.022 ,Pux Korvo - Branco - L212mm                        ,                                    ,      ,
+      001.023 ,Pux Korvo - Fosco - L212mm                         ,                                    ,      ,
+      001.024 ,Pux Korvo - Vecchio Metallo - L212mm               ,                                    ,      ,
+      001.025 ,Pux Korvo - Bronze - L212mm                        ,                                    ,      ,
+      001.026 ,Pux Piaui - Branco - L230mm                        ,                                    ,      ,
+      001.027 ,Pux Piaui - Preto - L230mm                         ,                                    ,      ,
+      001.028 ,Pux Vintage Niquel - D40mm                         ,                                    ,      ,
+      001.029 ,Pux Bagueti - Branco - L241mm                      ,                                    ,      ,
+      001.030 ,Pux Haste Inox - L133mm                            ,                                    ,      ,
+      001.031 ,Pux Haste Inox - L261mm                            ,                                    ,      ,
+      001.032 ,Puxador Cava                                       ,                                    ,      ,
+      001.033 ,Pux Al?a Alum?nio L.145mm                          ,                                    ,      ,
+      002     ,Linha RIM                                          ,                                    ,      ,
+      002.001 ,Pux RIM-088 FOSCO - 150mm                          ,                                    ,      ,
+      002.002 ,Pux RIM-088 FOSCO - 200mm                          ,                                    ,      ,
+      002.003 ,Pux RIM-088 FOSCO - 300mm                          ,                                    ,      ,
+      002.004 ,Pux RIM-088 NERO OPACO - 150mm                     ,                                    ,      ,
+      002.005 ,Pux RIM-088 NERO OPACO - 200mm                     ,                                    ,      ,
+      002.006 ,Pux RIM-088 NERO OPACO - 300mm                     ,                                    ,      ,
+      003     ,Veromobile                                         ,                                    ,      ,
+      003.001 ,Pux Pine                                           ,                                    ,      ,
+      003.002 ,Pux T Pine                                         ,                                    ,      ,
+      004     ,Obispa                                             ,                                    ,      ,
+      004.001 ,Puxador Padua 92mm Cromo/188                       ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.002 ,Puxador Padua 92mm Níquel Escov./79                ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.003 ,Puxador Padua 92mm Nero Opaco /324                 ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.004 ,Puxador Padua 92mm Black Silk Opaco/ 360           ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.005 ,Puxador Padua 92mm  Cobre Opaco / 337              ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.006 ,Puxador Padua 92mm Ouro Escovado /147              ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.007 ,Puxador Padua 129mm Cobre Opaco / 337              ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.008 ,Puxador Padua 129mm Nero Opaco /324                ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.009 ,Puxador Padua 129mm Níquel Escov./79               ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.010 ,Puxador Padua 129mm Ouro Escovado /147             ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.011 ,Puxador Padua 129mm Cromo/188                      ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.012 ,Puxador Padua 129mm  Black Silk Opaco/ 360         ,117;104;106;105;201;202;501;502;503 ,9.5   ,35
+      004.013 ,Puxador Rovigo 80mm Cobre Opaco / 337              ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.014 ,Puxador Rovigo 80mm Nero Opaco /324                ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.015 ,Puxador Rovigo 80mm Ouro Escovado /147             ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.016 ,Puxador Rovigo 80mm Cromo/188                      ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.017 ,Puxador Rovigo 80mm Black Silk Opaco/ 360          ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.018 ,Puxador Rovigo 80mm Níquel Escov./79               ,117;104;106;105;201;202;501;502;503 ,8     ,5
+      004.019 ,Puxador Rovigo 45mm Cobre Opaco / 337              ,                                    ,      ,
+      004.020 ,Puxador Rovigo 45mm Nero Opaco /324                ,                                    ,      ,
+      004.021 ,Puxador Rovigo 45mm Ouro Escovado /147             ,                                    ,      ,
+      004.022 ,Puxador Rovigo 45mm Cromo/188                      ,                                    ,      ,
+      004.023 ,Puxador Rovigo 45mm Black Silk Opaco/ 360          ,                                    ,      ,
+      004.024 ,Puxador Rovigo 45mm Níquel Escov./79               ,                                    ,      ,
+      004.025 ,Puxador Mini Dual Cromo/188                        ,                                    ,      ,
+      004.026 ,Puxador Mini Dual Nero Opaco /324                  ,                                    ,      ,
+      004.027 ,Puxador Mini Dual Cobre Opaco / 337                ,                                    ,      ,
+      004.028 ,Puxador Mini Dual Black Silk Opaco/ 360            ,                                    ,      ,
+      004.029 ,Puxador Mini Dual Níquel Escov./79                 ,                                    ,      ,
+      004.030 ,Puxador Toronto 96mm Ouro Escovado /147            ,                                    ,      ,
+      004.031 ,Puxador Toronto 96mm Cromo/188                     ,                                    ,      ,
+      004.032 ,Puxador Toronto 96mm Nero Opaco /324               ,                                    ,      ,
+      004.033 ,Puxador Toronto 96mm Cobre Opaco / 337             ,                                    ,      ,
+      004.034 ,Puxador Toronto 96mm Black Silk Opaco/ 360         ,                                    ,      ,
+      004.035 ,Puxador Toronto 96mm Níquel Escov./79              ,                                    ,      ,
+      004.036 ,Puxador Toronto 320 mm Ouro Escovado /147          ,                                    ,      ,
+      004.037 ,Puxador Toronto 320 mm Cromo/188                   ,                                    ,      ,
+      004.038 ,Puxador Toronto 320 mm Nero Opaco /324             ,                                    ,      ,
+      004.039 ,Puxador Toronto 320 mm Cobre Opaco / 337           ,                                    ,      ,
+      004.040 ,Puxador Toronto 320 mm Black Silk Opaco/ 36        ,                                    ,      ,
+      004.041 ,Puxador Toronto 320 mm Níquel Escov./79            ,                                    ,      ,
+      004.042 ,Puxador Quebec Modern 160 mm Ouro Escovado /147    ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.043 ,Puxador Quebec Modern 160 mm Cromo/188             ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.044 ,Puxador Quebec Modern 160 mm Nero Opaco /324       ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.045 ,Puxador Quebec Modern 160 mm Cobre Opaco / 337     ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.046 ,Puxador Quebec Modern 160 mm Black Silk Opaco/ 360 ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.047 ,Puxador Quebec Modern 160 mm Níquel Escov./79      ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.048 ,Puxador Quebec Modern 544 mm Cromo/188             ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.049 ,Puxador Quebec Modern 544 mm Nero Opaco /324       ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.050 ,Puxador Quebec Modern 544 mm Cobre Opaco / 337     ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.051 ,Puxador Quebec Modern 544 mm Black Silk Opaco/ 360 ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.052 ,Puxador Quebec Modern 544 mm Níquel Escov./79      ,117;104;106;105;201;202;501;502;503 ,21.25 ,35
+      004.053 ,Puxador Quebec Pto Modern 35 mm Ouro Escovado /147 ,                                    ,      ,
+      004.054 ,Puxador Quebec Pto Modern 35 mm Cromo/188          ,                                    ,      ,
+      004.055 ,Puxador Quebec Pto Modern 35 mm Nero Opaco /324    ,                                    ,      ,
+      004.056 ,Puxador Quebec Pto Modern 35 mm Cobre Opaco / 337  ,                                    ,      ,
+      004.057 ,Puxador Quebec Pto Modern 35 mm Black Silk Opaco/  ,                                    ,      ,
+      004.058 ,Puxador Quebec Pto Modern 35 mm Níquel Escov./79   ,                                    ,      ,
+      004.059 ,Puxador Izzie Ponto Barra Recartilhada Cromo/188   ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.060 ,Puxador Izzie Ponto Barra Recartilhada Ouro Escova ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.061 ,Puxador Izzie Ponto Barra Recartilhada Nero Opaco  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.062 ,Puxador Izzie Ponto Barra Recartilhada Cobre Opaco ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.063 ,Puxador Izzie Ponto Barra Recartilhada Black Silk  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.064 ,Puxador Izzie Ponto Barra Recartilhada Níquel Esco ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.065 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.066 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.067 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.068 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.069 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.070 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 96 mm  ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.071 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 160 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.072 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 160 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.073 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 160 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.074 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 160 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.075 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 160 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.076 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.077 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.078 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.079 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.080 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.081 ,Puxador Izzie Alça Barra Recartilhada 3/8 x 352 mm ,117;104;106;105;201;202;501;502;503 ,23.35 ,35
+      004.082 ,Puxador Dante Recartilha 160 mm Cromo/188          ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.083 ,Puxador Dante Recartilha 160 mm Ouro Escovado /147 ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.084 ,Puxador Dante Recartilha 160 mm Nero Opaco /324    ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.085 ,Puxador Dante Recartilha 160 mm Cobre Opaco / 337  ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.086 ,Puxador Dante Recartilha 160 mm Black Silk Opaco/  ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.087 ,Puxador Dante Recartilha 160 mm Níquel Escov./53   ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.088 ,Puxador Dante Recartilha 544 mm  Ouro Escovado /14 ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.089 ,Puxador Dante Recartilha 544 mm Nero Opaco /324    ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.090 ,Puxador Dante Recartilha 544 mm Cobre Opaco / 337  ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.091 ,Puxador Dante Recartilha 544 mm Black Silk Opaco/  ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.092 ,Puxador Dante Recartilha 544 mm Níquel Escov./53   ,117;104;106;105;201;202;501;502;503 ,15.5  ,35
+      004.093 ,Puxador Da Vinci Piccolo Ouro Escovado /147        ,                                    ,      ,
+      004.094 ,Puxador Da Vinci Piccolo Cromo/188                 ,                                    ,      ,
+      004.095 ,Puxador Da Vinci Piccolo Nero Opaco /324           ,                                    ,      ,
+      004.096 ,Puxador Da Vinci Piccolo Cobre Opaco / 337         ,                                    ,      ,
+      004.097 ,Puxador Da Vinci Piccolo Black Silk Opaco/ 360     ,                                    ,      ,
+      004.098 ,Puxador Da Vinci Piccolo Níquel Escov./53          ,                                    ,      ,
+      004.099 ,Puxador Big Dual Recartilha 192 mm Cromo/188       ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.100 ,Puxador Big Dual Recartilha 192 mm Ouro Escovado   ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.101 ,Puxador Big Dual Recartilha 192 mm Nero Opaco /32  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.102 ,Puxador Big Dual Recartilha 192 mm Cobre Opaco /   ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.103 ,Puxador Big Dual Recartilha 192 mm Black Silk Opa  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.104 ,Puxador Big Dual Recartilha 192 mm Níquel Escov./  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.105 ,Puxador Big Dual Recartilha 512 mm Cromo/188       ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.106 ,Puxador Big Dual Recartilha 512 mm Ouro Escovado   ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.107 ,Puxador Big Dual Recartilha 512 mm Nero Opaco /32  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.108 ,Puxador Big Dual Recartilha 512 mm Cobre Opaco /   ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.109 ,Puxador Big Dual Recartilha 512 mm Black Silk Opa  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.110 ,Puxador Big Dual Recartilha 512 mm Níquel Escov./  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      004.111 ,Puxador Quebec Modern 544 mm Ouro Escovado         ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005     ,Obispa com couro                                   ,                                    ,      ,
+      005.001 ,Puxador Big Dual Couro Areia 192 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.002 ,Puxador Big Dual Couro Areia 192 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.003 ,Puxador Big Dual Couro Areia 192 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.004 ,Puxador Big Dual Couro Areia 192 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.005 ,Puxador Big Dual Couro Areia 192 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.006 ,Puxador Big Dual Couro Cinza 192 mm Ouro Escovado  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.007 ,Puxador Big Dual Couro Cinza 192 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.008 ,Puxador Big Dual Couro Cinza 192 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.009 ,Puxador Big Dual Couro Cinza 192 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.010 ,Puxador Big Dual Couro Cinza 192 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.011 ,Puxador Big Dual Couro Cinza 192 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.012 ,Puxador Big Dual Couro Preto 192 mm Ouro Escovado  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.013 ,Puxador Big Dual Couro Preto 192 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.014 ,Puxador Big Dual Couro Preto 192 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.015 ,Puxador Big Dual Couro Preto 192 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.016 ,Puxador Big Dual Couro Preto 192 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.017 ,Puxador Big Dual Couro Preto 192 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.018 ,Puxador Big Dual Couro Areia 512 mm Ouro Escovado  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.019 ,Puxador Big Dual Couro Areia 512 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.020 ,Puxador Big Dual Couro Areia 512 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.021 ,Puxador Big Dual Couro Areia 512 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.022 ,Puxador Big Dual Couro Areia 512 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.023 ,Puxador Big Dual Couro Areia 512 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.024 ,Puxador Big Dual Couro Cinza 512 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.025 ,Puxador Big Dual Couro Cinza 512 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.026 ,Puxador Big Dual Couro Cinza 512 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.027 ,Puxador Big Dual Couro Cinza 512 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.028 ,Puxador Big Dual Couro Cinza 512 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.029 ,Puxador Big Dual Couro Preto 512 mm Ouro Escovado  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.030 ,Puxador Big Dual Couro Preto 512 mm Cromo/188      ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.031 ,Puxador Big Dual Couro Preto 512 mm Nero Opaco /32 ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.032 ,Puxador Big Dual Couro Preto 512 mm Cobre Opaco /  ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.033 ,Puxador Big Dual Couro Preto 512 mm Black Silk Opa ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      005.034 ,Puxador Big Dual Couro Preto 512 mm Níquel Escov./ ,117;104;106;105;201;202;501;502;503 ,19.25 ,35
+      999     ,Sem Puxador                                        ,                                    ,      ,
+   }
+}

@@ -1,0 +1,251 @@
+#IF $(TIP)[215;216;217;218]!0
+   #LOADVAR fr _fr $(x9:0)
+   #LOADVAR corfr _corfr $(x9:1)
+   #LOADVAR ape ape $(x9:2)
+   #LETS CORP=$(corfr:6)
+   #IF $(x9:4)!! & $(x9:4)!!$(corfr:6) // troca a cor da borda
+      #LETS CORB=$(x9:4)
+   #ELSE
+      #LETS CORB=$(corfr:7)
+   #ENDIF
+   //#LOADVAR iniciaestrjob iniciaestrjob FITA_FRENTE // <c19601>
+   #LET ESPB=$(fr:11) //$(FITA_FRENTE:0)
+   // determina a espessura da borda
+   #LETS mascara=CORP=$(CORP);CORB=$(CORB);ESPB=$(ESPB);COR=$(CORFR:8);APE=$(APE:1)
+   #LETS COR=$(CORFR:8)
+   #LETS NOTA1=$(APE:2)
+   #LOADVAR TPFIX TPFIX $(X9:5)
+   // <c25378>
+   #IF $(_FR:6)[501;502;503]!0 & $(X9:5)!!
+      #LETS CODFIXPRINCIPAL=$(X9:5)
+      #LETS CODFIXSECUNDARIA==
+      #LET NFIXPRINCIPAL=4
+      #LET NFIXSECUNDARIA=
+      #IF $(_LISTINO)=1
+         #IF $(NFIXPRINCIPAL)>0
+            $(CODFIXPRINCIPAL),$(NFIXPRINCIPAL)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   // <c25378>
+   #IF $(ape:8)>0 & $(x9:8)>0 & $(x9:7)!!
+      #LETS mascara=$(mascara);Ndob=$(x9:8);coddob=$(x9:7);
+      // #IF $(_LISTINO)=1
+      //    $(x9:7),$(x9:8)
+      // #ENDIF
+   #ENDIF
+   #IF $(APE:11)=1
+      #LET SUPTINTA=$(sup1faceB)
+   #ENDIF
+   //ini <c23498>
+   //  #MSG $(DIMP) $(x9:13)
+   #IF $(DIMP)=6 & $(X9:13)!!
+      #LET suptot=($(dima)*$(diml))*2/1000000
+      #LETV INICIACOD=CONVTINTA // feito em visita técnica <c23610>
+      #LETS CONVTINTA=$(INICIACOD:2) // feito em visita técnica <c23610>
+      #LET SUPTINTA={$(suptot)*$(CONVTINTA:0)}
+      #LET SUPPRIME={$(suptot)*$(CONVTINTA:0)}
+      #LOADVAR cortint cor $(X9:13)
+      #LETS MASCARA=$(mascara);TINTA=$(cortint=:7);SUPPRIME=$(SUPPRIME);SUPTINTA=$(SUPTINTA);
+      #LETS tinta=$(cortint:7)
+   #ENDIF
+   // fim <c23498>
+   #IF $(_fr:6)[301;302;303;304;305]!0 // Adicionado o custo do m2 dos frisos a pedido do cliente no plano conexão <c29856>
+      #LETS QTDM2FRISO=
+      #IF $(_fr:6)[302]!0 // Friso VERTICAL
+         #LETS QTDM2FRISO={(($(DIML)*4)*$(X5:0))/1000000} // M2 dos frisos
+      #ELSEIF $(_fr:6)[301]!0 // Friso HORIZONTAL
+         #LETS QTDM2FRISO={(($(DIMA)*4)*$(X5:1))/1000000} // M2 dos frisos
+      #ELSEIF $(_fr:6)[303]!0 // Friso VERTICAL e HORIZONTAL
+         #LETS QTDM2FRISO={((($(DIML)*4)*$(X5:0))+(($(DIMA)*4)*$(X5:1)))/1000000} // M2 dos frisos
+      #ENDIF
+      #LETS CUSTO_FRISO=16574 // Custo de usinagem dos frisos
+   #ENDIF
+   
+#ELSEIF $(TIP)[510]!0 // <c25378>
+   #IF $(X9:3)[501;502;503]!0
+      #LET CALCULAFIXA=0
+      #LETS CODFIXPRINCIPAL=$(X9:2)
+      #LETS CODFIXSECUNDARIA==
+      #LET NFIXPRINCIPAL=4
+      #LET NFIXSECUNDARIA=
+      #IF $(_LISTINO)=1
+         #IF $(NFIXPRINCIPAL)>0
+            $(CODFIXPRINCIPAL),$(NFIXPRINCIPAL)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ELSEIF $(TIP)[260;261;262;263;265]!0 // ALEX VISITA - FOI SOLICITADO PARA FITAS DE GAVETA SEMPRE DE 0.45 - SOLICITADO RENAN
+   #LET ISGAVETA=1 // ISSO FOI FEITO PARA MANDAR INFORMAÇÃO PARA O PONTTA QUE A GAVETA VAI PARA O SETOR DE MONTAGEM GAVETA <C27078>
+   #LETS ESPB=0.5
+#ELSEIF $(TIP)[275]!0
+   #LETS CORb=$(_CORCX:7)
+   #IF $(X8:1)>0
+      #LET FACELAMINA=$(X8:1)
+      #IF $(X8:1)=2
+         #LET SUPTINTA=$(suptot)
+         #LET SUPPRIME=$(suptot) // <c26363>
+      #ELSE
+         #LET SUPTINTA=$(sup1faceB)
+         #LET SUPPRIME=$(sup1faceB) // <c26363>
+      #ENDIF
+   #ENDIF
+   #IF $(FACELAMINA)=1
+      #LET ADDFAIX10A=200
+      #LET ADDFAIX10L=200
+   #ENDIF
+#ELSEIF $(TIP)[203;303]!0
+   //  minmo,3
+   #IF $(x3:1)[ICL;SCL]!0
+      // CANTO L
+      #LET calculobordaespecial=1
+      #LETV COR=$(_CORCX:8)
+      #LETS CORP=$(_CORCX:6)
+      #LETS CORb=$(_CORCX:7)
+      #LET PLATE=$(DIML)-$(X8:2)
+      #LET PLATD=$(DIMA)-$(X8:1)
+      #LETS CODBORDA=
+      #LET QTB=0
+      #IF $(ESPB)=0.5
+         #LETS CODESPB=05
+      #ELSEIF $(ESPB)=1
+         #LETS CODESPB=10
+      #ELSEIF $(ESPB)=2
+         #LETS CODESPB=20
+      #ENDIF
+      #IF $(DIMPBORDA)<19
+         #IF $(CODESPB)_19[$(COR:15)]!
+            #LETS ALTB=19
+         #ELSE
+            #LETS ALTB=22
+         #ENDIF
+      #ELSE
+         #LETS ALTB=29
+      #ENDIF
+      #LET QTB={(($(PLATE)+30)+($(PLATD)+30)))/1000}
+      #IF $(QTB)>0 & $(DIMPBORDA)>=15 & $(TINTA)==
+         #LETS CODBORDA=$[CODICEBARRA;XBOR-$(CORB)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMP);ERRORE]
+         #LETS CHECKERRO=$[MID;$(CODBORDA);2;1]
+         #IF $(checkerro)==x | $(checkerro)==r | $(codborda)==
+            #LETS CODBORDA=ERROBORDA
+         #ENDIF
+      #ENDIF
+      #LET QTB2={(($(DIML)+30)+($(DIMA)+30))/1000}
+      #IF $(QTB2)>0 & $(DIMPBORDA)>=15 & $(TINTA)==
+         #IF $(dimpBORDA)<18
+            #LETS CODBORDA2=FITAGEN19
+         #ELSEIF $(dimp)<25
+            #LETS CODBORDA2=FITAGEN22
+         #ELSE
+            #LETS CODBORDA2=FITAGEN29
+         #ENDIF
+      #ENDIF
+      #LETS MASCARA=CORP=$(corp);CORB=$(corb);ESPB=$(espb);COR=$(_CORCX:8)
+   #ENDIF
+#ELSEIF $(TIP)[209;309]!0
+   #LETV COR=$(_CORCX:6)
+   #IF $(X10:0)=1 // CLOSET LIGHT
+      #M FIX_PRATCL
+   #ELSE
+      #M FIX_PRAT
+   #ENDIF
+   //  #LETS mascara=NFIXPRAT=$(NFIXPRAT);FIXPRAT=$(FIXPRAT);
+   #IF $(x3:1)[L]!0
+      // CANTO L
+      #LET calculobordaespecial=1
+      #LETS CORP=$(_CORCX:6)
+      #LET PLATE=$(DIML)-$(X8:2)
+      #LET PLATD=$(DIMA)-$(X8:1)
+      #LETS CODBORDA=
+      #LET QTB=0
+      #LET QTB={(($(PLATE)+30)+($(PLATD)+30)))/1000}
+      #IF $(QTB)>0 & $(DIMPBORDA)>=15 & $(TINTA)==
+         #LETS CODBORDA=$[CODICEBARRA;XBOR-$(CORP)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMP);ERRORE]
+      #ENDIF
+      #LET QTB2={(($(DIML)+30)+($(DIMA)+30)+($(X8:1)+30)+($(X8:2)+30))/1000}
+      #M cod_borda_pers
+   #ENDIF
+#ELSEIF $(TIP)[280;281;282]!0
+   #LET FACELAMINA=$(X8:1)
+   #IF $(TAMBURATO)=1 #LET FACELAMINA=1
+   #LOADVAR _CORCX _corex $(x9:1)
+   #IF $(FACELAMINA:0)>0
+      #IF $(FACELAMINA:0)=2
+         #LET SUPTINTA=$(suptot)
+         #LET SUPPRIME=$(suptot) // <c26363>
+      #ELSE
+         #LET SUPTINTA=$(sup1faceB)
+         #LET SUPPRIME=$(sup1faceB) // <c26363>
+      #ENDIF
+   #ENDIF
+   #IF $(FACELAMINA)=1
+      #LET ADDFAIX10A=200
+      #LET ADDFAIX10L=200
+   #ENDIF
+   #IF $(NAOUSALAMINA:0)=1 & $(X8:1)=1
+      #LET SUPTINTA=0
+      #LET SUPPRIME=0
+      #LET ADDFAIX10A=0
+      #LET ADDFAIX10L=0
+   #ENDIF
+#ELSEIF $(TIP)[382;383;384;385;386;205;305;311;312]!0
+   #LOADVAR _CORCX _corfr $(x9:1)
+   #LET FACELAMINA=$(X8:1)
+   #IF $(TAMBURATO)=1 #LET FACELAMINA=1
+   #IF $(FACELAMINA)>0
+      #IF $(FACELAMINA)=2
+         #LET SUPTINTA=$(suptot)
+         #LET SUPPRIME=$(suptot) // <c26363>
+      #ELSE
+         #LET SUPTINTA=$(sup1faceB)
+         #LET SUPPRIME=$(sup1faceB) // <c26363>
+      #ENDIF
+   #ENDIF
+   #IF $(NAOUSALAMINA:0)=1 & $(X8:1)=1
+      #LET SUPTINTA=0
+      #LET SUPPRIME=0
+      #LET ADDFAIX10A=0
+      #LET ADDFAIX10L=0
+   #ENDIF
+#ELSEIF $(TIP)[267]!0
+   #LOADVAR _CORCX _corQUAD $(x9:1)
+#ELSEIF $(TIP)=242
+   #LOADVAR fr _fr $(x9:0)
+   #LOADVAR corfr _corfr $(x9:1)
+   #LOADVAR ape ape $(x9:2)
+   #LETS CORP=$(corfr:6)
+   // #IF $(x9:4)!!  // troca a cor da borda
+   //    #LETS CORB=$(x9:4)
+   // #ELSE
+   #LETS CORB=$(corfr:7)
+   //  #ENDIF
+   //#LET ESPB=$(FR:11) // determina a espessura da borda
+   #LETS mascara=CORP=$(CORP);CORB=$(CORB);ESPB=$(ESPB);COR=$(CORFR:8)
+   #LETS COR=$(CORFR:8)
+   #LOADVAR _TPMASCARA _TPMASCARA $(X9:2)
+   #LETS NOTA1=$(_TPMASCARA:2) FURO $(X9:3)x$(X9:4) mm
+   #LETS mascara=$(MASCARA);NOTA1=$(_TPMASCARA:2) FURO $(X9:3)x$(X9:4) mm
+#ELSEIF $(TIP)=296
+   #LETS mascara=_TPCAIXA=$(X9:0);_CORCX=$(X9:1)
+#ELSEIF $(TIP)[250]!0
+   #LETS CORP=$(x9:0)
+   #LETS CORB=$(x9:0)
+   #LETS MASCARA=CORP=$(corp);CORB=$(corb);ESPB=$(espb);COR=$(_CORCX:8)
+   #LETS COR=$(_CORCX:8)
+#ELSEIF $(TIP)[239;240]!0 //<C28481>
+   #LOADVAR _CORFR _CORFR $(X7:0)
+   #LETS CORP=$(_CORFR:6)
+#ELSEIF $(TIP)[100;101;102;103;104;105;106;107;108;109;110]!0
+   // ************************************* GESTÃO FITA DIFERENTE TODOS LADOS VERO E CORCX VERO // NÃO TEM MAIS VERO. ESSA GESTÃO SETAVA FERRANDO COM TUDO. RETIRADO ALEX
+   //  #LETS CORBVD=
+   //  #LETS CODBORDAVD=
+   //  #LOADVAR _CORCX   _CORCX  $(X9:0)7
+#ELSEIF $(TIP)[580;624;625]!0
+   #LET FACELAMINA=1
+   #LET SUPTINTA=$(sup1faceB)
+   #IF $(FACELAMINA)=1
+      #LET ADDFAIX10A=200
+      #LET ADDFAIX10L=200
+   #ENDIF
+#ENDIF
+// ************************************* FIM GESTÃO FITA DIFERENTE TODOS LADOS VERO

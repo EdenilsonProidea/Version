@@ -1,0 +1,55 @@
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   par=split(ex(zParametro(8),"/",4),"|")
+   ReDim Preserve par(2)
+   afriso=calcola(par(0))
+   nfrisos=calcola(par(1))
+   
+   parfrisos=split(par(2),";")
+   ReDim Preserve parfrisos(nfrisos)
+   aa = c1 & "," & c2
+   old_pafriso=0
+   If nfrisos>0 Then
+      ''   lvao=int(calcola(dl/(nfrisos+1)))
+      lvao=dl/(nfrisos+1)
+      For i=1 To nfrisos
+         If calcola(parfrisos(i-1))>0 Then
+            plfriso=calcola(parfrisos(i-1))
+         Else
+            plfriso=lvao*i
+         End If
+         wrtrasforma 0,0,dp-10
+         If i=1 Then
+            wrPannelloExtended "LAP",plfriso-afriso/2,da,10, 0,c1,c1,c2,c2,c2,c2,"2"
+            
+            CORFRISO=057
+            wrTrasforma plfriso-afriSO,0,0
+            wrPannelloExtended "LAP",AFRISO*2,da,8, 0,CORFRISO,CORFRISO,CORFRISO,CORFRISO,CORFRISO,CORFRISO,"2"
+            wrchiudi
+            
+         Else
+            wrTrasforma old_plfriso+afriso/2,0,0
+            wrPannelloExtended "LAP",plfriso-old_plfriso-afriso,da,10, 0,c1,c1,c2,c2,c2,c2,"2"
+            wrchiudi
+            
+            CORFRISO=057
+            wrTrasforma old_plfriso+afriso,0,0
+            wrPannelloExtended "LAP",AFRISO*2,da,20, 0,CORFRISO,CORFRISO,CORFRISO,CORFRISO,CORFRISO,CORFRISO,"2"
+            wrchiudi
+            
+         End If
+         
+         
+         wrchiudi
+         old_plfriso=plfriso
+      Next
+      wrtrasforma old_plfriso+afriso/2,0,dp-10
+      wrPannelloExtended "LAP",dl-old_plfriso-afriso/2,da,10, 0,c1,c1,c2,c2,c2,c2,"2"
+      wrchiudi
+   End If
+   
+   wrPannelloExtended "LAP",dl,da,dp-3, 0,c1,c1,c2,c2,c2,c2,"2"
+   
+   
+End Sub

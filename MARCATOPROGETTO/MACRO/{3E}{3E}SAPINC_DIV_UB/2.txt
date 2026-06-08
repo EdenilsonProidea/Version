@@ -1,0 +1,5 @@
+#IF $(Div:0)=1
+   312,sp=206
+   312,sp=2*206
+   #LET ndivisorias=2
+#ENDIF

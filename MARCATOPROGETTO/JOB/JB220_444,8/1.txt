@@ -1,0 +1,5 @@
+#IF $(TIPOLOGIAP)=220
+   1	FT6	X={$(PL)} Y=0 DF=8 PF=25
+#ELSE
+   1	FT6	X={$(XL)-$(PL)} Y=0 DF=8 PF=25
+#ENDIF

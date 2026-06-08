@@ -1,0 +1,17 @@
+#IF $(_FECHDIR:3)!7
+   dor_lat_dir,macro=dor_lat,l=$(eslat:0),a=$a,p=$(plat:0),sl={$L-$(ESLAT:0)-$(red_dir:0)},COD=D122CR
+#ENDIF
+#FOR $$(ncaixaini):$(ncaixadir),,idmodulotemp
+   CALCULA_DOBRAD // CALCULO DOBRADIÇA DIREITA
+   #LET iold=$(idmodulotemp)-1
+   #IF $(DIVIDICAIXAd$(iold):0)=1  | $(IOLD)=0
+      #IF $(DIVIDICAIXAd$(idmodulotemp):0)=0
+         dor_caixa_1L,sa=0,sl={$(plportasini)+$(lmodulodir)*($(idmodulotemp)-1)+$(eslat:0)/2},l={$(lmodulodir:0)*2-$(eslat:0)},MACRO=caixa_fechr,a=$a,p=$p,POSLARG_CAI={$(lmodulodir)*($(idmodulotemp)-1)+$(eslat:0)}
+         dor_lat_div,macro=dor_lat,slDivVert=$(plportasini)+$(lmodulodir)*($(idmodulotemp)-1)-$(eslat:0)/2,COD=D121CR
+      #ELSE
+         dor_caixa_1L,sa=0,sl={$(plportasini)+$(lmodulodir)*($(idmodulotemp)-1)+$(ESLAT:0)/2},l={$(lmodulodir:0)-$(eslat:0)},MACRO=caixa_fechr,a=$a,p=$p,POSLARG_CAI={$(lmodulodir)*($(idmodulotemp)-1)+$(eslat:0)}
+         dor_lat_div,macro=dor_lat,slDivVert=$(plportasini)+$(lmodulodir)*($(idmodulotemp)-1)-$(ESLAT:0)/2,COD=D121CR
+      #ENDIF
+   #ENDIF
+   //   dor_caixa_1L,sa=0,sl={$(plportasini)+$(lmodulodir)*($(idmodulotemp)-1)+$(eslat:0)/2},l={$(lmodulodir:0)-$(eslat:0)},MACRO=caixa_fechr,a=$a,p=$p
+#ENDFOR

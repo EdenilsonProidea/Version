@@ -1,0 +1,10 @@
+{ 660   // Vidro Porta
+   *AZZERA*            =0
+   DESCRIZIONE         =Vidro Porta
+   CODICE              =000PPVIDRO /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =50,50,$(espfre)/2
+   DIMENSIONE          =$(LPP)-100,$(hv)-100,3
+   COLORI              =$(_VIDRO:3)|$(.percorso)\foto\vidro\$(_VIDRO:4)|$(_VIDRO:5),$(_VIDRO:3)|$(.percorso)\foto\vidro\$(_VIDRO:4)|$(_VIDRO:5)
+   ORIENTAMENTO        =LAP
+   X9                  =$(_vidro:6)
+}

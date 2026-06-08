@@ -1,0 +1,7 @@
+// ini <C23498>
+#IF $(xx3:3)[501;502;503]!0
+   #LET PF=12
+   2	MA	 X=0 Y=0 NM=CANAL_TOPO_D PARM=PF@$(PF)^XI@0^XF@$(XL) KO_ZERO=0
+   2	MA	 X=0 Y=$(XA) NM=CANAL_TOPO_E PARM=PF@$(PF)^XI@0^XF@$(XL) KO_ZERO=0
+#ENDIF
+// fim

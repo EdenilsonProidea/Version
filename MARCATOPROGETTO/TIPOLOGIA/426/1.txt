@@ -1,0 +1,8 @@
+{ 426   // fix prateleira lateral
+   *AZZERA*            =0
+   DESCRIZIONE         =fix prateleira lateral
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =2,$(ESPRAT:0)/2,$(AFPRATP)+40
+   DIMENSIONE          =2,2,2
+   ORIENTAMENTO        =LAP
+}

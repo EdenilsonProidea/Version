@@ -1,0 +1,50 @@
+' gestao antiga
+'Sub main(p,dl,da,dp,hTerra)
+'   c1=wColoreE(p.colore1)
+'   c2=wColoreE(p.colore2)
+'
+'   par=split(ex(zParametro(8),"/",4),"|")
+'   ReDim Preserve par(2)
+'   finitura=par(0)
+'   V=SPLIT(par(1),";")
+'   aa = c1 & "," & c2
+'   percfile=UCASE(percorso & "\3ds\frente\" & finitura)
+'   wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+'End Sub
+' gestao antiga
+
+
+' foi copiado do catálogo antigo
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   'PARDESENHO=REPLACE(EX(p.PARAMETRO(8),"/",2),"_",";")
+   'V=SPLIT(PARDESENHO,";")
+   par=split(ex(zParametro(8),"/",4),"|")
+   ReDim Preserve par(2)
+   finitura=par(0)
+   V=SPLIT(par(1),";")
+   ' finitura=ex(zParametro(8),"/",1)
+   ' msgbox ucase(left(finitura,11))
+   ' msgbox PARDESENHO
+   If ucase(left(finitura,11))="TRADIZIONE_" Then
+      wrTrasforma 15,15,0
+      dl=dl-30
+      da=da-30
+   Else
+      wrTrasforma 0,0,0
+   End If
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\frente\" & finitura)
+   'msgbox percfile
+   
+   If ucase(right(finitura,3))=".XP" Or ucase(right(finitura,2))=".X" Or ucase(right(finitura,4))=".3DS"  Or ucase(right(finitura,5))=".DR3D" Or ucase(right(finitura,5))=".TREE" Then
+      ' msgbox 1 & " - " & da &  " - " & percfile
+      wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+      '      wrpannello "ALP", C1,DL,DA,DP
+   Else
+      ' msgbox 2 & " - " & da
+      wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+   End If
+   'wrchiudi
+End Sub

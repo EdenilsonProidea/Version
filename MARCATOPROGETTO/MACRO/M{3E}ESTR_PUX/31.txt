@@ -1,0 +1,25 @@
+
+#IF $(X9:1)=1
+   #LOADVAR _PUX PV_PUX $(X9:0)
+#ELSE
+   #LOADVAR _PUX _PUX $(X9:0)
+#ENDIF
+
+
+#IF $(_PUX:11)!!
+   #LETS MASCARA=CODPUX=$(_PUX:11);CODPARAFUSO=$(_PUX:18);NPARAFUSOS=$(_PUX:19);CODADICIONAL=$(_PUX:20)
+   #IF $(_LISTINO)=1
+      #IF $(_PUX:11)!!
+         $(_PUX:11),1
+      #ENDIF
+      #IF $(_PUX:18)!!
+         $(_PUX:18),$(_PUX:19)
+      #ENDIF
+      #IF $(_PUX:20)!!
+         $(_PUX:20),1
+      #ENDIF
+
+   #ELSE
+      KIT-PUX,1,$(MASCARA),$(x8:1),$(x8:2),$(x8:3)
+   #ENDIF
+#ENDIF

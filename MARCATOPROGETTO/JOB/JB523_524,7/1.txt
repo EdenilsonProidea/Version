@@ -1,0 +1,13 @@
+#LET NAOFAZER=0
+//#IF $(XX3:1)[ICL;SCL;MALL;INTL]!0  #LET NAOFAZER=1 // CANTO L
+#IF $(NAOFAZER)=0
+   #LET PCANAL=$(XP8:0)
+   #IF $(pA)>0 #LET f=1 #LET f=2
+   #IF ($(PA)>0 & $(PA)-$(XA)<2) | ($(PA)<0 & $(PA)+$(DA)>-2)
+      #IF $(PL)<0 #LET PL=0
+      #IF $(PL)+$(DL)>$(XL) #LET DL=$(XL)
+      //   $(F)	CANALMOVEL	X=$(PL) Y={$(PP)} XI={$(PL)} XF={$(PL)+$(DL)} DP=$(DP) PF=$(PCANAL)
+      //   $(F)	CANALMOVEL	X=$(PP) Y=0 XI={$(PP)} XF={$(PP)+$(DP)} DP=$(DL) PF=$(PCANAL)
+      //$(F)	RETANGULO	X=$(PP) Y=0 PF=$(PCANAL) DX={$(XP8:3)+0.7} DY=$(xx10:10) QUADRANTE=2 RAIO=0
+   #ENDIF
+#ENDIF

@@ -1,0 +1,8 @@
+#LET aagr=$A
+#LET lagr=$l
+#LET escos=0
+#LET afcos=0
+#LET PRATDOR=1
+// _int
+#LET spint=$(escos:0)+$(afcos:0)
+#LET pint=$p-1*($(escos:0)+$(afcos:0))

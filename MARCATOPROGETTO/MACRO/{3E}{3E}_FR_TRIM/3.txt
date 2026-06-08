@@ -1,0 +1,24 @@
+_calcola_popx
+#IF _PUXPROFILO2[$(_FR:9)]!0
+   #LETS corprofilo=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+#ELSE
+   #LETS corprofilo=$(_PUXPROFILO:4)
+#ENDIF
+#LETS pospuxadores=$(POPX)
+#IF $(pospuxadores)[7;8;9]!0
+   #LETS _fr:7=frtrim_s.3ds
+#ELSE
+   #LETS _fr:7=frtrim_i.3ds
+#ENDIF
+#LET ladojobfrente=2
+#LETS nomejobfrente=TRIM
+#LETS parjobfrente=PPUX@$(POPX)^SENPUX@$(SENTIDO)
+#LETS xpfrente=FRENTE3D.XP
+#IF $(fr_avulsa)=0 & $(sup)=0
+   #LET AFRE=$(AFRE:0)-$(RIDFRECAVA45:0)
+   204.003,cod=000PROFHO,SL=0,L=$L+3,sp=-$(ESTRA:0),a=45,sa=$a-42,X3=$(curbox)/$(_FR:6),X7=N/N/N/N/0/0/0/1/0/0/1/1/0/0/0/0/_/$(FITARSOVISTA:2)
+#ENDIF
+_FR_STANDARD
+#IF $(_PUXPROFILO:5)!!
+   298,X9=KIT-PUX-PROFILO^1^CODPUX=$(_PUXPROFILO:5)/$(_PUXPROFILO:5)  //Item
+#ENDIF

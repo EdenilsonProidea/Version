@@ -1,0 +1,8 @@
+{ 309.001   // PRATELEIRAS DE MADEIRA (DORMITORIO) L
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS DE MADEIRA (DORMITORIO) L
+   DISEGNO             =$(sagprat)
+   X3                  =$(curbox)/PTL
+   X10                 =$(AVANCOCLOSETL)/$(avancopratavul:0)
+   ALIAS               =#309
+}

@@ -1,0 +1,4 @@
+#IF $(xx3:0)=$(xp3:0)
+   #LET NAOFURAR=0
+   #M JOB_LAT_BASE_SI	pp=-30
+#ENDIF

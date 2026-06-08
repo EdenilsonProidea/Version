@@ -1,0 +1,15 @@
+{ 226   // FILETE PARA TAMPO
+   *AZZERA*            =0
+   DESCRIZIONE         =FILETE PARA TAMPO
+   CODICE              =$(_filete:6) /$(_filete:9);_MONTADO=$(_MONTADO:0)
+   LATO                =19
+   POSIZIONE           =-$(sbasx:0),$(AFFILETEA),-$(inctatr:0)
+   DIMENSIONE          ={$l+$(sbasx:0)+$(sbadx:0)},$(_filete:4),$(_filete:5)
+   COLORI              =$(_filete:3),$(_filete:3)
+   DISEGNO             =$(_filete:7)
+   ORIENTAMENTO        =LAP
+   DATI                =_filete
+   X1                  =$(X1)
+   X3                  =$(curbox)
+   X9                  =$(_filete:1)
+}

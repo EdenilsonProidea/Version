@@ -1,0 +1,9 @@
+{ 434   // Corredica AVULSA
+   *AZZERA*            =0
+   DESCRIZIONE         =Corredica AVULSA
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+}

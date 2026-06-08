@@ -1,0 +1,14 @@
+#LET LGAV=$(lgav)+(2*$(_CORR:8)) // Adicionado essa validação pois o valor mínimo conta as folgas para a corrediça - feito em visita 26/01/2024 com o Renan
+
+#IF $(lgav)<$(_tpgavdet:22)
+   #LETS idlogerros=$(idlogerros)2^$(_tpgavdet:2)^$(_tpgavdet:22);
+#ENDIF
+#IF $(lgav)>$(_tpgavdet:23)
+   #LETS idlogerros=$(idlogerros)3^$(_tpgavdet:2)^$(_tpgavdet:23);
+#ENDIF
+#IF $(aagr)<$(_tpgavdet:24)
+   #LETS idlogerros=$(idlogerros)4^$(_tpgavdet:2)^$(_tpgavdet:24);
+#ENDIF
+#IF $(aagr)>$(_tpgavdet:25)
+   #LETS idlogerros=$(idlogerros)5^$(_tpgavdet:2)^$(_tpgavdet:25);
+#ENDIF

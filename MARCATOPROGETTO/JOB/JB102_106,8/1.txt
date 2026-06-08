@@ -1,0 +1,1 @@
+#IF $(xx3:0)!!$(xp3:0) // box diferentes (ver com estante como fazer)#LOADVAR TPFIXDET TPFIXDET $(XP5:0)#IF $(PP)>0 #LET F=1 #LET F=2#IF $(XP5:2)==P #LETV XP5:2=$(XP)$(F),FF,X=$(PA) Y=$(PL) DF=$(XP5:1) PF=$(XP5:2) INFO=$(XP5:0) TIPOFIX=$(TPFIXDET:3)#ENDIF

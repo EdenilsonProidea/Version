@@ -1,0 +1,2 @@
+// ADICIONADO O X8=1 POIS INDICA QUE O VÃO É DO DIVISOR
+403,x1=201,sp=0,p=$P,X5=$L/$A/$P,X8=1  //Placer

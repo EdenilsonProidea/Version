@@ -1,0 +1,15 @@
+{ 244   // Cobertura frontal viga LAP
+   *AZZERA*            =0
+   DESCRIZIONE         =Cobertura frontal viga LAP
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(slcol),0,$(PCOLUNA:0)+$(folgacoluna:0)
+   DIMENSIONE          =$(lcol),$a,$(ESLAT:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =FRONTAL_COLUNA_RECORTE.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#244
+}

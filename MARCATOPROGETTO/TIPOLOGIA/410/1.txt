@@ -1,0 +1,13 @@
+{ 410   // Trilho Inferior
+   *AZZERA*            =0
+   DESCRIZIONE         =Trilho Inferior
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,$p-65
+   DIMENSIONE          =$l,10,50
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =sistemas\trilho_sob_duplo.3ds
+   X9                  =$(_siscorrer:6)/$(_siscorrer:14)/$(cobranca_unica:0)
+   X10                 =$(_siscorrer:20)
+}

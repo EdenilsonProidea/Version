@@ -1,0 +1,10 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(P.cOLORE1)
+msgbox c1
+   s="#C20,5,5,5"
+   A=WSAGOMA(MID(S,2),2).NOME
+   wESTRUDI 2, A, DP, c1, c1, 0
+   
+   
+End sub

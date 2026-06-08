@@ -1,0 +1,9 @@
+#LET lagr=$L
+INICIA_CALC_GAV,gavetadormitorio=1
+#LETV _CORFU:0=$(_tpgav:10)
+#LET agav=$(_TPINTGAVETEIRO:6)
+#IF $(GAVETEIROUBIK:0)=1
+   gaveta_box_d1C,SA=29.5,SL=$(_corr:8),SP=$p-$(pgav),L=$(lgav),A=$(agav),P=$(pgav),COD=000GV-007-DC/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:0);LINHA=$(MODELLO:0);_corr=$(_corr:2);_MANTAGAV=$(_MANTAGAV:1);_MONTADO=$(_MONTADO:0)
+#ELSE
+   gaveta_box_d1C,SA=21,SL=$(_corr:8),SP=$p-$(pgav),L=$(lgav),A=$(agav),P=$(pgav),COD=000GV-007-DC/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:0);LINHA=$(MODELLO:0);_corr=$(_corr:2);_MANTAGAV=$(_MANTAGAV:1);_MONTADO=$(_MONTADO:0)
+#ENDIF

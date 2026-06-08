@@ -1,0 +1,18 @@
+{ 218   // FRENTE LAP INTERNA DORMITORIO
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE LAP INTERNA DORMITORIO
+   CODICE              =/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(FOLGAFRENTEL:0),$(FOLGAFRENTEAI:0)+$(affre),1
+   DIMENSIONE          =$(LFRE),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},$(ESFRE)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)|90
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =$(xpfrente)
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X4                  =$(_CORPROFILO:4)
+   X7                  =N/N/N/N/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1
+   X8                  =$(_fr:7)/$(_fr:8)/$(pospuxadores)/$(parfrente)/$(LFRISO)/$(LFRISOV)/$(LFRISOH)
+   X9                  =$(_FR:1)/$(_CORFR:1)/$(APE:1)/$(AMBIENTE)/$(_bordaf:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)
+   X10                 =$(ladojobfrente)/$(nomejobfrente)/$(PARjobfrente)
+   ALIAS               =#215
+}

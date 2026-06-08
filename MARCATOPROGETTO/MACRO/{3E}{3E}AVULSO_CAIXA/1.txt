@@ -1,0 +1,10 @@
+coz_inicia
+#LETS _corfu=$(_corcx)
+#LETS _corpr=$(_corcx)
+#LETS _corle=$(_corcx)
+#LETS _corld=$(_corcx)
+#LETS _corba=$(_corcx)
+#LETS _corgv=$(_corcx)
+#LET PPRAT=$P
+avulso_comp_caixa
+LOGERROS

@@ -1,0 +1,16 @@
+#IF $(FRONTALAVULSO)=0
+   #IF $(_tpgavalt:10)=1
+      #IF $(FRGAVINT:0)=0
+         #LET posgavint=0//$(espgaveta)
+      #ELSE
+         #LET posgavint=-$(fgavint)
+      #ENDIF
+   #ELSE
+      #LET posgavint=0
+   #ENDIF
+#MSG $(posgavint)
+   internogaveta_1,SP=$(posgavint)
+#ENDIF
+//#IF $(FRONTALAVULSO)=0
+//internogaveta_1
+//#ENDIF

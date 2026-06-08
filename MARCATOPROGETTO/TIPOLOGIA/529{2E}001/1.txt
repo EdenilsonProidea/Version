@@ -1,0 +1,5 @@
+{ 529.001
+   *AZZERA*            =0
+   X4                  =$(FUROREGULAVEL:0)/$(pprat:0)/$(RED_F_PRAT)/1
+   ALIAS               =#529
+}

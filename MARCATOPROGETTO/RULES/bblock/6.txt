@@ -1,0 +1,84 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=bblock.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,ESP_PRAT
+T,_CPRAT,,,,$(esp_prat:3)[$(_cprat:12)]!!0
+T,COR,,,,$(COR:1)==$(_CPRAT:8),,,,,,,,1=0
+M,NFUROSLARG,,,N.Furos Largura?,,,,1
+M,NFUROSALT,,,N.Furos Altura?,,,,1
+T,TIPOPINTURA,,$(COR:7)!! | $(COR:19)!!
+C,garaffas,,,Desenhar garaffas?
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+#LET distLatL=93
+#LET distLatA=93
+
+#LET passol=($l-2*$(distLatL))/($(nfuroslarg:0)-1)
+#LET passoa=($a-2*$(distLatA))/($(nfurosalt:0)-1)
+#LET df=45/2 // raio furo
+
+#IF $(nfuroslarg:0)=1
+   #LET dl1=$l/2
+#ELSE
+   #IF $(passol)<100 #LETS idlogerros=$(idlogerros)87^$(passol);
+   #FOR $1:$(Nfuroslarg:0)
+      #LET dl$(i)={INT($(distlatL)+$(passol)*($(i)-1))}
+   #ENDFOR
+#ENDIF
+
+#IF $(nfurosalt:0)=1
+   #LET da1=int($a/2)
+#ELSE
+   #IF $(passoa)<140 #LETS idlogerros=$(idlogerros)88^$(passoa);
+   #FOR $1:$(Nfurosalt:0)
+      #LET da$(i)={INT($(distlatA)+$(passoa)*($(i)-1))}
+   #ENDFOR
+#ENDIF
+
+#LETS SagFuros=
+#LETS PosFuros=
+!SAGOMAP SAGBBLOCK 0;0;0;$A;$L;$A;$L;0
+#LET ngaraffa=4
+#FOR $1:$(Nfuroslarg:0),,idFuroLarg
+   #FOR $1:$(Nfurosalt:0),,idFuroAlt
+      !SAGOMAP FURO A30;($(DL$(IDFUROLARG))-$(DF));$(DA$(IDFUROALT));$(DL$(IDFUROLARG));$(DA$(IDFUROALT))+$(DF);($(DL$(IDFUROLARG))+$(DF));$(DA$(IDFUROALT));A30;($(DL$(IDFUROLARG))+$(DF));$(DA$(IDFUROALT));$(DL$(IDFUROLARG));$(DA$(IDFUROALT))-$(DF);($(DL$(IDFUROLARG))-$(DF));$(DA$(IDFUROALT))
+      !SAGDIFF SAGBBLOCK,$(SAGBBLOCK),$(FURO)
+      #LETS PosFuros=$(PosFuros)$(DL$(IDFUROLARG))@$(DA$(IDFUROALT));
+#MSG $(DL$(IDFUROLARG))-2-23,sa=$(Da$(IDFUROALT))-2-23
+      445,sl=$(DL$(IDFUROLARG))-2-23,sa=$(Da$(IDFUROALT))-2-23  // bblock
+      #IF $(garaffas:0)=1
+         401,x9=ACCESSORIES\3DS\01-COZINHA\04-BEBIDAS\GARRAFA_0$(ngaraffa)\BOTTLE_0$(ngaraffa).3DS,l=80,p=80,a=300,sl=$(DL$(IDFUROLARG))-40,sa=$(Da$(IDFUROALT))-85,sp=260,ax=80
+      #ENDIF
+      #IF $(ngaraffa)=4 #LET ngaraffa=5 #LET ngaraffa=4
+   #ENDFOR
+#ENDFOR
+
+
+632  // PAINEL BBLOCK
+
+LOGERROS

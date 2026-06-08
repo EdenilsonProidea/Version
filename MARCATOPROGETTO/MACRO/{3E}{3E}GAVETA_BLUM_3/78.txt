@@ -1,0 +1,72 @@
+// **************** laterais ************************
+// #IF $(_tpgavalt:0)=009 & $(_TPGAV:0)=008 & 1=0 // utiliza o 3ds do cliente cadastrado na variante <c22592>
+//    #LETV _tpgavdet:5=GV-008_CM_LE.3ds // esq
+//    #LETV _tpgavdet:6=GV-008_CM_LD.3ds // dir
+//#ENDIF
+436  //Lateral Blum esq
+436.001  // Lateral Blum dir
+// **************** FIM laterais ************************
+// **************** DESENHO ADICIONAL ************************
+#IF $(_tpgavdet:26)!!
+   401,SL=$(_TPGAVDET:27),SA=$(_TPGAVdet:33),SP=($P-$(_TPGAVDET:28))/2,L=$l-2*$(_TPGAVDET:27),A=$(_TPGAVDET:29),P=$(_TPGAVDET:28),C1=$(_TPGAVdet:8),FACC=22,X7=$(_tpgavdet:34),X8=gaveta\$(_tpgavdet:26)  //Oggetto 3d (decore)
+#ENDIF
+#IF $(_TPGAV:0)=003 & $(_tpgavalt:4)[_IA;_EA;_EX;_CA;_CAI] // Gestão para adicionar os vidros das laterais quando for Antaro Alta ou Extra Alta <c22592>
+   341,SL=-$(_TPGAVdet:31)+6,SA=87,SP=33,L=8,A=91,P=$P-33,C1=11,C2=11  //Objeto so grafica
+   341,SL=$L-(14+$(_TPGAVdet:31)),SA=87,SP=33,L=8,A=91,P=$P-33,C1=11,C2=11  //Objeto so grafica
+#ENDIF
+// **************** FIM DESENHO ADICIONAL ************************
+// ESSA REGRA FOI CRIADA EM VISTA COM RENAN. ONDE O LIMITE DO INTERNO PARA GAVETAS COMPRADAS É LARGURA DO FUNDO MENOS 10MM, EXCETO NA METABOX QUE É O TAMNAHO EXATO DO FUNDO
+//#IF $(_tpgav:4)==GV-004 // GESTÃO AJUSTADA DIA 29/11 ÀS 15:04
+//   #LET LINTGAV={$L-2*$(_TPGAVDET:9)}
+//   #LET PINTGAV={$P-$(espgaveta:0)}
+//
+//   CHECK_INT_GAV
+//#ELSE
+// #LET LINTGAV={$L-2*$(_TPGAVDET:9)-10}
+#LET LINTGAV={$L-2*($(_TPGAVDET:9))}+$(_tpgav:20)
+#LET PINTGAV={$P+$(_TPGAV:21)}
+CHECK_INT_GAV
+/#ENDIF
+// ******************* BASE E TRASEIRA  *****************************************
+#IF $(_TPGAVALT:7)=1
+   // VAO CUBA
+   INIVAOCUBABLUM
+   #IF $(_TPGAV:0)=005 // CUBA LEGRABOX
+      #LET mintracub=115
+      #LET maxtracub=155
+      #IF $(red_v_esq)<$(mintracub:0) | $(red_v_esq)>$(maxtracub:0) | $(red_v_dir)<$(mintracub:0) | $(red_v_dir)>$(maxtracub:0)
+         //  #LETS idlogerros=$(idlogerros)46;
+      #ENDIF
+      gaveta_LEGRACUBA,SL=$(_TPGAVDET:12),L=$L-2*$(_TPGAVDET:12)
+   #ELSEIF $(_TPGAV:0)=008 // CUBA TANDEMBOX
+      CHECK_GAVCUBA
+      gaveta_TANDEMCUBA,SL=$(_TPGAVDET:12),L=$L-2*$(_TPGAVDET:12)
+   #ELSE
+      gaveta_tracub,SL=$(_TPGAVDET:12),L=$L-2*$(_TPGAVDET:12)
+      GAVETA_FUNCUB,SP=$(_TPGAVDET:11),P=$P-$(_TPGAVDET:10),SL=$(_TPGAVDET:9),L=$L-2*$(_TPGAVDET:9)
+   #ENDIF
+#ELSE
+   // SEM VAO CUBA
+
+   263,SL=$(_TPGAVDET:9),SA=$(_tpgavdet:14),SP=$(_TPGAVDET:11),L=$L-2*$(_TPGAVDET:9),A=$(_TPGAVDET:15),P=$P-$(_TPGAVDET:10)  //Fundo gaveta
+   265,SL=$(_TPGAVDET:12),SA=$(_TPGAVDET:14),SP=$(_TPGAVDET:32),L=$L-2*$(_TPGAVDET:12),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)  // Traseira Gaveta
+#ENDIF
+// ******************* FIM BASE E TRASEIRA  *****************************************
+#LETS FLAGCORGAVETA=
+#IF $(_TPGAV:19)!! & $(_CORBLUM:4)!!
+   #LETS FLAGCORGAVETA=_$(_CORBLUM:4)
+#ENDIF
+#IF $(_mantagav:0)>0
+   // 350,sa=7,sl=31.5,sp=24,P=$P //Fundo Gaveta
+   350,SL=$(_TPGAVDET:9),SA=$(_tpgavdet:14),SP=$(_TPGAVDET:11),L=$L-2*$(_TPGAVDET:9),A=$(_TPGAVDET:15),P=$P-$(_TPGAVDET:10)  //Fundo Gaveta <c22411>
+#ENDIF
+264,sp=0,SL=-$(_corr:8),L=$L+$(_corr:8)*2,a=$(_tpgavdet:3),sa=0  //Caixa Gaveta oculta para furaçao
+//#IF $(PTEMPERO:0)=1
+// #LOADVAR _INT _INT 006.017
+// ACCESSORIOINT
+//#ELSE
+ACEGAV
+//#ENDIF
+bi_internos
+CHECK_GAV
+// 201

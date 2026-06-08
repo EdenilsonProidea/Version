@@ -1,0 +1,24 @@
+//Cálculo do número de prateleiras
+#IF $(_prat:0)=9  //Sem Prateleiras
+   #LET rr=0
+#ELSEIF $(_prat:0)=0 // Cálculo automático do número de prateleiras
+   #IF $(ALT)<=$(ALTMAX0PRAT:0)
+      #LET rr=0
+   #ELSEIF $(ALT)<=$(ALTMAX1PRAT:0)
+      #LET rr=1
+   #ELSEIF $(ALT)<=$(ALTMAX2PRAT:0)
+      #LET rr=2
+   #ELSEIF $(ALT)<=$(ALTMAX3PRAT:0)
+      #LET rr=3
+   #ELSEIF $(ALT)<=$(ALTMAX4PRAT:0)
+      #LET rr=4
+   #ELSEIF $(ALT)<=$(ALTMAX5PRAT:0)
+      #LET rr=5
+   #ELSE
+      #LET rr=6
+   #ENDIF
+#ELSE //Número de prateleiras Selecionado
+   #LET rr=$(_prat:0)
+#ENDIF
+// Término do cálculo do número de prateleiras
+#MSG $(rr)

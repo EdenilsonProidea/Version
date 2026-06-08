@@ -1,0 +1,55 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=BASAMENTO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+V,INICIACOZ
+T,_pes,,,,$(_PES:3)>0
+T,_corpes,,$(_PES:3)=5
+T,_corrodape,,$(_PES:3)=3,Cor Rodapè
+M,alt_sospenso,,$(_pes:3)=4,Alt.Suspenso,,,,10
+T,ladoPes,,$(_PES:3)=1
+C,ventilacao,,$(_PES:3)=5,Ventilação
+M,lventilacao,,$(ventilacao:0)=1,Largura Ventilação
+M,aventilacao,,$(ventilacao:0)=1,Altura Ventilação
+C,rodesq,,$(_PES:3)=3,Rodapè Lat Esq?
+C,roddir,,$(_PES:3)=3,Rodapè Lat Dir?
+M,sbzsx,,$(_PES:3)=3,Incr.Rodapè Esq?
+M,sbzdx,,$(_PES:3)=3,Incr.Rodapè Dir?
+M,arod_pers,,$(_PES:3)=5,Altura Rodapè,,,,10
+C,basmesq,,$(_PES:3)=5,Red.Bas.esq.?
+C,basmder,,$(_PES:3)=5,Red.Bas.Der.?
+Z,BasAuto,,$(_PES:3)=5,Basamento Auto?
+M,afbasl,,$(_PES:3)=5,Red.Base Lat?
+M,afbasf,,$(_PES:3)=5,Red.Base Fre?
+M,BASAESQ,,$(_PES:3)=5,Bas.esq
+M,BASADIR,,$(_PES:3)=5,Bas.dir
+
+[GRAFICA]
+COZ_INICIA
+COZ_PES
+!SETCODICE $(MODELLO:0)ZZ040402
+#LET A=0
+LOGERROS
+//quatropes
+// 201

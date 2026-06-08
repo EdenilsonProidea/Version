@@ -1,0 +1,15 @@
+#IF {$(SPOSTAA)+$A+20}>$(ATOT)
+   //#LET VAOA_GAV={$A-1*($(ESTRA:0)+$(ABASE:0))}// -$(ABASE:0)*2
+#ELSE
+   #LET VAOA_GAV={$A-1*($(ABASE:0))}// -$(ABASE:0)*2
+#ENDIF
+
+#IF $(TPF)=9
+   CALCVAOGAV
+#ELSEIF $(TPF)=11
+   #LET VAOA_GAV=$(SAGAVINT_1)
+   CALCVAOGAV,agav=$(altgav)
+#ELSEIF $(TPF)=12
+   #LET VAOA_GAV=$(SAGAVINT_2)
+   CALCVAOGAV,agav=$(altgav)
+#ENDIF

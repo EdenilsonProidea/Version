@@ -1,0 +1,24 @@
+INICIA            // INICIA PARAMETROS
+dor_inicia_fech   // INICIA PARAMETROS DORMITORIO
+FECHAMENTOS_RETO  // ACABAMENTOS
+REGRA_DORMIT
+FRONTAL_RETO      // FRONTAL QUANDO FOR CORRER
+COMPLEMENTOS_RETO // COMPLEMENTOS DE REGRA
+BOTAO_SERRA       // GESTÃO SERRA
+LOGERROS
+
+// ILU_PRAT
+// ORIGINAL
+!QUOTA9 (0,$A,$P),($L,$A,$P),L.$LxP.$p,-130
+#IF $(_fechEsq:3)>0
+   !QUOTA9 (0,$A,$P),($(_fechesq:4),$A,$P),,-50
+#ENDIF
+#IF $(_fechDir:3)>0
+   !QUOTA9 ($L-1*($(_fechDIR:4)),$A,$P),($L,$A,$P),,-50
+#ENDIF
+!QUOTA9 (0,0,$P),(0,$A,$P),,-130
+!QUOTA9 (0,0,$P),(0,$(ARODAPE:0),$P),,-50
+!QUOTA9 (0,$(ARODAPE:0),$P),(0,$A-$(arodateto:0),$P),,-50
+!QUOTA9 (0,$A-$(arodateto:0),$P),(0,$A,$P),,-50
+
+// CAIXAD_FUNDOEMBU

@@ -1,0 +1,8 @@
+#LET slagr=$(ESLAT:0)
+#LET saagr=$(esbase)
+#LET lagr=$l-$(ESLAT:0)*2
+#LET aagr=$a-$(ABASE:0)-$(ESTRA:0)
+#LET pprat=$p-($(AFCOS:0)+$(ESCOS:0)+$(red_f_prat:0))
+#LET afpratp=$(AFCOS:0)+$(ESCOS:0)
+
+_int,SL=$(slagr),SA=$(sAagr),L=int($(lagr)),A=int($(Aagr)),P=int($(pprat)),canto_r=1

@@ -1,0 +1,34 @@
+
+#IF $(TPCANTO:3)=3
+   #IF $(NPORTAESQ:0)=1
+      #LET lfre=$p-$(platdir:0)-$(desc_p_esq:0)+$(ESLAT:0)+1*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)+$(eslat:0)/2
+      #LET sp_frente=$p+$(ESLAT:0)
+      #LOADVAR dobradicaESQ _dobra $(CODDOBRARETA:0)
+      #LOADVAR dobradicaDIR _dobra $(CODDOBRACANTORETO:0)
+   #ELSE
+      #LET lfre=$p-$(platdir:0)-$(desc_p_esq:0)+$(ESLAT:0)+1*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)
+      #LET sp_frente=$p+$(ESLAT:0)/2
+      #LOADVAR dobradicaESQ _dobra $(CODDOBRACURVA:0)
+      #LOADVAR dobradicaDIR _dobra $(CODDOBRACANTORETO:0)
+   #ENDIF
+   
+   frontal,ay=90,sp=$(sp_frente),affrep=$(platesq:0),l=$(lfre),lfre=$(lfre),pm=3,CANTO=1
+#ELSE // CANTO L
+   #IF $(desc_p_DIR:0)<0 //CALCULO DE LFRE QUANDO FOR NEGATIVO "PARA FICAR COM UMA PORTA NO CANTO"
+      #LET lfre=$p-$(platdir:0)+$(ESLAT:0)-2*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)
+   #ELSE
+      #IF $(NPORTAESQ:0)=1
+         #LET lfre=$p-$(platdir:0)-$(desc_p_esq:0)+$(ESLAT:0)+1*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)+$(eslat:0)/2
+         #LET sp_frente=$p+$(ESLAT:0)
+         #LOADVAR dobradicaesq _dobra $(CODDOBRARETAL:0)
+      #ELSE
+         #LET lfre=$p-$(platdir:0)-$(desc_p_esq:0)+$(ESLAT:0)+1*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)
+         #LET sp_frente=$p+$(ESLAT:0)/2
+         #LOADVAR dobradicaesq _dobra $(CODDOBRACURVAL:0)
+      #ENDIF
+   #ENDIF
+   // CANTO=1 PARA VALIDAÇÃO DE ERRO QUANDO FOR DUAS PORTAS
+   // #LOADVAR _TPFRESQNOW _TPFRESQ 001
+   // #LETS _TPFR=$(_TPFRESQNOW) // FEITO EM VISITA, FOI SOLICITADO PARA FRONTAL DO CANTO L SER SEMPRE UMA PORTA
+//    frontal,ay=90,sp=$(sp_frente),affrep=$(platesq:0),l=$(lfre),lfre=$(lfre),pm=1,CANTO=1
+#ENDIF

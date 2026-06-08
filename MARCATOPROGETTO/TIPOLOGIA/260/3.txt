@@ -1,0 +1,17 @@
+{ 260   // Lateral Gaveta ESQ
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Gaveta ESQ
+   CODICE              =/_CORCX=$(_CORGV:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(espgaveta),$A,$P
+   COLORI              =$(_corgv:3)|$(.percorso)\foto\madeira\$(_corgv:4)|$(_corgv:5),$(_corgv:3)|$(.percorso)\foto\madeira\$(_corgv:4)|$(_corgv:5)
+   ORIENTAMENTO        =PAL
+   PARAMETRIGL         =LATERALGAVETA.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/CANAL15/1/0/1/1/0/0/0/0/0/0/0/0
+   X8                  =$(Pcorredica)/$(_corr:1)/E
+   X9                  =$(_tpcaixa:1)/$(_corgv:1)/$(TPFIXGAV:1)
+   X10                 =$(_TPINTGAVETEIRO:4)
+   ALIAS               =#260
+}

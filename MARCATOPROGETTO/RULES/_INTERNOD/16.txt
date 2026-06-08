@@ -1,0 +1,66 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=_INTERNOD.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=201
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIADOR
+T,_CORCX,,,,,,,,,,4
+T,_corfr,,,,,,,,,,4
+T,tpfixprat,,,,,,,,,,3
++,ADDINTD
+
+[GRAFICA]
+//!SETCODICE DO0_INTD
+INICIA
+#LET AFCOS=0
+#LET ESCOS=0
+#LETS parpai=$[TOSEP;/;$(LOCP0_BX1)]
+#LETV _tpfr=$(parpai:0)
+#LETV _tpcaixa=$(parpai:1)
+#IF $(espessura:0)=0 #LET espessura=18
+#LETV $(_corfr$(ctx))=$(_corfr)
+//#LET RED_F_DIVH=0
+//#LET RED_F_PRAT=0
+#LETV _TPCAIXA:12=D
+#LETS ambiente=D
+INICIA_PDIV,PLACERINTERNO=1
+
+403,x1=201,sp=0,p=$p  //Placer
+
+
+#LETS _macrofinale=internod_fim
+// SAPINC
+// ADDINTD
+
+// internod_fim
+
+// _INT
+
+// sapinc
+
+// 301
+
+// 301
+
+// 310

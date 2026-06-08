@@ -1,0 +1,10 @@
+#IF $(XX3:1)==E #LET F=1 #LET F=2
+$(F)	FF	X=80 Y=32  DF=10 PF=30
+$(F)	FF	X={$(XP)-80} Y=32  DF=10 PF=30
+$(F)	FF	X={$(XP)/3} Y=32  DF=10 PF=30
+$(F)	FF	X={$(XP)/3*2} Y=32  DF=10 PF=30
+#IF $(XX3:1)==E #LET F=2 #LET F=1
+$(F)	FF	X=80 Y=32  DF=5 PF=25
+$(F)	FF	X={$(XP)-80} Y=32  DF=5 PF=25
+$(F)	FF	X={$(XP)/3} Y=32  DF=5 PF=25
+$(F)	FF	X={$(XP)/3*2} Y=32  DF=5 PF=25

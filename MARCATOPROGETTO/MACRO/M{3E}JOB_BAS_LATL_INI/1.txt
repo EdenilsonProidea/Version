@@ -1,0 +1,10 @@
+#M JOB_INICIA_TPFIX
+#IF $(pa)<-100 #LET f=2 #LET f=1
+// #IF $(PP)+$(XP)>$(DP) #LET XP=$(DP)-$(PP)
+#IF $(PP)>0
+   #LETS F1=5
+   #LET DISTX=$(XP)
+#ELSE
+   #LETS F1=6
+   #LET DISTX=0
+#ENDIF

@@ -1,0 +1,10 @@
+{ 297   // TEXTO
+   *AZZERA*            =0
+   DESCRIZIONE         =TEXTO
+   CODICE              =X /;_MONTADO=$(_MONTADO:0)
+   LATO                =9
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

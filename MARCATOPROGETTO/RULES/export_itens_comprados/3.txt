@@ -1,0 +1,119 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=Exporta os itens comprados em csv
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+C,info,,,Info (clicar para ver),,info
+
+[SQL]
+
+// ini_parametros de configuraçao
+#LETS pasta_salva=$(.curdir)\_ecadpro\importexport
+#LETS pasta_salva_html=$(.curdir)\$(.percorso)\html\itens.dat
+// fim_parametros_de configuraçao
+
+// 0 - codigo
+// 1 - descrição
+// 2 - unidade de medida
+// 3 - custo
+// 4 - família de produto
+// 5 - descricao da familia de produto
+// 6 - largura
+// 7 - altura
+// 8 - profundidade
+// 9 - flag Ativo Sim/Não (ou 0 e 1) isso seria interessante ter se possível
+// 10 - Flag Excluir (0 e 1)
+// 11 - PESO
+
+#VB
+   dim rc,dbo
+   dim f,i
+   set db0=Ambiente.GetObject("DB")
+   set rc=db0.openview("select a.cod as codigo,a.des as descr,a.um as um,a.costo as custo,a.catmer as categoria,cm.des as descategoria,a.diml as largura,a.dima as altura, a.dimp as profundidade,1 as ativo from articoli a left join tabelle cm on a.catmer=cm.cod and cm.tip='cm' where a.flmag=1 " )
+   f=""
+   If rc.EOF = False Then
+      for i=0 to rc.Count-1
+         f=f & """" & rc.cnome(i) & """;"
+      Next
+      f=f & vbcrlf
+      Do Until rc.EOF
+         Ambiente.xmessaggio "Exportando " & rc.s(0)
+         for i=0 to rc.Count-1
+            f = f & replace(rc.s(i),",",".") & ";"
+         Next
+         f=f & vbcrlf
+         rc.MoveNext
+      Loop
+   End If
+   
+   set rc=nothing
+   dim fso
+   set fso=createobject("Scripting.filesystemobject")
+   if fso.folderexists(v("pasta_salva"))=false then
+      fso.CreateFolder v("pasta_salva")
+   end if
+   scrivifiletesto v("pasta_salva") & "\itens.csv",f
+   set rc=db0.openview("select a.cod as cod,a.des as des,a.um as um,a.catmer as categoria,cm.des as descategoria from articoli a left join tabelle cm on a.catmer=cm.cod and cm.tip='cm' where (a.modello='' or a.modello is null) or flmag=1  " )
+   f=""
+   If rc.EOF = False Then
+      
+      Do Until rc.EOF
+         Ambiente.xmessaggio "Exportando " & rc.s(0)
+         for i=0 to rc.Count-1
+            f = f  & replace(rc.s(i),",",".") & ";"
+         Next
+         f=f & vbcrlf
+         rc.MoveNext
+      Loop
+   End If
+   
+   set rc=nothing
+   
+   scrivifiletesto v("pasta_salva_html"),f
+   set db0=nothing
+   set fso=nothing
+   If err <> 0 Then
+      MsgBox err.description
+   Else
+      msgbox "Criado arquivo " & v("pasta_salva") & "\itens.csv"
+   End If
+#ENDVB
+
+[COMANDI_INFO]
+#LETS msg= Arquivo .csv sepador punto e virgula | \
+0 - codigo | \
+  1 - descrição | \
+  2 - unidade de medida | \
+  3 - custo | \
+  4 - família de produto (codigo) | \
+  5 - desfamília de produto | \
+  6 - largura | \
+  7 - altura | \
+  8 - profundidade | \
+  9 - flag Ativo Sim/Não (ou 0 e 1) | \
+  é possivel exportar os itens e importar com essa função. | \
+  Quando importar com essa procedura o sistema entende esses itens como comprados | \
+  e coloca o flag comprado. Isso significa que esses itens vao nas listas de produção | \
+  e não tem estrutura de produto. | \
+  O sistema vai exportar os itens que tem flag comprado no cadastro de itens
+
+#MSG $[TOCRLF;|;$(msg)]

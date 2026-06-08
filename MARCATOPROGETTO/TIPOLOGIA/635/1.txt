@@ -1,0 +1,13 @@
+{ 635   // Vista Cozinha
+   *AZZERA*            =0
+   DESCRIZIONE         =Vista Cozinha
+   CODICE              =000VISTA /_CORFAMILIA=$(_CORFR:10);_CORFR=$(_CORFR:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$A,$p-$(ESPAINA:0)
+   DIMENSIONE          =$L,$(avistatamp:0),$(ESPAINA:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corfr
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/1/0/0/0/0/0/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corfr:1)/$(TPFIX:1)/$(acrestamp:0)/
+}

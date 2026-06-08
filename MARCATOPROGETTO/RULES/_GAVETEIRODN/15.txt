@@ -1,0 +1,71 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=_GAVETEIRODN.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=U201
+SPEC=
+DIVIDER=GAVN_ESTR,GAVN_VAO,($(redsupgaveteiro:0)+$a-$(afinalgaveteiro:0))},$(_tpcaixa:4),{$(ENCHGAV:4)*$(_TPFECH:13)},{$(ENCHGAV:5)*$(_TPFECH:13)},0,0,4
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIADOR
+T,_montado,,,,,,,,,,4
+T,_TPFR
+G,GAVDIV_DOR
+G,FR_GERAL_GAVETEIRO
++,GAVN_VAO
+M,ndivcolmh,,,Divisão Colmeia Horizontal,,,,2,,,8
+M,ndivcolmv,,,Divisão Colmeia Vertical,,,,2,,,8
+G,VAROCULTE
+T,_ACEGAV,,,,,,,,,,8
+
+[GRAFICA]
+// <C17101>
+#IF $(REDGAV:0)=2
+   #IF $(PCAIXAGAVETEIRO:0)>0
+      #LET p1=$(PCAIXAGAVETEIRO:0)
+   #ELSE
+      #LET p1=$p-$(REDGAV:3)
+   #ENDIF
+#ELSE
+   #LET p1=$p-$(REDGAV:3)
+#ENDIF
+
+#LET gaveteiro=2
+#IF $(_placer)=0 #LETV afinalgaveteiro=$a
+DOR_INICIA,a=$(afinalgaveteiro:0)
+INICIA_GAVETEIRON,a=$(afinalgaveteiro:0)
+DOR_CXGAVETEIRON,a=$(afinalgaveteiro:0),p=$(p1)
+DOR_TAMPOGAVN
+
+// GAVN_VAO
+
+// 201
+#LETS _MACROFINALE=gavn_final
+
+// gavn_final
+//_FR_STANDARD
+
+// gaveta_dor
+
+// GAVETA_DOR_1
+
+//_fr_1
+
+// 218

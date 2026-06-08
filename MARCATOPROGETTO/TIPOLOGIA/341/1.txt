@@ -1,0 +1,10 @@
+{ 341   // Objeto so grafica
+   *AZZERA*            =0
+   DESCRIZIONE         =Objeto so grafica
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =1,1
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

@@ -1,0 +1,11 @@
+#IF $(desc_p_DIR:0)<0 //CALCULO DE LFRE QUANDO FOR NEGATIVO "PARA FICAR COM UMA PORTA NO CANTO"
+   #LET lfre=$L-$(platESQ:0)-$(ESFRE)
+#ELSE
+   #LET lfre=$L-$(platESQ:0)-$(desc_p_DIR:0)
+#ENDIF
+#IF $(desc_p_DIR:0)<0 //AQUI REPOSICIONA A PORTA
+   // CANTO=1 PARA VALIDAÇÃO DE ERRO QUANDO FOR DUAS PORTAS
+   frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL=$(PLATDIR:0)+$(ESFRE),CANTO=1,_PUX=999
+#ELSE
+   frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL=$(PLATDIR:0)+$(desc_p_DIR:0),CANTO=1,_PUX=999
+#ENDIF

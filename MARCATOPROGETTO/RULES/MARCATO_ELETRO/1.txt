@@ -1,0 +1,50 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=MARCATO_ELETRO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,1
+
+
+[gene]
+T,MODELLO
+V,INICIACOZ
+T,_tpcaixa
+T,espessura,,,,$(espessura:0)>=15,,,,,,1
+T,_corcx,,,,$(espessura:3)[$(_corcx:12)]!!0 | $(espessura_ADEGA:3)[$(_corcx:12)]!!0,,,,,,7
+T,TPFIX,,,,,,,,,,3
+G,FR_GERAL
+D,parfrisos,,,,,,,,,,,,1=0
+D,parfrisosh,,,,,,,,,,,,1=0
+D,parfrisosv,,,,,,,,,,,,1=0
+G,COZ_ACAB
++,ADDVAO
+G,VAROCULTE
+
+[GRAFICA]
+INI_ELETRO
+#LET ISGELADEIRA=0
+#LETS _macrofinale=eletro_final
+
+// ADDVAO
+
+// eletro_final
+
+// _FR_1
+
+// incr_frente

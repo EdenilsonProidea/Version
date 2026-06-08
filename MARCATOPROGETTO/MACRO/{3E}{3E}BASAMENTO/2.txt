@@ -1,0 +1,29 @@
+// !SETCODICE 000ZZBASEALV  // Retirado pois alterava o código do módulo em que era utilizado o basamento <c26636>
+#IF $(BasAuto:0)=1
+   #LET SLBASAMENTO=$(afbasmlat)*$(basmesq:0)
+   #LET LBASAMENTO=$l+$ul-$(afbasmlat)*$(basmesq:0)-$(afbasmlat)*$(basmder:0)
+#ENDIF
+#IF $(BASAESQ:0)>0
+   #LET SLBASAMENTO=-$(BASAESQ:0)
+#ENDIF
+#IF $(BASADIR:0)>0
+   #LET LBASAMENTO=$L+$(BASADIR:0)-$(SLBASAMENTO)
+#ENDIF
+#IF $(ventilacao:0)=1
+   #LET l1=($(lbasamento:0)-$(lventilacao:0))/2
+   237,l=$(l1)  // BASAMENTO COZINHA
+   237,l=$(l1),sl=$(lbasamento:0)-$(l1)  // BASAMENTO COZINHA
+   237,sl=$(SLBASAMENTO)+$(l1),l=$(lventilacao),a=$(arod)-$(aventilacao)
+#ELSE
+   237  // BASAMENTO COZINHA
+#ENDIF
+402,SA=-50,SP=$P,SL=-$(BASAESQ:0),L=$(BASAESQ:0),A=5,X1=7,X3=BASAMENTO;BASAESQ;1,X4=1,X5=3  //DRAGGER
+402,SL=$l+$(BASADIr:0),SA=-50,SP=$P,L=$(BASAdIr:0),A=5,X1=6,X3=BASAMENTO;BASADIR;1,X4=1,X5=3  //DRAGGER
+!QUOTAP5 ({$(SLBASAMENTO)} 0 0),({$(LBASAMENTO)} 0 0),,-50
+!QUOTAT6 ({$(SLBASAMENTO)} 0 0),({$(LBASAMENTO)} 0 0),,-100
+#IF $(BASMESQ:0)=1
+   !QUOTA5 (0 0 0),(0 0 {$P-$(AFBASMFRE)}),,50
+#ENDIF
+#IF $(BASMDER:0)=1
+   !QUOTA5 ($L 0 {$P-$(AFBASMFRE)}),($L 0 0),,50
+#ENDIF

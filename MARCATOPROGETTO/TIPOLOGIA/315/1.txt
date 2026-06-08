@@ -1,0 +1,11 @@
+{ 315   // luminaria prateleira
+   *AZZERA*            =0
+   DESCRIZIONE         =luminaria prateleira
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFPRATL)+$(LPRAT)/2-150/2,$(AFPRATA)-1,$(AFPRATP)+$(PPRAT)-37
+   DIMENSIONE          =150,6,25
+   COLORI              =8,8
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   ALIAS               =#309
+}

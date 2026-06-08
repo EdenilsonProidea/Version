@@ -1,0 +1,5 @@
+#MSG $(_esppearm)
+fech_inf,macro=acabRODAPEdor,es=$(_esppearm)
+fech_sup,macro=acabRODATETOdor
+fech_esq,macro=acablatdor
+fech_dir,macro=acablatdor

@@ -1,0 +1,14 @@
+#LET enche=0
+#LET enchd=0
+#IF $(LENCHCOST:0)>0 #LET ENCHGAVETEIRO=$(LENCHCOST:0)
+#IF $(enchgav:3)=2
+   #LET enche=$(ENCHGAVETEIRO:0)
+   #LET enchd=$(ENCHGAVETEIRO:0)
+#ELSEIF $(enchgav:3)=1
+   #LET enche=$(ENCHGAVETEIRO:0)
+   #LET enchd=0
+#ELSEIF $(enchgav:3)=3
+   #LET enche=0
+   #LET enchd=$(ENCHGAVETEIRO:0)
+#ENDIF
+#LET ISGAVDOR=1 // <c26363>

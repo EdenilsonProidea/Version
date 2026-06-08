@@ -1,0 +1,35 @@
+
+#IF $(ESP_PRAT:3)[15;18]!0 & $p<50
+   #MSG ALTERAMOS A PROFUNDIDADE PARA 50MM QUE É O MÍNIMO POSSÍVEL
+   #LET p=50
+#ENDIF
+#IF $(ESP_PRAT:3)=24
+   #LETV P=$(ESP_PRAT:3)
+   #IF $(_COREX:11)[LAM;LMN;PIN]!0
+      #LET esmaoamiga=9
+      #LET ESP_PRAT:3=15
+   #ELSE
+      #LET esmaoamiga=9
+      #LET ESP_PRAT:3=15
+   #ENDIF
+#ELSEIF $(ESP_PRAT:3)=30
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=15
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:0)=41
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=25
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:3)=43
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=25
+   #LET ESP_PRAT:3=18
+#ELSEIF $(ESP_PRAT:3)=45
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=30
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:3)=48
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=30
+   #LET ESP_PRAT:3=18
+#ENDIF

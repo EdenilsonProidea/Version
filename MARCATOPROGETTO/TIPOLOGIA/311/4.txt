@@ -1,0 +1,14 @@
+{ 311   // Frente Sapateira Inclinada
+   *AZZERA*            =0
+   DESCRIZIONE         =Frente Sapateira Inclinada
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFPRATL),$(AFPRATA)-$(AFRESAPINCL:0)/2,$(AFPRATP)+$(PPRAT)-$(ESPRAT:0)
+   DIMENSIONE          =$(LPRAT),$(AFRESAPINCL:0),$(ESPRAT:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X4                  =$(FUROREGULAVEL:0)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/1/1/0/1
+   X9                  =$(_tpcaixa:1)/$(_corfr:1)/$(TPFIX:1)
+   ALIAS               =#311
+}

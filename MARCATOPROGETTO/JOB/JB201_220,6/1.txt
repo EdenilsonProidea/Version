@@ -1,0 +1,7 @@
+#IF $(xx3:0)=$(xp3:0)
+   #LET NAOFURAR=0
+   #LET travessa=1
+   #IF $(PA)<10 & $(XX7:10)!1 #LET NAOFURAR=1
+   #IF $(PA)>$(XA)-$(DA)-10 & $(XX7:11)!1 #LET NAOFURAR=1
+   #M JOB_LAT_BASE
+#ENDIF

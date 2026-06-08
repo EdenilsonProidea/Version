@@ -1,0 +1,23 @@
+!PARAMETRI DOBRADICADIF=0 // nova gestão dobradiça com seleção por subregra unida a _dobradif - ver continuação dentro macro dobradiça
+#MSG $(_tpfr:3)
+#IF $(lfre)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1>$(LMAXPORTAABRIR:0)
+   #IF $(_tpfr:3)=65 // logerro adicionado pois não pode ter 2 portas de giro em canto L cozinha
+      #LETS idlogerros=$(idlogerros)86;
+   #ENDIF
+   #IF $(ATIVADRETACURVA:0)=1
+      portasg_1
+   #ELSE
+      PORTASG
+   #ENDIF
+#ELSE
+   #IF $(_FR:1)!!999
+      dis_2d,TIPO=1
+   #ENDIF
+   #LET LFRE=$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1
+   
+   #IF $(PM)=1
+      PORTAGE,APE=AGE,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO
+   #ELSE
+      PORTAGD,APE=AGD,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=PORTAGIRO
+   #ENDIF
+#ENDIF

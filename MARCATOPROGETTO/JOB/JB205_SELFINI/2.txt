@@ -1,0 +1,2 @@
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51} df=10 pf=11
+   $(F)	FF	X={$(xa)-$(xl)-25-$(aviga)} Y={51+32} df=10 pf=11

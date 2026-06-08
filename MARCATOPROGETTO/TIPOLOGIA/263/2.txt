@@ -1,0 +1,16 @@
+{ 263   // Fundo gaveta
+   *AZZERA*            =0
+   DESCRIZIONE         =Fundo gaveta
+   CODICE              =/_CORCX=$(_CORGV:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(espgaveta:0)-$(canalGaveta:0),$(afafundogaveta:0),$(espgaveta:0)-$(canalGaveta:0)
+   DIMENSIONE          =$l-$(espgaveta:0)*2+$(canalGaveta:0)*2,$(espfundogaveta:0),$p-$(espgaveta:0)*2+$(canalGaveta:0)*2
+   COLORI              =$(_corgv:3)|$(.percorso)\foto\madeira\$(_corgv:4)|$(_corgv:5),29|$(.percorso)\foto\MANTAGAVETA\$(_MANTAGAV:4)
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =BASEGAVETA_NEW.XP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/0/$(FITARSOVISTA:2)
+   X8                  =$(canalgaveta:0)/$(_mantagav:3)/$(_mantagav:1)/$(_TPGAVALT:1)
+   X9                  =$(_tpcaixa:1)/$(_corgv:1)/$(TPFIXGAV:1)
+   X10                 =$(TPGAV:1)
+   ALIAS               =#263
+}

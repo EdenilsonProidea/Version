@@ -1,0 +1,80 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+S,nCOMMESSA,,,LOTE
+S,npedobs,,,PEDIDO
+
+[TESTA]
+VERTICALE
+DIM 200 280
+
+//INTESTAZIONE
+FONT ARIAL
+
+BX (0,0) (200,280) HFFFFFF N
+
+
+//BX (0,0) (200,30)
+//BX (0,13) (58,13)
+//BX (58,5) (142,22)
+//BX (142,13) (200,30)
+WMF (4,6) (47,10) _ECADPRO\stampe\LOGO.jpg
+//WMF (143,14) (56,15) $(.percorso)\html\LOGO_CLIENTE.jpg
+
+#LETS _file=_pdf\GERAL_OBS.pdf
+
+
+#LETV lp=0015
+#LETS DEStipo=LOTE
+#LETS CODTIPO=GERAL SEMANAS
+#LETS STRINGNOME=CLIENTE:
+//TX TC 18BC (100,1) $(LP:2)
+//TX BC 12BC (100,12) $(LP:5) --> $(LP:6)
+
+
+//  LI (58,13) (142,13)
+
+LI (4,22) (196,22)
+TX TC 7BC (165,25) IMPRESSO $(.USERNAME) - $(.DATAORA)
+!P
+TX bL 11 (190,275) ^<pag>^
+
+#IF $(nCOMMESSA)!
+   #LETS SQL=select numero,obsfab,destrag1,cliente,rif from ecadmaster.dbo.tordine where commessa='$(NCOMMESSA:0)' and obsfab<>'' and  obsfab is not null
+   
+#ELSEIF $(npedobs)==999
+   
+   #LETS SQL=select numero,obsfab,destrag1,cliente,rif from ecadmaster.dbo.tordine where NUMERO IN ( '2296', '2323', '2324', '2325', '2326', '2327', '2328', '2329', '2330', '2331','2332', '2333', '2341', '2335', '2337', '2338', '2340', '2252', '2262', '2334','2339', '2441', '2113', '2115', '2117', '2125', '2126', '2136', '2149', '2151','2155', '2156', '2158', '2159', '2160', '2161', '2162', '2163', '2164', '2165','2166', '2167', '2168', '2169', '2170', '2173', '2174', '2175', '2176', '2195','2196', '2198', '2199', '2200', '2201', '2202', '2203', '2204', '2205', '2206','2207', '2208', '2209', '2210', '2211', '2212', '2213', '2222', '2225', '2227','2229', '2230', '2231', '2232', '2233', '2235', '2236', '2237', '2238', '2242','2244', '2245', '2246', '2247', '2248', '2250', '2251', '2253', '2255', '2256','2257', '2258', '2259', '2263', '2266', '2272', '2276', '2277', '2278', '2279','2280', '2285', '2286', '2287', '2288', '2291', '2292', '2293', '2295', '2299','2300', '2301', '2302', '2304', '2305', '2306', '2307', '2309', '2310', '2312','2313', '2314', '2315', '2316', '2317', '2318', '2319', '2320', '2321', '2322','2336', '2352', '2367', '2368', '2379', '2382', '2383', '2384', '2389', '2391','2392', '2409', '2411', '2412', '2414', '2416', '2417', '2419', '2423', '2424','2431', '2433', '2434', '2435', '2437', '2442', '2447') and obsfab!=''
+#ENDIF
+NTAB (0,35,200,275,35,1) \
+     (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+     ($(sql)) \ // COMANDO SQL
+     (Numero     ,7L  ,, ^<numero>^,-,Loja:<cliente>) \
+     (Obs  ,60L  ,,  ^$(STRINGNOME)<destrag1>^,-------------------,^<rif>^,-------------------,<obsfab>)
+
+#LET II=$(II)+50
+#ENDIF
+
+
+// macroimpr

@@ -1,0 +1,5 @@
+//ACESSO DIA 08/04
+403,x1=201,sp=0,p=$P,X5=$L/$A/$P  //Placer
+#LETS LOC_BX2=1
+
+#MSG $(LOC_BX2)

@@ -1,0 +1,26 @@
+#LET L_INT=$L-2*($(L_ENGROSSO:0)) // DEFINE A LARGURA INTERNA
+#LET A_INT=$A-2*($(L_ENGROSSO:0)) // DEFINE A PROFUNDIDADE INTERNA
+#LET posatrav=
+#FOR $1:$(QTD_ENG:3),,k
+   #IF $(tipotrav:3)==H // TRAVESSAS INTERNAS NA HORIZONTAL (NO SENTIDO DA LARGURA)
+      #IF $(DEFAULTTAMB:27)!! #LET QTD_TRAV=int(($A/$(DEFAULTTAMB:27))-1)
+      #LET ENTRETRAV=$(A_INT)/($(QTD_TRAV:0)+1)
+      #LET PASSO=$(ENTRETRAV:0)+$(L_ENGROSSO:0)
+      #LET INITRAV=($A-$(QTD_TRAV:0)*$(PASSO)+$(ENTRETRAV:0))/2
+      #FOR $1:$(QTD_TRAV:0),,IDTRAV
+         485,SL=$(L_ENGROSSO:0),SA=$(INITRAV)+($(IDTRAV)-1)*$(PASSO),SP=$(posatrav:0),L=$(L_INT:0),P=$(ESP_ENG_$(k):3),A=$(L_ENGROSSO:0)  //Traversa Horizontal  (cozinha)
+         #LETS STRINGESTRUT=$(STRINGESTRUT)$(ESP_ENG_$(k):3)__$(_CORENGROSSO:1)__ENGTAMBI__$(L_INT:0)+$(INCRETAMBU:0)__$(L_ENGROSSO:0);
+      #ENDFOR
+      #LET posatrav=$(posatrav:0)+$(ESP_ENG_$(k):3)
+   #ELSEIF $(tipotrav:3)==V // TRAVESSAS INTERNAS NA VERTICAL (NO SENTIDO DA ALTURA)
+      #IF $(DEFAULTTAMB:27)!! #LET QTD_TRAV=int(($L/$(DEFAULTTAMB:27))-1)
+      #LET ENTRETRAV=$(L_INT)/($(QTD_TRAV:0)+1)
+      #LET PASSO=$(ENTRETRAV:0)+$(L_ENGROSSO:0)
+      #LET INITRAV=($L-$(QTD_TRAV:0)*$(PASSO)+$(ENTRETRAV:0))/2
+      #FOR $1:$(QTD_TRAV:0),,IDTRAV
+         485,SL=$(INITRAV)+($(IDTRAV)-1)*$(PASSO),SA=$(L_ENGROSSO:0),SP=$(posatrav:0),L=$(L_ENGROSSO:0),A=$(A_INT:0),P=$(ESP_ENG_$(k):3)  //Traversa Horizontal  (cozinha)
+         #LETS STRINGESTRUT=$(STRINGESTRUT)$(ESP_ENG_$(k):3)__$(_CORENGROSSO:1)__ENGTAMBI__$(A_INT:0)+$(INCRETAMBU:0)__$(L_ENGROSSO:0);
+      #ENDFOR
+      #LET posatrav=$(posatrav:0)+$(ESP_ENG_$(k):3)
+   #ENDIF
+#ENDFOR

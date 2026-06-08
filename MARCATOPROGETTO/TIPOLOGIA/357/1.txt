@@ -1,0 +1,15 @@
+{ 357   // Lateral calceiro ESQ
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral calceiro ESQ
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(espgaveta),$A,$P
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =PAL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/CN/0/0/1/0/0/0/0/0/1/1/0/1
+   X8                  =$(Pcorredica)/$(_corr:1)/E
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#260
+}

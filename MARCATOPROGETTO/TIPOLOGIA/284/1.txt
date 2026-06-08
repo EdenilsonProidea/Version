@@ -1,0 +1,12 @@
+{ 284   // perfilpux
+   *AZZERA*            =0
+   DESCRIZIONE         =perfilpux
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slfilleto),$(safilleto),$(spfilleto)
+   DIMENSIONE          =$(lfilleto),$(afilleto),$(pfilleto)
+   COLORI              =18,18
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =OBJETO3D.XP
+   X6                  =$(perfbase:1)
+   X8                  =frente\$(perfilpux).3ds
+}

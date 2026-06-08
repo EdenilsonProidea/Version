@@ -1,0 +1,14 @@
+{ 580   // Painel Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel Ubik
+   CODICE              =$(codpainelU) /_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(pubik)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =ALP
+   DATI                =_corcx$(_ctx)
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/1/$(canal)/$(cava)/0/0/0/0/0/0
+   X8                  =$(_fechesqu:3)/$(_fechdiru:3)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#580
+}

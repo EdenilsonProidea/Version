@@ -1,0 +1,12 @@
+#LOADVAR _FR _FR $(X9:0)
+#IF $(x6:2)!1 //verifica se é tem frente invisivel
+   #IF $(x3:1)!!
+      #M ESTR_MADEIRA,CODITEM=$(_FR:5)$(x3:1),ORIENTAMENTO=ALP
+   #ELSE
+      #M ESTR_MADEIRA,CODITEM=$(_FR:5),ORIENTAMENTO=ALP
+   #ENDIF
+   
+#ELSE
+   
+  // #M ESTR_MADEIRA,CODITEM=FRINVI
+#ENDIF

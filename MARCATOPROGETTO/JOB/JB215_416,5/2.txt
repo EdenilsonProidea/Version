@@ -1,0 +1,76 @@
+#LOADVAR _sisbascdet _sisbascdet $(xp9:0)
+#LOADVAR _sisbasc _sisbasc $(_sisbascdet:19)
+#LET lados_furos=$(_sisbascdet:12)
+// furos na frente
+#LET referencia_superior=1
+#IF $(_sisbasc:3)=2 // baaculante invertido
+   #LET referencia_superior=0
+#ENDIF
+#IF $(XX10:8)==S | $(XX10:8)==I
+   // faz nada pois não tem furo nas travessas sup e inf da frame
+#ELSE
+   #IF $(_SISBASCDET:14)!! & $(XP)>6 // furos da porta do sistema
+      #FOR $(_SISBASCDET:14)
+         #LET x=$[ex;$(i);|;1]
+         #LET y=$[ex;$(i);|;2]
+         #LET df=$[ex;$(i);|;3]
+         #LET pf=$[ex;$(i);|;4]
+         #IF $(referencia_superior)=1
+            #LET X={$(xa)-$(x)}
+         #ENDIF
+2	$(PL)
+2	$(XP9:0)
+         #IF $(lados_furos)=1 | $(lados_furos)=2 // esquerda ou 2 lados
+            #IF $(PL)>0
+               2	FF	X=$(X) Y=$(Y) DF=$(DF) PF=$(PF)
+            #ENDIF
+         #ENDIF
+         #IF $(lados_furos)=3 | $(lados_furos)=2 // direita ou 2 lados
+            #IF $(PL)>0
+               2	FF	X=$(X) Y={$(xl)-$(Y)} DF=$(DF) PF=$(PF)
+            #ENDIF
+         #ENDIF
+      #ENDFOR
+   #ENDIF
+   #IF $(_SISBASCDET:15)!! & $(xp9:1)!! & $(XP)>6//tem dobradica central
+      #IF $(pa)>-10 // porta inferior
+         #IF $(_SISBASCDET:17)!!   // furos da porta inferior da dobradica
+            #FOR $(xp9:1)		$(pldobra)
+               #FOR $(_SISBASCDET:17)
+                  #LET x=$[ex;$(i);|;1]
+                  #LET y=$[ex;$(i);|;2]
+                  #LET df=$[ex;$(i);|;3]
+                  #LET pf=$[ex;$(i);|;4]
+                  #LET y=$(pldobra)+$(X)
+                  #LET x=$(xa)-$(x)
+                  2	FF	X=$(X) Y=$(Y) DF=$(DF) PF=$(PF)
+               #ENDFOR
+            #ENDFOR
+         #ENDIF
+         #IF $(_SISBASCDET:18)!!   // furos da porta inferior sistema
+            #FOR $(_SISBASCDET:18)
+               #LET x=$[ex;$(i);|;1]
+               #LET y=$[ex;$(i);|;2]
+               #LET df=$[ex;$(i);|;3]
+               #LET pf=$[ex;$(i);|;4]
+               #LET y=$(pldobra)+$(y)
+               #LET x=$(xa)-$(x)
+               2	FF	X=$(X) Y=$(Y) DF=$(DF) PF=$(PF)
+            #ENDFOR
+         #ENDIF
+      #ELSE // porta superior
+         #IF $(_SISBASCDET:16)!!   // furos da porta superior da dobradica
+            #FOR $(xp9:1)		$(pldobra)
+               #FOR $(_SISBASCDET:16)
+                  #LET x=$[ex;$(i);|;1]
+                  #LET y=$[ex;$(i);|;2]
+                  #LET df=$[ex;$(i);|;3]
+                  #LET pf=$[ex;$(i);|;4]
+                  #LET y=$(pldobra)+$(y)
+                  2	FF	X=$(X) Y=$(Y) DF=$(DF) PF=$(PF)
+               #ENDFOR
+            #ENDFOR
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

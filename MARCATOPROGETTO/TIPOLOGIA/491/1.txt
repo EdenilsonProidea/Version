@@ -1,0 +1,10 @@
+{ 491   // Incidência de corte
+   *AZZERA*            =0
+   DESCRIZIONE         =Incidência de corte
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           ={$(SLCAIXA_$(I))+$(eslat:0)/2+$(LCAIXA_$(I))-$(eslat:0)}+$(eslat:0)/2,-$(arodape),0
+   DIMENSIONE          =1,$A+200+$(arodape),$P+50
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+}

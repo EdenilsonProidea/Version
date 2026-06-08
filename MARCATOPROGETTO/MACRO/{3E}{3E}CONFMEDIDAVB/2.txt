@@ -1,0 +1,29 @@
+#VB
+   percnomexml = GetWorkDir() & "\" & ambiente.xpercorso & "\html\limiti.xml"
+   xmllimiti = LeggiFileTesto(percnomexml)
+   V("CONFMEDIDA") = GetNodo(xmllimiti, V("item"), 0)
+   vv=split(V("CONFMEDIDA"),"|")
+   for i=0 to ubound(vv)
+      tmp=ex(vv(i),"=",1)
+      tmp1=ex(vv(i),"=",2)
+      v(tmp)=replace(tmp1,",",";")
+   next
+   vv=split(V("LPADRAO"),";")
+   V("LMINPAD")=VV(0)
+   V("LMAXPAD")=VV(UBOUND(VV))
+   IF CALCOLA(V("LMAXPAD"))=0 THEN
+      V("LMAXPAD")=VV(UBOUND(VV)-1)
+   end if
+   vv=split(V("APADRAO"),";")
+   V("AMINPAD")=VV(0)
+   V("AMAXPAD")=VV(UBOUND(VV))
+   IF CALCOLA(V("AMAXPAD"))=0 THEN
+      V("AMAXPAD")=VV(UBOUND(VV)-1)
+   end if
+   vv=split(V("PPADRAO"),";")
+   V("PMINPAD")=VV(0)
+   V("PMAXPAD")=VV(UBOUND(VV))
+   IF CALCOLA(V("PMAXPAD"))=0 THEN
+      V("PMAXPAD")=VV(UBOUND(VV)-1)
+   end if
+#ENDVB

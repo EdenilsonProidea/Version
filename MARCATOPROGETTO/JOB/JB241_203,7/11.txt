@@ -1,0 +1,7 @@
+#IF $(xx3:0)=$(xp3:0)
+   #LET NAOFURAR=0
+   #IF $(tipologia)=203
+#MSG $(pp)|$(dp)
+#ENDIF
+   #M JOB_LAT_BASE_SI
+#ENDIF

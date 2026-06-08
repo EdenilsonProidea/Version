@@ -1,0 +1,10 @@
+{ 465   // Fonte Iluminação
+   *AZZERA*            =0
+   DESCRIZIONE         =Fonte Iluminação
+   CODICE              =$(_ILUFONTE:6) /_ILUFONTE=$(_ILUFONTE:1);_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X9                  =$(_ilufonte:1)
+}

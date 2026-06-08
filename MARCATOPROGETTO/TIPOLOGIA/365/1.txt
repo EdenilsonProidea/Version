@@ -1,0 +1,13 @@
+{ 365   // barra cama horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =barra cama horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(esbar),$(AFBARCAMAA:0),0
+   DIMENSIONE          =$l-$(esbar)*2,$(ABARCAMA:0),$(ESBARCAMA:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90,$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#365
+}

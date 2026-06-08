@@ -1,0 +1,79 @@
+#IF $(maleiro:0)=1 & $(fundodividido:0)=1
+   #MSG NÃO É POSSÍVEL FAZER FUNDO DIVIDIDO COM FUNDO PARAFUSADO ATRÁS
+#ELSEIF $(maleiro:0)=1 & $(fundodividido:0)=0
+   303.007,sp=$(afcos:0)+$(escos:0),p=$p-1*($(afcos:0)+$(escos:0)+$(red_f_maleiro:0))  // Maleiro
+   #IF $(NPORTAS:3)=1 & $(ISCANTOLAR:0)!1 & $(ISCANTOPROF:0)!1
+      307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)*2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+   #ELSEIF $(primeiromodulo:0)=1
+      #IF $(_TPBASARM:3)=2
+         307,SL=-$(ESPARM:0),SA=0,L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)  <C20800>
+      #ELSE
+         307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+      #ENDIF
+   #ELSEIF $(ultimomodulo:0)=1  & $(TPLATARM:3)=1
+      #IF $(ISCANTOLAR:0)=1
+         307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+      #ELSE
+         #IF $(_TPBASARM:3)=2
+            307,SL=-$(ESPARM:0)/2,SA=0,L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)  <C20800>
+         #ELSE
+            307,SL=-$(ESPARM:0)/2,SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(_TPBASARM:3)=2
+         307,SL=-$(ESPARM:0)/2,SA=0,L=$L+$(ESPARM:0),A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)  <C20800>
+      #ELSE
+         307,SL=-$(ESPARM:0)/2,SA=$(sabaseinf),L=$L+$(ESPARM:0),A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+      #ENDIF
+   #ENDIF
+   #IF $(_ilumal:3)>0 & 1=0 //REMOVIDO NO CHAMADO <C22071>
+      _ilu,SL=0,SA=$(PAMALEIRO:0),L={$l},P={$P-1*($(RED_F_MALEIRO:0))},_ILU=$(_ILUMAL),INFOILU=$(ILUMAL)
+   #ENDIF
+#ELSE
+   #IF $(NPORTAS:3)=1 & $(ISCANTOLAR:0)!1 & $(ISCANTOPROF:0)!1
+      307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)*2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+   #ELSEIF $(primeiromodulo:0)=1
+      #IF $(_TPBASARM:3)=2
+         307,SL=-$(ESPARM:0),SA=0,L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)  <C20800>
+      #ELSE
+         307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+      #ENDIF
+   #ELSEIF $(ultimomodulo:0)=1 & $(TPLATARM:3)=1
+      #IF $(ISCANTOLAR:0)=1
+         307,SL=-$(ESPARM:0),SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+      #ELSE
+         #IF $(_TPBASARM:3)=2
+            307,SL=-$(ESPARM:0)/2,SA=0,L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)  <C20800>
+         #ELSE
+            307,SL=-$(ESPARM:0)/2,SA=$(sabaseinf),L=$L+$(ESPARM:0)+$(ESPARM:0)/2,A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)  // Fundo (dormitorio)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(_TPBASARM:3)=2
+         307,SL=-$(ESPARM:0)/2,SA=0,L=$L+$(ESPARM:0),A=$A,SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)                // Fundo (dormitorio)  <C20800>
+      #ELSE
+         307,SL=-$(ESPARM:0)/2,SA=$(sabaseinf),L=$L+$(ESPARM:0),A=$A-1*($(sabaseinf)),SP=-$(_TPFUNDOR:4),P=$(_TPFUNDOR:4)                // Fundo (dormitorio)
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(DIVCENTRAL:0)=1
+   303.005,SA=$(PADIVCENTRAL:0)  // Base intermediaria (dormitorio)
+#ENDIF
+#IF $(maleiro:0)=1
+   #IF $(DIVCENTRAL:0)=1
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(padivcentral:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+      403,SA=$(padivcentral:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$(pamaleiro:0)-1*($(padivcentral:0)+$(esdivh:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ELSE
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(pamaleiro:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ENDIF
+   403,SA=$(pamaleiro:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(pamaleiro:0)+$(abase:0)+$(esdivh:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+#ELSE
+   #IF $(DIVCENTRAL:0)=1
+      403,SA=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$(padivcentral:0)-1*($(sabaseinf)+$(ABASE:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+      403,SA=$(padivcentral:0)+$(esdivh:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(padivcentral:0)+$(esdivh:0)+$(abase:0)),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ELSE
+      403,sa=$(sabaseinf)+$(ABASE:0),SP=$(escos:0)+$(afcos:0),A=$a-1*($(sabaseinf)+$(ABASE:0)*2),P=$p-1*($(escos:0)+$(afcos:0)),X1=201  //Placer
+   #ENDIF
+#ENDIF
+#MSG $(IDLOGERROS)

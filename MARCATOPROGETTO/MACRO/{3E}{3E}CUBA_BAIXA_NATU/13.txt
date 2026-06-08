@@ -1,0 +1,41 @@
+#LET acfundog={$A-$(afafundogaveta:0)}
+#LET alatgint=78
+#LET lcfundog=84
+#LET platint=320
+#LET lcuba=74
+
+#LET RED_V_ESQ=$(dadosvaocuba:0)
+#LET V_CENTRO=$(dadosvaocuba:1)
+#LET RED_V_DIR=$(dadosvaocuba:2)
+#LET V_PROF=$(dadosvaocuba:3)
+ 
+260     // Lateral Gaveta
+260.001  // Lateral Gaveta
+//261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(lcfundog) // Traseira Gaveta
+//261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(lcfundog),sl=$(l)-$(lcfundog)-$(espgaveta)  // Traseira Gaveta
+//261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(l)-2*$(lcfundog),sl=$(lcfundog),sp=$(platint)  // Traseira interna
+//260.004,A=$(acfundog),sa=$(afafundogaveta:0),sl=$(lcfundog),p=$(platint)-$(espgaveta),sp=$(espgaveta)     // Lateral Gaveta interna
+//260.004,A=$(acfundog),sa=$(afafundogaveta:0),sl=$l-$(espgaveta)-$(lcfundog),p=$(platint)-$(espgaveta),sp=$(espgaveta)     // Lateral Gaveta interna
+
+262,A=$A,X5=1  // contra frente Gaveta
+261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(RED_V_ESQ) // Traseira Gaveta
+261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(lcfundog),sl=$(l)-$(RED_V_DIR)-$(espgaveta)  // Traseira Gaveta
+261,X5=1,A=$(acfundog),sa=$A-$(acfundog),l=$(l)-$(RED_V_ESQ)-$(RED_V_DIR),sl=$(RED_V_ESQ),sp=$(platint)  // Traseira interna
+260.004,A=$(acfundog),sa=$(afafundogaveta:0),sl=$(RED_V_ESQ),p=$(platint)-$(espgaveta),sp=$(espgaveta)     // Lateral Gaveta interna
+260.004,A=$(acfundog),sa=$(afafundogaveta:0),sl=$l-$(espgaveta)-$(RED_V_DIR),p=$(platint)-$(espgaveta),sp=$(espgaveta)     // Lateral Gaveta interna
+
+#LETS sagfung=0,0
+#LETS sagfung=$(sagfung),$(lcuba:0)+50,0
+#LETS sagfung=$(sagfung),$(lcuba:0),$(platint:0)
+#LETS sagfung=$(sagfung),{$l-$(espgaveta:0)-$(lcuba:0)-$(canalgaveta:0)},$(platint:0)
+#LETS sagfung=$(sagfung),{$l-$(espgaveta:0)-$(lcuba:0)-$(canalgaveta:0)},0
+#LETS sagfung=$(sagfung),{$l-$(espgaveta:0)-$(canalgaveta:0)},0
+#LETS sagfung=$(sagfung),{$l-$(espgaveta:0)-$(canalgaveta:0)},{$P-2*$(espgaveta:0)}
+#LETS sagfung=$(sagfung),0,$P-2*$(espgaveta:0)
+
+
+!SAGOMAA sagfung $(sagfung)
+263.001,SP=$(espgaveta),P=$p-30,DIS=$(sagfung),GL=basegaveta_cub.xp,X0=$(RED_V_DIR)/$(RED_V_ESQ)/$(V_PROF)  //Fundo Gaveta
+#IF $(_mantagav:0)>0
+   350,SP=$(espgaveta),P=$p-30,dis=$(sagfung),GL=basegaveta_cub.xp //Fundo Gaveta
+#ENDIF

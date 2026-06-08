@@ -1,0 +1,16 @@
+{ 205   // Fundo
+   *AZZERA*            =0
+   DESCRIZIONE         =Fundo
+   CODICE              =/_CORCX=$(_CORFU:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(ESLAT:0)-$(RAG_COS:0)+$(red_intm:0),$(ABASE:0)-$(RAG_COS:0),$(AFCOS:0)
+   DIMENSIONE          =$L-$(ESLAT:0)*2+2*$(RAG_COS:0)-2*$(red_intm:0),{$A-$(ABASE:0)*2+$(RAG_COS:0)*2},$(ESCOS:0)
+   COLORI              =$(_corfu:3)|$(.percorso)\foto\madeira\$(_corfu:4)|$(_corfu:5)|90,$(_corfu:3)|$(.percorso)\foto\madeira\$(_corfu:4)|$(_corfu:5)|90
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =FUNDO_CAIXA.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/$(RMPENSIL:4)/N/N/0/0/0/0/0/0/0/0/0/0/0/0
+   X8                  =$(pcanal:0)/
+   X9                  =$(_tpcaixa:1)/$(_corfu:1)/$(TPFIX:1)/$(_corbf:1)/$(_TPFR:3)/$(RMPENSIL:0)/$(_tpcaixa:26)
+   ALIAS               =#205
+}

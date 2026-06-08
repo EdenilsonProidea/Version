@@ -1,0 +1,5 @@
+{ 268.001
+   *AZZERA*            =0
+   COLORI              =20,20
+   X9                  =$(_PALHA:6)/$(_PALHA:8)
+}

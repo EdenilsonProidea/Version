@@ -1,0 +1,16 @@
+#IF $(_ACEGAV:3)!5
+   #IF $(_ACEGAV:15)!! // CASO TENHA UM LIMITE DIFERENTE NA LARGURA, UTILIZA O CADASTRO NA COLUNA 15 PARA O LIMITE DA GAVETA NA LARGURA <C26896>
+      #IF $(LINTGAV:0)<$(_ACEGAV:15)
+         #LETS idlogerros=$(idlogerros)73^$(LINTGAV:0)^$(_ACEGAV:15)^;
+      #ENDIF
+   #ELSE
+      #IF $(LINTGAV:0)<$(_ACEGAV:5)
+         #LETS idlogerros=$(idlogerros)73^$(LINTGAV:0)^$(_ACEGAV:5)^;
+      #ENDIF
+   #ENDIF
+   
+   #IF $(PINTGAV:0)<$(_ACEGAV:7)
+      #LETS idlogerros=$(idlogerros)74^$(PINTGAV:0)^$(_ACEGAV:7)^;
+   #ENDIF
+#ENDIF
+//LOGERROS

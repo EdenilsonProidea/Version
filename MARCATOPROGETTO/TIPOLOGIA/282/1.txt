@@ -1,0 +1,16 @@
+{ 282   // PAINEL VERTICAL PAREDE
+   *AZZERA*            =0
+   DESCRIZIONE         =PAINEL VERTICAL PAREDE
+   CODICE              =/_COREX=$(_COREX:1);_PINTURAEX=$(_PINTURAEX:1);TPCOR=EX
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$a,$P
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90,$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)|90
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =PAINEL_VERTICAL.XP
+   DATI                =_COREX$(_ctx)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =$(SUPORTEPRAT:2)
+   X9                  =_/$(_COREX:1)/_/$(TIPOPINTURA:1)
+   ALIAS               =#282
+}

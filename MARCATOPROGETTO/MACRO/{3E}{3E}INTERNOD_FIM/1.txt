@@ -1,0 +1,3 @@
+!COMMENTO4 ENCH=$(ENCH:0)
+
+logerros

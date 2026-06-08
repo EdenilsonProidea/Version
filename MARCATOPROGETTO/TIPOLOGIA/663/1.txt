@@ -1,0 +1,17 @@
+{ 663   // Enchimento
+   *AZZERA*            =0
+   DESCRIZIONE         =Enchimento
+   CODICE              =/_CORFAMILIA=$(_CORFR:10);_CORFR=$(_CORFR:1);_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =,$(pp_sistema:12)
+   DIMENSIONE          =$(LPP),$(hv),$(ESPENCH)
+   CORRETTIVI          =,20
+   COLORI              =1,1
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =FRENTE.XP
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/$(cava)/1/1
+   X8                  =$(PP_fr:7)/$(PP_fr:8)
+   X9                  =$(PP_FR:1)/001.001.BRANC/$(APE:1)/$(AMBIENTE)/$(_bordaf:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/$(_CORcx:1)
+}

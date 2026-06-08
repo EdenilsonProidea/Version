@@ -1,0 +1,7 @@
+#MSG $(LADO:0)
+#IF $(LADO:0)[3;4]!0
+   ILU_LATESQD,L={$A-2*$(ABASE:0)},SA={$(ABASE:0)},SL=$(slDivVert)+$(ESLAT:0),AZ=-90
+#ENDIF
+#IF $(LADO:0)[1;4]!0
+   ILU_LATDIRD,L=$A-2*$(ABASE:0),SL=$(slDivVert),SA={$A-$(ABASE:0)},AZ=90
+#ENDIF

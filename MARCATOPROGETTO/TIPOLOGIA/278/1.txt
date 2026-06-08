@@ -1,0 +1,11 @@
+{ 278   // Tampinha Perfpux
+   *AZZERA*            =0
+   DESCRIZIONE         =Tampinha Perfpux
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$(_perfpux:7),$(_perfpux:8)
+   COLORI              =$(_perfpux:9),$(_perfpux:9)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X9                  =$(_PERFPUX:10)
+}

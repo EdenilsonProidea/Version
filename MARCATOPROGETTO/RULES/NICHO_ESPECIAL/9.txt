@@ -1,0 +1,91 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=NICHO_ESPECIAL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=NICO_ESPECIAL_EST,NICO_ESPECIAL_VAO,$(ESP_PRAT:3),$(ESP_PRAT:3),$(ESP_PRAT:3),$(ESP_PRAT:3),$(ESP_PRAT:3),$(ESP_PRAT:3)
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+V,INICIACOZ
+M,VERSION,,,,,,2,1,,,,,1=0
+D,datiprat,,,Configuração,,!nicho_esp.htm,,,,,,,1=0
+T,ESP_PRAT,,,,,!DIVIDER
+T,_corcx,,,,$(esp_prat:3)[$(_corcx:12)]!!0,,,,,,,,1=0
+T,_CPRAT,,,Cor geral
+T,_CFUNDO
+T,_corcru
+M,prof_prat,,,Prof. Prateleira?
+C,veioFundoH,,,Veio Fundo Horizontal?
+G,LEDNICHO,,,Led
++,NICO_ESPECIAL_VAO
+G,VAROCULTE
+G,VAROCULTENICHO
+
+[GRAFICA]
+#IF $(VERSION:0)=2
+   #LOADVAR _corcx _cprat $(_cprat:1)
+   #LETV _corcx=$(_cprat)
+#ENDIF
+#LETS INFOPECA=0
+#LETV _CORFR=$(_CORCX:1)
+#LETV _CORBF=$(_CORCX:1)
+#LETV _corle=$(_CORCX:1)
+#LETV _corld=$(_CORCX:1)
+#LETV _corba=$(_CORCX:1)
+INICIA
+GESTAOMEDIDA
+#LETV _CORFAMILIA=$(_CPRAT:10)
+#LET ES=$(ESP_PRAT:3)
+#LET sistemanicho=1
+#LET emporio=0
+#LET POSFUNDO=15
+#LET RED_DIV_NICHO=22
+#IF $(_CFUNDO:11)[BPS;ESP]
+   #LET esfundo=6//$(ES)
+#ELSEIF $(_CFUNDO:11)[RAU]
+   #LET esfundo=18
+#ELSE
+   #LET esfundo=6
+   #LET FACELAMPIN=1
+#ENDIF
+
+#LETS canal=CN$(esfundo:0)
+#LETS TRABALHOAT=$(CANAL)
+#LETV _TPCAIXA=NIS
+
+nicho_esp
+
+
+#LET CONTADIV=4 // CONTA DIVISORIAS PARA SUPORTE
+#LETS _macrofinale=LOGERROS
+!COMMENTO4 FUNDO=$(_CFUNDO:2)LED=$(INFOPECA)
+
+
+// LED_SUP_IN
+// NICO_ESPECIAL_EST
+// NICO_ESPECIAL_vao
+// ILU_CAIXA
+// 203
+// _int
+// _fr
+// 634
+// FUNDO_NICHO
+// LED_BASESNICHO
+// 278

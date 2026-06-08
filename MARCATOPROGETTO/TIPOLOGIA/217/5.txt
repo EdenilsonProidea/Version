@@ -1,0 +1,18 @@
+{ 217   // FRENTE GAVETA INTERNA
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE GAVETA INTERNA
+   CODICE              =/_CORFAMILIA=$(_CORcx:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(eSLAT:0)+$(FOLGAFRENTELGVI:0),$(FOLGAFRENTEAI:0),$(AFFREP)-15
+   DIMENSIONE          =$(L)-2*$(ESLAT:0)-2*$(FOLGAFRENTELGVI:0),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},15
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90
+   ORIENTAMENTO        =ALP
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)
+   X4                  =$(_CORPROFILO:4)/$(popx:0)/$(sentido:0)/$(lpux:0)/$(incrfreE:0)/$(incrfreD:0)/$(incrfreA:0)/$(incrfreI:0)
+   X5                  =$(QTDfrisoV:0)/$(QTDfrisoH:0)
+   X6                  =$(_corfr:10)
+   X7                  =N/N/N/N/1/1/1/1/0/$(cava)/1/1
+   X8                  =$(_fr:7)/$(_fr:8)
+   X9                  =001.012/$(_CORcx:1)/$(APE:1)/$(AMBIENTE)/$(_bordaf:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)/$(_CORcx:1)
+   ALIAS               =#215
+}

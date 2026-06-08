@@ -1,0 +1,14 @@
+#LETS _corpr=$(_corcx)  // ALEX VISITA - SOLICITADO TIAGO PARA PRATELEIRA INTERNA SEMPRE FICAR DA COR DA CAIXA
+#LET lb=int($l-1*($(escos:0)+$(afcos:0)))
+#LET pb=int($p-1*($(escos:0)+$(escos2:0)))
+#LET pratllatd=$(platdir:0)-1*($(red_f_prat:0)+$(escos:0)+$(afcos:0))
+#LET pratllate=$(platesq:0)-1*($(red_f_prat:0)+$(escos:0)+$(afcos:0))
+#LET PRATD=$(pratllatd)
+#LET PRATE=$(pratllate)
+!SAGOMA sagprat 0,0,$(lb),0,$(lb),$(pratllatd:0),$(pratllate:0),$(pratllatd:0),$(pratllate:0),$(pb),0,$(pb),0,0
+309.001,SL={$(escos:0)+$(afcos:0)},SP={($(ESCOS:)+$(ESCOS2:0))},P=$(pb),L=$(lb),X6=$(PRATD:0)/$(PRATE:0) // Base inferior canto L (dormitorio)
+#LET OLD_AVAO_PRAT=$(AFPRATA)-$(OLD_PA_PRAT)
+// INSERIR PLACER DOS VÃO ENTRE AS PRATELEIRAS
+403,sa=$(oLD_PA_PRAT),SP=$(escos:0)+$(afcos:0),A=$(OLD_AVAO_PRAT),P=$(platdir:0)-1*($(escos:0)+$(afcos:0)),X1=201,sl=$(escos:0)+$(afcos:0),l=$l-1*($(escos:0)+$(afcos:0))   //Placer
+403,sa=$(oLD_PA_PRAT),SP=$p,A=$(OLD_AVAO_PRAT),P=$(platdir:0)-1*($(escos:0)+$(afcos:0)),X1=201,ay=90,l=$p-1*($(escos:0)+$(afcos:0)),sl=$(afcos:0)+$(escos:0)   //Placer
+#LET OLD_PA_PRAT=$(AFPRATA)+$(ESPRAT:0)

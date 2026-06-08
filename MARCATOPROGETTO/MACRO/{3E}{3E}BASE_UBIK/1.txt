@@ -1,0 +1,21 @@
+#LET TRABALHOAT=0
+#LET CANAL=0
+#LET P=$(pubik)+$(_PBASE_UBIK:0)
+#LET arodubik=70
+#LET ESRODAPEU=25
+#LET ESbaseU=15
+#IF $l>2730
+   #IF $(AROTAAVEIA:0)=1
+      592,l=$l/2,C1=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),C2=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)  // BASE UBIk // BASE UBIK
+   #ELSE
+      589,l=$l/2  // BASE UBIK
+   #ENDIF
+   590,l=($L)/2 // RODAPE UBIK FRONTAL
+   589,l=$l/2,sl=$l/2  // BASE UBIK
+   590,l=($L)/2,sl=$l/2  // RODAPE UBIK FRONTAL
+#ELSE
+   
+#ENDIF
+591  // RODAPE UBIK LATERAL
+591,SL=$l-$(ESbaseU)  // RODAPE UBIK LATERAL
+// 203

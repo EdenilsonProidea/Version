@@ -1,0 +1,13 @@
+!PARAMETRI DISROD=_acab:$(PROD:0);$(_PES:5),X1=0,rodlat=
+//coz_pes
+#IF $(_PES:3)[3;6]
+   #LETS corrodape=$(_corrodape:3)|pareti\foto\pavimenti\$(_corrodape:6)|$(_corrodape:9)|90
+   #LETS prod=$(esprodape:0)
+   232,SL=$(ESPESSURA:0)//P=$p-$(prod)//,X1=/  //rodape
+   #IF $(RODD)=1
+      235  // rodape LATERAL
+   #ENDIF
+   #IF $(RODE)=1
+      235, sl=$L-$(PROD:0)  // rodape LATERAL
+   #ENDIF
+#ENDIF

@@ -1,0 +1,13 @@
+{ 414   // kit carrinho (tipologia para job E CODIGO)
+   *AZZERA*            =0
+   DESCRIZIONE         =kit carrinho (tipologia para job E CODIGO)
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,-$(esfre)
+   DIMENSIONE          =$(lfre),$(afre),$(esfre)
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+   X8                  =$(_siscorrer:14)/$(esfre:0)
+   X9                  =$(_siscorrer:7)/$(pesoEstimado)/$(_siscorrer:1)
+   X10                 =$(_siscorrer:16)/$(_siscorrer:17)/$(_siscorrer:18)
+}

@@ -1,0 +1,16 @@
+{ 262   // contra frente Gaveta
+   *AZZERA*            =0
+   DESCRIZIONE         =contra frente Gaveta
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(espgaveta),0,$P-$(espgaveta)
+   DIMENSIONE          =$l-$(espgaveta)*2,$A,$(espgaveta)
+   COLORI              =$(_corGV:3)|$(.percorso)\foto\madeira\$(_corGV:4)|$(_corGV:5),$(_corGV:3)|$(.percorso)\foto\madeira\$(_corGV:4)|$(_corGV:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X6                  =$(_TPGAVALT:1)
+   X7                  =N/N/N/N/0/0/0/1/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIXGAV:1)
+   X10                 =$(_tpgav:0)
+   ALIAS               =#262
+}

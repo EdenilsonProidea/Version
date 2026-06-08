@@ -1,0 +1,159 @@
+{ _CORCX_EXTRA
+   *AZZERA*            =0
+   DESCRIZIONE         =
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^3;6;120;120;4,5;#FOTO\MADEIRA\;2;3
+   MEMO                =1Código 1800Descrição 5250LAMINA DIFERENTE 5625pintura atrás BP 3270BPS.BAS.BPS02COLUNA 4 - PREENCHER COM A PINTURA QUE SERÁ FEITA NA PARTE DA TRASERIA DO FUNDO DA BP
+   { 
+      //              ,Descrição                   ,L,pintura atrás
+      999             ,SEM                         , ,PIN.G01.PIN04
+      BSF             ,Linha Sequoia               , ,PIN.G01.PIN04
+      BSF.FAZ         ,Sequoia                     , ,PIN.G01.PIN04
+      BSF.FAZ.BSF01   ,Nogueira Veneto + Lamina    , ,PIN.G01.PIN04
+      BSF.FAZ.BSF02   ,Cacao Chess                 , ,PIN.G01.PIN04
+      ESP             ,ESPECIAIS                   , ,PIN.G01.PIN04
+      ESP.001         ,ESPECIAIS MARCATO           , ,PIN.G01.PIN04
+      ESP.001.ESP01   ,Wood Cedro                  , ,PIN.G01.PIN04
+      ESP.001.ESP02   ,Sumauma                     , ,PIN.G01.PIN04
+      ESP.001.MDF01   ,MDF Cru                     , ,PIN.G01.PIN04
+      LAM             ,Laminados                   , ,PIN.G01.PIN04
+      LAM.PER         ,Personalizado               , ,PIN.G01.PIN04
+      LAM.PER.LAM07   ,Lam Personalizado           , ,PIN.G01.PIN04
+      LAM.SOL         ,Solid                       , ,PIN.G01.PIN04
+      LAM.SOL.LAM01   ,Lam. Branco Satinato        , ,PIN.G01.PIN04
+      LAM.SOL.LAM03   ,Lam Cinza Satinato          , ,PIN.G01.PIN04
+      LAM.SOL.LAM04   ,Lam Gelo Satinato           , ,PIN.G01.PIN04
+      LAM.SOL.LAM05   ,Lam Novo Corda Satinato     , ,PIN.G01.PIN04
+      LAM.SOL.LAM06   ,Lam Novo Grafite Satinato   , ,PIN.G01.PIN04
+      LAM.SOL.LAM08   ,Lam Preto Satinato          , ,PIN.G01.PIN04
+      LAM.SOL.LAM10   ,Lam Ultra Branco            , ,PIN.G01.PIN04
+      LAM.STR         ,Striatos                    , ,PIN.G01.PIN04
+      LAM.STR.LAM02   ,Lam Canelato                , ,PIN.G01.PIN04
+      LAM.STR.LAM09   ,Lam Titanium                , ,PIN.G01.PIN04
+      LMN             ,Laminas                     , ,PIN.G01.PIN04
+      LMN.C01         ,Pre-Compostas               , ,PIN.G01.PIN04
+      LMN.C01.LMNPC02 ,Lam Pre Comp. Noce Catedral , ,PIN.G01.PIN04
+      LMN.C01.LMNPC03 ,Lamina Pre Comp. Quartier F , ,PIN.G01.PIN04
+      LMN.C01.LMNPC04 ,Lam Pre Comp. Ebanizada     , ,PIN.G01.PIN04
+      LMN.C01.LMNPC05 ,Lam Pre Comp. Noce Italiano , ,PIN.G01.PIN04
+      LMN.C01.LMNPC07 ,Lam Pre Comp. Noce Lin.     , ,PIN.G01.PIN04
+      LMN.CHC         ,Carvalho Catedral           , ,PIN.G01.PIN04
+      LMN.CHC.LMNPC01 ,Lam Pre Comp. Wenge         , ,PIN.G01.PIN04
+      LMN.CHC.LMNPC06 ,Lam Pre Comp. Carvalho Lin. , ,PIN.G01.PIN04
+      LMN.CHC.LMNPC08 ,Lam Pre Comp. Freijó        , ,PIN.G01.PIN04
+      LMN.CHL         ,Laminas Naturais            , ,PIN.G01.PIN04
+      LMN.CHL.LMNN01  ,Lam Natural Cumaru          , ,PIN.G01.PIN04
+      LMN.CHL.LMNN02  ,Lam Natural Freijó          , ,PIN.G01.PIN04
+      LMN.CHL.LMNN03  ,Lam Natural Nogueira        , ,PIN.G01.PIN04
+      LMN.CHL.LMNN04  ,Lam Natural Sucupira        , ,PIN.G01.PIN04
+      LMN.CHL.LMNN05  ,Lam Natural Tauari          , ,PIN.G01.PIN04
+      LMN.CHL.LMNN06  ,Lam Natural Carvalho Branco , ,PIN.G01.PIN04
+      LMN.CHL.LMNN07  ,Lam Natural Jequitibá       , ,PIN.G01.PIN04
+      MDF             ,BP MDF                      , ,PIN.G01.PIN04
+      MDF.BAS         ,Basic                       , ,PIN.G01.PIN04
+      MDF.BAS.BP15    ,Nero                        , ,PIN.G01.PIN04
+      MDF.CON         ,Conceito                    , ,PIN.G01.PIN04
+      MDF.CON.BP07    ,Fontana                     , ,PIN.G01.PIN04
+      MDF.CON.BP25    ,Sardenha                    , ,PIN.G01.PIN04
+      MDF.CON.BPS15   ,Nude Perolizado             , ,PIN.G01.PIN04
+      MDF.CON.BPS34   ,Toscano Notte               , ,PIN.G01.PIN04
+      MDF.LEG         ,Legno                       , ,PIN.G01.PIN04
+      MDF.LEG.BP06    ,Ebano Legno                 , ,PIN.G01.PIN04
+      MDF.LEG.BP08    ,Freijo                      , ,PIN.G01.PIN04
+      MDF.LEG.BP11    ,Hanover                     , ,PIN.G01.PIN04
+      MDF.LEG.BP12    ,Jequitiba BP                , ,PIN.G01.PIN04
+      MDF.LEG.BP17    ,Nogueira Parma              , ,PIN.G01.PIN04
+      MDF.LEG.BP20    ,Pau Ferro                   , ,PIN.G01.PIN04
+      MDF.LEG.BP23    ,Riviera                     , ,PIN.G01.PIN04
+      MDF.LEG.BP26    ,Tinto                       , ,PIN.G01.PIN04
+      MDF.LEG.BPS18   ,Nogueira Veneto             , ,PIN.G01.PIN04
+      MDF.PER         ,Personalizado               , ,PIN.G01.PIN04
+      MDF.PER.BP01    ,BP Personalizado            , ,PIN.G01.PIN04
+      MDF.SOL         ,Solid                       , ,PIN.G01.PIN04
+      MDF.SOL.BP02    ,Cinza Espacial              , ,PIN.G01.PIN04
+      MDF.SOL.BP03    ,Crema                       , ,PIN.G01.PIN04
+      MDF.SOL.BP04    ,Cristal                     , ,PIN.G01.PIN04
+      MDF.SOL.BP05    ,Duomo                       , ,PIN.G01.PIN04
+      MDF.SOL.BP09    ,Grafite                     , ,PIN.G01.PIN04
+      MDF.SOL.BP10    ,Gris                        , ,PIN.G01.PIN04
+      MDF.SOL.BP16    ,Nocciola                    , ,PIN.G01.PIN04
+      MDF.SOL.BP18    ,Nuvola                      , ,PIN.G01.PIN04
+      MDF.SOL.BP19    ,Palha                       , ,PIN.G01.PIN04
+      MDF.SOL.BP24    ,Sabbia                      , ,PIN.G01.PIN04
+      MDF.TES         ,Tessuto                     , ,PIN.G01.PIN04
+      MDF.TES.BP22    ,Rafia                       , ,PIN.G01.PIN04
+      MDP             ,BP MDP                      , ,PIN.G01.PIN04
+      MDP.BAS         ,Basic                       , ,PIN.G01.PIN04
+      MDP.BAS.BPS02   ,Branco TX                   , ,PIN.G01.PIN04
+      MDP.BAS.BPS16   ,Nero                        , ,PIN.G01.PIN04
+      MDP.CON         ,Conceito                    , ,PIN.G01.PIN04
+      MDP.CON.BP27    ,Tramonto                    , ,PIN.G01.PIN04
+      MDP.LEG         ,Legno                       , ,PIN.G01.PIN04
+      MDP.LEG.BPS07   ,Ebano Legno                 , ,PIN.G01.PIN04
+      MDP.LEG.BPS09   ,Freijo                      , ,PIN.G01.PIN04
+      MDP.LEG.BPS12   ,Hanover                     , ,PIN.G01.PIN04
+      MDP.LEG.BPS13   ,Jequitiba BP                , ,PIN.G01.PIN04
+      MDP.LEG.BPS19   ,Nogueira Parma              , ,PIN.G01.PIN04
+      MDP.LEG.BPS22   ,Pau Ferro                   , ,PIN.G01.PIN04
+      MDP.LEG.BPS28   ,Tinto                       , ,PIN.G01.PIN04
+      MDP.LEG.BPS30   ,Rovere Bianco               , ,PIN.G01.PIN04
+      MDP.LEG.BPS31   ,Rovere Cenere               , ,PIN.G01.PIN04
+      MDP.PERS        ,Personalizado               , ,PIN.G01.PIN04
+      MDP.PERS.BPS01  ,BP Personalizado            , ,PIN.G01.PIN04
+      MDP.SOL         ,Solid                       , ,PIN.G01.PIN04
+      MDP.SOL.BPS03   ,Cinza Espacial              , ,PIN.G01.PIN04
+      MDP.SOL.BPS04   ,Crema                       , ,PIN.G01.PIN04
+      MDP.SOL.BPS05   ,Cristal                     , ,PIN.G01.PIN04
+      MDP.SOL.BPS06   ,Duomo                       , ,PIN.G01.PIN04
+      MDP.SOL.BPS10   ,Grafite BP                  , ,PIN.G01.PIN04
+      MDP.SOL.BPS11   ,Gris                        , ,PIN.G01.PIN04
+      MDP.SOL.BPS17   ,Nocciola                    , ,PIN.G01.PIN04
+      MDP.SOL.BPS20   ,Nuvola                      , ,PIN.G01.PIN04
+      MDP.SOL.BPS21   ,Palha                       , ,PIN.G01.PIN04
+      MDP.SOL.BPS26   ,Sabbia                      , ,PIN.G01.PIN04
+      MDP.TES         ,Tessuto                     , ,PIN.G01.PIN04
+      MDP.TES.BPS24   ,Ráfia                       , ,PIN.G01.PIN04
+      PIN             ,Pinturas                    , ,PIN.G01.PIN04
+      PIN.G01         ,Pintura 01                  , ,PIN.G01.PIN04
+      PIN.G01.PIN04   ,Branco neve                 , ,PIN.G01.PIN04
+      PIN.G02         ,Pintura 02                  , ,PIN.G01.PIN04
+      PIN.G02.PIN02   ,Argila                      , ,PIN.G01.PIN04
+      PIN.G02.PIN05   ,Branco Pérola               , ,PIN.G01.PIN04
+      PIN.G02.PIN07   ,Canapa                      , ,PIN.G01.PIN04
+      PIN.G02.PIN11   ,Ébano Pintura               , ,PIN.G01.PIN04
+      PIN.G02.PIN15   ,Grigio                      , ,PIN.G01.PIN04
+      PIN.G02.PIN16   ,Luna                        , ,PIN.G01.PIN04
+      PIN.G02.PIN21   ,Novo Panna                  , ,PIN.G01.PIN04
+      PIN.G02.PIN25   ,Panna                       , ,PIN.G01.PIN04
+      PIN.G03         ,Pintura 03                  , ,PIN.G01.PIN04
+      PIN.G03.PIN06   ,Caffe                       , ,PIN.G01.PIN04
+      PIN.G03.PIN08   ,Creta                       , ,PIN.G01.PIN04
+      PIN.G03.PIN09   ,Danúbio                     , ,PIN.G01.PIN04
+      PIN.G03.PIN10   ,Dark                        , ,PIN.G01.PIN04
+      PIN.G03.PIN13   ,Grafite Metálico            , ,PIN.G01.PIN04
+      PIN.G03.PIN14   ,Grafite Pintura             , ,PIN.G01.PIN04
+      PIN.G03.PIN28   ,Quartzo                     , ,PIN.G01.PIN04
+      PIN.G04         ,Pintura 04                  , ,PIN.G01.PIN04
+      PIN.G04.PIN03   ,Blu Marino                  , ,PIN.G01.PIN04
+      PIN.G04.PIN12   ,Esmeralda                   , ,PIN.G01.PIN04
+      PIN.G04.PIN18   ,Mattone                     , ,PIN.G01.PIN04
+      PIN.G04.PIN27   ,Pomodoro                    , ,PIN.G01.PIN04
+      PIN.G04.PIN30   ,Turchese                    , ,PIN.G01.PIN04
+      PIN.G05         ,Personalizado 05            , ,PIN.G01.PIN04
+      PIN.G05.PIN26   ,Personalizado               , ,PIN.G01.PIN04
+      PIN.G06         ,Metalizada                  , ,PIN.G01.PIN04
+      PIN.G06.PIN01   ,Alluminio Gold              , ,PIN.G01.PIN04
+      PIN.G06.PIN17   ,Marrone Gold                , ,PIN.G01.PIN04
+      PIN.G06.PIN19   ,Mettalo                     , ,PIN.G01.PIN04
+      PIN.G06.PIN20   ,Nero Gold                   , ,PIN.G01.PIN04
+      PIN.G06.PIN22   ,Ottone Gold                 , ,PIN.G01.PIN04
+      PIN.G06.PIN29   ,Rame Gold                   , ,PIN.G01.PIN04
+      PIN.G06.PIN31   ,Zinco Gold                  , ,PIN.G01.PIN04
+      PIN.G07         ,Oxi                         , ,PIN.G01.PIN04
+      PIN.G07.PIN23   ,Oxi Alluminio               , ,PIN.G01.PIN04
+      PIN.G07.PIN24   ,Oxi Gold                    , ,PIN.G01.PIN04
+      SEM             ,Sem Cor                     , ,PIN.G01.PIN04
+      SEM.999         ,Sem                         , ,PIN.G01.PIN04
+   }
+}

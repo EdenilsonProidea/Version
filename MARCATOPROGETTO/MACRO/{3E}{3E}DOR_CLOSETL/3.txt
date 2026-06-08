@@ -1,0 +1,25 @@
+#IF $(CLIGHT_FUNDO:0)=1
+   #LETS TRABALHOAT=CN$(escos:0)
+   #LET CANAL=1
+   #LET spint=$(escos:0)+$(afcos:0)
+   #LET pint=$p-1*($(escos:0)+$(afcos:0))
+   305,sa={$(ARODP:3)+$(ABASE:0)-$(rag_cos:0)},a={$a-$(ARODP:3)-$(abase:0)*2+$(rag_cos:0)*2},sl=-$(rag_cos:0),l=$l+$(rag_cos:0)*2
+#ELSE
+   #LETS TRABALHOAT=N
+   #LET CANAL=0
+   #LET spint=0
+   #LET pint=$p
+#ENDIF
+#MSG $L
+403,sp=$(SPINT),p=$(pint),SA={$(ARODP:3)+$(ABASE:0)},A={$A-$(ARODP:3)-$(ABASE:0)*2},X1=201
+//Placer
+303,SA=$(ARODP:3),X7=N/N/N/$(TRABALHOAT)/1/1/1/1/$(CANAL)/0/1/1/0/0/0/1/0/$(FITARSOVISTA:2)  //Base  (dormitorio)
+#IF $(BASESUPAVANCO:0)=1 // ALTERADA COR DA BORDA FRONTAL <C20828>
+   303.001,X7=N/N/N/$(TRABALHOAT)/1/1/1/1/$(CANAL)/0/1/1/0/0/0/1/0/$(FITARSOVISTA:2)  //Base Superior (dormitorios)
+   //  ILU_BASSUPD,P=$p,SA=-1,MACRO=ILU_BASSUPD
+#ELSE
+   303.001,P=$p-$(AVANCOCLOSETL:3),X7=N/N/N/$(TRABALHOAT)/1/1/1/1/$(CANAL)/0/1/1/0/0/0/1/0/$(FITARSOVISTA:2)  //Base Superior (dormitorios)
+   //  ILU_BASSUPD,P=$p-$(AVANCOCLOSETL:3),SA=-1,MACRO=ILU_BASSUPD
+#ENDIF
+304,SL=0,SP=$p-$(AVANCOCLOSETL:3)-$(ESTRA:0)-15,L=$l,A=$(ARODP:3)  //Traversa verticale  (DORMITORIOS)
+304,sl=0,l=$l,a=$(ARODP:3),SA=0,SP=15   // Traversa verticale  (DORMITORIOS)

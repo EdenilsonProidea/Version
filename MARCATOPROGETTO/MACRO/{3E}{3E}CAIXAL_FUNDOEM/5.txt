@@ -1,0 +1,21 @@
+#IF $(baSEDIVIDIDA:0)=1
+   #IF $(TPLATARM:3)=1
+    //  dor_fechl_cxL,l=$l-$(eslat:0)/2,p=$p-$(eslat:0)/2
+   #ELSE
+      DOR_CALC_SAG_LAT,plat=$(platesq:0),p=$(platesq:0)
+      301,sp=$p,ay=90,p=$(platesq:0)
+      DOR_CALC_SAG_LAT,plat=$(platdir:0),p=$(platdir:0)
+      302,sl=$l-$(eslat:0),p=$(platdir:0)
+      dor_fechl_cxL,l=$l-$(eslat:0),p=$p-$(eslat:0)
+   #ENDIF
+#ELSE
+   #IF $(TPLATARM:3)=1
+      dor_fechl_cxLs,l={$l-$(eslat:0)/2},p={$p-$(eslat:0)/2}
+   #ELSE
+      DOR_CALC_SAG_LAT,plat=$(platesq:0),p=$(platesq:0)
+      301,sp=$p,ay=90,p=$(platesq:0)
+      DOR_CALC_SAG_LAT,plat=$(platdir:0),p=$(platdir:0)
+      302,sl=$l-$(eslat:0),p=$(platdir:0)
+      dor_fechl_cxLs,l=$l-$(eslat:0),p=$p-$(eslat:0)
+   #ENDIF
+#ENDIF

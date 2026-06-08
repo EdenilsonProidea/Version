@@ -1,0 +1,13 @@
+{ 213   // Divisoria horizontal MDF colmeia
+   *AZZERA*            =0
+   DESCRIZIONE         =Divisoria horizontal MDF colmeia
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(_acegav:7)
+   COLORI              =$(_cprat:3)|$(.percorso)\foto\madeira\$(_cprat:4)|$(_cprat:5),$(_cprat:3)|$(.percorso)\foto\madeira\$(_cprat:4)|$(_cprat:5)
+   ORIENTAMENTO        =LAP
+   X2                  =$(NDIVCOLMH:0)/$(NDIVCOLMV:0)
+   X3                  =H/$(_idunico:0)
+   X7                  =N/N/N/N/0/0/0/0
+   X9                  =/$(_cprat:1)/
+}

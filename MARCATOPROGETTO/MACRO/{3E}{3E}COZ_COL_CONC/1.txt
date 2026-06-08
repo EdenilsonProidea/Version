@@ -1,0 +1,12 @@
+#LETS TRABALHOAT=CN$(escos:0)
+#LETS canal=1
+201.002  //Lateral Esquerda
+202.002  // Lateral Direita
+203//,x6=1/0  // Base  (cozinha)
+203.001//,X6=1/0  //Base Superior
+coz_costacol
+#IF $a>1300  //traversa centro
+   //  204,sp=$(aftrap),sa=$a/2-$(atra)/2
+#ENDIF
+#LET redinfcaixa=$(abase)
+#LET redsupcaixa=$(abase)

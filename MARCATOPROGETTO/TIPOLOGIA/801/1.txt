@@ -1,0 +1,13 @@
+{ 801   // Oggetto 3d (decore)
+   *AZZERA*            =0
+   DESCRIZIONE         =Oggetto 3d (decore)
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(col1),$(col2)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3DDECORE.XP
+   X3                  =$(curbox)
+   X8                  =$(NCOL)/$(col1)/$(col2)/$(col3)/$(col4)
+   X9                  =$(NomeOggetto)/$(FLAGWRX)
+}

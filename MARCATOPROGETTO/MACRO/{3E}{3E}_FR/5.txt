@@ -1,0 +1,212 @@
+//  ABI     BASCULANTE INVERTIDO
+//  ABS     BASCULANTE
+//  AGD     PORTA GIRO DIREITA
+//  AGDC    CONCEPTA ESQUERDA
+//  AGE     PORTA GIRO ESQUERDA
+//  AGEC    CONCEPTA DIREITA
+//  AVF_    I AVENTOS HF INFERIOR
+//  AVF_    S AVENTOS HF SUPERIOR
+//  AVK     AVENTOS HK
+//  AVL     AVENTOS HL
+//  AVS     AVENTOS HS
+//  C1D     PORTA DE CORRER DIR
+//  C1E     PORTA DE CORRER ESQ
+//  C2D_1   PORTA DE CORRER DIR 2/2 FRENTE
+//  C2D_3   PORTA DE CORRER DIR 2/2 ATRAS
+//  C2E_1   PORTA DE CORRER ESQ 1/2 ATRAS
+//  C2E_3   PORTA DE CORRER ESQ 1/2 FRENTE
+//  C3C     PORTA DE CORRER CENTRAL 2/3
+//  C3D     PORTA DE CORRER DIR 3/3
+//  C3E     PORTA DE CORRER ESQ 1/3
+//  C4CD    PORTA DE CORRER CENTRAL DIR 3/4
+//  C4CE    PORTA DE CORRER CENTRAL ESQ 2/4
+//  C4D     PORTA DE CORRER DIR 4/4
+//  C4E     PORTA DE CORRER ESQ 1/4
+//  COD     COMPLANAR DIREITA
+//  COE     COMPLANAR ESQUERDA
+//  F25     PORTA GIRO DIREITA
+//  F26     PORTA GIRO ESQUERDA
+//  F27     PORTA GIRO DIREITA
+//  F28     PORTA GIRO ESQUERDA
+//  GAF     GAVETA FIXA
+//  GAI     GAVETA INTERNA
+//  GAV     GAVETA
+//  LTF     LATERAL FECHAMENTO
+//  SAP     SAPATEIRA
+#LETS ABRIRFRENTE=$[tosep;|;$(ABRIRFRENTE$(idp)$(_ctx))]
+#LET fl_abrir_*=
+#LETS fl_abrir_img=$(ape:3)
+#LETS fl_abrir_tipo=1 // 1=angulo - 2=deslocamento
+#SELECT $(ape:3)
+#CASES AGE
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(_dobra:4)
+   #LET fl_abrir_ay=-$(ABRIRFRENTE:0)
+   #LET fl_abrir_SL=SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES AGD
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(_dobra:4)
+   #LET fl_abrir_ay=$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=SIN($(ABRIRFRENTE:0))*$(LFRE:0)
+   #LET fl_abrir_SL=(1-COS($(ABRIRFRENTE:0)))*$(LFRE:0)-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES ABS
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(_dobra:4)
+   #LET fl_abrir_aX=$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=SIN($(ABRIRFRENTE:0))*$(AFRE:0)
+   #LET fl_abrir_SA=$(AFRE:0)-COS($(ABRIRFRENTE:0))*$(AFRE:0)-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES ABI
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(_dobra:4)
+   #LET fl_abrir_aX=-$(ABRIRFRENTE:0)
+   #LET fl_abrir_SA=SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES AVL
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(afre:0)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(afre:0)
+   #LET fl_abrir_SP=$(ABRIRFRENTE:0)/10
+   #LET fl_abrir_SA=$(ABRIRFRENTE:0)
+#CASES AVK
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(_dobra:4)
+   #LET fl_abrir_aX=$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=SIN($(ABRIRFRENTE:0))*$(AFRE:0)
+   #LET fl_abrir_SA=$(AFRE:0)-COS($(ABRIRFRENTE:0))*$(AFRE:0)-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES AVS
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=90
+   #LET fl_abrir_aX=$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=SIN($(ABRIRFRENTE:0))*$(AFRE:0)-$(ABRIRFRENTE:0)
+   #LET fl_abrir_SA=$(AFRE:0)-COS($(ABRIRFRENTE:0))*$(AFRE:0)-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)+$(ABRIRFRENTE:0)
+#CASES AVF_S
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LETS fl_abrir_img=AVF
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=90
+   #LET fl_abrir_aX=$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=SIN($(ABRIRFRENTE:0))*$(AFRE:0)
+   #LET fl_abrir_SA=$(AFRE:0)-COS($(ABRIRFRENTE:0))*$(AFRE:0)-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES AVF_I
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=70
+   #LETS fl_abrir_img=AVF
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=90
+   #LET fl_abrir_aX=-$(ABRIRFRENTE:0)
+   #LET fl_abrir_SP=0
+   #LET fl_abrir_SA=2*($(AFRE:0)-COS($(ABRIRFRENTE:0))*$(AFRE:0))-SIN($(ABRIRFRENTE:0))*$(ESFRE:0)
+#CASES GAV
+   #IF $(ABRIRTUDO:0)=1
+      #LET ABRIRFRENTe=$(PTOT)-100-$(spostaa)/2
+      #IF $(ABRIRFRENTe:0)<0 #LET ABRIRFRENTe=$(PTOT)-100
+   #ENDIF
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(PTOT)-100
+   #LET fl_abrir_SP=$(ABRIRFRENTE:0)
+#CASES C1E
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C1D
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C2E_1
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C2D_1
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C2E_3
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C2D_3
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C3E
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C3D
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C3C
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COC
+   #LET fl_abrir_min=-$(lfre:0)
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C4E
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#CASES C4D
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C4CE
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COD
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=-$(ABRIRFRENTE:0)
+#CASES C4CD
+   #IF $(ABRIRTUDO:0)=1 #LET ABRIRFRENTe=$(lfre)
+   #LETS fl_abrir_tipo=2 // 1=angulo - 2=deslocamento
+   #LETS fl_abrir_img=COE
+   #LET fl_abrir_min=0
+   #LET fl_abrir_max=$(lfre:0)
+   #LET fl_abrir_SL=$(ABRIRFRENTE:0)
+#ENDSELECT
+#LET fl_abrir_min=INT($(fl_abrir_min))
+#LET fl_abrir_max=INT($(fl_abrir_MAX))
+#IF $(ABRIRTUDO:0)=0
+   #LETV abrirfrente$(idp)$(_ctx)=$(ABRIRFRENTE:0)|$(fl_abrir_min)|$(fl_abrir_max)|$(fl_abrir_img)|$(fl_abrir_tipo)
+#ELSE
+   #LETV abrirfrente$(idp)$(_ctx)=000
+#ENDIF
+_fr_1,SL=$(fl_abrir_sl),SA=$(fl_abrir_sa),SP=$(fl_abrir_sp),AY=$(fl_abrir_ay),AX=$(fl_abrir_ax)

@@ -1,0 +1,6 @@
+{ 213   // Divisoria horizontal MDF colmeia
+   *AZZERA*            =0
+   DESCRIZIONE         =Divisoria horizontal MDF colmeia
+   LATO                =0
+   ORIENTAMENTO        =LAP
+}

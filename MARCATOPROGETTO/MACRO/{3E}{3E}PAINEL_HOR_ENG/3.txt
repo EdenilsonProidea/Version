@@ -1,0 +1,23 @@
+#IF $(ESP_PRAT:3)=6 // Engrosso para compor com os paineis de 6mm
+   #SELECT $(ESP_ENGROSSO:3)
+   #CASE 30
+      
+   #CASE 40
+      
+   #CASE 60
+      281,SA=0,A=$(ESP_PRAT:3),AZ=$(angz:0),X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0) //PAINEL HORIZONTAL
+      281,SA=$A-$(ESP_PRAT:3),A=$(ESP_PRAT:3),AZ=$(angz:0),X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0) //PAINEL HORIZONTAL
+   #ENDSELECT
+   
+#ELSEIF $(ESP_PRAT:3)=9 // Engrosso para compor com os paineis de 9mm
+   #SELECT $(ESP_ENGROSSO:3)
+   #CASE 30
+      
+   #CASE 40
+      
+   #CASE 60
+      281,SA=0,A=$(ESP_PRAT:3),AZ=$(angz:0),X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0) //PAINEL HORIZONTAL
+      281,SA=$A-$(ESP_PRAT:3),A=$(ESP_PRAT:3),AZ=$(angz:0),X7=$(SUPORTEPRAT:15)/$(SUPORTEPRAT:16)/$(SUPORTEPRAT:17)/$(SUPORTEPRAT:18)/$(besq:0)/$(bdir:0)/$(bfre:0)/$(btra:0) //PAINEL HORIZONTAL
+   #ENDSELECT
+   
+#ENDIF

@@ -1,0 +1,11 @@
+{ 435   // Suporte frontal para gaveta interna
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte frontal para gaveta interna
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =2.5,-3,$p-$(_tpgavdet:30)-2
+   DIMENSIONE          =$(_TPGAVDET:21),$(_tpgavdet:3)+3,$(_tpgavdet:30)+2
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X8                  =GAVETA\ZIF3000E.3DS
+}

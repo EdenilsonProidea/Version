@@ -1,0 +1,1 @@
+201,1,Lateral Esquerda202,0,Lateral Direita

@@ -1,0 +1,12 @@
+{ 706   // ripas horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =ripas horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0-($(prof_ri)),0
+   DIMENSIONE          =$L,($(prof_ri)),$(largripas:0)
+   COLORI              =$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5),$(_CORRIPAs:3)|$(.percorso)\foto\madeira\$(_CORRIPAs:4)|$(_CORRIPAs:5)
+   ORIENTAMENTO        =LPA
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0/$(ESPB:0)
+   X9                  =/$(_CORRIPAS:1)
+   ALIAS               =#706
+}

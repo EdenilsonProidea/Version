@@ -1,0 +1,11 @@
+{ 445   // bblock
+   *AZZERA*            =0
+   DESCRIZIONE         =bblock
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,-2
+   DIMENSIONE          =48,48,50
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X8                  =ACESSORIOS\BBLOCK.3DS
+}

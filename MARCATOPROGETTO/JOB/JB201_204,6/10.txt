@@ -1,0 +1,22 @@
+#IF $(xx3:0)=$(xp3:0)
+   #IF $(pl)>0 #LET f=2 #LET f=1
+   #IF $(XP3:1)=
+      #M JOB_LAT_TRAVV
+   #ELSE
+      #IF $(pl)<0 #LET f=1 #LET f=2
+      #IF $(F)=1 #LET LAT=2 #LET LAT=1
+      #IF $(pa)<80
+         // cava de superior
+         $(F)	MA	X=$(PA) Y=0  NM=PROFILO_INFERIOR$(XX3:1) PARM=PX@$(PA)^PY@0^PCAVA@$(DP)^LAT@$(LAT)^ACAVA@$(DA)
+      #ELSEIF $(PA)+$(DA)+20>$(XA)
+         $(F)	MA	X=$(PA) Y=0  NM=PROFILO_SUPERIOR$(XX3:1) PARM=PX@$(PA)^PY@0^PCAVA@$(DP)^LAT@$(LAT)^ACAVA@$(DA)
+      #ELSE
+         $(F)	MA	X=$(PA) Y=0  NM=PROFILO_CENTRAL$(XX3:1) PARM=PX@{$(PA)-$(DA)}^PY@0^PCAVA@$(DP)^LAT@$(LAT)^ACAVA@$(DA)
+      #ENDIF
+   #ENDIF
+#ENDIF
+#MSG $(XX9:5)
+#IF $(XX9:5)=1
+   1	FF	X=30 Y=7.5 DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+   1	FF	X=62 Y=7.5  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+#ENDIF

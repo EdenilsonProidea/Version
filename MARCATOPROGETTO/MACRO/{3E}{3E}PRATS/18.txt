@@ -1,0 +1,46 @@
+!PARAMETRI ALT=$A,TIPO=M,AFPRATL=0
+calc_n_prat
+#LET ppratmemo={$(pprat:0)}
+#LETS codprat=$(_int:4)
+#LET OLDPAPRAT=0
+//#IF $(ambiente)==C #LETS codprat=
+// 209
+#IF $(rr)>0
+   #IF $(_TPCAIXA:9)=2 & $L>$(LMAXPRATSUP:0)
+      #LET divisoria=1
+      //241,SL=$(lagr)/2-$(eslat:0)/2,SP=$(AFCOS:0)+$(ESCOS:0),p=$p-1*($(escos:0)+$(escos:0)+$(red_f_divv:0)),A=$(aagr),sa=0,l=$(eslat:0)
+      241,SL=$(lagr)/2-$(eslat:0)/2,SP=$(AFCOS:0)+$(ESCOS:0),p=$p-($(AFCOS:0)+$(ESCOS:0)),A=$(aagr),sa=0
+   #ENDIF
+   #FOR $1:$(rr)
+      #IF $(disativadraggerprat)=1
+         prat,AFPRATA={INT($(ALT)/($(RR)+1)*$(i))},TIPO=$(TIPO)
+      #ELSE
+         #IF $(QUOTARIP)=1
+            pratcantor
+         #ELSE
+            //    402,SL=$l/2,SA=$a,SP=$(ptampo),L=$(inctFRO:0),A=5,X1=4,X3=Tampo;INCTFRO;1,X4=1,X5=3  //DRAGGER
+            #IF $(ppratcost$(_ctx):$(i))>0
+               #LET pprat=$(ppratcost$(_ctx):$(i))
+            #ELSE
+               #LET pprat=$(ppratmemo:0)
+            #ENDIF
+            #IF $(posprata$(_ctx):$(i))>0
+               prat,AFPRATA={INT($(POSPRATA$(_CTX):$(I)))},TIPO=$(TIPO)
+               402,SL=$l/2,SA=$(posprata$(_ctx):$(i)),SP=$p+10,L=$(posprata$(_ctx):$(i)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+               402,SL=$l/4,SA=$(posprata$(_ctx):$(i)),SP=$(pprat:0)+10,L=$(ppratcost$(_ctx):$(i)),A=1,X1=4,X3=pPrat;ppratcost$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+            #ELSE
+               #IF $(divisoria:0)=1 & $l>800 //14387
+                  //#MSG aqui
+                  prat,AFPRATA={INT($(ALT)/($(RR)+1)*$(i))},TIPO=$(TIPO),LPRAT=($L-$(eslat:0))/2
+                  prat,AFPRATA={INT($(ALT)/($(RR)+1)*$(i))},TIPO=$(TIPO),LPRAT=($L-$(eslat:0))/2,AFPRATL=($L+$(eslat:0))/2
+               #ELSE
+                  //prat,AFPRATA=INT($(ALT:0)/($(RR:0)+1)*$(I)),TIPO=$(TIPO),LPRAT=$L
+                  402,SL=$l/2,SA=INT($(ALT)/($(RR)+1)*$(i)),SP=$(pprat:0)+10,L=INT($(ALT)/($(RR)+1)*$(i)),A=1,X1=9,X3=SaPrat;Posprata$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+                  402,SL=$l/4,SA=INT($(ALT)/($(RR)+1)*$(i)),SP=$(pprat:0)+10,L=$(ppratcost$(_ctx):$(i)),A=1,X1=4,X3=pPrat;ppratcost$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+   !QUOTA9 (90,$(OLDPAPRAT:0),$p),(90,$A,$p),,-10
+#ENDIF

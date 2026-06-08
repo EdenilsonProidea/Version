@@ -1,0 +1,12 @@
+{ 439   // attacco divisão horizontal esq
+   *AZZERA*            =0
+   DESCRIZIONE         =attacco divisão horizontal esq
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(xstart)-5,$(AINTERNOBLUM)-$(attack:25),$(ystart)-1*(($(attack:26)-$(bi_components:26))/2)
+   DIMENSIONE          =$(attack:24),$(attack:25),$(attack:26)
+   COLORI              =1,1
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =$(attack:14)
+   X9                  =$(attack:1)
+}

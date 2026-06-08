@@ -1,0 +1,17 @@
+#IF $(lat_fech_especial)=1 // Adicionado gestão especial Marcato <c23346>
+   386.001,SL=$l-$(e2),SP=$P-$(platparede)+$(_tpfech:8)  //Frente lateral especial esq
+   383,sl=$l-$(_FECHDIR:4)-$(e2),l=$(_FECHDIR:4),p=$P+$(_tpfech:8)+$(INCR_ATRAS:0)-$(platparede)  // lateral fechamento
+#ELSEIF $(lat_fech_especial)=2 // Adicionado gestão especial Marcato <c23346>
+   FECH_ESQ_LTD_TRAD,avistadesconto=$(ARODATETO:0),ES=$(ESPACAB2:3)
+#ELSE
+   #IF $(_tpfech:3)=4
+      #IF $(pm)=1
+         383,sl=$l-$(espacab:3),p=$P+1*($(_tpfr:13)+$(INCR_ATRAS:0))  // lateral fechamento
+      #ELSE
+         383,sl=$l-$(espacab:3),p=$P+1*($(_tpfr:12)+$(INCR_ATRAS:0))  // lateral fechamento
+      #ENDIF
+   #ELSE
+#MSG $(INCR_ATRAS:0)
+      383,sl=$l-$(espacab:3)  // lateral fechamento
+   #ENDIF
+#ENDIF

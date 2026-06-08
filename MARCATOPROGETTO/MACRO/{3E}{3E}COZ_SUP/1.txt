@@ -1,0 +1,7 @@
+//coz_inicia
+!AZZERA
+!TIPOBOX 2
+#LET SUP=1
+#LET cava=0
+CAIXA_COZINHA
+cotas,tipo=1

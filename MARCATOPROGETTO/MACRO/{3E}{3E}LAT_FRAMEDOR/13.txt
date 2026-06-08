@@ -1,0 +1,17 @@
+#LET ALTFAIXAPAI=70
+
+#IF $(LADOLATDOR)== ESQ
+   383,P=$(ALTFAIXAPAI:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   383,P=$(ALTFAIXAPAI:0),SP=$p-$(ALTFAIXAPAI:0)+$(ESFRE:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   383,P=$p-2*$(ALTFAIXAPAI:0)+$(INCR_ATRAS:0)+$(ESFRE:0),A=$(ALTFAIXAPAI:0),SP=$(ALTFAIXAPAI:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   383,P=$p-2*$(ALTFAIXAPAI:0)+$(INCR_ATRAS:0)+$(ESFRE:0),A=$(ALTFAIXAPAI:0),SP=$(ALTFAIXAPAI:0),SA=$A-$(ALTFAIXAPAI:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   383,P={$P-2*$(ALTFAIXAPAI:0)+20},SP={$(ALTFAIXAPAI:0)-10},SA={$(ALTFAIXAPAI:0)-10},A={$A-2*$(ALTFAIXAPAI:0)+20},SL=6,L=6,X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+#ELSE
+   #LET ul=$(ESPAINA:0)
+   275,SL=$l,SA=-$(incpainID),SP=-$(incpainTD),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(ALTFAIXAPAI:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento fundo
+   275,SL=$l,SA=-$(incpainID),SP=$(plat:0)+$(INC_PAIN_ACAB:0)-$(ALTFAIXAPAI:0)+$(incpainFd:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(ALTFAIXAPAI:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento frente
+   275,SL=$l,SA=-$(incpainID),SP=$(ALTFAIXAPAI:0)-$(incpainTD),A=$(ALTFAIXAPAI:0),P=$(plat:0)-2*$(ALTFAIXAPAI:0)+$(INC_PAIN_ACAB:0)+1*($(incpainFd:0)+$(incpainTd)),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento inf
+   275,SL=$l,SA=1*($a+$(incpainSD:0))-$(ALTFAIXAPAI:0),SP=$(ALTFAIXAPAI:0)-$(incpainTD),A=$(ALTFAIXAPAI:0),p=$(plat:0)-2*$(ALTFAIXAPAI:0)+$(INC_PAIN_ACAB:0)+1*($(incpainFd:0)+$(incpainTd)),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento sup
+   275,SL=$l-6,SA=$(ALTFAIXAPAI:0)-1*($(incpainID)+10),SP=-$(incpainTD)+$(ALTFAIXAPAI:0)-10,A={$a-2*$(ALTFAIXAPAI:0)+$(incpainID:0)+$(incpainSD:0)+20},P=$(plat:0)-2*$(ALTFAIXAPAI:0)+$(INC_PAIN_ACAB:0)+1*($(incpainFD:0)+$(incpainTD))+20,X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0
+#ENDIF
+// _FR_FRAME

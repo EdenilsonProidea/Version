@@ -1,0 +1,11 @@
+{ 298   // Item
+   *AZZERA*            =0
+   DESCRIZIONE         =Item
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X9                  =$(coddist)/$(codpreço)
+}

@@ -1,0 +1,27 @@
+!PARAMETRI tpg=$(_tpgav:3)
+INICIA_CALC_GAV
+//#MSG $(tpg)
+#IF $(tpg)>0
+   #SELECT $(TPG)
+   #CASE 1  // madeira
+      #IF $(_TPGAVALT:3)=5
+         gaveta_temp,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE={$(pgav)+10}mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2)
+      #ELSE
+         #IF $(_TPGAVALT:7)=1
+            gaveta_madcub,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE={$(pgav)+10}mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2)
+         #ELSE
+            gaveta_mad,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE={$(pgav)+10}mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2)
+         #ENDIF
+      #ENDIF
+   #CASE 2
+      TEMPEREIRA_ARAMADA,move=$(mvm),COD=000$(_TPGAV:4)$(_TPGAVALT:4)
+   #CASE 3
+      gaveta_blum,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE=$(pgav1)mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2)
+   #CASE 4
+      GAVETA_MAD2,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE=$(pgav1)mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2) //gaveta fundo especial
+   #CASE 5
+      gaveta_mad_w,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE={$(pgav)+10}mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2) // GAVETA WOOD
+   #CASE 6
+      gaveta_mad_N,SL=$(slgav),SA=$(AFGAVA),SP=$(spgav1),L=$(lgav),A=$(agav),P=$(pgav1),COD=000$(_TPGAV:4)$(_TPGAVALT:4)/VAO = $[replace;$(_CTX);_;];_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);_TPGAVALT=$(_TPGAVALT:1);PROFUNDIDADE={$(pgav)+10}mm;_ACEGAV=$(_ACEGAV:2);_MANTAGAV=$(_mantagav:2);FECHADURA=$(_FECHMAG:2) // GAVETA NATURALE
+   #ENDSELECT
+#ENDIF

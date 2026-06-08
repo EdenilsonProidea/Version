@@ -1,0 +1,21 @@
+#LET afriso=$(LFRISO:0)//3 <c22010>
+#IF $(old_nfrisos$(_ctx):0)!!$(nfrisos:0)
+   // reset dos frisos quando muda o numero de frisos
+   #LETV parfrisos$(_ctx)=0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;
+   #LETS parfrisos=
+#ENDIF
+#LETS parfrisosscript=
+#FOR $1:$(nfrisos:0)
+   #LETS parfrisosscript=$(parfrisosscript)$(parfrisos:$(I));
+#ENDFOR
+#LETS xpfrente=frente_friso_V.xp
+#LETS parjobfrente=$(afriso);$(nfrisos:0);$(parfrisosscript)
+// .frente_friso_v.xp
+
+_fr_friso_v_drag,SL=$(forlgafrenteL:0),L=$(LL)
+#LETS parfrente=$(afriso)|$(nfrisos:0)|$(parfrisosscript)
+#LET ladojobfrente=1
+#LETS nomejobfrente=FRISOV
+_FR_STANDARD
+#LET LL=$(Lfre)-2*($(forlgafrenteL:0))
+#LET old_nfrisos$(_ctx)=$(nfrisos$(_ctx):0)

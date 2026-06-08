@@ -1,0 +1,48 @@
+
+
+#IF $(TPCANTO:3)=1 // CANTO RETO NA LARGURA
+   
+   #IF $(NPORTADIR:0)=1
+      #LET lfre={$L+$(ESLAT:0)-1*($(platESQ:0)+$(desc_p_DIR:0))}+$(eslat:0)/2
+      #LOADVAR dobradicaESQ _dobra $(CODDOBRACANTORETO:0)
+      #LOADVAR dobradicaDIR _dobra $(CODDOBRARETA:0)
+   #ELSE
+      #LET lfre={$L+$(ESLAT:0)-1*($(platESQ:0)+$(desc_p_DIR:0))}
+      #LOADVAR dobradicaESQ _dobra $(CODDOBRACANTORETO:0)
+      #LOADVAR dobradicaDIR _dobra $(CODDOBRACURVA:0)
+   #ENDIF
+   
+   frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL=$(PLATESQ:0)+$(desc_p_DIR:0)-$(ESLAT:0)/2
+   
+   
+#ELSE // CANTO L
+   #IF $(desc_p_DIR:0)<0 //CALCULO DE LFRE QUANDO FOR NEGATIVO "PARA FICAR COM UMA PORTA NO CANTO"
+      #LET lfre={$L+$(ESLAT:0)-$(platESQ:0)-$(ESFRE)-2*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)}
+   #ELSE
+      #IF $(NPORTADIR:0)=1
+         #LET lfre={$L+$(ESLAT:0)-1*($(platESQ:0)+$(desc_p_DIR:0))}+$(eslat:0)/2
+         #LOADVAR dobradicaDIR _dobra $(CODDOBRARETAL:0)
+      #ELSE
+         #LET lfre={$L+$(ESLAT:0)-1*($(platESQ:0)+$(desc_p_DIR:0))}
+         #LOADVAR dobradicaDIR _dobra $(CODDOBRACURVAL:0)
+      #ENDIF
+   #ENDIF
+   // Removido o puxador na porta interna em visita técnica
+   TROCA_FRENTE
+   
+   #IF $(_FRLISCIO:0)!!
+      #IF $(desc_p_DIR:0)<0 //AQUI REPOSICIONA A PORTA
+         // CANTO=1 PARA VALIDAÇÃO DE ERRO QUANDO FOR DUAS PORTAS
+         //frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL={$(PLATESQ:0)+$(ESFRE)-$(ESLAT:0)/2)+2*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)},CANTO=1,_PUX=999,_FR=$(_FRLISCIO)
+      #ELSE
+         frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL=$(PLATESQ:0)+$(desc_p_DIR:0)-$(ESLAT:0)/2,CANTO=1,_PUX=999,_FR=$(_FRLISCIO)
+      #ENDIF
+   #ELSE
+      #IF $(desc_p_DIR:0)<0 //AQUI REPOSICIONA A PORTA
+         // CANTO=1 PARA VALIDAÇÃO DE ERRO QUANDO FOR DUAS PORTAS
+         frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL={$(PLATESQ:0)+$(ESFRE)-$(ESLAT:0)/2)+2*($(FOLGAFRENTEL:0)-$(ESLAT:0)/2)},CANTO=1,_PUX=999
+      #ELSE
+         frontal,affrep=$(platDIR:0),l=$(lfre),lfre=$(lfre),pm=3,SL=$(PLATESQ:0)+$(desc_p_DIR:0)-$(ESLAT:0)/2,CANTO=1,_PUX=999
+      #ENDIF
+   #ENDIF
+#ENDIF

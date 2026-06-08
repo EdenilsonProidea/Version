@@ -1,0 +1,13 @@
+{ 256   // Acessórios para gaveta
+   *AZZERA*            =0
+   DESCRIZIONE         =Acessórios para gaveta
+   CODICE              =$(_ACEGAV:13) /LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFACEGAVL),$(AFACEGAVA),$(AFACEGAVP)
+   DIMENSIONE          =$(LACEGAV),$(AACEGAV),$(PACEGAV)
+   COLORI              =$(_ACEGAV:9),$(_ACEGAV:9)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =ACESSORIOGAVETA.XP
+   X3                  =$(curbox)
+   X8                  =ACESSORIOS\$(DISACEGAV)
+   X9                  =$(REFACEGAV)/$(_acegav:1)/$(_acegav:12)/$(propvc:0)/$(largpvc:0)/$(largtubo:0)/$(LTOT:0)
+}

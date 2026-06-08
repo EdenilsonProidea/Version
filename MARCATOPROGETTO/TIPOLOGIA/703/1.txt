@@ -1,0 +1,14 @@
+{ 703   // Saraffo Painel Home FIXADO no painel
+   *AZZERA*            =0
+   DESCRIZIONE         =Saraffo Painel Home FIXADO no painel
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           ={$(esp_prat:0)+$(recuolateral:0)},$a-$(essaraffo),0
+   DIMENSIONE          =$l-2*($(esp_prat:0)+$(recuolateral:0)),$(essaraffo),$(asaraffo)
+   COLORI              =$(_cSARAFFO:3)|$(.percorso)\foto\madeira\$(_cSARAFFO:4)|$(_cSARAFFO:5),$(_cSARAFFO:3)|$(.percorso)\foto\madeira\$(_cSARAFFO:4)|$(_cSARAFFO:5)
+   DISEGNO             =$(SARAFFOTETO)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/00/0/0/1/1/0/0/0/1/1
+   X9                  =/$(_cSARAFFO:1)
+   ALIAS               =#703
+}

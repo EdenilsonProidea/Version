@@ -1,0 +1,61 @@
+#M calc_esp_alt_borda
+#IF $(TIP)[100;101;102;103;104;105]!0
+   #M BORDADIFPT
+#ENDIF
+#IF $(TIP)[100;101;102;103;104;105]!1
+   #IF $(calculobordaespecial)=0
+      #IF $(codbordafrente)!!$(CORB) & $(codbordafrente)!!
+         #IF $(TIP)=205
+            // #MSG A
+         #ENDIF
+         // ISSO É DESATIVADO NA MARCATO POIS NA FRENTE USA SOMENTE A FITA DE 1MM E O RESTANTE DAS FITAS É FEITA PELA GESTÃO DO QTB2
+         #IF 1=0
+            #LET QTB={(($(DIML)+30)*$(FF)+($(DIML)+30)*$(FT)+($(DIMA)+30)*$(FD)+($(DIMA)+30)*$(FE))/1000}
+            #IF $(QTB)>0 & $(DIMPBORDA)>=15 & $(CORB)!! & $(FITARSOVISTA:2)=0 // & $(TINTA)==
+               #LETS CODBORDA=$[CODICEBARRA;XBOR-$(CORB)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMPBORDA);ERRORE]
+               #LETS CHECKERRO=$[MID;$(CODBORDA);2;1]
+               #IF $(CHECKERRO)==+ | $(CHECKERRO)==R
+                  #LETS CODBORDA=ERROBORDA;barra=XBOR-$(CORB)-$(CODESPB)-$(ALTB)
+               #ENDIF
+            #ELSE
+               #LETS CODBORDA=
+               #LET QTB=0
+            #ENDIF
+         #ENDIF
+         // FIM ISSO É DESATIVADO NA MARCATO POIS NA FRENTE USA SOMENTE A FITA DE 1MM E O RESTANTE DAS FITAS É FEITA PELA GESTÃO DO QTB2
+         #LET QTBFRENTE=(($(DIML)+30)*$(FF))/1000
+         #IF $(X9:0)==CIAD // gestão para não passar fita na adega, feita de madeira maciça <c24986>
+            #LETS codbordafrente=
+            #LET QTBFRENTE=0
+         #ELSEIF $(QTBFRENTE)>0 & $(DIMPBORDA)>=15 & $(codbordafrente)!! // & $(TINTA)==
+            #LETS codbordafrente=$[CODICEBARRA;XBOR-$(codbordafrente)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMPBORDA);ERRORE]
+            #LETS CHECKERRO=$[MID;$(codbordafrente);2;1]
+            #IF $(CHECKERRO)==+ | $(CHECKERRO)==R
+               #LETS CODBORDA=ERROBORDA;barra=XBOR-$(codbordafrente)-$(CODESPB)-$(ALTB)
+            #ENDIF
+         #ELSE
+            #LETS codbordafrente=
+            #LET QTBFRENTE=0
+         #ENDIF
+         #LET QTB2={(($(DIML)+30)*$(FF2)+($(DIML)+30)*$(FT2)+($(DIMA)+30)*$(FD2)+($(DIMA)+30)*$(FE2))/1000}
+      #ELSE
+         #LET QTB={(($(DIML)+30)*$(FF)+($(DIML)+30)*$(FT)+($(DIMA)+30)*$(FD)+($(DIMA)+30)*$(FE))/1000}
+         #IF $(X9:0)==CIAD // gestão para não passar fita na adega, feita de madeira maciça <c24986>
+            #LETS codbordafrente=
+            #LET QTBFRENTE=0
+         #ELSEIF $(QTB)>0 & $(DIMPBORDA)>=15 & $(CORB)!! // & $(TINTA)==
+            #LETS CODBORDA=$[CODICEBARRA;XBOR-$(CORB)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMPBORDA);ERRORE]
+            #LETS CHECKERRO=$[MID;$(CODBORDA);2;1]
+            #IF $(CHECKERRO)==+ | $(CHECKERRO)==R
+               #LETS CODBORDA=ERROBORDA;barra=XBOR-$(CORB)-$(CODESPB)-$(ALTB)
+            #ENDIF
+         #ELSE
+            #LETS CODBORDA=
+            #LET QTB=0
+         #ENDIF
+         #LET QTB2={(($(DIML)+30)*$(FF2)+($(DIML)+30)*$(FT2)+($(DIMA)+30)*$(FD2)+($(DIMA)+30)*$(FE2))/1000}
+      #ENDIF
+      #M cod_borda_pers
+   #ENDIF
+#ENDIF
+#MSG $(CORB)-$(CODESPB)-$(ALTB);$(CODESPB);$(DIMPBORDA)

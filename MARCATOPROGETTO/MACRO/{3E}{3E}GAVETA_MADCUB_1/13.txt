@@ -1,0 +1,35 @@
+inicia_gav_comun
+INICIA_GAV_CUB
+260     // Lateral Gaveta
+260.001  // Lateral Gaveta
+
+#IF $(contrafrentegaveta)=1 
+   262,A=$A-1*($(afafundogaveta:0)+$(espfundogaveta:0)+3),sa=$(afafundogaveta:0)+$(espfundogaveta:0)  // Frontal caixa Gaveta
+#ENDIF
+
+#IF $(FRGAVINT:0)=1 & $(_TPGAVALT:10)=1 // Adicionado $(_TPGAVALT:10)=1 pois entrava frente nas gavetas bp mesmo que não tivesse no cadastro da altura da gaveta <c26636>
+   217,sl=$(red_larg_fre_int:0)-$(_corr:8)+$(folgafrentelgvi:0),SA=-10,SP=$P,L=$l-1*($(RED_LARG_FRE_INT:0)*2)+$(_corr:8)*2)-$(folgafrentelgvi:0)*2,A=$(agav)+25  //Frontal caixa Gaveta
+#ENDIF
+// VAO CUBA
+#LET RED_V_ESQ=$(dadosvaocuba:0)
+#LET V_CENTRO=$(dadosvaocuba:1)
+#LET RED_V_DIR=$(dadosvaocuba:2)
+#LET V_PROF=$(dadosvaocuba:3)
+#LET TOTCOTAS=$(RED_V_ESQ)+$(V_CENTRO)+$(RED_V_DIR)
+#IF $(V_PROF)=0 #LET V_PROF=$P-100
+#IF $(RED_V_ESQ)=0 & $(V_CENTRO)=0 & $(RED_V_DIR)=0
+   #LET RED_V_ESQ=100
+   #LET V_CENTRO=$L-100*2
+   #LET RED_V_DIR=100
+#ELSEIF $(RED_V_ESQ)=0
+   #LET RED_V_ESQ=$L-$(TOTCOTAS)
+#ELSEIF $(RED_V_DIR)=0
+   #LET RED_V_DIR=$L-$(TOTCOTAS)
+#ELSEIF $(V_CENTRO)=0
+   #LET V_CENTRO=$L-$(TOTCOTAS)
+#ENDIF
+#IF $(TOTCOTAS)>$L-50 #LETS IDLOGERROS=$(IDLOGERROS)41;
+gaveta_tracub_mad,SL=$(espgaveta),L=$L-2*$(espgaveta)
+GAVETA_FUNCUB_mad,SP=0,P=$P,SL=$(espgaveta)-$(canalgaveta),L=$L-2*($(espgaveta:0)-$(canalgaveta:0))
+264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0  //Caixa Gaveta oculta para furaçao
+ACEGAV

@@ -1,0 +1,13 @@
+{ 363   // barra cama vertical
+   *AZZERA*            =0
+   DESCRIZIONE         =barra cama vertical
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(AFBARCAMAA:0),$(ESCAB:0)
+   DIMENSIONE          =$(ESBARCAMA:0),$(ABARCAMA:0),$p-2*$(ESCAB:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90,$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)|90
+   ORIENTAMENTO        =PAL
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/1/0/0/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#363
+}

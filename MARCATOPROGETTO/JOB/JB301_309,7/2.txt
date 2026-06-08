@@ -1,0 +1,9 @@
+#IF $(TIPOLOGIA)=303
+   #LET NAOFURAR=0
+   #IF $(pl)>=0 #LET f=2 #LET f=1
+   #IF $(tipo)[201;301]!0 & $(f)=1 #LET NAOFURAR=1 // se lateral esquerda so fura a direita
+   #IF $(tipo)[202;302]!0 & $(f)=2 #LET NAOFURAR=1 // se lateral direita so fura a esquerda
+   #M JOB_LAT_BASE_SI
+#ELSE
+   
+#ENDIF

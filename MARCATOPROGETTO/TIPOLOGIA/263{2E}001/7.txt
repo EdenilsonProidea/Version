@@ -1,0 +1,9 @@
+{ 263.001   // Fundo gaveta cuba
+   *AZZERA*            =0
+   DESCRIZIONE         =Fundo gaveta cuba
+   LATO                =0
+   DISEGNO             =$(FUNDOCUB)
+   X3                  =$(curbox)/C
+   X10                 =$(LADO_A:0)/$(LADO_C:0)/$(LADO_D:0)/
+   ALIAS               =#263
+}

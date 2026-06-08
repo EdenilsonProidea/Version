@@ -1,0 +1,26 @@
+COZ_inicia
+#LET cava=$(_TPCAVA:3)
+#IF $(CAVA)>0 #LET CAVA=1
+#LET INF=1
+!TIPOBOX 1
+
+#LOADVAR _CORCX _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+#LOADVAR _CORBF _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+#LOADVAR _CORLD _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+#LOADVAR _CORLE _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+#LOADVAR _CORFU _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+#LOADVAR _CORBA _CORADEGA $(_CORADEGA:0) // Alterado a cor para facilitar a limitação, feito a pedido do cliente <c24980>
+
+#LETS COLUNAPAREDE=$[TOsep;|;$(COLUNAPAREDE)]
+#IF $(COLUNAPAREDE:1)>0 & 1=0
+   CAIXA_CPAREDE
+#ELSE
+   CAIXA
+#ENDIF
+tampofilete
+coz_pes
+cotas
+coz_decori_inf
+// _sisaventos
+// 201
+// cava

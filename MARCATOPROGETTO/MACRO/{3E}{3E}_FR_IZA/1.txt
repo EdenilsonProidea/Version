@@ -1,0 +1,11 @@
+_calcola_popx
+#LETS pospuxadores=$(popx)
+#LET sentido=1
+#LETS xpfrente=$(_FR:7)
+#LETS PARFRENTE=$(sentido)/{$(Lfre)-2*35}/45/35/35/$(POSCENTROISA:0)
+#LET ladojobfrente=1
+#LETS nomejobfrente=ISA
+#IF $(POSCENTROISA:0)=0 #LET POSCENTROISA=$(afre)/2
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@$(POSCENTROISA:0)
+_FR_STANDARD
+// .isa.xp

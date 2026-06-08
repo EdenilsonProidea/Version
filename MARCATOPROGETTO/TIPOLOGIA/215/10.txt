@@ -1,0 +1,20 @@
+{ 215   // FRENTE
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE
+   CODICE              =/_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0);_PERFPUX=$(_PERFPUX:1);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           ={$(FOLGAFRENTEL:0)+$(lffre:0)},$(FOLGAFRENTEAI:0)+$(affre),1
+   DIMENSIONE          =$(LFRE),{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},$(ESFRE)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)|90
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =$(xpfrente)
+   DATI                =$(CXFRENTE)
+   X3                  =$(curbox)
+   X4                  =$(_CORPROFILO:4)/$(popx:0)/$(sentido:0)/$(lpux:0)
+   X5                  =$(QTDfrisoV:0)/$(QTDfrisoH:0)
+   X6                  =$(corfriso:3)/$(_PERFPUX:14)
+   X7                  =N/N/N/N/$(FE)/$(FD)/$(FF)/$(FT)/0/$(cava)/1/1
+   X8                  =$(_fr:7)/$(_fr:8)/$(pospuxadores)/$(parfrente)/$(LFRISO)/$(LFRISOV)/$(LFRISOH)//$(POSCENTROISA:0)//$(_CORLDIF)/$(_corfr:11)/0
+   X9                  =$(_FR:1)/$(_CORFR:1)/$(APE:1)/$(AMBIENTE)/$(_corfr:6)/$(TPFIX:1)/$(TPGESTBORDA)/$(_DOBRA:3)/$(ndob)////$(_corlamdif:8)/$(_corbpdif:8)/$(_TPFR:1)
+   X10                 =$(ladojobfrente)/$(nomejobfrente)/$(PARjobfrente)/$(DOISLADOS:0)/$(nomejobfrente2)/$(parfrisosscript)/$(parfrisosscripth)/$(parfrisosscriptv)//$(NMFRGE:0)
+   ALIAS               =#215
+}

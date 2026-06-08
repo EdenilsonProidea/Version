@@ -1,0 +1,35 @@
+!PARAMETRI RED_V_ESQ_TRA={$(RED_V_ESQ)-$(_TPGAVDET:12)},RED_V_DIR_TRA={$(RED_V_DIR)-$(_TPGAVDET:12)}
+#IF 1=0 // comentado gestão antiga <c22592>
+   265,SL=15,L=$(RED_V_ESQ)-12,SP=$(_TPGAVDET:32),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16) // traseira esquerda
+   265,SL=$L-$(RED_V_DIR_TRA)-10,L=$(RED_V_DIR)-12,SP=$(_TPGAVDET:32),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16) // traseira direita
+   436,SL=$L-$(RED_V_DIR)-$(_TPGAVdet:7) //Lateral Blum esq
+   436.001,SL=$(RED_V_esq)// TRASEIRA FRENTE VAO
+   263.001,SL=15,L=$(RED_V_ESQ),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:15),SP=$(_TPGAVDET:32)+20,P=$(_TPGAVdet:4)-24,DIS=0  // Fundo gaveta cuba
+   263.001,SL=$L-$(RED_V_DIR)-10,L=$(RED_V_dir),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:15),SP=$(_TPGAVDET:32)+20,P=$(_TPGAVdet:4)-24,DIS=0  // Fundo gaveta cuba
+#ELSE // Nova gestão <c22592>
+   // TRASEIRA ATRAS
+   265,SL=0,L=$(RED_V_ESQ_TRA)+$(_TPGAVDET:16),SP=$(_TPGAVDET:32),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)
+   265,SL=$L-$(RED_V_DIR_TRA)-$(_TPGAVDET:16),L=$(RED_V_DIR_TRA)+$(_TPGAVDET:16),SP=$(_TPGAVDET:32),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)
+   #IF $(_tpgav:1)=003 & $(_tpgavalt:4)==_CA // Antaro Cuba Alta // <c22592>
+      #LET _TPGAVDET:13=80 // Esse valor estava fixo no catálogo antigo, apenas repassado o valor
+   #ELSEIF $(_tpgav:1)=004 & $(_tpgavalt:4)==_CA // Metabox Cuba Alta
+      #LET _TPGAVDET:13=86 // Esse valor estava fixo no catálogo antigo, apenas repassado o valor
+   #ELSEIF $(_tpgav:1)=005 & $(_tpgavalt:4)==_CA // Legrabox Cuba Alta
+      #LET _TPGAVDET:13=78 // Esse valor estava fixo no catálogo antigo, apenas repassado o valor
+   #ELSEIF $(_tpgav:1)=008 & $(_tpgavalt:4)==_CA // Tandembox Cuba Alta
+      #LET _TPGAVDET:13=83 // Esse valor estava fixo no catálogo antigo, apenas repassado o valor
+   #ENDIF
+   // TRASEIRA FRENTE VAO
+   265,SL=$(RED_V_ESQ_TRA),L=$(V_CENTRO),SP=$(V_PROF),SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)
+   // TRASEIRA VERTICAIS
+   265,SL=$(RED_V_ESQ_TRA),L=$(V_PROF)-$(_TPGAVDET:32)-$(_TPGAVDET:16),SP=$(V_PROF),AY=90,SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)
+   265,SL=$L-$(RED_V_DIR_TRA),L=$(V_PROF)-$(_TPGAVDET:32)-$(_TPGAVDET:16),SP=$(_TPGAVDET:32)+$(_TPGAVDET:16),AY=-90,SA=$(_TPGAVDET:14),A=$(_TPGAVDET:13),P=$(_TPGAVDET:16)
+   !PARAMETRI RED_V_ESQ_FUN={$(RED_V_ESQ)-$(_TPGAVDET:9)},RED_V_DIR_FUN={$(RED_V_DIR)-$(_TPGAVDET:9)}
+   #LET LF_VAO=$L-2*$(_TPGAVDET:9)
+   #LET PF_VAO=$P-$(_TPGAVDET:10)
+   #LET V_PROFF=$(V_PROF)-$(_TPGAVDET:11)
+   
+   
+   !SAGOMAA FUNDOCUB 0,$(_TPGAVDET:32)+$(_TPGAVDET:16),$(RED_V_ESQ_TRA),$(_TPGAVDET:32)+$(_TPGAVDET:16),$(RED_V_ESQ_TRA),$(V_PROF)+$(_TPGAVDET:16),{$L-$(RED_V_DIR_TRA)},$(V_PROF)+$(_TPGAVDET:16),{$L-$(RED_V_DIR_TRA)},$(_TPGAVDET:32)+$(_TPGAVDET:16),$L,$(_TPGAVDET:32)+$(_TPGAVDET:16),$L,$P,0,$P
+   263.001,SL=0,SA=$(_tpgavdet:14),SP=0,L=$L,A=$(_TPGAVDET:15),P=$P,GL=BASEGAVETA_CUB.XP,X0={$(RED_V_DIR_TRA)+$(canalgaveta:0)}/{$(RED_V_ESQ_TRA)+$(canalgaveta:0)}/{$(V_PROF)-$(_TPGAVDET:32)}  //Fundo gaveta cuba
+#ENDIF

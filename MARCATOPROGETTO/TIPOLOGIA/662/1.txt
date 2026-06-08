@@ -1,0 +1,18 @@
+{ 662   // Porta Passagem Oculta
+   *AZZERA*            =0
+   DESCRIZIONE         =Porta Passagem Oculta
+   CODICE              = /PP_FRLADO1=$(PP_FRLADO1:1);_CORFR1=$(_CORFR1:1);PP_FRLADO2=$(PP_FRLADO2:1);_CORFR2=$(_CORFR2:1);PP_PUX1=$(PP_PUX1:1);PP_PUX2=$(PP_PUX2:1) ;_MONTADO=$(_MONTADO:0) /$(obsporta:0) /$(obsporta2:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(ESPENCH)+2*$(ESPFRE)
+   COLORI              =1,1
+   ORIENTAMENTO        =ALP
+   X3                  =$(curbox)/$(CODPORTAP:0)/$(obsporta2)/$(L1obsitem:0)/$(L2obsitem:0)
+   X5                  =$(usinagfaceum)
+   X6                  =$(PP_FRLADO1:3)/$(PP_idp:0)/$(POSLUSI1:0)/$(AUSIJOB1:0)/$(LFRENTE:3)/$(PP_APLICACAO:3)/$(ABERTURA:1)/$(PP_FRLADO2:3)/$(POSLUSI2:0)/$(AUSIJOB2:0)/$(POSAUSI1:0)
+   X7                  =N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0
+   X8                  =$(PP_FRLADO1:1)/$(_corfr1:1)/$(PP_FRLADO1:12)/$(CODPORTAP:0)/$(nfrisosh1:0)/$(nfrisosv1:0)
+   X9                  =$(PP_FRLADO2:1)/$(_corfr2:1)/$(PP_FRLADO2:12)/$(CODPORTAP:0)/$(nfrisosh2:0)/$(nfrisosv2:0)
+   X10                 =$(usinagfacedois)
+   ALIAS               =#658
+}

@@ -1,0 +1,8 @@
+#IF $(XP6:5)=3
+   #LET F=2
+#ELSEIF $(XP6:5)=1
+#LET F=1
+#ENDIF
+
+#MSG $(XP6:5) - $(F)
+#M MARCATO_LEDS_TAMV	F=$(F)

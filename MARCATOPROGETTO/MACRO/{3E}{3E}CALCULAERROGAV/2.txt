@@ -1,0 +1,11 @@
+#LET VAOA_GAV={$A}// -$(ABASE:0)*2
+
+#IF $(TPF)=9
+   CALCVAOGAV
+#ELSEIF $(TPF)=11
+   #LET VAOA_GAV=$(SAGAVINT_1)
+   CALCVAOGAV,agav=$(altgav)
+#ELSEIF $(TPF)=12
+   #LET VAOA_GAV=$(SAGAVINT_2)
+   CALCVAOGAV,agav=$(altgav)
+#ENDIF

@@ -1,0 +1,11 @@
+{ 605   // Painel Porta Perfil
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel Porta Perfil
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slpainel),$(sapainel),$(sppainel)
+   DIMENSIONE          =$(lpainel),$(apainel),$(PV_PAINEL$(i):7)
+   COLORI              =$(pv_painel$(i):3)|$(.PERCORSO)\FOTO\VIDRO\$(PV_PAINEL$(i):4)|$(PV_PAINEL$(i):5),$(pv_painel$(i):3)|$(.PERCORSO)\FOTO\VIDRO\$(PV_PAINEL$(i):4)|$(PV_PAINEL$(i):5)
+   ORIENTAMENTO        =LAP
+   DATI                =pv_painel$(i)
+   X9                  =$(PV_PAINEL$(i):6)
+}

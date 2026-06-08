@@ -1,0 +1,12 @@
+{ 653   // Bandeira montante frontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Bandeira montante frontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =,,$p-$(esp_montante)
+   DIMENSIONE          =$(lmontante),$a-$(abandeira),$(esp_montante)
+   COLORI              =$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5)
+   ORIENTAMENTO        =ALP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/$(cava)/1/1
+   X9                  =/$(_CORFR:1)
+}

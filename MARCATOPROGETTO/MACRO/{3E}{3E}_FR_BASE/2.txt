@@ -1,0 +1,50 @@
+_calcola_popx
+#LETS pospuxadores=$(popx)
+#LET lpux={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))}
+#LET apux=34
+#LET pfilleto=41
+#LET spfilleto=0
+#LET slpux=2
+#LET sapux=2
+#LET dsl=$(slpux)
+#LET dsi=$(sapux)
+#LET lu=$(apux)
+#LET au=$(lpux)
+
+#IF $(popx)==1
+   #LET offa=$(afre)/2-$(au)/2
+   #LET offl=$(FOLGAFRENTEL:0)
+   #LETS perfilpux=perfil
+   #LET pfilleto=41
+   284,sl=$(offl),sa=$(lpux)+$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=180,sp=$(pfilleto),X9=$(PERFBASE:4)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+   #LET pfilleto=30
+   284,sl=$(lfre)+$(offl)+14,sa=$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=0,sp=$(pfilleto),X9=$(PERFBASE:3)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+#ELSEIF $(popx)==1;3 | $(popx)==3;1
+   #LET offa=$(afre)/2-$(au)/2
+   #LET offl=$(FOLGAFRENTEL:0)
+   #LETS perfilpux=perfil
+   #LET pfilleto=41
+   284,sl=$(offl),sa=$(lpux)+$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=180,sp=$(pfilleto),X9=$(PERFBASE:4)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+   #LET pfilleto=41
+   284,sl=$(lfre)+$(offl)+14,sa=$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=0,sp=$(pfilleto),X9=$(PERFBASE:4)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+#ELSEIF $(popx)==3
+   #LET offa=$(afre)/2-$(au)/2
+   #LET offl=$(FOLGAFRENTEL:0)
+   #LETS perfilpux=perfil
+   #LET pfilleto=30
+   284,sl=$(offl),sa=$(lpux)+$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=180,sp=$(pfilleto),X9=$(PERFBASE:3)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+   #LET pfilleto=41
+   284,sl=$(lfre)+$(offl),sa=$(FOLGAFRENTEAI:0),l=$(lu),a=$(au),ay=180,az=0,sp=$(pfilleto),X9=$(PERFBASE:4)/$(PERFBASE:6),c1=$(perfbase:5),c2=$(perfbase:5)
+#ENDIF
+#LET ladojobfrente=2
+#LETS nomejobfrente=BASE
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)
+#LETS parfrente=
+#LETS xpfrente=frente_lisa.xp
+#IF $(popx)==1
+   _FR_STANDARD,SL=$(FOLGAFRENTEL:0)+8,L=$L,LFRE=$L
+#ELSEIF $(popx)==3
+   _FR_STANDARD,SL=$(FOLGAFRENTEL:0)+8,L=$L-8,LFRE=$L-8
+#ELSE
+   _FR_STANDARD,SL=$(FOLGAFRENTEL:0)+8,L=$(LFRE)
+#ENDIF

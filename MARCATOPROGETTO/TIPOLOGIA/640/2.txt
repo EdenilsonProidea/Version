@@ -1,0 +1,17 @@
+{ 640   // Lateral Esquerda estante
+   *AZZERA*            =0
+   DESCRIZIONE         =Lateral Esquerda estante
+   CODICE              =/_COREX=$(_COREX:1);_PINTURAEX=$(_PINTURAEX:1);TPCOR=EX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0));IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5)|90,$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5)|90
+   DISEGNO             =$(PERFILLE)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL_EST.XP
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =$(CANTOESQ:0)/$(CANTODIR:0)/$(CANTOFRE:0)/N/$(FITAESQ:0)/$(FITADIR:0)/1/$(fitaatras:0)/0/0/0/0/0/0/0/0/0
+   X9                  =_/$(_corEX:1)/$(TPFIXESTANTE:1)/$(_corEX:1)
+   ALIAS               =#640
+}

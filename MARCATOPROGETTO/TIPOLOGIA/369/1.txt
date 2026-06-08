@@ -1,0 +1,11 @@
+{ 369   // tubo calceiro
+   *AZZERA*            =0
+   DESCRIZIONE         =tubo calceiro
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,21+5,15
+   DIMENSIONE          =20,20,$p-30
+   COLORI              =$(_cortubo:3),$(_cortubo:3)
+   DISEGNO             =$(cilindro20)
+   ORIENTAMENTO        =LAP
+   X9                  =$(_cortubo:1)
+}

@@ -1,0 +1,13 @@
+{ 416   // Pistao Basculante
+   *AZZERA*            =0
+   DESCRIZIONE         =Pistao Basculante
+   CODICE              =$(_SISBASC:15) /LINHA=$(MODELLO:0) ;_MONTADO=$(_MONTADO:0) /$(OBSSISBASC) /#Q$(npistaoEstrutura)
+   LATO                =6
+   POSIZIONE           =$(slagr),$(folgafrenteai:0),0
+   DIMENSIONE          =$(lagr),{$(afre:0)-1*($(folgafrenteai:0)+$(folgafrenteas:0))},$p
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X8                  =$(CODMECANISMO)/$(CODDOBRA)/$(QTD_DOBRA)/$(CODALAVANCA)/$(CODCAPA)/$(CODFIXADOR)/$(CODFIXADORPORTA)
+   X9                  =$(_sisbascdet:1)/$(vett_dobradicas_central)/$(ndob_central)//$(pesofrontal:0)/$(fatrendimento:0)//$(SERVOHK:0)/$(pistao2:0)
+}

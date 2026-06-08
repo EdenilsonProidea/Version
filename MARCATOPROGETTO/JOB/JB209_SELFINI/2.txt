@@ -1,0 +1,4 @@
+#M INICIA_JOB
+#IF $(XX3:1)==L
+   2	MA	X=0 Y=0 NM=RECORTELSUP PARM=P1@$(xx6:0)^P2@$(xx6:1)
+#ENDIF

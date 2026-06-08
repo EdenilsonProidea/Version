@@ -1,0 +1,14 @@
+{ 317   // base perfil sapateira
+   *AZZERA*            =0
+   DESCRIZIONE         =base perfil sapateira
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(profperfil)+$(descperfil),$(eslatgav:0)+$(altperfil))-$(profperfil)
+   DIMENSIONE          =$(largperfil)-($(profperfil)*2),$(profperfil),$(profperfil)
+   COLORI              =$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5),$(_corPR:3)|$(.percorso)\foto\madeira\$(_corPR:4)|$(_corPR:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/0/0/0/1/1/1/1/0/1
+   X8                  =$(jobfixprat:0)/$(codfixprat:0)/$(distfixprat:0)
+   X9                  =$(_tpcaixa:1)/$(_corPR:1)/$(TPFIX:1)
+   ALIAS               =#209
+}

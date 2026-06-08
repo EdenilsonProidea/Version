@@ -1,0 +1,13 @@
+{ 313   // TAMPO DORMITORIO GAVETEIRO
+   *AZZERA*            =0
+   DESCRIZIONE         =TAMPO DORMITORIO GAVETEIRO
+   CODICE              =$(MODELLO:0)U143 /_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =,,0
+   DIMENSIONE          =,$(ABASE:0)
+   COLORI              =$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5),$(_CORTAMPOGAV:3)|$(.percorso)\foto\madeira\$(_CORTAMPOGAV:4)|$(_CORTAMPOGAV:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_corcx
+   X3                  =$(curbox)/INT
+   X9                  =$(_tpcaixa:1)/$(_CORTAMPOGAV:1)/$(TPFIX:1)
+   ALIAS               =#203
+}

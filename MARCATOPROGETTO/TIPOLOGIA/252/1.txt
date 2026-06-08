@@ -1,0 +1,17 @@
+{ 252   // puxador perfil
+   *AZZERA*            =0
+   DESCRIZIONE         =puxador perfil
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =$(ladopperf)
+   POSIZIONE           =0,0,$(_PERFPUX:20)
+   DIMENSIONE          =$l,$(_perfpux:7),$(_perfpux:8)
+   COLORI              =$(_perfpux:9),$(_perfpux:9)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =$(xpPperf)
+   X1                  =$(X1PPERF)
+   X3                  =$(curbox)
+   X4                  =$(CINEX_VAR_OBRIGATORIAS)/$(CINEX_VAR_DEFAULT)
+   X6                  =$(PERFILMOLISE:0)
+   X8                  =puxadores\$(_perfpux:5)/
+   X9                  =$(_PERFPUX:1)/$(_PERFPUX:4)
+}

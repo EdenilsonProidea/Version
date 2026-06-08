@@ -1,0 +1,7 @@
+#LET f=2
+$(f)	FT6	x=80 y=$(xp) df=8 pf=24 z={$(xa)/2}
+$(f)	FT6	x={$(xl)-80} y=$(xp) df=8 pf=24 z={$(xa)/2}
+$(f)	FT6	x={$(xl)/2} y=$(xp) df=8 pf=24 z={$(xa)/2}
+$(f)	ff	x=80  y={$(xp)-24} df=15 pf=13
+$(f)	ff	x={$(xl)-80} y={$(xp)-24} df=15 pf=13
+$(f)	ff	x={$(xl)/2} y={$(xp)-24} df=15 pf=13

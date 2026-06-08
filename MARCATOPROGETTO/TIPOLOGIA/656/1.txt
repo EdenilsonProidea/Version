@@ -1,0 +1,12 @@
+{ 656   // Trilho Superior Porta de Passagem
+   *AZZERA*            =0
+   DESCRIZIONE         =Trilho Superior Porta de Passagem
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(sltrilho),$a-($(esp_caxetamdf)+$(PP_SISTEMA:8)),$p-($(PP_SISTEMA:7)+$(esp_bandeira))
+   DIMENSIONE          =$(ltrilho),$(PP_SISTEMA:8),$(PP_SISTEMA:7)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =sispassagem\$(pp_sistema:4)
+   X9                  =$(pp_sistema:5)/$(pp_sistema:21)/$(pp_sistema:6)
+}

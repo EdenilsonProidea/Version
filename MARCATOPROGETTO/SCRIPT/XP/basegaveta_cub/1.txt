@@ -1,0 +1,107 @@
+Sub main(p,dl,da,dp,hTerra)
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   MANTA=CALCOLA(EX(P.PARAMETRO(8),"/",2))
+   canal=CALCOLA(EX(P.PARAMETRO(8),"/",1))
+   ladoa=CALCOLA(EX(P.PARAMETRO(10),"/",1))
+   ladoc=CALCOLA(EX(P.PARAMETRO(10),"/",2))
+   ladod=CALCOLA(EX(P.PARAMETRO(10),"/",3))
+   
+   ' ***************************** LADOS BORDA ***********************************
+   
+   FITABRANCA=wColore(53)
+   csemborda=wColore(77)
+   besq=ucase(ex(p.parametro(7),"/",5))
+   bdir=ucase(ex(p.parametro(7),"/",6))
+   bfre=ucase(ex(p.parametro(7),"/",7))
+   btra=ucase(ex(p.parametro(7),"/",8))
+   besq2=ucase(ex(p.parametro(7),"/",13))
+   bdir2=ucase(ex(p.parametro(7),"/",14))
+   bfre2=ucase(ex(p.parametro(7),"/",15))
+   btra2=ucase(ex(p.parametro(7),"/",16))
+   fitasovisivel=(ex(p.parametro(7),"/",18))
+   
+   facefrente=c1
+   faceatras=c1
+   
+   bordaesq=c1
+   bordadir=c1
+   bordafre=c1
+   bordatra=c1
+   
+   If besq="N" Or besq="" Or besq="0" Then bordaesq=csemborda
+   If bdir="N" Or bdir="" Or bdir="0" Then bordadir=csemborda
+   If bfre="N" Or bfre="" Or bfre="0" Then bordafre=csemborda
+   If btra="N" Or btra="" Or btra="0" Then bordatra=csemborda
+   
+   If fitasovisivel <> "1" Then
+      If besq2="1" Then bordaesq=FITABRANCA
+      If bdir2="1" Then bordadir=FITABRANCA
+      If bfre2="1" Then bordafre=FITABRANCA
+      If btra2="1" Then bordatra=FITABRANCA
+   End If
+   ' ***************************** FIM LADOS BORDA ***********************************
+   
+   If LEFT(P.TIPO,3)="203" Then
+      sagbase=ex(p.parametro(6),"/",1)
+   End If
+   If sagbase="" Then sagbase=p.sagoma
+   
+   If LEFT(UCASE(sagbase),1)="P" Then
+      SS="#" & replace(REPLACE(UCASE(sagbase),"*",","),"X","")
+      AA=WSAGOMA(MID(ss,3),2).NOME
+      WESTRUDI 2, AA, DP, c1, c1, 0
+      
+   Elseif SAGBASE<>"" Then
+      SS="#" & replace(REPLACE(UCASE(sagbase),"*",","),"X","")
+      AA=WSAGOMA(MID(ss,3),2).NOME
+      westrudi 1,AA,dA,c1,c1,0
+      If MANTA=1 Then
+         wrTrasforma 0,da,0
+         westrudi 1,AA,2,c2,c2,0
+         wrchiudi
+      End If
+   Else
+      wrPannello2  dl,da, dp,C1,C1,C1,C1,C1,C1
+      If MANTA=1 Then
+         wrTrasforma 0,da,0
+         wrPannello2  dl,2, dp,C2,C2,C2,C2,C2,C2
+         wrchiudi
+      End If
+   End If
+   
+   ' inicio <c23522>
+   'fita fake frente gaveta
+   wrTrasforma 0,0,dp,0,0,0
+   If bfre="N" Or bfre="" Or bfre="0" Then wrPannello "LPA",wColore(77),dl,da,1
+   wrChiudi
+   
+   If 1=0 Then 'deixei comentado pois por enquanto fazem a traseira da cuba por dentro
+   'fita fake atrás esq
+   wrTrasforma 0,0,0,0,0,0
+   If btra="N" Or btra="" Or bfre="0" Then wrPannello "LPA",wColore(77),ladoa,da,1
+   wrChiudi
+   
+   'fita fake atrás dir
+   wrTrasforma dl+da+canal-ladoc,0,0,0,0,0
+   If btra="N" Or btra="" Or btra="0" Then wrPannello "LPA",wColore(77),ladoc,da,1
+   wrChiudi
+   
+   'fita fake atrás meio
+   wrTrasforma ladoa,0,ladod,0,0,0
+   If btra="N" Or btra="" Or btra="0" Then wrPannello "LPA",wColore(77),dl+da+canal-ladoa-ladoc,da,1
+   wrChiudi
+   
+   'fita fake meio esq
+   wrTrasforma ladoa,0,0,-90,0,0
+   If besq="N" Or besq="" Or besq="0" Then wrPannello "PAL",wColore(77),ladod,da,1
+   wrChiudi
+   
+   'fita fake meio dir
+   wrTrasforma dl+da+canal-ladoc+1,0,0,-90,0,0
+   If bdir="N" Or bdir="" Or bdir="0" Then wrPannello "PAL",wColore(77),ladod,da,1
+   wrChiudi
+End If
+
+' fim <C23522>
+End Sub

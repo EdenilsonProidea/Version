@@ -1,0 +1,6 @@
+
+   #IF $(X3:1)==
+      #M ESTR_MADEIRA,CODITEM=PAINV
+   #ELSE
+      #M ESTR_MADEIRA,CODITEM=PAINV_$(X3:1)
+   #ENDIF

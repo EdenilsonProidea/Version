@@ -1,0 +1,10 @@
+{ 203.001   // Base Superior
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Superior
+   POSIZIONE           =,$a-$(ABASE:0)
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =BASE.XP
+   X3                  =$(curbox)/S
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/0/0/0/0/0/$(FITARSOVISTA:2)
+   ALIAS               =#203
+}

@@ -1,0 +1,22 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   'FINITURA PUXADOR
+   V=SPLIT(ex(P.PARAMETRO(7),"/",1),";")
+   finitura=ex(ex(P.Parametro(8),"/",1),";",1)
+   DL=CALCOLA(ex(P.Parametro(8),"/",2))
+   DA=CALCOLA(ex(P.Parametro(8),"/",3))
+   DP=CALCOLA(ex(P.Parametro(8),"/",4))
+   aa = c1 & "," & c2
+   percfile=UCASE(percorso & "\3ds\puxadores\" & finitura)
+   wrtrasforma -dl/2,-da/2,0
+   msgbox percfile
+   If ucase(right(finitura,3))=".XP" Or ucase(right(finitura,2))=".X" Or ucase(right(finitura,4))=".3DS"  Or ucase(right(finitura,5))=".DR3D" Or ucase(right(finitura,5))=".TREE" Then
+      wrX2 percfile,0,aa,dl,da,dp,3,join(v,";"),0,0,0,0
+   Else
+      wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+   End If
+   wrChiudi
+End Sub

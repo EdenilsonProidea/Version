@@ -1,0 +1,28 @@
+#IF $(div_rod_vis_sup)!!
+   #LET old_i=0
+   #IF $(rodateto:0)=3
+      #LET sl_rodateto=0
+   #ELSE
+      #LET sl_rodateto=$(_fechesq:4)
+   #ENDIF
+   #FOR $(div_rod_vis_sup)
+      #IF $a>2730 & $(lat_fech_especial)=2 & $(ladocanto:0)=0 // importado gestão antiga <c23346>
+         fech_sup_1,slfechsup={$(sl_rodateto)+$(old_i)},lfechsup=$(i),avista=$(avista:0)-50,avistadesconto=50
+      #ELSE
+         fech_sup_1,slfechsup={$(sl_rodateto)+$(old_i)},lfechsup=$(i)
+      #ENDIF
+      #LET old_i=$(old_i)+$(i)
+      297,COD= / /H.RODATETO $(ARODATETO:0)MM,SL=$L/2-300,SA=$A-50,L=600,A=50,SP=$P,P=10  // TEXTO
+   #ENDFOR
+#ELSE
+   #IF $a>2730 & $(lat_fech_especial)=2 & $(ladocanto:0)=0 // importado gestão antiga <c23346>
+//      fech_sup_1,avista=$(avista:0)-50,avistadesconto=50
+   #ELSE
+      #IF $(rodateto:1)=3
+         fech_sup_1,slfechsup=0,lfechsup=$L
+      #ELSE
+         fech_sup_1
+      #ENDIF
+   #ENDIF
+   297,COD= / /H.RODATETO $(ARODATETO:0)MM,SL=$L/2-300,SA=$A-50,L=600,A=50,SP=$P,P=10  // TEXTO
+#ENDIF

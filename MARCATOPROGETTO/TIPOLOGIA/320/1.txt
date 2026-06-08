@@ -1,0 +1,12 @@
+{ 320   // Base Sapateira
+   *AZZERA*            =0
+   DESCRIZIONE         =Base Sapateira
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(pa_sapateira:0),$(eslatgav:0)
+   DIMENSIONE          =$l,$(eslatgav:0),$p-$(eslatgav:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+}

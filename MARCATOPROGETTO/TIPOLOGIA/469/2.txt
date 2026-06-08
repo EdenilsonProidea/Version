@@ -1,0 +1,14 @@
+{ 469   // LED tampo ver
+   *AZZERA*            =0
+   DESCRIZIONE         =LED tampo ver
+   CODICE              =$(tp_led:10) /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(d1),-$(_ilu:8),$p-$(d2)-$(_ilu:9)
+   DIMENSIONE          =$l-1*($(d1)+$(d3)),$(_ilu:8),$(_ilu:9)
+   COLORI              =16,16
+   ORIENTAMENTO        =ALP
+   X3                  =$(curbox)
+   X5                  =$(tp_led:10)
+   X6                  =$(AMBIENTE:0)//$(TP_LED:12)/$(TP_LOCAL:3)/$(N_LEDS:3)/$(LADO:0)
+   X7                  =1/$(TP_COR:2)/$(TAM_LED:0)
+   X9                  =$(TP_LED:1)/$(LigarLuz:0)
+}

@@ -1,0 +1,55 @@
+#IF $(paineldir:3)=1
+   #IF $(_fr:6)[104;105;106;117;201;202] // ALEX VISITA - FEITO COMPATIBILIDADE CATÁLOGO ANTIGO
+      // lat_belagioE
+      lat_belagioD,ape=0
+      #LET ul=$(ESPAINA:0)
+   #ELSEIF $(_FR:6)[501;502;503]!0
+      LAT_FRAME,LADOLAT=DIR
+   #ELSE
+// 275,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento <c26807>
+      275,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento <c26807>
+      #LET ul=$(ESPAINA:0)
+   #ENDIF
+#ELSEIF $(paineldir:3)=2
+   275.001,SL=$l,SA=-$(incpainID:0),SP=$(PLAT:0)-$(P_PAINEL_PAREDE:0)+$(INC_PAIN_ACAB:0)-$(incpainTD:0),A=$A+$(incpainID:0)+$(incpainSD:0),P=$(P_PAINEL_PAREDE:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   #IF $(inctder:0)=0 #LET inctder=$(ESPAINA:0)+20
+   #IF $(cantol)=0
+      #LET ul=$(ESPAINA:0)
+   #ELSE
+      #LET up=$(ESPAINA:0)
+   #ENDIF
+#ELSEIF $(paineldir:3)=3
+   ARR_PINO_DIR,sp=-$(sparrpindir:0),a=$(A)+$(incpainID:0)+$(incpainSD:0),SA=-$(incpainID:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0
+   #LET ul=$(Larremated:0)
+#ELSEIF $(paineldir:3)=4
+   275.001,SL=$l,SA=-$(incpainID:0),SP=($(PLAT:0)-$(P_PAINEL_PAREDE:0)+$(INC_PAIN_ACAB:0)-$(sparrpindir:0))-$(incpainTD:0),A=$(A)+$(incpainID:0)+$(incpainSD:0),P=($(P_PAINEL_PAREDE:0)+$(sparrpindir:0))+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   #IF $(inctder:0)=0 #LET inctder=$(ESPAINA:0)+$(INC_PAIN_ACAB:0)
+   #IF $(cantol)=0
+      #LET ul=$(ESPAINA:0)
+   #ELSE
+      #LET up=$(ESPAINA:0)
+   #ENDIF
+   ARR_PINO_DIR,SL=$(ESPAINA:0),sp=-$(sparrpindir:0),a=$(A)+$(incpainID:0)+$(incpainSD:0),SA=-$(incpainID:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0
+   #LET ul=$(Larremated:0)+$(ESPAINA:0)
+#ELSEIF $(paineldir:3)=5
+   275,SL=$l+$(ESPAINA:0),SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   #LET ul=$(ESPAINA:0)*2
+#ELSEIF $(paineldir:3)=6
+   275,SL=$l+$(ESPAINA:0)*2,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0),SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0),SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   #LET ul=$(ESPAINA:0)*3
+#ELSEIF $(paineldir:3)=7
+   275,SL=$l+$(ESPAINA:0)*3,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=$(PLAT:0)+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0),X7=N/N/N/N/1/0/1/0/0/0/0/0/0/0/0/0/0  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0)*2,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0)*2,SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0),SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l+$(ESPAINA:0),SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0),A={$a+$(incpainID:0)+$(incpainSD:0)},P=70+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   275.001,SL=$l,SA=-$(incpainID:0),SP=-$(incpainTD:0)+$p-150,A={$a+$(incpainID:0)+$(incpainSD:0)},P=150+$(INC_PAIN_ACAB:0)+$(incpainFD:0)+$(incpainTD:0)  //Painel Lateral Acabamento
+   #LET ul=$(ESPAINA:0)*4
+#ENDIF

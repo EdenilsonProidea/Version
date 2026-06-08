@@ -1,0 +1,49 @@
+#IF $(pospuxadores)=1
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(LPUXQUAD:5),SA=$(refcentro:0)-1*($(Lpuxquad:3)),a=$(Lpuxquad:3)+40,l=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(LPUXQUAD:5),SA=$(refcentro:0)-1*($(Lpuxquad:3)),a=$(Lpuxquad:3)+45,l=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=3
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:4)),SA=$(refcentro:0)-1*($(Lpuxquad:3)),a=$(Lpuxquad:3)+40,l=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:4)),SA=$(refcentro:0)-1*($(Lpuxquad:3)),a=$(Lpuxquad:3)+45,l=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=4
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(LPUXQUAD:5),SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+45),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(LPUXQUAD:5),SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+40),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=6
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40),SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+45),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40),SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+40),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=5
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=($(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40))/2,SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+45),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=($(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40))/2,SA=$(afre)-1*($(Lpuxquad:6)+$(Lpuxquad:4)+40),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=7
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(LPUXQUAD:5),SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(LPUXQUAD:5),SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=9
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40),SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=$(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40),SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ELSEIF $(pospuxadores)=8
+   #IF $(VEIOQUADRATA:0)=0
+      673,SL=($(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40))/2,SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+40,a=$(Lpuxquad:4)+45  //,L=$(Lpuxquad:4)+45,A=$(Lpuxquad:3)+40  //FRENTE // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ELSE
+      675,SL=($(lfre)-1*($(LPUXQUAD:5)+$(Lpuxquad:3)+40))/2,SA=$(Lpuxquad:6),l=$(Lpuxquad:3)+45,a=$(Lpuxquad:4)+40 // ,L=$(LPUXQUAD:3)+40,A=$(Lpuxquad:4)+45  // TAMPA QUADRATTA // os tamanhos reais do puxador estão comentados - tamanhos verificados com o Renan em visita
+   #ENDIF
+#ENDIF

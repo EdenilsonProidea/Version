@@ -1,0 +1,69 @@
+// <*PROIDEACHECK*>OK 24/03/2022 SILVIO</ *PROIDEACHECK*>
+// ********************* juncao base incide no lateral  ******************************
+#IF $(NAOFURAR)=0
+   #M JOB_LAT_BASE_SI_IN
+   // 3_tipo 1=MINIFIX/2=PARAFUSO/3=RAFIX/4=VB2/5=PINO PRATELEIRA/6=CAVILHA
+   // 4_imagem
+   // 5_distancia furo 1 face na base
+   // 6_diametro furo 1 face base
+   // 7_profundidade furo 1 face na base
+   // 8_distancia furo 2 face na base
+   // 9_diametro furo 2 face na base
+   // 10_profundidade furo 2 face na base
+   // 11_distancia superior furo topo
+   // 12_diametro furo topo
+   // 13_profundidade furo topo
+   // 14_diametro furo na lateral
+   // 15_profundidade furo na lateral
+   // 16_posiçaõ na altura furo lateral
+   // 17_codigo fixação
+   // 18_codigo aste simples
+   // 19_codigo aste dupla
+   // 20_codigo tampa acabamento
+   // #LETS CODFIXPRINCIPAL=$(TPFIX:5)
+   // #LETS CODSECUNDARIA=$(TPFIX:6)
+   // #LET DIST_FUROP_FR=$(TPFIX:7)
+   // #LET DIST_FUROP_AT=$(TPFIX:8)
+   // #LET DIST_FUROS_FR=$(TPFIX:9)
+   // #LET DIST_FUROS_AT=$(TPFIX:10)
+   // #LET DIST_FURO_FT_TRAV=$(TPFIX:11)
+   // #LET PROF_MIN_3FUROS=$(TPFIX:12)
+   // #LET PROF_MIN_4FUROS=$(TPFIX:13)
+   // #LET PROF_MIN_ADD_FUROS=$(TPFIX:14)
+   #IF $(FIXPRINCIPAL:3)>0
+      #LET TIPOFIX=$(FIXPRINCIPAL:3)
+      #IF $(TIPOFIX)[1;3;4]!0
+         // MINIFIX - RAFIX - VB2 A DISTANCIA VAI PELA FACE ONDE ESTA O PARAFUSO
+         #LET PLFURO=$(XL)-$(FIXPRINCIPAL:11)
+      #ELSEIF $(TIPOFIX)=5 // NAO TEM
+      #ELSE // OUTROS SEMPRE CENTRALIZADOS (CAVILHA/PARAFUSO)
+         #LET PLFURO=$(XL)/2
+      #ENDIF
+#MSG $(dp)|$(pp)_$(tipologiap)|$(tipologia)
+      #IF $(DP)<$(PMAX_PAR_TRAVESSAS)  // TRAVESSA
+         #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DIST_FURO_FT_TRAV)}
+         #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DP)-$(DIST_FURO_FT_TRAV)}
+      #ELSE
+         #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DIST_FUROP_AT)}
+         #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DP)-$(DIST_FUROP_FR)}
+         #IF $(XP)>$(PROF_MIN_4FUROS)
+            #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DP)/3}
+            #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+($(DP)/3)*2}
+         #ELSEIF $(XP)>$(PROF_MIN_3FUROS)
+            #M JOB_FURO_PRINC_EDV,PPFURO={$(PP)+$(DP)/2}
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #IF $(FIXSECUNDARIA:3)>0 & $(XP)>$(PROF_MIN_ADD_FUROS)
+      #LET TIPOFIX=$(FIXPRINCIPAL:3)
+      #IF $(TIPOFIX)[1;3;4]!0
+         // MINIFIX - RAFIX - VB2 A DISTANCIA VAI PELA FACE ONDE ESTA O PARAFUSO
+         #LET PLFURO=$(XL)-$(FIXPRINCIPAL:11)
+      #ELSEIF $(TIPOFIX)=5 // NAO TEM
+      #ELSE // OUTROS SEMPRE CENTRALIZADOS (CAVILHA/PARAFUSO)
+         #LET PLFURO=$(XL)/2
+      #ENDIF
+      #M JOB_FURO_SEC_EDV,PPFURO={$(PP)+$(DIST_FUROS_AT)}
+      #M JOB_FURO_SEC_EDV,PPFURO={$(PP)+$(XP)-$(DIST_FUROS_FR)}
+   #ENDIF
+#ENDIF

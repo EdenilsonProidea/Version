@@ -1,0 +1,253 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   parscript=split(ex(p.PARAMETRO(8),"/",4),"|")
+   ReDim Preserve parscript(10)
+   popx=parscript(0)
+   If popx="1;3" Or popx="3;1" Then
+      npux=2
+   Else
+      npux=1
+   End If
+   
+   senpux=calcola(parscript(1))
+   lpux=calcola(parscript(2))
+   apux=calcola(parscript(3))
+   slpux=calcola(parscript(4))
+   sapux=calcola(parscript(5))
+   raio=calcola(parscript(6))
+   '   PAR=calcola(parscript(11))
+   If npux=1 Then
+      criapux p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux
+   Else
+      criapux2 p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux
+   End If
+   
+   
+   'par=ex(zParametro(8),"/",11)
+   If PAR<>"" Then
+      c3=wColoreE(par)
+      wrtrasforma 0,0,-1
+      wrPannelloExtended "LAP",dl,DA,1,-1,c3,c3,c3,c3,c3,c3,"2"
+      wrchiudi
+   End If
+   
+End Sub
+
+Sub criapux(p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux)
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   dsl=slpux-4
+   dsi=sapux-4
+   dsl2=slpux
+   dsi2=sapux
+   frentelisa=0
+   
+   If calcola(lpux)<=0 Or calcola(apux)<=0 Then frentelisa=1
+   If frentelisa=1 Then
+      wrPannello "LAP",C1, dl,da, dp , 0, 0, 0, 0, 0
+      Exit Sub
+   End If
+   SENPUX=CALCOLA(SENPUX)
+   If senpux = 2  Then
+      lu=apux+8
+      au=lpux+8
+      lu2=apux
+      au2=lpux
+   Else
+      lu=lpux+8
+      au=apux+8
+      lu2=lpux
+      au2=apux
+   End If
+   
+   'msgbox da
+   If da>1400 Then
+      refcentro=1040'+lpux/2
+   Else
+      refcentro=da/2
+   End If
+   
+   Select Case popx
+   Case "1":
+      offa=calcola(refcentro-au)
+      offl=calcola(dsl)
+      offa2=calcola(refcentro-au2)
+      offl2=calcola(dsl2)
+   Case "2":
+      offa=calcola(da/2-au/2)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(da/2-au2/2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "3":
+      offa=calcola(refcentro-au)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(refcentro-au2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case "4":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dsl)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dsl2)
+   Case "5":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "6":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case "7":
+      offa=calcola(dsi)
+      offl=calcola(dsl)
+      offa2=calcola(dsi2)
+      offl2=calcola(dsl2)
+   Case "8":
+      offa=calcola(dsi)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(dsi2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "9":
+      offa=calcola(dsi)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(dsi2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case Else
+      
+   End Select
+   
+   
+   
+   ss="FO," & OFFL & "," & OFFA & "," & OFFL & "," & OFFA+AU &  "," & OFFL+LU & "," & OFFA+au &  "," & OFFL+LU & "," & OFFA &  "," & OFFL &  "," & OFFa
+   ss="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss
+   
+   'msgbox
+  ' ss2="FO," & OFFL2+5 & "," & OFFA2 & ",T5_1_10,"
+   ss2= ss2 & OFFL2 & "," & OFFA2+5 & ","
+   ss2= ss2 & OFFL2 & "," & OFFA2+AU2-5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+5 & "," & OFFA2+AU2 &  ","
+   ss2= ss2 & OFFL2+LU2-5 & "," & OFFA2+au2 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+au2-5 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+LU2-5 & "," & OFFA2 &  ","
+   ss2= ss2 & OFFL2+5 &  "," & OFFa2
+   
+   ' msgbox  CALCOLA(OFFL2) + LU2-5 & "=" & OFFL2 & "+" & LU2 & "-5"
+   
+   
+   ssini="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss2
+   
+   AA=WSAGOMA(MID(ss,2),2).NOME
+   wrTrasforma 0,0,5
+   WESTRUDI 2, AA, dP-8, c1, c1, 0
+   wrchiudi
+   
+   wrPannello "LAP",C1, dl,da, 5 , 0, 0, 0, 0, 0
+   
+   
+   
+   wrTrasforma offl,OFFA,7
+   wrPannello "ALP",C2, lu,au, 3 , 0, 0, 0, 0, 0
+   wrchiudi
+   
+   
+   AA2=WSAGOMA(MID(ssini,2),2).NOME
+   wrTrasforma 0,0,dp-3
+   WESTRUDI 2, AA2, 3, c1, c1, 0
+   wrchiudi
+   
+End Sub
+
+Sub criapux2(p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux)
+   
+   dsl=slpux-17
+   dsi=sapux-4
+   dsl2=slpux-13
+   dsi2=sapux
+   
+   
+   
+   lu=apux+8
+   au=lpux+8
+   lu2=apux
+   au2=lpux
+   
+   If da>1400 Then
+      refcentro=1040'+lpux/2
+   Else
+      refcentro=da/2
+   End If
+   'msgbox popx
+   
+   
+   offa=calcola(refcentro-au)
+   offl=calcola(dsl)
+   offa2=calcola(refcentro-au2)
+   offl2=calcola(dsl2)
+   
+   offa3=calcola(refcentro-au)
+   offl3=calcola(dl-lu-dsl)
+   offa4=calcola(refcentro-au2)
+   offl4=calcola(dl-lu2-dsl2)
+   
+   
+   
+   
+   'msgbox popx & "  ----  "  & offa &  " ---- " & offl
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   ss="FO," & OFFL & "," & OFFA & "," & OFFL & "," & OFFA+AU &  "," & OFFL+LU & "," & OFFA+au &  "," & OFFL+LU & "," & OFFA &  "," & OFFL &  "," & OFFa &  ","
+   ss=ss & "FO," & OFFL3 & "," & OFFA3 & "," & OFFL3 & "," & OFFA3+AU &  "," & OFFL3+LU & "," & OFFA3+au &  "," & OFFL3+LU & "," & OFFA3 &  "," & OFFL3 &  "," & OFFa3
+   ss="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss
+   
+   'rr=10/2
+   'TM=(1-SIN(45))*RR
+   ' msgbox offa2 & "=" & da & "-" & au2 & "-" & dsi2
+   
+   'p1x,p1y,T(raggio)_(orario-antiorario)_(numerosegmenti),p2x,p2y
+   
+   ss2="FO," & OFFL2+5 & "," & OFFA2 & ",T5_1_10,"
+   ss2= ss2 & OFFL2 & "," & OFFA2+5 & ","
+   ss2= ss2 & OFFL2 & "," & OFFA2+AU2-5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+5 & "," & OFFA2+AU2 &  ","
+   ss2= ss2 & OFFL2+LU2-5 & "," & OFFA2+au2 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+au2-5 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL2+LU2-5 & "," & OFFA2 &  ","
+   ss2= ss2 & OFFL2+5 &  "," & OFFa2 &  ","
+   
+   ss2= ss2 & "FO," & OFFL4+5 & "," & OFFA4 & ",T5_1_10,"
+   ss2= ss2 & OFFL4 & "," & OFFA4+5 & ","
+   ss2= ss2 & OFFL4 & "," & OFFA4+AU2-5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL4+5 & "," & OFFA4+AU2 &  ","
+   ss2= ss2 & OFFL4+LU2-5 & "," & OFFA4+au2 &  ",T5_1_10,"
+   ss2= ss2 & OFFL4+LU2 & "," & OFFA4+au2-5 &  ","
+   ss2= ss2 & OFFL4+LU2 & "," & OFFA4+5 &  ",T5_1_10,"
+   ss2= ss2 & OFFL4+LU2-5 & "," & OFFA4 &  ","
+   ss2= ss2 & OFFL4+5 &  "," & OFFa4
+   ssini="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss2
+   
+   AA=WSAGOMA(MID(ss,2),2).NOME
+   wrTrasforma 0,0,5
+   WESTRUDI 2, AA, dP-8, c1, c1, 0
+   wrchiudi
+   
+   wrPannello "ALP",C1, dl,da, 5 , 0, 0, 0, 0, 0
+   
+   
+   
+   wrTrasforma offl,OFFA,7
+   wrPannello "ALP",C2, lu,au, 3 , 0, 0, 0, 0, 0
+   wrchiudi
+   
+   wrTrasforma offl3,OFFA3,7
+   wrPannello "ALP",C2, lu,au, 3 , 0, 0, 0, 0, 0
+   wrchiudi
+   
+   AA2=WSAGOMA(MID(ssini,2),2).NOME
+   wrTrasforma 0,0,dp-3
+   WESTRUDI 2, AA2, 3, c1, c1, 0
+   wrchiudi
+   
+End Sub

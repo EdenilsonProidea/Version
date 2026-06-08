@@ -1,0 +1,12 @@
+{ 373   // Painel para cama
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel para cama
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$(ESPESSURA:0),$P
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =PLA
+   X7                  =N/N/N/N/0/0/0/0/0/0/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#373
+}

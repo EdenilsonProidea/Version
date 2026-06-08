@@ -1,0 +1,123 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=LOTE_PAIS_COM_IMAGEM.stn
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+M,NUMERO
+S,LOTE
+
+[TESTA]
+VERTICALE
+DIM 200 285
+FONT Consolas
+
+// calcular posicao central pra titulos
+// pagina em pix 204 largura
+#LETS txt_1=Colmeias
+#SQL txt_2=SELECT DES FROM Ecadmaster.DBO.CARICO WHERE COD='$(LOTE:0)'
+
+#VB
+   v("TXTpos1") = ((204-78)-len(v("$(txt_1)")))/2
+   v("TXTpos2") = ((204-78)-len(v("$(txt_2)")))/2
+#ENDVB
+
+#IF $(LOTE:0)==
+   #MSG DEFINIR LOTE
+#ELSE
+   #FORDBS X=SELECT DISTINCT NUMERO FROM Ecadmaster.DBO.TORDINE WHERE COMMESSA='$(LOTE:0)'
+      #SQL TEMCOLMEIALOTE=SELECT DISTINCT COUNT(RD.NUMERO) FROM Ecadmaster.DBO.RORDINE RD WHERE RD.NUMERO=$(X) AND RD.CODART LIKE '%000COLMACR%'
+      #IF $(TEMCOLMEIALOTE:0)>0
+         #LET CONTA_NR_COLM=0
+         !P
+         
+         #FORDBS Z=SELECT DBO.ZEROPAD(NBOX,4), MATRICOLA, DES, CONCAT(DIML,' x ',DIMA,' x ',DIMP) AS DIMENSAO FROM Ecadmaster.DBO.RORDINE WHERE NUMERO=$(X) AND CODART LIKE '%000COLMACR%'
+            #IF $(CONTA_NR_COLM:0)=0 | $(CONTA_NR_COLM:0)=4
+               #IF $(CONTA_NR_COLM:0)=4
+                  !P
+               #ELSE
+                  TX TC 14C (58+$(TXTpos1),6) $(txt_1)
+                  COLOREPENNA &H34797A
+                  TX TC 24BC (58+$(TXTpos2),14) $(txt_2)
+                  COLOREPENNA &H000000
+                  TX BR 9 (198,25) IMPRESSO DE: $(.COMPUTERNAME) POR: $(.username) EM: $(.DATAORA)
+                  TX bL 11 (184,280) PAG: <pag>
+                  
+                  WMF (3,6) (53,11) _ECADPRO\STAMPE\LOGO.jpg
+                  WMF (181,0) (20,20) _ECADPRO\STAMPE\LogoColmeia.jpg
+               #ENDIF
+               
+               #SQL txtCabecalho=SELECT DISTINCT DESTRAG1,RIF FROM Ecadmaster.DBO.TORDINE WHERE COMMESSA='$(LOTE:0)' ANd NUMERO=$(X)
+               #LETS NumeroProjeto=$[FORMAT;$(X:);000000]
+               #LETS NumeroLote=$(LOTE:0)
+               #LETS NomeCliente=$(txtCabecalho:0)
+               #LETS NomeAmbiente=$(txtCabecalho:1)
+               
+               LI (30,29) (30,56) (4,2)
+               LI (-5,29) (205,29) (4,2)
+               
+               TX T 14BL (1,32) Pedido:
+               TX T 14BL (32,32) $(NumeroProjeto:0)
+               
+               LI (115,29) (115,38) (4,2)
+               LI (136,29) (136,38) (4,2)
+               COLOREPENNA &HEB3324
+               TX T 14BL (120,32) Lote:
+               TX T 14BL (140,32) $(NumeroLote:0)
+               COLOREPENNA &H000000
+               
+               LI (-5,38) (205,38) (4,2)
+               TX T 14BL (1,41) Cliente:
+               TX T 14BL (32,41) $(NomeCliente:0)
+               
+               LI (-5,47) (205,47) (4,2)
+               TX T 14BL (1,50) Ambiente:
+               TX T 14BL (32,50) $(NomeAmbiente:0)
+               LI (-5,56) (205,56) (4,2)
+               
+               #LET CONTA_NR_COLM=1
+               #LET POS_A_IMG=60
+            #ELSE
+               #LET CONTA_NR_COLM=$(CONTA_NR_COLM:0)+1
+               #LET POS_A_IMG=55*$(CONTA_NR_COLM:0)
+            #ENDIF
+            
+            WMF (5,$(POS_A_IMG:0)) (50,50) _ECADPRO\IMGCOLMEIA\$(NumeroProjeto:0)$(Z:1).jpg
+            
+            LI (-5,$(POS_A_IMG:0)+5) (205,$(POS_A_IMG:0)+5) (4,2)
+            
+            TX TC 11BC (90,$(POS_A_IMG:0)+22) ITEM
+            TX TC 11C (90,$(POS_A_IMG:0)+27) $(Z:2)
+            TX TC 11BC (155,$(POS_A_IMG:0)+22) L x A x P
+            
+            #LET NumeroDivisoes=0
+            #FORDBS W=SELECT CONCAT(RIGHT(codcomp, 1),' ',diml,' x ',dima,' x ',dimp) FROM Ecadmaster.DBO.distintat WHERE NUMERO=$(X:0) AND MAT=$(Z:1)
+               TX TC 11C (155,$(POS_A_IMG:0)+27+(5*$(NumeroDivisoes:0))) $(W:0)
+               #LET NumeroDivisoes=$(NumeroDivisoes:0)+1
+            #ENDDBS
+            
+            TX TC 11BC (185,$(POS_A_IMG:0)+22) NBOX
+            TX TC 11C (185,$(POS_A_IMG:0)+27) M$(Z:0)
+         #ENDDBS
+      #ENDIF
+   #ENDDBS
+   
+#ENDIF

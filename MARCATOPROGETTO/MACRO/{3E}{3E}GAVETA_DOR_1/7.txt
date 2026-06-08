@@ -1,0 +1,19 @@
+inicia_gav_comun
+//#LOADVAR _corgv _corcx $(_corcx:1) // comentado em visita
+#IF $(_tpgav:3)=1 //<c15613>
+#MSG a
+   260     // Lateral Gaveta
+   260.001  // Lateral Gaveta
+   261,A=$A-1*($(afafundogaveta:0),sa=$(afafundogaveta:0) // Traseira Gaveta
+   #IF $(contrafrentegaveta)=1
+      262,A=$A-1*($(afafundogaveta:0)+$(espfundogaveta:0)+3),sa=$(afafundogaveta:0)+$(espfundogaveta:0)  // Frontal caixa Gaveta
+   #ENDIF
+   263,SP=$(espgaveta:0),P=$p-$(espgaveta:0)  //Fundo Gaveta
+   264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0 //Caixa Gaveta oculta para furaçao
+#ELSEIF $(_tpgav:3)=4
+   gaveta_mad_2//,MOVE=$(MVM)
+#ENDIF
+// TIPOGAVETA
+#IF $(_mantagav:0)>0
+   350,SP=$(espgaveta),P=$p-$(espgaveta)-1  //Fundo Gaveta
+#ENDIF

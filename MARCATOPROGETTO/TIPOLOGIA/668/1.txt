@@ -1,0 +1,15 @@
+{ 668   // Arremate Lateral esq
+   *AZZERA*            =0
+   DESCRIZIONE         =Arremate Lateral esq
+   CODICE              =/_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =-$(Larrematee:0),0,$p-$(esppainel:0)
+   DIMENSIONE          =$(Larrematee:0),$A+$(IncrAltArrEsq:0),$(esppainel:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =ALP
+   DATI                =_corfr
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corFR:1)
+   ALIAS               =#299
+}

@@ -1,0 +1,19 @@
+FRGAVETA,APE=GAV,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=frontal
+#LETV _tpgavalt:5=$(_tpgavalt:6) // isso define altura da gaveta de madeira para esse caso
+internogaveta,gavetainterna=0
+#LET altgav=$(agav)
+#LET afgava1=$(A)-$(AFGAVA)-$(_TPGAVALT2:6)-50
+#IF $(_FR:6)=110
+   #LET ACAVA=45-$(ESTRA:0)-3
+#LET afgava1=$(afgava1)+1.5
+#ENDIF
+
+// alterado em visita a pedido do renan, regra antiga em baixo
+internogaveta,SA=$A-1*($(_TPGAVALT2:5)+$(ABASE:0)*2+$(ESTRA:0)+$(_CORR:6)+$(ACAVA:0)+5),_TPGAVALT=$(_TPGAVALT2),gavetainterna=1,_acegav=$(_acegav2),P=$P-$(espgaveta),SP=$(espgaveta),MACRO=GAVETA
+// internogaveta,SA=$(afgava1),_TPGAVALT=$(_TPGAVALT2),gavetainterna=1,_acegav=$(_acegav2),P=$P-$(espgaveta),SP=$(espgaveta),MACRO=GAVETA
+
+
+
+internogaveta,SA=$(afgava1)-1*($(_TPGAVALT3:6)+$(AFGAVA)+$(ACAVA:0)+10),_TPGAVALT=$(_TPGAVALT3),gavetainterna=1,_acegav=$(_acegav3),P=$P-$(espgaveta),SP=$(espgaveta),MACRO=GAVETA
+#LET SAGAVINT_2=$(afgava1)-1*($(_TPGAVALT3:6)+$(AFGAVA)+10)
+COMENTO4

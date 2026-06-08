@@ -1,0 +1,8 @@
+#M calcula_masc_ini
+#M calcula_masc_bf
+#M calcula_masc_tip
+#M inicia_mascara
+#M inicia_tinta_lam
+#M calcula_chapa
+#M calcula_borda
+#M calcula_reapro

@@ -1,0 +1,82 @@
+!parametri slfechinf=$(_FECHESQ:4),lfechinf=$l-1*($(_FECHESQ:4)+$(_FECHdir:4)),a=$(arodape:0)//,es=$(ESPACAB2:3)
+
+#IF $(_FECHESQ:3)[1;7;8]!0
+   #LET slfechinf={$(_FECHESQ:4)+$(ESPARM:3)/2}
+   #LET lfechinf={$l-1*($(_FECHESQ:4)+$(_FECHdir:4))-($(ESPARM:3)/2)}
+#ENDIF
+#IF $(_FECHDIR:3)[1;7;8]!0
+   #LET lfechinf={$(lfechinf)-($(ESPARM:3)/2)}
+#ENDIF
+
+#IF $(lat_fech_especial)=1 // inicio <c23484>
+   #LET deltalfechsup2=11
+   #LET addlfechsup2=11
+   #LET LLX=$(lfechinf)+$(deltalfechsup2)+$(addlfechsup2)
+   #IF $(LLX)>2730
+      381,SL=$(_FECHESQ:4),L=$(LLX:0)/2,A=$(arodape:0)  // Rodape fechamento
+      381,SL=$(_FECHESQ:4)+$(LLX:0)/2,L=$(LLX)/2,A=$(arodape:0)  // Rodape fechamento
+   #ELSE
+      381,SL=$(_FECHESQ:4),L=$(LLX:0),A=$(arodape:0)  // Rodape fechamento
+   #ENDIF
+#ELSEIF $(lat_fech_especial)=2
+   #LOADVAR _MOLD _CORFR $(_CORFR:1)
+   #LETV _TPMOLD=002
+   !SAGOMA PERFIL $(_tpmold:6)
+   #IF $(TIPOCANTO)=1
+#MSG A
+      381,SL=0,L=$L+$(_FECHDIR:4),A=$(arodape:0)  // Rodape fechamento
+      !SAGOMA percor 0,{$P+$(ESFRE)},$L+$(_FECHDIR:4),{$P+$(ESFRE:0)}
+      269,SA=$(arodape:0)  // Moldura
+   #ELSE
+      381,SL=0,A=$(arodape:0),L=$L//$(lfechinf)  // Rodape fechamento
+      !SAGOMA percor 0,{$P+$(ESFRE)},$(ltot),{$P+$(ESFRE:0)}
+      269,SA=$(arodape:0)  // Moldura
+   #ENDIF
+#ELSE // fim <23484>
+   #IF $(_TPBASARM:3)=5
+      #IF $(_pes:3)=5 // base alvenaria
+         #LET VAOL_UTIL=$L-1*($(RED_ESQ)+$(RED_DIR))+1*($(INC_ESQ)+$(INC_DIR))
+         dor_bas,sl=$(red_esq:0)-$(eslat:0)/2,l=$(VAOL_UTIL)+$(eslat:0),p={$p-$(red_f_rod:0)-$(es)}
+      #ELSE
+         #IF $(_tpfech:3)=1
+            381,A=$(arodape:0),SP=$p-$(es)
+            rodapems,SL=$(slfechinf),L=$(lfechinf),P=$p-$(es),A=$(arodape:0)
+         #ELSEIF $(_tpfech:3)=3
+            381,A=$(arodape:0)-$(es),SP=$P+$(_tpfech:5)-$(ES)
+            380,SP=($P+$(_tpfech:5))-150,P=150  //Base Fechamento Inferior
+            380,SP=0,P=70,X7=N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/1  //Base Fechamento Inferior
+            rodapems,SL=$(slfechinf),L=$(lfechinf),P=$P+$(_tpfr:12),A=$(arodape:0)-$(es)
+         #ELSEIF $(_tpfech:3)=4
+            381,A=$(arodape:0)-$(es),SP={$p-$(es)+$(_TPFECH:4)}
+            380,SP={$p+$(_TPFECH:4)}-150,P=150  //Base Fechamento Inferior
+            380,SP=0,P=70,X7=N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/1  //Base Fechamento Inferior
+            380,SP=$p-70,P=70 //Base Fechamento Inferior
+            rodapems,SL=$(slfechinf),L=$(lfechinf),P={$p-$(es)+$(_TPFECH:4)},A=$(arodape:0)-$(es)
+         #ELSE
+            381,A=$(arodape:0)-$(es),SP=$P+$(_tpfr:12)
+            380,SP=($P+$(_tpfr:12)+$(ES))-150,P=150  //Base Fechamento Inferior
+            380,SP=0,P=70,X7=N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/1  //Base Fechamento Inferior
+            rodapems,SL=$(slfechinf),L=$(lfechinf),P=$P+$(_tpfr:12),A=$(arodape:0)-$(es)
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(_TPBASARM:3)=6 // rodapé com sapatas
+      #IF $(_tpfech:3)=3  // <C24275>
+         #IF $(_TPBASARM:3)=4
+            381,A=$(arodape:0)-$(es)-$(_PES:5),SA=$(_PES:5),sp={$p+$(_tpfech:5)-$(es)-2}  // Rodape fechamento
+            380,sa=$(arodape:0)-$(es)+$(_PES:5)
+            sapatas,SP={$p-$(es)/2+$(_TPFECH:5)}-$(_pes:6)/2
+         #ELSE
+            381,A=$(arodape:0)-$(es)-$(_PES:5),SA=$(_PES:5),sp={$p-$(sobrepbasefech:0)} // Rodape fechamento
+            381,A=$(arodape:0)-$(es)-$(_PES:5),SA=$(_PES:5),sp={$p+$(_tpfech:5)-$(es)-2}  // Rodape fechamento
+            380,sa=$(arodape:0)-$(es)
+            sapatas,SP={$p-$(es)/2+$(_TPFECH:5)-2}-$(_pes:6)/2
+            sapatas,SP={$p-$(sobrepbasefech:0)}-$(_pes:6)/2+$(es)/2
+         #ENDIF
+      #ELSE
+         381,a=$(arodape:0)-$(_PES:5),SA=$(_PES:5) // Rodape fechamento
+         sapatas,SP={$p-$(es)/2+$(_TPFECH:4)}-$(_pes:6)/2
+      #ENDIF
+   #ELSE
+      PE_COM_ACAB,SP=$(posppearm:0)  // <C24275>
+   #ENDIF
+#ENDIF

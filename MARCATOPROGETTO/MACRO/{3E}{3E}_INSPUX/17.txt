@@ -1,0 +1,41 @@
+CALCULA_PPLA_PUX
+#IF $(APE:3)[GAI;SAP]!0
+   #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+   #IF $(doispuxgaveta:0)=1
+      #IF $(sentido)=2
+         266,az=90,sl=$(offpxl)+$(apx)/2  // puxador
+         266,az=90,sl=$l-1*($(offpxl)+$(apx)/2)  // puxador
+      #ELSE
+         266,sl=$(offpxl)+$(lpx)/2  // puxador
+         266,sl=$l-1*($(offpxl)+$(lpx)/2)   // puxador
+      #ENDIF
+   #ELSE
+      #IF $(sentido)=2
+         266,az=90  // puxador
+      #ELSE
+         266  //puxador
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(apenasfurpux:0)=1 // importado gestão antiga <c23351>
+      #LET somenteusinapux=6
+      #LETS codpuxador=$(vazio)
+      #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+      #IF $(sentido)=2
+         251,COD=$(codpuxador),AZ=90  //puxador
+      #ELSE
+         251,COD=$(codpuxador)  // puxador
+      #ENDIF
+   #ELSE
+      #IF $(ppxp)=0 #LET  ppxp=$(esfre)
+      #IF $(sentido)=2
+         #IF $(APE:3)==AGE
+            251,az=90  // puxador
+         #ELSE
+            251,AZ=180,AY=270  //puxador
+         #ENDIF
+      #ELSE
+         251  // puxador
+      #ENDIF
+   #ENDIF
+#ENDIF

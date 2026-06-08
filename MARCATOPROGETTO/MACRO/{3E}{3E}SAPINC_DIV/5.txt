@@ -1,0 +1,25 @@
+#LET ndivisorias=0
+#LETS C_DIV=$(cor_sup_sap:4)//$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+
+#IF 1=0 // Gestão incorreta
+   #IF $(PPRATINC)-14>481
+      401,L=$L,A=50,P=6,sp=$(AFPRATP)+$(PPRATINC)-18-206,C1=$(C_DIV),C2=$(C_DIV),GL=0
+      401,L=$L,A=50,P=6,sp=$(AFPRATP)+$(PPRATINC)-18-2*206,C1=$(C_DIV),C2=$(C_DIV),GL=0
+      298,x9=$(cor_sup_sap:3)/$(cor_sup_sap:3)  // Item
+      298,x9=$(cor_sup_sap:3)/$(cor_sup_sap:3)
+      #LET ndivisorias=2
+   #ELSEIF $(PPRATINC)-18>=431 & $(PPRATINC)-18<484
+      401,L=$L,A=50,P=6,sp=$(AFPRATP)+$(PPRATINC)-18-206,C1=$(C_DIV),C2=$(C_DIV),GL=0
+      #LET ndivisorias=1
+      298,x9=$(cor_sup_sap:3)/$(cor_sup_sap:3)
+   #ENDIF
+#ELSE // passado a gestão do catálogo antigo - feito em visita
+   #IF $(PPRATINC)-14>481
+      312,sp=$(AFPRATP)+$(PPRATINC)-18-206
+      312,sp=$(AFPRATP)+$(PPRATINC)-18-2*206
+      #LET ndivisorias=2
+   #ELSEIF $(PPRATINC)-18>=431 & $(PPRATINC)-18<484
+      312,sp=$(AFPRATP)+$(PPRATINC)-18-206
+      #LET ndivisorias=1
+   #ENDIF
+#ENDIF

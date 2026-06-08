@@ -1,0 +1,57 @@
+#IF $(_SISCORRER:15)=1
+#ELSE
+   // inicio <C22076> para ajustar cobrança de quantidade de trilho e por terem trilho sup e inf com o mesmo código, foi criada regra para caso trilho inferior seja igual
+   // ao superior, não é para cobrar a mais do inferior (a quantidade estava saindo em dobro)
+   #IF $(_SISCORRER:5)=$(_SISCORRER:6)
+      #LET COBRANCA_UNICA=1
+   #ELSE
+      #LET COBRANCA_UNICA=0
+   #ENDIF
+   // fim // <C22076>
+   #SELECT $(_SISCORRER:9)
+   #CASE 1
+      // sistema interno trilho sobreposto so em baixo
+      410  // Trilho Inferior
+      411  // Trilho Superior
+   #CASE 2
+      // sistema interno trilho sobreposto  em baixo e em cima
+      410  // Trilho Inferior
+      411,x8=sistemas\trilho_sob_duplo.3ds,az=180,sa=$a,a=10,sl=$l,p=50,sp=$p-65  // Trilho Superior
+   #CASE 21
+      // sistema interno trilho sobreposto  em baixo e em cima EMBUTIDO
+      410,SA=-8  // Trilho Inferior
+      411,x8=sistemas\trilho_sob_duplo.3ds,az=180,sa=$a+7,a=10,sl=$l,p=50,sp=$p-65  // Trilho Superior
+   #CASE 3
+      // sistema externo
+      410,x8=sistemas\trilho_inf_externo.3ds,p=60,sp=$p-60,a=30,sa=-30  // Trilho Inferior
+      411,x8=sistemas\trilho_sup_externo.3ds,sa=$a,a=15,p=60,sp=$p-60  // Trilho Superior
+   #ENDSELECT
+#ENDIF
+#IF $(_SISCORRER:15)=0 // NAO E CINEX
+   #SELECT $(_SISCORRER:9)
+   #CASE 1
+      // sistema interno trilho sobreposto so em baixo
+      // **** insere codigo carrinho *****************
+      414  // kit carrinho
+      // **** fim insere codigo carrinho *************
+   #CASE 2
+      // sistema interno trilho sobreposto  em baixo e em cima
+      // **** insere codigo carrinho *****************
+      414  // kit carrinho
+      // **** fim insere codigo carrinho *************
+   #CASE 3
+      // sistema externo
+      #IF $(ape:10)=1  //via interna
+         // **** insere codigo carrinho *****************
+         // 414  // kit carrinho // Comentado a pedido do cliente <c27161>
+         // **** fim insere codigo carrinho *************
+      #ELSE // via externa
+         // **** insere codigo carrinho *****************
+         // GESTÃO DE PESO ESTIMADO ADICIONADA POR CAUSA DO BCP ANTIGO
+         #LET PESOM3 = $(_FR:14)
+         #LET PESOESTIMADO = {($(lfre:0)*$(afre:0)*$(esfre:0))/1000000000)*$(pesom3:0)}
+         // 414,X9=$(_siscorrer:8)/$(pesoEstimado)/$(_siscorrer:1)  //kit carrinho // Comentado a pedido do cliente <c27161>
+         // **** fim insere codigo carrinho *************
+      #ENDIF
+   #ENDSELECT
+#ENDIF

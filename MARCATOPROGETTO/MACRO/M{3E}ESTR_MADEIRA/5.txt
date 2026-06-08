@@ -1,0 +1,80 @@
+#IF $(DIMP)=17 #LET DIMP=15
+#LET DIMPBORDA=$(DIMP)
+#IF $(dimp)[40;41]!0
+   #LET DIMPBORDA=63
+   #LET diml=$(diml)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET dima=$(dima)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET tamburato=1
+   //#M CALCULA_MASCARA
+   #IF $(tinta)!!
+      #LET esp_madeira=9
+   #ELSEIF $(laminado)!!
+      #LET esp_madeira=9
+   #ELSE
+      #IF $(tip)[280;281]!0 & $(X8:0)!! #LET esp_madeira=6 #LET esp_madeira=6
+   #ENDIF
+   #IF $(tip)[280;281]!0 & $(X8:0)!!
+      // Não usa os paineis de acabamento - feito em visita para a nova gestão de paineis
+   #ELSE
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=40
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=40
+   #ENDIF
+   #IF $(_listino)=1
+      8722,($(dima)*$(diml))/1000000
+   #ELSE
+      kit-tamburato,1,CODTAMB=8722,$(diml),$(dima),{40-(2*$(esp_madeira))}
+   #ENDIF
+#ELSEIF $(dimp)=50
+   #LET DIMPBORDA=63
+   #LET diml=$(diml)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET dima=$(dima)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET tamburato=1
+   //#M CALCULA_MASCARA
+   #IF $(tinta)!!
+      #LET esp_madeira=9
+   #ELSEIF $(laminado)!!
+      #LET esp_madeira=9
+   #ELSE
+      #LET esp_madeira=9//6
+   #ENDIF
+   #IF $(tip)[280;281]!0 & $(X8:0)!!
+      // Não usa os paineis de acabamento - feito em visita para a nova gestão de paineis
+      // voltado gestão antiga pois não estava cobrando os paineis de acabamento <c26363>
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+   #ELSE
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+   #ENDIF
+   #IF $(_listino)=1
+      8721,($(dima)*$(diml))/1000000
+   #ELSE
+      kit-tamburato,1,CODTAMB=8721,$(diml),$(dima),{$(dimp)-2*$(esp_madeira)}
+   #ENDIF
+#ELSEIF $(dimp)=30
+   #LET DIMPBORDA=63
+   #LET diml=$(diml)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET dima=$(dima)+30  // o valor final é mais 30, aqui vai 10 e no convjobhomag.cfg vai os outros 20
+   #LET tamburato=1
+   #LET esp_madeira=6
+   #IF $(tip)[280;281]!0 & $(X8:0)!!
+      // Não usa os paineis de acabamento - feito em visita para a nova gestão de paineis
+      // voltado gestão antiga pois não estava cobrando os paineis de acabamento <c26363>
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=50
+   #ELSE
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=30
+      #M estr_madeira_1,dimp=$(esp_madeira),dimpfinal=30
+   #ENDIF
+   #IF $(_listino)=1
+      8723,($(dima)*$(diml))/1000000
+   #ELSE
+      kit-tamburato,1,CODTAMB=8723,$(diml),$(dima),{$(dimp)-2*$(esp_madeira)}
+   #ENDIF
+#ELSE
+   #LET tamburato=0
+   #M estr_madeira_1,dimpfinal=0
+#ENDIF
+//#IF 1=0
+//   #M STR_OLD
+//#ENDIF

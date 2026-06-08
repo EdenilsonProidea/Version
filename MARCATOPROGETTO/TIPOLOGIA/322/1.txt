@@ -1,0 +1,15 @@
+{ 322   // Tampo Gaveteiro
+   *AZZERA*            =0
+   DESCRIZIONE         =Tampo Gaveteiro
+   CODICE              =$(MODELLO:0)TAMPGV /_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX
+   POSIZIONE           =0,0,$(AFBASE:0)+$(afCaixaD)
+   DIMENSIONE          =$L,$(ABASE:0),{$P-1*($(AFBASE:0)+$(red_basef)+$(afCaixaD))}
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =BASE.XP
+   DATI                =_corcx
+   X3                  =$(curbox)/TG
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(CANAL)/0/1/1/1/1/0/1/0/0
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(_corbf:1)
+}

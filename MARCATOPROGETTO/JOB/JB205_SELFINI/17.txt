@@ -1,0 +1,4 @@
+#IF $(XX9:5)=0 & $(XX9:6)=1
+   2	MA	X=0 Y=0 NM=PENSIL df=10 pf=10 KO_ZERO=0
+  // 2	MA	X=0 Y=0 NM=PENSIL df=10 pf=10 KO_ZERO=1
+#ENDIF

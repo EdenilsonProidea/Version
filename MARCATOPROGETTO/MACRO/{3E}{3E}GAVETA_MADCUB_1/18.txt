@@ -1,0 +1,10 @@
+inicia_gav_comun
+INICIA_GAV_CUB
+260     // Lateral Gaveta
+260.001  // Lateral Gaveta
+#IF $(contrafrentegaveta)=1
+   262,A=$A-1*($(afafundogaveta:0)+$(espfundogaveta:0)+3),sa=$(afafundogaveta:0)+$(espfundogaveta:0)  // Frontal caixa Gaveta
+#ENDIF
+#IF $(FRGAVINT:0)=1 & $(_TPGAVALT:10)=1 // Adicionado $(_TPGAVALT:10)=1 pois entrava frente nas gavetas bp mesmo que não tivesse no cadastro da altura da gaveta <c26636>
+   217,sl=$(red_larg_fre_int:0)-$(_corr:8)+$(folgafrentelgvi:0),SA=-$(_corr:6),SP=$P,L=$l-1*($(RED_LARG_FRE_INT:0)*2)+$(_corr:8)*2)-$(folgafrentelgvi:0)*2,A=$(agav:0)+$(_corr:6)  //Frontal caixa Gaveta
+#ENDIF

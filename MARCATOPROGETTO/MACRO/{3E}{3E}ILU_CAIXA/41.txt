@@ -1,0 +1,24 @@
+#IF $(ABASE:0)[18;25]!0 | $(ESLAT:0)[18;25]!0
+   #IF $(AMBIENTE)==C
+      #IF $(SUP)=1  || $(COL)=1
+         #IF $(_TAMPINF:3)=1 & $(ESPPAINEL:3)[18;25]!0
+            ILU_TAMPOINF,L=$L+$(incpaindi)+$(incpainei),sl=-$(incpainei),p={$p+$(inc_pain_acab:0)+$(incpainfi:0)},SA=-$(ESPPAINEL:3)-1,MACRO=ILU_TAMPOINF
+         #ENDIF
+         #IF $(NICHO)=1
+            #LET AMBIENTE=
+            ILU_BASINF,L={$L-(2*$(ESLAT))},SL=$(ESLAT),SA=-2,MACRO=ILU_BASINF
+         #ENDIF
+         ILU_BASSUP,L={$L-(2*$(ESLAT))},SL=$(ESLAT),SA={$A-($(ABASE:0)+1)},MACRO=ILU_BASSUP
+         ILU_LATDIR,SL={$L-$(ESLAT)},L=$A-2*$(ABASE:0),SA={$A-$(ABASE:0)},AZ=90,MACRO=ILU_LATDIR
+         //ILU_LATESQ,L={$A-(2*$(ABASE:0))},SA={$(ABASE:0)},SL=$(ESLAT),AZ=-90,CORRECAO_POS=-2,MACRO=ILU_LATESQ
+      #ELSEIF $(INF)=1
+         ILU_LATDIR,SL={$L-$(ESLAT)},L=$A-$(ABASE:0),SA=$A,AZ=90,MACRO=ILU_LATDIR
+         ILU_LATESQ,L={$A-($(ABASE:0))},SA={$(ABASE:0)},SL=$(ESLAT),CORRECAO_POS=-2,AZ=-90,MACRO=ILU_LATESQ
+      #ENDIF
+   #ELSEIF $(AMBIENTE)==D
+      ILU_BASSUPD,MACRO=ILU_BASSUPD,SA=-1
+   #ENDIF
+   #IF $(INFOPECA)!!
+      !COMMENTO4 LED=$(INFOPECA)
+   #ENDIF
+#ENDIF

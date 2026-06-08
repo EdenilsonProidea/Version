@@ -1,0 +1,29 @@
+#LET NAOFAZER=0
+#IF $(XX3:1)[ICL;SCL;MALL;INTL;SICL]  #LET NAOFAZER=1 // CANTO L
+#IF $(xx3:0)=$(xp3:0)
+   #IF $(XX3:1)[1;3;5]!0
+      #LET PCANAL=$(XP8:0)
+      #IF $(PA)>0 #LET F=1 #LET F=2
+      #IF $(ANGOLO)>0
+         // FAZER FRESAGEM
+         // $(F)	CANALMOVEL	X=0 Y={$(PP)} XI={$(PL)} XF={$(PL)+$(DL)} DP=$(DP) PF=$(PCANAL)
+         // $(F)	CANALMOVEL	X=0 Y=$(PP) XI=$(XA) XF={$(PL)+$(DL)} DP=$(DP) PF=$(PCANAL)
+      #ELSE
+         $(F)	CANALMOVEL	X=0 Y=$(PP) XI=0 XF={$(DL)-$(PCANAL)} DP=$(DP) PF=$(PCANAL)
+      #ENDIF
+   #ELSE
+      #IF $(NAOFAZER)=0
+         #IF $(dp)<15
+            #LET PCANAL=$(XP8:0)
+            #IF $(xx5:0)[INT;CHA;LI]=0
+               #IF $(pA)>0 #LET f=1 #LET f=2
+               #IF ($(PA)>0 & $(PA)-$(XA)<2) | ($(PA)<0 & $(PA)+$(DA)>-2)
+                  #IF $(PL)<0 #LET PL=0
+                  #IF $(PL)+$(DL)>$(XL) #LET DL=$(XL)
+                  $(F)	CANALMOVEL	X=$(PL) Y={$(PP)} XI={$(PL)} XF={$(PL)+$(DL)} DP=$(DP) PF=$(PCANAL)
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF

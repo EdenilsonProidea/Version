@@ -1,0 +1,12 @@
+{ 584   // Suporte gav Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Suporte gav Ubik
+   CODICE              =$(codsuporteU) /LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(_corsupgu:3),$(_corsupgu:3)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   X7                  =$(_tpSuppg:3)/$(_corsupgu:0)
+   X8                  =acessorios\$(_tpSuppg:4)
+}

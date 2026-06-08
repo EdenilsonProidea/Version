@@ -1,0 +1,13 @@
+{ 598   // Fechadura
+   *AZZERA*            =0
+   DESCRIZIONE         =Fechadura
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slfechmag:0),$(afre)-$(_FECHMAG:11)-$(FOLGAFRENTEAS:0),$p+1
+   DIMENSIONE          =0.1,0.1,0.1
+   COLORI              =180,180
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =FECHADURA.XP
+   X8                  =$(_fechmag:6)/$(_FECHMAG:8)/$(_FECHMAG:9)/$(_FECHMAG:10)
+   X9                  =$(_fechmag:3)/$(_fechmag:7)/$(qtdtrava:0)
+   X10                 =$(_fechmag:13)
+}

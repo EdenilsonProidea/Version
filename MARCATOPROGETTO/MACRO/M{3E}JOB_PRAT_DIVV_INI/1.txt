@@ -1,0 +1,4 @@
+#M JOB_INICIA_TPFIX
+#IF $(pA)>0 #LET f=1 #LET f=2
+#IF $(PP)<0 #LET PP=0
+#IF $(PP)+$(DP)>$(XP) #LET DP={$(XP)-$(PP)}

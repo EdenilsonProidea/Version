@@ -1,0 +1,24 @@
+#IF $(PIVOTANTE:0)!0
+   #IF $(_fechmag:5)=1
+
+      #IF $(abertura:0)=1
+
+         598.001,SL=$L-$(_fechmag:12),SA=$a/2,sp=32 // Fechadura porta passagem
+         598.001,SL=$L-$(_fechmag:12),sp=-6,SA=$a/2,AY=180  // Fechadura porta passagem
+      #ELSE
+//#MSG teste
+         598.001,SL=$(_fechmag:12),SA=$a/2,sp=32 // Fechadura porta passagem
+       //  598.001,SL=$(_fechmag:12),sp=-6,SA=$a/2,AY=180  // Fechadura porta passagem
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(_fechmag:5)=1
+      #IF $(PP_APLICACAO:3)=2
+         598.001,SL=$L-$(_fechmag:12),SA=$a/2,sp=32 // Fechadura porta passagem
+         598.001,SL=$L-$(_fechmag:12),sp=-6,SA=$a/2,AY=180  // Fechadura porta passagem
+      #ELSE
+        // 598.001,SL=$(_fechmag:12),SA=$a/2,sp=32 // Fechadura porta passagem
+       //  598.001,SL=$(_fechmag:12),sp=-6,SA=$a/2,AY=180  // Fechadura porta passagem
+      #ENDIF
+   #ENDIF
+#ENDIF

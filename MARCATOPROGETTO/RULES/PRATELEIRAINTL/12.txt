@@ -1,0 +1,39 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=LATERAL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,_listcomponentes,,,,$(_listcomponentes:3)=9,,,,,,4
+T,Avancopratavul,,,Avanço da prateleira?,$(_listcomponentes:1)=529001,,,,,,4
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+G,AVULSO_CAIXA
+G,VAROCULTE
+
+[GRAFICA]
+avulso_caixa
+#MSG
+// 209

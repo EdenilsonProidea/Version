@@ -1,0 +1,11 @@
+#IF $(_tampsup:3)=1
+   // rodateto
+   635,sl=-($(acr_tamp_esq)+$(incpainES:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainES:0)+$(incpainDS:0)) // Vista Cozinha
+#ELSEIF $(_tampsup:3)=2
+   636,SL=-($(acr_tamp_esq)+$(incpainES:0)),SP=$P-$(P_PAINEL_PAREDE:0)+$(INC_PAIN_ACAB:0)+$(incpainTS:0),L=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainES:0)+$(incpainDS:0))  //Base Tamponamento Cozinha
+#ELSEIF $(_tampsup:3)=3
+   635,sl=-($(acr_tamp_esq)+$(incpainES:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainES:0)+$(incpainDS:0)),sa=$a+$(ESPAINA:0),a=$(avistatamp:0)-$(ESPAINA:0) // Vista Cozinha
+   636,sl=-($(acr_tamp_esq)+$(incpainES:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainES:0)+$(incpainDS:0))  // Base Tamponamento Cozinha
+#ELSEIF $(_tampsup:3)=4
+   636,sl=-($(acr_tamp_esq)+$(incpainES:0)),l=$l+1*($(acr_tamp_esq)+$(acr_tamp_dir)+$(incpainES:0)+$(incpainDS:0)),sp=-$(incpainTS:0),p=$p+$(INC_PAIN_ACAB:0)+$(incpainTS:0)+$(incpainFS:0)  // Base Tamponamento Cozinha
+#ENDIF

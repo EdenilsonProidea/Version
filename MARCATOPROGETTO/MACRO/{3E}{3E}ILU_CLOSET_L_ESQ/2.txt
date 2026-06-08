@@ -1,0 +1,38 @@
+#IF $(_PES:3)>0
+   #LET PPLA=$(_PES:5)
+#ENDIF
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1
+      419.011,A=20,L=20,SP=$P+20,AZ=-180,SL={($A/2)-$(ARODP:3)-12},SA=$(ESLAT)
+   #ELSE
+      419.010,A=20,L=20,SP=$P+20,AZ=-180,SL={($A/2)-$(ARODP:3)-12},SA=$(ESLAT)
+   #ENDIF
+#ENDIF
+#IF $(LUZ)=1
+   #IF $(TP_LED:12)=1
+      #IF $(TP_LOCAL:3)=1
+         467,A=2,P=8.5,SP={$P-100+8.5},SA=-1,SL=$(PPLA)
+      #ELSEIF $(TP_LOCAL:3)=2
+         467,A=2,P=8.5,SP={($P/2)-20},SL=$(PPLA)
+      #ELSE
+         467,A=2,P=8.5,SP=63,SL=$(PPLA)
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=2
+      // FAZER ERRO
+      #LETS PECA=LATERAL ESQUERDA
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=3
+      // FAZER ERRO
+      #LETS PECA=LATERAL ESQUERDA
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=4
+      #IF $(TP_LOCAL:3)=1
+         468,A=2,P=8.5,L={$L-3},SL=6+$(PPLA),SP={$P-100}
+      #ELSEIF $(TP_LOCAL:12)=2
+         468,A=2,P=8.5,L={$L-3},SL=6+$(PPLA),SP={($P/2)-25}
+      #ELSE
+         468,A=2,P=8.5,L={$L-3},SL=6+$(PPLA),SP=67
+      #ENDIF
+   #ENDIF
+   #LETS INFOPECA=$(INFOPECA)|LAT_ESQ
+#ENDIF

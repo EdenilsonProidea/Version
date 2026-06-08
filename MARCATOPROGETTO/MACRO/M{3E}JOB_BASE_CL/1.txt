@@ -1,0 +1,11 @@
+// *************** USINAGENS E FURAÇÕES CANTOS DE COZINHA **************************
+// <C29108>
+#IF $(XX3:1)[ICL;SCL;MALL;INTL;SICL]!0
+   #LET NAOFURAR=0
+   #IF $(TIPOLOGIA)=201 // COLISÃO COM LATERAL ESQUERDA _ PEÇA NÃO ROTACIONADA
+      #M JOB_BASE_LAT,XP=$(XX8:1)
+   #ELSEIF $(TIPOLOGIA)=202
+      #M JOB_BASE_LATD //,XP=$(XX8:2)
+   #ENDIF
+#ENDIF
+// *************** FIM USINAGENS E FURAÇÕES CANTOS DE COZINHA **************************

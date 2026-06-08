@@ -1,0 +1,12 @@
+#IF $(cava)=1 & $(_FR:6)!111 // CAVA TIME PROFILO NÃO TEM DESCONTO
+// comentado em acesso dia 22/03 a folgafrente pois está com 1.5 de diferença para frentes em relação ao módulo superior
+   #IF $(SPOSTAA)+$A>$(ATOT)-100
+      // #LET afre=($(afre)+$(FOLGAFRENTEAS:0))-$(RIDFRECAVA:0)
+      #LET afre=($(afre))-$(RIDFRECAVA:0)
+   #ELSE
+      // #LET afre=($(afre)+$(FOLGAFRENTEAS:0))-$(RIDFRECAVA:0)
+      #LET afre=($(afre))-$(RIDFRECAVA:0)
+   #ENDIF
+   #LETV _pux=999
+   #LETV _pux$(_ctx)=999
+#ENDIF

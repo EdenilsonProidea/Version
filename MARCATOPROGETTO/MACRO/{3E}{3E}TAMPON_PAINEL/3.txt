@@ -1,0 +1,28 @@
+#LET CL=005
+
+#IF $(LATERAL_P_B:3)=1
+   622,SA=$(LATERAL_P_B:4)-$(esp_prat:3),L=$l-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(LATERAL_P_E:4),x3=_/TAMPPI  //Base painel Home
+#ELSEIF $(LATERAL_P_B:3)=2
+   622,SA=$(LATERAL_P_B:4)-$(esp_prat:3),L=$l-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(LATERAL_P_E:4),x3=_/TAMPPI  //Base painel Home
+   400,AX=90,sa=$(LATERAL_P_B:4)-1-$(esp_prat:3),sp=$p-$(esp_prat:3),sl=$(LATERAL_P_E:4)-$(esp_prat:3),l=$l-$(LATERAL_P_D:4)-$(LATERAL_P_E:4)+$(esp_prat:3)*2,A=5,P=1,lato=0,GL=0,C1=$(CL),C2=$(CL)
+#ENDIF
+#IF $(LATERAL_P_C:3)=1
+   622,SA=$A-$(LATERAL_P_C:4),L=$l-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(LATERAL_P_E:4),x3=_/TAMPPS  //Base painel Home
+#ELSEIF $(LATERAL_P_C:3)=2
+   622,SA=$A-$(LATERAL_P_C:4),L=$l-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(LATERAL_P_E:4),x3=_/TAMPPS  //Base painel Home
+   400,sp=$p-$(esp_prat:3),sl=$(LATERAL_P_E:4)-$(esp_prat:3),l=$l-$(LATERAL_P_D:4)-$(LATERAL_P_E:4)+$(esp_prat:3)*2,AX=90,SA=$A-$(LATERAL_P_C:4)+$(esp_prat:3),A=5,P=1,lato=0,GL=0,C1=$(CL),C2=$(CL)
+#ELSEIF $(LATERAL_P_C:3)=5
+   400,sp=$p-$(esp_prat:3),sl=$(LATERAL_P_E:4),l=$l-$(LATERAL_P_D:4)-$(LATERAL_P_E:4),AX=180,SA=$A-$(LATERAL_P_C:6)+$(REDSUPPAI:0)+5,A=5,P=1,lato=0,GL=0
+#ENDIF
+#IF $(LATERAL_P_E:3)=1
+   621,A=$a-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)+$(esp_prat:3)*2,SL=$(LATERAL_P_E:4)-$(esp_prat:3),SA=$(LATERAL_P_B:4)-$(esp_prat:3),x3=_/TAMPPL  // Lateral painel HomeA=$a+$(esp_prat:3)-1*($(LATERAL_P_C:4))
+#ELSEIF $(LATERAL_P_E:3)=2
+   621,A=$a-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)+$(esp_prat:3)*2,SL=$(LATERAL_P_E:4)-$(esp_prat:3),SA=$(LATERAL_P_B:4)-$(esp_prat:3),x3=_/TAMPPL  // Lateral painel Home
+   400,sp=$p-$(esp_prat:3),sl=$(LATERAL_P_E:4)-$(esp_prat:3)-1,AZ=90,AX=90,SA=$A-$(LATERAL_P_C:4)+$(esp_prat:3)-$(REDSUPPAILED:0),L=$A-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)+$(esp_prat:3)*2-$(REDSUPPAILED:0),A=5,P=1,lato=0,GL=0,C1=$(CL),C2=$(CL)
+#ENDIF
+#IF $(LATERAL_P_D:3)=1
+   621,A=$a-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)+$(esp_prat:3)*2,SL=$l-$(LATERAL_P_D:4),SA=$(LATERAL_P_B:4)-$(esp_prat:3),x3=_/TAMPPL  // Lateral painel Home
+#ELSEIF $(LATERAL_P_D:3)=2
+   621,A=$a-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)+$(esp_prat:3)*2,SL=$l-$(LATERAL_P_D:4),SA=$(LATERAL_P_B:4)-$(esp_prat:3),x3=_/TAMPPL  // Lateral painel Home
+   400,AZ=90,AX=90,sp=$p-$(esp_prat:3),sl=$L-$(LATERAL_P_D:4)+$(esp_prat:3),SA=$A-$(LATERAL_P_C:4)+$(esp_prat:3)-$(REDSUPPAILED:0),L=$A-$(LATERAL_P_B:4)-$(LATERAL_P_C:4)+$(esp_prat:3)*2-$(REDSUPPAILED:0),A=5,P=1,lato=0,GL=0,C1=$(CL),C2=$(CL)
+#ENDIF

@@ -1,0 +1,15 @@
+#M calcula_mascara
+#IF $(_TPCAIXA:14)!!
+   #IF $(_MONTADO)=1
+      $(_TPCAIXA:14),1,$(mascara),$(DL),$(DA),$(DP),,,,,,,$(mat)
+   #ELSEIF $(X9:3)=1 // Adicionado em visita
+      $(_TPCAIXA:14),2,$(mascara),$(DL),$(DA),$(DP),,,,,,,$(mat)
+   #ELSE
+      $(_TPCAIXA:14),1,$(mascara),$(DL),$(DA),$(DP),,,,,,,$(mat)
+   #ENDIF
+#ENDIF
+#IF $(VLINHA:0)==CR0
+   10292,1,TIPO1=NUMCAIXA;COR=$(COR:1)  //montagem
+#ELSE
+   8387,1,TIPO1=NUMCAIXA;COR=$(COR:1)  //montagem
+#ENDIF

@@ -1,0 +1,73 @@
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1
+      419.011,A=20,SA={$A+20-($(ABASE)/2)},L=20,SP=$P+20,SL={$L/2},AZ=90
+   #ELSE
+      419.010,A=20,SA={$A+20-($(ABASE)/2)},L=20,SP=$P+20,SL={$L/2},AZ=90
+   #ENDIF
+#ENDIF
+#LET V_OLD=
+#IF $(LUZ)=1
+   #IF $(TP_LED:12)=1
+      #IF $(TP_LOCAL:3)=1
+         // LADO DIR
+         //463,cod=000$(tp_led:10),A=2,P=8.5,L={$L},SP={$P-1*(42)},SA=-27 // escos e afcos zerado passado 30 pra substituir
+         #MSG $(ABASE)
+         463,A=2,P=8.5,L={$L-1*($(PROFESQLIGHT:0)+50)+(33+8.5)},SL=$(PROFESQLIGHT:0)-(33),SA={$A-$(ABASE)},SP={$(PROFDIRLIGHT:0)-(33+8.5)}
+         // LADO ESQ
+         497,A=2,L=8.5,P={$P-1*($(PROFDIRLIGHT:0)+50)+(33+8.5)},SA={$A-$(ABASE)+$(_pes:5)},SL=$(PROFESQLIGHT:0)-1*(33+8.5),SP=$P-{$P-1*($(PROFDIRLIGHT:0))+(33+8.5)}
+         #LET tam_led=$L
+         //  #ELSEIF $(TP_LOCAL:3)=2
+         // LADO DIR
+         //   463,A=2,P=8.5,L={$L},SP={($P-$(escos:0)-$(afcos:0)-50)/2+45.5},SA={$A-$(ABASE)}
+         // LADO ESQ
+         //   #LET tam_led=$L
+         // #ELSE
+         // LADO DIR
+         //  463,A=2,P=8.5,SP=63,L=$l,X7=1/$(TP_COR:2),SA={$A-$(ABASE)}
+         // LADO ESQ
+         // #LET tam_led=$L
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=2 // SPOT NÃO PREVISTO
+      // #IF $L>250 & $L<675
+      //  #LET X=1
+      // #ELSEIF $L>676 & $L<1320
+      //   #LET X=2
+      //#ENDIF
+      //#FOR $1:$(X)
+      //  #IF $(I)=1
+      //   464,SA={$A-($(ABASE:0)+2)},SL={INT($L/($(X)+1)*$(i))-25},SP={(($P-$(escos:0)-$(afcos:0)-50)/2)+21},X7=1/$(TP_COR:2)/$(ACAB:2),X8=ilu\$(TP_LED:6),X9=$(TP_LED:3)/$(LigarLuz:0)
+      // #LET V_OLD=$(V_OLD)+1
+      // #ELSE
+      //   464,SA={$A-($(ABASE:0)+2)},SL={INT($L/($(X)+1)*$(i))-25},SP={(($P-$(escos:0)-$(afcos:0)-50)/2)+21},X7=1/$(TP_COR:2)/$(ACAB:2),X8=ilu\$(TP_LED:6),X9=$(TP_LED:3)/$(LigarLuz:0)
+      // #ENDIF
+      // #ENDFOR
+   #ELSEIF $(TP_LED:12)=3 // NÃO PREVISTO
+      #IF ($L-$(PROFESQLIGHT:0))<450 | ($P-$(PROFDIRLIGHT:0))<450
+         // #LETS IDLOGERROS=$(IDLOGERROS)82;
+         #MSG Largura do led Mini Noor menor que 450mm.
+      #ELSE
+         // 463,A=2,P=8.5,L=420,SP={$P-(33+8.5)},SA={$A-$(ABASE)},SL={($L/2)-(420/2)}
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=4
+      #LET pcalaleta=16.5
+      #IF $(TP_LOCAL:3)=1
+         // LADO DIR
+         463,A=2,P=$(pcalaleta:0),L={$L-1*($(PROFESQLIGHT:0)+50)+(37)},SL=$(PROFESQLIGHT:0)-37,SP={$(PROFDIRLIGHT:0)-1*($(pcalaleta:0)+37)},SA={$A-$(ABASE)},dis=0,c1=16,c2=16
+         // LADO ESQ
+         497,A=2,L=$(pcalaleta),P={$P-1*($(PROFDIRLIGHT:0)+50)+(37+$(PCALALETA:0))},SL=$(PROFESQLIGHT:0)-1*($(PCALALETA:0)+37),SP=$P-{$P-1*($(PROFDIRLIGHT:0))+(37+$(PCALALETA:0))},SA={$A-$(ABASE)},dis=0,c1=16,c2=16
+         #LET tam_led=$L
+         //  #ELSEIF $(TP_LOCAL:3)=2
+         //   463,A=2,P=$(pcalaleta),L={$L},SP={($P-$(escos:0)-$(afcos:0)-50)/2+41.75},SA={$A-$(ABASE)},dis=0,c1=16,c2=16
+         //  #LET tam_led=$L
+         // #ELSE
+         //   463,A=2,P=$(pcalaleta),SP=59,L={$L},X7=1/$(TP_COR:2),SA={$A-$(ABASE)},dis=0,c1=16,c2=16
+         // #LET tam_led=$L
+      #ENDIF
+   #ENDIF
+   #IF $(tam_led:0)<200 & $(tp_led:12)[1;4]
+      #LETS IDLOGERROS=$(IDLOGERROS)77
+   #ENDIF
+   #LETS INFOPECA=$(INFOPECA)|BAS_SUP
+#ENDIF
+//LOGERROS // ISSO NÃO PODE ESTAR AQUI PORQUE ZERA OS LOGERROS E NOS DORMITÓRIOS PRECISA PARA DAR MENSAGEM DO ERRO DO CANTO DO TAMANHO TOTAS DO ARMÁRIO
+// ILU_PRAT

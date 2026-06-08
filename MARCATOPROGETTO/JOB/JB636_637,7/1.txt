@@ -1,0 +1,1 @@
+#IF $(pa)>0 #LET f=2 #LET f=1$(f),RETANGULO,X=$(PL) Y=$(PP) DX=$(DL) DY=$(DP) RAIO=1 PF=$(XA) INFO=RECORTE_COLUNA

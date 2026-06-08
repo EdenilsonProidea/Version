@@ -1,0 +1,23 @@
+// ALEX FEITO EM VISITA - FOI SOLICITADO PARA PORTA FRAME BELLAGIO E VINTAGE TER POSIÇÃO DO PUXADOR BOLINHA NO CENTRO DA MOLDURA. PARA ISSO CRIAMOS MAIS UMA COLUNA NA VARIANTE _PUX_EXTRA PARA IDENTIFICAR OS PUXADORES BOLINHA. A COLUNA 6 PRECISA ESTAR IGUAL A 1 PARA CENTRALIZAR NA MOLDURA DESSA PORTAS EM ESPECÍFICO
+#LOADVAR _PARPUXEXTRA _PUX_EXTRA $(_PUX:1)
+#IF $(_PARPUXEXTRA:6)=1
+   #LETV _PUX:15={32-$(_PUX:4)/2} // COLOQUEI + 0.01 POIS O LETV NÃO ACEITA 0
+   #LETV _PUX:16={32-$(_PUX:5)/2} // COLOQUEI + 0.01 POIS O LETV NÃO ACEITA 0
+#ENDIF
+_calcola_popx
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$A
+#ENDIF
+#LETS parfrente=porta_palha.3DS|100;100;100;100
+#LETS xpfrente=frente_3D.xp
+#LET ladojobfrente=1
+#LETS nomejobfrente=VINTAGEVETRO
+#LETS parjobfrente=PPUX@$(popxm)^SENPUX@$(sentido)
+#IF $A<150
+   #LETS idlogerros=$(idlogerros)61
+#ENDIF
+//_FR_STANDARD,FRENTECOMPALHA=1
+#LET diff_vidro=63.5 // colocado pelo silvio 26/10/2023 - conforme informações passada pela gaby - a modura tem que ser 75
+268,SL=$(diff_vidro)+$(FOLGAFRENTEL:0),SA=$(diff_vidro)+$(FOLGAFRENTEAI:0)+$(AFFRE),L=$(lff)-$(diff_vidro)*2,A=$(aff)-2*$(diff_vidro)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0)),C1=$(_VIDRO:3)|$(.percorso)\foto\madeira\$(_VIDRO:4)|$(_VIDRO:5),C2=$(_VIDRO:3)|$(.percorso)\foto\madeira\$(_VIDRO:4)|$(_VIDRO:5) // VIDRO
+//.frente_3D.xp
+// 215

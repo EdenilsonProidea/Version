@@ -1,0 +1,14 @@
+#IF $(XA)>15 // MAIOR = 18
+   #LET PF=15
+#ELSE // 15 MM
+   #LET PF=10
+#ENDIF
+#LET f=2
+#IF $(PL)<0 #LET F1=4 #LET F1=3
+#IF $(F1)=4
+   $(f)	FF	X=5 Y=50 DF=11 PF=$(PF)
+   $(f)	FF	X=5 Y={$(XP)-50} DF=11 PF=$(PF)
+#ELSE
+   $(f)	FF	X={$(XL)-5} Y=50 DF=11 PF=$(PF)
+   $(f)	FF	X={$(XL)-5} Y={$(XP)-50} DF=11 PF=$(PF)
+#ENDIF

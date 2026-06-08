@@ -1,0 +1,10 @@
+{ 296   // Caixa
+   *AZZERA*            =0
+   DESCRIZIONE         =Caixa
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)/$(CANTO:0)
+}

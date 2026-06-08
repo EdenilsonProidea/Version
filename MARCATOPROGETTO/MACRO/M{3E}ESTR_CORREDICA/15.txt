@@ -1,0 +1,33 @@
+#LETV _corr=$(x8:1)
+#LETV _TPGAV=$(x8:3)
+#IF $(V_MONTADO)=1 #LETS ISMONTADO=M #LETS ISMONTADO=
+#IFDEF $(_corr:5)
+   #LETS codcorredica=$[CODICEBARRA;X$(_corr:5)-$(X8:0);$(X8:0);10;errore] // ,,,,,1,,,,$(MAT)
+#ENDIF
+#IF $(_listino)=1
+   #IFDEF $(_corr:5)
+      $(codcorredica)$(ISMONTADO),1,,$(X8:0) // ,,,,,1,,,,$(MAT)
+   #ENDIF
+   #IF $(_tpgav:3)[2;3]!0 // so para gavetas compradas
+      #IF $(x8:2)!!
+         $(x8:2),1,,$(DIML),$(DIMA),$(DIMP)
+      #ENDIF
+   #ELSE
+      // $(_tpgav:4),1  // <29983>
+   #ENDIF
+   CPMGAV,1  //montagem gaveta
+#ELSE
+   #IF $(x8:2)!! & $(_tpgav:3)[2;3]!0
+      KIT-GAV,1,CODGAV=$(X8:2),$(DIML),$(DIMA),$(DIMP) // gaveta
+   #ENDIF
+   KIT-CORR,1,CODCORR=$(CODCORREDICA)$(ISMONTADO);MONTADO=$(V_MONTADO);
+#ENDIF
+#IF $(VLINHA:0)==CR0
+   10293,1,TIPO1=ALTGAV;VARIANTE=$(X8:9)  //montagem gaveta
+#ELSE
+   8388,1,TIPO1=ALTGAV;VARIANTE=$(X8:9) //montagem gaveta
+#ENDIF
+
+#IF $(X9:5)!0
+#ELSE
+#ENDIF

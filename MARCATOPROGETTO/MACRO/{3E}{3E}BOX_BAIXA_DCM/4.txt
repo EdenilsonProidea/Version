@@ -1,0 +1,21 @@
+// CHECK_GAV
+#LET espessura_gaveta=15
+#LET espgaveta=$(espessura_gaveta:0)
+#LET espfundogaveta=$(espessura_gaveta:0)
+#LET afafundogaveta=12
+#LET canalgaveta=5
+#LET alatg=125
+#LET acfundog=$(alatg)-$(afafundogaveta)
+#LET agav=125
+260,A=$(alatg),X3=$(curbox)/CM,X7=N/N/N/CN/0/1/1/0/0/0/0/0/1/0/0/1/0  //Lateral Gaveta
+260.001,a=$(alatg),X7=N/N/N/CN/0/0/1/0/0/0/0/0/1/0/0/1/0,X3=$(curbox)/CM  // Lateral Gaveta
+#IF $(_TPINTGAVETEIRO:3)=2
+   261.003,X5=1,A=$(acfundog),sa=$(alatg)-$(acfundog),X7=N/N/N/N/0/0/0/1/0/0/0/0/0/0/1/0/0  // Traseira Gaveta
+#ELSE
+   261,X5=1,A=$(acfundog),sa=$(alatg)-$(acfundog),X7=N/N/N/N/0/0/0/1/0/0/0/0/0/0/1/0/0  // Traseira Gaveta
+#ENDIF
+263,SP=$(espgaveta),P=$p-$(espgaveta)-1  //Fundo Gaveta
+#IF $(_mantagav:0)>0
+   350,SP=$(espgaveta),P=$p-$(espgaveta)-1  //Fundo Gaveta
+#ENDIF
+// 218

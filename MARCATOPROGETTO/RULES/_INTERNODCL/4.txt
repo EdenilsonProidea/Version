@@ -1,0 +1,73 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=_INTERNODCL.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=201
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIADOR
+T,_CORCX,,,,,,,,,,4
+T,_corfr,,,,,,,,,,4
+T,tpfixprat,,,,,,,,,,3
++,ADDINTD
+
+[GRAFICA]
+//!SETCODICE DO0_INTD
+INICIA
+#LETS _corpr=$(_corcx)
+#LET AFCOS=0
+#LET ESCOS=0
+#LETS parpai=$[TOSEP;/;$(LOCP0_BX1)]
+#LETV _tpfr=$(parpai:0)
+#LETV _tpcaixa=$(parpai:1)
+#IF $(espessura:0)=0 #LET espessura=18
+#LETV $(_corfr$(ctx))=$(_corfr)
+#LET RED_F_DIVH=0
+#LET RED_F_PRAT=0
+#LET CLOSETLIGHT=1
+INICIA_PDIV,PLACERINTERNO=1
+
+// Sapa_inc
+// ADDINTD
+
+403,x1=201,sp=0,p=$p  //Placer
+
+
+#LETS _macrofinale=internod_fim
+
+// internod_fim
+// 297,COD= / /Alt. $a,SA=$a-100,a=100  // TEXTO
+// _fr
+// 301
+// _int
+// nicho_colmeia
+// CALCEIROS_TELE
+// SAPINC_1
+// prats
+// _fr_reta
+// 301
+// 356
+// _int_canto_R
+// SAPINC_1
+// PRAT_WOOD
+
+// SAPATEIRA_TELE

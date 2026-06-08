@@ -1,0 +1,10 @@
+{ 237   // BASAMENTO COZINHA
+   *AZZERA*            =0
+   DESCRIZIONE         =BASAMENTO COZINHA
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(SLBASAMENTO),-$(arod),$(afbast:0)
+   DIMENSIONE          =$(LBASAMENTO),$(arod),$p-1*($(afbasmFre)+$(afbast:0))
+   COLORI              =$(_corpes:3)|pareti\foto\pavimenti\$(_corpes:6)|$(_corpes:9),$(_corpes:3)|pareti\foto\pavimenti\$(_corpes:6)|$(_corpes:9)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

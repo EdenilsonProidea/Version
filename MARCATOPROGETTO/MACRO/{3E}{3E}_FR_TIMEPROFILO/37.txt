@@ -1,0 +1,40 @@
+#IF $(idp)=2
+   #LOADVAR _ladotimeprofilo _ladotimeprofilo $(_ladotimeprofilo2:1)
+#ENDIF
+#IF $(_TPCAIXA:0)==CIL & $(_LADOTIMEPROFILO:0)!!003
+   #IF $(ape:0)==AGE
+      #LETV _LADOTIMEPROFILO=002
+   #ENDIF
+   #IF $(ape:0)==AGD
+      #LETV _LADOTIMEPROFILO=001
+   #ENDIF
+#ENDIF
+#IF $(TPF)=65 & ($(_pux:0)=999 | $(pv_pux:0)=999) // Remove o puxador, 3ds e usinagens para as portas que não tem puxador no canto L de cozinha - feito em visita
+   #LETS xpfrente=
+   #LETS parfrente=
+   #LET ladojobfrente=
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+#ELSE
+   #LET ladojobfrente=2
+   #LETS nomejobfrente=$(_ladotimeprofilo:12)
+   #LETS parjobfrente=PPUX@$(_ladotimeprofilo:13)^SENPUX@$(_ladotimeprofilo:14)^TPPUX@$(_ladotimeprofilo:15)
+   #LETS xpfrente=FRENTE3D.XP//$(_ladotimeprofilo:3)
+   #LETV _fr:7=$(_ladotimeprofilo:3)
+#ENDIF
+
+#LET AFRE=$(AFRE)+$(_puxcava:4)
+#LET AFFRE=$(AFFRE)-$(_puxcava:4)
+
+#IF $(fr_avulsa)=0 & $(sup)=0
+   // 204.003,COD=000PROFHO,SL=0,SA=$a-42,SP=-$(ESTRA:0),L=$L+3,A=45,X3=$(curbox)/$(_FR:6),X7=N/N/N/N/0/0/0/1/0/0/1/1/0/0/0/0/_/$(FITARSOVISTA:2)  //Traversa vertical frente
+   #IF $(_ladotimeprofilo:12)==TIMEPROFILOGAV
+      #LET AFRE=$(AFRE:0)-$(RIDFRECAVA45:0)
+   #ENDIF
+#ENDIF
+
+_FR_STANDARD,AFRE={$(AFRE:0)-$(_ladotimeprofilo:5)+},SA=$(_ladotimeprofilo:5)
+
+// CAVA
+
+// FRONTAL

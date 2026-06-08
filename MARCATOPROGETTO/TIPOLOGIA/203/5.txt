@@ -1,0 +1,16 @@
+{ 203   // Base inferior
+   *AZZERA*            =0
+   DESCRIZIONE         =Base inferior
+   CODICE              =/_CORCX=$(_CORBA:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =$(ESLAT:0)+$(RED_INTM:0),0,$(AFBASE:0)
+   DIMENSIONE          ={$L-$(ESLAT:0)*2-2*$(RED_INTM:0)},$(ABASE:0),{$P-1*($(AFBASE:0)+$(red_basef))}
+   COLORI              =$(_corba:3)|$(.percorso)\foto\madeira\$(_corba:4)|$(_corba:5)|90,$(_corbf:3)|$(.percorso)\foto\madeira\$(_corbf:4)|$(_corbf:5)|90
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =BASE.XP
+   DATI                =_corba
+   X3                  =$(curbox)/I
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(canal)/$(cava)/1/1/0/0/0/1//$(FITARSOVISTA:2)
+   X8                  =$(ESCOS:0)/$(PLATE)/$(PLATD)/$(SEMUSINAGEMBASEESTR)/$(InfoRecorteBase)
+   X9                  =$(_tpcaixa:1)/$(_corba:1)/$(TPFIX:1)/$(_corbf:1)
+   ALIAS               =#203
+}

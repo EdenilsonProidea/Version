@@ -1,0 +1,11 @@
+{ 687   // SARRAFO HORIZONTAL PAINEL PAREDE
+   *AZZERA*            =0
+   DESCRIZIONE         =SARRAFO HORIZONTAL PAINEL PAREDE
+   CODICE              =/LINHA=$(MODELLO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(AMAOAMIGA),$A,$(esmaoamiga)
+   ORIENTAMENTO        =ALP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/1/1/1/1/0
+   X9                  =$(_tpcaixa:1)/$(_corcru:0)
+}

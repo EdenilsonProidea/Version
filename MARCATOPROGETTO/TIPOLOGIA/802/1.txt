@@ -1,0 +1,18 @@
+{ 802   // PAINEL BBLOCK
+   *AZZERA*            =0
+   DESCRIZIONE         =PAINEL BBLOCK
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$a,$P
+   COLORI              =$(_cPRAT:3)|$(.percorso)\foto\madeira\$(_cPRAT:4)|$(_cPRAT:5),$(_cPRAT:3)|$(.percorso)\foto\madeira\$(_cPRAT:4)|$(_cPRAT:5)
+   DISEGNO             =$(SAGBBLOCK)
+   ORIENTAMENTO        =ALP
+   PARAMETRIGL         =BBLOCK.XP
+   DATI                =_cprat$(_ctx)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =$(SUPORTEPRAT:2)
+   X9                  =$(_tpcaixa:1)/$(_cprat:1)/$(item)/$(TIPOPINTURA:1)
+   X10                 =$(PosFuros)
+   ALIAS               =#802
+}

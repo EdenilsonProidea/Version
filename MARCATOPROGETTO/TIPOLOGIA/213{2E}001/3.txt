@@ -1,0 +1,5 @@
+{ 213.001   // Colmeia Vertical MDF
+   *AZZERA*            =0
+   DESCRIZIONE         =Colmeia Vertical MDF
+   X3                  =V/$(_idunico:0)
+}

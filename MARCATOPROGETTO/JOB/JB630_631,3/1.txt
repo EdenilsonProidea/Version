@@ -1,0 +1,1 @@
+#IF $(XP5:0)!!1,MA,X=0 Y=0 MA=$(XP5:0) PARM=$(XP5:1)#ENDIF

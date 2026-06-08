@@ -1,0 +1,14 @@
+{ 244   // Cobertura frontal coluna
+   *AZZERA*            =0
+   DESCRIZIONE         =Cobertura frontal coluna
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slcol),0,$(COLUNAPAREDE:2)+$(folgacoluna:0)
+   DIMENSIONE          =$(lcol),$a,$(ESLAT:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =ALP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#244
+}

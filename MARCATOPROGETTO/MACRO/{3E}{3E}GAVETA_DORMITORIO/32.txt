@@ -1,0 +1,10 @@
+#LET lagr=$L
+INICIA_CALC_GAV,gavetadormitorio=1
+#IF $(_tpgav:10)!! // Adicionado em visita
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ENDIF
+//#MSG $(_TPINTGAVETEIRO:4)-1*($(_corr:6)+$(_corr:7))
+#LET agav=$(_TPINTGAVETEIRO:4)-1*($(_corr:6)+$(_corr:7))
+#MSG $(saini)
+GAVETA_DOR,SA=$(SAGAV),SL=$(_corr:8),SP=$p-$(pgav),L=$(lgav),A=$(agav),P=$(pgav),COD=/_CORFAMILIA=$(_CORFU:10);_CORCX=$(_CORFU:1);_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+ACEGAV,SA=$(SAGAV)

@@ -1,0 +1,14 @@
+{ 604   // PERFIL INF
+   *AZZERA*            =0
+   DESCRIZIONE         =PERFIL INF
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =22
+   POSIZIONE           =$(pv_portas:9),0,0
+   DIMENSIONE          =$L-$(pv_portas:9)*2,0,0
+   COLORI              =$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5),$(pv_corper:3)|$(.PERCORSO)\FOTO\PAINEISPORTA\$(PV_corper:4)|$(PV_corper:5)
+   DISEGNO             =$(SAG_PER_INF)
+   ORIENTAMENTO        =ALP
+   X1                  =45
+   X2                  =45
+   X9                  =$(per_inf:1)/$(pv_corper:1)
+}

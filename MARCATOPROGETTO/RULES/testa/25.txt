@@ -1,0 +1,148 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+-,dati,,,Dados
+U,LI,LIST,,Listino
+S,NOME_AMBIENTE,,,Nome Ambiente Pontta
+T,AMBIENTE,,,Ambiente
+C,ImportaDadosPontta,,,Ativa importação Cliente Pontta
+C,IMPORTFROMPRINTSRV,,,Informa que estou na importação do printsrv,,,,,,,,,1==0
+M,integrationCode,,,integrationCode,,IMPORTACLIENTEPONTTA
+M,aggregateCode,,,aggregateCode,,IMPORTACLIENTEPONTTA
+L,libera_projeto,,,libera_projeto
+T,_tipoordine,,,Tipo Ordine
+L,IDENTLOJA,,,Identificativo loja
+L,CODPROJETO,,,Cod.Projeto
+L,numeroalba,,,Numero Alba
+L,revisionealba,,,Revisione Alba,,,,,,,,,1=0
+S,consultor,,,Consultor
+S,arquiteto,,,Arquiteto
+S,projetista,,,Projetista
+E,obsfab,,,observação fab
+J,data_arr,,,Data Chegada
+J,data_cons,,,Data Entrega
+-,anex,,,Anexos
+T,has_anex,,,Tem anexo?,,,,,,,8
+D,anexo,,$(has_anex:0)=2,Anexos,,!!ideawebprogetto.marcato.com.br/pages/upload_html.aspx?id=0&tipo=1&ref1=$(_RIFHOST)-$(_RIFCLIENT)&ref2=&ref3=&ref4=&pastasave=PEDIDOS
+
+-,daticlifin,,,Cliente Finale
+L,_RIFHOST,,,N° Server
+L,_RIFCLIENT,,,N° Client
+S,CF_COD,,,Cod.Cli,,,,,,,,,1=0
+S,TT_CLI_1,,,Rag 1,,,,,,,,,1=0
+S,TT_CLI_2,,,Rag 2,,,,,,,,,1=0
+S,TT_CLI_3,,,Endereço,,,,,,,,,1=0
+S,TT_CLI_4,,,UF,,,,,,,,,1=0
+S,TT_CLI_5,,,Cidade,,,,,,,,,1=0
+S,TT_CLI_6,,,Prv,,,,,,,,,1=0
+S,TT_CLI_7,,,Tel,,,,,,,,,1=0
+S,TT_CLI_18,,,Fax,,,,,,,,,1=0
+S,TT_CLI_8,,,Mail,,,,,,,,,1=0
+S,TT_CLI_15,,,Id Dest,,,,,,,,,1=0
+S,TT_CLI_9,,,Dest.Rag.1 ,,,,,,,,,1=0
+S,TT_CLI_10,,,Dest.Rag.2,,,,,,,,,1=0
+S,TT_CLI_11,,,Dest.Endereco,,,,,,,,,1=0
+S,TT_CLI_12,,,Dest.Uf,,,,,,,,,1=0
+S,TT_CLI_13,,,Dest.Loc,,,,,,,,,1=0
+S,TT_CLI_14,,,Dest.Prv,,,,,,,,,1=0
+S,TT_CLI_16,,,Dest.Tel,,,,,,,,,1=0
+S,TT_CLI_17,,,Dest.Mail,,,,,,,,,1=0
+C,geratracker,,,Enviar Tracker
+-,IG,,,IG,,,,,,,,,1=0
+M,IGORCAMENTO,,,NUMERO ORCAMENTO
+M,IGIDAMBIENTE,,,ID AMBIENTE
+M,IGVERSAOAMBIENTE,,,VERSAO AMBIENTE,,,,1
+-,Cliente
+S,CF_CLI_1,,,Nome Cliente
+S,CF_CLI_2,,,Nome Nota Fiscal
+S,CF_CLI_3,,,Endereço
+S,CF_CLI_4,,,UF
+S,CF_CLI_5,,,Cidade
+S,CF_CLI_7,,,Telefone
+S,CF_CLI_8,,,E-mail
+-,OldIntegracoes,,,Efi/focco,,,,,,,,,1=0
+S,CLI_EFIN,,,Cod.Cliente E-finance,,IMPORTAEFINANCE,,,,,,,1=0
+S,COD_AMB_EFIN,,,Cod.Ambiente  E-finance,,IMPORTAEFINANCE,,,,,,,1=0
+S,CNPJ_CPF,,,CNPJ-CPF,,,,,,,,,1=0
+S,descricao_ambiente,,,Descriçao Ambiente,,,,,,,,,1=0
+S,IDPROJETO,,,ID PROJETO FOCCOLOJAS,,IMPORTAFOCCOLOJAS,,,,,,,1=0
+S,IDAMBIENTE,,,ID AMBIENTE FOCCOLOJAS,,IMPORTAFOCCOLOJAS,,,,,,,1=0
+S,CNPJLOJA,,,CNPJ LOJA FOCCOLOJAS,,,,,,,,,1=0
+S,IDENTIFICADOR,,,IDENTIFICADOR FOCCOLOJAS,,,,,,,,,1=0
+S,SENHA,,,SENHA FOCCOLOJAS,,,,,,,,,1=0
+
+[COMANDI_IMPORTACLIENTEPONTTA]
+
+#IF $(ImportaDadosPontta:0)=1
+   //********************************inicio ****************************************************
+   #LETS INTEGRATIONCODE=$(INTEGRATIONCODE:0)
+   #LETS aggregateCode =$(aggregateCode:0)
+   #LETS infocliente=
+   #LETS valida_projeto_existe=
+   #VB
+      
+      dim pp
+      Set pp = CreateObject("proideaponttadll.crea")  ' inicializa o integrador proideaponttadll
+      'v("infocliente")= pp.attiva("GETCLIENTE",V("INTEGRATIONCODE"))' faz a chamada que retorna os dados do cliente dentro $(infocliente)
+      'linha abaixo adicionada <c31419> e linha acima comentada para manter a original
+	  v("infocliente")= pp.attiva("GETCLIENTEAMBIENTE",V("INTEGRATIONCODE") & "|" & V("aggregateCode"))' faz a chamada que retorna os dados do cliente dentro $(infocliente)
+	  'msgbox v("infocliente")
+      if EX(v("infocliente"),"=",1)="ERRO" THEN ' se o cliente não existe ou tem algum problema informa erro
+         ' msgbox v("infocliente") ' mensagem de erro
+         v("valida_projeto_existe")=v("infocliente")
+         v("infocliente")="" ' esvazia info cliente para que não avança na integração
+      end if
+      ' essa parte não esta funcionando
+      ' so valida o cliente por enquanto -- aguardando retorno pontta
+      'v("valida_projeto_existe")=pp.attiva("GETEXISTE",V("INTEGRATIONCODE") & "|" & V("aggregateCode")) ' VERIFICA SE O PROJETO EXISTE, SE EXISTE RETORNA VAZIO, CASO CONTRARIO RETORNA INFO
+      
+      Set pp =nothing ' esvazia o objeto pp
+   #ENDVB
+   
+   #IFDEF $(valida_projeto_existe) // SE ESSA VARIAVEL TEM VALOR TEM ALGUM PROBLEMA
+      #MSG $(valida_projeto_existe)
+      #LETV libera_projeto=0 //bloca o projeto, ele não é valido
+   #ELSE
+      #LETV libera_projeto=1 // libera o projeto, para que possa ser feito, isso vai ter que ser controlado dentro das regras do 3cad
+   #ENDIF
+   
+   #IFDEF $(infocliente) // se não deu erro insere os dados do clinte, seja na testa que nos dados de entrega
+      #FOR $(infocliente) // vai passando todas as variaveis que vem do cliente
+         #LETS nv=$[ex;$(i);=;1] // separa o nome da variavel
+         #LETS vv=$[ex;$(i);=;2] // separa o valor da variavel
+         #LETV $(nv)=$(vv) //seta as variaveis dentro testa CF_CLI_1,CF_CLI_2.....
+      #ENDFOR
+      #VB // esse parte pega as variaveis CF_CLI_1,CF_CLI_2... e transfere dentro dos dados de entrega (para ver que cada variavel é ver dentro testa.erg
+         ambiente.tcli(9)=V("CF_CLI_1")
+         ambiente.tcli(10)=V("CF_CLI_2")
+         ambiente.tcli(11)=V("CF_CLI_3")
+         ambiente.tcli(12)=V("CF_CLI_4")
+         ambiente.tcli(13)=V("CF_CLI_5")
+         ambiente.tcli(14)=V("CF_CLI_6")
+         ambiente.tcli(16)=V("CF_CLI_7")
+         ambiente.tcli(17)=V("CF_CLI_8")
+      #ENDVB
+      // fim - zerar todas as variaveis cliente dentro do endereço de entrega
+   #ENDIF
+#ENDIF

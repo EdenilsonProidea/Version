@@ -1,0 +1,75 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=COZINHA PANELEIRO RETO
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=COZ_STRDIV,COZ_FREDIV,$(_tpcaixa:5),$(_tpcaixa:4),0,0,0,0
+TRADFLAGS=*,*,*,*,1
+
+
+[gene]
+T,MODELLO
+G,COZ_CAIXA
+-,po,,1=0
+G,PONTOS
+G,FR_GERAL
++,COZ_FREDIV
+G,COZ_ACAB
+G,VAROCULTE
+
+[GRAFICA]
+#IF $L>600
+   #LETV _CONFCONCEPTA=2
+#ELSE
+   #LETV _CONFCONCEPTA=1
+#ENDIF
+#LET concepta=1
+//#MSG  $(dimp)
+COZ_COL
+
+// #M pux_perfil
+
+// 252
+
+// FRONTAL
+
+// CAIXA
+
+// paineis_laterais
+
+// _FR_1
+
+// 204
+
+// _int
+
+// 241
+
+// coz_strdiv
+
+// PRAT
+
+// _FR_PROFILO
+
+
+// kitdobradiça
+
+//201
+
+// GESTAOAUTOMONT
+
+// 252

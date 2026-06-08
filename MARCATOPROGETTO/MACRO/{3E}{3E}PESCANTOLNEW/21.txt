@@ -1,0 +1,126 @@
+#IF $(_pes:3)>0
+   #IF $(_pes:3)=5
+      !RETTA 101,1,0
+      !RETTA 102,0,0
+      !RETTA 103,0,0,1
+      !RETTA 104,1,0,1
+      !RETTA 105,0,$(PTOP2)-$(PING:0)-$(afbasmFre),1
+      !RETTA 106,0,$(PTOP1)-$(PING:0)-$(afbasmFre)
+      !INTERSECA px0,py0,101,102
+      !INTERSECA px1,py1,102,103
+      !INTERSECA px2,py2,103,104
+      !INTERSECA px3,py3,104,105
+      !INTERSECA px4,py4,105,106
+      !INTERSECA px5,py5,106,101
+      !SAGOMA basamento $(px0),$(py0),$(px1),$(py1),$(px2),$(py2),$(px3),$(py3),$(px4),$(py4),$(px5),$(py5)
+      237,sl=0,sp=0,dis=$(basamento)
+      #LET na=-$(_pes:5)
+   #ELSE
+      #IF $(pm)=1
+         #LET na=-$(_pes:5)
+         //pescanto,SP=$(PTOP1)-$(PSCOCCA)-$(PING:0),sposta=$(AFRODL:0)+$l-$(lscocca),prof=$(PSCOCCA),LATOZOC=SX
+        // pescanto,sp=$(ptop1)-$(PSCOCCA)-$(PING:0),sposta=$l-$(AFRODL:0)-$(lpes),prof=$(PSCOCCA),LATOZOC=DX
+         #LET d1=$(AFRODF:0)+$(PING:0)
+         !RETTA 6,0,$(ptop1)-$(d1)
+         !RETTA 7,0,$(ptop2)-$(d1),1
+         !PUNTO px1,py1,0,$(ptop2)-$(d1)
+         !INTERSECA px2,py2,6,7
+         !DISTANZA dist,$(px2),$(py2),$(px1),$(py1)
+         #IF $(ESCLUDIPIEDI)=0
+            231,SL=$(PX2)-30,SP=$(PY2),AY=90
+         #ENDIF
+         #LETS tm1=$(px2)-100,$(ptop1)-$(d1)
+         #IF $(roddir:0)=1
+            #LETS tm1=$(tm1),$l-$(AFRODL:0),$(ptop1)-$(d1),$l-$(AFRODL:0),0
+         #ELSE
+            #LETS tm1=$(tm1),$l+5+$(sbzdx:0),$(ptop1)-$(d1)
+         #ENDIF
+         !SAGOMA PERCORSO $(tm1)
+         rodape,CODZOC=$(_ZOC:5),X1=$(PERCORSO)
+         #IF $(rodesq:0)=1
+            !PUNTO pxzs1,pyzs1,-$(sbzsx:0)+$(AFRODL:0),0
+            !PUNTO pxzs,pyzs,-$(sbzsx:0)+$(AFRODL:0),$(ptop2)-$(d1)
+            !SAGOMA percorso $(pxzs1),$(pyzs1),$(pxzs),$(pyzs),$(px2),$(py2)
+         #ELSE
+            !PUNTO pxzs,pyzs,-$(sbzsx:0),$(ptop2)-$(d1)
+            !SAGOMA percorso $(pxzs),$(pyzs),$(px2),$(py2)
+         #ENDIF
+         rodape,CODZOC=$(_ZOC:5),X1=$(PERCORSO) // ZOCCOLO
+      #ELSE
+         #LET na=-$(_pes:5)
+         pescanto,SP=$(PTOP1)-($(PSCOCCA))-$(PING:0),sposta=$(AFRODL:0),prof=$(PSCOCCA),LATOZOC=SX
+         pescanto,sp=$(ptop1)-($(PSCOCCA))-$(PING:0),sposta=$(lscocca)-$(AFRODL:0)-$(lpes),prof=$(PSCOCCA),LATOZOC=DX
+         #LET d1=$(AFRODF:0)+$(PING:0)
+         !RETTA 6,0,$(ptop1)-$(d1)
+         !RETTA 7,0,$(ptop2)-$(d1),1
+         !PUNTO px1,py1,$(sbzdx:0),$(ptop2)-$(d1)
+         !INTERSECA px2,py2,6,7
+         !DISTANZA dist,$(px2),$(py2),$(px1),$(py1)
+         #IF $(ESCLUDIPIEDI)=0
+            231,SL=$(PX2)+30,SP=$(PY2),AY=180
+         #ENDIF
+         #IF $(rodesq:0)=1
+            #LETS tm1=$(AFRODL:0),0,$(AFRODL:0),$(ptop1:0)-$(d1)
+         #ELSE
+            #LETS tm1=-$(sbzsx:0),$(ptop1)-$(d1)
+         #ENDIF
+         #LETS tm1=$(tm1),$(px2)+100,$(ptop1)-$(d1)
+         !SAGOMA PERCORSO $(tm1)
+         rodape,CODZOC=$(_ZOC:5),X1=$(PERCORSO) // ZOCCOLO
+         !PUNTO px3,py3,$(sbzdx:0),0
+         #IF $(roddir:0)=1
+            !PUNTO px3,py3,$(sbzdx:0)-$(AFRODL:0),0
+            !PUNTO px1,py1,$(sbzdx:0)-$(AFRODL:0),$(ptop2)-$(d1)
+            !SAGOMA percorso $(px2),$(py2),$(px1),$(py1),$(px3),$(py3)
+         #ELSE
+            !SAGOMA percorso $(px2),$(py2),$(px1),$(py1)
+         #ENDIF
+         rodape,CODZOC=$(_ZOC:5),X1=$(PERCORSO) // ZOCCOLO
+      #ENDIF
+   #ENDIF
+#ENDIF
+#LET na=-$(_pes:5)
+#IF $(_PES:8)>0 & $(sup)=0
+   #LET Anta1 = 300 //Anta 1 pensile
+   #LET Anta2 = 300 //Anta 2 pensile
+   #LET l5=$(anta1)-1*($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))
+   #LET l6=$(anta2)-1*($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))
+   #LET retrosc1=$(ptop1)-$(pf1)-$(PING:0) //linea retro scocca 1
+   #LET frontesc1=$(ptop1)-$(PING:0)  //linea fronte scocca 1
+   #LET retrosc2=$(ptop2)-$(pf2)-$(PING:0) //linea retro scocca 1
+   #LET frontesc2=$(ptop2)-$(PING:0)  //linea fronte scocca 1
+   // gestione piedini
+   #LET assepiede=20
+   // piedino retro
+   !RETTA 9,0,$(retrosc1)+85-$(assepiede)
+   !RETTA 10,0,$(retrosc2)+85-$(assepiede),1
+   !INTERSECA px0,py0,9,10
+   231,sl=$(px0),sp=$(py0),ay=-90
+   // piedino laterali retro
+   !RETTA 9,0,$(retrosc1)+125-$(assepiede)
+   !RETTA 10,0,$(retrosc2)+125-$(assepiede),1
+   !RETTA 11,1,40-$(assepiede)
+   !RETTA 12,1,-40+$(assepiede),1
+   !INTERSECA px0,py0,9,11
+   231,sl=$(px0),sp=$(py0),ay=0
+   !INTERSECA px0,py0,10,12
+   231,sl=$(px0),sp=$(py0),ay=$(ang)-90
+   // piedino laterali fronte
+   !RETTA 9,0,$(frontesc1)-$(AFRODF:0)
+   !RETTA 10,0,$(frontesc2)-$(AFRODF:0),1
+   !RETTA 11,1,40-$(assepiede)
+   !RETTA 12,1,-40+$(assepiede),1
+   !INTERSECA px0,py0,9,11
+   231,sl=$(px0),sp=$(py0),ay=90
+   !INTERSECA px0,py0,10,12
+   231,sl=$(px0),sp=$(py0),ay=$(ang)-180
+   // piedino centrali fronte
+   !RETTA 9,0,{$(frontesc1)-$(AFRODF:0)}
+   !RETTA 10,0,{$(frontesc2)-$(AFRODF:0)},1
+   !RETTA 11,1,{$(l5)-$(assepiede)}
+   !RETTA 12,1,{-$(l6)+$(assepiede)},1
+   !INTERSECA px0,py0,9,11
+   231,sl=$(px0),sp=$(py0),ay=90
+   !INTERSECA px0,py0,10,12
+   231,sl=$(px0),sp=$(py0),ay=$(ang)-180
+#ENDIF

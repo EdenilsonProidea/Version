@@ -1,0 +1,7 @@
+#LOADVAR _RECORTESTOMADAS _RECORTESTOMADAS $(X9:0)
+
+#IF $(_LISTINO)=1
+   #IF $(_RECORTESTOMADAS:4)==60 // Adicionado para não passar o codigo do kit <c26363>
+      8581,8581
+   #ENDIF
+#ENDIF

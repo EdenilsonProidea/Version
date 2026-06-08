@@ -1,0 +1,10 @@
+{ 453   // lamina avulsa
+   *AZZERA*            =0
+   DESCRIZIONE         =lamina avulsa
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,1,$p
+   COLORI              =$(cor:12)|$(.percorso)\foto\madeira\$(cor:11)|$(cor:18),$(cor:12)|$(.percorso)\foto\madeira\$(cor:11)|$(cor:18)
+   ORIENTAMENTO        =LPA
+   X9                  =$(cor:19)/$(cor:16)
+}

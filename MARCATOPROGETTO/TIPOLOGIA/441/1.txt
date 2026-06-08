@@ -1,0 +1,10 @@
+{ 441   // botão abrir frente
+   *AZZERA*            =0
+   DESCRIZIONE         =botão abrir frente
+   CODICE              =/;_MONTADO=$(_MONTADO:0) /A
+   LATO                =9
+   POSIZIONE           =$(lfre:0)/2-25,$(afre:0)/2-25,$p+50
+   DIMENSIONE          =50,50,1
+   ORIENTAMENTO        =LAP
+   DATI                =abrirfrente$(idp)$(_ctx)
+}

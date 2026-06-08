@@ -1,0 +1,5 @@
+#IF $(_listino)=1
+   $(x9:0),$(diml)*$(dima)/1000000
+#ELSE
+   KIT-VIDRO-AVULSO,1,CODVIDRO=$(X9:0);QTD={$(diml)*$(dima)/1000000},$(DIML),$(DIMA),$(DIMP)
+#ENDIF

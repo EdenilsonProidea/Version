@@ -1,0 +1,66 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=MESA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,FORMAMESA,,,TIPO DE MESA,,,,,,,4
+T,_tipoMesa,,$(FORMAMESA:3)==1,TIPO DE SAIA,,,,,,,4
+M,afsaiap,,$(FORMAMESA:3)==1,Af Primeira Saia,,,,,,,4
+M,afsaia,,$(FORMAMESA:3)==1,Af. Segunda Saia,,,,,,,4
+T,espessura,,,Espessura Pés Mesa?,,,,,,,1
+T,estampo,,,Espessura Tampo?,,,,,,,1
+T,esp_prat2,,,Espessura Painel Central,,,,,,,1
+T,_corcx,,,,$(espessura:3)[$(_corcx:12)]!!0,,,,,,4,,1=0
+T,_COREX,,,,,,,,,,4
+M,apainelmesa,,,Altura Painel Central,,,200,,,,4
+M,prof_mesa,,$(formamesa:3)==2,Profundidade Tampo,,,300,,,,4
+C,SemPernaEsq,,,Sem Perna Esquerda?,,,,,,,2
+C,SemPernaDir,,,Sem Perna Direita?,,,,,,,2
+-,Adicionais,,,Ad
+M,incrSaiaEsq,,,Incr.Saia Esq.,,,,,,,4
+M,incrSaiaDir,,,Incr.Saia Dir.,,,,,,,4
+T,_pes,,,Pé,,,,,,,7
+M,nperadc,,,Pernas adicionais,,,,,,,2,,1=0
+C,pernapas,,,Perna recuada?,,,,,,,2,,1=0
+M,INCRETAMPOESQ,,,Incrementa tampo esq,,,,,,,6
+M,INCRETAMPODIR,,,Incrementa tampo dir,,,,,,,6
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+#IF $(FORMAMESA:3)=1
+   MESA_RETA
+#ELSE
+   #IF $L<$(prof_mesa:0)
+      #MSG LARGURA E PROFUNDIDADE NÃO PODEM SER MENOR QUE A PROFUNDIDADE DO TAMPO.
+      433,A=$A+$(ESTAMPO:3)+1,P=$P+$(INCRETAMPODIR:0)+$(INCRETAMPOESQ:0),L=$(prof_mesa:0),SL=-$(ESP_PRAT2:3)-1,SP=-$(ESP_PRAT2:3)-1
+      MESA_CANTO
+   #ELSEIF $P<$(prof_mesa:0)
+      #MSG LARGURA E PROFUNDIDADE NÃO PODEM SER MENOR QUE A PROFUNDIDADE DO TAMPO.
+      433,A=$A+$(ESTAMPO:3)+1,L=$L+$(INCRETAMPODIR:0)+$(INCRETAMPOESQ:0),P=$(prof_mesa:0),SL=-$(ESP_PRAT2:3)-1,SP=-$(ESP_PRAT2:3)-1
+      MESA_CANTO
+   #ELSE
+      MESA_CANTO
+   #ENDIF
+#ENDIF

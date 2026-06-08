@@ -1,0 +1,68 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=BOX INFERIOR
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=U100
+SPEC=
+DIVIDER=COZ_STRDIV,COZ_FREDIV,$(_tpcaixa:5),$(_tpcaixa:4),$(_tpcaixa:6),$(_tpcaixa:7),0,0
+TRADFLAGS=*,*,*,*,1,1
+
+
+[gene]
+-,dados,,,Da
+T,MODELLO
+G,COZ_CAIXA
+-,PO,,1=0
+G,PONTOS
+G,FR_GERAL
++,COZ_FREDIV
+G,COZ_ACAB
+G,COZ_DECINF
+G,VAROCULTE
+
+[GRAFICA]
+COZ_INF
+// COZ_FREDIV
+
+// COZ_STRDIV
+
+// ACEGAV
+
+// tipogaveta
+
+// dobradiça
+
+// frontal
+
+// portaagd
+
+// _fr_1
+
+// _pux
+
+// 201
+
+// _FR_FRISO_VHF
+
+// _FR_BEL_VETRO
+
+// 260
+
+// 215
+
+// 201
+
+// 201

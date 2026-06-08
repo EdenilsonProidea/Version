@@ -1,0 +1,32 @@
+//!PARAMETRI P=$(ESP_PRAT_TMP:0)
+#LOADVAR _ALTFITA _ALTFITA 10_63
+#MSG $p
+#LETS INFOBORDA=
+#IF $(BORDAINF:0)=1
+   #LET mlfita=$L/1000
+   451,SA=-1,A=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),C2=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //borda
+   #LETS INFOBORDA=$(INFOBORDA) INF
+#ENDIF
+#IF $(BORDASUP:0)=1
+   #LET mlfita=$L/1000
+   451,SA=$A,A=1,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),C2=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //borda
+   #LETS INFOBORDA=$(INFOBORDA) SUP
+#ENDIF
+#IF $(BORDAESQ:0)=1
+   #LET mlfita=$A/1000
+   451,L=$A,A=1,AZ=-90,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),C2=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //borda
+   #LETS INFOBORDA=$(INFOBORDA) ESQ
+#ENDIF
+#IF $(BORDADIR:0)=1
+   #LET mlfita=$A/1000
+   451,SL=$L+1,L=$A,A=1,AZ=-90,C1=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),C2=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),X9=+XBOR-$(_COREX:7)-$(_ALTFITA:5)/$(_ALTFITA:4)/$(MLFITA:0)  //borda
+   #LETS INFOBORDA=$(INFOBORDA) DIR
+#ENDIF
+#IF $(tipopintura:0)=1
+   #LETS infolado= 1 lado
+#ENDIF
+#IF $(INFOBORDA)!!
+   !COMMENTO1 TOPO $(INFOBORDA) - $(infolado:0)
+#ENDIF
+// 624
+//fita

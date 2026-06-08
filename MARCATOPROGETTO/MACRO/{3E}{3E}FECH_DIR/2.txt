@@ -1,0 +1,20 @@
+#IF $(LADODIR:0)=1
+   #LET INCR_ATRAS=$(INCR_ATRASD) // Adicionado em visita
+#ENDIF
+#IF $(RODATETO:0)=3
+   #LET acabLateral=$A-$(arodateto:0)
+#ELSE
+   
+   #LET acabLateral=$A
+   #LET acabLateral2=0
+   #IF $(acabLateral)>2730
+      #LET acabLateral=2730
+      #LET acabLateral2=$a-2730
+   #ENDIF
+   
+#ENDIF
+
+FECH_DIR_1
+#IF $(acabLateral2)>0
+   FECH_DIR_1,sa=2730,a=$(acabLateral2),acabLateral=$(acabLateral2)
+#ENDIF

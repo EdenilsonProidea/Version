@@ -1,0 +1,16 @@
+DOR_CALC_SAG_LAT,plat=$(platesq:0),p=$(platesq:0)
+302,p=$(platesq:0),SL=$l-$(eslat:0)-$(DESC_CANTOR_LAT:0)
+#LET lltfecha=$(PLATdir:0)+$(desc_p_esqMemo:0)-1*($(DESC_CANTOR_LAT:0))-2
+// 206,SL=$l-$(lltfecha)-$(DESC_CANTOR_LAT:0),SA=0,A=$A,SP=$(platesq:0),L=$(PLATdir:0)+$(desc_p_esqMemo:0)-1*($(DESC_CANTOR_LAT:0))-2 original
+//210,SL=$l-$(lltfecha)-$(DESC_CANTOR_LAT:0),p=$(ESLAT:0),SA=0,A=$A,SP=$(platesq:0),L=100,x7=N/N/N/N/0/0/0/1
+#LETS cfr_fixa=$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+206,SL=$l-($(lltfecha)+$(DESC_CANTOR_LAT:0)),SA=$(abase),A=$A-2*$(abase),SP=$(platesq:0)-$(eslat:0),L=$(PLATdir:0)+$(desc_p_esqMemo:0)-$(eslat:0)-1*($(DESC_CANTOR_LAT:0))-2,c1=$(cfr_fixa),c2=$(cfr_fixa)
+#IF $(TPLATARM:0)=2
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATesq:0),L=$L-($(ESLAT:0)+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(eslat:0)
+   301,p=$(platesq:0),SL=0
+#ELSE
+   dor_caixa_1L,_TPFR=$(VAZIO),P=$(PLATesq:0),L=$L-($(ESLAT:0)/2+$(DESC_CANTOR_LAT:0)+$(ESLAT:0)),SL=$(eslat:0)/2,ultimomodulo=1
+#ENDIF
+#IF $(TRAV_DIV_DIR:0)=1
+   312,L=$(desc_p_DIROR:0),SL=$P-$(platDIR:0),SP=$(platDIR:0)+$(desc_p_DIROR:0)+$(ESLAT:0),AY=90
+#ENDIF

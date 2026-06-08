@@ -1,0 +1,19 @@
+#LETS CFUNDO=$(_CFUNDO:3)|$(.percorso)\foto\madeira\$(_CFUNDO:4)|$(_CFUNDO:5)
+#IF $(veioFundoH:0)=1 //<c27083>
+   214,SL=$(es)-$(RAG_COS:0),SA=$(es)-$(RAG_COS:0),SP=$(POSFUNDO:0),L={$L-2*$(es)+2*$(RAG_COS:0)},A={$A-2*$(es)+$(RAG_COS:0)*2},P=$(esfundo),C1=$(CFUNDO),C2=$(CFUNDO),X8=$(pcanal:0)/$(FACELAMPIN),X9=$(_tpcaixa:1)/$(_CFUNDO:1)/$(item)/$(TIPOPINTURA:1)  //Fundo
+   #IF $(ltot)>2730
+      #LETS IDLOGERROS=$(IDLOGERROS)3^2730;
+   #ENDIF
+   #IF $(atot)>1830
+      #LETS IDLOGERROS=$(IDLOGERROS)16^1830;
+   #ENDIF
+#ELSE
+#MSG $(esfundo)
+   205,SL=$(es)-$(RAG_COS:0),SA=$(es)-$(RAG_COS:0),SP=$(POSFUNDO:0),L=$L-2*$(es)+2*$(RAG_COS:0),A={$A-2*$(es)+$(RAG_COS:0)*2},P=$(esfundo),C1=$(CFUNDO)|90,C2=$(CFUNDO)|90,X8=$(pcanal:0)/$(FACELAMPIN),X9=$(_tpcaixa:1)/$(_CFUNDO:1)/$(item)/$(TIPOPINTURA:1)  //Fundo
+   #IF $(ltot)>1830
+      #LETS IDLOGERROS=$(IDLOGERROS)3^1830;
+   #ENDIF
+   #IF $(atot)>2730
+      #LETS IDLOGERROS=$(IDLOGERROS)16^2730;
+   #ENDIF
+#ENDIF

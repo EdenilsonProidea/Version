@@ -1,0 +1,5 @@
+{ 215.900
+   *AZZERA*            =0
+   X6                  =$(corfriso:3)/$(_PERFPUX:14)/1
+   ALIAS               =#215
+}

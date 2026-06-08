@@ -1,0 +1,12 @@
+{ 440   // divisao superior
+   *AZZERA*            =0
+   DESCRIZIONE         =divisao superior
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(posacomp),$(ystart)-$(infodivision:26)+10
+   DIMENSIONE          =$(infodivision:24),$(infodivision:25),$(infodivision:26)
+   COLORI              =1,1
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =objeto3d.xp
+   X8                  =$(infodivision:14)
+   X9                  =$(infodivision:1)
+}

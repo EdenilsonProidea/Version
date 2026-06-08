@@ -1,0 +1,5 @@
+{ 322.001   // Tampo Gaveteiro light
+   *AZZERA*            =0
+   DESCRIZIONE         =Tampo Gaveteiro light
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/1/0/$(CANAL)/0/1/1/0/0/0/1/0/0
+}

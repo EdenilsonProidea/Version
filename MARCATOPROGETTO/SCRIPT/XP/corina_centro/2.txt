@@ -1,0 +1,146 @@
+Sub main(p,dl,da,dp,hTerra)
+   
+   senpux=ex(p.PARAMETRO(8),"/",4)
+   popx=ex(p.PARAMETRO(8),"/",3)
+   
+   npux=1
+   lpux=int(calcola(ex(p.PARAMETRO(8),"/",5)))
+   apux=ex(p.PARAMETRO(8),"/",6)
+   slpux=ex(p.PARAMETRO(8),"/",7)
+   sapux=calcola(ex(p.PARAMETRO(8),"/",8))
+   
+   sapuxcentro=calcola(ex(p.PARAMETRO(8),"/",9))
+   '   msgbox sapuxcentro
+   If sapuxcentro=0 Then sapuxcentro=da/2
+   If popx=7 Or popx=8 Or popx=9 Then
+      If sapuxcentro>0 Then
+         sapux=sapuxcentro
+      End If
+   End If
+   
+   criapux p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux,sapuxcentro
+   
+End Sub
+
+
+
+Sub criapux(p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux,sapuxcentro)
+   
+   dsl=slpux-4
+   dsi=sapux-4
+   dsl2=slpux
+   dsi2=sapux
+   
+   
+   lu=lpux+8
+   au=apux+8
+   lu2=lpux
+   au2=apux
+   
+   Select Case popx
+   Case "1":
+      offa=calcola(sapuxcentro-au/2)
+      offl=calcola(dsl)
+      offa2=calcola(sapuxcentro-au2/2)
+      offl2=calcola(dsl2)
+   Case "2":
+      offa=calcola(sapuxcentro-au/2)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(sapuxcentro-au2/2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "3":
+      offa=calcola(sapuxcentro-au/2)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(sapuxcentro-au2/2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case "4":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dsl)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dsl2)
+   Case "5":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "6":
+      offa=calcola(da-au-dsi)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(da-au2-dsi2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case "7":
+      offa=calcola(dsi)
+      offl=calcola(dsl)
+      offa2=calcola(dsi2)
+      offl2=calcola(dsl2)
+   Case "8":
+      offa=calcola(dsi)
+      offl=calcola(dl/2-lu/2)
+      offa2=calcola(dsi2)
+      offl2=calcola(dl/2-lu2/2)
+   Case "9":
+      offa=calcola(dsi)
+      offl=calcola(dl-lu-dsl)
+      offa2=calcola(dsi2)
+      offl2=calcola(dl-lu2-dsl2)
+   Case Else
+      
+   End Select
+   
+   
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   
+   
+   
+   
+   
+   ss2="FO," & OFFL2 & "," & OFFA2 & ","
+   ss2= ss2 & OFFL2 & "," & OFFA2+AU2 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+au2 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2 &  ","
+   ss2= ss2 & OFFL2 &  "," & OFFa2
+   
+   
+   'msgbox  CALCOLA(OFFL2) + LU2-5 & "=" & OFFL2 & "+" & LU2 & "-5"
+   
+   
+   ssini="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss2
+   
+   
+   wrPannello "ALP",C1, dl,da, 5 , 0, 0, 0, 0, 0
+   
+   AA2=WSAGOMA(MID(ssini,2),2).NOME
+   wrTrasforma 0,0,DP-2
+   WESTRUDI 2, AA2, 2, c1, c1, 0
+   wrchiudi
+   
+   ss2="FO," & OFFL2 & "," & OFFA2 & ","
+   ss2= ss2 & OFFL2 & "," & OFFA2+AU2+15 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2+au2+15 &  ","
+   ss2= ss2 & OFFL2+LU2 & "," & OFFA2 &  ","
+   ss2= ss2 & OFFL2 &  "," & OFFa2
+   
+   
+   'msgbox  CALCOLA(OFFL2) + LU2-5 & "=" & OFFL2 & "+" & LU2 & "-5"
+   
+   
+   ssini="#0,0,0," & da & "," &  dl & "," &  da & "," &  dl & ",0,0,0," &  ss2
+   AA2=WSAGOMA(MID(ssini,2),2).NOME
+   wrTrasforma 0,0,5
+   WESTRUDI 2, AA2, DP-7, c1, c1, 0
+   wrchiudi
+   
+   
+   c1=wColoreE(p.colore1)
+   c2=wColoreE(p.colore2)
+   
+   finitura="corina_PUX.3DS"
+   'msgbox ucase(left(finitura,11))
+   aa = c1
+   percfile=UCASE(percorso & "\3ds\frente\" & finitura)
+   
+   wrTrasforma OFFL2,OFFA2,3
+   wrX2 percfile,0,aa,dl-OFFL2*2,AU,dp-3,1,"",0,0,0,0
+   WRCHIUDI
+End Sub

@@ -1,0 +1,25 @@
+_calcola_popx
+#LETS pospuxadores=$(popx)
+#LETS flsuperior=
+
+#IF $(popx)=7 | $(popx)=8 | $(popx)=9
+   #LETV _fr:7=corinaS.3ds
+   #LETS flsuperior=S
+#ELSEIF $(AFRE)>1000
+   #LETS parcorina=40;40;700;10;
+   #LETS popx=2
+   #LETS _fr:7=corina_centro.xp
+   #LETS _fr:8=$(parcorina)
+   #LETS flsuperior=CEN
+   #LETS xpfrente=corina_centro.xp
+   #ELSE
+     #LETS xpfrente=FRENTE3D.XP
+#ENDIF
+
+// .corina_centro.xp
+#MSG $(xpfrente)
+#LET ladojobfrente=1
+#LETS nomejobfrente=CORINA
+#LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@// ver papux
+// .FRENTE3D.XP
+_FR_STANDARD

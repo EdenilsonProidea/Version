@@ -1,0 +1,78 @@
+!parametri compartilhado=0
+//posd: valori
+//1=dobradiça esq - abrir direita
+//3=dobradiça dir - abrir esquerda
+//5=dobradiça superior  - Basculante
+//8=dobradiça inferior  - Pistao Invertido
+//AFINIDOBL  //AFASTAMENTO DOBRADICA DA INICIO PORTA SUPERIOR-INFERIOR
+//AFINIDOBB  //AFASTAMENTO DOBRADICA DA INICIO PORTA DIREITA-ESQUERDA
+#LET SBR=$(ESLAT:0)-$(FOLGAFRENTEL:0)
+
+#IF $(posd)[1;3]  //dobradiça de abrir
+   #LOADVAR _dobratemp _dobra $(_dobra:1)
+   #IF $(ATIVADRETACURVA:0)=1 // dormitorio com divisoria
+      #IF $(posd)=1  // DOBRA ESQ
+         #IF $(primeiromodulo)=1
+            #LOADVAR _dobratemp _dobra $(dobradicaesq:0)
+            #LET afldob=$(eslat:0)+$(eslat:0)/2
+         #ELSE
+            #LOADVAR _dobratemp _dobra $(dobradicaesq:0)
+            #LET afldob=$(eslat:0)
+         #ENDIF
+      #ELSE  // DOBRADICA  A DIREITA
+         #IF $(ultimomodulo)=1
+            #LOADVAR _dobratemp _dobra $(dobradicadir:0)
+            //   #LET afldob=$(lfre:0)-1*($(eslat:0)/2)-18 // DOBRADICA NA LATERAL FINAL A DIREITA
+            #LET afldob=$(lfre:0)-1*($(eslat:0)/2)-18+1*($(folgafrentel:0)/2-2) // DOBRADICA NA LATERAL FINAL A DIREITA
+         #ELSE
+            #LOADVAR _dobratemp _dobra $(dobradicadir:0)
+            //#LET afldob=$(lfre:0)-1*($(eslat:0)/2+$(folgafrentel:0)) // DOBRADICA NA LATERAL FINAL A DIREITA
+            #LET afldob=$(lfre:0)-1*($(folgafrentel:0))+2 // DOBRADICA NA LATERAL FINAL A DIREITA
+         #ENDIF
+      #ENDIF
+      #IF $(DOBRADICADIF:0)=1
+         // isso vem gerido pela subregra somente para trocar dobradiça de uma unica porta
+         #LOADVAR _dobratemp _dobra $(_dobradif:0)
+      #ENDIF
+   #ELSE
+      // **** modificação silvio 02/10/2020 *****
+      // se não tem a gestão de reta/curva as laterais sempre vão estar duplo e a dobradiça vai ser interna
+      #IF $(posd)=1  // DOBRA ESQ
+         #LET afldob={$(SBR)+1}   // PRIMEIRA A ESQ NO LATERAL
+      #ELSE  // DOBRADICA  A DIREITA
+         #LET afldob={$(LFRE)-$(SBR)-18} // DOBRADICA NA LATERAL FINAL A DIREITA
+      #ENDIF
+   #ENDIF
+   calcula_dob
+   
+   #IF $(_dobraTEMP:1)==999 | $(_dobraTEMP:1)==
+      // NÃO FAZ NADA
+   #ELSE
+      KITDOBRADIÇA_1,_dobra=$(_dobratemp)
+   #ENDIF
+   
+   
+   
+   
+#ELSEIF $(posd)[5;8]  //dobradiça basculante / pistao
+   #IF $(posd)=8 #LET afadob={$(ABASE:0)} #LET afadob={$(AFRE:0)-$(ABASE:0)-20}
+   //2 : $L<=800 - 3 : $L<=1500 - 4 : ALTRO
+   #LET afinidobli=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+   #LET afinidoblf=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+   CALCULA_DOBB
+   #IF $(_DOBRA:3)==999 | $(_DOBRA:3)==
+      // NÃO FAZ NADA
+   #ELSE
+      415,SL=$(afinidobli)-10,SA=$(afadob)  // Dobradiça
+      415,SL=$l-$(afinidoblF)-10,SA=$(afadob)  // Dobradiça
+      #IF $(ndob)>2
+         #LET nn=$(ndob)-2
+         #LET distdob=($l-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1-$(afinidobli)-$(afinidoblF))/($(ndob)-1)
+         #FOR $1:$(nn)
+            415,SL={$(afinidobli)+$(i)*$(distdob)-20/2},SA=$(afadob) // Dobradiça
+         #ENDFOR
+      #ENDIF
+      423  //Kit Dobradiças
+   #ENDIF
+#ENDIF
+#MSG $(_dobra)

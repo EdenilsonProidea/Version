@@ -1,0 +1,7 @@
+
+#IF $(xx3:0)=$(xp3:0) // mesmo box
+   #LET NAOFURAR=0
+   #LET F=2
+   #M JOB_DIVH_LAT
+   
+#ENDIF

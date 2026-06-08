@@ -1,0 +1,53 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=GAVETA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+G,GAVETA_AVULSA
+G,VAROCULTE
+G,FR_GERAL
+
+[GRAFICA]
+#IF $(_PRIMOCARICAMENTO)=1
+   !SCEGLIVARIANTE _TPGAV
+   !SCEGLIVARIANTE _TPGAVALT
+#ENDIF
+
+// !SETCODICE 000$(_tpgav:4)$(_TPGAVALT:4)
+COZ_INICIA
+#LETS fl_abrir_SP=0
+
+#LET lagr=$L
+#LET aagr=$a
+internogaveta_1,GAVETAAVULSA=1,SL=18+$(_corr:8),L=$L-2*(18+$(_corr:8)) // Adicionado SL e L para que contabilize a espessura das laterais da caixa e a folga lateral da corrediça <c26774>
+
+
+// #LET p=$(pgav)
+// #LET a=$(agav)
+
+LOGERROS
+
+// bi_internos
+
+// 263

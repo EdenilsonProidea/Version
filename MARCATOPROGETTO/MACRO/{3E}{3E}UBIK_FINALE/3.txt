@@ -1,0 +1,21 @@
+#LET L=$(LTMP)+$(ESPACIO)+$(LCANTONEIRA)
+#IF $(_fechesqu:3)=1
+   ubik_cantoneira,L=$(LCANTONEIRA),A=$A,P=$(pubik),LATOCANT=1,COD=$(CODMOD)U674/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0)
+ //  ubik_cremalheira,SL=$(ESVIS),L=120,A=$A,P=57,COD=$(CODMOD)U411/LINHA=$(MODELLO:0)
+#ELSEIF  $(_fechesqu:3)=2
+   ubik_cremalheira,SL=$(ESVIS),L=120,A=$A,P=57,COD=$(CODMOD)U411/LINHA=$(MODELLO:0)
+#ENDIF
+#IF $(_fechdiru:3)=1
+   ubik_cantoneira,SL=$l-$(LCANTONEIRA),L=$(LCANTONEIRA),A=$A,P=$(pubik),LATOCANT=3,COD=$(CODMOD)U675/_CORFAMILIA=$(_CORCX:10);_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0)
+   ubik_cremalheira,SL=$L-120-$(ESVIS),L=120,A=$A,P=57,COD=$(CODMOD)U411
+#ELSEIF  $(_fechdiru:3)=2
+   ubik_cremalheira,SL=$L-120-$(ESVIS),L=120,A=$A,P=57,COD=$(CODMOD)U411
+#ENDIF
+#IF $(_TPBASE_UBIK:3)=2
+   base_ubik,SL=$(LCANTONEIRA)+$(espacio),L=$(l)-2*$(LCANTONEIRA)-2*$(espacio),A=70,P=$(_PBASE_UBIK:0),COD=$(CODMOD)U403/_CORFAMILIA=$(_corbase:10);_CORCX=$(_corbase:1),_corcx=$(_corbase);LINHA=$(MODELLO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+   #LET P=$(pubik)+$(_PBASE_UBIK:0)
+#ELSEIF $(_TPBASE_UBIK:3)=3
+   base_ubik,SL=$(LCANTONEIRA)+$(espacio),L=$(lfundou:0),A=70,P=$(_PBASE_UBIK:0),COD=$(CODMOD)U403/_CORFAMILIA=$(_corbase:10);_CORCX=$(_corbase:1),_corcx=$(_corbase);LINHA=$(MODELLO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0)
+   #LET P=$(pubik)+$(_PBASE_UBIK:0)
+#ENDIF
+// 201

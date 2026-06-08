@@ -1,0 +1,80 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PORTA_AVULSA.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIACOZ
+G,FR_AVULSA
+C,INTOREXT,,$(TPFR:0)=41,Sistema interno?
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
+G,VAROCULTE
+D,posadob,,,,,,,,,,,,1=0
+D,posadob2,,,,,,,,,,,,1=0
+
+[GRAFICA]
+#LET p=$(_FR:4)
+//#LETV _TPFR=006
+!SETCODICE 000$(_FR:5)
+
+coz_inicia
+#LET FOLGAFRENTEL=0
+#LET FOLGAFRENTELI=0
+#LET FOLGAFRENTEAI=0
+#LET FOLGAFRENTEAS=0
+
+FRONTAL,P=0,SP=-$(_FR:4),fr_avulsa=1
+//_CARRINHO_CORR_1
+LOGERROS
+
+// _frcorr
+
+// portagd
+
+// _fr_1
+
+// 201
+
+// iniciacinex
+
+// _FR_PARELLI
+
+// _FR_TRIAD
+
+// _FR_FRAME
+
+// _FR_CORINA
+
+// _FR_IZA
+
+//KITDOBRADIÇA_1
+
+//KITDOBRADIÇAP1
+
+// #M estr_madeira_1
+
+// 215

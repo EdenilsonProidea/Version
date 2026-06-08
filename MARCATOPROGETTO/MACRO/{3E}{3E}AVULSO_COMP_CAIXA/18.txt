@@ -1,0 +1,82 @@
+#SELECT $(_listcomponentes:1)
+#CASE 201
+   SAGLAT
+   #LET l=$(eslat:0)
+   201,sl=0,sp=0,sa=0,a=$a,P=$p  // Lateral Esquerda
+#CASE 202
+   #LET l=$(eslat:0)
+   202,sl=0,sp=0,sa=0,a=$a,P=$p  // Lateral Esquerda
+#CASE 301
+   #LET l=$(eslat:0)
+   301,sl=0,sp=0,sa=0,a=$a,P=$p  // Lateral Esquerda
+#CASE 302
+   #LET l=$(eslat:0)
+   302,sl=0,sp=0,sa=0,a=$a,P=$p  // Lateral Esquerda
+#CASE 220
+   #LET a=$(estra:0)
+   #LET p=$(atra:0)
+   220,sl=0,sp=0,sa=0,l=$l,a=$a,p=$p  // Lateral Esquerda
+#CASE 204
+   #LET a=$(atra:0)
+   #LET p=$(estra:0)
+   204,sl=0,sp=0,sa=0,l=$l,a=$a,p=$p  // Lateral Esquerda
+#CASE 210
+   #LET l=$(atra:0)
+   #LET p=$(estra:0)
+   210,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 205
+   #LET p=$(escos:0)
+   205,sl=0,sp=0,sa=0,a=$a,l=$l  // Lateral Esquerda
+#CASE 305
+   #LET p=$(escos:0)
+   305,sl=0,sp=0,sa=0,a=$a,l=$l  // Lateral Esquerda
+#CASE 203
+   #LET a=$(abase:0)
+   203,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 303
+   #LET a=$(abase:0)
+   303,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 203007
+   #LET a=$(abase:0)
+   #LET PLATE=$(pesq:0) // profonditr laterale
+   #LET PLATD=$(pdir:0) // profonditr laterale
+   #LET lb=$l // largura base
+   #LET pb=$p // prof base
+   !SAGOMA SAGbase 0;0;{$(lb)-$(recorteatras:0)};0;{$(lb)-$(recorteatras:0)};$(recorteatras:0);{$(lb)};$(recorteatras:0);$(lb);$(pb);{$(lb)-$(platD)};$(pb);{$(lb)-$(platD)};$(PLATE);0;$(platE)
+   203.007,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 303003
+   #LET a=$(abase:0)
+   #LET PLATE=$(pesq:0) // profonditr laterale
+   #LET PLATD=$(pdir:0) // profonditr laterale
+   #LET lb=$l // largura base
+   #LET pb=$p // prof base
+   !SAGOMA SAGbase 0;0;{$(lb)-$(recorteatras:0)};0;{$(lb)-$(recorteatras:0)};$(recorteatras:0);{$(lb)};$(recorteatras:0);$(lb);$(pb);{$(lb)-$(platD)};$(pb);{$(lb)-$(platD)};$(PLATE);0;$(platE)
+   303.003,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 209
+   #LET a=$(abase:0)
+   209,x4= /$(PPRAT:0)/1,COD=$(VAZIO)/PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);,SL=0,SA=0,SP=0,L=$l,A=$a,P=$p  //Lateral Esquerda
+   ILU_PRAT,SA=-1,P=$p-$(RED_F_PRAT:0),NICHO=0,ubik=0,AMBIENTE=C,MACRO=ILU_PRAT
+#CASE 309
+   #LET a=$(abase:0)
+#MSG teste
+   309,x4= /$(PPRAT:0)/1,COD=$(VAZIO)/PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);,SL=0,SA=0,SP=0,L=$l,A=$a,P=$p //,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p,COD=$(VAZIO)/PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);  // Lateral Esquerda
+   ILU_PRAT,SA=-1,P=$p-$(RED_F_PRAT:0),NICHO=0,ubik=0,AMBIENTE=D,MACRO=ILU_PRAT
+#CASE 209002
+   #LET PLATE=$(pesq:0) // profonditr laterale
+   #LET PLATD=$(pdir:0) // profonditr laterale
+   #LET a=$(abase:0) // Ajusta a altura, feito em visita
+   #LET lb=$l // largura base
+   #LET pb=$p // prof base
+   !SAGOMA sagprat 0;0;{$(lb)-$(recorteatras:0)};0;{$(lb)-$(recorteatras:0)};$(recorteatras:0);{$(lb)};$(recorteatras:0);$(lb);$(pb);{$(lb)-$(platD)};$(pb);{$(lb)-$(platD)};$(PLATE);0;$(platE)
+   209.002,cod=$(vazio)/PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#CASE 309001
+   #LET scansoretro=0 // scanso retro
+   #LET PLATE=$(pesq:0) // profonditr laterale
+   #LET PLATD=$(pdir:0) // profonditr laterale
+   #LET a=$(abase:0) // Ajusta a altura, feito em visita
+   #LET lb=$l // largura base
+   #LET pb=$p // prof base
+   #LET aftrap=0
+   !SAGOMA sagprat 0;0;{$(lb)-$(recorteatras:0)};0;{$(lb)-$(recorteatras:0)};$(recorteatras:0);{$(lb)};$(recorteatras:0);$(lb);$(pb);{$(lb)-$(platD)};$(pb);{$(lb)-$(platD)};$(PLATE);0;$(platE)
+   309.001,cod=$(vazio)/PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);,sl=0,sp=0,sa=0,a=$a,l=$l,p=$p  // Lateral Esquerda
+#ENDSELECT

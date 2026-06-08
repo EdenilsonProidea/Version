@@ -1,0 +1,87 @@
+!parametri compartilhado=0
+//posd: valori
+//1=dobradiça esq - abrir direita
+//3=dobradiça dir - abrir esquerda
+//5=dobradiça superior  - Basculante
+//8=dobradiça inferior  - Pistao Invertido
+//AFINIDOBL  //AFASTAMENTO DOBRADICA DA INICIO PORTA SUPERIOR-INFERIOR
+//AFINIDOBB  //AFASTAMENTO DOBRADICA DA INICIO PORTA DIREITA-ESQUERDA
+#LET SBR=$(ESLAT:0)-$(FOLGAFRENTEL:0)
+#IF $(_dobra:1)!!999 & $(_dobra:1)!!
+   #IF $(posd)[1;3]  //dobradiça de abrir
+      #LOADVAR _dobratemp _dobra $(_dobra:1)
+      #IF $(ATIVADRETACURVA:0)=1 // dormitorio com divisoria
+         #IF $(posd)=1  // DOBRA ESQ
+            #LETS CODCAPA=$(_DOBRA:20)
+            #IF $(primeiromodulo)=1           //<C23729>
+               #LOADVAR _dobratemp _dobra $(_dobraesq:0)//$(dobradicaesq:0)
+               #LET afldob=$(eslat:0)+$(eslat:0)/2
+            #ELSE                          //<C23729>
+               #LOADVAR _dobratemp _dobra $(_dobraesq:0)//$(dobradicaesq:0)
+               #LET afldob=$(eslat:0)
+            #ENDIF
+         #ELSE  // DOBRADICA  A DIREITA
+            #LETS CODCAPA=$(_DOBRA:21)
+            #IF $(ultimomodulo)=1          //<C23729>
+               #LOADVAR _dobratemp _dobra $(_dobradir:0) //$(dobradicadir:0)
+               //   #LET afldob=$(lfre:0)-1*($(eslat:0)/2)-18 // DOBRADICA NA LATERAL FINAL A DIREITA
+               #LET afldob=$(lfre:0)-1*($(eslat:0)/2)-18+1*($(folgafrentel:0)/2-2) // DOBRADICA NA LATERAL FINAL A DIREITA
+            #ELSE                            //<C23729>
+               #LOADVAR _dobratemp _dobra $(_dobradir:0) //$(dobradicadir:0)
+               //#LET afldob=$(lfre:0)-1*($(eslat:0)/2+$(folgafrentel:0)) // DOBRADICA NA LATERAL FINAL A DIREITA
+               #LET afldob=$(lfre:0)-1*($(folgafrentel:0))+2 // DOBRADICA NA LATERAL FINAL A DIREITA
+            #ENDIF
+         #ENDIF
+      #ELSE
+         // **** modificação silvio 02/10/2020 *****
+         // se não tem a gestão de reta/curva as laterais sempre vão estar duplo e a dobradiça vai ser interna
+         #IF $(posd)=1  // DOBRA ESQ
+            //    #IF $(_TPCAIXA:11)=1  & 1=0 // dormitorio com divisoria
+            //        #LET afldob=$(SOBREPOSTOESQ) // DOBRADICA NA DIVISAO
+            //       #LOADVAR _dobra _dobra $(dobradicaesq)
+            //       #LETV _DOBRA:19=000
+            //    #ELSEIF $(SPOSTAL)>100
+            //      #LET afldob={$(SBR)-1*($(ESLAT:0)/2)+1} // DOBRADICA NA DIVISAO
+            //   #ELSE
+            #LET afldob={$(SBR)+1}   // PRIMEIRA A ESQ NO LATERAL
+            //   #ENDIF
+         #ELSE  // DOBRADICA  A DIREITA
+            //   #IF $(_TPCAIXA:11)=1
+            //      #LET afldob={$(LFRE)-$(ESLAT:0)-$(SOBREPOSTODIR)} // DOBRADICA NA DIVISAO
+            //      #LOADVAR _dobra _dobra $(dobradicadir)
+            //      #LETV _DOBRA:19=000
+            // #ELSEIF $(SPOSTAL)+$(LAGR)<$(LTOT)-100
+            //    #LET afldob={$(LFRE)-$(SBR)-18+$(ESLAT:0)/2} // DOBRADICA NA DIVISAO
+            //   #ELSE
+            #LET afldob={$(LFRE)-$(SBR)-18} // DOBRADICA NA LATERAL FINAL A DIREITA
+            //   #ENDIF
+         #ENDIF
+      #ENDIF
+      calcula_dob
+      #IF $(_DOBRA:3)=999
+         // NÃO FAZ NADA
+      #ELSE
+         KITDOBRADIÇA_1,_dobra=$(_dobratemp)
+      #ENDIF
+   #ELSEIF $(posd)[5;8]  //dobradiça basculante / pistao
+      #IF $(posd)=8 #LET afadob={$(ABASE:0)} #LET afadob={$(AFRE:0)-$(ABASE:0)-20}
+      //2 : $L<=800 - 3 : $L<=1500 - 4 : ALTRO
+      #LET afinidobli=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+      #LET afinidoblf=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+      CALCULA_DOBB
+      #IF $(_DOBRA:3)=999
+         // NÃO FAZ NADA
+      #ELSE
+         415,SL=$(afinidobli)-10,SA=$(afadob)  // Dobradiça
+         415,SL=$l-$(afinidoblF)-10,SA=$(afadob)  // Dobradiça
+         #IF $(ndob)>2
+            #LET nn=$(ndob)-2
+            #LET distdob=($l-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1-$(afinidobli)-$(afinidoblF))/($(ndob)-1)
+            #FOR $1:$(nn)
+               415,SL={$(afinidobli)+$(i)*$(distdob)-20/2},SA=$(afadob) // Dobradiça
+            #ENDFOR
+         #ENDIF
+         423  //Kit Dobradiças
+      #ENDIF
+   #ENDIF
+#ENDIF

@@ -1,0 +1,1 @@
+201,6,Lateral Esquerda202,6,Lateral Direita204,6,Traversa verticale204,8,Traversa verticale205,6,Fundo210,6,Traversa verticale  fundo215,6,FRENTE241,6,divisao interna vertical cozinha

@@ -1,0 +1,135 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PAINEL_HOME_TETO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,1,1
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,TIPOPAINELH,tipopainel,,,,,,,,,4
+T,Esp_prat,,,Espessura painel,,,,,,,1
+T,PRODUTOESPECIAL,,,,,,,,,,4
+C,horiz,,,Paineis Horizontal?,,,,,,,4,,1=0
+Z,TRAVESSAINFERIOR,,,Travessa Fundo (Inferior)?,,,,,,,4
+M,recuolateral,,,Recuo Travessas? ,,,15,,,,4
+M,recuoinferior,,$(recuolateral:0)=0,Recuo Fundo (Inferior)?,,,,,,,4
+M,recuosuperior,,$(recuolateral:0)=0,Recuo Frontal (Superior)?,,,,,,,4
+M,recuodireita,,$(recuolateral:0)=0,Recuo na Lateral Direita?,,,,,,,4
+M,recuoesquerda,,$(recuolateral:0)=0,Recuo na Lateral Esquerda?,,,,,,,4
+M,NSARAFFOS,,,Numero Saraffos?,,,,,,,4
+M,NPAINEIS,,$(tipopainel:3)=1,Numero Paineis?,,,,,,,4
+C,VEIOHORIZONTAL,,,Veio Horizontal?,,,,,,,4
+C,delestrutura,,,Remove estrutura,,,,,,,4
+-,AddBorda,,,Bo
+Z,BFRE,,,Borda Frente?,,,,,,,8
+Z,BTRA,,,Borda Atras?,,,,,,,8
+Z,BESQ,,,Borda Esquerda?,,,,,,,8
+Z,BDIR,,,Borda Direita?,,,,,,,8
+-,po,,1=0,Pontos,,,,,,,8
+G,PONTOS
+-,mat,,,Ma
+T,_COREX,,,Cor Painel/Fundo,,,,,,,4
+T,_pinturaex,,$(_COREX:9)=1,,,,,,,,4
+T,_csaraffo,,,,,,,,,,4,,1=0
+T,_corripas,,$(TIPOPAINEL:3)=2,Cor ripas,,,,,,,7
+T,_pinturaex,_pinturari,$(_corripas:9)=1,Pintura ripas,,,,,,,7
+-,RIPAS,,$(TIPOPAINEL:3)=2,Rp
+T,ESP_RIPA,,,Espessura da ripa?,,,,,,,7
+M,prof_ri,,$(tiporip:3)=2,Profundidade da ripa?,,,,,,,7
+M,espacoripas,,,Espaço entre ripas?,,,20|,,,,7
+M,largripas,,,Largura Ripas?,,,40|,,,,7
+M,inicioripascost,,,Inicio Ripas,,,,,,,7
+M,adicionaripas,,,Adiciona Ripas,,,,,,,7
+-,FRISOS,,$(TIPOPAINEL:3)[3;4;5]!0,Fs
+M,nfrisos,,$(TIPOPAINEL:3)[3;4]!0,Numero Frisos Porta?,,,,1,,,6
+D,parfrisos,,$(TIPOPAINEL:3)[3;4]!0,,,,,,,,6,,1=0
+M,lfriso,,$(TIPOPAINEL:3)[3;4]!0,Larg Friso,,,,6,,,6
+M,NFRISOSH,,$(TIPOPAINEL:3)=5,N° Frisos Hor.?,,,,1,,,6
+M,NFRISOSV,,$(TIPOPAINEL:3)=5,N° Frisos Ver.?,,,,1,,,6
+D,parfrisosh,,$(TIPOPAINEL:3)=5,,,,,,,,6,,1=0
+D,parfrisosV,,$(TIPOPAINEL:3)=5,,,,,,,,6,,1=0
+M,lfrisov,,$(TIPOPAINEL:3)=5,Larg Friso Vertical,,,,6,,,6
+M,lfrisoh,,$(TIPOPAINEL:3)=5,Larg Friso Horiz,,,,6,,,6
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+#LET ATIVARIPAS=0
+#IF $(TIPOPAINEL:3)=2 #LET ATIVARIPAS=1
+#LET ASARAFFO=80
+#LET ESSARAFFO=$(ESP_PRAT:0)
+#LETV cor=$(_COREX:6)
+// 201
+#IF $(tiporip:3)=2
+   #LET largripas=$(esp_rip:3)
+#ENDIF
+
+#IF $(cor:3)=1  // se tem veio a chapa
+   #IF $(VEIOHORIZONTAL:0)=1
+      #LET amax=$(cor:6)
+      #LET lmax=$(cor:5)
+   #ELSE
+      #LET amax=$(cor:5)
+      #LET lmax=$(cor:6)
+   #ENDIF
+#ELSE // nao tem veio
+   #IF $l>$A
+      #LET lmax=$(cor:5)
+      #LET amax=$(cor:6)
+   #ELSE
+      #LET amax=$(cor:5)
+      #LET lmax=$(cor:6)
+   #ENDIF
+#ENDIF
+
+#IF $(delestrutura:0)=0 //ESTRUTURA PAINEL
+   ph_estrutura_teto
+#ENDIF
+
+#IF $(horiz:0)=0 //entra em sem horizontal
+   #IF $(NPAINEIS:0)=0//entra com numero de paineis 0
+      #IF $l<$(lmax)//entra se l < lmax
+         #LET npaineis=1
+         #ELSE//ENTRA em numero de painel > 1 e calcula o numero inteiro de paineis
+         #LET npaineis=int($l/$(lmax))+1
+      #ENDIF
+   #ENDIF
+   #LET ll=$l/$(NPAINEIS:0)//recebe a largura dos paineis divididos
+   #FOR  $1:$(NPAINEIS:0),,k
+      PH_PAINEL_teto,SL=$(ll)*($(k)-1),L=$(ll)//multiplica os paineis
+   #ENDFOR
+#ELSE //entra em com horizontal
+   #IF $(NPAINEIS:0)=0//emtra com numero de paineis 0
+      #IF $a<$(amax)//entra se l < lmax
+         #LET npaineis=1
+         #ELSE//ENTRA em numero de painel > 1 e calcula o numero inteiro de paineis
+         #LET npaineis=int($a/$(amax))+1
+      #ENDIF
+   #ENDIF
+   #LET aa=$a/$(NPAINEIS:0)//recebe a altura dos paineis divididos
+   #FOR  $1:$(NPAINEIS:0),,k
+      PH_PAINEL_teto,SA=$(aa)*($(k)-1),A=$(aa)//multiplica os paineis na altura
+   #ENDFOR
+#ENDIF
+#LET na=-$(alt_piso:0)
+pontos,sp=$p+20
+LOGERROS

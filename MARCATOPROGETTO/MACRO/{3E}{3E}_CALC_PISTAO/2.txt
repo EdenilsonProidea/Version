@@ -1,0 +1,103 @@
+// pistao_old
+// <ideamoveis> gestão nova de basculantes
+//pistao_marcato
+#LETV _sisbascdet=$(_SISBASC:1)
+#LET NUM_OPCOES=$(_SISBASCDET:3)
+#LET sistema_encontrado=0
+#LET pesom3=$(_fr:14)
+#LET pesofrontal={(($l*$a*$(esfre:0))/1000000000)*$(pesom3)}
+#LET fatrendimento=$(atot)*$(pesofrontal:0)
+#LET ndob_central=0
+#LETS vett_dobradicas_central=
+#IF $(NUM_OPCOES)>0
+   #FOR $1:$(NUM_OPCOES)
+      #LOADVAR _sisbascdet _sisbascdet $(_sisbasc:1)_$(i)
+#MSG $(_sisbascdet:7)=0 | $(_sisbascdet:8)=0
+      #IF $(_sisbascdet:7)=0 | $(_sisbascdet:8)=0  // CASO AS COLUNAS DE PESO ESTEJAM IGUAL A 0 VAI USAR AS COLUNAS DE FATOR DE RENDIMENTO
+         #IF $l>=$(_sisbascdet:3) & $l<=$(_sisbascdet:4) & $a>=$(_sisbascdet:5) & $a<=$(_sisbascdet:6) & $(fatrendimento)>=$(_sisbascdet:21) & $(fatrendimento)<=$(_sisbascdet:22)
+            #LET sistema_encontrado=1
+            #EXITFOR
+         #ENDIF
+      #ELSE // CASO AS COLUNAS DE PESO ESTEJAM DIFERENTES DE 0 VAI USAR AS COLUNAS DE PESO
+         #IF $l>=$(_sisbascdet:3) & $l<=$(_sisbascdet:4) & $a>=$(_sisbascdet:5) & $a<=$(_sisbascdet:6) & $(pesofrontal)>=$(_sisbascdet:7) & $(pesofrontal)<=$(_sisbascdet:8)
+            #LET sistema_encontrado=1
+            #EXITFOR
+         #ENDIF
+      #ENDIF
+   #ENDFOR
+#ELSE
+   #IF $(_sisbasc:15)!! //<c21995>
+      #LET idlogerros=57
+   #ELSE // sem sistema
+      // acontece nada
+   #ENDIF
+#ENDIF
+#IF $(SERVODRIVEHK:0)=1 // COM SERVODRIVE PRO HK
+   #LET SERVOHK=1
+#ELSE
+   #LET SERVOHK=0
+#ENDIF
+#IF $(lfre)>1300 // p/ adicionar o pistao a mais com código diferente
+   #LET pistao2=1
+#ELSE
+   #LET pistao2=0
+#ENDIF
+// furação HL
+#IF $(sistema_encontrado)=1
+   #IF $(AFRE)<=349
+      #LET distFHl=169.5
+   #ELSEIF $(AFRE)<=399
+      #LET distFHl=219.5
+   #ELSEIF $(AFRE)<=499
+      #LET distFHl=269.5
+   #ELSE
+      #LET distFHl=319.5
+   #ENDIF
+#ELSE
+   #LET distFHl=0
+#ENDIF
+#IF $(sistema_encontrado)=0
+   #IF $(_sisbasc:15)!! //<c21995>
+      #LET idlogerros=58
+   #ELSE
+      // acontece nada
+   #ENDIF
+#ELSE
+   #IF $(_sisbascdet:15)!!
+      // caso tenha dobradiça central preciso calcular a quantidade e posição da dobradicas
+      #LET afinidobli=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+      #LET afinidoblf=$(AFINIDOBL:0)+$(FOLGAFRENTEL:0)
+      CALCULA_DOBB
+      #LET ndob_central=$(ndob)
+      #LETS vett_dobradicas_central=$(afinidobli)
+      #LETS vett_dobradicas_central=$(vett_dobradicas_central);{$l-$(afinidoblF)}
+      #IF $(ndob)>2
+         #LET nn=$(ndob)-2
+         #LET distdob=($l-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1-$(afinidobli)-$(afinidoblF))/($(ndob)-1)
+         #FOR $1:$(nn)
+            #LETS vett_dobradicas_central=$(vett_dobradicas_central);{$(afinidobli)+$(i)*$(distdob)}
+         #ENDFOR
+      #ENDIF
+   #ENDIF
+#ENDIF
+//#MSG ($(pesofrontal:0)>$(_sisbascdet:8) | $(pesofrontal:0)<$(_sisbascdet:7)) & ($(_sisbascdet:7)>0 | $(_sisbascdet:8)>0)
+//#MSG $(pesofrontal:0)<$(_sisbascdet:7)
+#IF $(_sisbasc:15)!! //<c21995>
+   // CALCULA ERROS POR PESO
+   #IF ($(pesofrontal:0)>$(_sisbascdet:8) | $(pesofrontal:0)<$(_sisbascdet:7)) & ($(_sisbascdet:7)>0 | $(_sisbascdet:8)>0)
+      #IF $(pesofrontal:0)>$(_sisbascdet:8)     // peso passou do maximo
+         #LET idlogerros=53
+      #ELSEIF $(pesofrontal:0)<$(_sisbascdet:7) // peso inferior ao mínimo
+         #LET idlogerros=54
+      #ENDIF
+   #ENDIF
+   // CALCULA ERROS POR FATOR DE RENDIMENTO
+   #IF ($(fatrendimento:0)>$(_sisbascdet:21) | $(fatrendimento:0)<$(_sisbascdet:22)) & ($(_sisbascdet:7)=0 | $(_sisbascdet:8)=0)
+      #IF $(fatrendimento:0)>$(_sisbascdet:22)     // fatrendimento passou do maximo
+         #LET idlogerros=59
+      #ELSEIF $(fatrendimento:0)<$(_sisbascdet:21) // fatrendimento inferior ao mínimo
+         #LET idlogerros=60
+      #ENDIF
+   #ENDIF
+#ENDIF
+logerros

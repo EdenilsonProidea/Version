@@ -1,0 +1,72 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=gaveteiro avulso
+COMMENTI=
+CODICE=
+POSMODE=20
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=5
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+T,_TPFR
+T,_tpsuppge,,,,,,,,,,4
+T,_tpsuppgd,,,,,,,,,,4
+T,_corsupgu,,,,,,,,,,4
+T,esptampo,,,,,,,,,,4
+T,tpfix,,,,,,,,,,4
+G,DOR_GAVETEIRO
+G,FR_GERAL_GAV
++,ADDINTGAVUB
+G,FR_GERAL_GAVETEIRO
+G,VAROCULTE
+Z,FECHFUNDOILH,,,,,,,,,,,,1=0
+
+[GRAFICA]
+#LET l=$[ex;$(_PLX5);/;1]
+#IF $L=0 #LET L=806 // Adicionado em visita, o gaveteiro entrava com valor nulo se não fosse colocado no Ubik - feito a pedido do cliente 25/01/2024
+
+DOR_INICIA
+INICIA_GAVETEIRO
+#LETS memoinfocorr=
+
+#LET eslatgav=$(ESLAT:0)
+#LET GAVETEIROUBIK=1
+//#LETV tpfix=1
+// CHECK_GAV
+// inica_calc_gav
+#LET escos=0
+#LET afcos=$(estra:0)
+
+#LET saini=$(REDINFGAVETEIRO:0)
+#LET afinal=$(saini)
+#LETS _macrofinale=gaveteiro_finalU
+
+// check_frontal
+// gaveteiro_finalU
+// _FR_1
+// ADDINTGAVUB
+// addintgav_1
+// 260  // Lateral Gaveta ESQ
+// box_gav_ub
+// addintgav_1
+// box_cami_ub
+// INICIA_CALC_GAV
+
+// DOR_GAVETEIROU
+
+// 260

@@ -1,0 +1,17 @@
+{ 377   // TAMPONAMENTO INF RETRO
+   *AZZERA*            =0
+   DESCRIZIONE         =TAMPONAMENTO INF RETRO
+   CODICE              =$(_TPMOLDRETRO:4)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_MOLD:3)|$(.percorso)\foto\madeira\$(_MOLD:4)|$(_MOLD:5),$(_MOLD:3)|$(.percorso)\foto\madeira\$(_MOLD:4)|$(_MOLD:5)
+   FACCIATA            =25
+   ORIENTAMENTO        =LAP
+   DATI                =_MOLD
+   X3                  =$(curbox)
+   X6                  =MOLDURAS\$(_TPMOLDRETRO:3)/30;30;30;30;30;30
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0
+   X8                  =$(_TPMOLDRETRO:5)
+   X9                  =_/$(_MOLD:1)/_
+   ALIAS               =#377
+}

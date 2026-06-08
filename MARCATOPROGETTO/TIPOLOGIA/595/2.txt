@@ -1,0 +1,14 @@
+{ 595   // PRATELEIRAS UBIK
+   *AZZERA*            =0
+   DESCRIZIONE         =PRATELEIRAS UBIK
+   CODICE              =$(CODPRATU) /_CORCX=$(_CORCX:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P+3
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   X4                  =$(eleid)
+   X7                  =N/N/N/N/1/1/1/1/0/0/0/0/0/0/0/0
+   X8                  =$(recorl1:0)/$(recorl2:0)/$(_ladosupc:3)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#595
+}

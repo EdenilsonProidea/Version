@@ -1,0 +1,45 @@
+#IF $(xx3:0)=$(xp3:0)
+   #IF $(pl)>0 #LET f=2 #LET f=1
+   #M JOB_INICIA_TPFIX
+   #LET TIPOFIX=$(FIXPRINCIPAL:3)
+   #IF $(DP)>9
+      #IF 1=0
+         
+         #LET DISTANPARFUN=35
+         #IF $(xx3:0)=$(xp3:0)
+            $(F)	FF	X={$(PA)+$(DISTANPARFUN:0)} Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            $(F)	FF	X={$(PA)+$(DA)-$(DISTANPARFUN:0)} Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            #IF $(DA)>=500 & $(DA)<720
+               $(F)	FF	X={$(PA)+$(DA)/2}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            #ELSEIF $(DA)>=720 & $(DA)<1000
+               #LET POSALTF=$(DA)/3
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*1}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*2}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            #ELSEIF $(DA)>=1000 & $(DA)<1900
+               #LET POSALTF=$(DA)/4
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*1}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*2}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*3}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            #ELSEIF $(XA)>1900
+               #LET POSALTF=$(DA)/6
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*1}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*2}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*3}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*4}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+               $(F)	FF	X={$(PA)+$(POSALTF:0)*5}    Y={$(XP)/2}  DF=$(FIXPRINCIPAL:14)  PF=$(FIXPRINCIPAL:15) INFO=$(FIXPRINCIPAL:0) TIPOFIX=$(TIPOFIX)
+            #ENDIF
+         #ENDIF
+      #ENDIF
+      #LET PCANAL=$(XP8:0)
+      #IF $(PL)>0 #LET F=1 #LET F=2
+      $(F)	CANALMOVEL	X=0 Y={$(PP)} XI={0} XF={$(PA)+$(DA)} DP=$(DP) PF=$(PCANAL)
+      
+   #ELSE
+      #LET PCANAL=$(XP8:0)
+      #IF $(pl)>0 #LET F=1 #LET F=2
+      #IF $(DP)<15 & $(PP)>0
+         $(F)	CANALMOVEL	X=0 Y={$(PP)} XI={0} XF={$(PA)+$(DA)} DP=$(DP) PF=$(PCANAL)
+      #ENDIF
+   #ELSE
+   #ENDIF
+#ENDIF

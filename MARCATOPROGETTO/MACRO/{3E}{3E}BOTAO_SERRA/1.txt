@@ -1,0 +1,61 @@
+#IF $(mostserra)=1
+   #IF $(TPLATARM:3)=1
+      #IF $(_FECHESQ:3)!7
+         // div inicial
+         #IF $(DIVMOVEL:0)=0
+            490,SL=($(eslat:0)/2)-50+$(_FECHESQ:4),CX=divmovel  // Botão dividir móvel
+         #ELSE
+            490.001,SL=($(eslat:0)/2)-50+$(_FECHESQ:4),CX=divmovel  // Botão dividir móvel
+            491,SL=($(eslat:0)/2)+$(_FECHESQ:4),CX=divmovel  // Incidência de corte
+         #ENDIF
+      #ENDIF
+      #FOR $1:$(nportas:3)
+         #IF $(I)<$(nportas:3)
+            #IF $(DIVIDICAIXA$(I):0)!0
+               #IF $(DIVMOVEL$(I):0)=0
+                  490,sl=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0)/2)-50+$(_FECHESQ:4),SP=$P
+               #ELSE
+                  490.001,sl=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0)/2)-50+$(_FECHESQ:4),SP=$P
+                  491,SL=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0))+$(_FECHESQ:4)
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDFOR
+      // div final
+      #IF $(DIVMOVEL$(I):0)=0
+         490,sl=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0)/2)-50+$(_FECHESQ:4),SP=$P
+      #ELSE
+         490.001,sl=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0)/2)-50+$(_FECHESQ:4),SP=$P
+         491,SL=($(inicalcmodulo:0)+$(lmodulo)*$(i)+$(eslat:0)*($(i)-1)+$(eslat:0))+$(_FECHESQ:4)
+      #ENDIF
+   #ELSE
+      #IF $(_FECHESQ:3)!7
+         // div inicial
+         #IF $(DIVMOVEL:0)=0
+            490,SL=($(eslat:0)/2)-50+$(_FECHESQ:4),CX=divmovel  // Botão dividir móvel
+         #ELSE
+            490.001,SL=($(eslat:0)/2)-50+$(_FECHESQ:4),CX=divmovel  // Botão dividir móvel
+            491,SL=($(eslat:0)/2)+$(_FECHESQ:4),CX=divmovel  // Incidência de corte
+         #ENDIF
+      #ENDIF
+      #FOR $1:$(nportas:3)
+         #IF $(I)<$(nportas:3)
+            #IF $(DIVIDICAIXA$(I):0)!0
+               #IF $(DIVMOVEL$(I):0)=0
+                  490,sl=$(lmodulo)*$(i)-50+$(_FECHESQ:4),SP=$P
+               #ELSE
+                  490.001,sl=$(lmodulo)*$(i)-50+$(_FECHESQ:4),SP=$P
+                  491,SL=$(lmodulo)*$(i)+$(_FECHESQ:4)
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDFOR
+      // div final
+      #IF $(DIVMOVEL$(I):0)=0
+         490,sl=($(lmodulo)*$(i))-50+$(_FECHESQ:4),SP=$P
+      #ELSE
+         490.001,sl=($(lmodulo)*$(i))-50+$(_FECHESQ:4),SP=$P
+         491,SL=($(lmodulo)*$(i))+$(_FECHESQ:4)
+      #ENDIF
+   #ENDIF
+#ENDIF

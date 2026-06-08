@@ -1,0 +1,15 @@
+{ 224   // Fechamento Frontal Canto Reto
+   *AZZERA*            =0
+   DESCRIZIONE         =Fechamento Frontal Canto Reto
+   CODICE              =/_CORCX=$(_CORCX:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,$(ABASE:0),$(plat)-$(ESLAT:0)
+   DIMENSIONE          =$(Lscocca)-1*($(l5)+$(ESPRUMO:0)/2+$(ESLAT:0)),$A-$(ABASE:0)*2,$(ESLAT:0)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =ALP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/0
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#224
+}

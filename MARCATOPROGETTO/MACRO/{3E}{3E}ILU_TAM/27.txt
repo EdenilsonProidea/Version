@@ -1,0 +1,173 @@
+#IF 1=0
+   #IF $(_iluinf:3)>0
+      _ilu,sl=0,l={$l},sa=0,_ilu=$(_iluinf),infoilu=$(iluinf),az=$(angz:0)
+   #ENDIF
+   #IF $(_ilubassup:3)>0
+      _ilu,sl=0,l={$l},sa=$a+1,_ilu=$(_ilubassup),infoilu=$(ilubassup),az=$(angz:0)
+   #ENDIF
+   _ilufonte
+#ENDIF
+#LET V_OLD=
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1 & $(TP_LED:12)!4
+      419.011,A=20,L=20,SP=$P+40,SL={$L/2}-10,SA=20,AZ=90
+   #ELSE
+      419.010,A=20,L=20,SP=$P+40,SL={$L/2}-10,SA=20,AZ=90
+   #ENDIF
+#ENDIF
+#IF $(LUZ)=1
+   #LET pled=8.5
+   #IF $(TP_LED:12)=1
+      #IF $(LED_PASS_ESQ)=0 #LET PASSESQ=3 #LET PASSESQ=0
+      #IF $(LED_PASS_DIR)=0 #LET PASSDIR=3 #LET PASSDIR=0
+      #IF $(TP_LOCAL:3)=1  // led frontal
+         #IF $(usagrapa:0)=1
+            463,cod=000$(tp_led:10),A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SP={$P+$(inc_pain_acab:0)-65},SL=$(PASSESQ),X7=$(TP_LED:12)/$(corled:0)/$(TAM_LED:0)
+            //#DUMP
+         #ELSE
+            463,cod=000$(tp_led:10),A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SP={$P+$(inc_pain_acab:0)-90},SL=$(PASSESQ)
+         #ENDIF
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $p<=230
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=230
+               #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $p<=380
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=380
+               #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ENDIF
+      #ELSEIF $(TP_LOCAL:3)=2 //led central
+         #IF $(usagrapa:0)=1
+            463,cod=000$(tp_led:10),A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P+$(inc_pain_acab:0)-$(incpainti:0))/2-($(pled)/2)}
+         #ELSE
+            463,cod=000$(tp_led:10),A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P-$(incpainti:0))/2-($(pled)/2)}
+         #ENDIF
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $p<=358
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=358
+               #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $p<=658
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=658
+               #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ENDIF
+      #ELSE // led traseiro
+         463,cod=000$(tp_led:10),A=2,P=$(pled),SP=56-$(incpainti:0),SL=$(PASSESQ),L={$L-($(PASSESQ)+$(PASSDIR))}
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS IDLOGERROS=$(IDLOGERROS)79;
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=2
+      #LET pspot=58
+      #LET I=
+      #LET X=$(N_LEDS:3)
+      #FOR $1:$(X)
+         #IF $(POSSARRPAI$(I):0)>0
+            ILU_ERRO_SPOT,verifica_erro=$(POSSARRPAI$(I):0)
+            #IF $(usagrapa:0)=1
+               464,cod=000$(tp_led:10),SL={$(POSSARRPAI$(I):0)-29},SA=-1,SP={($P+$(inc_pain_acab:0)-$(pspot)-$(incpainti:0))/2}
+            #ELSE
+               464,cod=000$(tp_led:10),SL={$(POSSARRPAI$(I):0)-29},SA=-1,SP={($P-$(pspot)-$(incpainti:0))/2}
+            #ENDIF
+            #LET V_OLD=$(POSSARRPAI$(I):0)
+         #ELSE
+            ILU_ERRO_SPOT,verifica_erro={INT(($L)/($(X)+1)*$(i))-29}
+            #IF $(usagrapa:0)=1
+               464,cod=000$(tp_led:10),SL={INT(($L)/($(X)+1)*$(i))-29},SA=-2,SP={($P+$(inc_pain_acab:0)-$(pspot)-$(incpainti:0))/2} // Spot
+            #ELSE
+               464,cod=000$(tp_led:10),SL={INT(($L)/($(X)+1)*$(i))-29},SA=-2,SP={($P-$(pspot)-$(incpainti:0))/2} // Spot
+            #ENDIF
+            #LET V_OLD={INT(($L)/($(X)+1)*$(i))-29}
+         #ENDIF
+      #ENDFOR
+      #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $p<=358
+         #IF $(ESP_PRAT:3)[40;50]!1
+            #LETS profgrapa=$(SUPORTEPRAT:19)
+            #LETS prof_tamb=358
+            #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+         #ENDIF
+      #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $p<=658
+         #IF $(ESP_PRAT:3)[40;50]!1
+            #LETS profgrapa=$(SUPORTEPRAT:19)
+            #LETS prof_tamb=658
+            #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=3
+      // FAZER ERRO
+      #LETS PECA=TAMPONAMENTO INFERIOR
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=4
+      #LET pcalaleta=16.5
+      #IF $(LED_PASS_ESQ)=0 #LET PASSESQ=3 #LET PASSESQ=0
+      #IF $(LED_PASS_DIR)=0 #LET PASSDIR=3 #LET PASSDIR=0
+      #IF $(TP_LOCAL:3)=1
+         463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L-($(PASSESQ)+$(PASSDIR))},SP={$P-69},SL=$(PASSESQ),c1=16,c2=16
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $p<=230
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=230
+               #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $p<=380
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=380
+               #LETS IDLOGERROS=$(IDLOGERROS)81^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ENDIF
+      #ELSEIF $(TP_LOCAL:3)=2
+         #IF $(usagrapa:0)=1
+            463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P+$(inc_pain_acab:0)-$(pcalaleta)-$(incpainti:0))/2},c1=16,c2=16
+         #ELSE
+            463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P-$(pcalaleta)-$(incpainti:0))/2},c1=16,c2=16
+         #ENDIF
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=150 & $p<=358
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=358
+               #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ELSEIF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)=300 & $p<=658
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS profgrapa=$(SUPORTEPRAT:19)
+               #LETS prof_tamb=658
+               #LETS IDLOGERROS=$(IDLOGERROS)80^ $(profgrapa)^$(prof_tamb);
+            #ENDIF
+         #ENDIF
+      #ELSE
+         463,cod=000$(tp_led:10),A=2,P=$(pcalaleta),SP=52-$(incpainti:0)),SL=$(PASSESQ),L={$L-($(PASSESQ)+$(PASSDIR))},c1=16,c2=16
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+         #IF $(usagrapa:0)=1 & $(SUPORTEPRAT:19)[150;300]!0
+            #IF $(ESP_PRAT:3)[40;50]!1
+               #LETS IDLOGERROS=$(IDLOGERROS)79;
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   
+   #IF $(tam_led:0)<200 & $(tp_led:12)[1;4]
+      #LETS IDLOGERROS=$(IDLOGERROS)77;
+   #ELSEIF $(tam_led:0)>3000
+      #LETS IDLOGERROS=$(IDLOGERROS)78;
+   #ENDIF
+   #LETS INFOPECA=$(INFOPECA)|PAINEL HOR
+#ENDIF
+//LOGERROS
+// ilu

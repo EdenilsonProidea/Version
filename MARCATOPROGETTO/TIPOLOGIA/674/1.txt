@@ -1,0 +1,12 @@
+{ 674   // Filleto
+   *AZZERA*            =0
+   DESCRIZIONE         =Filleto
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slfilleto),$(safilleto),$(spfilleto)
+   DIMENSIONE          =$(lfilleto),$(afilleto),$(pfilleto)
+   COLORI              =$(_corPUX:3)|$(.percorso)\foto\madeira\$(_corPUX:4)|$(_corPUX:5),$(_corPUX:3)|$(.percorso)\foto\madeira\$(_corPUX:4)|$(_corPUX:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =$(XPFRENTE)
+   X7                  =$(_corPUX:1)
+   X8                  =frente\$(filetto3ds).3ds
+}

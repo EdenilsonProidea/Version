@@ -1,0 +1,9 @@
+#IF $(xx3:0)=$(xp3:0) & $(XX8:3)=0 & $(XX3:1)!!L
+   #M JOB_PRAT_LAT
+  #MSG $(DIST_FUROP_AT)
+#ENDIF
+#IF $(TIPOLOGIA)=201 & $(XX3:1)==L
+   #LET NAOFURAR=0
+   #M JOB_PRAT_LAT_L	XP=$(XX6:0)
+  #MSG $(DIST_FUROP_AT)
+#ENDIF

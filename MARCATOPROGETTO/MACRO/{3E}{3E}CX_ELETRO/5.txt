@@ -1,0 +1,85 @@
+#IF $(IDVAO)=1
+   #IF $(_TPFR:3)=9
+      #LET PROF_UTIL={$P-$(DESC_BASE:0)}
+      // UMA GAVETA
+      #IF $(NVAO:0)=1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+$(ABASE:0)
+      #ELSEIF $(_TPFR_0001:3)=0 & $(NVAO:0)>1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+2*$(ABASE:0)
+      #ELSEIF $(_TPFR_0001:3)[1;7;96;98]!0 & $(NVAO:0)>1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+$(ABASE:0)+($(ABASE:0)/2)
+      #ENDIF
+      GAVETAELET,A={$A+($(ABASE:0)/2)-$(SABASEINT:0)-$(DESCFRE:0)},SA=$(SABASEINT:0)-$(ABASE:0),lagr=$L-2*$(ESLAT:0),idp=1,APE=GAV,INCREMENTAFIELET={$(SABASEINT:0)-$(ABASE:0)}
+   #ELSEIF $(_TPFR:3)=13
+      #LET PROF_UTIL={$P-$(DESC_BASE:0)}
+      // DUAS GAVETAS
+      #IF $(NVAO:0)=1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+$(ABASE:0)
+      #ELSEIF $(_TPFR_0001:3)=0 & $(NVAO:0)>1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+2*$(ABASE:0)
+      #ELSEIF $(_TPFR_0001:3)[1;7;96;98]!0 & $(NVAO:0)>1
+         #LET AFRE=$(AFINAL:0)-$(SABASEINT:0)+$(ABASE:0)+($(ABASE:0)/2)
+      #ENDIF
+      #LET AFRE=$(AFRE)/2
+      #LET MEMOLFRE=$(LFRE)
+      GAVETAELET,A=$(AFRE),_acegav=$(_acegav2),SA=$(SABASEINT:0)-$(ABASE:0),lagr=$L-2*$(ESLAT:0),idp=1,APE=GAV,INCREMENTAFIELET={$(SABASEINT:0)-$(ABASE:0)},INCREMENTAFIELETSUP={$(SABASEINT:0)-$(ABASE:0)}/2
+      #LET LFRE=$(MEMOLFRE)
+      GAVETAELET,A=$(AFRE),SA=$(AFRE)+$(SABASEINT:0)-$(ABASE:0),lagr=$L-2*$(ESLAT:0),idp=2,APE=GAV,INCREMENTAFIELET={$(SABASEINT:0)-$(ABASE:0)}/2
+   #ENDIF
+   #IF $(RMFUNDO:0)=0
+      #IF $(_TPFR:3)[96;98]!1
+         #IF $(NVAO:0)>$(IDVAO:0)
+            205,SP={$(DESC_BASE:0)+$(AFCOS:0)},SA={$(SABASEINT)-$(RAG_COS:0)},A={$(AVAO$(IDVAO):0)-$(SABASEINT)+2*$(RAG_COS:0)}
+         #ELSE
+            205,SP={$(DESC_BASE:0)+$(AFCOS:0)},SA={$(SABASEINT)-$(RAG_COS:0)},A={$(AVAO$(IDVAO):0)-$(SABASEINT)+2*$(RAG_COS:0)-$(ABASE:0)}
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ELSE
+   #LET INCREA={$(INCREA:0)+$(AVAO$(IDVAO):0)}
+   #LETV AFINAL={$(AINI:0)+$(INCREA:0)}
+   #IF $(_TPFR:3)=7
+      FRONTAL,LFRE=$L,P=$(_FR:4),AFRE={$(AVAO$(IDVAO):0)-($(ABASE:0)/2)},SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},idp=1,APE=ABS,MACRO=FRONTAL
+   #ELSEIF $(_TPFR:3)=96
+      #IF $(NVAO:0)=$(IDVAO)
+         MASCARA,AFRE=$(AVAO$(IDVAO):0)-($(ABASE:0)/2),SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},L=$L,P={$P-$(DESC_BASE:0)-$(ESCOS:0)},SP=$(DESC_BASE:0)+$(ESCOS:0)
+      #ELSE
+         MASCARA,AFRE=$(AVAO$(IDVAO):0),SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},L=$L,P={$P-$(DESC_BASE:0)-$(ESCOS:0)},SP=$(DESC_BASE:0)+$(ESCOS:0)
+      #ENDIF
+      #IF $(AVAO$(IDVAO):0)>1000
+         398,X9=2558^12;645^24
+      #ELSE
+         398,X9=2558^6;645^12
+      #ENDIF
+   #ELSEIF $(_TPFR:3)=98
+      #IF $(NVAO:0)=$(IDVAO)
+         MASCARADUPLA,L=$L,A=$(AVAO$(IDVAO):0)-1*($(ABASE:0)/2+$(FOLGAFRENTEAS:0)*2),SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},P={$P-$(DESC_BASE:0)-$(ESCOS:0)},SP=$(DESC_BASE:0)+$(ESCOS:0)
+      #ELSE
+         MASCARADUPLA,L=$L,A=$(AVAO$(IDVAO):0)-$(FOLGAFRENTEAS:0),SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},P={$P-$(DESC_BASE:0)-$(ESCOS:0)},SP=$(DESC_BASE:0)+$(ESCOS:0)
+      #ENDIF
+      #IF $(AVAO$(IDVAO):0)>1000
+         398,X9=2558^12;645^24
+      #ELSE
+         398,X9=2558^6;645^12
+      #ENDIF
+   #ELSEIF $(_TPFR:3)>0
+      #LET PORTA_OLD=$(VAO_OLD:0)-1
+      #IF $(NVAO:0)=$(IDVAO)
+         FR_ELETRO,P=$(_FR:4),SP=$(SP_FR:0),LFRE=$L,AFRE={$(AVAO$(IDVAO):0)-($(ABASE:0)/2)},SA={$(AFINAL:0)+($(ABASE:0)/2)-$(AVAO$(IDVAO):0)},idp=1,_DOBRA=0,MACRO=FRONTAL
+      #ELSE
+         #IF $(_TPFR_000$(IDVAO):0)=0 & $(_TPFR_000$(PORTA_OLD):0)=0
+            FR_ELETRO,P=$(_FR:4),SP=$(SP_FR:0),LFRE=$L,AFRE={$(AVAO$(IDVAO):0)+$(ABASE:0)},SA={$(AFINAL:0)-$(AVAO$(IDVAO):0)},idp=1,_DOBRA=0,MACRO=FRONTAL
+         #ELSEIF $(_TPFR_000$(IDVAO):0)=0 //SE O PRÓXIMO VAO NÃO TEM FRENTE
+            FR_ELETRO,P=$(_FR:4),SP=$(SP_FR:0),LFRE=$L,AFRE={$(AVAO$(IDVAO):0)+($(ABASE:0)/2)},SA={$(AFINAL:0)-$(AVAO$(IDVAO):0)+($(ABASE:0)/2)},idp=1,_DOBRA=0,MACRO=FRONTAL
+         #ELSE
+            FR_ELETRO,P=$(_FR:4),SP=$(SP_FR:0),LFRE=$L,AFRE={$(AVAO$(IDVAO):0)},SA={$(AFINAL:0)-$(AVAO$(IDVAO):0)+($(ABASE:0)/2)},idp=1,_DOBRA=0,MACRO=FRONTAL
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   INT_ELETRO
+#ENDIF
+#IF $L>800
+   #LET idlogerros=$(idlogerros)129;
+#ELSEIF $L<600
+   #LET idlogerros=$(idlogerros)128;
+#ENDIF

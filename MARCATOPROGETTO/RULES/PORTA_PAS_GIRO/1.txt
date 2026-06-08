@@ -1,0 +1,85 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PORTA_PAS_GIRO.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+T,tp_pp,,,Tipo Porta Passagem?,,,,,,,4
+T,ABERTURA,,,LADO ABERTURA,,,,,,,4
+T,_pinturafr,,$(_corfr:9)=1,,,,,,,,4
+T,_VIDRO,,_VIDRO[$(PP_FR:9)]!0,Vidro,,,,,,,3
+T,PP_PUX,,,Puxador,,,,,,,2
+M,PP_PPUXL,,$(PP_PUX:0)!0,Posição Puxador em L,,,100,100,,,2
+M,PP_PPUXA,,$(PP_PUX:0)!0,Posição Puxador em A,,,1040,,,,2
+T,PV_CORPER,,PV_corPER[$(PP_FR:9)]!0,,,,,,,,3
+T,_fechmag,,,Fechadura?,,,,,,,3
+-,TEC,,,Te
+T,_SISTPIVOT,,,Sistema de abertura,,,,,,,3
+M,pospivot,,$(_SISTPIVOT:14)!,Posição sistema pivot,,,,,,,3
+G,PORTA _FR
+G,VAROCULTE
+
+[GRAFICA]
+INICIA
+GESTAOMEDIDA
+SNAP_PP
+#LET ESPENCH=30
+#LET ESPFRE=6
+#LET PIVOTANTE=1
+#LETV ppuxpers=
+#LET lpp=$L
+#LET hv=$A
+#LETS esfre=$(ESPENCH)+{2*$(ESPFRE)}
+#LET p=$(esfre)
+#IF $(abertura:0)=2
+   #LETV APE=AGD
+#ELSE
+   #LETV APE=AGE
+#ENDIF
+#IF $(FECHADURA:0)=1
+   #LETS CODFECHADURA=FECHAPIVOT
+#ELSE
+   #LETS CODFECHADURA=
+#ENDIF
+
+#IF $(tp_pp:3)=1
+   #LETS CODDOBRA=DOBRAPIVOT
+#ELSEIF $(tp_pp:3)=2
+   #LETS CODDOBRA=DOBRAGIRO
+#ENDIF
+#LET pp_sistema:6=1
+#LET PP_APLICACAO:3=2
+PP_FR,PP_IDP=1,ESPENCH=15,ESPFRE=6
+#IF $(_SISTPIVOT:0)!0
+   #IF $(abertura:0)=2
+      238,SL={$l-62-$(POSPIVOT)},SA=-10,SP=2  //Sistema Pivotante
+      238.001,SL={$l-62-$(POSPIVOT)},SA=$A+10,SP=22,AX=180  //Sistema Pivotante
+   #ELSE
+      238,SL=$(POSPIVOT),SP=2,SA=-10 //Sistema Pivotante
+      238.001,SL=38,SA=$A+10,SP=22,AX=180,SL=$(POSPIVOT)  //Sistema Pivotante
+   #ENDIF
+#ENDIF
+LOGERROS
+
+
+//663

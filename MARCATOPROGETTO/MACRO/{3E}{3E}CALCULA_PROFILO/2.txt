@@ -1,0 +1,50 @@
+#LETS pospuxadores=$(POPX)
+#LETS xpfrente=$(_FR:7)
+#LET PAPUX=104
+#IF $(SENTIDO)=2
+   #IF $(AFRE)>1400
+      #LET PAPUX=1040
+   #ELSE
+      #IF $(POPX)[1;3]!0
+         #LET PAPUX=$(AFRE:0)/2
+      #ELSEIF $(POPX)[4;6]!0
+         #LET PAPUX=$(AFRE)-135-$(FOLGAFRENTEAS:0)
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF ($(_tpfr:3)=81 & $(INVERTE_PROFILO:0)=1 )// C16194
+   #LETS pospuxadores=8
+#ENDIF
+#LETS PARFRENTE=$(sentido)/$(_CORPROFILO:4)
+#LET ladojobfrente=2
+#IF $(APE:3)[GAI;SAP]!0
+   #IF $(_fr:5)==F30
+      #LETS nomejobfrente=PROFILOLACATTOGAV
+   #ELSE
+      #LETS nomejobfrente=PROFILOGAV
+   #ENDIF
+#ELSE
+   #IF $(APE:9)=1
+      #IF $(_fr:5)==F30
+         #LETS nomejobfrente=PROFILOLACATTOGAV
+      #ELSE
+         #LETS nomejobfrente=PROFILOGAV
+      #ENDIF
+   #ELSE
+      #IF $(ape:3)[AGE;AGD]!!
+         #IF $(_fr:5)==F30
+            #LETS nomejobfrente=PROFILOLATLACATTO
+         #ELSE
+            #LETS nomejobfrente=PROFILOLAT
+         #ENDIF
+      #ELSE
+         #IF $(_fr:5)==F30
+            #LETS nomejobfrente=PROFILOLACATTO
+         #ELSE
+            #LETS nomejobfrente=PROFILO
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF
+// #LETS parjobfrente=PPUX@$(popx)^SENPUX@$(sentido)^PAPUX@  // <c28673>
+#LETS parjobfrente=POSICAO@$(popx)^SENPUX@$(sentido)^PAPUX@$(PAPUX)^  // <c28673>

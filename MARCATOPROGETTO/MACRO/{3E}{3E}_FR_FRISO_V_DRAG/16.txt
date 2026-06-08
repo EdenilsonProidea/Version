@@ -1,0 +1,15 @@
+#LET vaofriso=$L/($(nfrisos:0)+1)
+#LET old_posfriso=0
+#FOR $1:$(nfrisos:0)
+   //#MSG $(parfrisos$(_ctx):$(i))
+   #IF $(parfrisos$(_ctx):$(i))>0
+      #LET posfriso=$(parfrisos$(_ctx):$(i))
+      // #LETS parfrisosscript=$(parfrisosscript)$(posfriso);
+   #ELSE
+      #LET posfriso={$(vaofriso)*$(I)}
+      #LETS parfrisosscript=$(parfrisosscript)$(posfriso);
+   #ENDIF
+   402,SA=$A/2,SL=$(posfriso),SP=10,p=$(esfre:0),L=$(posfriso),A=1,X1=8,X3=Pl Friso;parfrisos$(_ctx);{$(i)+1},X4=1,X5=3  //DRAGGER
+#ENDFOR
+
+// _fr_1

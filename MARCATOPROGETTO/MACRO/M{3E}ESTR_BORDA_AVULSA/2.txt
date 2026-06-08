@@ -1,0 +1,7 @@
+#LETS CODBORDA=$[CODICEBARRA;$(X9:0);$A;$(X9:1);ERRORE]
+#IF $(_LISTINO)=1
+   $(CODBORDA),{$(X9:2)+30} // Adicionado mais 30mm de fita <c26636>
+   8383,{$(X9:2)+30} // Adicionado o custo de colagem da fita de borda <c26636>
+#ELSE
+   KIT-BORDA-AVULSA,1,CODBORDA=$(CODBORDA);QTD={$(X9:2)}
+#ENDIF

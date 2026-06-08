@@ -1,0 +1,21 @@
+COZ_inicia
+#LET cava=$(_TPCAVA:3)
+#IF $(CAVA)>0 #LET CAVA=1
+#LET INF=1
+!TIPOBOX 1
+
+
+
+#LETS COLUNAPAREDE=$[TOsep;|;$(COLUNAPAREDE)]
+#IF $(COLUNAPAREDE:1)>0 & 1=0
+   CAIXA_CPAREDE
+#ELSE
+   CAIXA
+#ENDIF
+tampofilete
+coz_pes
+cotas
+coz_decori_inf
+// _sisaventos
+// 201
+// cava

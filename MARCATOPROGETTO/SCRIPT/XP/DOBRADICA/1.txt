@@ -1,0 +1,36 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   c1=wcoloree(p.colore1)
+   c2=wcoloree(p.colore2)
+   'FINITURA dobradica
+   
+   finitura=ex(ex(p.parametro(8),"/",1),";",1)
+   ' dimdob=split(ex(p.parametro(8),"/",2),";")
+   aa = c1 & "," & c2
+   
+   If CALCOLA(EX(p.parametro(10),"/",7))=2 Then
+      FINITURA="DOBRADICA\CALCO_LONGITUDINAL.3ds"
+   End If
+   percfile=UCASE(percorso & "\3ds\" & finitura)
+   
+   posd=calcola(ex(p.parametro(6),"/",1))
+   
+   Select Case posd
+   Case 1:ang=180
+   Case 3:ang=0
+   Case 5:ang=-90
+   Case 8:ang=90
+   End Select
+   'msgbox "tp " & tipoogg & " file " & percfile & " PARAMETRI " & ex(p.parametro(7),"/",1)
+   If ucase(right(finitura,3))=".XP" Or ucase(right(finitura,2))=".X" Or ucase(right(finitura,4))=".3DS"  Or ucase(right(finitura,5))=".DR3D" Or ucase(right(finitura,5))=".TREE" Then
+      'msgbox percfile
+      wrTrasforma dl/2,da/2,dp/2,0,0,ang
+      wrX   percfile ,0,aa, 0, 0,0,0 ,0.5,0.5,0.5
+      wrChiudi
+      'c1=wcolore(0)
+      'wrPannello "ALP",C1,dl,da,dp,0,0,0,0,0
+   Else
+      wrpannello2 dl,da,dp,c1,c1,c1,c1,c1,c1
+      ' MSGBOX "FILE NON COMPATIBILE CON 3CAD"
+   End If
+End sub

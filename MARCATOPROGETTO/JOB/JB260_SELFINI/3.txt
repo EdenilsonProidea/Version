@@ -1,0 +1,16 @@
+#M inicia_job
+#IF $(xp8:2)==E #LET f=2 #LET f=1
+#LET PCORR=$(xp8:0)
+#LET AGAV=$(XA)
+#LOADVAR _corr _corr $(xp8:1)
+#LOADVAR _tpgav _tpgav $(xp8:3)
+#LETS codcorredica=$[CODICEBARRA;X$(_corr:5)-$(PCORR);$(PCORR);10;errore]
+#LOADVAR _usiProfCorr _usiProfCorr $(codcorredica)
+#IF $(_usiProfCorr:3)!! & $(_usiProfCorr:4)!!
+   #LET PAFUROS=$(_usiProfCorr:3)
+   #LET deltayfuro=0
+   #FOR $(_usiprofcorr:4)
+       $(f)	MARC	X={$(XP)-1*($(i)+$(deltayfuro))} Y=$(pafuros)
+      #LET deltayfuro=$(deltayfuro)+$(i)
+   #ENDFOR
+#ENDIF

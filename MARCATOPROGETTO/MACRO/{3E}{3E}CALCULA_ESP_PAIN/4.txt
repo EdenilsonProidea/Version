@@ -1,0 +1,38 @@
+#IF $(ESP_PRAT:3)[15;18]!0 & $p<50
+   #MSG ALTERAMOS A PROFUNDIDADE PARA 50MM QUE É O MÍNIMO POSSÍVEL
+   #LET p=50
+#ENDIF
+#IF $(ESP_PRAT:3)=24
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=9
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:3)=30
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=15
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:0)=41
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=25
+   #LET ESP_PRAT:3=15
+#ELSEIF $(ESP_PRAT:3)=50 // feito em visita
+   #LETV P=$(ESP_PRAT:3)
+   #LET esmaoamiga=34 // chapa de 25 e chapa de 9 - conferir estr_madeira
+   #LET ESP_PRAT:3=15
+#ENDIF
+
+
+#IF 1=0 // Retirado as opções que não são mais utilizadas, o cliente alterou o padrão dos paineis, feito em visita
+   #IF $(ESP_PRAT:3)=43
+      #LETV P=$(ESP_PRAT:3)
+      #LET esmaoamiga=25
+      #LET ESP_PRAT:3=18
+   #ELSEIF $(ESP_PRAT:3)=45
+      #LETV P=$(ESP_PRAT:3)
+      #LET esmaoamiga=30
+      #LET ESP_PRAT:3=15
+   #ELSEIF $(ESP_PRAT:3)=48
+      #LETV P=$(ESP_PRAT:3)
+      #LET esmaoamiga=30
+      #LET ESP_PRAT:3=18
+   #ENDIF
+#ENDIF

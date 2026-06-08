@@ -1,0 +1,9 @@
+#LOADVAR basealu basealu $(X8:1)
+#IF $(basealu:3)>0
+   #IF $(_LISTINO)=1
+      $(BASEALU:5),{$(DIML)+($(DIMA))*2}/1000
+      $(BASEALU:4),1
+   #ELSE
+      KIT-BASEALU,1,CODBASEALU=$(BASEALU:4);CODADD=$(BASEALU:5);MONTADO=$(V_MONTADO:0),{$(DIML)},($(DIMA)),1
+   #ENDIF
+#ENDIF

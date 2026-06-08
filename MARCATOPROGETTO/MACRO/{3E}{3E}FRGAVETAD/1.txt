@@ -1,0 +1,12 @@
+#LET LFRE=$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1
+_iniciafr
+// #LET folgafrenteaS=0
+// #LET folgafrenteai=0
+#IF $(vfr:1)!!999
+   #LETS CINEX_VAR_OBRIGATORIAS=_SISTEMAS=STD0901;_USINAGEMCLIENTE=000;_APLICACAO=FG_01_01;_POSPORTAS=FG_01_01_01;
+   #LETS CINEX_VAR_DEFAULT=
+   _fr,MOVE=$(movfr)
+#ENDIF
+ACEINTFRENTE,tpaper=1,l=$(lfre:0),sl=$(eslat:0),MOVE=$(movfr)
+
+!QUOTA9 ($(LFRE),$(saini:0),$(PTOT)),($(LFRE),$(saini:0)+$(AFRE),$(PTOT)),,-10

@@ -1,0 +1,11 @@
+!PARAMETRI abase=0,eslat=0
+#LETV _FRT=0
+#LET aagr=$(atot)-$(ABASE:0)*2
+#LET lagr=$(ltot)-$(ESLAT:0)*2
+#SELECT $(_tpfech:3)
+#CASE 3
+   frontal,sp={$(_tpfech:5)}
+#CASE 4
+   frontal
+#ENDIF
+#MSG a

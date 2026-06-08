@@ -1,0 +1,3 @@
+#M ESTR_MADEIRA,CODITEM=FRESAPI
+
+#MSG $(_corfr:1)

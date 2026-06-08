@@ -1,0 +1,13 @@
+{ 625   // Painel Frontal Home veio horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel Frontal Home veio horizontal
+   POSIZIONE           =0,,$p-$(esp_prat:0)
+   DIMENSIONE          =$L,$A,$(esp_prat:0)
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =FUNDO_CAIXA.XP
+   X5                  =$(NFRISOS:0)
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0
+   X9                  =/$(_COREX:1)/$(ativaripas:0)/$(nferusip:0)
+   ALIAS               =#625
+}

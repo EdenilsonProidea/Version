@@ -1,0 +1,9 @@
+{ 432   // Corredica Gaveta
+   *AZZERA*            =0
+   DESCRIZIONE         =Corredica Gaveta
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$(LGAV),$(AGAV),$(PGAV)
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+}

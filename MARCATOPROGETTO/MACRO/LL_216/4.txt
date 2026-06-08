@@ -1,0 +1,10 @@
+#IF $(x6:2)!1 // se for frente invisivel
+   #MSG teste
+   #LOADVAR _FR _FR $(X9:0)
+   #M ESTR_MADEIRA,CODITEM=$(_FR:5),ORIENTAMENTO=ALP
+   #IF $(_fr:21)!!
+      $(_fr:21),1
+   #ENDIF
+#ENDIF
+
+

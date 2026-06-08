@@ -1,0 +1,17 @@
+#LET LFRE=($L+$(SOBREP:0)*2)/3
+#MSG $(pm)=1 & $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D & $(_tpfrdir:4)>1
+#IF $(pm)=1 & $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D & $(_tpfrdir:4)>1 // Adicionado em visita
+   FRCORR,SP=0,P=$(ESFRE),APE=C3E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C3C,IDP=2,SL=($L-$(LFRE))/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C3D,IDP=3,SL=$L-1*($(LFRE)+34),macro=frontal // 34 é a profundidade do perfil usado na porta base correr
+#ELSEIF $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D & $(_tpfrdir:4)>2 // Adicionado em visita
+   FRCORR,SP=0,P=$(ESFRE),APE=C3E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C3C,IDP=2,SL=($L-$(LFRE))/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C3D,IDP=3,SL=$L-1*($(LFRE)+34),macro=frontal // 34 é a profundidade do perfil usado na porta base correr
+#ELSE
+   FRCORR,SP=0,P=$(ESFRE),APE=C3E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C3C,IDP=2,SL=($L-$(LFRE))/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C3D,IDP=3,SL=$L-$(LFRE),macro=frontal
+#ENDIF
+
+// _fr_1

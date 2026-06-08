@@ -1,0 +1,69 @@
+!PARAMETRI TIPO=M
+//TIPO: M=MADEIRA,V=VIDRO,A=ARAMADO
+#IF $(TIPO)==V
+   #IF $(_TPCAIXA:3)=11  // SUPERIOR DIVIDIDO
+      208,L=($(LAGR)/2-$(ESLAT:0))-2*$(RED_INTM:0)  // PRATELEIRAS DE VIDRO (COZINHA)
+      208,SL=$(LAGR)/2+$(ESLAT:0),L=($(LAGR)/2-$(ESLAT:0))-2*$(RED_INTM:0)  // PRATELEIRAS DE VIDRO (COZINHA)
+   #ELSEIF  $(_TPCAIXA:9)=2 & $(ltot)>1200
+      #LET tmp=$(LAGR)/2-$(eslat:0)/2-2*$(RED_INTM:0)
+      208,L=$(tmp)  // PRATELEIRAS DE VIDRO (COZINHA)
+      208,SL=$(tmp)+$(eslat:0)+$(RED_INTM:0)*2,L=$(tmp)  // PRATELEIRAS DE VIDRO (COZINHA)
+   #ELSE
+      208  //PRATELEIRAS DE VIDRO (COZINHA)
+   #ENDIF
+#ELSEIF $(TIPO)==A
+   207  // PRATELEIRAS ARAMADA (COZINHA)
+#ELSEIF $(TIPO)==U
+   sagpratU
+   209,dis=$(sagprat)  // PRATELEIRAS ARAMADA (COZINHA)
+#ELSEIF $(TIPO)==W // importado gestão antiga prateleira wood <c23348>
+   PRAT_WOOD,_CORCX=$(_CORWOOD)
+#ELSEIF $(TIPO)==L
+   309 // PRATELEIRAS ARAMADA (COZINHA)
+   315 // luminaria prateleira
+#ELSEIF $(TIPO)==RED
+   209.004  // PRATELEIRAS ARAMADA (COZINHA)
+#ELSE
+   #LETS _corpr=$(_corcx) // A cor da prateleira sempre deve ser da cor da caixa, adicionado a pedido do Thiago <c26636>
+   #IF $(pprat)<80 // 100 //<C23934> Alterado de 100 para 80mm - solicitado pelo Fabiano <c26636>
+      #LETS idlogerros=$(idlogerros)76;
+   #ENDIF
+   #IF $(_TPCAIXA:12)==D
+      309  // PRATELEIRAS DE MADEIRA (DORMITORIO)
+      #LET SAPRAT={$(AFPRATA))}
+   #ELSE
+      #IF $(CAIXA_CPAREDE)=1
+         #LET LB=$(LPRAT)-2*$(RED_INTM:0)
+         #LET PB=$(PPRAT)
+         !SAGOMA BASE $(AFPRATL),$(AFPRATP),$(AFPRATL)+$(LB),$(AFPRATP),$(AFPRATL)+$(LB),$(AFPRATP)+$(PB),$(AFPRATL),$(AFPRATP)+$(PB)
+         !SAGOMA COLUNA $(SLCOL)-$(ESLAT:0),0,$(FIMCOL)-$(ESLAT:0),0,$(FIMCOL)-$(ESLAT:0),$(PCOL),$(SLCOL)-$(ESLAT:0),$(PCOL),$(SLCOL)-$(ESLAT:0),0
+         !SAGDIFF BASE,$(BASE),$(COLUNA)
+         !SAGREL SAGPRAT,$(BASE),$(AFPRATL),$(AFPRATP)
+         209.001  // PRATELEIRAS DE MADEIRA (COZINHA) sagoma
+      #ELSE
+         #IF {($(LPRAT)+2*($(ESLAT:0)+$(RED_INTM:0))}>799 // $(LPRAT)>800 // <C29855>
+            209,a=25,sa=$(AFPRATA)-25/2
+            //#LET SAPRAT={$(AFPRATA)-$(ESPRAT:0)/2}
+            #LET SAPRAT={$(AFPRATA)-25/2}
+         #ELSE
+            209  //PRATELEIRAS DE MADEIRA (COZINHA)
+            #LET SAPRAT={$(AFPRATA:0)-$(ESPRAT:0)/2}
+            //#ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #IF $(CLOSET_L:0)!1
+      #IF $(ITEM)==ZZINTDCL
+         ILU_PRAT,SA={$(SAPRAT)-1},P=$(PPRAT:0)
+      #ELSEIF $(AMBIENTE)==D
+         ILU_PRAT,SA={$(SAPRAT)-1},P=$(PPRAT:0),MACRO=ILU_PRAT
+      #ELSE
+         ILU_PRAT,SA={$(SAPRAT)-1},P=$(PPRAT:0),MACRO=ILU_PRAT
+      #ENDIF
+   #ENDIF
+   #LET SAINT=$(SAPRAT)
+   !QUOTA9 (0,$(AFPRATA)-$(ESPRAT:0),$p),($L,$(AFPRATA)-$(ESPRAT:0),$p),,-10
+   !QUOTA9 (90,$(OLDPAPRAT:0),$p),(90,$(AFPRATA)-$(ESPRAT:0)/2,$p),,-10
+   #LET OLDPAPRAT=$(AFPRATA)+$(ESPRAT:0)/2
+#ENDIF
+#MSG $(_ilu_0000)

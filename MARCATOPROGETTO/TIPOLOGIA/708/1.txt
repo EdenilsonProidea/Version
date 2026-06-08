@@ -1,0 +1,12 @@
+{ 708   // FRISO horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =FRISO horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           ={$(esp_prat:0)+$(recuolateral:0)},$(esp_prat:0),0
+   DIMENSIONE          =$L-2*({$(esp_prat:0)+$(recuolateral:0)}),$(esp_prat:0),$(APFRISO:0)
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   X7                  =N/N/N/N/1/1/1/1/0/0/1/1/0/0/0/0/0/$(ESPB:0)
+   X9                  =/$(_COREX:1)
+   ALIAS               =#708
+}

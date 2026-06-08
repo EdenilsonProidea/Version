@@ -1,0 +1,5 @@
+#IF $(distanciadoresq:0)>0
+   385,L={$(distanciadoresq:0)+$(ESPARM:3)/2} // ,sp=$p  // Distanciador lateral Fechamento
+#ENDIF
+// 201
+// 204

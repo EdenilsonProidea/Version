@@ -1,0 +1,4 @@
+#MSG $(X3:1)
+#IF $(X3:1)=
+   #M estr_ilu,_listino=1
+#ENDIF

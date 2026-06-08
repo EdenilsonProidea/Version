@@ -1,0 +1,21 @@
+#IF $(ESP_PRAT:0)[24;30;41;43;45;48]!0
+#MSG hhhh
+   PH_ESTRUTURA_NEW,esmaoamiga=$(esmaoamiga:0),SL=$(LATERAL_P_E:5),SA=$(LATERAL_P_B:5),L=$L-$(LATERAL_P_E:5)-$(LATERAL_P_D:5),A=$A-$(LATERAL_P_C:5)-$(LATERAL_P_B:5),P=50,SP=0
+   PP_BORDA,SP=0 // ,P=$(ESP_PRAT_TMP:0) // Alterado variantes em visita
+#ELSE
+   #IF $L>1500 & $A>1500
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,SL=$L/2-($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2,SA=$A/2-($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,SL=$L/2-($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2,SA=$A/2-($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+   #ELSEIF $L>1500
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),L=$L/2+($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2,SL=$L/2-($(LATERAL_P_D:4)+$(LATERAL_P_E:4))/2
+   #ELSEIF $A>1500
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru),A=$A/2+($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2,SA=$A/2-($(LATERAL_P_B:4)+$(LATERAL_P_C:4))/2
+   #ELSE
+      ph_estrutura,_csaraffo=$(_corcru),essaraffo=15,_cOREX=$(_corcru)
+   #ENDIF
+#ENDIF
+// GAVETA

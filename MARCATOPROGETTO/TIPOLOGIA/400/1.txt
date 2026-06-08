@@ -1,0 +1,11 @@
+{ 400   // COLISÃO
+   *AZZERA*            =0
+   DESCRIZIONE         =COLISÃO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =$(latocoliçao)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p+100
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+}

@@ -1,0 +1,112 @@
+#IF $(_tpfundo:3)>0
+   #LETS AFPRATP=$(AFCOS:0)+$(ESCOS:0) //Afastamento da prateleiras de madeira em relação a lateral
+   #LETS AFPRATV=$(AFCOS:0)+$(ESCOS:0) //Afastamento da prateleiras de vidro em relação a lateral
+   #LETS PPRAT=$P-1*($(RED_F_PRAT:0)+$(ESCOS:0)+$(AFCOS:0)) //Profundidade da prateleira de madeira
+   // gestione descontos deslocamentos com exclusao de componentes
+   #IF $(exclbasei)=1
+      #LET deltafi=0
+      #LET deltati=0
+   #ELSE
+      #LET deltati=$(ABASE:0)
+      #IF $l>800 & $(SUP)=1  // <C27560>
+         #LET deltafi=25-$(RAG_COS:0)
+      #ELSE
+         #LET deltafi=$(ABASE:0)-$(RAG_COS:0)
+      #ENDIF
+   #ENDIF
+   #IF $(_tpfundo:3)=8
+      #LET deltaFs=0
+   #ELSEIF ($(exclbases)=1 | $(tps)=2 | $(tps)=3) & $(_tpfundo:3)!4
+      #LET deltafs=0
+      #IF $(TPS)=3 & $(_tpfundo:3)!3
+         #LET deltats=20
+      #ELSE
+         #LET deltats=0
+      #ENDIF
+   #ELSE
+      #LET deltats=$(ABASE:0)
+      #LET deltafs=$(ABASE:0)-$(RAG_COS:0)
+   #ENDIF
+   #IF $(excllate)=1
+      #LET deltafe=0
+      #LET deltate=0
+   #ELSE
+      #LET deltate=$(ESLAT:0)
+      #LET deltafe=$(ESLAT:0)-$(RAG_COS:0)
+   #ENDIF
+   #IF $(excllatd)=1
+      #LET deltafd=0
+      #LET deltatd=0
+   #ELSE
+      #LET deltatd=$(ESLAT:0)
+      #LET deltafd=$(ESLAT:0)-$(RAG_COS:0)
+   #ENDIF
+   #IF $(ESCOS:0)>0
+      #IF $(exclbases)=1 | $(tps)=2 | $(tps)=3
+         // adiciona fita superior
+         205,SL=$(deltafe),SA=$(deltafi),L={$l-1*($(deltafe)+$(deltafd))},A={$a-1*($(deltafi)+$(deltafs))},X7=N/N/N/N/0/0/0/0/0/0/0/0/1/0/0/0  //Fundo  (cozinha)
+      #ELSE
+         #IF $(veiofun:0)=1 //  acesso 09/10
+            214,SL=$(deltafe),SA=$(deltafi),L={$l-1*($(deltafe)+$(deltafd))},A={$a-1*($(deltafi)+$(deltafs))}  //Fundo  (cozinha)
+         #ELSE
+            #IF $(_TPBASE:3)!3
+               205,SL=$(deltafe),SA=$(deltafi),L={$l-1*($(deltafe)+$(deltafd))},A={$a-1*($(deltafi)+$(deltafs))}  //Fundo  (cozinha)
+            #ELSE
+               #IF $L>800
+                  205,SL=$(deltafe),SA=$(deltafi)-19.5,L={$l-1*($(deltafe)+$(deltafd))},A={$a-1*($(deltafi)+$(deltafs)-19.5)},X7=N/N/N/N/0/0/0/0/0/0/0/0/1/0/1/0  //Fundo  (cozinha)
+               #ELSE
+                  205,SL=$(deltafe),SA=$(deltafi)-12.5,L={$l-1*($(deltafe)+$(deltafd))},A={$a-1*($(deltafi)+$(deltafs)-12.5)},X7=N/N/N/N/0/0/0/0/0/0/0/0/1/0/1/0  //Fundo  (cozinha)
+               #ENDIF
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #LET AFCOS=0
+      #LET ESCOS=0
+   #ENDIF
+#ENDIF
+// gestione traverse atras
+#IF $(_tpfundo:3)=2  // travessas horizontal
+   204,SA=$(deltati),SP=0,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/0/0/0/$(FITARSOVISTA:2)  //Traversa verticale  (cozinha)
+   204,SA=$a-1*($(ATRA:0)+$(deltats)),SP=0,X7=N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/0/$(FITARSOVISTA:2)  //Traversa verticale  (cozinha)
+   #IF $a>1600
+      204,sa=$a/2-$(ATRA:0)/2,sp=0,sl=$(deltate),l=$l-1*($(deltate)+$(deltatd)),X7=N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/0/$(FITARSOVISTA:2)  // Traversa verticale  (cozinha)
+   #ENDIF
+#ELSEIF $(_tpfundo:3)=3  // travessa vertical
+   210,A={$A-1*($(deltati)+$(deltats))},sa=$(deltati),sl=$(deltate)  // Traversa verticale  fundo
+   210,SL=$L-$(ATRA:0)-$(deltatd),SA=$(deltati),A={$A-1*($(deltati)+$(deltats))},X7=N/N/N/N/0/0/0/1  //Traversa verticale  fundo
+   //#LET AFCOS=0
+   //#LET ESCOS=0
+#ELSEIF $(_tpfundo:3)=19  // travessa vertical SO ESQ
+   210,A={$A-1*($(deltati)+$(deltats))},sa=$(deltati),sl=$(deltate)  // Traversa verticale  fundo
+   //   210,SL=$L-$(ATRA:0)-$(deltatd),A={$A-1*($(deltati)+$(deltats))},sa=$(deltati)  // Traversa verticale  fundo
+   #LET AFCOS=0
+#ELSEIF $(_tpfundo:3)=20  // travessa vertical SO DIR
+   //   210,A={$A-1*($(deltati)+$(deltats))},sa=$(deltati),sl=$(deltate)  // Traversa verticale  fundo
+   210,SL=$L-$(ATRA:0)-$(deltatd),A={$A-1*($(deltati)+$(deltats))},sa=$(deltati)  // Traversa verticale  fundo
+   #LET AFCOS=0
+#ELSEIF $(_tpfundo:3)=4  // travessa hor e travessa vertical central
+   #IF $a>300
+      204,sa=$a/2-$(ATRA:0)/2,sp=0,sl=$(deltate),l=$l-1*($(deltate)+$(deltatd)),X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1/0/$(FITARSOVISTA:2)  // Traversa verticale  (cozinha)
+   #ENDIF
+   CALCOLA_SAGBASSES,LBS=$(LBSN)
+   220,SL=$(slbS),L=$(lbS),C1=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/0/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+#ELSEIF $(_tpfundo:3)=5  // travessa hor EM FRENTE AO FUNDO
+   CALCOLA_SAGBASSES,LBS=$(LBSN)
+   220,SL=$(slbS),SP=$(ESCOS)+$(AFCOS),L=$(lbS),C1=$(CC2),C2=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/N/0/0/1/0/0/0/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+#ELSEIF $(_tpfundo:3)=6  // travessa VERT CENTRO
+   204,SA=$A/2-$(ATRA:0)/2,SP=0,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1/0/$(FITARSOVISTA:2)  // Traversa verticale
+#ELSEIF $(_tpfundo:3)=7  // travessa VERT CENTRO
+   #IF $(exclbases)=1 | $(tps)>1
+      204,SA=$A-$(ATRA:0),SP=0,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1/0/$(FITARSOVISTA:2)  // Traversa verticale
+   #ELSE
+      204,SA=$A-$(ATRA:0)-$(abase:0),SP=0,X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1/0/$(FITARSOVISTA:2)  // Traversa verticale
+   #ENDIF
+#ELSEIF $(_tpfundo:3)=8  // travessa ATRAS COM 3 MM
+   204,SP=$(_TPFUNDO:5)+$(escos),X7=N/N/N/N/0/0/0/0/0/0/1/1/0/0/1/1/0/$(FITARSOVISTA:2)  //Traversa verticale
+#ELSEIF $(_tpfundo:3)=9  // SO TRAVESSA ATRAS
+   CALCOLA_SAGBASSES,LBS=$(LBSN)
+   220,SL=$(slbS),L=$(lbS),C1=$(CC2),C2=$(CC1),DIS=$(sag),X7=$(LAV1)/$(LAV2)/N/$(TRABALHOAT)/0/0/1/0/$(canal)/0/$(tpg2)/$(tpg3)/0/0/0/1/0/$(FITARSOVISTA:2)  //Traversa orizontal  (cozinha)
+#ELSEIF $(_tpfundo:3)=35  // SOMENTE ORÇAMENTO DE CANTONEIRA
+   229
+#ENDIF

@@ -1,0 +1,12 @@
+{ 253   // Painel Interno Horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel Interno Horizontal
+   CODICE              =/;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(cpainelint:3)|$(.percorso)\foto\madeira\$(cpainelint:4)|$(cpainelint:5),$(cpainelint:3)|$(.percorso)\foto\madeira\$(cpainelint:4)|$(cpainelint:5)
+   ORIENTAMENTO        =LAP
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1/0/0/0/0
+   X9                  =$(_tpcaixa:1)/$(cpainelint:0)
+   ALIAS               =#253
+}

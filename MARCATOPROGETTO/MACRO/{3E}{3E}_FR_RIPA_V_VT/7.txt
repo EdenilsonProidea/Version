@@ -1,0 +1,31 @@
+#IF $(INF)=1 #LET FOLGAFRENTEA=$(FOLGAFRENTEAI)
+#IF $(SUP)=1 #LET FOLGAFRENTEA=$(FOLGAFRENTEAS)
+// INICIO <C26378>
+#IF $(APE:0)[AGD;AGE;ABI]!0 #LET DESCSPAZIO=2 #LET DESCSPAZIO=0
+#IF $(APE:0)==AGD
+   #LETS lffre=0
+#ENDIF
+#IF $(APE:0)==AGE
+   #LETS lffre=$(lffre)+$(DESCSPAZIO:0)
+#ENDIF
+#IF $(APE:0)==ABI
+   #LET affre={$(affre)+$(DESCSPAZIO:0)}
+#ENDIF
+//#MSG $(FRVUOTTO)
+// FIM <C26378>
+_FR_VUOTTO_VETRO
+//_FR_STANDARD
+#IF $(_CORRIPAS:9)=1 #LETV _corripas:5=$(_pinturari:5)
+#LET PASSO=$(espacoripas:0)+$(LARGripas:0)
+#LET NRIPAS=INT($l/$(PASSO))+$(adicionaripas:0)
+#LET INIRIPAS=($l-$(NRIPAS)*$(PASSO)+$(espacoripas:0))/2
+#IF $(inicioripascost:0)!0
+   #LET INIRIPAS=$(inicioripascost:0)
+#ENDIF
+
+//#MSG $(FOLGAFRENTEL:0)
+#FOR $1:$(NRIPAS),,IDRIPA
+   // 627,SL={$(FOLGAFRENTEL:0)+$(lffre:0)},SA=$(FOLGAFRENTEAI:0)+$(affre),SP=$p+1,P=$(ESP_RIPA:3),X3=$(curbox)/P  // ripas vertical
+   627,SL={$(FOLGAFRENTEL:0)+$(lffre:0)}+$(INIRIPAS)+($(IDRIPA)-1)*$(PASSO),SA=$(FOLGAFRENTEAI:0)+$(affre),SP=$p+1,P=$(ESP_RIPA:3),X3=$(curbox)/P  // ripas vertical
+#ENDFOR
+// 215

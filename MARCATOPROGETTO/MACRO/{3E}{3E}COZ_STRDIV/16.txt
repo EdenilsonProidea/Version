@@ -1,0 +1,85 @@
+DIV_CAIXAPAREDE // <C7052>
+#IF $(ORIENTA)=1
+   #LET ContaDv=$(ContaDv)+1
+   calcula_divv
+   // silvio - 26/10/2023 -gabi disse que o padrão é 28 assim tirei essa parte
+   // #IF $(_tpcaixa:0)[CING;CINGSF]!1
+   //    #IF $(DivVer:$(ContaDv))= #LET DivVer:$(ContaDv)={$p-(10+$(ESCOS:0)+$(AFCOS:0))}
+   // #ENDIF
+   // mudei para essa para entrar em automatico
+   #IF $(_tpcaixa:0)[CING;CINGSF]!1
+      #IF $(DivVer:$(ContaDv))= #LET DivVer:$(ContaDv)=9999
+   #ENDIF
+   #IF $(DivVer:$(ContaDv))>0 | ($(dividirfundo:0)=1 & $a>$(atot)-50)
+      #IF $(divver:$(contadv))=9999 #LET pdivv=$(PDIVV:0) #LET pdivv=$(DivVer:$(ContaDv))
+      #IF $(dividirfundo:0)=1 & $a>$(atot)-50
+         #IF $(_tpcaixa:9)=1 & $(tps)=2 // inferior
+            #LET ADIVV={$(ADIVV)+$(ESTRA:0)}
+            !SAGOMAL TMP 0,0,0,{$(adivv)-$(ESTRA:0)},$(ATRA:0),{$(adivv)-$(ESTRA:0)},$(ATRA:0),$(adivv),{$P-$(ATRA:0)},$(adivv),{$P-$(ATRA:0)},{$(adivv)-$(ESTRA:0)},$P,{$(adivv)-$(ESTRA:0)},$P,0,0,0
+            241.001,SL=-$(ESLAT:0)/2,SA=$(sadivv),A=$(adivv),P=$p  // divisao interna vertical cozinha (INFERIOR RECORTE)
+         #ELSE
+            241,SL=-$(ESLAT:0)/2,SP=0,p=$p,A=$(adivv),sa=$(sadivv)
+            297,COD= / /Dist:{$(spostaL)-$(ESLAT:0)/2} mm,SL=-150,SA=$a+100,L=300,A=100,P=10  //TEXTO
+         #ENDIF
+         #LETS vettfundos=$(vettfundos){$(spostal)};
+      #ELSE
+         #IF $(_FR:6)==601 //<c20453>
+            241,SL=-$(ESLAT:0)/2,SA=$(sadivv)+$(ESTRA:0),SP=$(AFCOS:0)+$(ESCOS:0),A=$(adivv),P=$(PDIVV:0)  //divisao interna vertical cozinha
+         #ELSE
+            241,SL=-$(ESLAT:0)/2,SA=$(sadivv),SP=$(AFCOS:0)+$(ESCOS:0),A=$(adivv),P=$(PDIVV:0)  //divisao interna vertical cozinha
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #IF $(_locka:0)==0
+      402,SA=$a/2,SP={$(AFCOS:0)+$(ESCOS:0)+$(PDIVV:0)},L=$(DivVer:$(ContaDv)),A=1,X1=4,X3=Pdiv;DivVer;{$(ContaDv)+1},X4=1,X5=3,X6=0;{$(PDIV:0)}  //DRAGGER
+   #ENDIF
+#ELSE
+   //inicia_pdiv
+   #LET ContaDh=$(ContaDh)+1
+   calcula_divh
+   // silvio - 26/10/2023 -gabi disse que o padrão é 28 assim tirei essa parte
+   // #IF $(_tpcaixa:0)[CING;CINGSF]!1
+   //   #IF $(DivHor:$(ContaDh))= #LET divhor:$(contadh)={$p-(10+$(ESCOS:0)+$(AFCOS:0))}
+   // #ELSE
+   //   #IF $(DivHor:$(ContaDh))= #LET divhor:$(contadh)=//{$p-(10+$(ESCOS:0)+$(AFCOS:0))}
+   // #ENDIF
+   // mudei para essa para entrar em automatico
+   #IF $(_tpcaixa:0)[CING;CINGSF]!1
+      #IF $(DivHor:$(ContaDh))= #LET divhor:$(contadh)=9999
+   #ELSE
+      #IF $(DivHor:$(ContaDh))= #LET divhor:$(contadh)=//{$p-(10+$(ESCOS:0)+$(AFCOS:0))}
+   #ENDIF
+   #IF $(DivHor:$(ContaDh))>0
+      #IF $(divhor:$(contadh))=9999 #LET pdivh=$(PDIVH:0) #LET pdivh=$(Divhor:$(ContaDh))
+      #LET SEMUSINAGEMBASEESTR=0
+      #IF $(ITEM)[M24]!0 // MÓDULO BASCULANTE INVERTIDO MAIS GAVETA, ISSO VEM DO CATÁLOGO ANTIGO  // CHAMADO <!-3975-> // BASE DE 25MM + <C5757> + <C8043> <C8353>
+         #IF $(_FR:6)[29;66]!0 | $(cava)=1
+            203.005,SL=$(sldivh),SA=0,SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0),A=18  // Base  (cozinha)
+         #ELSE
+            203.005,SL=$(sldivh),SA=-7,SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0),A=25  // Base  (cozinha)
+         #ENDIF
+      #ELSEIF $(deslocadivh:$(contadh))=1  //desloca para cima
+         203.005,SL=$(sldivh),SA=0,SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0)  // Base  (cozinha)
+         #LET PADIV=0
+      #ELSEIF $(deslocadivh:$(contadh))=-1  //desloca para baixo
+         203.005,SL=$(sldivh),SA=-$(ABASE:0),SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0)  // Base  (cozinha)
+         #LET PADIV=-$(ABASE:0)
+      #ELSEIF $(deslocadivh:$(contadh))!0
+         203.005,SL=$(sldivh),SA=$(deslocadivh:$(contadh)),SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0)  // Base  (cozinha)
+         #LET PADIV=$(deslocadivh:$(contadh))
+      #ELSE // centraliza
+         203.005,SL=$(sldivh),SA=-$(ABASE:0)/2,SP=$(AFCOS:0)+$(ESCOS:0),L=$(ldivh),P=$(PDIVH:0),x7=N/N/N/N/0/0/1/0/$(canal)/$(cava)/1/1/0/0/0/1  //Base  (cozinha)
+         #LET PADIV=-$(ABASE:0)/2
+      #ENDIF
+   #ENDIF
+   #IF $(_locka:0)==0
+      402,SL=$l/2,SA=$(PADIV),SP={$(AFCOS:0)+$(ESCOS:0)+$(PDIVH:0)},L=$(Divhor:$(ContaDh)),A=1,X1=4,X3=Pdiv;DivHor;{$(ContaDh)+1},X4=1,X5=3,X6=0;{$(PDIV:0)}  //DRAGGER
+      402,SL=$l/4,SA=$(PADIV),SP={$(AFCOS:0)+$(ESCOS:0)+$(PDIVH:0)},L=$(deslocadivh:$(ContaDh)),A=1,X1=9,X3=deslocadivh;deslocadivh;{$(ContaDh)+1},X4=1,X5=5  //DRAGGER
+   #ENDIF
+   #LET SEMUSINAGEMBASEESTR=0
+   #IF $(SEMLED:0)=0
+      ILU_PRAT,L=$(ldivh),P=$(PDIVH:0),SA=$(PADIV)-1,SL=$(sldivh),MACRO=ILU_PRAT
+   #ENDIF
+   //  ilu_div
+#ENDIF
+//ilu_caixa

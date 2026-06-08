@@ -1,0 +1,9 @@
+{ 303.006   // TAMPO DORMITORIO GAVETEIRO
+   *AZZERA*            =0
+   DESCRIZIONE         =TAMPO DORMITORIO GAVETEIRO
+   CODICE              =$(MODELLO:0)TAMPGV
+   X3                  =$(curbox)/TG
+   X6                  =$(fixatampogav)
+   X7                  =N/N/N/$(TRABALHOAT)/0/0/1/0/$(CANAL)/0/1/1/1/1/0/1//$(FITARSOVISTA:2)
+   ALIAS               =#203
+}

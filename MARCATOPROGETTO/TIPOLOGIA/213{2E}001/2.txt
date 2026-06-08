@@ -1,0 +1,5 @@
+{ 213.001   // Divisoria vertical MDF colmeia
+   *AZZERA*            =0
+   DESCRIZIONE         =Divisoria vertical MDF colmeia
+   X3                  =V/$(_idunico:0)
+}

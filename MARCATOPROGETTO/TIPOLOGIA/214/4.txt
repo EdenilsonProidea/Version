@@ -1,0 +1,16 @@
+{ 214   // Fundo LAP
+   *AZZERA*            =0
+   DESCRIZIONE         =Fundo LAP
+   CODICE              =/_CORCX=$(_CORFU:1);_PINTURACX=$(_PINTURACX:1);TPCOR=CX;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(ESLAT:0)-$(RAG_COS:0)+$(red_intm:0),$(ABASE:0)-$(RAG_COS:0),$(AFCOS:0)
+   DIMENSIONE          =$L-$(ESLAT:0)*2+2*$(RAG_COS:0)-2*$(red_intm:0),{$A-$(ABASE:0)*2+$(RAG_COS:0)*2},$(ESCOS:0)
+   COLORI              =$(_corfu:3)|$(.percorso)\foto\madeira\$(_corfu:4)|$(_corfu:5),$(_corfu:3)|$(.percorso)\foto\madeira\$(_corfu:4)|$(_corfu:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =FUNDO_CAIXA.XP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0
+   X8                  =$(pcanal:0)
+   X9                  =$(_tpcaixa:1)/$(_corfu:1)/$(TPFIX:1)
+   ALIAS               =#205
+}

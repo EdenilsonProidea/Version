@@ -1,0 +1,61 @@
+{ _pinturaperfis   // Cor Pintura Perfil
+   *AZZERA*            =0
+   DESCRIZIONE         =Cor Pintura Perfil
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =^3;6;120;120;3;#FOTO\MADEIRA\;2;3;;;1;
+   MEMO                =1Código 1800Descrição 5250Preview 4725material base 2115cod pintura 1200LITRO PINTURA POR ML 1200RGB 1200COLUNA 6 = QUANTIDADE EM LITROS DE ACORDO COM METRO LINEAR UTILIZADO
+   { 
+      //       ,Descrição        ,Preview                           ,ma,cod pi,LITRO ,RGB
+      001      ,Pintura 01       ,                                  ,  ,      ,      ,
+      001.001  ,Branco neve      ,BRILHANTE_BIANCO.jpg              ,4 ,51176 ,0.020 ,
+      002      ,Pintura 02       ,                                  ,  ,      ,0.020 ,
+      002.001  ,Argila           ,argila_gof.jpg                    ,4 ,51170 ,0.020 ,
+      002.002  ,Canapa           ,canapa_gof.jpg                    ,4 ,51171 ,0.020 ,
+      002.003  ,Ébano Pintura    ,EBANOC.JPG                        ,4 ,51178 ,0.020 ,
+      002.004  ,Grigio           ,GRIGIO_ACABAM.JPG                 ,4 ,51160 ,0.020 ,
+      002.005  ,Luna             ,argila_gof.jpg                    ,4 ,51161 ,0.020 ,
+      002.006  ,Novo Panna       ,PANNA.jpg                         ,4 ,51177 ,0.020 ,
+      002.007  ,Panna            ,PANNA.jpg                         ,4 ,51175 ,0.020 ,
+      003      ,Pintura 03       ,                                  ,  ,      ,      ,
+      003.001  ,Caffe            ,caffe_gof.jpg                     ,4 ,51162 ,0.020 ,
+      003.002  ,Creta            ,creta_gof.jpg                     ,4 ,51162 ,0.020 ,
+      003.003  ,Danúbio          ,Danubio_.jpg                      ,4 ,51163 ,0.020 ,
+      003.004  ,Dark             ,DARK.jpg                          ,4 ,51173 ,0.020 ,
+      003.005  ,Grafite Metálico ,Grafite.jpg                       ,4 ,51165 ,0.020 ,
+      003.006  ,Grafite Pintura  ,Grafite.jpg                       ,4 ,51164 ,0.020 ,
+      003.007  ,Quartzo          ,quarzo_gof.jpg                    ,4 ,51174 ,0.020 ,
+      003.008  ,Viscco           ,VISCCO_PINTURA_MICROTEXTURA.jpg   ,4 ,51366 ,0.020 ,
+      003.009  ,Taupe            ,TAUPE_PINTURA_MICROTEXTURA.jpg    ,4 ,51355 ,0.020 ,
+      003.010  ,Volcano          ,VOLCANO_PINTURA_MICROTEXTURA.jpg  ,4 ,51357 ,0.020 ,
+      003.011  ,Lanotta          ,LANOTTA_PINTURA_MICROTEXTURA.jpg  ,4 ,51356 ,0.020 ,
+      003.012  ,Moka             ,MOKA_PINTURA_MICROTEXTURA.jpg     ,4 ,51358 ,0.020 ,
+      003.013  ,Prussia          ,PRUSSIA_PINTURA_MICROTEXTURA.jpg  ,4 ,51353 ,0.020 ,
+      003.014  ,Marea            ,MAREA_PINTURA_MICROTEXTURA.jpg    ,4 ,51360 ,0.020 ,
+      003.015  ,Granata          ,GRANATA_PINTURA_MICROTEXTURA.jpg  ,4 ,51359 ,0.020 ,
+      003.016  ,Castoro          ,CASTORO_PINTURA_MICROTEXTURA.jpg  ,4 ,51352 ,0.020 ,
+      003.017  ,Vanilla          ,VANILLA_PINTURA_MICROTEXTURA.jpg  ,4 ,51354 ,0.020 ,
+      003.018  ,Cobalto          ,COBALTO_PINTURA_MICROTEXTURA.jpg  ,4 ,51351 ,0.020 ,
+      003.019  ,Arena            ,ARENA_PINTURA_MICROTEXTURA.jpg    ,4 ,51350 ,0.020 ,
+      004      ,Pintura 04       ,                                  ,  ,      ,      ,
+      004.001  ,Blu Marino       ,Blu marino_.jpg                   ,4 ,51166 ,0.020 ,
+      004.002  ,Esmeralda        ,ESMERALDA_.jpg                    ,4 ,51167 ,0.020 ,
+      004.003  ,Mattone          ,PINTURA_MICROTEXTURA-MATTONE.jpg  ,4 ,51179 ,0.020 ,
+      004.004  ,Pomodoro         ,Pomadoro_.jpg                     ,4 ,51168 ,0.020 ,
+      004.005  ,Turchese         ,PINTURA_MICROTEXTURA-TURCHESE.jpg ,4 ,51169 ,0.020 ,
+      004.006  ,Metalizada       ,                                  ,4 ,      ,0.020 ,
+      004.007  ,Alluminio Gold   ,AlluminioGold.jpg                 ,4 ,51180 ,0.020 ,
+      004.008  ,Marrone Gold     ,MarroneGold.jpg                   ,4 ,51181 ,0.020 ,
+      004.009  ,Mettalo          ,METTALO.jpg                       ,4 ,51186 ,0.020 ,
+      004.010  ,Nero Gold        ,NeroGold.jpg                      ,4 ,51182 ,0.020 ,
+      004.011  ,Ottone Gold      ,OttoneGold.jpg                    ,4 ,51183 ,0.020 ,
+      004.012  ,Rame Gold        ,RameGold.jpg                      ,4 ,51184 ,0.020 ,
+      004.013  ,Zinco Gold       ,ZincoGold.jpg                     ,4 ,51185 ,0.020 ,
+      004.014  ,Oxi              ,                                  ,4 ,      ,0.020 ,
+      004.015  ,Oxi Alluminio    ,ZincoGold.jpg                     ,4 ,51187 ,0.020 ,
+      004.016  ,Oxi Gold         ,ZincoGold.jpg                     ,4 ,51188 ,0.020 ,
+      004.017  ,Sem Cor          ,                                  ,4 ,      ,0.020 ,
+      005      ,NCS              ,                                  ,  ,      ,      ,
+      005.0001 ,0300 N           ,001.jpg                           ,1 ,      ,0.020 ,246;245;242
+   }
+}

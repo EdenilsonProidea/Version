@@ -1,0 +1,16 @@
+#IF $(_placer)=1
+   #IF $(BASESUPERIORGAV:0)=1
+      #IF $(LOCP_BX1)=1  // CLOSET AVANCADO
+         322,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(_XDP0)  //TAMPO DORMITORIO
+      #ELSE
+         322,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(p1)+$(INCRTAMPOGAV:0)  //TAMPO DORMITORIO
+      #ENDIF
+   #ENDIF
+   403,x1=201,sp=0,p=$p,SA=$(AFINAL)+$(esptampogav),A=$a-1*($(AFINAL)+$(esptampogav))  //Placer
+#ELSE
+   #IF $(BASESUPERIORGAV:0)=1
+      322,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$p+$(INCRTAMPOGAV:0)  //TAMPO DORMITORIO
+   #ENDIF
+#ENDIF
+
+// 303

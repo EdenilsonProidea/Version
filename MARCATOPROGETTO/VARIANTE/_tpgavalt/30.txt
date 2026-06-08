@@ -1,0 +1,55 @@
+{ _tpgavalt   // Tipo e altura Gavetas
+   *AZZERA*            =0
+   DESCRIZIONE         =Tipo e altura Gavetas
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250TIPO 3300EXTENÇAO CODIGO 2220altura gaveta madeira 3240GAV INT 1200cuba? 3015ALTURA PARA BLUM 3150FILTROGAV 1470Frente interna 1200Filtro Gav INTERNA 2160017********** EXISTE A VARIANTE COMPLEMENTAR _TPGAVALT_EXTRA PARA ALGUMAS GESTÕES PERSONALIZADAS ***********
+
+COLUNA 11 - CRIADA PARA FAZER O FILTRO NO COLCOD PARA APARECER APENAS AS GAVETAS EXTERNAS OU AS GAVETAS INTERNAS. 0=GAVETA EXTERNA 1=GAVETA INTERNA
+
+PARA GAVETAS WOOD NA COLUNA 3:
+1 = EXTERNA
+2 = INTERNA
+3 = CUBA
+
+
+
+
+
+
+   { 
+      //  ,Descrição                  ,TI,EXTEN,altura gaveta ma,GAV ,cu,ALT,FILTROGAV       ,Fr,Fi
+      001 ,INTERNA BAIXA              ,1 ,_IB  ,100             ,100 ,  ,H1 ,1;2;13;16;17;18 ,1 ,1 INTERNA BAIXA,0,
+      002 ,INTERNA ALTA               ,1 ,_IA  ,210             ,241 ,  ,H1 ,1;2;13;16;17;18 ,1 ,1 INTERNA BAIXA,0,
+      003 ,INTERNA DESPENSA           ,2 ,_ID  ,200             ,200 ,  ,H2 ,                ,1 ,1 INTERNA DESPENSA,0,
+      004 ,EXTERNA BAIXA              ,1 ,_EB  ,100             ,100 ,  ,H1 ,1;2;13;16;17;18 ,  ,0 EXTERNA BAIXA,0,
+      006 ,EXTERNA MÉDIA              ,2 ,_EM  ,$(agavmedia:0)  ,200 ,  ,H2 ,1;2;13;16;17;18 ,  ,0 EXTERNA MÉDIA,0,
+      007 ,EXTERNA ALTA               ,2 ,_EA  ,$(agavalta:0)   ,200 ,  ,H2 ,1;2;13;16;17;18 ,  ,0 EXTERNA ALTA,0,
+      008 ,EXTERNA EXTRA ALTA         ,3 ,_EX  ,$(agavexalta:0) ,450 ,  ,   ,1;2;13;17;18    ,  ,0 EXTERNA EXTRA ALTA,0,
+      009 ,EXTERNA CUBA BAIXA         ,4 ,_CB  ,100             ,100 ,1 ,H1 ,*               ,  ,0 CUBA BAIXA,0,
+      010 ,EXTERNA CUBA MEDIA         ,4 ,_CM  ,180             ,180 ,1 ,H2 ,1;2;17          ,  ,0 CUBA BAIXA,0,
+      011 ,EXTERNA CUBA ALTA          ,4 ,_CA  ,210             ,180 ,1 ,H2 ,*               ,  ,0 CUBA BAIXA,0,
+      012 ,AJUSTADA AO VAO            ,2 ,_AV  ,0               ,100 ,  ,   ,1;2;17          ,  ,0
+      013 ,INTERNA BAIXA METABOX      ,1 ,_IBM ,100             ,81  ,  ,H1 ,14              ,1 ,1
+      014 ,INTERNA MEDIA METABOX      ,1 ,_IMM ,                ,113 ,  ,H1 ,                ,1 ,1
+      015 ,INTERNA ALTA METABOX       ,2 ,_IAM ,210             ,145 ,  ,H2 ,14              ,1 ,1
+      016 ,INTERNA EXTRA ALTA METABOX ,2 ,_IXM ,                ,177 ,  ,H2 ,                ,  ,0
+      017 ,EXTERNA BAIXA METABOX      ,1 ,_EBM ,                ,78  ,  ,H1 ,14              ,  ,0
+      018 ,EXTERNA MEDIA METABOX      ,2 ,_EMM ,                ,110 ,  ,H1 ,                ,  ,0
+      019 ,EXTERNA ALTA METABOX       ,2 ,_EAM ,                ,142 ,  ,H2 ,14              ,  ,0
+      020 ,EXTERNA EXTRA ALTA METABOX ,3 ,_EXM ,                ,174 ,  ,H2 ,14              ,  ,0
+      021 ,INTERNA CUBA BAIXA         ,4 ,_CBI ,100             ,100 ,1 ,H1 ,*               ,  ,1 CUBA BAIXA,0,
+      022 ,INTERNA CUBA MEDIA         ,4 ,_CMI ,180             ,180 ,1 ,H2 ,1;2;17          ,  ,1 CUBA BAIXA,0,
+      023 ,INTERNA CUBA ALTA          ,4 ,_CAI ,210             ,180 ,1 ,H2 ,*               ,  ,1 CUBA BAIXA,0,
+      024 ,EXTERNA BAIXA WOOD         ,1 ,_EBW ,90              ,90  ,  ,   ,1;2;13;16;17;18 ,  ,0
+      025 ,EXTERNA ALTA WOOD          ,1 ,_EAW ,195             ,195 ,  ,   ,1;2;13;16;17;18 ,  ,0
+      026 ,INTERNA BAIXA WOOD         ,2 ,_IBW ,90              ,90  ,  ,   ,1;2;13;16;17;18 ,  ,1
+      027 ,INTERNA ALTA WOOD          ,2 ,_IAW ,195             ,195 ,  ,   ,1;2;13;16;17;18 ,  ,1
+      028 ,CUBA BAIXA WOOD            ,3 ,_CBW ,90              ,90  ,  ,   ,1;2;13;16;17;18 ,  ,0
+      029 ,CUBA ALTA WOOD             ,3 ,_CAW ,185             ,185 ,  ,   ,1;2;13;16;17;18 ,  ,0
+      030 ,EXTERNA HOME               ,1 ,_EH  ,75              ,75  ,  ,H1 ,1;2;13;16;17;18 ,  ,0 EXTERNA BAIXA,0,
+      031 ,INTERNA BAIXA TANDEMBOX    ,1 ,_IB  ,84              ,84  ,  ,H1 ,13;18           ,1 ,1 INTERNA BAIXA,0,
+      032 ,GAVETA TULHA               ,2 ,_TL  ,412             ,412 ,  ,   ,17              ,  ,0
+   }
+}

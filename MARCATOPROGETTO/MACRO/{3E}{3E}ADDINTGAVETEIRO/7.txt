@@ -1,0 +1,33 @@
+#LET FOLGAFRENTEL=$(FOLGAFRENTEGAVL:0)
+#LET sll=$(eslatgav:0)+$(ENCHE:0)
+#LET ll=$l-1*($(eslatgav:0)*2+$(ENCHE:0)+$(ENCHd:0))
+#LET AFRE=$(_TPINTGAVETEIRO:5)
+#LET FOLGAFRENTEAI=0
+#LET FOLGAFRENTEAS=0
+#LET ll1=$l-1*($(ENCHE:0)+$(ENCHd:0))
+//#LET FOLGAFRENTEL=0
+//#LET FOLGAFRENTEL=0
+//#MSG $(LL1)
+#LET LFRE=$(LL1)
+#LET sll1=$(ENCHE:0)
+#IF $(ENCHGAV:3)=2
+   #LETS ENCH=D/E
+#ELSEIF $(ENCHGAV:3)=1
+   #LETS ENCH=E
+#ELSEIF $(ENCHGAV:3)=3
+   #LETS ENCH=D
+#ELSEIF $(ENCHGAV:3)=0
+   #LETS ENCH=S
+#ENDIF
+#IF $(memoinfocorr)!!
+   #LETS memoinfocorr=TPGAV=$(_TPINTGAVETEIRO:2)_ENCH=$(ENCH:0) $(repeticoes:0)x
+#ELSE
+   #LETS memoinfocorr=TPGAV=$(_TPINTGAVETEIRO:2)_ENCH=$(ENCH:0) $(memoinfocorr) $(repeticoes:0)x
+#ENDIF
+#FOR $1:$(repeticoes:0)
+   addintcompleto,p=$(p1)
+   #LET saini=$(saini)+$(_TPINTGAVETEIRO:6)
+   #LET afinal=$(saini)
+   #LET temfolga=$(_TPINTGAVETEIRO:6)-$(_TPINTGAVETEIRO:5)
+#ENDFOR
+// _FR_1

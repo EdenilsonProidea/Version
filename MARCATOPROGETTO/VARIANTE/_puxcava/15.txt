@@ -1,0 +1,40 @@
+{ _puxcava   // Cava Superior
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava Superior
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 5250tipo 1200desfre 1200cod KIT 2220cod estrutura 2325PCAVA 1200Acava 1200kit cantoneira 1665parafusos 1200rif  tpcava 2265libera corprofilo 1950000NO CANALE TOPO TEM QUE COLOCAR O CODIGO DA CAVA EM COLUNA 6 (SAI NO ORÇAMENTO-OBRIGATORIO)
+obs silvio: tem que colocar sempre o codigo de _tpcava em coluna 11 canale, se nao na traz orçamento e estrutura
+   { 
+      //      ,Descrição                         ,ti,des,cod KIT    ,cod e,PCA,Acava      ,k,p,rif  tpc,li
+      000     ,Standard                          ,0 ,   ,           ,     ,   ,           , , ,        ,
+      0022    ,Canale Sem Perfil                 ,1 ,25 ,           ,     ,30 ,45         , , ,002     ,
+      007     ,Canale Wood                       ,1 ,25 ,           ,     ,30 ,50         , , ,005     ,1
+      008     ,Colorato                          ,  ,   ,           ,     ,   ,           , , ,        ,
+      008.001 ,Canale Personalizado              ,1 ,25 ,           ,     ,30 ,50         , , ,001.001 ,
+      008.002 ,Canale Creta                      ,1 ,25 ,           ,     ,30 ,50         , , ,001.002 ,
+      008.003 ,Canale Argila                     ,1 ,25 ,           ,     ,30 ,50         , , ,001.003 ,
+      008.004 ,Canale Quartzo                    ,1 ,25 ,           ,     ,30 ,50         , , ,001.004 ,
+      008.005 ,Canale Dark                       ,1 ,25 ,           ,     ,30 ,50         , , ,001.005 ,
+      008.006 ,Canale Grigio                     ,1 ,25 ,           ,     ,30 ,50         , , ,001.006 ,
+      008.007 ,Canale Esmeralda                  ,1 ,25 ,           ,     ,30 ,50         , , ,001.007 ,
+      011     ,Canale Matt                       ,1 ,25 ,           ,     ,30 ,50         , , ,006     ,
+      012     ,Canale Branco                     ,1 ,25 ,           ,     ,30 ,50         , , ,007     ,
+      013     ,Canale Bronze                     ,1 ,25 ,           ,     ,30 ,50         , , ,008     ,
+      014     ,Canale Preto                      ,1 ,25 ,           ,     ,30 ,50         , , ,009     ,
+      015     ,Canale Inossidabile               ,1 ,25 ,           ,     ,30 ,50         , , ,010     ,
+      16      ,Canale Effect Bronze              ,1 ,25 ,           ,     ,30 ,50         , , ,010     ,
+      17      ,Canale Mettalo                    ,1 ,25 ,           ,     ,30 ,50         , , ,010     ,
+      20      ,Profilo Orizzontale               ,6 ,25 ,           ,     ,15 ,45         , , ,003     ,1
+      21      ,Profilo Orizzontale Sem Perfil    ,6 ,25 ,           ,     ,15 ,45         , , ,004     ,
+      22      ,Canale Pintada                    ,1 ,25 ,           ,     ,30 ,50         , , ,0100    ,
+      50      ,Canale Toppo                      ,2 ,0  ,KIT-CANTOP ,1013 ,17 ,$(ABASE:0) , , ,        ,
+      80      ,Profilo Verticale T Esq.          ,3 ,0  ,           ,     ,   ,           , , ,8       ,1
+      81      ,Profilo Verticale T Dir.          ,7 ,0  ,           ,     ,   ,           , , ,88      ,1
+      82      ,Profilo Verticale L Esq.          ,4 ,0  ,           ,     ,   ,           , , ,9       ,1
+      83      ,Profilo Verticale L Dir.          ,5 ,0  ,           ,     ,   ,           , , ,10      ,1
+      84      ,Profilo Verticale Esq. sem perfil ,4 ,0  ,           ,     ,   ,           , , ,101     ,1
+      85      ,Profilo Verticale Dir. sem perfil ,5 ,0  ,           ,     ,   ,           , , ,102     ,1
+   }
+}

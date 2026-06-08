@@ -1,0 +1,16 @@
+{ 250   // TAMPO MDF
+   *AZZERA*            =0
+   DESCRIZIONE         =TAMPO MDF
+   CODICE              =X /_TAMPO=$(_TAMPO:1) ;_MONTADO=$(_MONTADO:0) /#TAMPOMDF#$(_TAMPO:9)
+   POSIZIONE           =-$(INCTESQ:0),$(AFTAMPOA),-$(inctatr:0)
+   DIMENSIONE          ={$l+$(INCTESQ:0)+$(INCTDER:0)},$(ATAMPO),$(PTAMPO)+$(inctatr:0)
+   COLORI              =$(_tampo:3)|$(.percorso)\foto\tampo\$(_tampo:7)|$(_tampo:8),$(_tampo:3)|$(.percorso)\foto\tampo\$(_tampo:7)|$(_tampo:8)
+   DISEGNO             =$(distampo)
+   ORIENTAMENTO        =LPA
+   DATI                =_tampo
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =puxadores\$(_perfpux:5)
+   X9                  =$(_TAMPO:13)/$(_TAMPO:14)
+   ALIAS               =#250
+}

@@ -1,0 +1,61 @@
+!parametri perccava=,AFPCAVA=$P-$(PCAVA:0),SOCAVA=0
+#IF $(semdesenhocava)=0
+   #IF $(CAVAINTERNAESQ:0)=1 #LET CAVAESQ=-$(eslat:0)
+   #IF $(CAVAINTERNADIR:0)=1 #LET CAVADIR=-$(eslat:0)
+   #IF $(CORTACAVAESQ:0)=1 #LET CAVAESQ=-1
+   #IF $(CORTACAVADIR:0)=1 #LET CAVADIR=-1
+   #LET esca=5 //espessura cava
+   #IF $(perccava)==
+      
+      !SAGOMA perccava -$(CAVAESQ:0),0,{$l+1*$(CAVADIR:0)},0
+   #ENDIF
+   #IF $(_tpcava:3)=0
+   #ELSEIF $(_tpcava:3)=1
+      
+      // !SAGOMAL perfcava  30-15,0,0,21,0,45,9,45,A5,9,45-24,30-15,45-36,30,6,30,0//0,0,0,$(ACAVA:0),$(ESCA),$(ACAVA:0),$(ESCA),$(ESCA),$(PCAVA:0),$(ESCA),$(PCAVA:0),0,0,0
+      !SAGOMAL perfcava  30-15,0,0,21,0,$(_tpcava:9),9,$(_tpcava:9),A5,9,45-24,30-15,45-36,30,6,30,0  //0,0,0,$(ACAVA:0),$(ESCA),$(ACAVA:0),$(ESCA),$(ESCA),$(PCAVA:0),$(ESCA),$(PCAVA:0),0,0,0
+      #IF $(spostaa)+$a>$(atot)-100
+         
+         //  !SAGOMAL perfcava  30-15,0,0,21,0,$(_tpcava:9),9,$(_tpcava:9),A5,9,45-24,30-15,45-36,30,6,30,0//0,0,0,$(ACAVA:0),$(ESCA),$(ACAVA:0),$(ESCA),$(ESCA),$(PCAVA:0),$(ESCA),$(PCAVA:0),0,0,0
+         239,COD=$(_TPCAVA:4)  //Cava
+         289,SL=-$(CAVAESQ:0)  // Cava para furaçao
+      #ELSE
+         #LET ACAVAC=$(_tpcava:16)
+         // !SAGOMAL perfcava  A20;15;0;4.9;3.8;0;15;A20;0;$(_tpcava:16)-10;4.9;$(_tpcava:16)-3;15;$(_tpcava:16);30;$(_tpcava:16);30;$(_tpcava:16)-3;A20;14.9823;$(_tpcava:16)-3;6.1;$(_tpcava:16)-5;2;$(_tpcava:16)-15;A20;2;15;6.1;5.8;14.9823;2;30;2;30;0
+         // ALTERADO EM VISITA _ ESTAVA 15MM ERRADO PARA CIMA
+         //  239.001,A=$(ACAVAC:0),SA={$a-$(acavaC:0)+14} //Cava
+         //  289.001,SA={$a-$(acavaC:0)+15},A=$(ACAVAC:0),SL=-$(CAVAESQ:0)  // Cava central Furaçao
+         #IF $(ITEM)!!M25  // <C23924>
+            239.001,A=$(ACAVAC:0),SA={$a-$(acavaC:0)} //Cava
+            289.001,SA={$a-$(acavaC:0)},A=$(ACAVAC:0),SL=-$(CAVAESQ:0)  // Cava central Furaçao
+         #ENDIF
+      #ENDIF
+   #ELSEIF $(_tpcava:3)=2
+      
+      //cava madeira
+      !SAGOMAL perfcava 0,0,0,$(ACAVA:0),$(PCAVA:0),$(ACAVA:0),$(PCAVA:0),0
+      CavaMADEIRA
+      
+   #ELSEIF $(_tpcava:3)=11 // Adicionado gestão do catálogo antigo <c22602>
+      !SAGOMAL perfcava 0,0,0,$(ACAVA:0),9,$(ACAVA:0),9,9,$(PCAVA:0),9,$(PCAVA:0),0,0,0
+      239.002,COD=$(_TPCAVA:4),p=9,X8=$(_TPCAVA:1)/wood  //Cava <C29094>
+      289  //Cava para furaçao
+   #ELSEIF $(_tpcava:3)=6
+     // !SAGOMAL perfcava 0,0,0,$(ACAVA:0),$(PCAVA:0),$(ACAVA:0),$(PCAVA:0),0
+      #IF $(_TPCAVA:4)!! // ISSO FOI FEITO EM VISITA PARA OCULTAR A TRAVESSA MAS CONTINUAR A USINAGEM
+         //239.003,COD=$(_TPCAVA:4) /_pinturacava=$(_pinturacava:1);CCAVAPROFILO=$(CCAVAPROFILO:1),C1=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,C2=$(CCAVAPROFILO:3)|$(.percorso)\foto\madeira\$(CCAVAPROFILO:4)|$(CCAVAPROFILO:5)|90,X7=$(CCAVAPROFILO:1),X8=003  //Cava comentado gestão antiga <c28481>
+         240,COD= /_pinturacava=$(_pinturacava:1);CCAVAPROFILO=$(CCAVAPROFILO:1),X7=$(CCAVAPROFILO:1),X8=003  //Cava <C28481>
+
+      #ENDIF
+      289.002 // Cava para furaçao
+     
+   #ELSE
+      //cava italiana
+      !SAGOMAL perfcava 0,0,0,$(ACAVA:0),$(estra:0),$(ACAVA:0),$(estra:0),0
+      CavaITALIANA
+   #ENDIF
+   
+   402,SA=$a-40,SP=$P,SL=-$(CAVAESQ:0),L=$(CAVAESQ:0),A=5,X1=7,X3=CAVA;CAVAESQ;1,X4=1,X5=3  //DRAGGER
+   402,SL=$l+$(CAVADIr:0),SA=$a-40,SP=$P,L=$(CAVAdIr:0),A=5,X1=6,X3=CAVA;CAVADIR;1,X4=1,X5=3  //DRAGGER
+#ENDIF
+// 201

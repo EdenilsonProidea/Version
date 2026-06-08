@@ -1,0 +1,17 @@
+#IF $(lfre)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1>$(LMAXPORTAABRIR:0)
+   #IF $(ATIVADRETACURVA:0)=1
+      portasg_1
+   #ELSE
+      PORTASG,macro=frontal
+   #ENDIF
+#ELSE
+   #IF $(_FR:1)!!999
+      dis_2d,TIPO=1
+   #ENDIF
+   #LET LFRE=$(LFRE)-($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1
+   #IF $(PM)=1
+      PORTAGE,APE=AGE,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=frontal
+   #ELSE
+      PORTAGD,APE=AGD,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=frontal
+   #ENDIF
+#ENDIF

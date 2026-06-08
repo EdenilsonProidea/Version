@@ -1,0 +1,24 @@
+#LET sll=$(eslatgav:0)+$(ENCHE)
+#LET ll=$l-1*($(eslatgav:0)*2+$(ENCHE)+$(ENCHD))
+#LET AFRE=$(_TPINTGAVETEIRO:5)
+#LET FOLGAFRENTEAI=0
+#LET FOLGAFRENTEAS=0
+#LET incrementafrente=0
+#LET abaixafrente=0
+#LET ll1=$l-1*($(ENCHE)+$(ENCHD))
+#LET LFRE=$(LL1)
+#LET FOLGAFRENTEL=3
+#LET sll1=$(ENCHE)
+#IF $(memoinfocorr)!!
+   #LETS memoinfocorr=TPGAV=$(_TPINTGAVUB:2) $(repeticoes:0)x
+#ELSE
+   #LETS memoinfocorr=TPGAV=$(_TPINTGAVUB:2) $(memoinfocorr) $(repeticoes:0)x
+#ENDIF
+#FOR $1:$(repeticoes:0)
+   //addintcompleto
+   addintcompletoUB,COD=$(_TPINTGAVUB:2),CONTRAFRENTEGAVETA=0
+#MSG $(saini)+$(_TPINTGAVUB:6)
+   #LET saini=$(saini)+$(_TPINTGAVUB:6)
+   #LET afinal=$(saini)
+#ENDFOR
+// _FR_1

@@ -1,0 +1,10 @@
+{ 230   // Borda Frente Versatile
+   *AZZERA*            =0
+   DESCRIZIONE         =Borda Frente Versatile
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(FOLGAFRENTEL:0),0,$(_perfpux:20)+2
+   DIMENSIONE          =$(lfre),36,1
+   COLORI              =$(bordaversatile:3)|$(.percorso)\foto\madeira\$(bordaversatile:4)|$(bordaversatile:5),$(bordaversatile:3)|$(.percorso)\foto\madeira\$(bordaversatile:4)|$(bordaversatile:5)
+   ORIENTAMENTO        =LAP
+   X9                  =$(bordaversatile:7)
+}

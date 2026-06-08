@@ -1,0 +1,61 @@
+!PARAMETRI tpbase=$(_tpbase:3)
+
+#IF $(_puxcava:3)=0 |  $(_puxcava:3)[2;3;4;5;7]!0
+   #LETS TRABALHOAT=CN$(escos:0)
+   #LETS CANAL=1
+   #LETS CAVA=0
+   //sagoma laterali
+   #IF $(_PuxCava:3)>0 #LET latcava=1 #LET latcava=0
+   #IF $(TPBASE)=1 #LET latcava=0
+   201  // Lateral Esquerda
+   202  // Lateral Direita
+   BASE_SUPERIOR,P=$(PLAT)
+   #IF $(emporio)=1
+      #LET escos=6
+      #LET afcos=15
+      204,sa=$a-1*($(abase:0)+$(atra:0)),sp=0
+      #IF $a>=1000
+         204,sa=$a/2-1*($(atra:0)/2),sp=0
+      #ENDIF
+   #ENDIF
+   coz_costasup
+   203.001,P=$(PLAT)  //Base Superior
+   #IF $(_puxcava:3)[2;3;4;5;7]!0
+      #LETV _tpcava=$(_PUXCAVA:11)
+   #ELSE
+      #LETV _tpcava=00
+   #ENDIF
+#ELSEIF $(_puxcava:3)=1 |  $(_puxcava:3)=6
+   #LET refcavasup=1
+   #LET acava=$(_puxcava:8)
+   #LET pcava=$(_puxcava:7)
+   #LET abase1=$(abase:0)
+   #LETS TRABALHOAT=CN$(escos:0)
+   #LETS CANAL=1
+   #LETS CAVA=1
+   #LET cavelatesq=$A-$(acava:0)
+   #LET cavelatDIR=$A-$(acava:0)
+   !SAGOMAl sagLatEsq 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+   !SAGOMAl sagLatdir 0,0,0,$(a),$(p),$(a),$(p),$(acava:0),$(p)-$(pcava:0),$(acava:0),$(p)-$(pcava:0),0
+   201  // Lateral Esquerda
+   202  // Lateral Direita
+   #IF $L>800
+      #LET abase1=25
+      #LET redinfcaixa=$(ABASE1:0)
+   #ELSE
+      #LET abase1=$(abase:0)
+   #ENDIF
+   203,sa=$(acava),a=$(abase1:0)   // Base  (cozinha)
+   #IF $(emporio)=1
+      #LET escos=6
+      #LET afcos=15
+      204,sa=$a-1*($(abase:0)+$(atra:0)),sp=0
+      #IF $a>=1000
+         204,sa=$a/2-1*($(atra:0)/2),sp=0
+      #ENDIF
+   #ENDIF
+   coz_costasup,sa=$(acava),a={$a-$(acava)}
+   203.001,P=$(PLAT)  //Base Superior
+   cavasup,superior=1
+   #LET abase1=$(abase1)+$(acava)
+#ENDIF

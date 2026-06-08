@@ -1,0 +1,23 @@
+FRGAVETA,APE=GAV,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=frontal
+// #LETV _tpgavalt:5=$(_tpgavalt:6) // isso define altura da gaveta de madeira para esse caso
+internogaveta,gavetainterna=0,MACRO=GAVETA
+
+
+#LET altgav=$(agav)
+#IF $(_TPCAVA)! // gaveta interna estava colidindo com a travessa da profilo, alterado em visita
+   #LET acava=$(_TPCAVA:9)-$(ESTRA:0)-3
+#ENDIF
+// alterado em visita a pedido do renan, regra antiga em baixo
+#IF $(ITEM)==M26 // <C24510> AJUSTE PARA PEGAR O 3DS CORRETO
+   internogaveta,SA=$A-1*($(_TPGAVALT2:5)+$(ABASE:0)*2+$(ESTRA:0)+$(_CORR:6)+$(ACAVA:0)+5),_TPGAVALT=$(_TPGAVALT2),gavetainterna=1,_acegav=$(_acegav2),P=$P-$(espgaveta),SP=$(espgaveta),PTEMPERO=1,MACRO=GAVETA
+   #LET SAGAVINT_1=$A-1*($(_TPGAVALT2:5)+$(ABASE:0)*2+$(ESTRA:0)+$(_CORR:6)+5)
+#ELSE
+   //#MSG $A-1*($(_TPGAVALT2:5)+$(ABASE:0)+$(ESTRA:0)+$(_CORR:6)+$(ACAVA:0)+5)
+   internogaveta,SA=$A-1*($(_TPGAVALT2:5)+$(ABASE:0)+$(ESTRA:0)+$(_CORR:6)+$(ACAVA:0)+5),_TPGAVALT=$(_TPGAVALT2),gavetainterna=1,_acegav=$(_acegav2),P=$P-$(espgaveta),SP=$(espgaveta),PTEMPERO=0,MACRO=GAVETA
+   #LET SAGAVINT_1=$A-1*($(_TPGAVALT2:5)+$(ABASE:0)+$(ESTRA:0)+$(_CORR:6)+5)
+#ENDIF
+
+// internogaveta,SA=$(A)-$(AFGAVA)-$(_TPGAVALT2:5)-50,_TPGAVALT=$(_TPGAVALT2),gavetainterna=1,_acegav=$(_acegav2),P=$P-$(espgaveta),SP=$(espgaveta),MACRO=GAVETA
+// #LET SAGAVINT_1={$A-$(AFGAVA)-$(_TPGAVALT2:5)-50}
+
+COMENTO4

@@ -1,0 +1,2 @@
+!parametri afasta_atras=0
+//dor_caixa_1L_1,p={$p-$(afasta_atras)},sp=$(afasta_atras)

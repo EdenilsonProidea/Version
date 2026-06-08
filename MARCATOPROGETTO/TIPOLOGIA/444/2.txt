@@ -1,0 +1,12 @@
+{ 444   // push Porta
+   *AZZERA*            =0
+   DESCRIZIONE         =push Porta
+   CODICE              =000PUSH /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(slpush),5,-45
+   DIMENSIONE          =10,10,50
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =PUSH.XP
+   X7                  =$(APE:1)
+   X9                  =$(_TPCAIXA:1)/$(PUSH:1)
+}

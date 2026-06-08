@@ -1,0 +1,5 @@
+#LET pa_sapateira=45
+#LET ATRA=35
+320,SA=0,SP=0,P=$P,A=$(ESPESSURA_GAVETA:3)  //Base Sapateira
+321, p= $(ESPESSURA_GAVETA:3)//,SA=$(eslat:0)  //Traseira sapateira
+264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0 //Caixa Gaveta oculta para furaçao

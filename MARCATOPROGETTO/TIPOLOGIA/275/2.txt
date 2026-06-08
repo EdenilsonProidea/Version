@@ -1,0 +1,16 @@
+{ 275   // Painel Lateral Acabamento
+   *AZZERA*            =0
+   DESCRIZIONE         =Painel Lateral Acabamento
+   CODICE              =/_CORFR=$(_CORCX:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$(ESPAINA:0),$A+$(IncrAltArrDir:0),$(PLAT:0)+$(INC_PAIN_ACAB:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corEX
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/0/0/0/0/0/0/0/0/0/0/$(FITARSOVISTA:2)
+   X8                  =/$(FACELAMINA)
+   X9                  =$(_tpcaixa:1)/$(_corEX:1)/$(painelesq:3)/$(paineldir:3)
+   ALIAS               =#275
+}

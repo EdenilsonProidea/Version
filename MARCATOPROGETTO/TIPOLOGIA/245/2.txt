@@ -1,0 +1,14 @@
+{ 245   // Cava MAD
+   *AZZERA*            =0
+   DESCRIZIONE         =Cava MAD
+   CODICE              =$(_TPCAVA:4) /;_MONTADO=$(_MONTADO:0);PRODUTOESPECIAL=$(PRODUTOESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   LATO                =19
+   POSIZIONE           =$(slcava),$a-$(ACAVA:0)+$(_TPCAIXA:5),$P-$(estra:0)+1
+   DIMENSIONE          ={$l+1*($(CAVAESQ:0)+$(CAVADIR:0))},$(estra:0),$(PCAVA:0)-$(estra:0)
+   COLORI              =$(_tpcava:6),$(_tpcava:6)
+   ORIENTAMENTO        =LAP
+   X1                  =$(perccava)
+   X8                  =$(_TPCAVA:1)
+   X9                  =$(_TPCAVA:7)
+   ALIAS               =#239
+}

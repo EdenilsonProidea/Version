@@ -1,0 +1,3 @@
+#IF $(XX3:1)[PTL] // <C29180>
+   // 1	MACL	X=0 Y=0  NM=PRATL PARM=PE@$(XX8:1)^PD@$(XX8:2)
+#ENDIF

@@ -1,0 +1,12 @@
+{ 585   // Cabideiro Ubik
+   *AZZERA*            =0
+   DESCRIZIONE         =Cabideiro Ubik
+   CODICE              =$(CODCABIU) /LINHA=$(MODELLO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$A,$P
+   COLORI              =$(cabideiro:9),$(cabideiro:9)
+   FACCIATA            =22
+   ORIENTAMENTO        =LAP
+   X8                  =ACESSORIOS\cabideirou.3ds
+   X9                  =$(cabideiro:1)
+}

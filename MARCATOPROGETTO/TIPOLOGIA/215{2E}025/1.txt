@@ -1,0 +1,6 @@
+{ 215.025   // FRENTE Corina
+   *AZZERA*            =0
+   DESCRIZIONE         =FRENTE Corina
+   X8                  =$(_fr:7)/$(_fr:8)/$(pospuxadores)/$(sentido)/{$(Lfre)-2*35}/43/35/35/$(POSCENTROISA:0)//$(_CORLDIF)
+   ALIAS               =#215
+}

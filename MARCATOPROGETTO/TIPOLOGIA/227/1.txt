@@ -1,0 +1,11 @@
+{ 227   // tampo verticale
+   *AZZERA*            =0
+   DESCRIZIONE         =tampo verticale
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$p
+   COLORI              =$(_tampo:3)|pareti\foto\pavimenti\$(_tampo:7)|$(_tampo:8),$(_tampo:3)|pareti\foto\pavimenti\$(_tampo:7)|$(_tampo:8)
+   ORIENTAMENTO        =LAP
+   DATI                =_tampo
+   X3                  =$(curbox)
+}

@@ -1,0 +1,1 @@
+#IF $(xp10:0)!!#IF $(pa)>0 #LET f=1 #LET f=2$(f),MA,X=0 Y=0 NM=$(xp10), PARM=PX@0^PY@0 // MACRO#ENDIF

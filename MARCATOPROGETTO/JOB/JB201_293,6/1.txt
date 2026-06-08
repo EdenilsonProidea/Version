@@ -1,0 +1,1 @@
+#IF $(xx3:0)==$(xp3:0)#IF $(TIPOLOGIAP)=201 #LET F=2 #LET F=1$(f),FF,X={$(PA)+$(DA)-21.5}    Y={$(XP)-38} DF=5 PF=10$(f),FF,X={$(PA)+$(DA)-21.5-32} Y={$(XP)-38} DF=5 PF=10#ENDIF

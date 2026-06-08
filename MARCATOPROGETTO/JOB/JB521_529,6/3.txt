@@ -1,0 +1,7 @@
+//#IF $(XX3:0) = $(XP3:0)
+#IF $(XX3:0) = $(XP3:0)
+   #IF $(PL)>0 #LET F=2 #LET F=1
+   $(F)	FF	X={$(PA)+$(DA)/2} Y={$(PP)+64} PF=11 DF=3
+   $(F)	FF	X={$(PA)+$(DA)/2} Y={$(XP)-64} PF=11 DF=3
+   //#ENDIF
+#ENDIF

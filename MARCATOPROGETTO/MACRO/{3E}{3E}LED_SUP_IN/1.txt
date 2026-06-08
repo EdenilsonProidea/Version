@@ -1,0 +1,46 @@
+#IF $(LUZ)=1
+   #IF $(TP_LED:12)=1
+      #IF $(TP_LOCAL:3)=1
+         463,A=1,P=8.5,L={$L-(2*$(ESLAT)-6)},SP={$P-(37+8.5)},SA={$A-$(ABASE)},SL={$(ESLAT)},X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0),GL=LED.XP
+      #ELSEIF $(TP_LOCAL:3)=2
+         463,A=1,P=8.5,L={$L-(2*$(ESLAT)-6)},SP={$P/2},SA={$A-$(ABASE)},SL={$(ESLAT)+3},X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0),GL=LED.XP
+      #ELSE
+         463,A=1,P=8.5,SP=67,SL={$(ESLAT)+3},L={$L-(2*$(ESLAT)-6)},X7=1/$(TP_COR:2),SA={$A-$(ABASE)},X9=$(TP_LED:3)/$(LigarLuz:0),GL=LED.XP//-(10+$(RED_F_PRAT))
+      #ENDIF
+      // .LED.XP
+   #ELSEIF $(TP_LED:12)=2
+      #IF $L>200 & $L<650
+         #LET X=1
+      #ELSEIF $L>651 & $L<1300
+         #LET X=2
+      #ENDIF
+      #FOR $1:$(X)
+         #IF $(I)=1
+            #LET V_OLD=0
+            465,SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={$P/2},X7=1/$(TP_COR:2)/$(ACAB:2),X8=ilu\$(TP_LED:6),X9=$(TP_LED:3)/$(LigarLuz:0)
+         #ELSE
+            #LET V_OLD=$(I)
+            465,SL={INT($L/($(X)+1)*$(i))-25},SA=-1,SP={$P/2},X7=1/$(TP_COR:2)/$(ACAB:2),X8=ilu\$(TP_LED:6),X9=$(TP_LED:3)/$(LigarLuz:0)
+         #ENDIF
+      #ENDFOR
+   #ELSEIF $(TP_LED:12)=3
+      #IF $(AMBIENTE)==D
+         463,A=1,P=8.5,L=420,SP={$P-(37+8.5)},SA={$A-$(ABASE)},SL={($L/2)-(420/2)},X7=1/$(TP_COR:2)/$(ACAB:2),X9=$(TP_LED:3)/$(LigarLuz:0),GL=LED.XP
+      #ELSE
+         // FAZER ERRO
+         #LETS PECA=BASE SUPERIOR
+         #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=4
+      #IF $(TP_LOCAL:3)=1
+         466,A=1,P=8.5,L={$L-(2*$(ESLAT)+6)},SP={$P-(37+8.5)},SA={$A-$(ABASE)},SL=$(ESLAT),X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0)
+      #ELSEIF $(TP_LOCAL:3)=2
+         466,A=1,P=8.5,L={$L-(2*$(ESLAT)-6)},SP={$P/2},SA={$A-$(ABASE)},SL={$(ESLAT)+3},X7=1/$(TP_COR:2),X9=$(TP_LED:3)/$(LigarLuz:0)
+      #ELSE
+         466,A=1,P=8.5,SP=67,SL={$(ESLAT)+3},L={$L-(2*$(ESLAT)-6)},X7=1/$(TP_COR:2),SA={$A-$(ABASE)},X9=$(TP_LED:3)/$(LigarLuz:0)//-(10+$(RED_F_PRAT))
+      #ENDIF
+   #ENDIF
+#ENDIF
+// .LUZSPOT.XP
+//LOGERROS
+//ILU_PRAT

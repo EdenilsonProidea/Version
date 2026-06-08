@@ -1,0 +1,41 @@
+#SELECT $(popx)
+#CASES 1:2:3
+#MSG a
+   #IF $a>1200
+      #IF $(sentido)=2
+         #LET ppxa=1040-1*($(lpx)/2)
+      #ELSE
+         #LET ppxa=1040-1*($(apx)/2)
+      #ENDIF
+   #ELSE
+      #LET ppxa=$a/2
+   #ENDIF
+#CASES 4:5:6
+   #IF $(sentido)=2
+      #LET ppxa=$a-1*($(offpxa)+$(lpx)/2)
+   #ELSE
+      #LET ppxa=$a-1*($(offpxa)+$(apx)/2)
+   #ENDIF
+#CASES 7:8:9
+   #IF $(sentido)=2
+      #LET ppxa=$(offpxa)+$(lpx)/2
+   #ELSE
+      #LET ppxa=$(offpxa)+$(apx)/2
+   #ENDIF
+#ENDSELECT
+#SELECT $(popx)
+#CASES 1:4:7
+   #IF $(sentido)=2
+      #LET ppxl=$(offpxl)+$(apx)/2
+   #ELSE
+      #LET ppxl=$(offpxl)+$(lpx)/2
+   #ENDIF
+#CASES 2:5:8
+   #LET ppxl=$l/2
+#CASES 3:6:9
+   #IF $(sentido)=2
+      #LET ppxl=$l-1*($(offpxl)+$(apx)/2)
+   #ELSE
+      #LET ppxl=$l-1*($(offpxl)+$(lpx)/2)
+   #ENDIF
+#ENDSELECT

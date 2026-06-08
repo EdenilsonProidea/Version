@@ -1,0 +1,122 @@
+#LET nl=0,na=0,np=0,ul=0,ua=0,up=0
+!AZZERA
+!QUOTE 0,$nl,$na,$np
+!MODELLO codmod
+!NEUTRO item
+#LET INF=0
+#LET COL=0
+#LET SUP=0
+#LET atot=$a
+#LET Ltot=$L
+#LET Ptot=$p
+#LET ATOTFRE=$A-$(_TPCAIXA:4)-$(_TPCAIXA:5)
+!ADDPUNTO {int($l/2)},0,0
+!ADDPUNTO {int($l/2)},0,{int($P/2)}
+!ADDPUNTO {int($l/2)},0,{int($P)}
+#LET latocoliçao=23
+#LET contadv=0  //contatore divisori verticali
+#LET contadh=0  //contatore divisori orizzontali
+#LET cava=0
+//sagome laterali
+#LETS SagLatEsq=
+#LETS SagLatDir=
+!ADDPUNTO 0,0,$P
+!ADDPUNTO $L,0,$P
+#LET lagr=0
+#LET aagr=0
+#LET slagr=0
+#LET saagr=0
+#LET SLFRE=0
+#LET LFREADD=0
+#LET SAFRE=0
+#LET AFREADD=0
+#LET AFFRE=0
+#LET CAIXA_CPAREDE=0
+#LET canal=0
+#LETS idlogerros=
+#LET descfre=0
+INICIACINEX
+#LET TIPOCANTO=0
+#LET FOLGAFRENTEL=$(FOLGAFRENTEL:0)
+#LET FOLGAFRENTEL=$(FOLGAFRENTEL:0)
+#LET fechamentofacil=0
+#LET divisoria=0
+#LET somenteusinapux=0 // importado gestão antiga <c23351>
+#IF $(ISOBSOLETO:0)=1
+   #LETS idlogerros=$(idlogerros)70;
+#ENDIF
+#IF $(_CORCX:9)=1 #LETS _corcx:5=$(_pinturacx:5)
+// acresentado para <c6584>
+#IF $(_CORBF:1)==$(_CORCX:1) #LETS _corbf:5=$(_pinturacx:5)
+#IF $(_corfu:1)==$(_CORCX:1) #LETS _corfu:5=$(_pinturacx:5)
+#IF $(_corpr:1)==$(_corcx:1) #LETS _corpr:5=$(_pinturacx:5)
+#IF $(_corle:1)==$(_CORCX:1) #LETS _corle:5=$(_pinturacx:5)
+#IF $(_corld:1)==$(_CORCX:1) #LETS _corld:5=$(_pinturacx:5)
+#IF $(_corba:1)==$(_CORCX:1) #LETS _corba:5=$(_pinturacx:5)
+// fim acresentado para <c6584>
+#IF $(_CORfr:9)=1 #LETS _corfr:5=$(_pinturafr:5)
+#IF $(_CORfr2:9)=1 #LETS _corfr2:5=$(_pinturafr:5)
+#IF $(_COREX:9)=1 #LETS _COREX:5=$(_pinturaex:5)
+#IF $(CCAVAPROFILO:9)=1 #LETS CCAVAPROFILO:5=$(_pinturacava:5) // <c25053>
+#IF $(_corpux:9)=1 #LET _CORPUX:5=$(_pinturapux:5) // <c266896>
+#MSG $(_corpux:5)
+#IF $(SELFOLGAFRENTE:3)=2
+   #LET FOLGAFRENTEL=1
+   #LET FOLGAFRENTEAI=0
+   #LET FOLGAFRENTEAS=0
+   #LET DESCFREINF=0
+   #LET DESCFRESUP=0
+#ELSE
+   #LET FOLGAFRENTEL=$(FOLGAFRENTEL:0)
+   #LET FOLGAFRENTEAI=$(FOLGAFRENTEAI:0)
+   #LET FOLGAFRENTEAS=$(FOLGAFRENTEAS:0)
+   #LET DESCFREINF=$(DESCFREINF:0)
+   #LET DESCFRESUP=$(DESCFRESUP:0)
+#ENDIF
+
+#IF $(corlatsep:0)=0 #LETV _corle=$(_CORCX:0) // ALEX FEITO VISITA
+#IF $(corlatsep:0)=0 #LETV _corlD=$(_CORCX:0) // ALEX FEITO VISITA
+#IF $(corbassep:0)=0 #LETV _corba=$(_CORCX:0) // ALEX FEITO VISITA
+#IF $(corfunsep:0)=0 #LETV _corfu=$(_CORCX:0) // ALEX FEITO VISITA
+
+
+#IF $(CORBFSEP:0)=
+   #LOADVAR _CORBF _CORCX $(_CORCX:0)
+   #IF $(_CORCX:9)=1 #LETS _corbf:5=$(pinturacx:5)
+#ENDIF
+#LET CALCDOBRADORMITORIO=0
+#IF _PERFPUX[$(_FR:9)]!0
+   #LET puxperfil=1
+#ELSE
+   #LET puxperfil=0
+#ENDIF
+#LET latcantpara=0
+#LET desc_p_dirOR=$(desc_p_dir:0)
+#LET desc_p_ESQOR=$(desc_p_ESQ:0)
+#LET CLOSET_L=0 //<C20060>
+#LET frenteCinex=0 //<c23910>
+// TRAVAS DO PONTTA (INICIO)
+//#IF 1=0
+#IF $(.ISECADPRO)=0
+   #VB
+      set xamb  = Ambiente.GetObject("AMB")
+      v("integrationCode")=xamb.Info.info.var("integrationCode")
+      v("aggregateCode")=xamb.Info.info.var("aggregateCode")
+      v("libera_projeto")=calcola(xamb.Info.info.var("libera_projeto"))
+   #ENDVB
+   
+   #IF $(integrationCode) <= 0 | $(aggregateCode) <= 0 | $(libera_projeto) <= 0
+      #LETS idlogerros=$(idlogerros)75;
+   #ENDIF
+#ENDIF
+// TRAVAS DO PONTTA (FIM)
+
+//#ENDIF
+#LET CLOSETLIGHT=0
+#LET ISDORMI=0
+#LET FRENTENORMAL=0
+#LET ISGAVDOR=0 // <c26363>
+#LET ISCANTOLDOR=0 // <c26636>
+#LET DESCONTOSFRE=0 // <C26771>
+
+// LOGERROS

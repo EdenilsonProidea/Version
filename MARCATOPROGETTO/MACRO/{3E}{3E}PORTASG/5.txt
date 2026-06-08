@@ -1,0 +1,9 @@
+#IF $(_FR:1)!!999
+   dis_2d,TIPO=2
+#ENDIF
+#LET lfre=INT($(lfre)-1*($(FOLGAFRENTELI:0)+($(FOLGAFRENTEL:0)+$(FOLGAFRENTEL:0))*1))/2)
+PORTAGE,APE=AGE,IDP=1,SP=$(AFFREP),P=$(ESFRE),macro=frontal
+#LET sll={$(lfre)+$(FOLGAFRENTELI:0)}
+#MSG $(lfre)
+
+PORTAGD,APE=AGD,IDP=2,sl=$(sll),SP=$(AFFREP),P=$(ESFRE),L=$(LFRE),macro=frontal

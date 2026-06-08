@@ -1,0 +1,14 @@
+{ 359   // contra frente calceiro
+   *AZZERA*            =0
+   DESCRIZIONE         =contra frente calceiro
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(espgaveta),0,$P-$(espgaveta)
+   DIMENSIONE          =$l-$(espgaveta)*2,$A,$(espgaveta)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/0/1/0/0/0/0/0/0/1/0
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)/$(TPFIX:1)
+   ALIAS               =#359
+}

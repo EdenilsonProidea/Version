@@ -1,0 +1,16 @@
+//#IF $(xx3:0)=$(xp3:0)
+  // #IF $(pp)>=0
+    //  #LET agav=$(da)
+    //  #IF $(pl)>0 #LET f=1 #LET f=2
+    //  #LOADVAR _corr _corr $(xp8:1)
+    //  #LOADVAR _tpgav _tpgav $(xp8:5)
+    //  #LETS codcorredica=$[CODICEBARRA;X$(_corr:5)-$(Xp8:0);$(Xp8:0);10;errore]
+    // #LOADVAR _usiProfCorr _usiProfCorr $(codcorredica)
+    // #LET PAFUROS=$(_usiProfCorr:5)+$(PA)
+    //  #LET deltayfuro=0
+    //  #FOR $(_usiprofcorr:6)
+    //     $(f)	MARC	Y=$(pafuros) X={$(pp)+$(dp)-1*($(i)+$(deltayfuro)+$(_tpgav:16))}
+    //     #LET deltayfuro=$(deltayfuro)+$(i)
+    //  #ENDFOR
+  // #ENDIF
+//#ENDIF

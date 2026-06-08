@@ -1,0 +1,11 @@
+{ 888   // Tampo Verticale
+   *AZZERA*            =0
+   DESCRIZIONE         =Tampo Verticale
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(PTAMPO)+$(inctatr:0)
+   COLORI              =$(_tampo:3)|$(.percorso)\foto\tampo\$(_tampo:7)|$(_tampo:8),$(_tampo:3)|$(.percorso)\foto\tampo\$(_tampo:7)|$(_tampo:8)
+   ORIENTAMENTO        =LAP
+   DATI                =_tampo
+   X3                  =$(curbox)
+}

@@ -1,0 +1,42 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=PUX.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,1,*
+
+
+[gene]
+T,MODELLO
+T,_pux,,,,$(_pux:6)>0
+T,_PINTURAPERFIS,,$(_pux:23)=1
+
+[GRAFICA]
+INICIA
+
+#LET l=$(_pux:4)
+#LET a=$(_pux:5)
+#LET p=$(_pux:6)
+#LET lpx=$(_pux:4)
+#LET apx=$(_pux:5)
+#LET ppx=$(_pux:6)
+
+251,sl=$l/2,sa=$a/2,sp=0
+LOGERROS
+
+//252

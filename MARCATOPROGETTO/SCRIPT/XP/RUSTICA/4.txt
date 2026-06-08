@@ -1,0 +1,74 @@
+
+Sub main(p,dl,da,dp,hTerra)
+   senpux=ex(p.PARAMETRO(8),"/",4)
+   popx=ex(p.PARAMETRO(8),"/",3)
+   
+   If popx="1;3" Or popx="3;1" Then
+      npux=2
+   Else
+      npux=1
+   End If
+   
+   lpux=ex(p.PARAMETRO(8),"/",5)
+   apux=ex(p.PARAMETRO(8),"/",6)
+   slpux=ex(p.PARAMETRO(8),"/",7)
+   sapux=ex(p.PARAMETRO(8),"/",8)
+   
+msgbox p - dl - da - dp - hTerra - senpux - popx - lpux - apux - slpux - sapux   
+   If npux=1 Then
+      criapux p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux
+   Else
+      criapux2 p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux
+   End If
+
+End Sub
+
+
+Sub criapux(p,dl,da,dp,hTerra,senpux,popx,lpux,apux,slpux,sapux)
+   
+   dsl=slpux
+   dsi=sapux
+   lu=apux
+   au=lpux
+   offa=calcola(dsi)
+   offl=calcola(dsl)
+   offa2=calcola(dsi2)
+   offl2=calcola(dsl2)
+   c1=wColoreE(p.colore1,90)
+   c2=wColoreE(p.colore2)
+   popx=calcola(popx)
+   
+   If popx=3 Then
+      ss="#" & 0 & "," & 0 & ","
+      ss=ss & 0 & "," & da & ","
+      ss=ss & dl & "," & da & ","
+      ss=ss & dl & "," & au & ","
+      ss=ss & calcola(dl-lu) & "," & au & ","
+      ss=ss & calcola(dl-lu) & "," & 0
+      AA=WSAGOMA(MID(ss,2),2).NOME
+      wrTrasforma 0,0,0
+      WESTRUDI 2, AA, dP, c1, c1, 0
+      wrchiudi
+      
+      wrtrasforma dl-lu,0,0
+      wrX2 percorso & "\3DS\frente\rusticae.3ds",0,C2,lu+2,au+2,dp,3,0,0,0,0,0
+      WRCHIUDI
+      
+   Else
+      ss="#" & lu & "," & 0 & ","
+      ss=ss & lu & "," & au & ","
+      ss=ss & 0 & "," & au & ","
+      ss=ss & 0 & "," & da & ","
+      ss=ss & dl & "," & da & ","
+      ss=ss & dl & "," & 0
+      AA=WSAGOMA(MID(ss,2),2).NOME
+      wrTrasforma 0,0,0
+      WESTRUDI 2, AA, dP, c1, c1, 0
+      wrchiudi
+      
+      wrtrasforma 0,0,0
+      wrX2 percorso & "\3DS\frente\rustica.3ds",0,C2,lu+2,au+2,dp,3,0,0,0,0,0
+      WRCHIUDI
+   End If
+   
+End Sub

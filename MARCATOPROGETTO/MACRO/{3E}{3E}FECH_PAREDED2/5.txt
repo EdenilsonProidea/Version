@@ -1,0 +1,9 @@
+#IF $(distanciadordir:0)>0
+   #IF $(_TPFECH:3)=1 // Adicionado em visita
+      385.002,SL=$l-($(distanciadordir:0)  //Distanciador lateral Fechamento
+   #ELSE
+      385.002,SL=$l-($(distanciadordir:0),sp=$p  //Distanciador lateral Fechamento
+   #ENDIF
+   // Gestão antiga
+   // 385.002,L={$(distanciadordir:0)+($(ESPARM:3)/2)},SL={$l-($(distanciadordir:0)+$(ESPARM:3)/2)},sp=$p  //Distanciador lateral Fechamento
+#ENDIF

@@ -1,0 +1,57 @@
+#IF $(somaoamiga:0)!1
+   #LETV espmao=15
+   621,A=$a-$(LATERAL_P_B:4)-$(LATERAL_P_C:4),SL=$(LATERAL_P_E:4),SA=$(LATERAL_P_B:4)  // Lateral painel Home
+   621,A=$a-$(LATERAL_P_B:4)-$(LATERAL_P_C:4),SL=$L-1*($(ESP_PRAT:0)+$(LATERAL_P_D:4)),SA=$(LATERAL_P_B:4)  // Lateral painel Home
+   #IF $(TRAVESSAINFERIOR:0)=1
+      622,L=$l-(2*$(ESP_PRAT:0))-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(ESP_PRAT:0)+$(LATERAL_P_E:4),SA=$(LATERAL_P_B:4)  // Base painel Home
+   #ENDIF
+   622,SA=$A-1*($(LATERAL_P_C:4)+$(ESP_PRAT:0)),L=$l-(2*$(ESP_PRAT:0))-1*($(LATERAL_P_D:4)+$(LATERAL_P_E:4)),SL=$(ESP_PRAT:0)+$(LATERAL_P_E:4)  //Base painel Home
+   !SAGOMAL SARAFFO 0,0,     0,$(ASARAFFO),       $(ESSARAFFO),$(ASARAFFO),          $(ESSARAFFO),$(ESSARAFFO)
+   !SAGOMAL SARAFFO1 0,0,     0,{$(ASARAFFO)-$(ESSARAFFO)},       $(ESSARAFFO),$(ASARAFFO),          $(ESSARAFFO),0
+   ph_calc_n_sarr
+   #IF $(rr)>0
+      PH_SARAFFO_N,sa=$a-$(asaraffo:0)-$(esp_prat:0)-$(LATERAL_P_C:4)
+      PH_SARAFFO_N,sa=$(esp_prat:0)+$(LATERAL_P_B:4)
+      PH_SARAFFO_N,sa=$A/2
+   #ENDIF
+#ELSE
+      !SAGOMAL SARAFFO 0,0,     0,$(ASARAFFO),       $(ESSARAFFO),$(ASARAFFO),          $(ESSARAFFO),$(ESSARAFFO)
+   !SAGOMAL SARAFFO1 0,0,     0,{$(ASARAFFO)-$(ESSARAFFO)},       $(ESSARAFFO),$(ASARAFFO),          $(ESSARAFFO),0
+   ph_calc_n_sarr
+   #IF $(rr)>0
+      PH_SARAFFO_N,sa=$a-$(asaraffo:0)-$(esp_prat:0)-$(LATERAL_P_C:4)
+      PH_SARAFFO_N,sa=$(esp_prat:0)+$(LATERAL_P_B:4)
+      PH_SARAFFO_N,sa=$A/2
+   #ENDIF
+#ENDIF
+#LET esmaoamiga=$(espmao:3)
+#LET Amaoamiga=80
+// espdivmao
+#IF $(MAOVER:0)=1
+   #LET ALTDIVP=($A-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)-$(esp_prat:3)*2)/2-$(espdivmao:0)/2
+   #FOR $1:$(QTDMAO:0)
+      #IF $(DIVMAO:0)>0
+         685,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+(30+$(AMAOAMIGA:0)*2)*$(i),SA=$(LATERAL_P_B:4)+$(esp_prat:3),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$(ALTDIVP:0),X3=$(curbox)/MFV  //SARAFFO VERTICAL PAINEL PAREDE
+         685,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+$(AMAOAMIGA)+(30+$(AMAOAMIGA:0)*2)*$(i),SA=$(LATERAL_P_B:4)+$(esp_prat:3),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$(ALTDIVP:0),X3=$(curbox)/MFV  //SARAFFO VERTICAL PAINEL PAREDE
+         685,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+(30+$(AMAOAMIGA:0)*2)*$(i),SA=$(ALTDIVP:0)+$(ESPDIVMAO:0)*3,SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$(ALTDIVP:0),X3=$(curbox)/MFV  //SARAFFO VERTICAL PAINEL PAREDE
+         685,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+$(AMAOAMIGA)+(30+$(AMAOAMIGA:0)*2)*$(i),SA=$(ALTDIVP:0)+$(ESPDIVMAO:0)*3,SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$(ALTDIVP:0),X3=$(curbox)/MFV  //SARAFFO VERTICAL PAINEL PAREDE
+      #ELSE
+         685,x3=$(curbox)/MFV,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+(30+$(AMAOAMIGA:0)*2)*$(i),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$A-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)-$(esp_prat:3)*2,SA=$(LATERAL_P_B:4)+$(esp_prat:3)  // SARAFFO VERTICAL PAINEL PAREDE
+         685,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3)+$(AMAOAMIGA)+(30+$(AMAOAMIGA:0)*2)*$(i),x3=$(curbox)/MFV,SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),A=$A-$(LATERAL_P_C:4)-$(LATERAL_P_B:4)-$(esp_prat:3)*2,SA=$(LATERAL_P_B:4)+$(esp_prat:3)   // SARAFFO VERTICAL PAINEL PAREDE
+      #ENDIF
+   #ENDFOR
+#ELSE
+   #LETS cc=$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5) //cor cru
+   #LET LARGDIV=($L-2*($(ESP_PRAT:3))-$(LATERAL_P_E:4)-$(LATERAL_P_D:4))/2-$(espdivmao:0)/2
+   #FOR $1:$(QTDMAO:0)
+      #IF $(DIVMAO:0)>0
+         259.001,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3),SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$(LARGDIV:0),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+         259.001,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:3),SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)*2+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$(LARGDIV:0),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+         259.001,SL=$(LARGDIV:0)+$(ESPDIVMAO:0)*3,SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$(LARGDIV:0),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+         259.001,SL=$(LARGDIV:0)+$(ESPDIVMAO:0)*3,SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)*2+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$(LARGDIV:0),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+      #ELSE
+         259.001,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:0),SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$L-(2*$(esp_prat:3))-$(LATERAL_P_E:4)-$(LATERAL_P_D:4),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+         259.001,SL=$(LATERAL_P_E:4)+$(ESP_PRAT:0),SA=$(LATERAL_P_B:4)+$(esp_prat:3)+$(Amaoamiga)*2+(30+$(Amaoamiga)*2)*$(I),SP=$P-$(ESP_PRAT:3)-$(esmaoamiga),L=$L-(2*$(esp_prat:3))-$(LATERAL_P_E:4)-$(LATERAL_P_D:4),A=$(Amaoamiga),P=$(esmaoamiga),c1=$(CC),c2=$(CC),X9=$(_tpcaixa:1)/=$(_COREX:1)  //Travessa Painel Parede
+      #ENDIF
+   #ENDFOR
+#ENDIF

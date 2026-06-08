@@ -1,0 +1,88 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=_DIVISORD.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=201
+SPEC=
+DIVIDER=MOD_STR,VAO_DIVISORd,0,0,0,0,$(espessura:0),$(espessura:0)
+TRADFLAGS=
+
+
+[gene]
+-,Dados,,,Da
+T,MODELLO
+V,INICIADOR
+T,espessura,,,,,!divider,,,,,1
+T,_CORCX,,,,$(espessura:3)[$(_corcx:12)]!!0 & $(espessura:3)[$(_corcx:12)]!!0,,,,,,4
+T,tpfixPRAT
+T,TPFIX
+-,ESP,,,ESP
+T,PRODUTOESPECIAL,,,,,,,,,,4
+T,IDGRUPO,,$(PRODUTOESPECIAL:0)>0,,,,,,,,4
+E,OBSETIQUETA,,$(PRODUTOESPECIAL:0)>0,Obs Impressão,,,,,,,4
+E,OBS_NOTA,,$(PRODUTOESPECIAL:0)>0,Obs Nota,,,,,,,4
++,VAO_DIVISORD
+G,VAROCULTE
+
+[GRAFICA]
+#LET escos=0
+#LET afcos=0
+#LET PRATDOR=1
+#LET cont=0
+#LET espdiv=$(ESPESSURA:0)
+#LETS LOCP_BX1=$[TOSEP;/;$(LOCP_BX1)]
+#LETS _corpr=$(_corcx)
+
+#IF $(LOCP_BX1:0)=1
+   // CLOSET AVANCADO
+   #LET RED_F_DIVH=0
+   #LET RED_F_DIVV=0
+#ENDIF
+
+#IF $(_placer)=1
+   #IF $(_primocaricamento)=1
+      // variantesque vem de default do fechamento mas que é possivel trocar
+      #FOR $(_plx7:0)
+         #LETS tm1=$[ex;$(i);=;1]
+         #LETS tm2=$[ex;$(i);=;2]
+         #LETV $(tm1)=$(tm2)
+      #ENDFOR
+   #ENDIF
+   // gestao para fechamento // var fixas da fechamento - nao é possivel trocar no modulo
+   #FOR $(_plx8:0)
+      #LETS tm1=$[ex;$(i);=;1]
+      #LETS tm2=$[ex;$(i);=;2]
+      #LETV $(tm1)=$(tm2)
+   #ENDFOR
+#ENDIF
+#LETS _siscorrer*=
+//MOD_STR_1
+DOR_INICIA
+#LET DIVISOR=1
+#IF $(item)!!zzdivcl
+   ILU_PRAT,AMBIENTE=D,ID=$(CONT)
+#ENDIF
+// MOD_STR
+// VAO_DIVISORD
+//prat
+// 309
+
+// _INT
+// logerros
+// calc_af_kit
+// _fr_1
+
+// kitdobradiça

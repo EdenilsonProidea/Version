@@ -1,0 +1,2 @@
+#MSG 1	FT6	X=$(XL)-30 Y=$(XP) DF=8 PF=25   
+1	FT6	X=$(XL)-30 Y=$(XP) DF=8 PF=25

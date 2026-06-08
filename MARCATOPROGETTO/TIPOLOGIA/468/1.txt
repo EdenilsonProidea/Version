@@ -1,0 +1,10 @@
+{ 468   // USI CANAL LED VERTICAL
+   *AZZERA*            =0
+   DESCRIZIONE         =USI CANAL LED VERTICAL
+   CODICE              =$(tp_led:10)
+   COLORI              =34,34
+   ORIENTAMENTO        =LAP
+   X5                  =$(tp_led:10)
+   X6                  =$(AMBIENTE:0)//$(TP_LED:12)/$(TP_LOCAL:3)/$(N_LEDS:3)
+   X9                  =$(TP_LED:1)
+}

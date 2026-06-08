@@ -1,0 +1,112 @@
+!PARAMETRI tpg=$(_tpgav:3),AVULSO=0,CODDISTGAV=$(_TPGAV:4),desgav=$(_TPGAV:9),gavetadormitorio=0
+INICIA_CALC_GAV_VB
+#IF $(_tpgav:17)=13 & $(L_ORI)>1050 // <C23694>
+   #LOADVAR _CORR _CORR 012
+#ELSE
+   // isso estava setando todas as gavetas como 002 _ corrigido em visita
+   //  #LOADVAR _CORR _CORR 002
+#ENDIF
+#IF $(TPG)!3 #LETS FLAGCORGAVETA=
+#IF $(REDINFCAIXA)=0 #LET REDINFCAIXA=$(ABASE:0)
+#IF $(REDSUPCAIXA)=0 #LET REDSUPCAIXA=$(abase:0)
+#IF $(gavetadormitorio)=1
+   #LET REDINFCAIXA=$(ESTRAGAV:0)
+   #LET REDSUPCAIXA=$(ESTRAGAV:0)
+#ENDIF
+#IF $(puxperfil)=1 | $(cava)=1
+   #LET redinfgav=$(_corr:9)+$(REDINFCAIXA)
+   #LET redsupgav=$(_corr:10)+$(REDSUPCAIXA)
+#ELSEIF $(_tpgavalt:0)=010 & $(_FR:6)==601 // <c22103>
+   #LET redinfgav=$(_corr:9)+$(REDINFCAIXA)
+   #LET redsupgav=$(_corr:10)+$(REDSUPCAIXA)+15 // Adicionado o +15 para dar mais folga para a primeira gaveta
+#ELSE
+   #LET redinfgav=$(_corr:6)+$(REDINFCAIXA)
+   #LET redsupgav=$(_corr:7)+$(REDSUPCAIXA)
+#ENDIF
+#LET SCORR=$(_CORR:8)
+#IF $(_TPGAV:5)!!0
+   #LET LGAV=$(_TPGAV:5)
+#ELSE
+   #IF $(_FRINTERNA:0)=1
+      #LET LGAV=$(lagr)-$(ESLAT:0)*2-$(SCORR)*2
+   #ELSE
+      #LET LGAV=$(lagr)-$(SCORR)*2
+   #ENDIF
+#ENDIF
+#IF $(_FRINTERNA:0)=1
+   #LET deltagaveta={$(ESCOS:0)+$(AFCOS:0)+$(ESFRE:0)+$(_CORR:4)+$(espaco_gav_atras:0)}
+#ELSE
+   #LET deltagaveta={$(ESCOS:0)+$(AFCOS:0)+$(_CORR:4)+$(espaco_gav_atras:0)}
+#ENDIF
+#IF $(gavetadormitorio)=1 #LET deltagaveta=10
+#IF $(gavetaavulsa)=1 #LET deltagaveta=0
+#MSG $(deltagaveta:0)
+
+#IF $(_TPGAV:7)>0
+   #LET PGAV=$(_TPGAV:7)
+#ELSE
+   #LET PGAV=99999
+   #FOR $(_CORR:3)
+      #LET pteste=$P-$(I)
+      #IF $(pteste)>=$(deltagaveta)
+         #LET PGAV=$(I)-$(_CORR:11)
+         #LET Pcorredica=$(I)
+         #GOTO FINE
+      #ENDIF
+   #ENDFOR
+   #IF $(gavetaavulsa)=0
+      #IF $(PGAV)=99999
+         #LET PGAV=$(I)
+         297,COD= / /ERRO,SA=$A/2,A=$A/2,P=$P+50
+         297,COD= / /CORREDICA NAO DISPONIVEL,A=$A/2,P=$P+50  // TEXTO
+      #ENDIF
+   #ENDIF
+#ENDIF
+# FINE
+#IF $(TPG)[1;2;4;5;6] & $(_TPGAVALT:5)>0
+   #LET AGAV=$[REPLACE;$(_TPGAVALT:5);<AFRE>;$(AFRE)]
+#ELSEIF $(_TPGAV:6)=0
+   #IF $(gavetaavulsa)=1
+      #LET AGAV=$A
+   #ELSE
+      #LET AGAV=$A-1*($(REDINFGAV)+$(REDSUPGAV))
+   #ENDIF
+#ELSE
+   #LET AGAV=$[REPLACE;$(_TPGAV:6);<AFRE>;$(AFRE)]
+#ENDIF
+//GAVETA INTERNA
+#IF $(TPG)[1;2;4] | $(_TPGAVALT:6)>0
+   #LET AGAV1=$[REPLACE;$(_TPGAVALT:6);<AFRE>;$(AFRE)]
+#ELSEIF $(_TPGAV:6)=0
+   #LET AGAV1=$A-1*($(REDINFGAV))+$(REDSUPGAV))
+#ELSE
+   #LET AGAV1=$[REPLACE;$(_TPGAV:6);<AFRE>;$(AFRE)]
+#ENDIF
+#LETS MVM=$(.PERCORSO)\HTML\ANTE.MVE;FL=5;AP={400}
+#IF $(ABRIRFRENTE:0)>0 #LETS mvm=
+#LET spgav=$p-$(pgav:0)
+#IF $(_FRINTERNA:0)=1
+   #LET slgav=($(LAGR)-$(lgav))/2
+#ELSE
+   #LET slgav=$(slagr)+($(LAGR)-$(lgav))/2
+#ENDIF
+#LET PGAV1=$(pgav)
+#LET spgav1=$p-$(pgav1)
+#IF $(_tpgav:10)!!
+   #LOADVAR _CORFU _CORCX $(_tpgav:10)
+#ENDIF
+#IF $(AGAVETA_cost:0)>0
+   #LET AGAV=$(AGAVETA_cost:0)
+#ENDIF
+#IF $(SAGAVETA_cost:0)!0
+   #LET SAGAV=$(SAGAVETA_cost:0)
+#ELSE
+   #LET SAGAV=$(redinfgav:0)
+#ENDIF
+#LET afgava=$(sagav:0) //ativa o posicionamento customizavel da gaveta $(SAGAVETA_cost:0)
+#IF $(gavetaavulsa)=1
+   #LET LGAV=$L
+   #LET AFGAVA=0
+   #LET slgav=0
+   #LET sagav=0
+#ENDIF

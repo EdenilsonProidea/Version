@@ -1,0 +1,12 @@
+{ 471   // MIOLO TAMBURATO
+   *AZZERA*            =0
+   DESCRIZIONE         =MIOLO TAMBURATO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$(ESP_PRAT:3),0
+   DIMENSIONE          =25,$(ESPENCHTAMB:0),$P
+   COLORI              =$(_CORCRU:3)|$(.percorso)\foto\madeira\$(_CORCRU:4)|$(_CORCRU:5),$(_CORCRU:3)|$(.percorso)\foto\madeira\$(_CORCRU:4)|$(_CORCRU:5)
+   ORIENTAMENTO        =PAL
+   PARAMETRIGL         =painel.xp
+   X9                  =/$(_corCRU:1)//$(_corbf:1)/$(_altBORDA:1)
+   ALIAS               =#470
+}

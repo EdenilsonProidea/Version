@@ -1,0 +1,27 @@
+!parametri posd=1
+#IF $(posd)=1
+   #LET slpush=$(lfre)-45
+#ELSE
+   #LET slpush=45
+#ENDIF
+
+// !SAGOMAP sagpush 2,2,A20,5,5,5
+// .push.xp
+
+
+#IF $(push:0)=1
+   #IF $(AFRE)+50>$(ATOT)
+      #IF $(_TPCAIXA:9)=1
+         // INFERIOR
+         444,SA=$A-10-5  //push Porta
+      #ELSEIF $(_TPCAIXA:9)=2
+         444  // push Porta
+      #ELSEIF $(_TPCAIXA:9)=3 | $(_TPCAIXA:12)==D
+         444  // push Porta
+      #ELSE
+         #LETS idlogerros=$(idlogerros)33;
+      #ENDIF
+   #ELSE
+      #LETS idlogerros=$(idlogerros)33;
+   #ENDIF
+#ENDIF

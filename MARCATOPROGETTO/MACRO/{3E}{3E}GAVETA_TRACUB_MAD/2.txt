@@ -1,0 +1,14 @@
+!PARAMETRI RED_V_ESQ_TRA={$(RED_V_ESQ)-$(espgaveta)},RED_V_DIR_TRA={$(RED_V_DIR)-$(espgaveta)}
+// ajuste realizado para ficar por dentro igual a gaveta no antigo
+#LET atra=$A-1*($(afafundogaveta:0)+$(espfundogaveta:0)+3)
+//#LET atra=$A-1*($(afafundogaveta:0)+3)
+#LET satra=$(afafundogaveta:0)+$(espfundogaveta:0)
+// TRASEIRA ATRAS
+261,SL=0,SA=$(satra),L=$(RED_V_ESQ_TRA:0)+$(espgaveta:0),A=$(atra)  //Traseira Gaveta
+261,SL=$L-$(RED_V_DIR_TRA:0)-$(espgaveta:0),L=$(RED_V_DIR_TRA:0)+$(espgaveta:0),A=$(atra),sa=$(satra)
+// TRASEIRA FRENTE VAO
+261,SL=$(RED_V_ESQ_TRA:0),L=$(V_CENTRO:0),SP=$(V_PROF:0)-$(espgaveta:0),A=$(atra),sa=$(satra)
+// TRASEIRA VERTICAIS
+261,SL=$(RED_V_ESQ_TRA:0),L=$(V_PROF:0)-2*$(espgaveta:0),SP=$(V_PROF:0)-$(espgaveta:0),AY=90,A=$(atra),sa=$(satra)
+261,SL=$L-$(RED_V_DIR_TRA:0),L=$(V_PROF:0)-2*($(espgaveta:0)),SP=$(espgaveta:0),AY=-90,A=$(atra),sa=$(satra)
+// gaveta_mad_1

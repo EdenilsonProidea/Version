@@ -1,0 +1,83 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=TAMPOH.erg
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=*,*,*,*,*
+
+
+[gene]
+T,MODELLO
+V,INICIACOZ
+T,_TPCAIXA,,,,,,,,,,,,1=0
+D,infosag,,,,,complementi.crea.EDISAGSINGOLA|$l;$a;$p;1;1
+T,_Tampo,,,Acab Tampo,$(_TAMPO:1)!!999
+K,_rgb_TAMPO,,$(_TAMPO:12)=1
+T,_filete,,$(_tampo:1)!!999,,$(_filete:1)[$(_tampo:10)]
+T,bordo
+M,ATAMPOP,,$(_tampo:6)==999 | $(_tampo:12)=1,Espessura Tampo?,,,40
+M,afilesp,,($(_tampo:6)==999  | $(_tampo:12)=1) & $(_filete:1)!!999,Altura filete?,,,60
+C,latoasx,,$(_filete:5)>0,Filete Esq?
+C,latoadx,,$(_filete:5)>0,Filete Dir?
+C,latobsx,,,Borda Esq?
+C,latobdx,,,Borda Dir?
+-,tec
+M,satampo,,$(_tampo:1)!!999,Pos. Alt. Tampo,,,600
+C,tampoE,,$(_tampo:1)!!999,Lado Esq?
+C,tampoD,,$(_tampo:1)!!999,Lado Dir?
+M,inctESQ,,,Incremento Esq
+M,inctDER,,,Incremento Dir
+M,inctFRO,,,Incremento Frontal
+G,COZ_DECINF
+
+[GRAFICA]
+COZ_INICIA,IDBOX=0 // <C21889>
+
+#LETS tpsag_0001=,tpsag_0002=,dsagoma_0001=,dsagoma_0002=
+#SETVARS infosag
+
+#LETS DSAGOMA=
+#IF $(dsagoma_0001)!!
+   //#LET bordo=999 <c22105>
+   !SAGDUMP DSAGOMA,$(dsagoma_0001)
+   !SAGOMAA DSAGOMA $(DSAGOMA)
+#ENDIF
+
+#LET A=$(ATAMPO:0)
+#LET P=$(PTAMPO)+$(inctatr:0)
+
+TAMPOFILETE,DISTAMPO=$(DSAGOMA),AFTAMPOA=0,AFFILETEA=$(ATAMPOP:0),afbordoa=0   //,SA=$(satampo:0)// Adicionado AFTAMPOA=0,AFFILETEA=$(ATAMPOP:0),afbordoa=0 para posicionar o tampo e o filete corretamente
+
+#IF $(tampoE:0)=1
+   888,SL=-$(inctESQ:0),SA=$(satampo:0),L=$(satampo:0),A=$(ATAMPOP:0),AZ=90  //tampo verticale
+#ENDIF
+#IF $(tampoD:0)=1
+   888,SA=$(satampo:0),SL=$l-$(ATAMPOP:0)+$(inctder:0),A=$(ATAMPOP:0),L=$(satampo:0),AZ=90  //tampo verticale
+#ENDIF
+
+// borda
+
+// PiaDecoro3
+
+// ACCPIA
+
+coz_decori_inf
+
+// DIS_OGGETTO
+
+LOGERROS

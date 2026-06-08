@@ -1,0 +1,6 @@
+#IF $(_listino)=1
+   54035,1
+   53199,2*$(dima)/1000
+#ELSE
+   kit-ferragens,0.5,A={$(dima)-200}
+#ENDIF

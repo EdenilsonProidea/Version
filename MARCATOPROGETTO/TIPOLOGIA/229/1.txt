@@ -1,0 +1,10 @@
+{ 229   // CANTONEIRA FUNDO
+   *AZZERA*            =0
+   DESCRIZIONE         =CANTONEIRA FUNDO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =10,10,10
+   ORIENTAMENTO        =LAP
+   X9                  =LCFUNDO
+}

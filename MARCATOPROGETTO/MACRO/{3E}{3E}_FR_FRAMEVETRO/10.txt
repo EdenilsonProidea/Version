@@ -1,0 +1,54 @@
+// ALEX FEITO EM VISITA - FOI SOLICITADO PARA PORTA FRAME BELLAGIO E VINTAGE TER POSIÇÃO DO PUXADOR BOLINHA NO CENTRO DA MOLDURA. PARA ISSO CRIAMOS MAIS UMA COLUNA NA VARIANTE _PUX_EXTRA PARA IDENTIFICAR OS PUXADORES BOLINHA. A COLUNA 6 PRECISA ESTAR IGUAL A 1 PARA CENTRALIZAR NA MOLDURA DESSA PORTAS EM ESPECÍFICO
+#LOADVAR _PARPUXEXTRA _PUX_EXTRA $(_PUX:1)
+#IF $(_PARPUXEXTRA:6)=1
+   #LETV _PUX:15={35-$(_PUX:4)/2}
+   #LETV _PUX:16={35-$(_PUX:5)/2}
+#ENDIF
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$A
+#ENDIF
+#IF $(_pux:17)<$(esfre:0) & $(_pux:4)>0
+   // faço um buraco na frente para PUXADOR
+   // .FRENTE_PUXADOR_EMBUTIDO.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS xpfrente=FRENTE_PUXADOR_EMBUTIDO.XP
+   #LETS parfrente=$(pospuxadores)|$(sentido)|{$(_pux:4)-10}|{$(_pux:5)-10}|{$(_pux:15)+5}|{$(_pux:16)+5}    //popx|sentido|lpux|apux|slpux|sapux
+#ELSE
+   // .frente_lisa.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ENDIF
+#LET LESTR=70
+#IF $(AFRE)>1300
+   #LET TRAVESSAFRE=1
+#ENDIF
+#IF ($(_TPCAIXA:9)=2 & $(_tpcava:3)>0) | ($(_TPCAIXA:9)=2 & $(_PUXCAVA:3)>0) // superior quando usa cava tem que deslocar para cima
+   #LET deslocaalt=$(RIDFRECAVA:0)
+#ELSE
+   #LET deslocaalt=0
+#ENDIF
+#MSG $(_vidro:6)
+#IF $(TRAVESSAFRE)=1 // 2 fundos
+   268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={$(LESTR:0)-10+$(FOLGAFRENTEAI:0))},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(ALTTRAVFRE:0)-$(LESTR:0)+1*(20))},SP=6.5,P=5  //VIDRO INF ALT FIXA
+   268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={1*($(ALTTRAVFRE:0))+60+$(FOLGAFRENTEAI:0)},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(AFRE:0)-1*($(ALTTRAVFRE:0)+120)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SP=6.5,P=5  //VIDRO SUP SA FIXO
+#ELSE
+   #IF $(AVANCAFRENTE:0)=1
+      268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={$(LESTR:0)-10+$(FOLGAFRENTEAI:0)+$(deslocaalt:0)+$(affre:0)},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(AFRE:0)-2*($(LESTR:0)-10)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SP=6.5,P=5  //VIDRO
+   #ELSE
+      268,SL={$(LESTR:0)-10+$(FOLGAFRENTEL:0))},SA={$(LESTR:0)-10+$(FOLGAFRENTEAI:0)+$(deslocaalt:0)},L=$(LFRE:0)-2*($(LESTR:0)-10),A={$(AFRE:0)-2*($(LESTR:0)-10)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},SP=6.5,P=5  //VIDRO
+   #ENDIF
+#ENDIF
+ESTR_FRAME,ESFRE=$(esfre:0)
+#IF $(TRAVESSAFRE)=1 // ADICIONA TRAVESSA NO MEIO
+   510,SL=$(LESTR:0)+$(FOLGAFRENTEL:0),SA=$(ALTTRAVFRE:0)+$(FOLGAFRENTEAI:0),SP=1,L=$(LFRE:0)-2*$(LESTR:0),A=$(LESTR:0),P=$(ESFRE),C1=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),C2=$(_corFR:3)|$(.percorso)\foto\madeira\$(_corFR:4)|$(_corFR:5),X3=$(curbox)/ /$(_FR:5)/$(_FR:6),X9=$(_tpcaixa:1)/$(_corfr:1)/50453/$(_FR:6)  // Traversa verticale
+#ENDIF
+// CRIADO POR ALEX EM ACESSO COM NICHOLAS. SOLICITADO PARA RETORNAR ERRO QUANDO MODELO FRAME, FRAME VETRO E FRAME PAGLIA EM DORMITÓRIO E MAIOR QUE 450
+#IF $(ISDORMI:0)=1 & $(L)>450
+   #LETS idlogerros=$(idlogerros)127;
+#ENDIF
+// _cavafrontal

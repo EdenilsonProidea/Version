@@ -1,0 +1,4 @@
+#LET na=-$(_pes:5)
+#IF $(_CORRODAPE:9)=1 #LETS _CORRODAPE:5=$(_pinturape:5)
+
+// inicia

@@ -1,0 +1,15 @@
+{ 354   // Base sapateira
+   *AZZERA*            =0
+   DESCRIZIONE         =Base sapateira
+   CODICE              =/;_MONTADO=$(_MONTADO:0);ESPECIAL=$(ESPECIAL:0);IDGRUPO=$(IDGRUPO:0);OBS_NOTA=$(OBS_NOTA:0)
+   POSIZIONE           =0,21,15
+   DIMENSIONE          =$l,25,$p-15
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/$(TRABALHOAT)/1/1/0/0/$(canal)/$(cava)/1/1/0/0/0/0
+   X8                  =$(SUPORTESAP:0)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)
+   ALIAS               =#354
+}

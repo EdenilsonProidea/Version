@@ -1,0 +1,22 @@
+!PARAMETRI FF=$(_FR:11),FT=$(_FR:11),FE=$(_FR:11),FD=$(_FR:11),frentecomvidro=0
+#IF $(APE:3)[GAI;SAP]!0
+   218  // FRENTE LAP INTERNA DORMITORIO
+#ELSE
+   #IF $(frentecomvidro)=1
+      #IF $(APE:9)=1
+         216.001  // FRENTE LAP
+      #ELSE
+         215.001  // FRENTE
+      #ENDIF
+   #ELSE
+      #IF $(APE:9)=1
+         216  // FRENTE LAP
+      #ELSE
+
+         215  // FRENTE
+      #ENDIF
+   #ENDIF
+#ENDIF
+// .FRENTE_LISA.XP
+
+// .Quadratta.xp

@@ -1,0 +1,11 @@
+215.035,SL=0,SA=-$(incpainIE),SP=-$(incpainTE),L=$(ltmp),A=$(atmp),P=$(ESPAINAE:0),AY=-90  //FRENTE 3D
+#IF $(_fr:6)==106
+   #LET descaporta=$(atmp)-110
+   #LET desclporta=$(ltmp)-110
+   #LET espfunporta=6
+   #LET spfunporta=3
+   #LET descsaporta=55
+   #LET descslporta=55
+   215,SL=$(descslporta),SA=$(descsaporta),SP=$(spfunporta),L=$(desclporta),A=$(descaporta),P=$(espfunporta),lato=6  //FRENTE
+#ENDIF
+// 215

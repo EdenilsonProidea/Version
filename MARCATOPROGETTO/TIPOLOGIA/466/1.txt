@@ -1,0 +1,11 @@
+{ 466   // PONTO
+   *AZZERA*            =0
+   DESCRIZIONE         =PONTO
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(AFLPONTO:0),$(AFAPONTO:0),$(AFPPONTO:0)
+   DIMENSIONE          =$(DIMLPONTO:0),$(DIMAPONTO:0),$(DIMPPONTO:0)
+   COLORI              =1,6|$(.percorso)\foto\madeira\BRANCO.JPG|$(CORPONTO:0)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =PONTO.XP
+   X8                  =$(_TPPONTO:3)/$(_TPPONTO:4)
+}

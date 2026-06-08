@@ -1,0 +1,11 @@
+{ 631   // furo no vidro
+   *AZZERA*            =0
+   DESCRIZIONE         =furo no vidro
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,$A,0
+   DIMENSIONE          =$l,$a,50
+   COLORI              =0,0
+   FACCIATA            =0
+   ORIENTAMENTO        =LAP
+}

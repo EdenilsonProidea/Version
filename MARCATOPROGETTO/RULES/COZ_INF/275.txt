@@ -1,0 +1,82 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=BOX INFERIOR
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 1, 1, 1
+DIM.MASSIMA= 5000, 5000, 5000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=U100
+SPEC=
+DIVIDER=COZ_STRDIV,COZ_FREDIV,$(_tpcaixa:5),$(_tpcaixa:4),$(_tpcaixa:6),$(_tpcaixa:7),0,0
+TRADFLAGS=*,*,*,*,1,1
+
+
+[gene]
+-,dados,,,Da
+T,MODELLO
+G,COZ_CAIXA
+G,PONTOS
+G,FR_GERAL
+D,parfrisos,,,,,,,,,,,,1=0
+D,parfrisosh,,,,,,,,,,,,1=0
+D,parfrisosv,,,,,,,,,,,,1=0
++,COZ_FREDIV
+G,COZ_ACAB
+G,COZ_DECINF
+G,VAROCULTE
+-,PO,,1=0
+
+[GRAFICA]
+COZ_INF
+$(_FR:3)
+
+// _FR_1
+
+// GAVETA
+
+// FRONTAL
+
+// FRONTAL
+
+// COZ_FREDIV
+
+// COZ_STRDIV
+
+//CAIXA_CPAREDE
+
+// CALCULAERROGAV
+
+// 201
+
+// 215
+
+// caixa
+
+// 624
+
+// _FR_PROFILO
+
+// .FRENTE_PROFILO.XP
+// 467
+// 468
+
+//gaveta_temp
+
+
+//GAVETA_ALTA_INT_A
+
+// tipogaveta
+
+// INICIA_CALC_GAV
+
+// 217

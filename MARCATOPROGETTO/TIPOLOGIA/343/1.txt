@@ -1,0 +1,15 @@
+{ 343   // Adega
+   *AZZERA*            =0
+   DESCRIZIONE         =Adega
+   CODICE              =/LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(_int:10),$(AFADEGA),$(_int:12)
+   DIMENSIONE          =$(_int:6),$(_int:7),$(_int:8)
+   COLORI              =$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5),$(_corcx:3)|$(.percorso)\foto\madeira\$(_corcx:4)|$(_corcx:5)
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+   DATI                =_int$(_ctx)
+   X3                  =$(curbox)
+   X6                  =0/0/0/$(LACEINT)/$(AACEINT)/$(PACEINT)/
+   X8                  =ACESSORIOS\$(_INT:5)/$(i)
+   X9                  =$(_tpcaixa:1)/$(_corcx:1)
+}

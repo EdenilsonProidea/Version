@@ -1,0 +1,7 @@
+301,SP=0,P=$p-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Esquerda  (dormitorios)
+302,SL=$(slmodulo:0)-$(ESLAT:0),SP=0,P=$p-$(AVANCOCLOSETL:3),X3=$(curbox)/CLOSET_L  //Lateral Direita  (dormitorios)
+#LET L=$(SLMODULO:0)
+//ILU_CLDIR,L={$A-$(ARODP:3)-6},P=$p-$(AVANCOCLOSETL:3),SA={$A+$(ABASE:0)-3},SL={$L-$(ESLAT)},AZ=90,MACRO=ILU_LATDIR
+//ILU_CLESQ,L={$A-(2*$(ABASE:0)+$(ARODP:3)+6)},P=$p-$(AVANCOCLOSETL:3),SA={$(ABASE:0)+$(ARODP:3)+3},SL=$(ESLAT),AZ=-90,MACRO=ILU_LATESQ
+GESTAOMEDIDA // Adicionado em visita
+LOGERROS

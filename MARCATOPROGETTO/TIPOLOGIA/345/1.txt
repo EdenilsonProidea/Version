@@ -1,0 +1,15 @@
+{ 345   // tampo mesa escritorio
+   *AZZERA*            =0
+   DESCRIZIONE         =tampo mesa escritorio
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$a-$(esp_prat:0),0
+   DIMENSIONE          =$L,$(esp_prat:0),$p
+   COLORI              =$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5),$(_COREX:3)|$(.percorso)\foto\madeira\$(_COREX:4)|$(_COREX:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_COREX$(_ctx)
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/1/1/1/1
+   X8                  =1
+   X9                  =$(_tpcaixa:1)/$(_COREX:1)
+   ALIAS               =#345
+}

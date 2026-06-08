@@ -1,0 +1,6 @@
+{ 215.035
+   *AZZERA*            =0
+   X3                  =$(curbox)/TLAT
+   X8                  =$(_fr:24)/$(_fr:8)/$(pospuxadores)/$(parfrente)/$(LFRISO)/$(LFRISOV)/$(LFRISOH)//$(POSCENTROISA:0)//$(_CORLDIF)
+   ALIAS               =#215
+}

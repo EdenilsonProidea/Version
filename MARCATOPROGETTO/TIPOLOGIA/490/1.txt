@@ -1,0 +1,10 @@
+{ 490   // Botão dividir móvel
+   *AZZERA*            =0
+   DESCRIZIONE         =Botão dividir móvel
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =-50-$(ESLAT:0),$a+$(arodateto:0)+20,$p
+   DIMENSIONE          =100,100,2
+   COLORI              =170,170
+   ORIENTAMENTO        =LAP
+   DATI                =divmovel$(i)
+}

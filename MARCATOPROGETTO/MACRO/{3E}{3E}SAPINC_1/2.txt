@@ -1,0 +1,5 @@
+!PARAMETRI AFPRATA=0
+#LET PPRATINC=$P-$(descPSapInclinada:0)
+SAPINC_DIV,SA=$(ESPRAT:0)
+//310,X3=$(curbox)/SAP_INC  // Sapateira Inclinada
+311  // Frente Sapateira Inclinada

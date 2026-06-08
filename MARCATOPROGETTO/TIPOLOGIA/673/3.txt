@@ -1,0 +1,12 @@
+{ 673   // TAMPA QUADRATTA
+   *AZZERA*            =0
+   DESCRIZIONE         =TAMPA QUADRATTA
+   CODICE              =/_CORFR=$(_CORFR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR
+   LATO                =6
+   POSIZIONE           =0,0,$(ESFRE)-12
+   DIMENSIONE          =$(LFRE)-4,{$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))}-4,6
+   COLORI              =$(_corPUX:3)|$(.percorso)\foto\madeira\$(_corPUX:4)|$(_corPUX:5),$(_corPUX:3)|$(.percorso)\foto\madeira\$(_corPUX:4)|$(_corPUX:5)
+   ORIENTAMENTO        =LAP
+   DATI                =$(CXFRENTE)
+   X9                  =/$(_corPUX:1)
+}

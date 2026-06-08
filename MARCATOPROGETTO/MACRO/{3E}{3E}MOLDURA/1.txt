@@ -1,0 +1,37 @@
+#LET A=$(_tpmold:4)
+#VB
+   n=0
+   v1=Split(v("_punti"),";")
+   for i=0 to uBound(v1) step 3
+      n=n+1
+      add "X" & n, v1(i)
+      add "Y" & n,v1(i+1)
+      add "Z" & n,v1(i+2)
+   next
+   add "NN",n
+#ENDVB
+#LET n=$(nn)
+// PERCORSO SUL PIANO
+#LETS PERC=
+#LET LMAX=0
+#LET PMAX=0
+#FOR $1:$(NN)
+   #IF $(I)=1
+      #LETS PERC=$(x1);$(z1)
+   #ELSE
+      #LETS PERC=$(PERC);$(x$(I));$(z$(I))
+   #ENDIF
+   #IF $(x$(I))>$(LMAX)
+      #LET LMAX=$(x$(I))
+   #ENDIF
+   #IF $(Z$(I))>$(PMAX)
+      #LET PMAX=$(Z$(I))
+   #ENDIF
+#ENDFOR
+#IF $(_tpmold:1)!999   // Moldura
+   !SAGOMA PERCOR $(PERC)
+   !SAGOMA PERFIL $(_TPMOLD:6)
+   #LET L=$(LMAX)
+   #LET P=$(PMAX)
+   269  // Moldura
+#ENDIF

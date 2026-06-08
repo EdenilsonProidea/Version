@@ -1,0 +1,20 @@
+#IF $(_fr:6)!!98
+   _PUX,sa=$(FOLGAFRENTEAI:0),sl=$(FOLGAFRENTEL:0),l=$(lfre),a=$A
+#ENDIF
+#IF $(_pux:17)<$(esfre:0) & $(_pux:4)>0
+   // faço um buraco na frente para PUXADOR
+   // .FRENTE_PUXADOR_EMBUTIDO.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS xpfrente=FRENTE_PUXADOR_EMBUTIDO.XP
+   #LETS parfrente=$(pospuxadores)|$(sentido)|{$(_pux:4)-10}|{$(_pux:5)-10}|{$(_pux:15)+5}|{$(_pux:16)+5}    //popx|sentido|lpux|apux|slpux|sapux
+#ELSE
+   // .frente_lisa.XP
+   #LET ladojobfrente=0
+   #LETS nomejobfrente=
+   #LETS parjobfrente=
+   #LETS parfrente=
+   #LETS xpfrente=frente_lisa.xp
+#ENDIF
+_FR_STANDARD_INV

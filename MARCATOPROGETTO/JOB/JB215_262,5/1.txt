@@ -1,0 +1,1 @@
+#LOADVAR _tpgavALT_extra _tpgavalt_extra $(xp6:0)#LOADVAR _tpgav _tpgav $(xp10:0)#IF $(_tpgav:3)!5#IF $(_tpgavALT_extra:3)!12,marc, Y={$(pl)+50}       X={$(pa)+$(da)/2}2,marc, Y={$(pl)+$(dl)-50} X={$(pa)+$(da)/2}#ENDIF#ENDIF

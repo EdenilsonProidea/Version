@@ -1,0 +1,38 @@
+#LOADVAR _PERFPUX _PERFPUX $(X9:0)
+#LETS _perfpux:4=$(X9:1) // <c22525>
+#IF $(X6:0)=1 // Puxadores molise, feito pois a tipologia está sendo rotacionada para os molises <c23466>
+   #IF $(X6:1)!0 // Adicionado gestão para molise pega de tamanho fixo que fica no meio da porta <c24151>
+      #IF $(_PERFPUX:4)!!
+         #IF $(_LISTINO)=1
+            $(_PERFPUX:4),$(X6:2)/1000
+            #IF $(_PERFPUX:10)!!
+               $(_PERFPUX:10),1
+            #ENDIF
+         #ELSE
+            KIT-PPERF,1,CODPERFIL=$(_PERFPUX:4);CODTAMPINHA=$(_PERFPUX:10),$(X6:2)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      #IF $(_PERFPUX:4)!!
+         #IF $(_LISTINO)=1
+            $(_PERFPUX:4),$(DA)/1000
+            #IF $(_PERFPUX:10)!!
+               $(_PERFPUX:10),1
+            #ENDIF
+         #ELSE
+            KIT-PPERF,1,CODPERFIL=$(_PERFPUX:4);CODTAMPINHA=$(_PERFPUX:10),$(DA)
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ELSE
+   #IF $(_PERFPUX:4)!!
+      #IF $(_LISTINO)=1
+         $(_PERFPUX:4),$(DL)/1000
+         #IF $(_PERFPUX:10)!!
+            $(_PERFPUX:10),1
+         #ENDIF
+      #ELSE
+         KIT-PPERF,1,CODPERFIL=$(_PERFPUX:4);CODTAMPINHA=$(_PERFPUX:10),$(DL)
+      #ENDIF
+   #ENDIF
+#ENDIF

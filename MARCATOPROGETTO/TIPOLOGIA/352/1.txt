@@ -1,0 +1,14 @@
+{ 352   // FUNDO ILLUMINADO
+   *AZZERA*            =0
+   DESCRIZIONE         =FUNDO ILLUMINADO
+   CODICE              =$(_tpbase:5)
+   POSIZIONE           =$(ESLAT:0)+$(red_intm:0),0,$(afbase:0)
+   DIMENSIONE          ={$L-$(ESLAT:0)*2-2*$(red_intm:0)},30,{$P-1*($(afbase:0)+$(red_basef:0))}
+   COLORI              =180,10
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =objeto3d.xp
+   X4                  =$(eleid:0)
+   X7                  =50;50;1;1;50;50
+   X8                  =ACESSORIOS\Fondo_luminosop.x
+   X9                  =$(_tpbase:4)
+}

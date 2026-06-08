@@ -1,0 +1,16 @@
+#IF $(XX3:1)!!FUB
+   2	FF	X={$(PL)+80} Y=38.5 DF=8 PF=11
+   2	FF	X={$(PL)+$(DL)-80} Y=38.5 DF=8 PF=11
+   2	FF	X={$(PL)+$(DL)/2} Y=38.5 DF=8 PF=11
+   #IF $(XL)>900
+      2	FF	X={$(PL)+$(DL)/3} Y=38.5 DF=8 PF=11
+      2	FF	X={$(PL)+$(DL)/3*2} Y=38.5 DF=8 PF=11
+   #ENDIF
+#ELSE
+   #LET calc=($(XL)-160)/4
+   2	FF	X=80             Y=12.5 DF=8 PF=11
+   2	FF	X={$(XL)-80}     Y=12.5 DF=8 PF=11
+   2	FF	X={80+$(CALC)*1} Y=12.5 DF=8 PF=11
+   2	FF	X={80+$(CALC)*2} Y=12.5 DF=8 PF=11
+   2	FF	X={80+$(CALC)*3} Y=12.5 DF=8 PF=11
+#ENDIF

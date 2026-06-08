@@ -1,0 +1,165 @@
+
+[info]
+Versione = 100
+TIPO=000
+DESCRIZIONE=
+COMMENTI=
+CODICE=
+POSMODE=0
+LINK=000
+LINKPREC=
+LINKSUCC=
+TAB.DIM.=L,A,P,SA,DA,SL,DL
+DIM.MINIMA= 0, 0, 0
+DIM.MASSIMA= 3000, 3000, 3000
+DIM.DEFAULT= 0, 0, 0
+DIM.BLOCCA=0,0,0
+DIM.SPECIALI0,0,0
+MODOADD=
+SPEC=
+DIVIDER=
+TRADFLAGS=
+
+
+[gene]
+
+
+[VARIABILI]
+FONT1=\red0\green0\blue128 \fs14
+FONT2=\red0\green0\blue128 \fs6
+
+[SCRIPTTAB]
+a=v("xNote")
+if len(a)>1 then
+   v1=Split(a,vbcrlf)
+   for i=0 to uBound(v1)
+      v1(i)="\TA \red255 "  & v1(i)
+   next
+   'a=join(v1,"\par ")
+   if instr(1,a,chr(16))>0 then
+      a=replace(a,chr(16),vbcrlf)
+   end if
+   v("xNote")=a
+end if
+A=VariantiDiverseTestata(v("var"),"",1)
+IF LEN(A)>1 THEN
+   v1=Split(a,vbcrlf)
+   j=0
+   for i=0 to uBound(v1)
+      if len(v1(i))>0 then
+         v1(j)="\TA \red0\green0\blue255 "  & v1(i)
+         j=j+1
+      end if
+   next
+   if j then
+      redim preserve v1(j-1)
+      a=join(v1,vbcrlf)
+   else
+      a=""
+   end if
+   v("varianti")=a
+else
+   v("varianti")=""
+end if
+
+[TESTA]
+
+ORIZZONTALE
+FONT ARIAL
+DIM 280 200
+BX (0,0) (280,200) HFFFFFF N
+
+BX (0,0) (280,30)
+// BX (0,13) (58,13)
+// BX (58,13) (142,30)
+// BX (142,13) (200,30)
+
+TX BL 7C (230,28) Powered by 3cad Evolution/PROIDEA
+
+
+
+#LETS dh=$[replace;$(.dataora);/;_]
+#LETS dh=$[replace;$(dh); - ;_]
+#LETS dh=$[replace;$(dh);:;_]
+#LET NUMERO=$(TESTA_NUMERO)
+
+
+#LETS _file=_pdf\$(NUMERO:0)_LISTA_ESPECIAIS_$(SETOR:1)_$F(testa_numero)_$(.computername)_$(dh).pdf
+
+
+
+#LET tipo=2
+#LETS campo=NUMERO
+#LETS DEStipo=PEIDDO
+#LETS CODTIPO=$(NUMERO:0)
+#LETS FILTRO= NUMERO='$(NUMERO:0)'
+#LETS DESTIPOESTESA=$(NUMERO:0)
+
+
+TX TC 29BC (140,2) ESPECIAIS
+
+
+LI (0,13) (280,13)
+TX TL 7BC (5,14) $(DESTIPO)
+TX TC 20BC (140,16) $(DESTIPOESTESA:0)
+LI (0,25) (280,25)
+TX TC 7BC (31,27) IMPRIMIDO $(.USERNAME) - $(.DATAORA)
+
+
+#LET PAGINAINICIAL=1
+
+
+#LETS SQL1=SELECT distinct DBO.VARIANTE(R.VAR,'IDGRUPO') AS GRUPO,R.NUMERO,R.NBOX
+#LETS SQL1=$(SQL1)  FROM [Ecadmaster].[dbo].[RORDINE] R
+#LETS SQL1=$(SQL1)  INNER JOIN [Ecadmaster].[dbo].[TORDINE] T ON T.NUMERO=R.NUMERO
+#LETS SQL1=$(SQL1)  WHERE R.PERCORSO='$(.PERCORSO)' AND T.NUMERO='$(NUMERO:0)'
+#LETS SQL1=$(SQL1)  AND DBO.VARIANTE(R.VAR,'ESPECIAL')='1'
+#LETS SQL1=$(SQL1)  AND DBO.VARIANTE(R.VAR,'IDGRUPO')<>'' AND DBO.VARIANTE(R.VAR,'IDGRUPO')<>'0'
+#LETS SQL1=$(SQL1)  ORDER BY NUMERO,DBO.VARIANTE(R.VAR,'IDGRUPO')
+#LETS OLD_GRUPO=
+#LETS GRUPO_*=
+#LETS LISTA_GRUPOS=
+
+#FORDBS ESPECIALGRUPOS=$(SQL1)
+   #LETS GRUPO_$(ESPECIALGRUPOS:1)_$(ESPECIALGRUPOS:0)=$(GRUPO_$(ESPECIALGRUPOS:1)_$(ESPECIALGRUPOS:0))$(ESPECIALGRUPOS:2)*
+   #IF $(OLD_GRUPO)== | $(OLD_GRUPO)!!$(ESPECIALGRUPOS:1)_$(ESPECIALGRUPOS:0)
+      #LETS LISTA_GRUPOS=$(LISTA_GRUPOS)$(ESPECIALGRUPOS:1)_$(ESPECIALGRUPOS:0);
+   #ENDIF
+   #LETS OLD_GRUPO=$(ESPECIALGRUPOS:1)_$(ESPECIALGRUPOS:0)
+#ENDDBS
+
+#FOR $(LISTA_GRUPOS)
+   
+   !P
+   #LETS NUMERO=$[EX;$(I);_;1]
+   #LETS GRUPO=$[EX;$(I);_;2]
+   #SQL codprojeto=select codprojeto +' - ' + RIF + ' - ' + DESTRAG1 from ecadmaster.dbo.tordine where numero=$(numero)
+   WMF (1,33) (89,89) _ECADPRO\IMGESPECIAL\$[FORMAT;$(NUMERO);000000]_G$[FORMAT;$(GRUPO);0000]_V1.jpg
+   WMF (90,33) (89,89) _ECADPRO\IMGESPECIAL\$[FORMAT;$(NUMERO);000000]_G$[FORMAT;$(GRUPO);0000]_V3.jpg
+   WMF (1,109) (89,89) _ECADPRO\IMGESPECIAL\$[FORMAT;$(NUMERO);000000]_G$[FORMAT;$(GRUPO);0000]_V4.jpg
+   WMF (90,109) (89,89) _ECADPRO\IMGESPECIAL\$[FORMAT;$(NUMERO);000000]_G$[FORMAT;$(GRUPO);0000]_V5.jpg
+   TX TL 16B (3,31)  G$[FORMAT;$(GRUPO);0000] $(CODPROJETO)
+   LI (0,109) (200,109)
+   LI (90,35) (90,200)
+   
+   FONTSIZE 7
+   
+   NTAB (180,40,275,200,33,DD_1_1) \ //,DD_2_2) \
+        (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+        (SELECT NBOX,CODART,DES,DIML,DIMA,DIMP,VAR,XNOTE FROM ECADMASTER.DBO.RORDINE WHERE PERCORSO='$(.PERCORSO)' AND NUMERO=$(NUMERO) AND DBO.VARIANTE(VAR,'IDGRUPO')='$(GRUPO)') \ // COMANDO SQL
+        (NBOX  ,10L  ,,<NBOX>) \
+        (DES  ,50L  ,, <DES>) \
+        (DIM  ,20L   ,, [DIM;<DIML>;<DIMA>;<DIMP>])
+   
+   #LETS SQL=SELECT DISTINCT OBS FROM OBS_ESP WHERE PERCORSO='MARCATOPROGETTO' AND NUMERO=$(NUMERO) AND GRUPO='$(GRUPO)'
+   
+   FONTSIZE 7
+   NTAB (180,0,275,200,33,DD_1_1) \ //,DD_2_2) \
+        (scripttab) \  // GRUPPI AGGIUNTI DA VALUTARE
+        ($(SQL)) \ // COMANDO SQL
+        (NBOX  ,10L  ,,<NBOX>) \
+        (OBS  ,200L  ,, <NBOX>-<OBS>) \
+        
+   
+   #LET PAGINAINICIAL=0
+#ENDFOR

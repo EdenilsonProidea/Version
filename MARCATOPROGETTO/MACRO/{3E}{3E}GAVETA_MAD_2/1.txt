@@ -1,0 +1,23 @@
+inicia_gav_comun
+#IF $(_tpgav:3)!5 & $(_tpgav:3)!6 // Adicionado em visista
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ELSE // Adicionado em visista
+   #LOADVAR _CORGV _CORCX $(_tpgav:10)
+#ENDIF
+260,SA=$(espfundogaveta:0)  //Lateral Gaveta
+260.001,SA=$(espfundogaveta:0)  //Lateral Gaveta
+261,SA=$(espfundogaveta:0),A=$a//-$(espfundogaveta:0)  //Traseira Gaveta
+#IF $(contrafrentegaveta:0)=1
+   262,SA=$(espfundogaveta:0),A=$a//-$(espfundogaveta:0)  //Frontal caixa Gaveta
+#ENDIF
+263,SL=0,SA=0,SP=0,L=$l,P=$p  //Fundo Gaveta
+264,sp=0,sl=-$(_corr:8),l=$l+$(_corr:8)*2,a=$(agav:0),sa=0 //Caixa Gaveta oculta para furaçao
+ACEGAV
+#IF $(_tpgavalt:10)=1
+   #IF $(FRGAVINT:0)=1
+      //#MSG $(_frd:6)
+      217,SL=$(RED_LARG_FRE_INT:0)-$(_corr:8)+$(folgafrentelgvi:0),SA=-10,SP=$P,L=$l-1*($(RED_LARG_FRE_INT:0)*2)+$(_corr:8)*2)-$(folgafrentelgvi:0)*2,A=$(agav)+25  //Frontal caixa Gaveta
+      //262,SL=$(RED_LARG_FRE_INT:0)-$(_corr:8)+$(folgafrentelgvi:0),SA=-10,SP=$P,L=$l-1*($(RED_LARG_FRE_INT:0)*2)+$(_corr:8)*2)-$(folgafrentelgvi:0)*2,A=$(agav)+25  //Frontal caixa Gaveta
+   #ELSE
+   #ENDIF
+#ENDIF

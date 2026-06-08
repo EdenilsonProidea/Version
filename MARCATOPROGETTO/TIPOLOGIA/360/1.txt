@@ -1,0 +1,11 @@
+{ 360   // BASE ALUMINIO
+   *AZZERA*            =0
+   DESCRIZIONE         =BASE ALUMINIO
+   CODICE              =000BASEALU /;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =$(eslat:0)+0.5,0,0
+   DIMENSIONE          =$l-2*($(eslat:0)+0.5)+300,$(abasealu:o),$p
+   COLORI              =180,180
+   ORIENTAMENTO        =LPA
+   PARAMETRIGL         =BASEALU.XP
+   X8                  =ACESSORIOS\01_PROTETOR_DE_ALUMINIO.3DS/$(basealu:1)
+}

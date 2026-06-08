@@ -1,0 +1,12 @@
+{ 800   // colmeia acrilico
+   *AZZERA*            =0
+   DESCRIZIONE         =colmeia acrilico
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$l,$a,$(_acegav:7)
+   COLORI              =3,3
+   ORIENTAMENTO        =LAP
+   X2                  =$(NDIVCOLMH:0)/$(NDIVCOLMV:0)
+   X3                  =V/$(_idunico:0)
+   X9                  =$(_acegav:4)
+}

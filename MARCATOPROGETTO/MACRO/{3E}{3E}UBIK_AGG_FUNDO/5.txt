@@ -1,0 +1,10 @@
+//inserimento fundo
+#LOADVAR _corcx _corfu $(_corfu:1)
+ubik_cremalheira,SL=$(SLTMP)-$(ESPACIO)/2-60,L=120,P=57,COD=$(CODMOD)U676/LINHA=$(MODELLO:0),a=$a
+580,SL=$(sltmp),SP=$(pubik)-15,L=$(lfundou:0),P=15  // Painel Ubik
+517,SL=$(sltmp)-3.5,SP=$(pubik),L=$(lfundou:0)+7,P=15,X1=5,X2=Ins,X3=15,X4=1,X5=$(lfundou:0)+7/$a
+#IF $(_TPBASE_UBIK:3)=3
+   base_ubik,l=$(lfundou:0),SL=$(sltmp),COD=$(CODMOD)U403/_CORFAMILIA=$(_corbase:10);_CORCX=$(_corbase:1),_corcx=$(_corbase);LINHA=$(MODELLO:0),A=70,P=$(_PBASE_UBIK:0)
+#ENDIF
+#LET ltmp=$(ltmp)+$(ESPACIO)+$(lfundou:0)
+#LET sltmp=$(sltmp)+$(lfundou:0)+$(ESPACIO)

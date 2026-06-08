@@ -1,0 +1,123 @@
+idm_iniciafech
+gestaomedida // Adcionado em visita - julia 15_01_2024
+
+#IF $a+$(arodape:0)>2730 /// gestão para definir o tamanho maximo do lateral de fechamento em 2730
+   #IF $(arodateto:0)<$a-2730
+      #LETV arodateto=$a-2730
+      #LET arodateto=$a-2730
+   #ENDIF
+   
+#ENDIF
+#LETS AMBIENTE=D // adicionado 05/10
+#LET red_esq=$(_FECHESQ:4) // redução esquerda dos armario por fechamento
+#LET red_dir=$(_FECHDIR:4) // redução direita dos armario por fechamento
+#LET Lintarmario=($l-1*($(RED_ESQ)+$(RED_DIR))) // espaço disponivel para o armario sem os fechamentos esq/dir
+#LET plat=$p
+#LET arodape=$(_tpbasArm:5)
+#LET prodape={$p-$(red_f_rod:0)}
+dor_calc_div_rr
+
+
+
+#LET acaixa=$a-1*($(arodateto:0)+$(arodape:0))
+#LET pacaixa=$(arodape:0)
+#LET sabaseinf=0
+
+#LOADVAR semfechlat _fechesq 0
+#IF $(TPLATARM:3)=2
+   #LET folgafrentel=$(folgafrentelLd:0)
+   #LET ATIVADRETACURVA=0
+#ELSE
+   // fica o padrão que vem da iniciador
+#ENDIF
+// Inicio da gestão de acabamento especial <c23346> ----------------------------------------------------------------
+#LET es=$(ESPESSURA_acab:0) // espessura componentes fechamento
+#LET esp_lat_especial=9
+#LET lat_fech_especial=0
+#LET eslat=$(ESPARM:3)
+
+// #LET eslat=$(espessura:0) // <c23702>
+#IF $(_TPFECH:3)=2 // & 1=0
+   #LETV cor=$(_corfr:8)
+   #IF $(_fr:6)[117;104;202;106;105]!0
+      // tradizione
+      #IF $(_fechesq:0)!0
+         #IF $(_fechesq:3)=3
+            #LETV _fechesq:4=$(distanciadoresq:0)
+         #ELSE
+            #LETV _fechesq:4={20+$(distanciadoresq:0)}
+         #ENDIF
+      #ENDIF
+      #IF $(_fechdir:0)!0
+         #IF $(_fechdir:3)=3
+            #LETV _fechdir:4=$(distanciadordir:0)
+         #ELSE
+            #LETV _fechdir:4={20+$(distanciadordir:0)}
+         #ENDIF
+      #ENDIF
+      #LET lat_fech_especial=2
+   #ELSE
+      #IF 1=0 // desativado somente essa parte pois a parte de cima é utilizada nas portas classicas
+         #IF $(cor:7)!! | $(cor:19)!! // so para pintura
+            #IF $(_fechesq:0)!0
+               #IF $(_fechesq:3)[2;3]!0
+                  #LETV _fechesq:4=$(distanciadoresq:0)+9
+               #ELSE
+                  #LETV _fechesq:4=9
+               #ENDIF
+            #ENDIF
+            #IF $(_fechdir:0)!0
+               #IF $(_fechdir:3)[2;3]!0
+                  #LETV _fechdir:4=$(distanciadordir:0)+9
+               #ELSE
+                  #LETV _fechdir:4=9
+               #ENDIF
+            #ENDIF
+            #LET lat_fech_especial=1
+         #ENDIF
+      #ENDIF
+   #ENDIF
+#ENDIF
+//#LET lat_fech_especial=0 // silvio 26/10/2023 // comentado alex em visita pois tem utilizar a gestão lat_fech_especial=2 para portas classicas
+// em conversa com gaby´isso não vai existir mais
+// conversa pelo whatsapp: Ah sim, aqui a gente chama de cachimbo, mas devido a nova de dobradiça reta e curva não será necessário mais a utilização dele
+#IF $(lat_fech_especial)=1
+   #LET platparede=63
+#ELSE
+   #LET platparede=200
+#ENDIF
+// Fim da gestão de acabamento especial <c23346> -------------------------------------------------------------------
+#LET desc_p_dir=$(desc_p_dir:0)
+#LET desc_p_esq=$(desc_p_esq:0)
+#LET desc_p_dirMemo=$(desc_p_dir:0)
+#LET desc_p_esqMemo=$(desc_p_esq:0)
+#LET sabaseinf=0
+#IF $(_TPBASARM:3)=2
+   #LET sabaseinf=$(arodape:0)
+#ENDIF
+//#IF $(_TPBASARM:3)=6
+//   #LET sabaseinf=$(arodape:0)+$(_pes:5)
+//#LET pacaixa=$(arodape:0)+$(_pes:5)
+//#ENDIF
+// INICIO ALTERAÇÃO <C9581> o INICIAFECH setava novamente o pamaleiro, ignorando se colocava uma medida personalizada pelo posa_maleiro
+#IF $(posa_maleiro:0)>0 #LET pamaleiro=$(posa_maleiro:0)
+#IF $(posa_divcentral:0)>0 #LET padivcentral=$(posa_divcentral:0)
+#LET escos=$(espfundo:3)
+// FIM ALTERAÇÃO <C9581>
+#LET CLOSET_L=0 //<C20060>
+#LET SERVOHK=0
+#LETS AMBIENTE=D
+
+// nova gestão de dobradiça com _dobrafech **** caregamento variaveis
+
+#LETS CODDOBRARETA=$(_DOBRAFECH:3)
+#LETS CODDOBRACURVA=$(_DOBRAFECH:4)
+#LETS CODDOBRARETAL=$(_DOBRAFECH:5)
+#LETS CODDOBRACURVAL=$(_DOBRAFECH:6)
+#LETS CODDOBRACANTORETO=$(_DOBRAFECH:7)
+#LETS INFOPECA=0
+#LET ubik=0
+#LET PRATDOR=0
+#LET DIVISOR=0
+#LET profdorl=0
+#LET ESPPAINEL=

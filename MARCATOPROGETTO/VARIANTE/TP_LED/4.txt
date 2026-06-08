@@ -1,0 +1,34 @@
+{ TP_LED
+   *AZZERA*            =0
+   DESCRIZIONE         =
+   ALIAS               =
+   OBBLIGATO           =False
+   CLASSE              =
+   MEMO                =1Código 1800Descrição 6030TIPO 1200PREVIEW 1200COD 25203d 2820diml 1200dima 1200dimp 1200COD PARA ORÇAMENTO 2910NOME 1200MODELO 1200TIPO 1 =LED
+TIPO 2 =SPOT
+
+tipo 1 = metro linear 
+tipo 2 = unidade
+   { 
+      // ,Descrição                                          ,TI,P,COD   ,3d                                  ,dim,di,dim,COD PARA,N,MO
+      01 ,Led Mini Kendo (Linear) - Branco Quente            ,1 , ,40720 ,LED_MINI KENDO_BRANCO QUENTE.3ds    ,   ,  ,   ,MINIK   , ,1
+      02 ,Led Mini Kendo (Linear) - Branco Neutro            ,1 , ,      ,LED_MINI KENDO_BRANCO NEUTRO.3ds    ,   ,  ,   ,MINIK   , ,1
+      03 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Branco ,2 , ,50625 ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,50 ,2 ,50 ,LSBQPB  , ,2
+      04 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Cinza  ,2 , ,50626 ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,50 ,2 ,50 ,LSBQPC  , ,2
+      05 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Marrom ,2 , ,50627 ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,50 ,2 ,50 ,LSBQPM  , ,2
+      06 ,Lum Sunrise Emb (Pontual) - Branco Q Perfil Preto  ,2 , ,50628 ,LED_SUNRISE_QUENTE_BRANCO.3ds       ,50 ,2 ,50 ,LSBQPP  , ,2
+      07 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Branco ,2 , ,50629 ,LED_SUNRISE_NEUTRO_BRANCO.3ds       ,50 ,2 ,50 ,LSBNPB  , ,2
+      08 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Cinza  ,2 , ,50630 ,LED_SUNRISE_NEUTRO_CINZA.3ds        ,50 ,2 ,50 ,LSBNPC  , ,2
+      09 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Marrom ,2 , ,50631 ,LED_SUNRISE_NEUTRO_MARROM.3ds       ,50 ,2 ,50 ,LSBNPM  , ,2
+      10 ,Lum Sunrise Emb (Pontual) - Branco N Perfil Preto  ,2 , ,50632 ,LED_SUNRISE_NEUTRO_PRETO.3ds        ,50 ,2 ,50 ,LSBNPP  , ,2
+      11 ,Led Mini Noor (420mm) - Branco N Perfil Branco     ,2 , ,50633 ,                                    ,   ,  ,   ,MINBNPB , ,3
+      12 ,Led Mini Noor (420mm) - Branco N Perfil Cinza      ,2 , ,50634 ,                                    ,   ,  ,   ,MINBNPC , ,3
+      13 ,Led Mini Noor (420mm) - Branco N Perfil Marrom     ,2 , ,50635 ,                                    ,   ,  ,   ,MINBNPM , ,3
+      14 ,Led Mini Noor (420mm) - Branco N Perfil Preto      ,2 , ,50636 ,                                    ,   ,  ,   ,MINBNPP , ,3
+      15 ,Led Mini Noor (420mm) - Branco Q Perfil Branco     ,2 , ,50637 ,                                    ,   ,  ,   ,MINBQPB , ,3
+      16 ,Led Mini Noor (420mm) - Branco Q Perfil Cinza      ,2 , ,50638 ,                                    ,   ,  ,   ,MINBQPC , ,3
+      17 ,Led Mini Noor (420mm) - Branco Q Perfil Marrom     ,2 , ,50639 ,                                    ,   ,  ,   ,MINBQPM , ,3
+      18 ,Led Mini Noor (420mm) - Branco Q Perfil Preto      ,2 , ,50640 ,                                    ,   ,  ,   ,MINBQPP , ,3
+      19 ,Luminária Canaleta                                 ,1 , ,      ,CANALETA+DIFUSOR_LINEA(SEM_LED).3ds ,   ,  ,   ,        , ,4
+   }
+}

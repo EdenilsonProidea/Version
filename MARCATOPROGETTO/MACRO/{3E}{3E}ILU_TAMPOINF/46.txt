@@ -1,0 +1,63 @@
+#LET V_OLD=
+#IF $(FLAG_ILU:0)=1
+   #IF $(LIGARLUZ)=1 & $(TP_LED:12)!4
+      419.011,A=20,L=20,SP=$P+40,SL={$L/2}-10,SA=20,AZ=90
+   #ELSE
+      419.010,A=20,L=20,SP=$P+40,SL={$L/2}-10,SA=20,AZ=90
+   #ENDIF
+#ENDIF
+#IF $(LUZ)=1
+   #LET pled=8.5
+   #IF $(TP_LED:12)=1
+      #IF $(LED_PASS_ESQ)=0 #LET PASSESQ=3 #LET PASSESQ=0
+      #IF $(LED_PASS_DIR)=0 #LET PASSDIR=3 #LET PASSDIR=0
+      #IF $(TP_LOCAL:3)=1
+         463,A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SP={$P+$(inc_pain_acab:0)-94},SL=$(PASSESQ)
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ELSEIF $(TP_LOCAL:3)=2
+         463,A=2,P=$(pled),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P+$(inc_pain_acab:0)-$(pled)-$(incpainti:0))/2}
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ELSE
+         463,A=2,P=$(pled),SP=86-$(incpainti:0),SL=$(PASSESQ),L={$L-($(PASSESQ)+$(PASSDIR))}
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ENDIF
+   #ELSEIF $(TP_LED:12)=2
+      #LET pspot=58
+      #LET I=
+      #LET X=$(N_LEDS:3)
+      #FOR $1:$(X)
+         #IF $(POSSARRPAI$(I):0)>0
+            ILU_ERRO_SPOT,verifica_erro=$(POSSARRPAI$(I):0)
+            464,SL={$(POSSARRPAI$(I):0)-29},SA=-1,SP={($P+$(inc_pain_acab:0)-$(pspot)-$(incpainti:0))/2}
+            #LET V_OLD=$(POSSARRPAI$(I):0)
+         #ELSE
+            ILU_ERRO_SPOT,verifica_erro={INT(($L)/($(X)+1)*$(i))-29}
+            464,SL={INT(($L)/($(X)+1)*$(i))-29},SA=-2,SP={($P+$(inc_pain_acab:0)-$(pspot)-$(incpainti:0))/2} // Spot
+            #LET V_OLD={INT(($L)/($(X)+1)*$(i))-29}
+         #ENDIF
+      #ENDFOR
+   #ELSEIF $(TP_LED:12)=3
+      // FAZER ERRO
+      #LETS PECA=TAMPONAMENTO INFERIOR
+      #LETS IDLOGERROS=$(IDLOGERROS)67^ ^$(PECA);
+   #ELSEIF $(TP_LED:12)=4
+      #LET pcalaleta=16.5
+      #IF $(LED_PASS_ESQ)=0 #LET PASSESQ=3 #LET PASSESQ=0
+      #IF $(LED_PASS_DIR)=0 #LET PASSDIR=3 #LET PASSDIR=0
+      #IF $(TP_LOCAL:3)=1
+         469,A=2,P=$(pcalaleta),L={$L-($(PASSESQ)+$(PASSDIR))},SP={$P-99},SL=$(PASSESQ)
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ELSEIF $(TP_LOCAL:3)=2
+         469,A=2,P=$(pcalaleta),L={$L-($(PASSESQ)+$(PASSDIR))},SL=$(PASSESQ),SP={($P+$(inc_pain_acab:0)-$(pcalaleta)-$(incpainti:0))/2}
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ELSE
+         469,A=2,P=$(pcalaleta),SP=99,SL=$(PASSESQ),L={$L-($(PASSESQ)+$(PASSDIR))}
+         #LET tam_led={$L-($(PASSESQ)+$(PASSDIR))}
+      #ENDIF
+   #ENDIF
+#ENDIF
+#IF $(tam_led:0)<200
+   #LETS IDLOGERROS=$(IDLOGERROS)77
+#ENDIF
+//LOGERROS
+// .LUZSPOT.XP

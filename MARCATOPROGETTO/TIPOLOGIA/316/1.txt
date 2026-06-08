@@ -1,0 +1,10 @@
+{ 316   // desempenador
+   *AZZERA*            =0
+   DESCRIZIONE         =desempenador
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   LATO                =6
+   POSIZIONE           =0,0,-$(ESFRE:0)
+   DIMENSIONE          =$(LFRE),$(AFRE),$(ESFRE:0)
+   COLORI              =0,0
+   ORIENTAMENTO        =LAP
+}

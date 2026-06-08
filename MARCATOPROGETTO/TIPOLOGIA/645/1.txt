@@ -1,0 +1,16 @@
+{ 645   // DIVISÃO VERTICAL ESTANTE
+   *AZZERA*            =0
+   DESCRIZIONE         =DIVISÃO VERTICAL ESTANTE
+   CODICE              =/_COREX=$(_COREX:1);_PINTURAEX=$(_PINTURAEX:1);TPCOR=EX;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,0,0
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5),$(_corEX:3)|$(.percorso)\foto\madeira\$(_corEX:4)|$(_corEX:5)
+   ORIENTAMENTO        =APL
+   PARAMETRIGL         =LATERAL_EST.XP
+   DATI                =_COREX
+   X3                  =$(curbox)
+   X7                  =$(CANTOESQ)/$(CANTODIR)/N/N/$(fitaesq:0)/$(fitadir:0)/1/$(fitaatras:0)/0/0/0/0/0/0/0/0/0
+   X9                  =_/$(_corEX:1)/$(TPFIXESTANTE:1)/$(_corEX:1)
+   ALIAS               =#645
+}

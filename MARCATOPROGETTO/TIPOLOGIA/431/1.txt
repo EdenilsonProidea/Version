@@ -1,0 +1,9 @@
+{ 431   // Corredica Intermediaria
+   *AZZERA*            =0
+   DESCRIZIONE         =Corredica Intermediaria
+   CODICE              =/;_MONTADO=$(_MONTADO:0)
+   DIMENSIONE          =$L,$A,$P
+   COLORI              =180,180
+   ORIENTAMENTO        =LAP
+   PARAMETRIGL         =OBJETO3D.XP
+}

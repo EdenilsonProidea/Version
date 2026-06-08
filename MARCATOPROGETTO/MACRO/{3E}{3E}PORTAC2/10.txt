@@ -1,0 +1,13 @@
+#LET LFRE=($L+$(SOBREP:0))/2
+#IF $(PM)=1
+   FRCORR,SP=0,P=$(ESFRE),APE=C2E_1,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C2D_1,IDP=2,SL=$L-1*($(LFRE)+$(SOBREP)),macro=frontal // SL=$L-$(LFRE)
+#ELSE
+   #IF $(LADO_CANTO)==ESQ
+      FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C2E_3,IDP=1,macro=frontal
+      FRCORR,SP=0,P=$(ESFRE),APE=C2D_3,IDP=2,SL=$L-1*($(LFRE)+$(SOBREP)),macro=frontal // SL=$L-$(LFRE)
+   #ELSE
+      FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C2E_3,IDP=1,macro=frontal
+      FRCORR,SP=0,P=$(ESFRE),APE=C2D_3,IDP=2,SL=SL=$L-$(LFRE),macro=frontal
+   #ENDIF
+#ENDIF

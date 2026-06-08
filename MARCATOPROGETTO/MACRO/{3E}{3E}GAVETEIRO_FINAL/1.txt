@@ -1,0 +1,26 @@
+#LET afinal=$(afinal)+$(REDSUPGAVETEIRO:0)
+#IF $(afinal)>100
+   // #LET a=$(afinal)
+#ENDIF
+#IF $(fixatampog:0)=1
+   tamposemusi
+#ELSE
+   #IF $(_placer)=1
+      #IF $(BASESUPERIORGAV:0)=1
+         #IF $(LOCP_BX1)=1  // CLOSET AVANCADO
+            303.006,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(_XDP0)  //TAMPO DORMITORIO
+         #ELSE
+            //303.006,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$(p1)+$(INCRTAMPOGAV:0)  //TAMPO DORMITORIO
+         #ENDIF
+      #ENDIF
+      403,x1=201,sp=0,p=$p,SA=$(AFINAL)+$(esptampogav),A=$a-1*($(AFINAL)+$(esptampogav))  //Placer
+   #ELSE
+      #IF $(BASESUPERIORGAV:0)=1
+         303.006,SL=$(red_intm:0),SA=$(afinal),L=$l-$(red_intm:0)*2,A=$(esptampogav),P=$p+$(INCRTAMPOGAV:0)  //TAMPO DORMITORIO
+      #ENDIF
+   #ENDIF
+#ENDIF
+DOR_GAVETEIRO,A=$(AFINAL),COD=$(MEMOITEM)/_corfamilia=$(_corcx:10);_corcx=$(_corcx:1),l=$l,p=$(p1)
+!COMMENTO4 $(memoinfocorr)PCORR=$(Pcorredica)
+297,COD= / /AGAV $(afinal) mm,SA=$(afinal)+$(esptampogav),SP=$P,A=75,P=10  // TEXTO
+LOGERROS

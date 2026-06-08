@@ -1,0 +1,20 @@
+#IF $(_tpfr:8)>0 | $(_tpfr:9)>0
+   #IF $(LFRE)<$(_tpfr:8) //CHECK LARGURA MINIMA GAVETA
+      #LETS idlogerros=$(idlogerros)13^$(_tpfr:2)^$(_tpfr:8);
+   #ELSEIF $(LFRE)>$(_tpfr:9) //CHECK LARGURA MAXIMA GAVETA
+      #LETS idlogerros=$(idlogerros)14^$(_tpfr:2)^$(_tpfr:9);
+   #ENDIF
+#ENDIF
+
+#IF $(_tpfr:10)>0 | $(_tpfr:11)>0
+   #IF $(AFRE)<$(_tpfr:10) //CHECK ALTURA MINIMA GAVETA
+      #LETS idlogerros=$(idlogerros)15^$(_tpfr:2)^$(_tpfr:10); // Alterado para pegar o campo de altura minima <c26636>
+   #ELSEIF $(AFRE)>$(_tpfr:11) //CHECK ALTURA MAXIMA GAVETA
+      #LETS idlogerros=$(idlogerros)16^$(_tpfr:2)^$(_tpfr:11); // Alterado para pegar o campo de altura maxima <c26636>
+   #ENDIF
+#ENDIF
+#LET LPORTAFINAL=$(LFRE)
+
+// ISSO FICOU NA MACRO FRONTAL E ESSA PARTE VEIO PARA _FR_1 POR CONTA DA VALIDAÇÃO DO TAMANHO DO FRONTAL NOS DOMITÓRIOS
+// CALCULAERROGAV //GESTÃO DE ERROS GAVETAS  <C22068>
+// 297,COD= / /LARGURA DA PORTA $(LPORTAFINAL) MM,SA=10,SP=$P+50,A=100,P=10  // TEXTO

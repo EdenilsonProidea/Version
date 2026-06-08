@@ -1,0 +1,87 @@
+// Criado essa macro com nome diferente do ideamoveis para não alterar a gestão própria da marcato que já existia e era utilizada para outros módulos
+// #MSG $(pos)
+#IF $(_fr:4)=25  #LETV _perfpux:20=7
+#LETS X1PPERF=
+#LET ladopperf=0
+#LETS xpPperf=objeto3d.xp
+#LET PERFILMOLISE=1
+#IF $(_perfpux:26)<1040
+   #LET POSPUXPERFIL=1040-$(_perfpux:26)
+#ENDIF
+#IF $(pos)=1
+   // INFERIOR
+   #IF $(_perfpux:26)!!
+      #LETS idlogerros=$(idlogerros)63;
+   #ELSE
+      252,SL=$(FOLGAFRENTEL:0),SA=$(_perfpux:7)+$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A=$(lfre),AZ=90  //perfil pux
+      #LET FF=0 // ORIGINAL FE=0
+   #ENDIF
+#ELSEIF $(pos)=3
+   // PUX LADO DIREITO
+   #IF $a < 1100 & $(_PERFPUX:26)! // Correção na validação, feito em visita
+      #LETS idlogerros=$(idlogerros)62;
+   #ELSE
+      #IF $(_POSPUXMOLISE:3)==D // sem pega
+         #IF $(_perfpux:26) < 1000 & $(_perfpux:26)!!
+            252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1100;0  //perfil pux // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ELSEIF $(_perfpux:26) = 1000
+           // 252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1040;0  //perfil pux // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ELSE
+            252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))} //perfil pux // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ENDIF
+      #ELSE // com pega
+         #IF $(_perfpux:26) < 1000 & $(_perfpux:26)!!
+            // posição está correta
+            252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1100;0  //perfil pux  // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ELSEIF $(_perfpux:26) = 1000
+            // posição está correta
+            252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1040;0  //perfil pux // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ELSE
+            // posição está correta
+            252,SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)},SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))} //perfil pux // SL={$(LFRE)-$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0)}
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #LET FD=0 // ORIGINAL FT=0
+#ELSEIF $(pos)=4
+   // PUX LADO ESQUERDO
+   #IF $a < 1100 & $(_PERFPUX:26)! // Correção na validação, feito em visita
+      #LETS idlogerros=$(idlogerros)62;
+   #ELSE
+      #IF $(_POSPUXMOLISE:3)==E // sem pega
+         #IF $(_perfpux:26) < 1000 & $(_perfpux:26)!!
+            // posição está correta
+            252,SL=$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0),SA=$A-$(FOLGAFRENTEAS:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},AZ=-180,X7=0;0;1100;0  //perfil pux
+         #ELSEIF $(_perfpux:26) = 1000
+            //posição está correta
+            252,SL=$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0),SA=$A-$(FOLGAFRENTEAS:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},AZ=-180,X7=0;0;1040;0  //perfil pux
+         #ELSE
+            // posição está correta
+            252,SL=$(_perfpux:7)+$(FOLGAFRENTEL:0)-($(FOLGAFRENTEAI:0),SA=$A-$(FOLGAFRENTEAS:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},AZ=-180  //perfil pux
+         #ENDIF
+      #ELSE // com pega
+         #IF $(_perfpux:26) < 1000 & $(_perfpux:26)!!
+            252,SL=$SL-$(_perfpux:6),SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1040;0 //perfil pux
+         #ELSEIF $(_perfpux:26) = 1000
+            252,SL=$SL-$(_perfpux:6),SA=$(FOLGAFRENTEAI:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},X7=0;0;1040;0 //perfil pux
+         #ELSE
+            #IF {$(LTOT)>$(LMAXPORTAABRIR:0)}
+               252,SL=$SL+$(_PERFPUX:7),SA=$A-$(FOLGAFRENTEAS:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},AZ=-180  //perfil pux
+            #ELSE
+               252,SL=$SL+$(_PERFPUX:7)-$(_perfpux:6),SA=$A-$(FOLGAFRENTEAS:0),L=$(_perfpux:7),A={$(AFRE)-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0))},AZ=-180  //perfil pux
+            #ENDIF
+         #ENDIF
+      #ENDIF
+   #ENDIF
+   #LET FE=0 // ORIGINAL FF=0
+#ELSE
+   // SUPERIOR
+   #IF $(_perfpux:26)!!
+      #LETS idlogerros=$(idlogerros)63;
+   #ELSE
+      252,SL=$(lfre)+$(FOLGAFRENTEL:0),SA=$(afre)-$(_perfpux:7)-$(_perfpux:6),L=$(_perfpux:7),A=$(lfre),AZ=-90  //perfil pux
+   #ENDIF
+   #LET FT=0 // ORIGINAL FD=0
+#ENDIF
+// .objeto3d.xp
+// logerros

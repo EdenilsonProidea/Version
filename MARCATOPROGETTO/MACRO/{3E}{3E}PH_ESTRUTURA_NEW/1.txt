@@ -1,0 +1,32 @@
+!PARAMETRI cc=$(_corcru:3)|$(.percorso)\foto\madeira\$(_corcru:4)|$(_corcru:5) //cor cru
+#IF $(esmaoamiga:0)=30
+   #LET esmaoamiga=15
+   #LET Amaoamiga=80
+   //259.001,SA=$(a)-$(Amaoamiga)-30,SP=0,A=$(Amaoamiga),P=$(esmaoamiga),C1=$(CC),C2=$(CC),SL=$(AMAOAMIGA),L=$l-$(AMAOAMIGA)*2  //Travessa Painel Parede
+   259.001,SA=$(a)-2*$(Amaoamiga)-30,SP=0,A=$(Amaoamiga),P=$(esmaoamiga),C1=$(CC),C2=$(CC),SL=$(AMAOAMIGA),L=$l-$(AMAOAMIGA)*2  // Travessa Painel Parede
+   686,L=$l-$(AMAOAMIGA)*2,A=$(AMAOAMIGA),P=$(esmaoamiga),SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+   685  // SARAFFO VERTICAL PAINEL PAREDE
+   685,SL=$L-$(AMAOAMIGA)  // SARAFFO VERTICAL PAINEL PAREDE
+   #LET Amaoamiga=80
+   259.001,SA=$(a)-$(Amaoamiga),SP=15,A=$(Amaoamiga),P=$(esmaoamiga),C1=$(CC),C2=$(CC),L=$l-$(AMAOAMIGA)*2,SL=$(AMAOAMIGA)  //Travessa Painel Parede
+   259.001,SA=$(a)-2*$(Amaoamiga),SP=15,A=$(Amaoamiga),P=$(esmaoamiga),C1=$(CC),C2=$(CC),L=$l-$(AMAOAMIGA)*2,SL=$(AMAOAMIGA)  // Travessa Painel Parede
+   686,SP=15,L=$l-$(AMAOAMIGA)*2,A=$(AMAOAMIGA),P=$(esmaoamiga),SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+   685,SP=15  // SARAFFO VERTICAL PAINEL PAREDE
+   685,SL=$L-$(AMAOAMIGA),SP=15  // SARAFFO VERTICAL PAINEL PAREDE
+#ELSE
+   #LET Amaoamiga=80
+   #IF $(MAOVER:0)=1
+      686,sa=$a-$(AMAOAMIGA),l=$l-$(AMAOAMIGA)*2,a=$(AMAOAMIGA),p=$(esmaoamiga),SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+      686,l=$l-$(AMAOAMIGA)*2,a=$(AMAOAMIGA),p=$(esmaoamiga),SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+      685  // SARAFFO VERTICAL PAINEL PAREDE
+      685,SL=$L-$(AMAOAMIGA) // SARAFFO VERTICAL PAINEL PAREDE
+      685,x3=$(curbox)/MFV,SL=$(AMAOAMIGA),A=$A-$(AMAOAMIGA)*2,SA=$(AMAOAMIGA)  // SARAFFO VERTICAL PAINEL PAREDE
+      685,SL=$L-$(AMAOAMIGA)*2,x3=$(curbox)/MFV,A=$A-$(AMAOAMIGA)*2,SA=$(AMAOAMIGA)  // SARAFFO VERTICAL PAINEL PAREDE
+   #ELSE
+      259.001,SA=$(a)-$(Amaoamiga),SP=0,A=$(Amaoamiga),P=$(esmaoamiga),l=$l-$(AMAOAMIGA)*2,SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  //Travessa Painel Parede
+      259.001,SA=$(a)-2*$(Amaoamiga),SP=0,A=$(Amaoamiga),P=$(esmaoamiga),l=$l-$(AMAOAMIGA)*2,SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+      686,a=$(AMAOAMIGA),p=$(esmaoamiga),l=$l-$(AMAOAMIGA)*2,SL=$(AMAOAMIGA),C1=$(CC),C2=$(CC)  // Travessa Painel Parede
+      685  // SARAFFO VERTICAL PAINEL PAREDE
+      685,SL=$L-$(AMAOAMIGA),l=$(AMAOAMIGA),a=$A  // SARAFFO VERTICAL PAINEL PAREDE
+   #ENDIF
+#ENDIF

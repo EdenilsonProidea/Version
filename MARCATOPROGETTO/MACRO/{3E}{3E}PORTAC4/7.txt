@@ -1,0 +1,20 @@
+#LET LFRE=($L+$(SOBREP:0)*2)/4
+
+#IF $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D & $(_tpfrdir:4)=2 & $(pm)=1 // Adicionado em visitaFRCORR,SP=0,P=$(ESFRE),APE=C4E,IDP=1,macro=frontal
+#MSG a
+   FRCORR,SP=0,P=$(ESFRE),APE=C4E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CE,IDP=2,SL=$L/2-$(LFRE),macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CD,IDP=3,SL=$L/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C4D,IDP=4,SL=$L-1*($(LFRE)+34),macro=frontal
+#ELSEIF $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D & $(_tpfrdir:4)>1 // Adicionado em visita
+#MSG b
+   FRCORR,SP=0,P=$(ESFRE),APE=C4E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CE,IDP=2,SL=$L/2-$(LFRE),macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CD,IDP=3,SL=$L/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C4D,IDP=4,SL=$L-1*($(LFRE)+34),macro=frontal
+#ELSE
+   FRCORR,SP=0,P=$(ESFRE),APE=C4E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CE,IDP=2,SL=$L/2-$(LFRE),macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C4CD,IDP=3,SL=$L/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C4D,IDP=4,SL=$L-$(LFRE),macro=frontal
+#ELSE

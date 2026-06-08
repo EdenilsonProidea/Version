@@ -1,0 +1,96 @@
+#LET deslocafrente=0
+#LET aumentafrente=0
+#LET descpgdir=0
+#LET descpgesq=0
+#IF $(DESCONTOSFRE:0)!1
+   #IF $(ultimomodulo:0)=1 & $(primeiromodulo:0)=1 // <c26425>
+      #LET deslocafrente=0 //$(eslat:0)/2
+      #LET aumentafrente=0 //$(eslat:0)/2
+   #ELSE
+      #IF $(primeiromodulo)=1
+         #LET deslocafrente=0//$(eslat:0)/2
+      #ENDIF
+      #IF $(ultimomodulo)=1
+         #LET aumentafrente=0//$(eslat:0)/2
+      #ENDIF
+   #ENDIF
+#ENDIF
+#LET largurafrente=$(lfre:0)+1*($(deslocafrente)+$(aumentafrente))
+#IF $(ISCANTOLDOR)=1
+   #LETS IDLOGERROS=$(IDLOGERROS)91;
+#ELSE
+   #IF $(ISDORMI)=1
+      #IF $(_FECHESQ:3)[9;10]!0 & $(_FECHDIR:3)[9;10]!1 // somente esquerdo <c26971>
+         #IF ($(primeiromodulo)=1 & $(ultimomodulo)=0) | ($(ultimomodulo)=0 & $(primeiromodulo)=0)
+            #LET descpgdir=$(folgafrdor2:0)
+            #LET descpgesq=$(folgafrdor2:0)
+         #ELSEIF $(ultimomodulo)=1 & $(primeiromodulo)=1
+            #LET descpgdir=0
+            #LET descpgesq=$(folgafrdor2:0)
+         #ELSEIF $(ultimomodulo)=1 & $(primeiromodulo)=0
+            #LET descpgdir=0
+            #LET descpgesq=$(folgafrdor2:0)
+         #ENDIF
+         PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+      #ELSEIF $(_FECHDIR:3)[9;10]!0 & $(_FECHESQ:3)[9;10]!1 // somente direito <c26971>
+         #IF ($(ultimomodulo)=1 & $(primeiromodulo)=0) | ($(ultimomodulo)=0 & $(primeiromodulo)=0)
+            #LET descpgesq=$(folgafrdor2:0)
+            #LET descpgdir=$(folgafrdor2:0)
+         #ELSEIF $(ultimomodulo)=1 & $(primeiromodulo)=1
+            #LET descpgesq=0
+            #LET descpgdir=$(folgafrdor2:0)
+         #ELSEIF $(ultimomodulo)=0 & $(primeiromodulo)=1
+            #LET descpgesq=0
+            #LET descpgdir=$(folgafrdor2:0)
+         #ENDIF
+         PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+      #ELSEIF $(_FECHDIR:3)[9;10]!0 & $(_FECHESQ:3)[9;10]!0 // os dois <c26971>
+         #IF ($(ultimomodulo)=1 & $(primeiromodulo)=1) | ($(ultimomodulo)=0 & $(primeiromodulo)=0)
+            #LET descpgesq=$(folgafrdor2:0)
+            #LET descpgdir=$(folgafrdor2:0)
+         #ELSEIF ($(ultimomodulo)=0 & $(primeiromodulo)=1) | ($(ultimomodulo)=1 & $(primeiromodulo)=0)
+            #LET descpgesq=$(folgafrdor2:0)
+            #LET descpgdir=$(folgafrdor2:0)
+         #ENDIF
+         PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+      #ELSE
+         #IF $(ultimomodulo:0)=1 & $(primeiromodulo:0)=1 // <c26425>
+            PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+         #ELSEIF $(primeiromodulo:0)=1 & $(ultimomodulo:0)=0 // <c30430P2>
+            #IF $(ARMRETO)=1
+               #LET descpgdir=$(folgafrdor2:0)
+            #ELSE
+               #IF $(LADO_CANTO:0)[ESQ]!0 & $(TPCANTO:3)[1;3]!0
+                  #LET descpgdir=$(folgafrdor2:0)
+               #ELSE
+                  #LET descpgdir=0
+               #ENDIF
+            #ENDIF
+            PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+         #ELSEIF $(ultimomodulo:0)=1
+            #LET descpgesq=$(folgafrdor2:0)
+            PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+         #ELSEIF $(ultimomodulo:0)=0 & $(primeiromodulo:0)=0
+            #IF $(DIVIDICAIXA$(idmodulotemp):0)=0 & $(NPORTAS:3)=3
+               #LET descpgesq=$(folgafrdor2:0)
+               #LET descpgdir=0
+            #ELSE
+               #IF $(LADO_CANTO:0)[DIR;ESQ]!0 & $(TPCANTO:3)[1]!0 // <C30430P2>
+                  #LET descpgesq=$(folgafrdor2:0)
+                  #LET descpgdir=0
+               #ELSE
+#MSG $(idmodulotemp:0) -- $(dividicaixa4:0)
+                  #LET descpgesq=$(folgafrdor2:0)
+                  #LET descpgdir=$(folgafrdor2:0)
+               #ENDIF
+            #ENDIF
+            PORTASG1V,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente),FOLGAFRENTELI=3,FOLGAFRENTEL=5
+         #ELSE
+            PORTASG,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente)
+         #ENDIF
+      #ENDIF
+   #ELSE
+      PORTASG,sl=-$(deslocafrente),lfre=$(largurafrente),l=$(largurafrente)
+   #ENDIF
+#ENDIF
+// LOGERROS

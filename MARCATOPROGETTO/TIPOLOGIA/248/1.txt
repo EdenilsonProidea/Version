@@ -1,0 +1,16 @@
+{ 248   // Travessa vertical EXTERNA canto reto
+   *AZZERA*            =0
+   DESCRIZIONE         =Travessa vertical EXTERNA canto reto
+   CODICE              =/_CORFR=$(_CORR:1);_PINTURAFR=$(_PINTURAFR:1);TPCOR=FR;_MONTADO=$(_MONTADO:0)
+   LATO                =0
+   POSIZIONE           =0,$(FOLGAFRENTEAI:0)+$(_tpcaixa:4),$p
+   DIMENSIONE          =$(ESLAT:0),$A-1*($(FOLGAFRENTEAI:0)+$(FOLGAFRENTEAS:0)+$(_tpcaixa:4)),$(PMONTCANTO)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =APL
+   DATI                =_corcx
+   X3                  =$(curbox)
+   X7                  =N/N/N/N/0/0/1/1
+   X8                  =$(ESCOS:0)
+   X9                  =$(_tpcaixa:1)/$(_corfr:1)
+   ALIAS               =#248
+}

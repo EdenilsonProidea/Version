@@ -1,0 +1,14 @@
+{ 636   // Tamponamento Horizontal
+   *AZZERA*            =0
+   DESCRIZIONE         =Tamponamento Horizontal
+   CODICE              =000TAMPH /_CORFAMILIA=$(_CORFR:10);_CORFR=$(_CORFR:1);LINHA=$(MODELLO:0);_MONTADO=$(_MONTADO:0)
+   POSIZIONE           =0,$A,$P-$(P_PAINEL_PAREDE:0)+$(INC_PAIN_ACAB:0)
+   DIMENSIONE          =$L,$(ESPAINA:0),$(P_PAINEL_PAREDE:0)
+   COLORI              =$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5),$(_corfr:3)|$(.percorso)\foto\madeira\$(_corfr:4)|$(_corfr:5)
+   ORIENTAMENTO        =LPA
+   DATI                =_CORFR
+   X3                  =$(curbox)/I
+   X7                  =N/N/N/N/0/0/1/1/0/0/0/0/0/0/0/0/0/$(FITARSOVISTA:2)
+   X9                  =$(_tpcaixa:1)/$(_corFR:1)/$(TPFIX:1)/$(acrestamp:0)/
+   ALIAS               =#636
+}

@@ -1,0 +1,11 @@
+#LET LFRE=($L+$(SOBREP:0)*2)/3
+
+#IF $(pm)=1 & $(LADO_CANTO)==ESQ & $(_fr:6)[118]!0 & $(AMBIENTE)==D // Adicionado em visita
+   FRCORR,SP=0,P=$(ESFRE),APE=C3E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C3C,IDP=2,SL=($L-$(LFRE))/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C3D,IDP=3,SL=$L-1*($(LFRE)+$(SOBREP:0)),macro=frontal
+#ELSE
+   FRCORR,SP=0,P=$(ESFRE),APE=C3E,IDP=1,macro=frontal
+   FRCORR,SP=$(SP1VIA),P=$(ESFRE),APE=C3C,IDP=2,SL=($L-$(LFRE))/2,macro=frontal
+   FRCORR,SP=0,P=$(ESFRE),APE=C3D,IDP=3,SL=$L-$(LFRE),macro=frontal
+#ENDIF
